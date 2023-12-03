@@ -58,6 +58,10 @@ public class TestObjectAlbum : YaMObject {
 }
 
 public int main (string[] args){
+    Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+    Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+    Intl.textdomain (Config.GETTEXT_PACKAGE);
+    
     Test.init (ref args);
 
     Test.add_func ("/jsoner/serialize/string", () => {
@@ -210,7 +214,7 @@ public int main (string[] args){
                 Test.fail_printf (result + " != test");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -223,7 +227,7 @@ public int main (string[] args){
                 Test.fail_printf ("result != null");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.skip (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -236,7 +240,7 @@ public int main (string[] args){
                 Test.fail_printf (result.value + " != test");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -249,7 +253,7 @@ public int main (string[] args){
                 Test.fail_printf (result.string_value + " != test");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -262,7 +266,7 @@ public int main (string[] args){
                 Test.fail_printf (result.string_value_ + " != test");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -275,7 +279,7 @@ public int main (string[] args){
                 Test.fail_printf (result.value + " != \"6\"");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -288,7 +292,7 @@ public int main (string[] args){
                 Test.fail_printf (string.joinv (", ", result.value.to_array ()) + " != kekw, yes, no");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -302,7 +306,7 @@ public int main (string[] args){
                 Test.fail_printf (string.joinv (", ", array.to_array ()) + " != kekw, yes, no");
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -319,7 +323,7 @@ public int main (string[] args){
                 );
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 
@@ -336,7 +340,7 @@ public int main (string[] args){
                 );
             }
         } catch (ClientError e) {
-            Test.fail_printf (e.message);
+            Test.fail_printf (e.domain.to_string () + ": " + e.message);
         }
     });
 

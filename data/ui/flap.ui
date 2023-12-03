@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="CassetteFlap" parent="GtkBox">
+		<property name="hexpand">false</property>
+		<child>
+			<object class="GtkSeparator"></object>
+		</child>
+		<child>
+			<object class="GtkOverlay">
+			  <child>
+					<object class="GtkScrolledWindow" id="content"></object>
+			  </child>
+			  <child type="overlay">
+					<object class="GtkButton" id="close_button">
+						<style>
+							<class name="flat"/>
+							<class name="circular"/>
+						</style>
+						<property name="margin-end">16</property>
+						<property name="margin-top">6</property>
+						<property name="has-frame">true</property>
+						<property name="icon-name">window-close-symbolic</property>
+						<property name="hexpand">false</property>
+						<property name="vexpand">false</property>
+						<property name="hexpand">false</property>
+						<property name="valign">start</property>
+						<property name="halign">end</property>
+					</object>
+			  </child>
+			</object>
+		</child>
+	</template>
+</interface>

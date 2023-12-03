@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="CassetteSideBar" parent="AdwBin">
+		<child>
+			<object class="AdwOverlaySplitView" id="root_flap">
+        <property name="show-sidebar">false</property>
+        <property name="sidebar-position">end</property>
+        <property name="collapsed">true</property>
+        <property name="pin-sidebar">true</property>
+        <property name="enable-show-gesture">false</property>
+        <child type="sidebar">
+          <object class="GtkOverlay">
+            <property name="hexpand">false</property>
+            <property name="width-request">470</property>
+            <child>
+              <object class="GtkScrolledWindow" id="sidebar_content">
+                <property name="hscrollbar-policy">never</property>
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="GtkBox">
+                <property name="spacing">16</property>
+                <property name="margin-end">16</property>
+                <property name="margin-top">6</property>
+                <property name="hexpand">false</property>
+                <property name="vexpand">false</property>
+                <property name="hexpand">false</property>
+                <property name="valign">start</property>
+                <property name="halign">end</property>
+                <child>
+                  <object class="GtkButton" id="clean_button">
+                    <style>
+                      <class name="flat"/>
+                      <class name="circular"/>
+                    </style>
+                    <property name="icon-name">user-trash-symbolic</property>
+                    <property name="tooltip-text" translatable="true">Clear queue</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="close_button">
+                    <style>
+                      <class name="flat"/>
+                      <class name="circular"/>
+                    </style>
+                    <property name="icon-name">window-close-symbolic</property>
+                    <property name="tooltip-text" translatable="true">Close</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+		</child>
+	</template>
+</interface>

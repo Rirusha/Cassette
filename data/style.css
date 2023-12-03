@@ -1,0 +1,81 @@
+/* @define-color accent_color #ffdb4d;
+@define-color accent_bg_color #ffdb4d; */
+
+.qr_background {
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+
+.text-entry {
+    background-color: @theme_bg_color;
+}
+
+.big-art {
+    border-style: none;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px -3px black;
+}
+
+.small-art {
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px -1px black;
+}
+
+.playlist-name {
+    font-size: 38px;
+}
+
+frame {
+    border-radius: 4px;
+    border-style: none;
+}
+
+.player-bar {
+    background-color: alpha(@theme_fg_color, 0.05);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.playing-track {
+    background-color: alpha(@accent_bg_color, 0.5);
+}
+
+.pressed {
+    background-color: @window_bg_color;
+}
+
+.overlay-button {
+    color: @accent_fg_color;
+    background-color: alpha(#000000, 0.6);
+    border-radius: 0px;
+}
+
+.offline-mode {
+    background-color: @destructive_bg_color;
+}
+
+.slider trough {
+    min-height: 20px;
+    border-radius: 0px;
+}
+
+.slider highlight {
+    border-radius: 0px;
+}
+
+.slider {
+    margin: 0px;
+    padding: 0px;
+}
+
+.slider-text {
+    color: black;
+}
+
+.track-row {
+    background-color: alpha(@window_fg_color, 0.08);
+}
+
+.disliked {
+    color: #ff1f2a;
+}

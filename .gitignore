@@ -1,0 +1,14 @@
+# build dir
+builddir*
+
+# Workspaces
+*.code-workspace
+
+# Visuel Studio Code
+.vscode
+
+# Personal scripts
+my.*
+
+# Poedit db
+*.mo

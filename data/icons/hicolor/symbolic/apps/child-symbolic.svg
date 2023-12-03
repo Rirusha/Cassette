@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg44401"
+   sodipodi:docname="child-symbolic.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs44405" />
+  <sodipodi:namedview
+     id="namedview44403"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="32"
+     inkscape:cx="9.640625"
+     inkscape:cy="8.0625"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg44401"
+     showguides="true">
+    <sodipodi:guide
+       position="7.9902496,1.6751709"
+       orientation="1,0"
+       id="guide236"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="6.1429902,12.552854"
+       orientation="0,-1"
+       id="guide325"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="2.8284271,8.619573"
+       orientation="1,0"
+       id="guide327"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="9.9878833,6.0563109"
+       orientation="0,-1"
+       id="guide2739"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <g
+     transform="translate(-20,-276)"
+     style="display:inline;fill:#bebebe;fill-opacity:1"
+     inkscape:label="cellular network mobile connection type gprs"
+     id="g6099">
+    <title
+       id="title47679">network-cellular-gprs</title>
+    <path
+       id="rect14976"
+       d="m 23,276 c -1.662,0 -3,1.338 -3,3 v 10 c 0,1.662 1.338,3 3,3 h 10 c 1.662,0 3,-1.338 3,-3 v -10 c 0,-1.662 -1.338,-3 -3,-3 z m 3,3 h 4 c 0.83333,0 1.52527,0.56422 1.76953,1.05273 C 32.01379,280.54125 32,281 32,281 v 1 h -2 v -1 h -4 v 6 h 4 l 0.0017,-1.06822 2,0.006 L 32,287 c 0,0 0.0138,0.45875 -0.23047,0.94727 C 31.52527,288.43578 30.83333,289 30,289 h -4 c 0,0 -0.45875,0.0138 -0.94727,-0.23047 C 24.56422,288.52527 24,287.83333 24,287 v -6 c 0,0 -0.0138,-0.45875 0.23047,-0.94727 C 24.47473,279.56422 25.16667,279 26,279 Z"
+       style="fill:#2e3436;fill-opacity:1"
+       sodipodi:nodetypes="sssssssssssccccccccccccsccsccs" />
+  </g>
+</svg>

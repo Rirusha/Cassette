@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassettePlaylistMicro" parent="AdwBin">
+    <property name="hexpand">false</property>
+    <property name="vexpand">false</property>
+    <child>
+      <object class="AdwClamp">
+        <property name="maximum_size">220</property>
+        <child>
+          <object class="GtkOverlay">
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkButton" id="self">
+                <property name="has-frame">false</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="spacing">8</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkFrame">
+                        <style>
+                          <class name="big-art"/>
+                        </style>
+                        <child>
+                          <object class="CassetteCoverImage" id="cover_image">
+                            <property name="width-request">200</property>
+                            <property name="height-request">200</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">horizontal</property>
+                        <property name="spacing">8</property>
+                        <property name="hexpand">true</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">8</property>
+                            <property name="hexpand">true</property>
+                            <child>
+                              <object class="GtkLabel" id="playlist_title">
+                                <property name="label" translatable="true">Playlist</property>"
+                                <property name="justify">center</property>
+                                <property name="halign">center</property>
+                                <property name="wrap">true</property>
+                                <property name="wrap-mode">word-char</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="likes_count_label">
+                                <style>
+                                  <class name="dim-label"/>
+                                </style>
+                                <property name="visible">false</property>
+                                <property name="justify">center</property>
+                                <property name="halign">center</property>
+                                <property name="ellipsize">end</property>
+                                <property name="wrap">true</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="CassetteSaveStack" id="save_stack">
+                            <property name="halign">end</property>
+                            <property name="valign">start</property>
+                            <property name="hexpand">false</property>
+                            <property name="vexpand">false</property>
+                            <property name="content-type">playlist</property>
+                            <property name="hide-when-none">true</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="GtkBox" id="buttons_box">
+                <property name="visible">false</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
+                <property name="hexpand">false</property>
+                <property name="vexpand">false</property>
+                <property name="spacing">4</property>
+                <property name="margin-top">74</property>
+                <property name="homogeneous">true</property>
+                <child>
+                  <object class="GtkStack" id="like_button_stack">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="width-request">42</property>
+                    <property name="height-request">42</property>
+                    <child>
+                      <object class="GtkStackPage">
+                        <property name="name">show</property>
+                        <property name="child">
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">3</property>
+                            <child>
+                              <object class="CassetteLikeButton" id="like_button">
+                                <property name="is-osd">true</property>
+                                <property name="is-circular">true</property>
+                                <property name="width-request">42</property>
+                                <property name="height-request">42</property>
+                                <property name="valign">center</property>
+                                <property name="object-content-type">playlist</property>
+                                <property name="show-label">false</property>
+                              </object>
+                            </child>
+                            <!-- <child>
+                              <object class="GtkLabel" id="likes_count_label">
+                                <property name="label">123 423</property>
+                                <property name="valign">end</property>
+                              </object>
+                            </child> -->
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkStackPage">
+                        <property name="name">not-show</property>
+                        <property name="child">
+                          <object class="GtkLabel"></object>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="CassettePlayButtonContext" id="play_button">
+                    <property name="is-suggested-action">true</property>
+                    <property name="is-circular">true</property>
+                    <property name="is-osd">true</property>
+                    <property name="context-type">playlist</property>
+                    <property name="size">62</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="tooltip-text" translatable="true">Start playlist</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="add_to_queue_button">
+                    <style>
+                      <class name="circular"/>
+                      <class name="osd"/>
+                    </style>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="width-request">42</property>
+                    <property name="height-request">42</property>
+                    <property name="icon-name">list-add-symbolic</property>
+                    <property name="tooltip-text" translatable="true">Add playlist to queue</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

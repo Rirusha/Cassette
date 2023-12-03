@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteDislikedTracksView" parent="CassetteHasTracksView">
+    <child>
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="hexpand">true</property>
+        <property name="propagate-natural-height">true</property>
+        <property name="hscrollbar_policy">never</property>
+        <child>
+          <object class="AdwClamp">
+            <property name="maximum_size">1000</property>
+            <child>
+              <object class="GtkBox" id="main_box">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="disliked_label">
+                    <style>
+                      <class name="title-1"/>
+                    </style>
+                    <property name="margin-top">4</property>
+                    <property name="label" translatable="true">Disliked tracks</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

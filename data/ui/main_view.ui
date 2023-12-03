@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteMainView" parent="CassetteBaseView">
+    <child>
+      <object class="GtkScrolledWindow">
+        <child>
+          <object class="AdwStatusPage">
+            <property name="title" translatable="true">Not implemented yet</property>
+            <property name="icon-name">com.github.Rirusha.Cassette-symbolic</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

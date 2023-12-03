@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteAccountInfoWindow" parent="AdwWindow">
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar"/>
+        </child>
+        <property name="content">
+          <object class="AdwClamp">
+            <property name="margin-top">16</property>
+            <property name="margin-bottom">16</property>
+            <property name="margin-start">16</property>
+            <property name="margin-end">16</property>
+            <property name="maximum-size">600</property>
+            <child>
+              <object class="GtkBox">
+                <property name="spacing">32</property>
+                <child>
+                  <object class="AdwAvatar" id="avatar"/>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="valign">center</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">8</property>
+                    <child>
+                      <object class="GtkLabel" id="login_format_label">
+                        <style>
+                          <class name="title-1"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="wrap">true</property>
+                        <property name="label" translatable="true" context="account info window">Login: %s</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="phone_format_label">
+                        <style>
+                          <class name="title-2"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="ellipsize">middle</property>
+                        <property name="label" translatable="true" context="account info window">Phone number: %s</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="plus_label">
+                        <style>
+                          <class name="title-4"/>
+                          <class name="accent"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="wrap">true</property>
+                        <!-- Translators: Plus is yandex subscription -->
+                        <property name="label" translatable="true" context="account info window">Has Plus</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <style>
+                          <class name="spacer"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="first_name_format_label">
+                        <style>
+                          <class name="title-4"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="wrap">true</property>
+                        <property name="label" translatable="true" context="account info window">First name: %s</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="second_name_format_label">
+                        <style>
+                          <class name="title-4"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="wrap">true</property>
+                        <property name="label" translatable="true" context="account info window">Second name: %s</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="display_name_format_label">
+                        <style>
+                          <class name="title-4"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="wrap">true</property>
+                        <property name="label" translatable="true" context="account info window">Display name: %s</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="birthday_format_label">
+                        <style>
+                          <class name="title-4"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="wrap">true</property>
+                        <property name="label" translatable="true" context="account info window">Birthday: %s</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <style>
+                          <class name="spacer"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="add_label">
+                        <style>
+                          <class name="title-4"/>
+                        </style>
+                        <property name="halign">start</property>
+                        <property name="hexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="wrap">true</property>
+                        <!-- Translators: Options like Bookmate subscription -->
+                        <property name="label" translatable="true" context="account info window">Additional options:</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="options_box">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">4</property>
+                        <property name="visible">false</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

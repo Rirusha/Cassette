@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="CassetteTrackPlaceholder" parent="GtkFrame">
+		<child>
+			<object class="GtkLabel">
+        <style>
+          <class name="dim-label"/>
+        </style>
+        <property name="label" translatable="true">Loading...</property>
+        <property name="halign">start</property>
+        <property name="margin-start">14</property>
+        <property name="height-request">58</property>
+      </object>
+		</child>
+	</template>
+</interface>

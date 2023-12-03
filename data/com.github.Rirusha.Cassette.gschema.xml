@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="cassette">
+
+	<enum id="com.github.Rirusha.Cassette.application-state">
+		<value nick="begin" value="0"/>
+		<value nick="online" value="1"/>
+		<value nick="local" value="2"/>
+		<value nick="offline" value="3"/>
+	</enum>
+	<enum id="com.github.Rirusha.Cassette.repeat-mode">
+		<value nick="off" value="0"/>
+		<value nick="repeat-one" value="1"/>
+		<value nick="repeat-all" value="2"/>
+	</enum>
+	<enum id="com.github.Rirusha.Cassette.shuffle-mode">
+		<value nick="off" value="0"/>
+		<value nick="on" value="1"/>
+	</enum>
+
+	<schema id="com.github.Rirusha.Cassette" path="/com/github/Rirusha/Cassette/">
+		
+		<key name="application-state" enum="com.github.Rirusha.Cassette.application-state">
+			<default>"begin"</default>
+		</key>
+		<key name="repeat-mode" enum="com.github.Rirusha.Cassette.repeat-mode">
+			<default>"off"</default>
+		</key>
+		<key name="shuffle-mode" enum="com.github.Rirusha.Cassette.shuffle-mode">
+			<default>"off"</default>
+		</key>
+
+		<key name="window-width" type="i">
+			<default>600</default>
+		</key>
+		<key name="window-height" type="i">
+			<default>400</default>
+		</key>
+		<key name="window-maximized" type="b">
+			<default>false</default>
+		</key>
+		<key name="cache-path" type="s">
+			<default>'~/.local/share/cassette'</default>
+		</key>
+		<key name="volume" type="d">
+			<default>10.0</default>
+		</key>
+		<key name="available-visible" type="b">
+			<default>false</default>
+		</key>
+		<key name="explicit-visible" type="b">
+			<default>true</default>
+		</key>
+		<key name="child-visible" type="b">
+			<default>true</default>
+		</key>
+		<key name="max-thread-number" type="i">
+			<default>5</default>
+		</key>
+		<key name="is-hq" type="b">
+			<default>true</default>
+		</key>
+		<key name="can-cache" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-replaced-mark" type="b">
+			<default>false</default>
+		</key>
+		<key name="show-save-stack" type="b">
+			<default>true</default>
+		</key>
+		<key name="add-tracks-to-start" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-temp-save-mark" type="b">
+			<default>false</default>
+		</key>
+		<key name="try-load-queue-every-activate" type="b">
+			<default>false</default>
+		</key>
+		<key name="default-pages-set" type="b">
+			<default>false</default>
+		</key>
+		<key name="show-main" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-liked" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-playlists" type="b">
+			<default>true</default>
+		</key>
+	</schema>
+</schemalist>

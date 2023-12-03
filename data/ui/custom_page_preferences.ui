@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteCustomPagePreferences" parent="AdwPreferencesRow">
+    <child>
+      <object class="GtkGrid">
+        <property name="margin-top">8</property>
+        <property name="margin-bottom">8</property>
+        <property name="margin-start">8</property>
+        <property name="margin-end">8</property>
+        <property name="row-homogeneous">true</property>
+        <property name="row-spacing">8</property>
+        <property name="column-spacing">8</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="true">Title: </property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEntry" id="page_title_entry">
+            <style>
+              <class name="flat"/>
+            </style>
+            <property name="hexpand">true</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="true">Icon: </property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEntry" id="page_icon_name_entry">
+            <style>
+              <class name="flat"/>
+            </style>
+            <property name="hexpand">true</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <style>
+              <class name="spacer"/>
+            </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">0</property>
+              <property name="row-span">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="page_save_button">
+            <property name="icon-name">document-save-symbolic</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="hexpand">false</property>
+            <property name="tooltip-text" translatable="true">Save page</property>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">0</property>
+              <property name="row-span">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="page_remove_button">
+            <style>
+              <class name="destructive-action"/>
+            </style>
+            <property name="icon-name">user-trash-symbolic</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="hexpand">false</property>
+            <property name="tooltip-text" translatable="true">Remove page</property>
+            <layout>
+              <property name="column">4</property>
+              <property name="row">0</property>
+              <property name="row-span">2</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

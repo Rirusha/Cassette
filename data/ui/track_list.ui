@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="CassetteTrackList" parent="AdwBin">
+    <property name="vexpand">false</property>
+    <property name="valign">start</property>
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">16</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkBox" id="title">
+            <property name="spacing">6</property>
+            <property name="orientation">vertical</property>
+            <property name="visible">false</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">horizontal</property>
+                <child>
+                  <object class="GtkLabel">
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
+                    <!-- Translators: now PLAYING -->
+                    <property name="label" translatable="true">PLAYING </property>
+                    <property name="halign">start</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="list_type_label">
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
+                    <property name="halign">start</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="list_name_label">
+                <style>
+                  <class name="title-1"/>
+                </style>
+                <property name="wrap">true</property>
+                <property name="halign">start</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox" id="search_box">
+            <property name="spacing">8</property>
+            <child>
+            <object class="GtkSearchEntry" id="search_entry">
+              <style>
+                <class name="inline"/>
+                <class name="text-entry"/>
+              </style>
+              <property name="search-delay">900</property>
+              <property name="hexpand">true</property>
+              <!-- Translators: placeholder of "search" entry. Local track search (inside of track lsit) -->
+              <property name="placeholder-text" translatable="true">Search track</property>
+            </object>
+            </child>
+            <child>
+            <object class="GtkLabel">
+              <style>
+              <class name="dim-label"/>
+              </style>
+              <!-- Translators: part of sort by <name, duration etc> -->
+              <property name="label" translatable="true">Sort by</property>
+            </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <style>
+                  <class name="linked"/>
+                </style>
+                <child>
+                  <object class="GtkMenuButton">
+                    <style>
+                      <class name="flat"/>
+                    </style>
+                    <property name="menu-model">sort_menu</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="sort_direction_button">
+                    <style>
+                      <class name="flat"/>
+                    </style>
+                    <property name="visible">false</property>
+                    <property name="icon-name">view-sort-ascending-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="remove_sort_button">
+                    <style>
+                      <class name="flat"/>
+                    </style>
+                    <property name="visible">false</property>
+                    <property name="icon-name">window-close-symbolic</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFlowBox" id="track_box">
+            <property name="selection-mode">none</property>
+            <property name="max-children-per-line">1</property>
+            <property name="vexpand">true</property>
+            <property name="row-spacing">3</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwStatusPage" id="status_page">
+            <property name="title" translatable="true">No tracks to display</property>
+            <property name="icon-name">face-sad-symbolic</property>
+            <property name="visible">false</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <menu id="sort_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">name</attribute>
+        <attribute name="action">tracklist.sort-name</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">artist</attribute>
+        <attribute name="action">tracklist.sort-artists</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">album</attribute>
+        <attribute name="action">tracklist.sort-album</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">duration</attribute>
+        <attribute name="action">tracklist.sort-duration</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

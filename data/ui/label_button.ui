@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteLabelButton" parent="AdwBin">
+    <child>
+      <object class="GtkStack" id="stack">
+        <property name="hhomogeneous">true</property>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">just</property>
+            <property name="child">
+              <object class="GtkLabel" id="just_label">
+                <style>
+                <class name="title-3"/>
+                </style>
+                <property name="margin-start">9</property>
+                <property name="margin-end">9</property>
+                <property name="wrap">true</property>
+                <property name="hexpand">false</property>
+                <property name="halign">start</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">with_button</property>
+            <property name="child">
+              <object class="GtkButton" id="button">
+                <property name="hexpand">false</property>
+                <property name="halign">start</property>
+                <style>
+                  <class name="flat"/>
+                </style>
+                <property name="hexpand">false</property>
+                <child>
+                  <object class="GtkLabel" id="button_label">
+                    <style>
+                    <class name="title-3"/>
+                    </style>
+                    <property name="wrap">true</property>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

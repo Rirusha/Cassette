@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteInfoMarks" parent="AdwBin">
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">8</property>
+        <child>
+          <object class="GtkImage" id="track_replaced_mark">
+            <property name="width-request">38</property>
+            <property name="height-request">38</property>
+            <property name="icon-name">replaced-symbolic</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkImage" id="exp_mark">
+            <property name="width-request">38</property>
+            <property name="height-request">38</property>
+            <property name="visible">false</property>
+            <property name="icon-name">explicit-symbolic</property>
+            <property name="tooltip-text" translatable="true">Explicit content</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkImage" id="child_mark">
+            <property name="width-request">38</property>
+            <property name="height-request">38</property>
+            <property name="visible">false</property>
+            <property name="icon-name">child-symbolic</property>
+            <property name="tooltip-text" translatable="true">Child content</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

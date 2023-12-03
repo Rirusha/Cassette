@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <name>Cassette</name>
+  <id>com.github.Rirusha.Cassette.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <description>
+    <p>
+      GTK/Adwaita application that allows to use Yandex Music 
+      service on Linux operating systems.
+    </p>
+    <p/>
+    <p>
+      Of the features:
+    </p>
+    <ul>
+      <li>
+        Allows you to save playlists and albums for offline listening
+      </li>
+      <li>
+        Has a dynamic "karaoke mode" right in the track information panel
+      </li>
+      <li>
+        Allows you to more precisely customize the display and playback of special 
+        content, such as explicit or suitable for chidlern.
+      </li>
+      <li>
+        Displays tracks that are currently unavailable in the service
+      </li>
+      <li>
+        Shows which tracks have been replaced and by what
+      </li>
+    </ul>
+    <p/>
+    <p>
+      Cassette is an unofficial client and is not associated with or endorsed by Yandex.
+    </p>
+  </description>
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </recommends>
+  <content_rating type="oars-1.1">
+    <content_attribute id="sex-themes">mild</content_attribute>
+    <content_attribute id="language-profanity">moderate</content_attribute>
+    <content_attribute id="language-discrimination">mild</content_attribute>
+  </content_rating>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://i.pinimg.com/736x/8b/41/24/8b41244baf2627d0468adcf221a875b1--white-wolves-wolf-spirit.jpg</image>
+    </screenshot>
+    <screenshot>
+      <image>https://i.pinimg.com/originals/bf/fe/e4/bffee478d3c19ab5918ec4456c662f56.jpg</image>
+    </screenshot>
+  </screenshots>
+  <summary>Unofficial Yandex.Music client</summary>
+  <launchable type="desktop-id">com.github.Rirusha.Cassette.desktop</launchable>
+  <releases>
+    <release version="0.1" date="2023-12-01">
+      <description>
+        <p>First release of Cassette</p>
+        <ul>
+          <li>Allows you to listen to music</li>
+          <li>View your playlists</li>
+          <li>Manage the playback queue, for example shuffle or puts on repeat</li>
+          <li>Sends whether the track has been listened to and the playback queue, if it has been changed</li>
+          <li>Implemented mpris2</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <url type="homepage">https://github.com/Rirusha/Cassette</url>
+  <url type="bugtracker">https://github.com/Rirusha/Cassette/issues</url>
+  <url type="help">https://t.me/+CWp3Htl_MA8xMzQ6</url>
+  <developer_name>Rirusha</developer_name>
+</component>

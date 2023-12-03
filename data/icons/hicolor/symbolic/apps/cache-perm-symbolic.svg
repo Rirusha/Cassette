@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg44401"
+   sodipodi:docname="cache-perm-symbolic.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs44405" />
+  <sodipodi:namedview
+     id="namedview44403"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="32"
+     inkscape:cx="5.640625"
+     inkscape:cy="7.640625"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg44401"
+     showguides="true"
+     inkscape:lockguides="true">
+    <sodipodi:guide
+       position="14.296815,8.5311846"
+       orientation="1,0"
+       id="guide2"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="8.0433396,14.011262"
+       orientation="1,0"
+       id="guide3"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="8.0433396,4.5979032"
+       orientation="0,-1"
+       id="guide4"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="4.0216698,4.7304857"
+       orientation="1,0"
+       id="guide5"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="12.020815,5.061942"
+       orientation="1,0"
+       id="guide6"
+       inkscape:locked="true" />
+  </sodipodi:namedview>
+  <path
+     d="M 8,0 C 7.449219,0 7,0.449219 7,0.99999995 V 9.585938 L 4.707031,7.292969 C 4.519531,7.105469 4.265625,7 4,7 3.734375,7 3.480469,7.105469 3.292969,7.292969 c -0.390625,0.390625 -0.390625,1.023437 0,1.414062 l 4,4 c 0.390625,0.390625 1.023437,0.390625 1.414062,0 l 4,-4 c 0.390625,-0.390625 0.390625,-1.023437 0,-1.414062 -0.390625,-0.390625 -1.023437,-0.390625 -1.414062,0 L 9,9.585938 V 0.99999995 C 9,0.449219 8.550781,0 8,0 Z M 2,14 v 2 h 12 v -2 z m 0,0"
+     fill="#2e3436"
+     id="path1" />
+</svg>

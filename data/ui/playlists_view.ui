@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassettePlaylistsView" parent="CassetteBaseView">
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="hexpand">true</property>
+        <property name="propagate-natural-height">true</property>
+        <property name="hscrollbar_policy">never</property>
+        <child>
+          <object class="AdwClamp">
+            <property name="maximum_size">1900</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="playlists_label">
+                    <style>
+                      <class name="title-1"/>
+                    </style>
+                    <property name="margin-top">4</property>
+                    <property name="label" translatable="true">Your playlists</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFlowBox" id="flow_box">
+                    <property name="selection_mode">none</property>
+                    <property name="margin-top">8</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="homogeneous">false</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="liked_playlists_label">
+                    <style>
+                      <class name="title-1"/>
+                    </style>
+                    <property name="label" translatable="true">Also you liked this playlists</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFlowBox" id="likes_flow_box">
+                    <property name="activate_on_single_click">true</property>
+                    <property name="selection_mode">none</property>
+                    <property name="margin-top">8</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="homogeneous">true</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

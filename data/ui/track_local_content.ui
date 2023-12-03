@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="TrackLocalRow" parent="GtkBox">
+    <style>
+      <class name="linked"/>
+    </style>
+    <child>
+      <object class="GtkImage" id="_song_image">
+        <property name="icon-name">media-view-subtitles-symbolic</property>
+      </object>
+    </child>
+  </template>
+</interface>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteRootView" parent="AdwBin">
+    <child>
+      <object class="GtkStack" id="main_stack">
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">add-loading-screen</property>
+            <property name="child">
+              <object class="GtkSpinner" id="spinner_loading">
+                <property name="vexpand">false</property>
+                <property name="hexpand">false</property>
+                <property name="valign">center</property>
+                <property name="halign">center</property>
+                <property name="height-request">32</property>
+                <property name="width-request">32</property>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

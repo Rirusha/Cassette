@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<requires lib="gtk" version="4.0"/>
+	<requires lib="Adw" version="1.0"/>
+	<template class="CassetteTrackDetailed" parent="AdwBin">
+		<child>
+			<object class="GtkBox">
+        <property name="margin-top">12</property>
+        <property name="margin-bottom">12</property>
+        <property name="margin-start">12</property>
+        <property name="margin-end">12</property>
+				<property name="orientation">vertical</property>
+        <property name="spacing">4</property>
+        <child>
+          <object class="GtkBox">
+            <child>
+              <object class="GtkLabel" id="ugc_mark">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+                <!-- Translators: part of "USER TRACK" -->
+                <property name="label" translatable="true">USER </property>
+                <property name="halign">start</property>
+                <property name="visible">false</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+                <property name="label" translatable="true">TRACK</property>
+                <property name="halign">start</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="hexpand">true</property>
+            <property name="spacing">4</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="track_name_label">
+                <style>
+                  <class name="title-1"/>
+                </style>
+                <property name="margin-start">9</property>
+                <property name="wrap">true</property>
+                <property name="ellipsize">end</property>
+                <property name="halign">start</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="track_version_label">
+                <style>
+                  <class name="title-2"/>
+                  <class name="dim-label"/>
+                </style>
+                <property name="wrap">true</property>
+                <property name="ellipsize">end</property>
+                <property name="halign">start</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox" id="album_box">
+            <property name="orientation">vertical</property>
+            <child>
+          <object class="GtkLabel">
+            <style>
+              <class name="dim-label"/>
+            </style>
+            <property name="label" translatable="true">ALBUM </property>
+            <property name="wrap">true</property>
+            <property name="halign">start</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwBin" id="album_socket"></object>
+        </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox" id="artists_main_box">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+                <property name="label" translatable="true">ARTISTS </property>
+                <property name="wrap">true</property>
+                <property name="halign">start</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFlowBox" id="artists_box">
+                <property name="selection_mode">none</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="spacing">8</property>
+            <child>
+              <object class="CassettePlayButtonTrack" id="play_button">
+                <property name="is-suggested-action">true</property>
+                <property name="size">42</property>
+                <property name="valign">center</property>
+                <property name="halign">start</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkSeparator">
+                <style>
+                  <class name="spacer"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="CassetteSaveStack" id="save_stack">
+                <property name="halign">start</property>
+                <property name="hexpand">false</property>
+                <property name="content-type">track</property>
+              </object>
+            </child>
+            <child>
+              <object class="CassetteDislikeButton" id="dislike_button">
+                <property name="is-flat">true</property>
+              </object>
+            </child>
+            <child>
+              <object class="CassetteLikeButton" id="like_button">
+                <property name="is-flat">true</property>
+                <property name="halign">start</property>
+                <property name="hexpand">false</property>
+                <property name="object-content-type">track</property>
+              </object>
+            </child>
+            <child>
+              <object class="CassetteTrackOptionsButton" id="track_options_button">
+                <property name="is-flat">true</property>
+                <property name="size">42</property>
+                <property name="halign">start</property>
+                <property name="hexpand">false</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="loading_stack">
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">loading</property>
+                <property name="child">
+                  <object class="GtkSpinner" id="spin">
+                    <property name="hexpand">false</property>
+                    <property name="vexpand">false</property>
+                    <property name="spinning">true</property>
+                    <property name="valign">center</property>
+                    <property name="halign">center</property>
+                    <property name="width-request">24</property>
+                    <property name="height-request">24</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">loaded</property>
+                <property name="child">
+                  <object class="GtkBox" id="add_box">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkBox" id="lyrics_box">
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                            <property name="label" translatable="true">TRACK LYRICS</property>
+                            <property name="halign">start</property>
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">12</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="CassetteLyricsPanel" id="lyrics_panel">
+                            <property name="margin-bottom">12</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                            <property name="hexpand">false</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="true">Authors</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="writers_label">
+                            <property name="hexpand">false</property>
+                            <property name="halign">start</property>
+                            <property name="wrap">true</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                            <property name="hexpand">false</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="true">Source</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="major_label">
+                            <property name="hexpand">false</property>
+                            <property name="halign">start</property>
+                            <property name="wrap">true</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="similar_box">
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                            <property name="label" translatable="true">SIMILAR TRACKS</property>
+                            <property name="halign">start</property>
+                            <property name="margin-top">20</property>
+                            <property name="margin-bottom">12</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkSeparator">
+                            <style>
+                              <class name="spacer"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+			</object>
+		</child>
+	</template>
+</interface>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="CassetteSaveStack" parent="AdwBin">
+    <property name="width-request">42</property>
+    <property name="height-request">42</property>
+    <child>
+      <object class="GtkStack" id="save_stack">
+        <property name="width-request">38</property>
+        <property name="height-request">38</property>
+        <property name="halign">start</property>
+        <property name="hexpand">true</property>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">none</property>
+            <property name="child">
+              <object class="AdwBin"></object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">loading</property>
+            <property name="child">
+              <object class="GtkSpinner" id="save_spin">
+                <property name="tooltip-text" translatable="true">Content saving...</property>
+                <property name="vexpand">false</property>
+                <property name="hexpand">false</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">temp</property>
+            <property name="child">
+              <object class="GtkImage" id="temp_mark_image">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+                <property name="tooltip-text" translatable="true">Content saved to temp folder</property>
+                <property name="icon-name">cache-temp-symbolic</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">perm</property>
+            <property name="child">
+              <object class="GtkImage" id="perm_mark_image">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+                <property name="tooltip-text" translatable="true">Content saved</property>
+                <!-- Это то же, что и folder-download-symbolyc, но решил сохранить во избежания изменений в паках (всё же у меня не папка)-->
+                <property name="icon-name">cache-perm-symbolic</property>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

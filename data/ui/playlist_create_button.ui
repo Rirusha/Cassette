@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassettePlaylistCreateButton" parent="CassetteCustomButton">
+    <property name="hexpand">false</property>
+    <property name="vexpand">false</property>
+    <child>
+      <object class="AdwClamp">
+        <property name="maximum_size">220</property>
+        <child>
+          <object class="GtkButton" id="self">
+            <property name="has-frame">false</property>
+            <child>
+              <object class="GtkBox">
+                <property name="spacing">8</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkFrame">
+                    <style>
+                      <class name="big-art"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="width-request">200</property>
+                        <property name="height-request">200</property>
+                        <property name="icon-name">list-add-symbolic</property>
+                        <property name="icon-size">large</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="true">Create playlist</property>"
+                    <property name="justify">center</property>
+                    <property name="halign">center</property>
+                    <property name="wrap">true</property>
+                    <property name="wrap-mode">word-char</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

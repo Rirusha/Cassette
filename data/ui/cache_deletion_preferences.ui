@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteCacheDeletionPreferences" parent="AdwPreferencesRow">
+    <child>
+      <object class="GtkGrid">
+        <property name="margin-top">8</property>
+        <property name="margin-bottom">16</property>
+        <property name="margin-start">16</property>
+        <property name="margin-end">16</property>
+        <property name="column-homogeneous">true</property>
+        <property name="row-spacing">16</property>
+        <property name="column-spacing">32</property>
+        <child> 
+          <object class="GtkLabel">
+            <style>
+              <class name="title-4"/>
+            </style>
+            <property name="label" translatable="true">Cache dirs size:</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <style>
+              <class name="title-3"/>
+            </style>
+            <!-- Translators: tempprary cache folder -->
+            <property name="label" translatable="true">Temporary</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="temp_stack">
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">loading</property>
+                <property name="child">
+                  <object class="GtkSpinner" id="temp_spinner"/>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">ready</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="spacing">8</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel" id="temp_size_label">
+                        <style>
+                          <class name="title-1"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="temp_type_label">
+                        <style>
+                          <class name="title-5"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <style>
+                          <class name="spacer"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="temp_delete_button">
+                        <child>
+                          <object class="AdwButtonContent">
+                            <property name="icon-name">user-trash-symbolic</property>
+                            <property name="label" translatable="yes">Delete temporary</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <style>
+              <class name="title-3"/>
+            </style>
+            <!-- Translators: temparence cache folder -->
+            <property name="label" translatable="true">Permanent</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="perm_stack">
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">loading</property>
+                <property name="child">
+                  <object class="GtkSpinner" id="perm_spinner"/>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">ready</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="spacing">8</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel" id="perm_size_label">
+                        <style>
+                          <class name="title-1"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="perm_type_label">
+                        <style>
+                          <class name="title-5"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

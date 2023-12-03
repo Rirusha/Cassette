@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/github/Rirusha/Cassette">
+    <file alias="gtk/help-overlay.ui" preprocess="xml-stripblanks">ui/help-overlay.ui</file>
+    <file>style.css</file>
+    <file preprocess="xml-stripblanks">ui/window.ui</file>
+    <file preprocess="xml-stripblanks">ui/root_view.ui</file>
+    <file preprocess="xml-stripblanks">ui/playlist_view.ui</file>
+    <file preprocess="xml-stripblanks">ui/playlists_view.ui</file>
+    <file preprocess="xml-stripblanks">ui/main_view.ui</file>
+    <file preprocess="xml-stripblanks">ui/auth_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_local_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/player_bar.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_default_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_queue_content.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/sidebar.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_list.ui</file>
+    <file preprocess="xml-stripblanks">ui/playlist_micro.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_placeholder.ui</file>
+    <file preprocess="xml-stripblanks">ui/cant_show_view.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_detailed.ui</file>
+    <file preprocess="xml-stripblanks">ui/lyrics_line.ui</file>
+    <file preprocess="xml-stripblanks">ui/lyrics_panel.ui</file>
+    <file preprocess="xml-stripblanks">ui/label_button.ui</file>
+    <file preprocess="xml-stripblanks">ui/save_stack.ui</file>
+    <file preprocess="xml-stripblanks">ui/playlist_choose_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/playlist_row.ui</file>
+    <file preprocess="xml-stripblanks">ui/disliked_tracks_view.ui</file>
+    <file preprocess="xml-stripblanks">ui/playlist_create_button.ui</file>
+    <file preprocess="xml-stripblanks">ui/info_marks.ui</file>
+    <file preprocess="xml-stripblanks">ui/account_info_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/cache_deletion_preferences.ui</file>
+    <file preprocess="xml-stripblanks">ui/custom_pages_preferences.ui</file>
+    <file preprocess="xml-stripblanks">ui/custom_page_preferences.ui</file>
+  </gresource>
+</gresources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteCantShowView" parent="AdwBin">
+    <child>
+      <object class="AdwStatusPage" id="status_page">
+        <property name="icon-name">network-offline-symbolic</property>
+      </object>
+    </child>
+  </template>
+</interface>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteCustomPagesPreferences" parent="AdwPreferencesGroup">
+    <!-- Translators: title of preference group -->
+    <property name="title" translatable="true" context="preference window">Custom pages</property>
+    <!-- Translators: description of preference group -->
+    <property name="description" translatable="true" context="preference window">Here you can control custom pages.</property>
+  </template>
+</interface>

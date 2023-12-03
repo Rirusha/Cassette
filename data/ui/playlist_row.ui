@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="CassettePlaylistRow" parent="GtkFrame">
+    <child>
+      <object class="GtkBox">
+        <property name="margin-top">6 </property>
+        <property name="margin-bottom">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="spacing">3</property>
+        <child>
+          <object class="GtkFrame">
+            <style>
+              <class name="small-art"/>
+            </style>
+            <child>
+              <object class="CassetteCoverImage" id="cover_image"></object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <style>
+              <class name="spacer"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="hexpand">true</property>
+            <property name="halign">start</property>
+            <child>
+              <object class="GtkLabel" id="playlist_title">
+                <property name="halign">start</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="track_num_label">
+                <style>
+                  <class name="dim-label"/>
+                </style>
+                <property name="halign">start</property>
+                <property name="label" translatable="true">Empty</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="add_button">
+            <property name="width-request">42</property>
+            <property name="height-request">42</property>
+            <property name="valign">center</property>
+            <property name="halign">center</property>
+            <property name="icon-name">list-add-symbolic</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

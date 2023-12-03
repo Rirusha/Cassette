@@ -156,7 +156,7 @@ namespace CassetteClient.Player {
         }
 
         private void shuffle_without_emmit () {
-            var type_utils = new Utils.TypeUtils<Track> ();
+            var type_utils = new TypeUtils<Track> ();
 
             var track = current_track;
 

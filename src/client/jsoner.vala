@@ -216,15 +216,15 @@ namespace CassetteClient {
                 string member_name;
                 switch (names_case) {
                     case Case.CAMEL_CASE:
-                        member_name = Utils.kebab2camel (Utils.strip (property.name, '-'));
+                        member_name = kebab2camel (strip (property.name, '-'));
                         break;
 
                     case Case.SNAKE_CASE:
-                        member_name = Utils.kebab2snake (Utils.strip (property.name, '-'));
+                        member_name = kebab2snake (strip (property.name, '-'));
                         break;
 
                     case Case.KEBAB_CASE:
-                        member_name = Utils.strip (property.name, '-');
+                        member_name = strip (property.name, '-');
                         break;
 
                     default:

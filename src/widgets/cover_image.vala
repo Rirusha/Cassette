@@ -36,11 +36,11 @@ namespace Cassette {
             }
             set {
                 int widget_size;
-                if (value == Utils.BIG_ART_SIZE) {
+                if (value == BIG_ART_SIZE) {
                     widget_size = 200;
-                } else if (value == Utils.TRACK_ART_SIZE) {
+                } else if (value == TRACK_ART_SIZE) {
                     widget_size = 50;
-                } else if (value == Utils.SMALL_BIG_ART_SIZE) {
+                } else if (value == SMALL_BIG_ART_SIZE) {
                     widget_size = 50;
                 } else {
                     assert_not_reached ();

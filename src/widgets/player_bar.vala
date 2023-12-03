@@ -318,7 +318,7 @@ namespace Cassette {
             like_button.init_content (track_info.id);
             dislike_button.init_content (track_info.id);
             save_stack.init_content (track_info.id);
-            cover_image.init_content (track_info, Utils.TRACK_ART_SIZE);
+            cover_image.init_content (track_info, TRACK_ART_SIZE);
             cover_image.load_image.begin ();
 
             revealer.reveal_child = true;

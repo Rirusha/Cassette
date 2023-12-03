@@ -67,7 +67,7 @@ namespace CassetteClient {
         private Gee.HashMap<string, Headers> presets_table = new Gee.HashMap<string, Headers> ();
 
         private Soup.Session session = new Soup.Session () {
-            timeout = Utils.TIMEOUT
+            timeout = TIMEOUT
         };
         public string? user_agent {
             construct {

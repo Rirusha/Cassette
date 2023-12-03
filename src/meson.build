@@ -3,7 +3,7 @@ vapi_sources = files(
 )
 
 
-cassette_sources = files(
+cassette_gui_sources = files(
   'main.vala',
   'application.vala',
   'window.vala',
@@ -54,7 +54,10 @@ cassette_sources = files(
   'widgets/views/playlists_view.vala',
   'widgets/views/cant_show_view.vala',
   'widgets/auth_window/auth_window.vala',
-  'widgets/auth_window/phone_entry.vala',
+  'widgets/auth_window/phone_entry.vala'
+)
+
+cassette_client_sources = files(
   'client/yam_object.vala',
   'client/jsoner.vala',
   'client/utils.vala',
@@ -116,12 +119,13 @@ cassette_sources = files(
   'client/api/objects/queue/context.vala',
   'client/api/objects/additional_info/similar_tracks.vala',
   'client/api/objects/additional_info/lyrics.vala',
-  'client/api/objects/additional_info/lyrics_major.vala',
+  'client/api/objects/additional_info/lyrics_major.vala'
 )
 
-cassette_sources += [
+cassette_sources = [
   vapi_sources,
-  cassette_sources,
+  cassette_gui_sources,
+  cassette_client_sources,
   resources
 ]
 
@@ -134,21 +138,6 @@ cassette_vala_args = [
 
 cassette_c_args = [
   '-include', 'config.h',
-]
-
-
-cassette_dependencies = [
-  gtk,
-  libadwaita,
-  threads,
-  libsoup,
-  gdkpixbuf,
-  jsonglib,
-  sqlite3,
-  gee,
-  libxml,
-  gstreamer,
-  gio,
 ]
 
 executable(

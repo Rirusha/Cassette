@@ -169,7 +169,7 @@ namespace Cassette {
                 play.begin ();
             });
 
-            cover_image.init_content (short_playlist_info, Utils.BIG_ART_SIZE);
+            cover_image.init_content (short_playlist_info, BIG_ART_SIZE);
             cover_image.load_image.begin ();
     }
 

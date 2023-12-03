@@ -109,7 +109,7 @@ namespace CassetteClient.Cachier {
                     yield storager.audio_cache_location (track_info.id).move_to_temp ();
                 }
 
-                string image_uri = track_info.get_cover_items_by_size (Utils.TRACK_ART_SIZE)[0];
+                string image_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
                 storager.db.remove_content_ref (image_uri, object_id);
                 if (storager.db.get_content_ref_count (image_uri) == 0) {
                     yield storager.image_cache_location (image_uri).move_to_temp ();
@@ -118,7 +118,7 @@ namespace CassetteClient.Cachier {
 
             var has_cover_yam_obj = yam_object as HasCover;
             if (has_cover_yam_obj != null) {
-                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (Utils.BIG_ART_SIZE)) {
+                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (BIG_ART_SIZE)) {
                     var image_location = storager.image_cache_location (cover_uri);
                     if (image_location.path != null) {
                         yield image_location.move_to_perm ();
@@ -153,7 +153,7 @@ namespace CassetteClient.Cachier {
                 }
                 
                 YaMAPI.Track track_info = track_list[i];
-                string image_cover_uri = track_info.get_cover_items_by_size (Utils.TRACK_ART_SIZE)[0];
+                string image_cover_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
 
                 cachier_controller.start_loading (ContentType.TRACK, track_info.id);
 
@@ -254,7 +254,7 @@ namespace CassetteClient.Cachier {
 
             var has_cover_yam_obj = yam_object as HasCover;
             if (has_cover_yam_obj != null) {
-                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (Utils.BIG_ART_SIZE)) {
+                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (BIG_ART_SIZE)) {
                     storager.db.remove_content_ref (cover_uri, object_id);
                     
                     if (storager.db.get_content_ref_count (cover_uri) == 0) {
@@ -279,7 +279,7 @@ namespace CassetteClient.Cachier {
             var track_list = yam_object.get_filtered_track_list (true, true);
 
             foreach (var track_info in track_list) {
-                string image_cover_uri = track_info.get_cover_items_by_size (Utils.TRACK_ART_SIZE)[0];
+                string image_cover_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
                 storager.db.remove_content_ref (image_cover_uri, track_info.id);
                 if (storager.db.get_content_ref_count (image_cover_uri) == 0) {
                     var image_location = storager.image_cache_location (image_cover_uri);

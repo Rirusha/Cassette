@@ -63,49 +63,10 @@ config_h_dir = include_directories('.')
 subdir('po')
 subdir('data')
 subdir('src')
+subdir('tests')
 
 gnome.post_install(
   glib_compile_schemas: true,
   gtk_update_icon_cache: true,
   update_desktop_database: true,
 )
-
-#########
-# TESTS #
-#########
-
-test('Test Logger',
-  executable('logger_test',
-    sources: ['tests/logger_test.vala'] + cassette_client_sources,
-    dependencies: cassette_dependencies
-  )
-)
-
-test('Test Jsoner',
-  executable('jsoner_test',
-    sources: ['tests/jsoner_test.vala'] + cassette_client_sources,
-    dependencies: cassette_dependencies
-  )
-)
-
-test('Test Utils',
-  executable('utils_test',
-    sources: ['tests/utils_test.vala'] + cassette_client_sources,
-    dependencies: cassette_dependencies
-  )
-)
-
-test('Test Info Database',
-  executable('info_db_test',
-    sources: ['tests/info_db_test.vala'] + cassette_client_sources,
-    dependencies: cassette_dependencies
-  )
-)
-
-test('Test Storager',
-  executable('storager_test',
-    sources: ['tests/storager_test.vala'] + cassette_client_sources,
-    dependencies: cassette_dependencies
-  )
-)
-

@@ -1,5 +1,6 @@
-using YaMAPI;
-using Cassette;
+using CassetteClient;
+using CassetteClient.Cachier;
+using CassetteClient.YaMAPI;
 
 public static Storager storager;
 
@@ -7,7 +8,7 @@ public int main (string[] args){
     Test.init (ref args);
 
     Test.add_func ("/storager/init", () => {
-        storager = new Storager ();
+        storager = new Storager (true);
     });
 
     Test.add_func ("/storager/move", () => {

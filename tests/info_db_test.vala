@@ -1,4 +1,6 @@
-using Cassette;
+using CassetteClient;
+using CassetteClient.Cachier;
+
 
 public int main (string[] args){
     Test.init (ref args);

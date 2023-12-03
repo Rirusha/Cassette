@@ -64,7 +64,7 @@ namespace Cassette {
             line_list.add (lyrics_line);
             foreach (string line in lines) {
                 string[] data = line.split (" ", 2);
-                int64 time_ms = Utils.parse_time (data[0]);
+                int64 time_ms = parse_time (data[0]);
                 lyrics_line = new LyricsLine.sync (data[1], time_ms);
                 lines_box.append (lyrics_line);
                 line_list.add (lyrics_line);

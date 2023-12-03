@@ -122,7 +122,7 @@ namespace Cassette {
             }
             track_authors_label.label = track_info.get_artists_names ();
             track_authors_label.tooltip_text = track_info.get_artists_names ();
-            duration_label.label = Utils.ms2str (track_info.duration_ms, true);
+            duration_label.label = ms2str (track_info.duration_ms, true);
 
             like_button.init_content (track_info.id);
             play_button.init_content (track_info.id);

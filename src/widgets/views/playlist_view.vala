@@ -250,7 +250,7 @@ namespace Cassette {
                 }
             }
 
-            duration_label.label = Utils.ms2str (playlist_info.duration_ms, false);
+            duration_label.label = ms2str (playlist_info.duration_ms, false);
 
             if (playlist_info.kind == "3") {
                 if (playlist_info.owner.uid == yam_talker.me.oid) {
@@ -261,7 +261,7 @@ namespace Cassette {
             } else {
                 // Translators: 0 - female, 1 - male (different gender endings)
                 string format_string = ngettext ("%s updated playlist %s", "%s updated playlist %s", playlist_info.owner.sex == "female"? 0 : 1);
-                playlist_status.label = format_string.printf (playlist_info.owner.name, Utils.get_when (playlist_info.modified));
+                playlist_status.label = format_string.printf (playlist_info.owner.name, get_when (playlist_info.modified));
             }
             
             var ptrack_list = playlist_info.get_track_list ();

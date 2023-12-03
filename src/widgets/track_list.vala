@@ -457,13 +457,13 @@ namespace Cassette {
                 end = index + track_number;
             }
 
-            var new_loaded_rows = Utils.range_set (start, end);
+            var new_loaded_rows = range_set (start, end);
 
-            foreach (int row_id in Utils.difference (new_loaded_rows, loaded_rows)) {
+            foreach (int row_id in difference (new_loaded_rows, loaded_rows)) {
                 filtered_rows[row_id].load_content ();
             }
 
-            foreach (int row_id in Utils.difference (loaded_rows, new_loaded_rows)) {
+            foreach (int row_id in difference (loaded_rows, new_loaded_rows)) {
                 filtered_rows[row_id].unload_content ();
             }
 

@@ -55,7 +55,7 @@ namespace CassetteClient {
         ANSWER_ERROR,
         // Ошибка авторизации
         AUTH_ERROR
-    }    
+    }
 
     public async static void download_track_async (string track_id, owned string? track_uri = null, bool is_tmp = true) {
         if (storager.audio_cache_location (track_id).path != null) {

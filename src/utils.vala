@@ -81,11 +81,6 @@ namespace Cassette {
 
         yield;
     }
-}
-
-namespace Utils {
-
-    
 
     public int ms2sec (int ms) {
         return ms / 1000;

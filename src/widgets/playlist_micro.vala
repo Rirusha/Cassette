@@ -65,7 +65,7 @@ namespace Cassette {
                         like_button.notify["likes-count"].connect (() => {
                             if (like_button.likes_count > 0) {
                                 likes_count_label.visible = true;
-                                likes_count_label.label = ngettext ("%s like", "%s likes", like_button.likes_count).printf (Utils.prettify_num (like_button.likes_count));
+                                likes_count_label.label = ngettext ("%s like", "%s likes", like_button.likes_count).printf (prettify_num (like_button.likes_count));
                             } else {
                                 likes_count_label.visible = false;
                             }

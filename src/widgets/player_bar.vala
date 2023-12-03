@@ -116,7 +116,7 @@ namespace Cassette {
             slider_overlay.add_controller (gesture_click);
 
             slider.value_changed.connect (() => {
-                current_time_mark.label = Utils.sec2str ((int) slider.get_value (), true);
+                current_time_mark.label = sec2str ((int) slider.get_value (), true);
             });
 
             player.bind_property ("is-loading", this, "sensitive", BindingFlags.INVERT_BOOLEAN);
@@ -289,7 +289,7 @@ namespace Cassette {
             
 
             var adjustment = slider.get_adjustment ();
-            adjustment.set_upper (Utils.ms2sec (track_info.duration_ms));
+            adjustment.set_upper (ms2sec (track_info.duration_ms));
 
             track_name_label.label = track_info.title;
             track_version_label.label = track_info.version;
@@ -313,7 +313,7 @@ namespace Cassette {
                 queue_show_button.visible = false;
             }
 
-            total_time_mark.label = Utils.ms2str (track_info.duration_ms, true);
+            total_time_mark.label = ms2str (track_info.duration_ms, true);
 
             like_button.init_content (track_info.id);
             dislike_button.init_content (track_info.id);

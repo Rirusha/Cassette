@@ -69,7 +69,7 @@ namespace Cassette {
 
                 if (show_label) {
                     if (_likes_count > 0) {
-                        button_content.label = Utils.prettify_num (_likes_count);
+                        button_content.label = prettify_num (_likes_count);
                     } else {
                         button_content.label = "";
                     }

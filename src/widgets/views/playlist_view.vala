@@ -26,39 +26,39 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_view.ui")]
     public class PlaylistView : CachiableView {
         [GtkChild]
-        private unowned SaveStack save_stack;
+      unowned SaveStack save_stack;
         [GtkChild]
-        private unowned Gtk.ScrolledWindow scrolled_window;
+      unowned Gtk.ScrolledWindow scrolled_window;
         [GtkChild]
-        private unowned CoverImage cover_image;
+      unowned CoverImage cover_image;
         [GtkChild]
-        private unowned Gtk.Label duration_label;
+      unowned Gtk.Label duration_label;
         [GtkChild]
-        private unowned Gtk.Entry playlist_name_entry;
+      unowned Gtk.Entry playlist_name_entry;
         [GtkChild]
-        private unowned Gtk.Label playlist_name_label;
+      unowned Gtk.Label playlist_name_label;
         [GtkChild]
-        private unowned Gtk.Label playlist_desc_label;
+      unowned Gtk.Label playlist_desc_label;
         [GtkChild]
-        private unowned Gtk.Label playlist_status;
+      unowned Gtk.Label playlist_status;
         [GtkChild]
-        private unowned PlayButtonContext play_button;
+      unowned PlayButtonContext play_button;
         [GtkChild]
-        private unowned LikeButton like_button;
+      unowned LikeButton like_button;
         [GtkChild]
-        private unowned Gtk.Button save_button;
+      unowned Gtk.Button save_button;
         [GtkChild]
-        private unowned Gtk.Button delete_button;
+      unowned Gtk.Button delete_button;
         [GtkChild]
-        private unowned Gtk.Button abort_button;
+      unowned Gtk.Button abort_button;
         [GtkChild]
-        private unowned Gtk.Button add_page_button;
+      unowned Gtk.Button add_page_button;
         [GtkChild]
-        private unowned Gtk.Box main_box;
+      unowned Gtk.Box main_box;
         [GtkChild]
-        private unowned PlaylistOptionsButton playlist_options_button;
+      unowned PlaylistOptionsButton playlist_options_button;
         [GtkChild]
-        private unowned Gtk.Switch visibility_switch;
+      unowned Gtk.Switch visibility_switch;
 
         public override bool can_refresh { get; default = true; }
 
@@ -304,7 +304,7 @@ namespace Cassette {
             return true;
         }
 
-        private async YaMAPI.Playlist? on_switch_change_async (bool is_active) {
+      async YaMAPI.Playlist? on_switch_change_async (bool is_active) {
             YaMAPI.Playlist? playlist_info = null;
 
             threader.add (() => {

@@ -35,7 +35,7 @@ namespace CassetteClient {
     }
 
     protected class Headers {
-        private Header[] headers_arr = new Header[0];
+      Header[] headers_arr = new Header[0];
 
         public Headers () {  }
 
@@ -64,9 +64,9 @@ namespace CassetteClient {
 
     public class SoupWrapper : Object {
 
-        private Gee.HashMap<string, Headers> presets_table = new Gee.HashMap<string, Headers> ();
+      Gee.HashMap<string, Headers> presets_table = new Gee.HashMap<string, Headers> ();
 
-        private Soup.Session session = new Soup.Session () {
+      Soup.Session session = new Soup.Session () {
             timeout = TIMEOUT
         };
         public string? user_agent {
@@ -232,7 +232,7 @@ namespace CassetteClient {
             }
         }
 
-        private Bytes run_sync (Message msg) throws ClientError, BadStatusCodeError {
+      Bytes run_sync (Message msg) throws ClientError, BadStatusCodeError {
             Bytes bytes = null;
 
             try {
@@ -246,7 +246,7 @@ namespace CassetteClient {
             return bytes;
         }
 
-        private async Bytes? run_async (
+      async Bytes? run_async (
             Message msg,
             int priority
         ) throws ClientError, BadStatusCodeError {

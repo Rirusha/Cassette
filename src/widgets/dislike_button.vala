@@ -133,7 +133,7 @@ namespace Cassette {
             }
         }
 
-        private async void like_dislike () {
+      async void like_dislike () {
             assert (content_id != null);
 
             real_button.sensitive = false;

@@ -41,7 +41,7 @@ namespace Cassette {
     // Класс приложения
     public class Application : Adw.Application {
 
-        private ApplicationState _application_state;
+      ApplicationState _application_state;
         public ApplicationState application_state {
             get {
                 return _application_state;

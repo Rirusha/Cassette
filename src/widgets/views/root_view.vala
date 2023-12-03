@@ -22,17 +22,17 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/root_view.ui")]
     public class RootView : Adw.Bin {
         [GtkChild]
-        private unowned Gtk.Stack main_stack;
+      unowned Gtk.Stack main_stack;
         [GtkChild]
-        private unowned Gtk.Spinner spinner_loading;
+      unowned Gtk.Spinner spinner_loading;
 
         public bool can_back { get; private set; default = false; }
         public bool can_refresh { get; private set; default = true; }
 
-        private bool main_view_content_is_loaded = false;
-        private bool main_view_content_is_loading = false;
+      bool main_view_content_is_loaded = false;
+      bool main_view_content_is_loading = false;
 
-        private Queue<BaseView> additional_views = new Queue<BaseView> ();
+      Queue<BaseView> additional_views = new Queue<BaseView> ();
 
         public MainWindow window { get; construct; }
         public BaseView main_view { get; construct; }
@@ -103,7 +103,7 @@ namespace Cassette {
             view.first_show.begin ();
         }
 
-        private void refresh_view (BaseView view) {
+      void refresh_view (BaseView view) {
             main_stack.set_visible_child_name ("add-loading-screen");
             spinner_loading.start ();
 
@@ -111,7 +111,7 @@ namespace Cassette {
             view.refresh.begin ();
         }
 
-        private void set_visible_child (BaseView view) {
+      void set_visible_child (BaseView view) {
             if (view == main_view) {
                 main_view_content_is_loaded = true;
             } else if (additional_views.find (view).length () == 0) {

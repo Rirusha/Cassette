@@ -26,7 +26,7 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_create_button.ui")]
     public class PlaylistCreateButton : CustomButton {
         [GtkChild]
-        private unowned Gtk.Button self;
+      unowned Gtk.Button self;
 
         public PlaylistCreateButton () {
             Object ();

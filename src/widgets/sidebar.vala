@@ -26,15 +26,15 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/sidebar.ui")]
     public class SideBar : Adw.Bin {
         [GtkChild]
-        private unowned Adw.OverlaySplitView root_flap;
+      unowned Adw.OverlaySplitView root_flap;
         [GtkChild]
         public unowned Gtk.ScrolledWindow sidebar_content;
         [GtkChild]
-        private unowned Gtk.Button close_button;
+      unowned Gtk.Button close_button;
         [GtkChild]
-        private unowned Gtk.Button clean_button;
+      unowned Gtk.Button clean_button;
 
-        private TrackList?_track_list = null;
+      TrackList?_track_list = null;
         public TrackList? track_list {
             get {
                 return _track_list;
@@ -45,7 +45,7 @@ namespace Cassette {
             }
         }
 
-        private TrackDetailed? _track_detailed = null;
+      TrackDetailed? _track_detailed = null;
         public TrackDetailed? track_detailed {
             get {
                 return _track_detailed;
@@ -113,7 +113,7 @@ namespace Cassette {
             }
         }
 
-        private void update_queue () {
+      void update_queue () {
             if (track_list != null) {
                 var playertl = player.player_mod as Player.PlayerTL;
 
@@ -149,7 +149,7 @@ namespace Cassette {
             }
         }
 
-        private void clear () {
+      void clear () {
             if (track_list != null) {
                 track_list.clear_all ();
                 track_list = null;

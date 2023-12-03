@@ -22,7 +22,7 @@ namespace CassetteClient.YaMAPI {
 
     public class YaMClient : Object {
 
-        private const string YAM_BASE_URL = "https://api.music.yandex.net";
+      const string YAM_BASE_URL = "https://api.music.yandex.net";
 
         public SoupWrapper soup_wrapper { get; construct; }
 
@@ -84,7 +84,7 @@ namespace CassetteClient.YaMAPI {
             return soup_wrapper.get_sync (uri);
         }
 
-        private void check_uid (ref string? uid) throws ClientError {
+      void check_uid (ref string? uid) throws ClientError {
             if (uid == null) {
                 if (me == null) {
                     throw new ClientError.AUTH_ERROR ("Auth Error");
@@ -279,7 +279,7 @@ namespace CassetteClient.YaMAPI {
             return form_download_uri (dl_info_uri);
         }
 
-        private string? form_download_uri (string dl_info_uri) throws ClientError, BadStatusCodeError {
+      string? form_download_uri (string dl_info_uri) throws ClientError, BadStatusCodeError {
             Bytes bytes = get_content_of (dl_info_uri);
             string xml_string = (string) bytes.get_data ();
 

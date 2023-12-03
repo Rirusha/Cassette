@@ -27,25 +27,25 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/account_info_window.ui")]
     public class AccountInfoWindow : Adw.Window {
         [GtkChild]
-        private unowned Adw.Avatar avatar;
+      unowned Adw.Avatar avatar;
         [GtkChild]
-        private unowned Gtk.Label login_format_label;
+      unowned Gtk.Label login_format_label;
         [GtkChild]
-        private unowned Gtk.Label phone_format_label;
+      unowned Gtk.Label phone_format_label;
         [GtkChild]
-        private unowned Gtk.Label plus_label;
+      unowned Gtk.Label plus_label;
         [GtkChild]
-        private unowned Gtk.Label add_label;
+      unowned Gtk.Label add_label;
         [GtkChild]
-        private unowned Gtk.Box options_box;
+      unowned Gtk.Box options_box;
         [GtkChild]
-        private unowned Gtk.Label first_name_format_label;
+      unowned Gtk.Label first_name_format_label;
         [GtkChild]
-        private unowned Gtk.Label second_name_format_label;
+      unowned Gtk.Label second_name_format_label;
         [GtkChild]
-        private unowned Gtk.Label display_name_format_label;
+      unowned Gtk.Label display_name_format_label;
         [GtkChild]
-        private unowned Gtk.Label birthday_format_label;
+      unowned Gtk.Label birthday_format_label;
 
         public YaMAPI.AccountInfo account_info { get; construct; }
         

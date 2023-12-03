@@ -26,21 +26,21 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_queue_content.ui")]
     public class TrackQueue : Gtk.Frame {
         [GtkChild]
-        private unowned PlayButtonTrack play_button;
+      unowned PlayButtonTrack play_button;
         [GtkChild]
-        private unowned Gtk.Label track_name_label;
+      unowned Gtk.Label track_name_label;
         [GtkChild]
-        private unowned Gtk.Label track_version_label;
+      unowned Gtk.Label track_version_label;
         [GtkChild]
-        private unowned Gtk.Label track_authors_label;
+      unowned Gtk.Label track_authors_label;
         [GtkChild]
-        private unowned InfoMarks info_marks;
+      unowned InfoMarks info_marks;
         [GtkChild]
-        private unowned LikeButton like_button;
+      unowned LikeButton like_button;
         [GtkChild]
-        private unowned Gtk.Label duration_label;
+      unowned Gtk.Label duration_label;
         [GtkChild]
-        private unowned TrackOptionsButton track_options_button;
+      unowned TrackOptionsButton track_options_button;
 
         public YaMAPI.Track track_info { get; construct set; }
 

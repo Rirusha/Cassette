@@ -26,42 +26,42 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         [GtkChild]
-        private unowned Gtk.Box main_box;
+      unowned Gtk.Box main_box;
         [GtkChild]
-        private unowned Adw.HeaderBar header_bar;
+      unowned Adw.HeaderBar header_bar;
         [GtkChild]
-        private unowned Gtk.Stack title_stack;
+      unowned Gtk.Stack title_stack;
         [GtkChild]
-        private unowned Adw.ViewSwitcher switcher_title;
+      unowned Adw.ViewSwitcher switcher_title;
         [GtkChild]
-        private unowned Gtk.Button button_backward;
+      unowned Gtk.Button button_backward;
         [GtkChild]
-        private unowned Gtk.Button button_refresh;
+      unowned Gtk.Button button_refresh;
         [GtkChild]
-        private unowned Gtk.MenuButton avatar_button;
+      unowned Gtk.MenuButton avatar_button;
         [GtkChild]
-        private unowned Adw.Avatar avatar;
+      unowned Adw.Avatar avatar;
         [GtkChild]
         public unowned Cassette.SideBar sidebar;
         [GtkChild]
-        private unowned Gtk.ToggleButton button_search;
+      unowned Gtk.ToggleButton button_search;
         [GtkChild]
-        private unowned Adw.ToastOverlay toast_overlay;
+      unowned Adw.ToastOverlay toast_overlay;
         [GtkChild]
-        private unowned Adw.ViewStack main_stack;
+      unowned Adw.ViewStack main_stack;
         [GtkChild]
-        private unowned Gtk.Stack loading_stack;
+      unowned Gtk.Stack loading_stack;
         [GtkChild]
-        private unowned Gtk.Spinner spin;
+      unowned Gtk.Spinner spin;
         [GtkChild]
-        private unowned Gtk.MenuButton app_menu_button;
+      unowned Gtk.MenuButton app_menu_button;
 
         public Pager pager;
         public PlayerBar player_bar { get; construct; }
 
-        private GLib.Binding? current_view_can_back_binding = null;
-        private GLib.Binding? current_view_can_refresh_binding = null;
-        private RootView _current_view;
+      GLib.Binding? current_view_can_back_binding = null;
+      GLib.Binding? current_view_can_refresh_binding = null;
+      RootView _current_view;
         public RootView current_view {
             get {
                 return _current_view;

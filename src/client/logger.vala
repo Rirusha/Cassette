@@ -54,7 +54,7 @@ namespace CassetteClient {
             }
         }
 
-        private static void write_to_file (string log_level_str, string message) {
+        static void write_to_file (string log_level_str, string message) {
             if (instance == null) {
                 return;
             }
@@ -73,7 +73,7 @@ namespace CassetteClient {
             }
         }
 
-        private static void write_net_to_file (string direction, string data) {
+      static void write_net_to_file (string direction, string data) {
             if (instance == null) {
                 return;
             }

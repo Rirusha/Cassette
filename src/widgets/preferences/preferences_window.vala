@@ -27,35 +27,35 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/preferences_window.ui")]
     public class PreferencesWindow : Adw.PreferencesWindow {
         [GtkChild]
-        private unowned Adw.SwitchRow show_save_stack_switch;
+      unowned Adw.SwitchRow show_save_stack_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow show_temp_save_stack_switch;
+      unowned Adw.SwitchRow show_temp_save_stack_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow is_hq_switch;
+      unowned Adw.SwitchRow is_hq_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow child_visible_switch;
+      unowned Adw.SwitchRow child_visible_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow explicit_visible_switch;
+      unowned Adw.SwitchRow explicit_visible_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow show_replaced_mark_switch;
+      unowned Adw.SwitchRow show_replaced_mark_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow available_visible_switch;
+      unowned Adw.SwitchRow available_visible_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow add_tracks_to_start_switch;
+      unowned Adw.SwitchRow add_tracks_to_start_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow show_main_switch;
+      unowned Adw.SwitchRow show_main_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow show_liked_switch;
+      unowned Adw.SwitchRow show_liked_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow show_playlists_switch;
+      unowned Adw.SwitchRow show_playlists_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow can_cache_switch;
+      unowned Adw.SwitchRow can_cache_switch;
         [GtkChild]
-        private unowned Adw.SwitchRow try_load_queue_every_activate_switch;
+      unowned Adw.SwitchRow try_load_queue_every_activate_switch;
         [GtkChild]
-        private unowned Adw.SpinRow max_thread_number_spin;
+      unowned Adw.SpinRow max_thread_number_spin;
         [GtkChild]
-        private unowned CacheDeletionPreferences deletion_preferences;
+      unowned CacheDeletionPreferences deletion_preferences;
 
         construct {
             deletion_preferences.pref_win = this;

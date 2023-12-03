@@ -30,9 +30,9 @@ namespace Cassette {
         protected string content_id { get; set; }
         public LikableType object_content_type { get; construct; }
 
-        private Adw.ButtonContent button_content = new Adw.ButtonContent () { icon_name = "image-loading-symbolic" };
+      Adw.ButtonContent button_content = new Adw.ButtonContent () { icon_name = "image-loading-symbolic" };
 
-        private bool is_liked {
+      bool is_liked {
             get {
                 return button_content.icon_name == "emblem-favorite-symbolic";
             }
@@ -167,7 +167,7 @@ namespace Cassette {
             }
         }
 
-        private async void like_dislike () {
+      async void like_dislike () {
             assert (content_id != null);
 
             real_button.sensitive = false;

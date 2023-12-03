@@ -26,51 +26,51 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/player_bar.ui")]
     public class PlayerBar : Adw.Bin {
         [GtkChild]
-        private unowned Gtk.Revealer revealer;
+      unowned Gtk.Revealer revealer;
         [GtkChild]
-        private unowned Gtk.Label current_time_mark;
+      unowned Gtk.Label current_time_mark;
         [GtkChild]
-        private unowned Gtk.Label total_time_mark;
+      unowned Gtk.Label total_time_mark;
         [GtkChild]
-        private unowned Gtk.Scale slider;
+      unowned Gtk.Scale slider;
         [GtkChild]
-        private unowned Gtk.Box slider_overlay;
+      unowned Gtk.Box slider_overlay;
         [GtkChild]
-        private unowned Gtk.Button prev_track_button;
+      unowned Gtk.Button prev_track_button;
         [GtkChild]
-        private unowned CoverImage cover_image;
+      unowned CoverImage cover_image;
         [GtkChild]
-        private unowned Gtk.Label track_name_label;
+      unowned Gtk.Label track_name_label;
         [GtkChild]
-        private unowned Gtk.Label track_version_label;
+      unowned Gtk.Label track_version_label;
         [GtkChild]
-        private unowned Gtk.Label track_authors_label;
+      unowned Gtk.Label track_authors_label;
         [GtkChild]
-        private unowned DislikeButton dislike_button;
+      unowned DislikeButton dislike_button;
         [GtkChild]
-        private unowned LikeButton like_button;
+      unowned LikeButton like_button;
         [GtkChild]
-        private unowned Gtk.Button queue_show_button;
+      unowned Gtk.Button queue_show_button;
         //  [GtkChild]
-        //  private unowned Gtk.Button temp_playlist_button;
+        //unowned Gtk.Button temp_playlist_button;
         [GtkChild]
-        private unowned SaveStack save_stack;
+      unowned SaveStack save_stack;
         [GtkChild]
-        private unowned Gtk.Button shuffle_button;
+      unowned Gtk.Button shuffle_button;
         [GtkChild]
-        private unowned Gtk.Button repeat_button;
+      unowned Gtk.Button repeat_button;
         [GtkChild]
-        private unowned Gtk.ScaleButton volume_button;
+      unowned Gtk.ScaleButton volume_button;
         [GtkChild]
-        private unowned InfoMarks info_marks;
+      unowned InfoMarks info_marks;
         [GtkChild]
-        private unowned Gtk.Button track_info_button;
+      unowned Gtk.Button track_info_button;
 
         public MainWindow window { get; construct set; }
 
-        private YaMAPI.Track track_info = new YaMAPI.Track ();
+      YaMAPI.Track track_info = new YaMAPI.Track ();
         
-        private Gtk.EventControllerMotion slider_motion_controller;
+      Gtk.EventControllerMotion slider_motion_controller;
 
         public PlayerBar (MainWindow window) {
             Object (window: window);
@@ -250,7 +250,7 @@ namespace Cassette {
             }
         }
 
-        private void player_mod_changed () {
+      void player_mod_changed () {
             if (player.player_mod is Player.PlayerTL) {
                 shuffle_button.visible = true;
                 repeat_button.visible = true;
@@ -264,7 +264,7 @@ namespace Cassette {
             }
         }
 
-        private void player_state_changed () {
+      void player_state_changed () {
             if (player.player_state == Player.PlayerState.PLAYING) {
                 if (player.current_track != null) {
                     show_track (player.current_track);
@@ -276,7 +276,7 @@ namespace Cassette {
             }
         }
 
-        private void show_track (YaMAPI.Track track_info) {
+      void show_track (YaMAPI.Track track_info) {
             this.track_info = track_info;
 
             if (window.sidebar.track_detailed != null) {
@@ -354,7 +354,7 @@ namespace Cassette {
             set_shuffle_button_view ();
         }
 
-        private void set_shuffle_button_view () {
+      void set_shuffle_button_view () {
             switch (player.shuffle_mode) {
                 case Player.ShuffleMode.ON:
                     shuffle_button.add_css_class ("pressed");
@@ -380,7 +380,7 @@ namespace Cassette {
             set_repeat_button_view ();
         }
 
-        private void set_repeat_button_view () {
+      void set_repeat_button_view () {
             switch (player.repeat_mode) {
                 case Player.RepeatMode.REPEAT_ALL:
                     repeat_button.set_icon_name ("media-playlist-repeat-symbolic");

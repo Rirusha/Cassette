@@ -32,16 +32,16 @@ namespace CassetteClient {
     // Контроллер лайков различного контента. Хранит в себе все лайки пользователя.
     public class LikesController : Object {
 
-        private HashSet<string> disliked_tracks_ids = new HashSet<string> ();
-        private HashSet<string> liked_tracks_ids = new HashSet<string> ();
-        private HashSet<string> liked_playlists_ids = new HashSet<string> ();
-        private HashSet<string> liked_albums_ids = new HashSet<string> ();
+      HashSet<string> disliked_tracks_ids = new HashSet<string> ();
+      HashSet<string> liked_tracks_ids = new HashSet<string> ();
+      HashSet<string> liked_playlists_ids = new HashSet<string> ();
+      HashSet<string> liked_albums_ids = new HashSet<string> ();
 
         public LikesController () {
             Object ();
         }
 
-        private HashSet<string> get_id_array (LikableType content_type) {
+      HashSet<string> get_id_array (LikableType content_type) {
             switch (content_type)
             {
                 case LikableType.TRACK:

@@ -28,23 +28,23 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cache_deletion_preferences.ui")]
     public class CacheDeletionPreferences : Adw.PreferencesRow {
         [GtkChild]
-        private unowned Gtk.Stack temp_stack;
+      unowned Gtk.Stack temp_stack;
         [GtkChild]
-        private unowned Gtk.Spinner temp_spinner;
+      unowned Gtk.Spinner temp_spinner;
         [GtkChild]
-        private unowned Gtk.Label temp_size_label;
+      unowned Gtk.Label temp_size_label;
         [GtkChild]
-        private unowned Gtk.Label temp_type_label;
+      unowned Gtk.Label temp_type_label;
         [GtkChild]
-        private unowned Gtk.Button temp_delete_button;
+      unowned Gtk.Button temp_delete_button;
         [GtkChild]
-        private unowned Gtk.Stack perm_stack;
+      unowned Gtk.Stack perm_stack;
         [GtkChild]
-        private unowned Gtk.Spinner perm_spinner;
+      unowned Gtk.Spinner perm_spinner;
         [GtkChild]
-        private unowned Gtk.Label perm_size_label;
+      unowned Gtk.Label perm_size_label;
         [GtkChild]
-        private unowned Gtk.Label perm_type_label;
+      unowned Gtk.Label perm_type_label;
 
         public Adw.PreferencesWindow pref_win { get; set; }
         Adw.Window? loading_win = null;

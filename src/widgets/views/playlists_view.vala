@@ -26,13 +26,13 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlists_view.ui")]
     public class PlaylistsView : BaseView {
         [GtkChild]
-        private unowned Gtk.Label playlists_label;
+      unowned Gtk.Label playlists_label;
         [GtkChild]
-        private unowned Gtk.FlowBox flow_box;
+      unowned Gtk.FlowBox flow_box;
         [GtkChild]
-        private unowned Gtk.Label liked_playlists_label;
+      unowned Gtk.Label liked_playlists_label;
         [GtkChild]
-        private unowned Gtk.FlowBox likes_flow_box;
+      unowned Gtk.FlowBox likes_flow_box;
 
         public override bool can_refresh { get; default = true; }
 
@@ -40,7 +40,7 @@ namespace Cassette {
 
         public string? uid { get; construct set; }
 
-        private PlaylistsView (string? uid) {
+      PlaylistsView (string? uid) {
             Object (uid: uid);
         }
 

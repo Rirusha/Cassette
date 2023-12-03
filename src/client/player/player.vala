@@ -50,12 +50,12 @@ namespace CassetteClient.Player {
 
     public class Player : Object {
 
-        private const double PLAY_STEP = 0.05;
+      const double PLAY_STEP = 0.05;
 
         public signal void queue_changed ();
         public signal void track_state_changed (string track_id);
 
-        private PlayerState _player_state = PlayerState.NONE;
+      PlayerState _player_state = PlayerState.NONE;
         public PlayerState player_state {
             get {
                 return _player_state;
@@ -76,7 +76,7 @@ namespace CassetteClient.Player {
                 }
             }
         }
-        private RepeatMode _repeat_mode = RepeatMode.OFF;
+      RepeatMode _repeat_mode = RepeatMode.OFF;
         public RepeatMode repeat_mode {
             get {
                 return _repeat_mode;
@@ -89,7 +89,7 @@ namespace CassetteClient.Player {
                 assert (player_mod is PlayerTL);
             }
         }
-        private ShuffleMode _shuffle_mode = ShuffleMode.OFF;
+      ShuffleMode _shuffle_mode = ShuffleMode.OFF;
         public ShuffleMode shuffle_mode {
             get {
                 return _shuffle_mode;
@@ -152,9 +152,9 @@ namespace CassetteClient.Player {
         public bool is_loading          { get; private set; default = false; }
         public IPlayerMod? player_mod   { get; private set; default = null; }
 
-        private Gst.Pipeline pipeline;
-        private Gst.Element source;
-        private Gst.Element _volume;
+      Gst.Pipeline pipeline;
+      Gst.Element source;
+      Gst.Element _volume;
 
         public Player () {
             Object ();
@@ -200,7 +200,7 @@ namespace CassetteClient.Player {
             });
         }
 
-        private void init (string[]? args) {
+      void init (string[]? args) {
             Gst.init (ref args);
         }
 

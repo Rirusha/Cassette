@@ -26,10 +26,10 @@ using Gee;
 namespace Cassette {
     public class CoverImage : Adw.Bin {   
 
-        private Gtk.Image real_image { get; default = new Gtk.Image.from_icon_name ("audio-x-generic-symbolic"); }
-        private HasCover yam_object;
+      Gtk.Image real_image { get; default = new Gtk.Image.from_icon_name ("audio-x-generic-symbolic"); }
+      HasCover yam_object;
 
-        private int cover_size;
+      int cover_size;
         public int size {
             get {
                 return cover_size;

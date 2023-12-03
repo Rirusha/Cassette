@@ -27,27 +27,27 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/auth_window.ui")]
     public class AuthWindow : Adw.Window {
         [GtkChild]
-        private unowned Adw.WindowTitle header_title;
+      unowned Adw.WindowTitle header_title;
         [GtkChild]
-        private unowned Adw.ToastOverlay toast_overlay;
+      unowned Adw.ToastOverlay toast_overlay;
         [GtkChild]
-        private unowned Gtk.Stack main_stack;
+      unowned Gtk.Stack main_stack;
         [GtkChild]
-        private unowned Gtk.Entry username_entry;
+      unowned Gtk.Entry username_entry;
         [GtkChild]
-        private unowned PhoneEntry phone_entry;
+      unowned PhoneEntry phone_entry;
         [GtkChild]
-        private unowned Gtk.Spinner spinner_loading;
+      unowned Gtk.Spinner spinner_loading;
         [GtkChild]
-        private unowned Gtk.Label password_label;
+      unowned Gtk.Label password_label;
         [GtkChild]
-        private unowned Gtk.PasswordEntry password_entry;
+      unowned Gtk.PasswordEntry password_entry;
         [GtkChild]
-        private unowned Gtk.Image image_qr;   
+      unowned Gtk.Image image_qr;   
         [GtkChild]
-        private unowned Gtk.Button button_local_mode;
+      unowned Gtk.Button button_local_mode;
         [GtkChild]
-        private unowned Gtk.Button qr_password_button;
+      unowned Gtk.Button qr_password_button;
 
         YaAuthTalker auth = new YaAuthTalker ();
 

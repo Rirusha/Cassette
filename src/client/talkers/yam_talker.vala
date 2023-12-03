@@ -45,7 +45,7 @@ namespace CassetteClient {
 
         public signal void init_end ();
 
-        private AccountInfo? _me = null;
+      AccountInfo? _me = null;
         public AccountInfo me {
             owned get {
                 if (_me != null) {
@@ -220,7 +220,7 @@ namespace CassetteClient {
             return track_uri;
         }
 
-        private string get_likable_type (LikableType content_type) {
+      string get_likable_type (LikableType content_type) {
             switch (content_type) {
                 case LikableType.TRACK:
                     return "track";
@@ -473,7 +473,7 @@ namespace CassetteClient {
             return new_playlist;
         }
 
-        private Gee.ArrayList<YaMAPI.TrackShort>? get_disliked_tracks_short () {
+      Gee.ArrayList<YaMAPI.TrackShort>? get_disliked_tracks_short () {
             Gee.ArrayList<YaMAPI.TrackShort>? trackshort_list = null;
 
             net_run_wout_code (() => {

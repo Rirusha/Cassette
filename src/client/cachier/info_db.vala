@@ -33,7 +33,7 @@ namespace CassetteClient.Cachier {
 
         public string db_path { get; construct; }
 
-        private Sqlite.Database db;
+        Sqlite.Database db;
 
         public InfoDB (string db_path) {
             Object (db_path: db_path);

@@ -32,13 +32,13 @@ namespace CassetteClient.Cachier {
         public HasTrackList yam_object { get; construct; }
         public Gtk.ProgressBar? progress_bar { get; construct; }
         //  Для отмены изменяется переменная should_stop, чтобы объект успел докэшировать то, что он кэшировать
-        private bool should_stop = false;
-        private bool is_abort;
+      bool should_stop = false;
+      bool is_abort;
 
-        private string object_id;
-        private ContentType object_type;
+      string object_id;
+      ContentType object_type;
 
-        private bool progress_bar_visible = false;
+      bool progress_bar_visible = false;
 
         //  В случае завершения кэширования поднимает сигнал со статусом окончания: завершено с ошибкой, успешно или отменено
         public signal void job_done (JobDoneStatus status);

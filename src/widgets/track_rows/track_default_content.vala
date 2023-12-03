@@ -27,29 +27,29 @@ namespace Cassette {
     public class TrackDefault : Gtk.Frame {
 
         [GtkChild]
-        private unowned CoverImage cover_image;
+      unowned CoverImage cover_image;
         [GtkChild]
-        private unowned PlayButtonTrack play_button;
+      unowned PlayButtonTrack play_button;
         [GtkChild]
-        private unowned Gtk.Label track_name_label;
+      unowned Gtk.Label track_name_label;
         [GtkChild]
-        private unowned Gtk.Label track_version_label;
+      unowned Gtk.Label track_version_label;
         [GtkChild]
-        private unowned InfoMarks info_marks;
+      unowned InfoMarks info_marks;
         [GtkChild]
-        private unowned Gtk.Label track_authors_label;
+      unowned Gtk.Label track_authors_label;
         [GtkChild]
-        private unowned SaveStack save_stack;
+      unowned SaveStack save_stack;
         [GtkChild]
-        private unowned LikeButton like_button;
+      unowned LikeButton like_button;
         [GtkChild]
-        private unowned DislikeButton dislike_button;
+      unowned DislikeButton dislike_button;
         [GtkChild]
-        private unowned Gtk.Revealer dislike_button_revealer;
+      unowned Gtk.Revealer dislike_button_revealer;
         [GtkChild]
-        private unowned Gtk.Label duration_label;
+      unowned Gtk.Label duration_label;
         [GtkChild]
-        private unowned TrackOptionsButton track_options_button;
+      unowned TrackOptionsButton track_options_button;
 
         public YaMAPI.Track track_info { get; construct set; }
         public HasTrackList yam_object { get; construct set; }
@@ -203,7 +203,7 @@ namespace Cassette {
             save_stack.init_content (track_info.id);
         }
 
-        private void form_queue () {
+      void form_queue () {
             var track_list = yam_object.get_filtered_track_list (
                 storager.settings.get_boolean ("explicit-visible"),
                 storager.settings.get_boolean ("child-visible"),

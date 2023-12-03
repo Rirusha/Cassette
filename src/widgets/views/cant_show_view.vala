@@ -27,7 +27,7 @@ namespace Cassette {
     public class CantShowView : Adw.Bin {
 
         [GtkChild]
-        private unowned Adw.StatusPage status_page;
+      unowned Adw.StatusPage status_page;
 
         public BaseView base_view { get; construct set; }
         public int code { get; construct; }

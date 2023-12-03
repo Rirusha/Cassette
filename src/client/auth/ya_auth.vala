@@ -30,8 +30,8 @@ namespace CassetteClient.YaMAuth {
 
         public SoupWrapper soup_wrapper { get; construct; }
     
-        private string csrf_token;
-        private string track_id;
+      string csrf_token;
+      string track_id;
 
         public bool is_init_complete { get; set; default = false; }
 
@@ -46,7 +46,7 @@ namespace CassetteClient.YaMAuth {
             is_init_complete = true;
         }
 
-        private void update_csrf_token () throws ClientError, BadStatusCodeError {
+      void update_csrf_token () throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync ("https://passport.yandex.ru/am?app_platform=android");
 
             Regex regex = null;

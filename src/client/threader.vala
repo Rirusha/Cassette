@@ -23,7 +23,7 @@ namespace CassetteClient {
     public delegate void ThreadFunc (Value[]? func_args);
     //  public delegate void SourceFunc ();
 
-    private class ThreadInfo {
+  class ThreadInfo {
 
         public weak ThreadFunc func;
         public Value[]? func_args;  //  Список чего-либо, в котором хрянится что-либо для сохранения от непредвиденного освобождения
@@ -38,14 +38,14 @@ namespace CassetteClient {
         }
     }
 
-    private class WorkManager : Object {
+  class WorkManager : Object {
 
         AsyncQueue<ThreadInfo> thread_datas = new AsyncQueue<ThreadInfo> ();
 
-        private Mutex mutex = Mutex ();
-        private Cond cond = Cond ();
+      Mutex mutex = Mutex ();
+      Cond cond = Cond ();
 
-        private int running_jobs_count = 0;
+      int running_jobs_count = 0;
         public int max_running_jobs { get; construct; }
 
         public WorkManager (int max_running_jobs) {
@@ -56,7 +56,7 @@ namespace CassetteClient {
             new Thread<void> (null, work);
         }
 
-        private void work () {
+      void work () {
             while (true) {
                 mutex.lock ();
     
@@ -92,13 +92,13 @@ namespace CassetteClient {
     public class Threader : Object {
 
         //  Стандартный пул потоков
-        private WorkManager default_pool;
+      WorkManager default_pool;
         //  Пул потоков для задач кэширования
-        private WorkManager image_pool;
+      WorkManager image_pool;
         //  Пул потоков для важных задач, так как первые два могут быть заполнены
-        private WorkManager audio_pool;
+      WorkManager audio_pool;
         //  Пул потоков для задач, выполнение которых не должно пересекаться (размер - 1)
-        private WorkManager single_pool;
+      WorkManager single_pool;
 
         construct {
             int max_size = storager.settings.get_int("max-thread-number");

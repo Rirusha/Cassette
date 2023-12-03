@@ -27,15 +27,15 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/disliked_tracks_view.ui")]
     public class DislikedTracksView : HasTracksView {
         [GtkChild]
-        private unowned Gtk.Box main_box;
+      unowned Gtk.Box main_box;
         [GtkChild]
-        private unowned Gtk.ScrolledWindow scrolled_window;
+      unowned Gtk.ScrolledWindow scrolled_window;
 
         public override bool can_refresh { get; default = true; }
 
         public override RootView root_view { get; set; }
 
-        private YaMAPI.TrackHeap? _track_list = null;
+      YaMAPI.TrackHeap? _track_list = null;
 
         public string? uid { get; construct set; }
         public string kind { get; construct set; }

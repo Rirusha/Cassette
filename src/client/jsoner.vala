@@ -61,7 +61,7 @@ namespace CassetteClient {
             return new Jsoner ((string) data, sub_members, names_case);
         }
 
-        private static Json.Node? steps (Json.Node node, string[] sub_members) throws ClientError {
+      static Json.Node? steps (Json.Node node, string[] sub_members) throws ClientError {
             string has_members = "";
 
             foreach (string member_name in sub_members) {
@@ -86,7 +86,7 @@ namespace CassetteClient {
             return Json.to_string (builder.get_root (), false);
         }
 
-        private static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type) {
+      static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type) {
             builder.begin_array ();
 
             if (element_type.parent () == typeof (YaMObject)) {
@@ -122,7 +122,7 @@ namespace CassetteClient {
             builder.end_array ();
         }
 
-        private static void serialize_object (Json.Builder builder, YaMObject? yam_obj) {
+      static void serialize_object (Json.Builder builder, YaMObject? yam_obj) {
             if (yam_obj == null) {
                 builder.add_null_value ();
                 return;
@@ -154,7 +154,7 @@ namespace CassetteClient {
             builder.end_object ();
         }
 
-        private static void serialize_value (Json.Builder builder, Value prop_val) {
+      static void serialize_value (Json.Builder builder, Value prop_val) {
             switch (prop_val.type ()) {
                 case Type.INT:
                     builder.add_int_value (prop_val.get_int ());

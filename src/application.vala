@@ -85,7 +85,7 @@ namespace Cassette {
         construct {
             application = this;
 
-            CassetteClient.init ();
+            CassetteClient.init (Config.POSTFIX == ".Devel");
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
             });

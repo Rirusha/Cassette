@@ -133,8 +133,10 @@ namespace CassetteClient.Cachier {
 
         public string temp_cache_path { get; private set; }
 
-        public Storager () {
-            Object ();
+        public bool is_devel { get; construct; }
+
+        public Storager (bool is_devel) {
+            Object (is_devel: is_devel);
         }
 
         construct {
@@ -157,7 +159,7 @@ namespace CassetteClient.Cachier {
         private void init_log () {
             FileUtils.remove (log_file_path);
 
-            if (Config.POSTFIX == ".Devel") {
+            if (is_devel) {
                 new Logger (log_file_path, LogLevel.DEBUG_SOUP);
             } else {
                 new Logger (log_file_path, LogLevel.WARNING);

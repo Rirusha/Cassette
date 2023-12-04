@@ -143,6 +143,7 @@
                                         <property name="is-suggested-action">true</property>
                                         <property name="context-type">playlist</property>
                                         <property name="size">42</property>
+                                        <property name="label" translatable="true">Play</property>
                                       </object>
                                     </child>
                                     <child>

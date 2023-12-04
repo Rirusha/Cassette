@@ -163,6 +163,8 @@ namespace Cassette {
 
         public Gtk.Adjustment adjustment { get; construct set; }
 
+        bool is_queue = false;
+
         public TrackList (Gtk.Adjustment adjustment) {
             Object (adjustment: adjustment);
         }
@@ -236,9 +238,7 @@ namespace Cassette {
                             sort_direction_button.icon_name = "view-sort-ascending-symbolic";
                             break;
                     }
-                    if (sort_type != null) {
-                        sort ();
-                    }
+                    sort ();
                 });
 
                 remove_sort_button.clicked.connect (() => {
@@ -291,7 +291,9 @@ namespace Cassette {
             remove_all ();
             if (sort_type == null) {
                 sorted_rows_reset ();
-                sort_direction_button.visible = false;
+                if (is_queue) {
+                    sort_direction_button.visible = false;
+                }
                 remove_sort_button.visible = false;
             } else {
                 switch (sort_type) {
@@ -416,7 +418,9 @@ namespace Cassette {
                         }
                         break;
                 }
-                sort_direction_button.visible = true;
+                if (is_queue) {
+                    sort_direction_button.visible = true;
+                }
                 remove_sort_button.visible = true;
             }
             foreach (var track_row in sorted_rows) {
@@ -534,6 +538,9 @@ namespace Cassette {
 
         public void set_tracks_as_queue (ArrayList<YaMAPI.Track> track_list) {
             preset_actions ();
+
+            is_queue = true;
+            sort_direction_button.visible = false;
             
             for (int i = 0; i < track_list.size; i++ ) {
                 add_row (new TrackQueueRow (track_list[i], i));
@@ -561,7 +568,14 @@ namespace Cassette {
 
       void sorted_rows_reset () {
             sorted_rows.clear ();
-            sorted_rows.add_all (original_track_rows);
+
+            if (sort_direction == SortDirection.ASCENDING || is_queue) {
+                sorted_rows.add_all (original_track_rows);
+            } else {
+                for (int i = original_track_rows.size - 1; i >= 0; i--) {
+                    sorted_rows.add (original_track_rows[i]);
+                }
+            }
         }
     }
 }

@@ -33,13 +33,8 @@ namespace CassetteClient.Player {
             set {
                 _queue = value;
 
-                var track_list = _queue.tracks;
-
                 original_tracks.clear ();
-                original_tracks.add_all (track_list[_queue.current_index:track_list.size]);
-                original_tracks.add_all (track_list[0:_queue.current_index]);
-
-                _queue.current_index = 0;
+                original_tracks.add_all (_queue.tracks);
 
                 _queue.tracks.clear ();
                 _queue.tracks.add_all (original_tracks);
@@ -163,8 +158,13 @@ namespace CassetteClient.Player {
             ArrayList<Track> track_list = _queue.tracks;
             type_utils.shuffle (ref track_list);
 
-            _queue.tracks = track_list;
-            _queue.current_index = _queue.tracks.index_of (track);
+            var new_index = track_list.index_of (track);
+
+            _queue.tracks = new ArrayList<YaMAPI.Track> ();
+            _queue.tracks.add_all (track_list[new_index:track_list.size]);
+            _queue.tracks.add_all (track_list[0:new_index]);
+
+            _queue.current_index = 0;
         }
 
         public void shuffle () {

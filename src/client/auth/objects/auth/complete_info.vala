@@ -22,7 +22,7 @@ using Gee;
 
 namespace CassetteClient.YaMAuth {
     public class CompleteInfo : YaMObject {
-        
+
         public string status { get; set; }
         public ArrayList<string> errors { get; set; default = new ArrayList<string> (); }
 

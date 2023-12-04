@@ -27,13 +27,13 @@ namespace Cassette {
     public class SaveStack : Adw.Bin, Initable {
 
         [GtkChild]
-      unowned Gtk.Stack save_stack;
+        unowned Gtk.Stack save_stack;
         [GtkChild]
-      unowned Gtk.Spinner save_spin;
+        unowned Gtk.Spinner save_spin;
         [GtkChild]
-      unowned Gtk.Image temp_mark_image;
+        unowned Gtk.Image temp_mark_image;
         [GtkChild]
-      unowned Gtk.Image perm_mark_image;
+        unowned Gtk.Image perm_mark_image;
 
         protected string content_id { get; set; }
         public Cachier.ContentType content_type { get; construct; }
@@ -41,7 +41,7 @@ namespace Cassette {
         // Нужно для резервирования места под виджет
         public bool hide_when_none { get; construct; default = false; }
 
-      ulong con_id = -1;
+        ulong con_id = -1;
 
         public SaveStack () {
             Object ();
@@ -67,7 +67,7 @@ namespace Cassette {
                 if (content_id == null) {
                     return;
                 }
-                
+
                 if (key == "show-save-stack" || key == "show-temp-save-mark") {
                     cache_state_changed (cachier_controller.get_content_cache_state (content_type, content_id));
                 }
@@ -107,13 +107,13 @@ namespace Cassette {
             cache_state_changed (cachier_controller.get_content_cache_state (content_type, content_id));
         }
 
-      void on_content_cache_state_changed (Cachier.ContentType content_type, string content_id, Cachier.CacheingState state) {
+        void on_content_cache_state_changed (Cachier.ContentType content_type, string content_id, Cachier.CacheingState state) {
             if (this.content_id == content_id && this.content_type == content_type) {
                 cache_state_changed (state);
             }
         }
 
-      void cache_state_changed (owned Cachier.CacheingState state) {
+        void cache_state_changed (owned Cachier.CacheingState state) {
             if (!storager.settings.get_boolean ("show-save-stack")) {
                 state = Cachier.CacheingState.NONE;
             }

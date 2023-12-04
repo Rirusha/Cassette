@@ -161,7 +161,7 @@ namespace Cassette {
                 window.show_message (_("Can't set icon with name \"%s\" to page").printf (new_page_icon_name));
                 return;
             }
-            
+
             for (int i = 0; i < _custom_pages.size; i++) {
                 if (_custom_pages[i].id == page_id) {
                     var page_info = _custom_pages[i];

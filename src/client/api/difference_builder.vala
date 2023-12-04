@@ -45,8 +45,8 @@ namespace CassetteClient.YaMAPI {
 
     public class DifferenceBuilder : Object {
 
-      ArrayList<DeleteOperation> delete_operations = new ArrayList<DeleteOperation> ();
-      ArrayList<InsertOperation> insert_operations = new ArrayList<InsertOperation> ();
+        ArrayList<DeleteOperation> delete_operations = new ArrayList<DeleteOperation> ();
+        ArrayList<InsertOperation> insert_operations = new ArrayList<InsertOperation> ();
 
         public DifferenceBuilder () {
             Object ();

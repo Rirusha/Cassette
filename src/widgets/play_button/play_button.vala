@@ -23,7 +23,7 @@ namespace Cassette {
 
         public string label { get; construct; }
 
-      Adw.ButtonContent button_content = new Adw.ButtonContent ();
+        Adw.ButtonContent button_content = new Adw.ButtonContent ();
 
         public bool is_playing { get; private set; default = false; }
 

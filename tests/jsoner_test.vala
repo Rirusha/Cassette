@@ -61,13 +61,13 @@ public int main (string[] args){
     Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
     Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
-    
+
     Test.init (ref args);
 
     Test.add_func ("/jsoner/serialize/string", () => {
         var test_object = new TestObjectString ();
         test_object.value = "test";
-        
+
         string expectation = "{\"value\":\"test\"}";
         string result = Jsoner.serialize (test_object);
 
@@ -79,7 +79,7 @@ public int main (string[] args){
     Test.add_func ("/jsoner/serialize/int", () => {
         var test_object = new TestObjectInt ();
         test_object.value = 42;
-        
+
         string expectation = "{\"value\":42}";
         string result = Jsoner.serialize (test_object);
 
@@ -91,7 +91,7 @@ public int main (string[] args){
     Test.add_func ("/jsoner/serialize/int64", () => {
         var test_object = new TestObjectInt64 ();
         test_object.value = 3636346346363452;
-        
+
         string expectation = "{\"value\":3636346346363452}";
         string result = Jsoner.serialize (test_object);
 
@@ -103,7 +103,7 @@ public int main (string[] args){
     Test.add_func ("/jsoner/serialize/bool", () => {
         var test_object = new TestObjectBool ();
         test_object.value = true;
-        
+
         string expectation = "{\"value\":true}";
         string result = Jsoner.serialize (test_object);
 
@@ -115,7 +115,7 @@ public int main (string[] args){
     Test.add_func ("/jsoner/serialize/double", () => {
         var test_object = new TestObjectDouble () { value = 42.5 };
         test_object.value = 42.5;
-        
+
         string expectation = "{\"value\":42.5}";
         string result = Jsoner.serialize (test_object);
 
@@ -127,7 +127,7 @@ public int main (string[] args){
     Test.add_func ("/jsoner/serialize/null", () => {
         var test_object = new TestObjectString ();
         test_object.value = null;
-        
+
         string expectation = "{\"value\":null}";
         string result = Jsoner.serialize (test_object);
 
@@ -141,7 +141,7 @@ public int main (string[] args){
         test_object.string_value = "test";
         test_object.int_value = 42;
         test_object.bool_value = true;
-        
+
         string expectation = "{\"string-value\":\"test\",\"int-value\":42,\"bool-value\":true}";
         string result = Jsoner.serialize (test_object);
 
@@ -158,7 +158,7 @@ public int main (string[] args){
         test_object.value.add ("or some kind of punishment?");
         test_object.value.add ("i often thinking about the god who blessed us with this cryptic puzzle");
         test_object.value.add ("and wonder if we'll ever have a chance to kill him");
-        
+
         string expectation = "{\"value\":[\"everything that lives is designed to end\",\"we are perpetually trapped in a neverending spyral of life and death\",\"is this a curse?\",\"or some kind of punishment?\",\"i often thinking about the god who blessed us with this cryptic puzzle\",\"and wonder if we'll ever have a chance to kill him\"]}";
         string result = Jsoner.serialize (test_object);
 
@@ -175,7 +175,7 @@ public int main (string[] args){
         test_object.value.add (new TestObjectObject ());
         test_object.value.add (new TestObjectObject () { string_value = "kekw" });
         test_object.value.add (new TestObjectObject ());
-        
+
         string expectation = "{\"value\":[{\"string-value\":null,\"int-value\":0,\"bool-value\":false},{\"string-value\":\"why are we still here\",\"int-value\":42,\"bool-value\":false},{\"string-value\":null,\"int-value\":0,\"bool-value\":false},{\"string-value\":null,\"int-value\":0,\"bool-value\":false},{\"string-value\":\"kekw\",\"int-value\":0,\"bool-value\":false},{\"string-value\":null,\"int-value\":0,\"bool-value\":false}]}";
         string result = Jsoner.serialize (test_object);
 
@@ -195,7 +195,7 @@ public int main (string[] args){
         test_object.value[1].add (new TestObjectObject () { bool_value = false });
         test_object.value[1].add (new TestObjectObject () { string_value = "kekw" });
         test_object.value[2].add (new TestObjectObject () { int_value = 56 });
-        
+
         string expectation = "{\"value\":[[{\"string-value\":null,\"int-value\":0,\"bool-value\":false},{\"string-value\":null,\"int-value\":0,\"bool-value\":false}],[{\"string-value\":\"why are we still here\",\"int-value\":42,\"bool-value\":false},{\"string-value\":null,\"int-value\":0,\"bool-value\":false},{\"string-value\":\"kekw\",\"int-value\":0,\"bool-value\":false}],[{\"string-value\":null,\"int-value\":56,\"bool-value\":false}]]}";
         string result = Jsoner.serialize (test_object);
 

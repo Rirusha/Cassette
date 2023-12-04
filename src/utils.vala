@@ -96,7 +96,7 @@ namespace Cassette {
         if (is_short) {
             return @"$minutes_str:$(zfill (oth_seconds_str, 2))";
         } else {
-            
+
             if (minutes > 60) {
                 int hours = (int) minutes / 60;
                 minutes -= hours * 60;
@@ -176,21 +176,21 @@ namespace Cassette {
 
     public string prettify_num (int num) {
         string num_str = num.to_string ();
-    
+
         return prettify_chunk (num_str, num_str.length - 3, "");
     }
-    
+
     string prettify_chunk (string num_str, int start_pos, string res_str) {
         if (start_pos == -3) {
             return res_str;
         }
-    
+
         int end_pos = start_pos + 3;
-    
+
         if (start_pos < 0) {
             start_pos = 0;
         }
-    
+
         return prettify_chunk (num_str, start_pos - 3, num_str[start_pos:end_pos] + " " + res_str);
     }
 }

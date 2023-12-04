@@ -27,29 +27,29 @@ namespace Cassette {
     public class TrackDefault : Gtk.Frame {
 
         [GtkChild]
-      unowned CoverImage cover_image;
+        unowned CoverImage cover_image;
         [GtkChild]
-      unowned PlayButtonTrack play_button;
+        unowned PlayButtonTrack play_button;
         [GtkChild]
-      unowned Gtk.Label track_name_label;
+        unowned Gtk.Label track_name_label;
         [GtkChild]
-      unowned Gtk.Label track_version_label;
+        unowned Gtk.Label track_version_label;
         [GtkChild]
-      unowned InfoMarks info_marks;
+        unowned InfoMarks info_marks;
         [GtkChild]
-      unowned Gtk.Label track_authors_label;
+        unowned Gtk.Label track_authors_label;
         [GtkChild]
-      unowned SaveStack save_stack;
+        unowned SaveStack save_stack;
         [GtkChild]
-      unowned LikeButton like_button;
+        unowned LikeButton like_button;
         [GtkChild]
-      unowned DislikeButton dislike_button;
+        unowned DislikeButton dislike_button;
         [GtkChild]
-      unowned Gtk.Revealer dislike_button_revealer;
+        unowned Gtk.Revealer dislike_button_revealer;
         [GtkChild]
-      unowned Gtk.Label duration_label;
+        unowned Gtk.Label duration_label;
         [GtkChild]
-      unowned TrackOptionsButton track_options_button;
+        unowned TrackOptionsButton track_options_button;
 
         public YaMAPI.Track track_info { get; construct set; }
         public HasTrackList yam_object { get; construct set; }
@@ -197,13 +197,13 @@ namespace Cassette {
             dislike_button.init_content (track_info.id);
             play_button.init_content (track_info.id);
             cover_image.init_content (track_info, TRACK_ART_SIZE);
-    
+
             cover_image.load_image.begin ();
 
             save_stack.init_content (track_info.id);
         }
 
-      void form_queue () {
+        void form_queue () {
             var track_list = yam_object.get_filtered_track_list (
                 storager.settings.get_boolean ("explicit-visible"),
                 storager.settings.get_boolean ("child-visible"),

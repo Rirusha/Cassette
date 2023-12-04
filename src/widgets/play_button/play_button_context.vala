@@ -38,7 +38,7 @@ namespace Cassette {
             on_player_state_changed ();
         }
 
-      bool object_playing_now () {
+        bool object_playing_now () {
             var player_tl = player.player_mod as Player.PlayerTL;
             if (player_tl != null) {
                 if (player_tl.queue.context.id == content_id && player_tl.queue.context.type_ == context_type) {
@@ -67,7 +67,7 @@ namespace Cassette {
             return true;
         }
 
-      void on_player_state_changed () {
+        void on_player_state_changed () {
             if (object_playing_now ()) {
                 if (player.player_state == Player.PlayerState.PLAYING) {
                     set_playing ();

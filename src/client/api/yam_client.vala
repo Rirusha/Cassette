@@ -22,7 +22,7 @@ namespace CassetteClient.YaMAPI {
 
     public class YaMClient : Object {
 
-      const string YAM_BASE_URL = "https://api.music.yandex.net";
+        const string YAM_BASE_URL = "https://api.music.yandex.net";
 
         public SoupWrapper soup_wrapper { get; construct; }
 
@@ -59,9 +59,9 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
             var jsoner =Jsoner.from_bytes (bytes, {"access_token"}, Case.SNAKE_CASE);
-            
+
             string token = jsoner.deserialize_value ().get_string ();
-            
+
             soup_wrapper.add_headers_preset (
                 "default",
                 {
@@ -84,7 +84,7 @@ namespace CassetteClient.YaMAPI {
             return soup_wrapper.get_sync (uri);
         }
 
-      void check_uid (ref string? uid) throws ClientError {
+        void check_uid (ref string? uid) throws ClientError {
             if (uid == null) {
                 if (me == null) {
                     throw new ClientError.AUTH_ERROR ("Auth Error");
@@ -167,7 +167,7 @@ namespace CassetteClient.YaMAPI {
             jsoner.deserialize_array (ref queue_list);
             return queue_list;
         }
-        
+
         public Queue queue (string queue_id) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/queues/$queue_id",
@@ -279,7 +279,7 @@ namespace CassetteClient.YaMAPI {
             return form_download_uri (dl_info_uri);
         }
 
-      string? form_download_uri (string dl_info_uri) throws ClientError, BadStatusCodeError {
+        string? form_download_uri (string dl_info_uri) throws ClientError, BadStatusCodeError {
             Bytes bytes = get_content_of (dl_info_uri);
             string xml_string = (string) bytes.get_data ();
 
@@ -316,7 +316,7 @@ namespace CassetteClient.YaMAPI {
 
             PostContent post_content = {"application/x-www-form-urlencoded"};
             post_content.set_datalist (datalist);
-            
+
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/users/$uid/likes/$(what)s/add-multiple",
                 {"default"},
@@ -339,7 +339,7 @@ namespace CassetteClient.YaMAPI {
 
             PostContent post_content = {"application/x-www-form-urlencoded"};
             post_content.set_datalist (datalist);
-            
+
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/users/$uid/likes/$(what)s/remove",
                 {"default"},
@@ -362,7 +362,7 @@ namespace CassetteClient.YaMAPI {
 
             PostContent post_content = {"application/x-www-form-urlencoded"};
             post_content.set_datalist (datalist);
-            
+
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks/add-multiple",
                 {"default"},
@@ -385,7 +385,7 @@ namespace CassetteClient.YaMAPI {
 
             PostContent post_content = {"application/x-www-form-urlencoded"};
             post_content.set_datalist (datalist);
-            
+
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks/remove",
                 {"default"},
@@ -442,7 +442,7 @@ namespace CassetteClient.YaMAPI {
             string format = is_sync ? "LRC" : "TEXT";
             string timestamp = new DateTime.now_utc ().to_unix ().to_string ();
             string msg = @"$track_id$timestamp";
-            
+
             var hmac  = new Hmac (ChecksumType.SHA256, "p93jhgh689SBReK6ghtw62".data);
             hmac.update (msg.data);
             uint8[] hmac_sign = new uint8[32];
@@ -490,7 +490,7 @@ namespace CassetteClient.YaMAPI {
             );
 
             var jsoner =Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
-            
+
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
@@ -514,7 +514,7 @@ namespace CassetteClient.YaMAPI {
             );
 
             var jsoner =Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
-            
+
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
@@ -539,7 +539,7 @@ namespace CassetteClient.YaMAPI {
             );
 
             var jsoner =Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
-            
+
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
@@ -581,7 +581,7 @@ namespace CassetteClient.YaMAPI {
             );
 
             var jsoner =Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
-            
+
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 

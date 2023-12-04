@@ -27,27 +27,27 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/auth_window.ui")]
     public class AuthWindow : Adw.Window {
         [GtkChild]
-      unowned Adw.WindowTitle header_title;
+        unowned Adw.WindowTitle header_title;
         [GtkChild]
-      unowned Adw.ToastOverlay toast_overlay;
+        unowned Adw.ToastOverlay toast_overlay;
         [GtkChild]
-      unowned Gtk.Stack main_stack;
+        unowned Gtk.Stack main_stack;
         [GtkChild]
-      unowned Gtk.Entry username_entry;
+        unowned Gtk.Entry username_entry;
         [GtkChild]
-      unowned PhoneEntry phone_entry;
+        unowned PhoneEntry phone_entry;
         [GtkChild]
-      unowned Gtk.Spinner spinner_loading;
+        unowned Gtk.Spinner spinner_loading;
         [GtkChild]
-      unowned Gtk.Label password_label;
+        unowned Gtk.Label password_label;
         [GtkChild]
-      unowned Gtk.PasswordEntry password_entry;
+        unowned Gtk.PasswordEntry password_entry;
         [GtkChild]
-      unowned Gtk.Image image_qr;   
+        unowned Gtk.Image image_qr;   
         [GtkChild]
-      unowned Gtk.Button button_local_mode;
+        unowned Gtk.Button button_local_mode;
         [GtkChild]
-      unowned Gtk.Button qr_password_button;
+        unowned Gtk.Button qr_password_button;
 
         YaAuthTalker auth = new YaAuthTalker ();
 
@@ -205,7 +205,7 @@ namespace Cassette {
 
         async void enter_password () {
             string password;
-            
+
             if (password_entry.text != "") {
                 password = password_entry.text;
             } else {
@@ -246,7 +246,7 @@ namespace Cassette {
             threader.add (() => {
                 try {
                     qr_code = auth.get_qr_code ();
-                    
+
                 } catch (BadStatusCodeError e) {
                     if (e is BadStatusCodeError.UNAUTHORIZE_ERROR) {
                         show_message (_("Yandex send captcha. There nothing we can do. Try later"));

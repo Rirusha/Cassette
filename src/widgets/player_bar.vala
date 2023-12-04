@@ -26,51 +26,51 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/player_bar.ui")]
     public class PlayerBar : Adw.Bin {
         [GtkChild]
-      unowned Gtk.Revealer revealer;
+        unowned Gtk.Revealer revealer;
         [GtkChild]
-      unowned Gtk.Label current_time_mark;
+        unowned Gtk.Label current_time_mark;
         [GtkChild]
-      unowned Gtk.Label total_time_mark;
+        unowned Gtk.Label total_time_mark;
         [GtkChild]
-      unowned Gtk.Scale slider;
+        unowned Gtk.Scale slider;
         [GtkChild]
-      unowned Gtk.Box slider_overlay;
+        unowned Gtk.Box slider_overlay;
         [GtkChild]
-      unowned Gtk.Button prev_track_button;
+        unowned Gtk.Button prev_track_button;
         [GtkChild]
-      unowned CoverImage cover_image;
+        unowned CoverImage cover_image;
         [GtkChild]
-      unowned Gtk.Label track_name_label;
+        unowned Gtk.Label track_name_label;
         [GtkChild]
-      unowned Gtk.Label track_version_label;
+        unowned Gtk.Label track_version_label;
         [GtkChild]
-      unowned Gtk.Label track_authors_label;
+        unowned Gtk.Label track_authors_label;
         [GtkChild]
-      unowned DislikeButton dislike_button;
+        unowned DislikeButton dislike_button;
         [GtkChild]
-      unowned LikeButton like_button;
+        unowned LikeButton like_button;
         [GtkChild]
-      unowned Gtk.Button queue_show_button;
+        unowned Gtk.Button queue_show_button;
         //  [GtkChild]
         //unowned Gtk.Button temp_playlist_button;
         [GtkChild]
-      unowned SaveStack save_stack;
+        unowned SaveStack save_stack;
         [GtkChild]
-      unowned Gtk.Button shuffle_button;
+        unowned Gtk.Button shuffle_button;
         [GtkChild]
-      unowned Gtk.Button repeat_button;
+        unowned Gtk.Button repeat_button;
         [GtkChild]
-      unowned Gtk.ScaleButton volume_button;
+        unowned Gtk.ScaleButton volume_button;
         [GtkChild]
-      unowned InfoMarks info_marks;
+        unowned InfoMarks info_marks;
         [GtkChild]
-      unowned Gtk.Button track_info_button;
+        unowned Gtk.Button track_info_button;
 
         public MainWindow window { get; construct set; }
 
-      YaMAPI.Track track_info = new YaMAPI.Track ();
-        
-      Gtk.EventControllerMotion slider_motion_controller;
+        YaMAPI.Track track_info = new YaMAPI.Track ();
+
+        Gtk.EventControllerMotion slider_motion_controller;
 
         public PlayerBar (MainWindow window) {
             Object (window: window);
@@ -110,7 +110,7 @@ namespace Cassette {
                 slider_motion_controller = null;
                 player.seek ((int) (slider.get_value () * 1000));
                 //  mouse_time_mark.label = "";
-    
+
                 player.is_slider_moving = false;
             });
             slider_overlay.add_controller (gesture_click);
@@ -120,7 +120,7 @@ namespace Cassette {
             });
 
             player.bind_property ("is-loading", this, "sensitive", BindingFlags.INVERT_BOOLEAN);
-            
+
             //  play_button.notify["is-playing"].connect (player_state_changed);
             player.notify["player-state"].connect (player_state_changed);
             player.notify["player-mod"].connect (player_mod_changed);
@@ -187,7 +187,7 @@ namespace Cassette {
                     window.sidebar.show_queue ();
                 }
             });
-            
+
             set_repeat_button_view ();
             set_shuffle_button_view ();
 
@@ -250,7 +250,7 @@ namespace Cassette {
             }
         }
 
-      void player_mod_changed () {
+        void player_mod_changed () {
             if (player.player_mod is Player.PlayerTL) {
                 shuffle_button.visible = true;
                 repeat_button.visible = true;
@@ -264,7 +264,7 @@ namespace Cassette {
             }
         }
 
-      void player_state_changed () {
+        void player_state_changed () {
             if (player.player_state == Player.PlayerState.PLAYING) {
                 if (player.current_track != null) {
                     show_track (player.current_track);
@@ -276,7 +276,7 @@ namespace Cassette {
             }
         }
 
-      void show_track (YaMAPI.Track track_info) {
+        void show_track (YaMAPI.Track track_info) {
             this.track_info = track_info;
 
             if (window.sidebar.track_detailed != null) {
@@ -286,7 +286,7 @@ namespace Cassette {
                     track_info_button.remove_css_class ("pressed");
                 }
             }
-            
+
 
             var adjustment = slider.get_adjustment ();
             adjustment.set_upper (ms2sec (track_info.duration_ms));
@@ -354,7 +354,7 @@ namespace Cassette {
             set_shuffle_button_view ();
         }
 
-      void set_shuffle_button_view () {
+        void set_shuffle_button_view () {
             switch (player.shuffle_mode) {
                 case Player.ShuffleMode.ON:
                     shuffle_button.add_css_class ("pressed");
@@ -380,7 +380,7 @@ namespace Cassette {
             set_repeat_button_view ();
         }
 
-      void set_repeat_button_view () {
+        void set_repeat_button_view () {
             switch (player.repeat_mode) {
                 case Player.RepeatMode.REPEAT_ALL:
                     repeat_button.set_icon_name ("media-playlist-repeat-symbolic");

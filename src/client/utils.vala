@@ -74,7 +74,7 @@ namespace CassetteClient {
                    storager.settings.get_boolean ("is-hq")
                 );
             }
-    
+
             if (track_uri != null && (storager.settings.get_boolean ("can-cache") || !is_tmp)) {
                 Bytes audio_bytes = yam_talker.load_track (track_uri);
                 if (audio_bytes != null) {
@@ -133,7 +133,7 @@ namespace CassetteClient {
 
             if (pixbufs[i] == null) {
                 pixbufs[i] = yam_talker.load_pixbuf (cover_uris[i]);
-               
+
                 if (pixbufs[i] != null && storager.settings.get_boolean ("can-cache")) {
                    storager.save_image (pixbufs[i], cover_uris[i], true);
                 }
@@ -160,7 +160,7 @@ namespace CassetteClient {
         } else {
             pixbufs[1].composite (pixbuf, 0, new_size, new_size, new_size, 0, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
             pixbufs[0].composite(pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
-        
+
             return pixbuf;
         }
 
@@ -212,7 +212,7 @@ namespace CassetteClient {
     //  Переделывает camelCase строку в kebab-case. Входная строка должна быть корректной camelCase
     public string camel2kebab (string camel_string) {
         string kebab_string = "";
-        
+
         int i = 0;
         while (i < camel_string.length) {
             if (camel_string[i].isupper ()) {
@@ -230,7 +230,7 @@ namespace CassetteClient {
     //  Переделывает kebab-case строку в camelCase. Входная строка должна быть корректной kebab-case
     public string kebab2camel (string kebab_string) {
         string camel_string = "";
-        
+
         int i = 0;
         while (i < kebab_string.length) {
             if (kebab_string[i] == '-') {
@@ -248,7 +248,7 @@ namespace CassetteClient {
     //  Переделывает kebab-case строку в snake_case. Входная строка должна быть корректной kebab-case
     public string kebab2snake (string kebab_string) {
         string snake_string = "";
-        
+
         int i = 0;
         while (i < kebab_string.length) {
             if (kebab_string[i] == '-') {
@@ -265,7 +265,7 @@ namespace CassetteClient {
     //  Переделывает snake_case строку в kebab-case. Входная строка должна быть корректной snake_case
     public string snake2kebab (string snake_string) {
         string kebab_string = "";
-        
+
         int i = 0;
         while (i < snake_string.length) {
             if (snake_string[i] == '_') {

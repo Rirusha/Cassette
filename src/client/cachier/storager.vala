@@ -35,6 +35,7 @@ namespace CassetteClient.Cachier {
         public string unit;
     }
 
+
     // Удобный формат вывода о расположении объекта
     public class Location : Object {
         public bool is_tmp { get; construct; }
@@ -70,7 +71,7 @@ namespace CassetteClient.Cachier {
                     storager.move (path, null, false);
                     Idle.add (move_to_perm.callback);
                 });
-                
+
                 yield;
             }
         }
@@ -86,9 +87,9 @@ namespace CassetteClient.Cachier {
         public signal void moving_done ();
 
         // Расположение кэшей
-      string old_cache_path;
+        string old_cache_path;
 
-      string _cache_path;
+        string _cache_path;
         public string cache_path {
             get { return _cache_path; }
             set {
@@ -123,13 +124,13 @@ namespace CassetteClient.Cachier {
         }
 
         // Расположение дополнительных директорий
-      string home_dir = Environment.get_home_dir();
-      string temp_dir;
+        string home_dir = Environment.get_home_dir();
+        string temp_dir;
         public string log_file_path { get; private set; }
         public string cookies_file_path { get; private set; }
         public string db_file_path { get; private set; }
-      string temp_track_path;
-      string temp_track_uri;
+        string temp_track_path;
+        string temp_track_uri;
 
         public string temp_cache_path { get; private set; }
 
@@ -156,7 +157,7 @@ namespace CassetteClient.Cachier {
             init_db ();
         }
 
-      void init_log () {
+        void init_log () {
             FileUtils.remove (log_file_path);
 
             if (is_devel) {
@@ -168,9 +169,9 @@ namespace CassetteClient.Cachier {
             Logger.info (_("Log created, loc - %s").printf (Logger.instance.log_path));
         }
 
-      void init_db () {
+        void init_db () {
             db = new InfoDB (db_file_path);
-            
+
             Logger.info (_("Database was initialized, loc - %s").printf (db.db_path));
         }
 
@@ -201,7 +202,7 @@ namespace CassetteClient.Cachier {
                     FileQueryInfoFlags.NONE,
                     null
                 );
-            
+
                 if (enumerator != null) {
                     FileInfo? file_info = null;
 
@@ -209,7 +210,7 @@ namespace CassetteClient.Cachier {
                         string file_name = file_info.get_name ();
                         string src_file_path = Path.build_filename (src_dir, file_name);
                         string dst_file_path = Path.build_filename (dst_dir, file_name);
-            
+
                         if (file_info.get_file_type () == FileType.DIRECTORY) {
                             move_dir(src_file_path, dst_file_path);
                         } else {
@@ -225,7 +226,7 @@ namespace CassetteClient.Cachier {
             } catch (Error e) {
                 Logger.warning (_("Can't move directory. Message: %s").printf (e.message));
             }
-            
+
         }
 
         void remove_dir (string dir) {
@@ -235,14 +236,14 @@ namespace CassetteClient.Cachier {
                     FileQueryInfoFlags.NONE,
                     null
                 );
-            
+
                 if (enumerator != null) {
                     FileInfo? file_info = null;
 
                     while ((file_info = enumerator.next_file ()) != null) {
                         string file_name = file_info.get_name ();
                         string file_path = Path.build_filename (dir, file_name);
-            
+
                         if (file_info.get_file_type () == FileType.DIRECTORY) {
                             remove_dir(file_name);
                         } else {
@@ -258,7 +259,7 @@ namespace CassetteClient.Cachier {
             } catch (Error e) {
                 Logger.warning (_("Can't move directory. Message: %s").printf (e.message));
             }
-            
+
         }
 
         public void clear_user () {
@@ -284,7 +285,7 @@ namespace CassetteClient.Cachier {
         }
 
         // Даёт путь и создает директории при необходимости
-      string get_path (string filename, bool is_tmp) {
+        string get_path (string filename, bool is_tmp) {
             File path_file;
             if (is_tmp) {
                 path_file = File.new_build_filename (temp_cache_path, filename);
@@ -307,13 +308,13 @@ namespace CassetteClient.Cachier {
         }
 
         //  "Перевернуть" данные (допустим закодировал)
-      void dencode (ref uint8[] data) {
+        void dencode (ref uint8[] data) {
             for (int i = 0; i < data.length; i++) {
                 data[i] = data[i] ^ 0xFF;
             }
         }
 
-      string dencode_name (string name) {
+        string dencode_name (string name) {
             return Base64.encode (name.data).replace ("/", "=");
         }
 
@@ -331,7 +332,7 @@ namespace CassetteClient.Cachier {
         // Images  //
         /////////////
 
-      File get_image_cache_file (string image_uri, bool is_tmp) {
+        File get_image_cache_file (string image_uri, bool is_tmp) {
             string imagedir_path = get_path (Filenames.IMAGES, is_tmp);
             string image_name = dencode_name (image_uri);
             return File.new_build_filename (imagedir_path, image_name);
@@ -355,7 +356,7 @@ namespace CassetteClient.Cachier {
             if (image_location.path == null) {
                 return null;
             }
-            
+
             while (true) {
                 try {
                     uint8[] idata;
@@ -390,7 +391,7 @@ namespace CassetteClient.Cachier {
         // Tracks  //
         /////////////
 
-      File get_track_cache_file (string track_id, bool is_tmp) {
+        File get_track_cache_file (string track_id, bool is_tmp) {
             string trackdir_path = get_path (Filenames.TRACKS, is_tmp);
             string track_name = dencode_name (track_id);
             return File.new_build_filename (trackdir_path, track_name);
@@ -451,11 +452,11 @@ namespace CassetteClient.Cachier {
         //  Objects  //
         ///////////////
 
-      string build_id (Type build_type, string oid) {
+        string build_id (Type build_type, string oid) {
             return build_type.name () + "/" + oid;
         }
 
-      File get_object_cache_file (Type obj_type, string oid, bool is_tmp) {
+        File get_object_cache_file (Type obj_type, string oid, bool is_tmp) {
             string objdir_path = get_path (Filenames.OBJECTS, is_tmp);
             string object_name = dencode_name (build_id (obj_type, oid));
             return File.new_build_filename (objdir_path, object_name);
@@ -543,10 +544,10 @@ namespace CassetteClient.Cachier {
             threader.add (() => {
                 try {
                     Process.spawn_command_line_sync ("du -sh %s --exclude=\"*.log\"".printf (storager.temp_cache_path), out size);
-  
+
                     Regex regex = null;
                     regex = new Regex ("^[\\d.,]+[A-Z]", RegexCompileFlags.OPTIMIZE, RegexMatchFlags.NOTEMPTY);
-                    
+
                     MatchInfo match_info;
                     if (regex.match (size, 0, out match_info)) {
                         size = match_info.fetch (0);
@@ -576,10 +577,10 @@ namespace CassetteClient.Cachier {
             threader.add (() => {
                 try {
                     Process.spawn_command_line_sync ("du -sh %s --exclude=\"*.db\" --exclude=\"*.cookies\"".printf (storager.cache_path), out size);
-                
+
                     Regex regex = null;
                     regex = new Regex ("^[\\d.,]+[A-Z]", RegexCompileFlags.OPTIMIZE, RegexMatchFlags.NOTEMPTY);
-                    
+
                     MatchInfo match_info;
                     if (regex.match (size, 0, out match_info)) {
                         size = match_info.fetch (0);

@@ -48,7 +48,7 @@ namespace CassetteClient.Player {
         }
 
         public void prev () {
-            
+
         }
     }
 }

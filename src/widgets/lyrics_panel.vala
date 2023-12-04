@@ -27,14 +27,14 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/lyrics_panel.ui")]
     public class LyricsPanel : Adw.Bin {   
         [GtkChild]
-      unowned Gtk.Box lines_box;
+        unowned Gtk.Box lines_box;
 
         public string track_id { get; set; }
 
-      bool is_text = true;
+        bool is_text = true;
 
-      LyricsLine? _current_line = null;
-      LyricsLine? current_line {
+        LyricsLine? _current_line = null;
+        LyricsLine? current_line {
             get {
                 return _current_line;
             }
@@ -48,9 +48,9 @@ namespace Cassette {
                 }
             }
         }
-      LinkedList<LyricsLine> line_list;
+        LinkedList<LyricsLine> line_list;
 
-      uint? tout = null;
+        uint? tout = null;
 
         public LyricsPanel () {
             Object ();
@@ -105,7 +105,7 @@ namespace Cassette {
             });
         }
 
-      void show_as_text () {
+        void show_as_text () {
             if (!is_text) {
                 is_text = true;
                 foreach (var line in line_list) {
@@ -114,7 +114,7 @@ namespace Cassette {
             }
         }
 
-      void show_as_sync () {
+        void show_as_sync () {
             if (is_text) {
                 is_text = false;
                 foreach (var line in line_list) {

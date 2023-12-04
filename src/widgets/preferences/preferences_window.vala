@@ -27,35 +27,35 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/preferences_window.ui")]
     public class PreferencesWindow : Adw.PreferencesWindow {
         [GtkChild]
-      unowned Adw.SwitchRow show_save_stack_switch;
+        unowned Adw.SwitchRow show_save_stack_switch;
         [GtkChild]
-      unowned Adw.SwitchRow show_temp_save_stack_switch;
+        unowned Adw.SwitchRow show_temp_save_stack_switch;
         [GtkChild]
-      unowned Adw.SwitchRow is_hq_switch;
+        unowned Adw.SwitchRow is_hq_switch;
         [GtkChild]
-      unowned Adw.SwitchRow child_visible_switch;
+        unowned Adw.SwitchRow child_visible_switch;
         [GtkChild]
-      unowned Adw.SwitchRow explicit_visible_switch;
+        unowned Adw.SwitchRow explicit_visible_switch;
         [GtkChild]
-      unowned Adw.SwitchRow show_replaced_mark_switch;
+        unowned Adw.SwitchRow show_replaced_mark_switch;
         [GtkChild]
-      unowned Adw.SwitchRow available_visible_switch;
+        unowned Adw.SwitchRow available_visible_switch;
         [GtkChild]
-      unowned Adw.SwitchRow add_tracks_to_start_switch;
+        unowned Adw.SwitchRow add_tracks_to_start_switch;
         [GtkChild]
-      unowned Adw.SwitchRow show_main_switch;
+        unowned Adw.SwitchRow show_main_switch;
         [GtkChild]
-      unowned Adw.SwitchRow show_liked_switch;
+        unowned Adw.SwitchRow show_liked_switch;
         [GtkChild]
-      unowned Adw.SwitchRow show_playlists_switch;
+        unowned Adw.SwitchRow show_playlists_switch;
         [GtkChild]
-      unowned Adw.SwitchRow can_cache_switch;
+        unowned Adw.SwitchRow can_cache_switch;
         [GtkChild]
-      unowned Adw.SwitchRow try_load_queue_every_activate_switch;
+        unowned Adw.SwitchRow try_load_queue_every_activate_switch;
         [GtkChild]
-      unowned Adw.SpinRow max_thread_number_spin;
+        unowned Adw.SpinRow max_thread_number_spin;
         [GtkChild]
-      unowned CacheDeletionPreferences deletion_preferences;
+        unowned CacheDeletionPreferences deletion_preferences;
 
         construct {
             deletion_preferences.pref_win = this;
@@ -75,11 +75,11 @@ namespace Cassette {
             storager.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("try-load-queue-every-activate", try_load_queue_every_activate_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-         
+
             storager.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("show-playlists", show_playlists_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            
+
             max_thread_number_spin.notify["value"].connect (() => {
                 storager.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);
             });

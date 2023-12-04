@@ -25,7 +25,7 @@ using Gee;
 namespace CassetteClient.Player {
     public class PlayerTL: Object, IPlayerMod {
 
-      YaMAPI.Queue _queue;
+        YaMAPI.Queue _queue;
         public YaMAPI.Queue queue {
             get {
                 return _queue;
@@ -48,7 +48,7 @@ namespace CassetteClient.Player {
             }
         }
 
-      ArrayList<Track> original_tracks = new ArrayList<Track> ();
+        ArrayList<Track> original_tracks = new ArrayList<Track> ();
 
         public Track? current_track {
             owned get {
@@ -57,7 +57,7 @@ namespace CassetteClient.Player {
                         _queue.current_index = 0;
                         Logger.warning (_("Problems with queue"));
                     }
-    
+
                     return _queue.tracks[_queue.current_index];
                 } else {
                     return null;
@@ -150,7 +150,7 @@ namespace CassetteClient.Player {
             return false;
         }
 
-      void shuffle_without_emmit () {
+        void shuffle_without_emmit () {
             var type_utils = new TypeUtils<Track> ();
 
             var track = current_track;

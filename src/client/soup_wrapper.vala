@@ -35,7 +35,7 @@ namespace CassetteClient {
     }
 
     protected class Headers {
-      Header[] headers_arr = new Header[0];
+        Header[] headers_arr = new Header[0];
 
         public Headers () {  }
 
@@ -64,9 +64,9 @@ namespace CassetteClient {
 
     public class SoupWrapper : Object {
 
-      Gee.HashMap<string, Headers> presets_table = new Gee.HashMap<string, Headers> ();
+        Gee.HashMap<string, Headers> presets_table = new Gee.HashMap<string, Headers> ();
 
-      Soup.Session session = new Soup.Session () {
+        Soup.Session session = new Soup.Session () {
             timeout = TIMEOUT
         };
         public string? user_agent {
@@ -76,7 +76,7 @@ namespace CassetteClient {
                 }
             }
         }
-    
+
         public string? cookie_file_path {
             construct set {
                 if (value == null) {
@@ -117,7 +117,7 @@ namespace CassetteClient {
             if (storager.cookies_exists ()) {
                 storager.remove_file (storager.cookies_file_path);
             }
-            
+
             cookie_file_path = storager.cookies_file_path;
         }
 
@@ -232,7 +232,7 @@ namespace CassetteClient {
             }
         }
 
-      Bytes run_sync (Message msg) throws ClientError, BadStatusCodeError {
+        Bytes run_sync (Message msg) throws ClientError, BadStatusCodeError {
             Bytes bytes = null;
 
             try {
@@ -246,7 +246,7 @@ namespace CassetteClient {
             return bytes;
         }
 
-      async Bytes? run_async (
+        async Bytes? run_async (
             Message msg,
             int priority
         ) throws ClientError, BadStatusCodeError {
@@ -294,7 +294,7 @@ namespace CassetteClient {
             Header[]? headers = null
         ) throws ClientError, BadStatusCodeError {
             var msg = message_post (uri, header_preset_names, post_content, parameters, headers);
-            
+
             return run_sync(msg);
         }
 

@@ -21,7 +21,7 @@
 using Gee;
 
 namespace CassetteClient {
-    
+
     public enum LikableType {
         TRACK,
         PLAYLIST,
@@ -32,16 +32,16 @@ namespace CassetteClient {
     // Контроллер лайков различного контента. Хранит в себе все лайки пользователя.
     public class LikesController : Object {
 
-      HashSet<string> disliked_tracks_ids = new HashSet<string> ();
-      HashSet<string> liked_tracks_ids = new HashSet<string> ();
-      HashSet<string> liked_playlists_ids = new HashSet<string> ();
-      HashSet<string> liked_albums_ids = new HashSet<string> ();
+        HashSet<string> disliked_tracks_ids = new HashSet<string> ();
+        HashSet<string> liked_tracks_ids = new HashSet<string> ();
+        HashSet<string> liked_playlists_ids = new HashSet<string> ();
+        HashSet<string> liked_albums_ids = new HashSet<string> ();
 
         public LikesController () {
             Object ();
         }
 
-      HashSet<string> get_id_array (LikableType content_type) {
+        HashSet<string> get_id_array (LikableType content_type) {
             switch (content_type)
             {
                 case LikableType.TRACK:
@@ -61,7 +61,7 @@ namespace CassetteClient {
 
         public void update_liked_tracks (ArrayList<YaMAPI.TrackShort> track_list) {
             liked_tracks_ids.clear ();
-            
+
             foreach (var track in track_list) {
                 liked_tracks_ids.add (track.track.id);
             }
@@ -93,7 +93,7 @@ namespace CassetteClient {
 
         public void update_disliked_tracks (ArrayList<YaMAPI.TrackShort> track_list) {
             disliked_tracks_ids.clear ();
-            
+
             foreach (var track in track_list) {
                 disliked_tracks_ids.add (track.id);
             }

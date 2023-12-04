@@ -73,7 +73,7 @@ namespace CassetteClient {
             }
         }
 
-      static void write_net_to_file (string direction, string data) {
+        static void write_net_to_file (string direction, string data) {
             if (instance == null) {
                 return;
             }
@@ -81,7 +81,7 @@ namespace CassetteClient {
             if (instance.log_file == null) {
                 return;
             }
-            
+
             try {
                 FileOutputStream os = instance.log_file.append_to (FileCreateFlags.NONE);
                 string final_message = direction + " : " + data + "\n";
@@ -99,7 +99,7 @@ namespace CassetteClient {
             if (instance.log_file == null) {
                 return;
             }
-            
+
             if (instance.log_level <= LogLevel.DEBUG_SOUP) {
                 write_to_file ("*TIME*  ", "\n\n");
             }

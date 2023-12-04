@@ -42,10 +42,10 @@ namespace CassetteClient {
 
         AsyncQueue<ThreadInfo> thread_datas = new AsyncQueue<ThreadInfo> ();
 
-      Mutex mutex = Mutex ();
-      Cond cond = Cond ();
+        Mutex mutex = Mutex ();
+        Cond cond = Cond ();
 
-      int running_jobs_count = 0;
+        int running_jobs_count = 0;
         public int max_running_jobs { get; construct; }
 
         public WorkManager (int max_running_jobs) {
@@ -56,29 +56,29 @@ namespace CassetteClient {
             new Thread<void> (null, work);
         }
 
-      void work () {
+        void work () {
             while (true) {
                 mutex.lock ();
-    
+
                 if (running_jobs_count >= 10) {
                     cond.wait (mutex);
                 }
-    
+
                 lock (running_jobs_count) {
                     running_jobs_count++;
                 }
-    
+
                 new Thread<void> (null, () => {
                     var worker = thread_datas.pop ();
                     worker.run ();
-    
+
                     lock (running_jobs_count) {
                         running_jobs_count--;
                     }
-    
+
                     cond.signal ();
                 });
-    
+
                 mutex.unlock ();
             }
         }
@@ -92,13 +92,13 @@ namespace CassetteClient {
     public class Threader : Object {
 
         //  Стандартный пул потоков
-      WorkManager default_pool;
+        WorkManager default_pool;
         //  Пул потоков для задач кэширования
-      WorkManager image_pool;
+        WorkManager image_pool;
         //  Пул потоков для важных задач, так как первые два могут быть заполнены
-      WorkManager audio_pool;
+        WorkManager audio_pool;
         //  Пул потоков для задач, выполнение которых не должно пересекаться (размер - 1)
-      WorkManager single_pool;
+        WorkManager single_pool;
 
         construct {
             int max_size = storager.settings.get_int("max-thread-number");

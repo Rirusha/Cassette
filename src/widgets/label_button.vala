@@ -26,9 +26,9 @@ namespace Cassette {
     public class LabelButton : Adw.Bin {   
 
         [GtkChild]
-      unowned Gtk.Label just_label;
+        unowned Gtk.Label just_label;
         [GtkChild]
-      unowned Gtk.Label button_label;
+        unowned Gtk.Label button_label;
         [GtkChild]
         public unowned Gtk.Button button;
         [GtkChild]

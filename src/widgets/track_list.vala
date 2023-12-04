@@ -137,15 +137,15 @@ namespace Cassette {
         [GtkChild]
         public unowned Gtk.Box search_box;
         [GtkChild]
-      unowned Gtk.SearchEntry search_entry;
+        unowned Gtk.SearchEntry search_entry;
         [GtkChild]
-      unowned Gtk.Button sort_direction_button;
+        unowned Gtk.Button sort_direction_button;
         [GtkChild]
-      unowned Gtk.Button remove_sort_button;
+        unowned Gtk.Button remove_sort_button;
         [GtkChild]
         public unowned Gtk.FlowBox track_box;
         [GtkChild]
-      unowned Adw.StatusPage status_page;
+        unowned Adw.StatusPage status_page;
 
         public int length {
             get {
@@ -153,13 +153,13 @@ namespace Cassette {
             }
         }
 
-      ArrayList<TrackRow> original_track_rows = new ArrayList<TrackRow> ();
-      ArrayList<TrackRow> sorted_rows = new ArrayList<TrackRow> ();
-      ArrayList<TrackRow> filtered_rows = new ArrayList<TrackRow> ();
-      HashSet<int> loaded_rows = new HashSet<int> ();
+        ArrayList<TrackRow> original_track_rows = new ArrayList<TrackRow> ();
+        ArrayList<TrackRow> sorted_rows = new ArrayList<TrackRow> ();
+        ArrayList<TrackRow> filtered_rows = new ArrayList<TrackRow> ();
+        HashSet<int> loaded_rows = new HashSet<int> ();
 
         public SortType? sort_type = null;
-      SortDirection sort_direction = SortDirection.ASCENDING;
+        SortDirection sort_direction = SortDirection.ASCENDING;
 
         public Gtk.Adjustment adjustment { get; construct set; }
 
@@ -432,7 +432,7 @@ namespace Cassette {
             load_chunk ();
         }
 
-      void remove_all () {
+        void remove_all () {
             while (track_box.get_last_child () != null) {
                 track_box.remove (track_box.get_last_child ());
             }
@@ -501,12 +501,12 @@ namespace Cassette {
             return true;
         }
 
-      void preset_actions () {
+        void preset_actions () {
             remove_all ();
             clear_all ();
         }
 
-      void postset_actions () {
+        void postset_actions () {
             sorted_rows_reset ();
             filter ();
 
@@ -515,7 +515,7 @@ namespace Cassette {
             }
         }
 
-      void add_row (TrackRow track_row) {
+        void add_row (TrackRow track_row) {
             original_track_rows.add (track_row);
             track_box.append (track_row);
         }
@@ -541,7 +541,7 @@ namespace Cassette {
 
             is_queue = true;
             sort_direction_button.visible = false;
-            
+
             for (int i = 0; i < track_list.size; i++ ) {
                 add_row (new TrackQueueRow (track_list[i], i));
             }
@@ -566,7 +566,7 @@ namespace Cassette {
             loaded_rows.clear ();
         }
 
-      void sorted_rows_reset () {
+        void sorted_rows_reset () {
             sorted_rows.clear ();
 
             if (sort_direction == SortDirection.ASCENDING || is_queue) {

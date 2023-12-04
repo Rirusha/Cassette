@@ -8,7 +8,7 @@ public int main (string[] args){
     Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
     Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
-    
+
     Test.init (ref args);
 
     Test.add_func ("/storager/init", () => {
@@ -16,7 +16,7 @@ public int main (string[] args){
     });
 
     Test.add_func ("/storager/move", () => {
-        
+
     });
 
     Test.add_func ("/storager/cookies_exists/exists", () => {
@@ -68,7 +68,7 @@ public int main (string[] args){
 
     Test.add_func ("/storager/objects/save", () => {
         var test_obj = new Playlist.liked () { uid = "123", kind = "3"};
-        
+
         storager.save_object (test_obj, true);
     });
 

@@ -55,7 +55,7 @@ namespace Cassette {
             return true;
         }
 
-      void on_track_state_changed (string playing_track_id) {
+        void on_track_state_changed (string playing_track_id) {
             if (playing_track_id == content_id) {
                 if (player.player_state == Player.PlayerState.PLAYING) {
                     set_playing ();

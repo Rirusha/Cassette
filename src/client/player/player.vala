@@ -44,7 +44,7 @@ namespace CassetteClient.Player {
         public abstract YaMAPI.Track? current_track { owned get; }
         public abstract YaMAPI.Track next_track { owned get; }
         public abstract YaMAPI.Track prev_track { owned get; }
-        public abstract void next ();
+        public abstract void next (bool consider_repeat_mode);
         public abstract void prev ();
     }
 
@@ -186,7 +186,7 @@ namespace CassetteClient.Player {
 
             bus.add_signal_watch ();
             bus.message["eos"].connect ((bus, message) => {
-                next ();
+                next_repeat ();
             });
 
             storager.settings.bind ("repeat-mode", this, "repeat-mode", SettingsBindFlags.DEFAULT);
@@ -277,10 +277,17 @@ namespace CassetteClient.Player {
             play_slider.set_value (0.0);
         }
 
+        void next_repeat () {
+            stop ();
+
+            player_mod.next (true);
+            start_current_track.begin ();
+        }
+
         public void next () {
             stop ();
 
-            player_mod.next ();
+            player_mod.next (false);
             start_current_track.begin ();
         }
 

@@ -43,7 +43,7 @@ namespace CassetteClient.Player {
             Object ();
         }
 
-        public void next () {
+        public void next (bool consider_repeat_mode) {
 
         }
 

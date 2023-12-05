@@ -74,8 +74,12 @@ namespace Cassette {
             action_group.add_action (bad_close_action);
 
             var login_action = new SimpleAction ("login", null);
-            login_action.activate.connect (login);
+            login_action.activate.connect (login_username);
             action_group.add_action (login_action);
+
+            var login_phone_action = new SimpleAction ("login_phone", null);
+            login_phone_action.activate.connect (login_phone);
+            action_group.add_action (login_phone_action);
 
             var password_action = new SimpleAction ("password", null);
             password_action.activate.connect (enter_password);
@@ -118,7 +122,7 @@ namespace Cassette {
                 activate_action ("auth.login", null);
             });
             phone_entry.activate.connect (() => {
-                activate_action ("auth.login", null);
+                activate_action ("auth.login_phone", null);
             });
             password_entry.activate.connect (() => {
                 activate_action ("auth.password", null);
@@ -127,7 +131,7 @@ namespace Cassette {
             warning_dialog = new Adw.MessageDialog (
                 this,
                 _("Authorization warning"),
-                _("Frequent authorization attempts may lead to Yandex perceiving this as ddos, so please check the data when entering and do not log in too often in a short time.")
+                _("Frequent authorization initialization attempts may lead to Yandex perceiving this as ddos, so please check the data when entering and do not log in too often in a short time. And DON'T USE QR-CODE IF YOU HAVE NOT KEY APP")
             );
 
             // Translators: "Ok" from message dialog
@@ -148,7 +152,7 @@ namespace Cassette {
             toast_overlay.add_toast (toast);
         }
 
-        async void login () {
+        async void login_username () {
             string username;
             if (username_entry.text != "") {
                 username = username_entry.text;
@@ -172,7 +176,7 @@ namespace Cassette {
                     }
                 }
 
-                Idle.add (login.callback);
+                Idle.add (login_username.callback);
             });
 
             yield;
@@ -201,6 +205,10 @@ namespace Cassette {
                 main_stack.visible_child_name = "main";
                 show_message (_("Username incorrect"));
             }
+        }
+
+        async void login_phone () {
+            show_message (_("Not implemented yet"));
         }
 
         async void enter_password () {

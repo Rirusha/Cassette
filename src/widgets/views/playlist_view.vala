@@ -291,7 +291,7 @@ namespace Cassette {
                     return;
                 }
 
-                visibility_switch.freeze_notify ();
+                visibility_switch.state_set.disconnect (on_switch_change);
                 if (playlist_info.is_public) {
                     application.show_message (_("Playlist '%s' is public now").printf (playlist_info.title));
                     visibility_switch.active = true;
@@ -299,9 +299,9 @@ namespace Cassette {
                     application.show_message (_("Playlist '%s' is private now").printf (playlist_info.title));
                     visibility_switch.active = false;
                 }
-                visibility_switch.thaw_notify ();
+                visibility_switch.state_set.connect (on_switch_change);
             });
-            return true;
+            return false;
         }
 
         async YaMAPI.Playlist? on_switch_change_async (bool is_active) {

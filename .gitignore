@@ -12,3 +12,8 @@ my.*
 
 # Poedit db
 *.mo
+
+# flatpak
+.flatpak-builder
+build-dir
+repo

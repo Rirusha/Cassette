@@ -38,7 +38,7 @@ namespace CassetteClient {
                 with_user_agent? "Cassette Application" : null,
                 storager.cookies_file_path
             );
-            
+
         }
 
         //  Функция-обёртка для сетевых действий

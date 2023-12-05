@@ -35,7 +35,7 @@ namespace CassetteClient.Cachier {
         PERM
     }
 
-    private class ContentInfo : Object {
+  class ContentInfo : Object {
         public ContentType content_type { get; construct; }
         public string content_id { get; construct; }
 
@@ -46,11 +46,11 @@ namespace CassetteClient.Cachier {
 
     // Контроллер состояния кэширования треков. Все отображалки состояния привязаны к этому контроллеру
     public class CachierController : Object {
-        private ArrayList<ContentInfo?> loading_content = new ArrayList<ContentInfo?> ();
+        ArrayList<ContentInfo?> loading_content = new ArrayList<ContentInfo?> ();
 
         public signal void content_cache_state_changed (ContentType content_type, string content_id, CacheingState state);
 
-        private ContentInfo? get_content_info (ContentInfo content_info) {
+        ContentInfo? get_content_info (ContentInfo content_info) {
             foreach (var ci in loading_content) {
                 if (content_info.content_id == ci.content_id && content_info.content_type == ci.content_type) {
                     return ci;
@@ -59,13 +59,13 @@ namespace CassetteClient.Cachier {
             return null;
         }
 
-        private void add_content_info (ContentInfo content_info) {
+        void add_content_info (ContentInfo content_info) {
             if (get_content_info (content_info) == null) {
                 loading_content.add (content_info);
             }
         }
 
-        private void remove_content_info (ContentInfo content_info) {
+        void remove_content_info (ContentInfo content_info) {
             var ci = get_content_info (content_info);
             if (ci != null) {
                 loading_content.remove (ci);
@@ -88,7 +88,7 @@ namespace CassetteClient.Cachier {
 
         public void stop_loading (ContentType content_type, string content_id, CacheingState? state) {
             remove_content_info (new ContentInfo (content_type, content_id));
-            
+
             content_cache_state_changed (content_type, content_id, state != null? state : get_content_cache_state (content_type, content_id));
         }
 

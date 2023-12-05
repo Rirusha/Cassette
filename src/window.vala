@@ -26,42 +26,42 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         [GtkChild]
-        private unowned Gtk.Box main_box;
+        unowned Gtk.Box main_box;
         [GtkChild]
-        private unowned Adw.HeaderBar header_bar;
+        unowned Adw.HeaderBar header_bar;
         [GtkChild]
-        private unowned Gtk.Stack title_stack;
+        unowned Gtk.Stack title_stack;
         [GtkChild]
-        private unowned Adw.ViewSwitcher switcher_title;
+        unowned Adw.ViewSwitcher switcher_title;
         [GtkChild]
-        private unowned Gtk.Button button_backward;
+        unowned Gtk.Button button_backward;
         [GtkChild]
-        private unowned Gtk.Button button_refresh;
+        unowned Gtk.Button button_refresh;
         [GtkChild]
-        private unowned Gtk.MenuButton avatar_button;
+        unowned Gtk.MenuButton avatar_button;
         [GtkChild]
-        private unowned Adw.Avatar avatar;
+        unowned Adw.Avatar avatar;
         [GtkChild]
         public unowned Cassette.SideBar sidebar;
         [GtkChild]
-        private unowned Gtk.ToggleButton button_search;
+        unowned Gtk.ToggleButton button_search;
         [GtkChild]
-        private unowned Adw.ToastOverlay toast_overlay;
+         unowned Adw.ToastOverlay toast_overlay;
         [GtkChild]
-        private unowned Adw.ViewStack main_stack;
+        unowned Adw.ViewStack main_stack;
         [GtkChild]
-        private unowned Gtk.Stack loading_stack;
+        unowned Gtk.Stack loading_stack;
         [GtkChild]
-        private unowned Gtk.Spinner spin;
+        unowned Gtk.Spinner spin;
         [GtkChild]
-        private unowned Gtk.MenuButton app_menu_button;
+        unowned Gtk.MenuButton app_menu_button;
 
         public Pager pager;
         public PlayerBar player_bar { get; construct; }
 
-        private GLib.Binding? current_view_can_back_binding = null;
-        private GLib.Binding? current_view_can_refresh_binding = null;
-        private RootView _current_view;
+        GLib.Binding? current_view_can_back_binding = null;
+        GLib.Binding? current_view_can_refresh_binding = null;
+        RootView _current_view;
         public RootView current_view {
             get {
                 return _current_view;
@@ -112,7 +112,7 @@ namespace Cassette {
                 } catch (SpawnError e) {
                     Logger.warning (_("Error while opening uri: %s").printf (e.message));
                 }
-                
+
             });
             add_action (open_account_in_browser_action);
 
@@ -145,7 +145,7 @@ namespace Cassette {
             if (Config.POSTFIX == ".Devel") {
                 add_css_class ("devel");
             }
-    
+
             Cassette.application.application_state_changed.connect ((new_state) => {
                 switch (new_state) {
                     case ApplicationState.ONLINE:
@@ -160,7 +160,7 @@ namespace Cassette {
                         break;
                 }
             });
-            
+
             SimpleAction search_action = new SimpleAction ("search", null);
             search_action.activate.connect (() => {
                 button_search.active = true;
@@ -254,56 +254,56 @@ namespace Cassette {
         void parse_url_from_clipboard () {
             Gdk.Display? display = Gdk.Display.get_default ();
             Gdk.Clipboard clipboard = display.get_clipboard ();
-            
+
             clipboard.read_text_async.begin (null, (obj, res) => {
                 try {
                     string url = clipboard.read_text_async.end (res);
-    
+
                     if (!url.has_prefix ("https://music.yandex.ru/")) {
                         show_message (_("Can't parse clipboard content"));
                         return;
                     }
 
                     string[] parts = url.split ("/");
-    
+
                     // Cut https://music.yandex.ru
                     parts = parts [3:parts.length];
-    
+
                     // users 737063213
                     if (parts[0] == "users") {
                         string user_id = parts[1];
-    
+
                         // playlists ~
                         if (parts[2] == "playlists") {
                             if (parts.length == 3) {
                                 show_message (_("Users view not implemented yet"));
                                 return;
-    
+
                             // playlists 3
                             } else {
                                 string kind = parts[3];
-    
+
                                 current_view.add_view (new PlaylistView (user_id, kind));
                             }
                         }
-    
+
                     // album 4545465
                     }  else if (parts[0] == "album") {
                         //  string album_id = parts[1];
-    
+
                         if (parts.length == 2) {
                             show_message (_("Albums view not implemented yet"));
-    
+
                         // album 87894564 track 54654
                         } else {
                             string track_id = parts[3];
-    
+
                             show_track_by_id.begin (track_id);
-    
+
                             show_message (_("Albums view not implemented yet"));
                         }
                     }
-                    
+
                 } catch (Error e) {
                     show_message (_("Can't parse clipboard content"));
                 }

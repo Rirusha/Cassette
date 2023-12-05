@@ -40,7 +40,7 @@ namespace CassetteClient.YaMAPI {
         public Bytes to_json () {
             var builder = new Json.Builder ();
             builder.begin_object ();
-            
+
             builder.set_member_name ("context");
             builder.begin_object ();
                 builder.set_member_name ("description");

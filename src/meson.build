@@ -3,7 +3,7 @@ vapi_sources = files(
 )
 
 
-cassette_sources = files(
+cassette_gui_sources = files(
   'main.vala',
   'application.vala',
   'window.vala',
@@ -54,74 +54,15 @@ cassette_sources = files(
   'widgets/views/playlists_view.vala',
   'widgets/views/cant_show_view.vala',
   'widgets/auth_window/auth_window.vala',
-  'widgets/auth_window/phone_entry.vala',
-  'client/yam_object.vala',
-  'client/jsoner.vala',
-  'client/utils.vala',
-  'client/soup_wrapper.vala',
-  'client/mpris.vala',
-  'client/logger.vala',
-  'client/threader.vala',
-  'client/likes_controller.vala',
-  'client/talkers/abstract_talker.vala',
-  'client/talkers/yam_talker.vala',
-  'client/talkers/yaauth_talker.vala',
-  'client/player/player.vala',
-  'client/player/player_flow.vala',
-  'client/player/player_local.vala',
-  'client/player/player_track_list.vala',
-  'client/cachier/info_db.vala',
-  'client/cachier/storager.vala',
-  'client/cachier/cachier.vala',
-  'client/cachier/controller.vala',
-  'client/auth/ya_auth.vala',
-  'client/auth/objects/auth/complete_info.vala',
-  'client/auth/objects/auth/login_info.vala',
-  'client/api/yam_client.vala',
-  'client/api/difference_builder.vala',
-  'client/api/objects/api_error.vala',
-  'client/api/objects/track_heap.vala',
-  'client/api/objects/cover.vala',
-  'client/api/objects/track_short.vala',
-  'client/api/objects/download_info.vala',
-  'client/api/objects/account_info/account_info.vala',
-  'client/api/objects/account_info/avatar_info.vala',
-  'client/api/objects/account_info/passport_phone.vala',
-  'client/api/objects/account_info/plus.vala',
-  'client/api/objects/account_info/master_hub.vala',
-  'client/api/objects/account_info/plus.vala',
-  'client/api/objects/account_info/account.vala',
-  'client/api/objects/account_info/permissions.vala',
-  'client/api/objects/playlist/playlist_recommendations.vala',
-  'client/api/objects/playlist/playlist.vala',
-  'client/api/objects/playlist/user.vala',
-  'client/api/objects/playlist/made_for.vala',
-  'client/api/objects/playlist/play_counter.vala',
-  'client/api/objects/playlist/playlist_absence.vala',
-  'client/api/objects/playlist/case_forms.vala',
-  'client/api/objects/playlist/liked_playlist.vala',
-  'client/api/objects/album/album.vala',
-  'client/api/objects/album/label.vala',
-  'client/api/objects/album/volume.vala',
-  'client/api/objects/artist/artist.vala',
-  'client/api/objects/artist/counts.vala',
-  'client/api/objects/artist/ratings.vala',
-  'client/api/objects/artist/link.vala',
-  'client/api/objects/track/track.vala',
-  'client/api/objects/track/lyrics_info.vala',
-  'client/api/objects/track/meta_data.vala',
-  'client/api/objects/track/chart.vala',
-  'client/api/objects/queue/short_queue.vala',
-  'client/api/objects/queue/queue.vala',
-  'client/api/objects/queue/context.vala',
-  'client/api/objects/additional_info/similar_tracks.vala',
-  'client/api/objects/additional_info/lyrics.vala',
-  'client/api/objects/additional_info/lyrics_major.vala',
+  'widgets/auth_window/phone_entry.vala'
 )
 
-cassette_sources += [
+subdir('client')
+
+cassette_sources = [
   vapi_sources,
-  cassette_sources,
+  cassette_gui_sources,
+  cassette_client_sources,
   resources
 ]
 
@@ -134,21 +75,6 @@ cassette_vala_args = [
 
 cassette_c_args = [
   '-include', 'config.h',
-]
-
-
-cassette_dependencies = [
-  gtk,
-  libadwaita,
-  threads,
-  libsoup,
-  gdkpixbuf,
-  jsonglib,
-  sqlite3,
-  gee,
-  libxml,
-  gstreamer,
-  gio,
 ]
 
 executable(

@@ -29,9 +29,9 @@ namespace Cassette {
     public class InfoMarks : Adw.Bin {   
 
         [GtkChild]
-        private unowned Gtk.Image track_replaced_mark;
+        unowned Gtk.Image track_replaced_mark;
         [GtkChild]
-        private unowned Gtk.Image exp_mark;
+        unowned Gtk.Image exp_mark;
         [GtkChild]
         public unowned Gtk.Image child_mark;
 

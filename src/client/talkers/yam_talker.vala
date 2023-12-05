@@ -25,7 +25,7 @@ using CassetteClient.YaMAPI;
 namespace CassetteClient {
 
     delegate void NetFunc () throws ClientError, BadStatusCodeError;
-    
+
     // Класс для выполнения всяких вещей, связанных с интернетом, чтобы можно было оповестить пользователя о проблемах с соединением
     public class YaMTalker : AbstractTalker {
 
@@ -45,7 +45,7 @@ namespace CassetteClient {
 
         public signal void init_end ();
 
-        private AccountInfo? _me = null;
+        AccountInfo? _me = null;
         public AccountInfo me {
             owned get {
                 if (_me != null) {
@@ -126,7 +126,7 @@ namespace CassetteClient {
                 // Пересохраняет объект, если он уже сохранен во временную.
                 // Постоянными объектами занимается уже YaMObjectCachier
                 var object_location = storager.object_cache_location (playlist_info.get_type (), playlist_info.oid);
-                if (object_location.is_tmp) {
+                if (object_location.is_tmp && storager.settings.get_boolean ("can-cache")) {
                     storager.save_object (playlist_info, true);
                     cachier_controller.change_state (
                         Cachier.ContentType.PLAYLIST,
@@ -220,7 +220,7 @@ namespace CassetteClient {
             return track_uri;
         }
 
-        private string get_likable_type (LikableType content_type) {
+        string get_likable_type (LikableType content_type) {
             switch (content_type) {
                 case LikableType.TRACK:
                     return "track";
@@ -236,7 +236,7 @@ namespace CassetteClient {
         public void like (LikableType content_type, string content_id) {
             net_run_wout_code (() => {
                 track_likes_start_change (content_id);
-                
+
                 bool is_ok = client.like (get_likable_type (content_type), content_id);
                 if (is_ok) {
                     likes_controller.add_liked (content_type, content_id);
@@ -252,7 +252,7 @@ namespace CassetteClient {
         public void remove_like (LikableType content_type, string content_id) {
             net_run_wout_code (() => {
                 track_likes_start_change (content_id);
-                
+
                 bool is_ok = client.remove_like (get_likable_type (content_type), content_id);
                 if (is_ok) {
                     likes_controller.remove_liked (content_type, content_id);
@@ -264,7 +264,7 @@ namespace CassetteClient {
         public void dislike (string track_id) {
             net_run_wout_code (() => {
                 track_dislikes_start_change (track_id);
-                
+
                 bool is_ok = client.dislike (track_id);
                 if (is_ok) {
                     likes_controller.add_disliked (track_id);
@@ -473,7 +473,7 @@ namespace CassetteClient {
             return new_playlist;
         }
 
-        private Gee.ArrayList<YaMAPI.TrackShort>? get_disliked_tracks_short () {
+        Gee.ArrayList<YaMAPI.TrackShort>? get_disliked_tracks_short () {
             Gee.ArrayList<YaMAPI.TrackShort>? trackshort_list = null;
 
             net_run_wout_code (() => {

@@ -81,14 +81,6 @@ namespace Cassette {
 
         yield;
     }
-}
-
-namespace Utils {
-
-    public const int TRACK_ART_SIZE = 75;
-    public const int BIG_ART_SIZE = 400;
-    public const int SMALL_BIG_ART_SIZE = 100;
-    public const int TIMEOUT = 10;
 
     public int ms2sec (int ms) {
         return ms / 1000;
@@ -104,7 +96,7 @@ namespace Utils {
         if (is_short) {
             return @"$minutes_str:$(zfill (oth_seconds_str, 2))";
         } else {
-            
+
             if (minutes > 60) {
                 int hours = (int) minutes / 60;
                 minutes -= hours * 60;
@@ -129,17 +121,6 @@ namespace Utils {
         } else {
             int padding = width - str.length;
             return string.nfill (padding, '0') + str;
-        }
-    }
-
-    public class TypeUtils<T> {
-        public void shuffle (ref ArrayList<T> list) {
-            for (int i = 0; i < list.size; i++) {
-                int random_index = Random.int_range (0, list.size);
-                T a = list[i];
-                list[i] = list[random_index];
-                list[random_index] = a;
-            }
         }
     }
 
@@ -178,90 +159,6 @@ namespace Utils {
         return mins_ms + secs_ms + pure_ms;
     }
 
-    public string strip (string str, char ch) {
-        int start = 0;
-        int end = str.length;
-
-        while (str[start] == ch) {
-            start++;
-        }
-        while (str[end - 1] == ch) {
-            end--;
-        }
-
-        return str[start:end];
-    }
-
-    //  Переделывает camelCase строку в kebab-case. Входная строка должна быть корректной camelCase
-    public string camel2kebab (string camel_string) {
-        string kebab_string = "";
-        
-        int i = 0;
-        while (i < camel_string.length) {
-            if (camel_string[i].isupper ()) {
-                kebab_string += "-";
-                kebab_string += camel_string[i].tolower ().to_string ();
-            } else {
-                kebab_string += camel_string[i].to_string ();
-            }
-            i += 1;
-        }
-
-        return kebab_string;
-    }
-
-    //  Переделывает kebab-case строку в camelCase. Входная строка должна быть корректной kebab-case
-    public string kebab2camel (string kebab_string) {
-        string camel_string = "";
-        
-        int i = 0;
-        while (i < kebab_string.length) {
-            if (kebab_string[i] == '-') {
-                i += 1;
-                camel_string += kebab_string[i].toupper ().to_string ();
-            } else {
-                camel_string += kebab_string[i].to_string ();
-            }
-            i += 1;
-        }
-
-        return camel_string;
-    }
-
-    //  Переделывает kebab-case строку в snake_case. Входная строка должна быть корректной kebab-case
-    public string kebab2snake (string kebab_string) {
-        string snake_string = "";
-        
-        int i = 0;
-        while (i < kebab_string.length) {
-            if (kebab_string[i] == '-') {
-                snake_string += "_";
-            } else {
-                snake_string += kebab_string[i].to_string ();
-            }
-            i += 1;
-        }
-
-        return snake_string;
-    }
-
-    //  Переделывает snake_case строку в kebab-case. Входная строка должна быть корректной snake_case
-    public string snake2kebab (string snake_string) {
-        string kebab_string = "";
-        
-        int i = 0;
-        while (i < snake_string.length) {
-            if (snake_string[i] == '_') {
-                kebab_string += "-";
-            } else {
-                kebab_string += snake_string[i].to_string ();
-            }
-            i += 1;
-        }
-
-        return kebab_string;
-    }
-
     public string get_when (string iso8601_datetime_str) {
         var dt = new DateTime.from_iso8601 (iso8601_datetime_str, null);
         var now_dt = new DateTime.now ();
@@ -279,21 +176,21 @@ namespace Utils {
 
     public string prettify_num (int num) {
         string num_str = num.to_string ();
-    
+
         return prettify_chunk (num_str, num_str.length - 3, "");
     }
-    
+
     string prettify_chunk (string num_str, int start_pos, string res_str) {
         if (start_pos == -3) {
             return res_str;
         }
-    
+
         int end_pos = start_pos + 3;
-    
+
         if (start_pos < 0) {
             start_pos = 0;
         }
-    
+
         return prettify_chunk (num_str, start_pos - 3, num_str[start_pos:end_pos] + " " + res_str);
     }
 }

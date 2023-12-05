@@ -61,7 +61,7 @@ namespace CassetteClient {
             return new Jsoner ((string) data, sub_members, names_case);
         }
 
-        private static Json.Node? steps (Json.Node node, string[] sub_members) throws ClientError {
+        static Json.Node? steps (Json.Node node, string[] sub_members) throws ClientError {
             string has_members = "";
 
             foreach (string member_name in sub_members) {
@@ -86,7 +86,7 @@ namespace CassetteClient {
             return Json.to_string (builder.get_root (), false);
         }
 
-        private static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type) {
+        static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type) {
             builder.begin_array ();
 
             if (element_type.parent () == typeof (YaMObject)) {
@@ -109,7 +109,7 @@ namespace CassetteClient {
                             serialize_value (builder, val);
                         }
                         break;
-                    
+
                     case Type.INT:
                         foreach (int val in (ArrayList<int>) array_list) {
                             serialize_value (builder, val);
@@ -117,12 +117,12 @@ namespace CassetteClient {
                         break;
                 }
 
-                
+
             }
             builder.end_array ();
         }
 
-        private static void serialize_object (Json.Builder builder, YaMObject? yam_obj) {
+        static void serialize_object (Json.Builder builder, YaMObject? yam_obj) {
             if (yam_obj == null) {
                 builder.add_null_value ();
                 return;
@@ -138,8 +138,8 @@ namespace CassetteClient {
 
                 var prop_val = Value (property.value_type);
                 yam_obj.get_property (property.name, ref prop_val);
-                
-                
+
+
                 if (property.value_type == typeof (ArrayList)) {
                     var array_list = (ArrayList) prop_val.get_object ();
                     Type element_type = array_list.element_type;
@@ -154,7 +154,7 @@ namespace CassetteClient {
             builder.end_object ();
         }
 
-        private static void serialize_value (Json.Builder builder, Value prop_val) {
+        static void serialize_value (Json.Builder builder, Value prop_val) {
             switch (prop_val.type ()) {
                 case Type.INT:
                     builder.add_int_value (prop_val.get_int ());
@@ -205,26 +205,26 @@ namespace CassetteClient {
 
             var class_ref = (ObjectClass) obj_type.class_ref ();
             ParamSpec[] properties = class_ref.list_properties ();
-            
+
             foreach (ParamSpec property in properties) {
                 if ((property.flags & ParamFlags.WRITABLE) == 0) {
                     continue;
                 }
 
                 Type prop_type = property.value_type;
-                
+
                 string member_name;
                 switch (names_case) {
                     case Case.CAMEL_CASE:
-                        member_name = Utils.kebab2camel (Utils.strip (property.name, '-'));
+                        member_name = kebab2camel (strip (property.name, '-'));
                         break;
 
                     case Case.SNAKE_CASE:
-                        member_name = Utils.kebab2snake (Utils.strip (property.name, '-'));
+                        member_name = kebab2snake (strip (property.name, '-'));
                         break;
 
                     case Case.KEBAB_CASE:
-                        member_name = Utils.strip (property.name, '-');
+                        member_name = strip (property.name, '-');
                         break;
 
                     default:
@@ -250,14 +250,14 @@ namespace CassetteClient {
                             array_list
                         );
                         break;
-                    
+
                     case Json.NodeType.OBJECT:
                         yam_object.set_property (
                             property.name,
                             deserialize_object (prop_type, sub_node)
                         );
                         break;
-                    
+
                     case Json.NodeType.VALUE:
                         var val = deserialize_value (sub_node);
                         if (val.type () == Type.INT64 && prop_type == Type.STRING) {
@@ -307,7 +307,7 @@ namespace CassetteClient {
                 Logger.warning (_("Wrong type: expected %s, got %s").printf (Json.NodeType.ARRAY.to_string (), node.get_node_type ().to_string ()));
                 throw new ClientError.PARSE_ERROR ("Node isn't array");
             }
-            
+
             var jarray = node.get_array ();
 
             if (array_list.element_type.parent () == typeof (YaMObject)) {
@@ -346,7 +346,7 @@ namespace CassetteClient {
                     } catch (ClientError e) { }
                 });
                 narray_list.remove (narray_list[0]);
-            
+
             } else {
                 array_list.clear ();
                 switch (array_list.element_type) {
@@ -376,7 +376,7 @@ namespace CassetteClient {
                             } catch (ClientError e) { }
                         });
                         break;
-                    
+
                     default:
                         Logger.warning ("Unknown type of element of array - %s".printf (array_list.element_type.name ()));
                         break;

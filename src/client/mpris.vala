@@ -43,7 +43,7 @@ namespace CassetteClient.Mpris {
     [DBus (name = "org.mpris.MediaPlayer2.Player")]
     public class MprisPlayer : Object {
 
-        private DBusConnection con; 
+        DBusConnection con; 
 
         public bool can_control { get; default = true; }
         public bool can_go_next { get; default = true; }
@@ -78,13 +78,13 @@ namespace CassetteClient.Mpris {
                         playback_status = "Stopped";
                         break;
                 }
-                
+
                 try {
                     update_properties ();
                 } catch (Error e) {
                     Logger.warning (e.message);
                 }
-                
+
             });
 
             player.notify["player-mod"].connect (() => {
@@ -96,7 +96,7 @@ namespace CassetteClient.Mpris {
             });
         }
 
-        private HashTable<string,Variant> _get_metadata () {
+        HashTable<string,Variant> _get_metadata () {
             HashTable<string,Variant> metadata = new HashTable<string, Variant> (null, null);
 
             var current_track = player.current_track;
@@ -127,7 +127,7 @@ namespace CassetteClient.Mpris {
         }
 
         // thanks to https://github.com/bcedu/MuseIC
-        private bool send_property_change(string property, Variant variant) {
+        bool send_property_change(string property, Variant variant) {
             var builder = new VariantBuilder(VariantType.ARRAY);
             var invalidated_builder = new VariantBuilder(new VariantType("as"));
             builder.add("{sv}", property, variant);
@@ -156,11 +156,15 @@ namespace CassetteClient.Mpris {
         }
 
         public void next (BusName sender) throws Error {
-            player.next ();
+            if (!player.is_loading) {
+                player.next ();
+            }
         }
 
         public void previous (BusName sender) throws Error {
-            player.prev ();
+            if (!player.is_loading) {
+                player.prev ();
+            }
         }
 
         public void play (BusName sender) throws Error {

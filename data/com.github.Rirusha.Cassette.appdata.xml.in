@@ -48,10 +48,13 @@
   </content_rating>
   <screenshots>
     <screenshot type="default">
-      <image>https://i.pinimg.com/736x/8b/41/24/8b41244baf2627d0468adcf221a875b1--white-wolves-wolf-spirit.jpg</image>
+      <image>https://github.com/Rirusha/Cassette/blob/master/data/images/first.png</image>
     </screenshot>
-    <screenshot>
-      <image>https://i.pinimg.com/originals/bf/fe/e4/bffee478d3c19ab5918ec4456c662f56.jpg</image>
+    <screenshot type="default">
+      <image>https://github.com/Rirusha/Cassette/blob/master/data/images/second.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://github.com/Rirusha/Cassette/blob/master/data/images/third.png</image>
     </screenshot>
   </screenshots>
   <summary>Unofficial Yandex.Music client</summary>
@@ -72,6 +75,6 @@
   </releases>
   <url type="homepage">https://github.com/Rirusha/Cassette</url>
   <url type="bugtracker">https://github.com/Rirusha/Cassette/issues</url>
-  <url type="help">https://t.me/+CWp3Htl_MA8xMzQ6</url>
+  <url type="help">https://t.me/CassetteGNOME_Discussion</url>
   <developer_name>Rirusha</developer_name>
 </component>

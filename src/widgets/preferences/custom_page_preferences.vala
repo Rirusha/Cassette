@@ -26,13 +26,13 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/custom_page_preferences.ui")]
     public class CustomPagePreferences : Adw.PreferencesRow {
         [GtkChild]
-        private unowned Gtk.Entry page_title_entry;
+        unowned Gtk.Entry page_title_entry;
         [GtkChild]
-        private unowned Gtk.Entry page_icon_name_entry;
+        unowned Gtk.Entry page_icon_name_entry;
         [GtkChild]
-        private unowned Gtk.Button page_save_button;
+        unowned Gtk.Button page_save_button;
         [GtkChild]
-        private unowned Gtk.Button page_remove_button;
+        unowned Gtk.Button page_remove_button;
 
         public string page_id { get; construct; }
         public string page_title { get; construct; }

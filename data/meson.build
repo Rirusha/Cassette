@@ -13,10 +13,10 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-        input: 'com.github.Rirusha.Cassette.appdata.xml.in',
-       output: 'com.github.Rirusha.Cassette.appdata.xml',
-       po_dir: '../po',
-      install: true,
+  input: 'com.github.Rirusha.Cassette.appdata.xml.in',
+  output: 'com.github.Rirusha.Cassette.appdata.xml',
+  po_dir: '../po',
+  install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
 )
 
@@ -32,8 +32,8 @@ install_data('com.github.Rirusha.Cassette.gschema.xml',
 compile_schemas = find_program('glib-compile-schemas', required: false)
 if compile_schemas.found()
   test('Validate schema file',
-       compile_schemas,
-       args: ['--strict', '--dry-run', meson.current_source_dir()])
+  compile_schemas,
+  args: ['--strict', '--dry-run', meson.current_source_dir()])
 endif
 
 subdir('icons')

@@ -18,7 +18,6 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette;
 
 namespace CassetteClient.YaMAuth {
 
@@ -30,9 +29,9 @@ namespace CassetteClient.YaMAuth {
     public class YaAuth : Object{
 
         public SoupWrapper soup_wrapper { get; construct; }
-    
-        private string csrf_token;
-        private string track_id;
+
+        string csrf_token;
+        string track_id;
 
         public bool is_init_complete { get; set; default = false; }
 
@@ -47,7 +46,7 @@ namespace CassetteClient.YaMAuth {
             is_init_complete = true;
         }
 
-        private void update_csrf_token () throws ClientError, BadStatusCodeError {
+        void update_csrf_token () throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync ("https://passport.yandex.ru/am?app_platform=android");
 
             Regex regex = null;
@@ -72,7 +71,7 @@ namespace CassetteClient.YaMAuth {
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync ("https://passport.yandex.ru/registration-validations/auth/multi_step/start", null, post_content);
-            
+
             var jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE_CASE);
             var login_info = (LoginInfo) jsoner.deserialize_object (typeof (LoginInfo));
 
@@ -97,7 +96,7 @@ namespace CassetteClient.YaMAuth {
 
             return complete_info;
         }
-    
+
         public string get_qr_url () throws ClientError, BadStatusCodeError {
             var datalist = Datalist<string> ();
             datalist.set_data ("csrf_token", csrf_token);

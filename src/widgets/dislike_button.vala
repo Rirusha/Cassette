@@ -133,11 +133,11 @@ namespace Cassette {
             }
         }
 
-        private async void like_dislike () {
+        async void like_dislike () {
             assert (content_id != null);
 
             real_button.sensitive = false;
-            
+
             threader.add (() => {
                 if (is_disliked) {
                     yam_talker.remove_dislike (content_id);

@@ -26,7 +26,7 @@ namespace Cassette {
         public abstract signal void show_ready ();
         public async abstract int try_load_from_web ();
         public async abstract bool try_load_from_cache ();
-        
+
         public abstract RootView root_view { get; set; }
 
         public async virtual void first_show () {

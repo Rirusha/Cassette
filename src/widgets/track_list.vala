@@ -137,15 +137,15 @@ namespace Cassette {
         [GtkChild]
         public unowned Gtk.Box search_box;
         [GtkChild]
-        private unowned Gtk.SearchEntry search_entry;
+        unowned Gtk.SearchEntry search_entry;
         [GtkChild]
-        private unowned Gtk.Button sort_direction_button;
+        unowned Gtk.Button sort_direction_button;
         [GtkChild]
-        private unowned Gtk.Button remove_sort_button;
+        unowned Gtk.Button remove_sort_button;
         [GtkChild]
         public unowned Gtk.FlowBox track_box;
         [GtkChild]
-        private unowned Adw.StatusPage status_page;
+        unowned Adw.StatusPage status_page;
 
         public int length {
             get {
@@ -153,15 +153,17 @@ namespace Cassette {
             }
         }
 
-        private ArrayList<TrackRow> original_track_rows = new ArrayList<TrackRow> ();
-        private ArrayList<TrackRow> sorted_rows = new ArrayList<TrackRow> ();
-        private ArrayList<TrackRow> filtered_rows = new ArrayList<TrackRow> ();
-        private HashSet<int> loaded_rows = new HashSet<int> ();
+        ArrayList<TrackRow> original_track_rows = new ArrayList<TrackRow> ();
+        ArrayList<TrackRow> sorted_rows = new ArrayList<TrackRow> ();
+        ArrayList<TrackRow> filtered_rows = new ArrayList<TrackRow> ();
+        HashSet<int> loaded_rows = new HashSet<int> ();
 
         public SortType? sort_type = null;
-        private SortDirection sort_direction = SortDirection.ASCENDING;
+        SortDirection sort_direction = SortDirection.ASCENDING;
 
         public Gtk.Adjustment adjustment { get; construct set; }
+
+        bool is_queue = false;
 
         public TrackList (Gtk.Adjustment adjustment) {
             Object (adjustment: adjustment);
@@ -236,9 +238,7 @@ namespace Cassette {
                             sort_direction_button.icon_name = "view-sort-ascending-symbolic";
                             break;
                     }
-                    if (sort_type != null) {
-                        sort ();
-                    }
+                    sort ();
                 });
 
                 remove_sort_button.clicked.connect (() => {
@@ -291,7 +291,9 @@ namespace Cassette {
             remove_all ();
             if (sort_type == null) {
                 sorted_rows_reset ();
-                sort_direction_button.visible = false;
+                if (is_queue) {
+                    sort_direction_button.visible = false;
+                }
                 remove_sort_button.visible = false;
             } else {
                 switch (sort_type) {
@@ -416,7 +418,9 @@ namespace Cassette {
                         }
                         break;
                 }
-                sort_direction_button.visible = true;
+                if (is_queue) {
+                    sort_direction_button.visible = true;
+                }
                 remove_sort_button.visible = true;
             }
             foreach (var track_row in sorted_rows) {
@@ -428,7 +432,7 @@ namespace Cassette {
             load_chunk ();
         }
 
-        private void remove_all () {
+        void remove_all () {
             while (track_box.get_last_child () != null) {
                 track_box.remove (track_box.get_last_child ());
             }
@@ -457,13 +461,13 @@ namespace Cassette {
                 end = index + track_number;
             }
 
-            var new_loaded_rows = Utils.range_set (start, end);
+            var new_loaded_rows = range_set (start, end);
 
-            foreach (int row_id in Utils.difference (new_loaded_rows, loaded_rows)) {
+            foreach (int row_id in difference (new_loaded_rows, loaded_rows)) {
                 filtered_rows[row_id].load_content ();
             }
 
-            foreach (int row_id in Utils.difference (loaded_rows, new_loaded_rows)) {
+            foreach (int row_id in difference (loaded_rows, new_loaded_rows)) {
                 filtered_rows[row_id].unload_content ();
             }
 
@@ -497,12 +501,12 @@ namespace Cassette {
             return true;
         }
 
-        private void preset_actions () {
+        void preset_actions () {
             remove_all ();
             clear_all ();
         }
 
-        private void postset_actions () {
+        void postset_actions () {
             sorted_rows_reset ();
             filter ();
 
@@ -511,7 +515,7 @@ namespace Cassette {
             }
         }
 
-        private void add_row (TrackRow track_row) {
+        void add_row (TrackRow track_row) {
             original_track_rows.add (track_row);
             track_box.append (track_row);
         }
@@ -534,7 +538,10 @@ namespace Cassette {
 
         public void set_tracks_as_queue (ArrayList<YaMAPI.Track> track_list) {
             preset_actions ();
-            
+
+            is_queue = true;
+            sort_direction_button.visible = false;
+
             for (int i = 0; i < track_list.size; i++ ) {
                 add_row (new TrackQueueRow (track_list[i], i));
             }
@@ -559,9 +566,16 @@ namespace Cassette {
             loaded_rows.clear ();
         }
 
-        private void sorted_rows_reset () {
+        void sorted_rows_reset () {
             sorted_rows.clear ();
-            sorted_rows.add_all (original_track_rows);
+
+            if (sort_direction == SortDirection.ASCENDING || is_queue) {
+                sorted_rows.add_all (original_track_rows);
+            } else {
+                for (int i = original_track_rows.size - 1; i >= 0; i--) {
+                    sorted_rows.add (original_track_rows[i]);
+                }
+            }
         }
     }
 }

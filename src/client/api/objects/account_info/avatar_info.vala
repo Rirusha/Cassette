@@ -49,7 +49,7 @@ namespace CassetteClient.YaMAPI {
             var asize = (AvatarSize) size;
 
             //  CASSETTE_CLIENT_YA_MAPI_AVATAR_SIZE_ISLANDS_200 -> islands-200
-            string size_str = Utils.snake2kebab (asize.to_string ()[36:].down ());
+            string size_str = snake2kebab (asize.to_string ()[36:].down ());
 
             return @"https://avatars.yandex.net/get-yapic/$default_avatar_id/$size_str";
         }

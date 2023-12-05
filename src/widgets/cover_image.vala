@@ -26,21 +26,21 @@ using Gee;
 namespace Cassette {
     public class CoverImage : Adw.Bin {   
 
-        private Gtk.Image real_image { get; default = new Gtk.Image.from_icon_name ("audio-x-generic-symbolic"); }
-        private HasCover yam_object;
+        Gtk.Image real_image { get; default = new Gtk.Image.from_icon_name ("audio-x-generic-symbolic"); }
+        HasCover yam_object;
 
-        private int cover_size;
+        int cover_size;
         public int size {
             get {
                 return cover_size;
             }
             set {
                 int widget_size;
-                if (value == Utils.BIG_ART_SIZE) {
+                if (value == BIG_ART_SIZE) {
                     widget_size = 200;
-                } else if (value == Utils.TRACK_ART_SIZE) {
+                } else if (value == TRACK_ART_SIZE) {
                     widget_size = 50;
-                } else if (value == Utils.SMALL_BIG_ART_SIZE) {
+                } else if (value == SMALL_BIG_ART_SIZE) {
                     widget_size = 50;
                 } else {
                     assert_not_reached ();

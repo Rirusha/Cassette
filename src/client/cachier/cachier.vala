@@ -32,13 +32,13 @@ namespace CassetteClient.Cachier {
         public HasTrackList yam_object { get; construct; }
         public Gtk.ProgressBar? progress_bar { get; construct; }
         //  Для отмены изменяется переменная should_stop, чтобы объект успел докэшировать то, что он кэшировать
-        private bool should_stop = false;
-        private bool is_abort;
+        bool should_stop = false;
+        bool is_abort;
 
-        private string object_id;
-        private ContentType object_type;
+        string object_id;
+        ContentType object_type;
 
-        private bool progress_bar_visible = false;
+        bool progress_bar_visible = false;
 
         //  В случае завершения кэширования поднимает сигнал со статусом окончания: завершено с ошибкой, успешно или отменено
         public signal void job_done (JobDoneStatus status);
@@ -79,25 +79,25 @@ namespace CassetteClient.Cachier {
                 foreach (var track_info in track_list) {
                     need_cache_track_ids.add (track_info.id);
                 }
-    
+
                 var obj_location = storager.object_cache_location (yam_object.get_type (), object_id);
                 if (obj_location.is_tmp == false) {
                     var cachied_obj_wt = (HasTrackList) storager.load_object (yam_object.get_type (), object_id);
-    
+
                     var cachied_obj_track_list = cachied_obj_wt.get_filtered_track_list (true, true);
-    
+
                     foreach (var track_info in cachied_obj_track_list) {
                         if (!(track_info.id in need_cache_track_ids)) {
                             need_uncache_tracks.add (track_info);
                         }
                     }
-                    
+
                 } else {
                     storager.remove_file (obj_location.path);
                 }
 
                 storager.save_object ((HasID) yam_object, false);
-            
+
                 Idle.add (cache_async.callback);
             });
 
@@ -109,7 +109,7 @@ namespace CassetteClient.Cachier {
                     yield storager.audio_cache_location (track_info.id).move_to_temp ();
                 }
 
-                string image_uri = track_info.get_cover_items_by_size (Utils.TRACK_ART_SIZE)[0];
+                string image_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
                 storager.db.remove_content_ref (image_uri, object_id);
                 if (storager.db.get_content_ref_count (image_uri) == 0) {
                     yield storager.image_cache_location (image_uri).move_to_temp ();
@@ -118,7 +118,7 @@ namespace CassetteClient.Cachier {
 
             var has_cover_yam_obj = yam_object as HasCover;
             if (has_cover_yam_obj != null) {
-                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (Utils.BIG_ART_SIZE)) {
+                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (BIG_ART_SIZE)) {
                     var image_location = storager.image_cache_location (cover_uri);
                     if (image_location.path != null) {
                         yield image_location.move_to_perm ();
@@ -145,15 +145,15 @@ namespace CassetteClient.Cachier {
                     storager.db.set_content_ref (cover_uri, object_id);
                 }
             }
-            
+
             for (int i = 0; i < track_list.size; i++) {
                 if (progress_bar != null && progress_bar_visible) {
                     progress_bar.visible = true;
                     progress_bar.fraction = (double) i / (double) track_list.size;
                 }
-                
+
                 YaMAPI.Track track_info = track_list[i];
-                string image_cover_uri = track_info.get_cover_items_by_size (Utils.TRACK_ART_SIZE)[0];
+                string image_cover_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
 
                 cachier_controller.start_loading (ContentType.TRACK, track_info.id);
 
@@ -182,7 +182,7 @@ namespace CassetteClient.Cachier {
                         return;
                     }
                 }
-                
+
                 storager.db.set_content_ref (image_cover_uri, track_info.id);
 
                 if (should_stop) {
@@ -199,7 +199,7 @@ namespace CassetteClient.Cachier {
                         progress_bar_visible = true;
                         yield track_location.move_to_perm ();
                     }
-    
+
                 } else {
                     string? track_uri = null;
 
@@ -242,9 +242,6 @@ namespace CassetteClient.Cachier {
                     }
                     return;
                 }
-
-                Idle.add (cache_async.callback);
-                yield;
             }
             job_done (JobDoneStatus.SUCCESS);
         }
@@ -254,9 +251,9 @@ namespace CassetteClient.Cachier {
 
             var has_cover_yam_obj = yam_object as HasCover;
             if (has_cover_yam_obj != null) {
-                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (Utils.BIG_ART_SIZE)) {
+                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (BIG_ART_SIZE)) {
                     storager.db.remove_content_ref (cover_uri, object_id);
-                    
+
                     if (storager.db.get_content_ref_count (cover_uri) == 0) {
                         var image_location = storager.image_cache_location (cover_uri);
                         yield image_location.move_to_temp ();
@@ -273,13 +270,13 @@ namespace CassetteClient.Cachier {
                 } else {
                     cachier_controller.change_state (ContentType.PLAYLIST, object_id, CacheingState.NONE);
                 }
-                
+
             }
 
             var track_list = yam_object.get_filtered_track_list (true, true);
 
             foreach (var track_info in track_list) {
-                string image_cover_uri = track_info.get_cover_items_by_size (Utils.TRACK_ART_SIZE)[0];
+                string image_cover_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
                 storager.db.remove_content_ref (image_cover_uri, track_info.id);
                 if (storager.db.get_content_ref_count (image_cover_uri) == 0) {
                     var image_location = storager.image_cache_location (image_cover_uri);

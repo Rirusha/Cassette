@@ -27,14 +27,14 @@ namespace Cassette {
         protected Gtk.Stack download_stack { get; set; }
         protected Gtk.ProgressBar loading_progress_bar { get; set; }
 
-        private Cachier.YaMObjectCachier? yamc = null;
+        Cachier.YaMObjectCachier? yamc = null;
 
         construct {
             cachier_controller.content_cache_state_changed.connect ((content_type, content_id) => {
                 if (object_info == null) {
                     return;
                 }
-    
+
                 if (content_type == Cachier.ContentType.PLAYLIST || content_type == Cachier.ContentType.ALBUM) {
                     if (((YaMAPI.Playlist) object_info).oid == content_id && yamc == null) {
                         download_stack.sensitive = false;

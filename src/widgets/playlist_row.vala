@@ -26,13 +26,13 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_row.ui")]
     public class PlaylistRow : Gtk.Frame {
         [GtkChild]
-        private unowned CoverImage cover_image;
+        unowned CoverImage cover_image;
         [GtkChild]
-        private unowned Gtk.Label playlist_title;
+        unowned Gtk.Label playlist_title;
         [GtkChild]
-        private unowned Gtk.Label track_num_label;
+        unowned Gtk.Label track_num_label;
         [GtkChild]
-        private unowned Gtk.Button add_button;
+        unowned Gtk.Button add_button;
 
         public YaMAPI.Playlist playlist_info { get; construct; }
         public YaMAPI.Track track_info { get; construct; }
@@ -51,7 +51,7 @@ namespace Cassette {
                 add_button_clicked_async.begin ();
             });
 
-            cover_image.init_content (playlist_info, Utils.SMALL_BIG_ART_SIZE);
+            cover_image.init_content (playlist_info, SMALL_BIG_ART_SIZE);
             cover_image.load_image.begin ();
         }
 
@@ -86,7 +86,7 @@ namespace Cassette {
             }
         }
 
-        private void set_track_count () {
+        void set_track_count () {
             track_num_label.label = _("Track count: %s").printf (playlist_info.track_count.to_string ());
         }
 

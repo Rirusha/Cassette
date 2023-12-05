@@ -22,16 +22,18 @@
 using Gee;
 
 namespace CassetteClient.Cachier {
-    //  Класс-обёртка для базы данных
-    //  База данных имеет таблицу additional для всякой доп инфы по типу uid пользователя приложения
-    //      и таблицу tracks_refs, в которой ведется подсчёт обьектов, которые имют трек. Нужна для
-    //      корректного освобождения кэшей (картинок и треков), то есть данные трека не удаляются, если
-    //      сохранен обьект, имеющий этот трек.
     public class InfoDB : Object {
+        /*
+            Класс-обёртка для базы данных
+            База данных имеет таблицу additional для всякой доп инфы по типу uid пользователя приложения
+                и таблицу tracks_refs, в которой ведется подсчёт обьектов, которые имют трек. Нужна для
+                корректного освобождения кэшей (картинок и треков), то есть данные трека не удаляются, если
+                сохранен обьект, имеющий этот трек.
+        */
 
         public string db_path { get; construct; }
 
-        private Sqlite.Database db;
+        Sqlite.Database db;
 
         public InfoDB (string db_path) {
             Object (db_path: db_path);
@@ -51,13 +53,6 @@ namespace CassetteClient.Cachier {
                             "   what_id     TEXT    NOT NULL," +
                             "   source_id   TEXT    NOT NULL," +
                             "   PRIMARY KEY (what_id, source_id));";
-                            //  "CREATE TABLE IF NOT EXISTS tracks_refs (" +
-                            //  "    track_id    TEXT        PRIMARY KEY     NOT NULL," +
-                            //  "    ref_count   TEXT                        NOT NULL" +
-                            //  ");" +
-                            //  "CREATE TABLE IF NOT EXISTS images_refs (" +
-                            //  "    image_id    TEXT        PRIMARY KEY     NOT NULL," +
-                            //  "    ref_count   TEXT                        NOT NULL);";
 
             error_code = db.exec (query, null);
             if (error_code != Sqlite.OK) {
@@ -66,6 +61,10 @@ namespace CassetteClient.Cachier {
         }
 
         public void set_additional_data (string name, string data) {
+            /*
+                Добавляет в базу данных кастомную запись
+            */
+
             string query = "REPLACE INTO additional VALUES ($NAME, $DATA)";
 
             Sqlite.Statement statement;
@@ -80,8 +79,12 @@ namespace CassetteClient.Cachier {
             }
         }
 
-        //  Получемые данные должны быть в базе данных
         public string get_additional_data (string name) {
+            /*
+                Получает из базы данны кастомную запись по имени.
+                Получемые данные должны быть в базе данных
+            */
+
             string query = "SELECT * FROM additional WHERE name=$NAME;";
 
             Sqlite.Statement statement;
@@ -101,6 +104,13 @@ namespace CassetteClient.Cachier {
         }
 
         public void set_content_ref (string what_id, string source_id) {
+            /*
+                Создать запись о сохраненном объекте
+
+                what_id: Индентификатор объекта
+                source_id: Индентификатор держателя объекта
+            */
+
             if (get_content_ref_count (what_id, source_id) != 0) {
                 return;
             }
@@ -120,6 +130,13 @@ namespace CassetteClient.Cachier {
         }
 
         public void remove_content_ref (string what_id, string source_id) {
+            /*
+                Удалить запись о сохраненном объекте
+
+                what_id: Индентификатор объекта
+                source_id: Индентификатор держателя объекта
+            */
+
             string query = "DELETE FROM content_refs WHERE what_id=$WHAT_ID AND source_id=$SOURCE_ID;";
 
             Sqlite.Statement statement;
@@ -135,6 +152,14 @@ namespace CassetteClient.Cachier {
         }
 
         public int get_content_ref_count (string what_id, string? source_id = null) {
+            /*
+                Получить количество записей об объекте
+
+                what_id: Индентификатор объекта
+                source_id: Индентификатор держателя объекта. 
+                           Если null, будут получены все записи, имеющие what_id
+            */
+
             string query = "SELECT COUNT(*) FROM content_refs WHERE what_id=$WHAT_ID";
 
             if (source_id != null) {

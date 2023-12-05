@@ -26,25 +26,25 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_micro.ui")]
     public class PlaylistMicro : Adw.Bin {
         [GtkChild]
-        private unowned CoverImage cover_image;
+        unowned CoverImage cover_image;
         [GtkChild]
-        private unowned Gtk.Label playlist_title;
+        unowned Gtk.Label playlist_title;
         [GtkChild]
-        private unowned Gtk.Label likes_count_label;
+        unowned Gtk.Label likes_count_label;
         [GtkChild]
-        private unowned Gtk.Button self;
+        unowned Gtk.Button self;
         [GtkChild]
-        private unowned LikeButton like_button;
+        unowned LikeButton like_button;
         [GtkChild]
-        private unowned PlayButtonContext play_button;
+        unowned PlayButtonContext play_button;
         [GtkChild]
-        private unowned Gtk.Button add_to_queue_button;
+        unowned Gtk.Button add_to_queue_button;
         [GtkChild]
-        private unowned SaveStack save_stack;
+        unowned SaveStack save_stack;
         [GtkChild]
-        private unowned Gtk.Box buttons_box;
+        unowned Gtk.Box buttons_box;
         [GtkChild]
-        private unowned Gtk.Stack like_button_stack;
+        unowned Gtk.Stack like_button_stack;
 
         public BaseView playlists_view { get; set; }
         public YaMAPI.Playlist? short_playlist_info { get; construct; default = null; }
@@ -59,13 +59,13 @@ namespace Cassette {
 
         construct {
             if (short_playlist_info != null) {
-    
+
                 if (short_playlist_info.owner != null) {
                     if (short_playlist_info.owner.uid != yam_talker.me.oid) {
                         like_button.notify["likes-count"].connect (() => {
                             if (like_button.likes_count > 0) {
                                 likes_count_label.visible = true;
-                                likes_count_label.label = ngettext ("%s like", "%s likes", like_button.likes_count).printf (Utils.prettify_num (like_button.likes_count));
+                                likes_count_label.label = ngettext ("%s like", "%s likes", like_button.likes_count).printf (prettify_num (like_button.likes_count));
                             } else {
                                 likes_count_label.visible = false;
                             }
@@ -145,7 +145,7 @@ namespace Cassette {
                     self.tooltip_text = _("Owner: %s").printf (short_playlist_info.owner.get_user_name ());
                 }
             }
-            
+
             if (short_playlist_info.uid == null) {
                 var me = yam_talker.me;
                 if (me.oid != null) {
@@ -169,7 +169,7 @@ namespace Cassette {
                 play.begin ();
             });
 
-            cover_image.init_content (short_playlist_info, Utils.BIG_ART_SIZE);
+            cover_image.init_content (short_playlist_info, BIG_ART_SIZE);
             cover_image.load_image.begin ();
     }
 
@@ -187,7 +187,7 @@ namespace Cassette {
             if (playlist_info == null) {
                 return;
             }
-            
+
             var track_list = playlist_info.get_filtered_track_list (
                 storager.settings.get_boolean ("explicit-visible"),
                 storager.settings.get_boolean ("child-visible")

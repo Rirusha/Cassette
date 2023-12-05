@@ -19,7 +19,15 @@
  */
 
 
+using Gee;
+
+
 namespace CassetteClient {
+
+    public const int TRACK_ART_SIZE = 75;
+    public const int BIG_ART_SIZE = 400;
+    public const int SMALL_BIG_ART_SIZE = 100;
+    public const int TIMEOUT = 10;
 
     public static Cachier.Storager storager;
     public static Threader threader;
@@ -27,8 +35,8 @@ namespace CassetteClient {
     public static Player.Player player;
     public static Cachier.CachierController cachier_controller;
 
-    public static void init () {
-        storager = new Cachier.Storager ();
+    public static void init (bool is_devel) {
+        storager = new Cachier.Storager (is_devel);
         threader = new Threader ();
         yam_talker = new YaMTalker ();
         player = new Player.Player ();
@@ -47,7 +55,7 @@ namespace CassetteClient {
         ANSWER_ERROR,
         // Ошибка авторизации
         AUTH_ERROR
-    }    
+    }
 
     public async static void download_track_async (string track_id, owned string? track_uri = null, bool is_tmp = true) {
         if (storager.audio_cache_location (track_id).path != null) {
@@ -66,7 +74,7 @@ namespace CassetteClient {
                    storager.settings.get_boolean ("is-hq")
                 );
             }
-    
+
             if (track_uri != null && (storager.settings.get_boolean ("can-cache") || !is_tmp)) {
                 Bytes audio_bytes = yam_talker.load_track (track_uri);
                 if (audio_bytes != null) {
@@ -125,7 +133,7 @@ namespace CassetteClient {
 
             if (pixbufs[i] == null) {
                 pixbufs[i] = yam_talker.load_pixbuf (cover_uris[i]);
-               
+
                 if (pixbufs[i] != null && storager.settings.get_boolean ("can-cache")) {
                    storager.save_image (pixbufs[i], cover_uris[i], true);
                 }
@@ -152,7 +160,7 @@ namespace CassetteClient {
         } else {
             pixbufs[1].composite (pixbuf, 0, new_size, new_size, new_size, 0, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
             pixbufs[0].composite(pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
-        
+
             return pixbuf;
         }
 
@@ -168,11 +176,106 @@ namespace CassetteClient {
         download_track_async.begin (track_info.id);
 
         threader.add_image (() => {
-            get_image (track_info, Utils.TRACK_ART_SIZE);
+            get_image (track_info, TRACK_ART_SIZE);
 
             Idle.add (save_track.callback);
         });
 
         yield;
+    }
+
+    public class TypeUtils<T> {
+        public void shuffle (ref ArrayList<T> list) {
+            for (int i = 0; i < list.size; i++) {
+                int random_index = Random.int_range (0, list.size);
+                T a = list[i];
+                list[i] = list[random_index];
+                list[random_index] = a;
+            }
+        }
+    }
+
+    public string strip (string str, char ch) {
+        int start = 0;
+        int end = str.length;
+
+        while (str[start] == ch) {
+            start++;
+        }
+        while (str[end - 1] == ch) {
+            end--;
+        }
+
+        return str[start:end];
+    }
+
+    //  Переделывает camelCase строку в kebab-case. Входная строка должна быть корректной camelCase
+    public string camel2kebab (string camel_string) {
+        string kebab_string = "";
+
+        int i = 0;
+        while (i < camel_string.length) {
+            if (camel_string[i].isupper ()) {
+                kebab_string += "-";
+                kebab_string += camel_string[i].tolower ().to_string ();
+            } else {
+                kebab_string += camel_string[i].to_string ();
+            }
+            i += 1;
+        }
+
+        return kebab_string;
+    }
+
+    //  Переделывает kebab-case строку в camelCase. Входная строка должна быть корректной kebab-case
+    public string kebab2camel (string kebab_string) {
+        string camel_string = "";
+
+        int i = 0;
+        while (i < kebab_string.length) {
+            if (kebab_string[i] == '-') {
+                i += 1;
+                camel_string += kebab_string[i].toupper ().to_string ();
+            } else {
+                camel_string += kebab_string[i].to_string ();
+            }
+            i += 1;
+        }
+
+        return camel_string;
+    }
+
+    //  Переделывает kebab-case строку в snake_case. Входная строка должна быть корректной kebab-case
+    public string kebab2snake (string kebab_string) {
+        string snake_string = "";
+
+        int i = 0;
+        while (i < kebab_string.length) {
+            if (kebab_string[i] == '-') {
+                snake_string += "_";
+            } else {
+                snake_string += kebab_string[i].to_string ();
+            }
+            i += 1;
+        }
+
+        return snake_string;
+    }
+
+    //  Переделывает snake_case строку в kebab-case. Входная строка должна быть корректной snake_case
+    public string snake2kebab (string snake_string) {
+        string kebab_string = "";
+
+        int i = 0;
+        while (i < snake_string.length) {
+            if (snake_string[i] == '_') {
+                kebab_string += "-";
+            } else {
+                kebab_string += snake_string[i].to_string ();
+            }
+            i += 1;
+        }
+
+        return kebab_string;
     }
 }

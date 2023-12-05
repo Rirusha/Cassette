@@ -41,7 +41,7 @@ namespace Cassette {
     // Класс приложения
     public class Application : Adw.Application {
 
-        private ApplicationState _application_state;
+        ApplicationState _application_state;
         public ApplicationState application_state {
             get {
                 return _application_state;
@@ -85,7 +85,7 @@ namespace Cassette {
         construct {
             application = this;
 
-            CassetteClient.init ();
+            CassetteClient.init (Config.POSTFIX == ".Devel");
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
             });
@@ -152,7 +152,7 @@ namespace Cassette {
                 if (!storager.cookies_exists () && _application_state != ApplicationState.LOCAL) {
                     _application_state = ApplicationState.BEGIN;
                 }
-    
+
                 main_window.present ();
 
                 if (_application_state == ApplicationState.LOCAL) {
@@ -160,7 +160,7 @@ namespace Cassette {
                 } else {
                     authenticator.log_in ();
                 }
-                
+
             } else {
                 main_window.present ();
             }
@@ -168,7 +168,7 @@ namespace Cassette {
 
         public void show_message (string message, bool is_notify = false) {
             main_window.show_message (message);
-            
+
             //  TODO: Отправлять уведомление только когда окно не видно
             if (is_notify) {
                 var ntf = new Notification (APP_NAME);
@@ -239,11 +239,15 @@ namespace Cassette {
         }
 
         void on_next () {
-            player.next ();
+            if (!player.is_loading) {
+                player.next ();
+            }
         }
 
         void on_prev () {
-            player.prev ();
+            if (!player.is_loading) {
+                player.prev ();
+            }
         }
 
         void on_preferences_action () {

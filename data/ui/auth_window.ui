@@ -40,7 +40,6 @@
                     <property name="margin-start">32</property>
                     <property name="margin-end">32</property>
                     <property name="valign">center</property>
-                    <property name="halign">center</property>
                     <child>
                       <object class="GtkStackPage">
                         <property name="name">main</property>
@@ -105,7 +104,7 @@
                                             </child>
                                             <child>
                                               <object class="GtkButton">
-                                                <property name="action-name">auth.login</property>
+                                                <property name="action-name">auth.login_phone</property>
                                                 <property name="icon-name">go-next-symbolic</property>
                                               </object>
                                             </child>
@@ -113,6 +112,14 @@
                                         </property>
                                       </object>
                                     </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkSeparator">
+                                    <style>
+                                      <class name="spacer"/>
+                                    </style>
+                                    <property name="height-request">52</property>
                                   </object>
                                 </child>
                                 <child>

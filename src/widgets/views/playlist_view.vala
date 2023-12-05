@@ -26,39 +26,39 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_view.ui")]
     public class PlaylistView : CachiableView {
         [GtkChild]
-        private unowned SaveStack save_stack;
+        unowned SaveStack save_stack;
         [GtkChild]
-        private unowned Gtk.ScrolledWindow scrolled_window;
+        unowned Gtk.ScrolledWindow scrolled_window;
         [GtkChild]
-        private unowned CoverImage cover_image;
+        unowned CoverImage cover_image;
         [GtkChild]
-        private unowned Gtk.Label duration_label;
+        unowned Gtk.Label duration_label;
         [GtkChild]
-        private unowned Gtk.Entry playlist_name_entry;
+        unowned Gtk.Entry playlist_name_entry;
         [GtkChild]
-        private unowned Gtk.Label playlist_name_label;
+        unowned Gtk.Label playlist_name_label;
         [GtkChild]
-        private unowned Gtk.Label playlist_desc_label;
+        unowned Gtk.Label playlist_desc_label;
         [GtkChild]
-        private unowned Gtk.Label playlist_status;
+        unowned Gtk.Label playlist_status;
         [GtkChild]
-        private unowned PlayButtonContext play_button;
+        unowned PlayButtonContext play_button;
         [GtkChild]
-        private unowned LikeButton like_button;
+        unowned LikeButton like_button;
         [GtkChild]
-        private unowned Gtk.Button save_button;
+        unowned Gtk.Button save_button;
         [GtkChild]
-        private unowned Gtk.Button delete_button;
+        unowned Gtk.Button delete_button;
         [GtkChild]
-        private unowned Gtk.Button abort_button;
+        unowned Gtk.Button abort_button;
         [GtkChild]
-        private unowned Gtk.Button add_page_button;
+        unowned Gtk.Button add_page_button;
         [GtkChild]
-        private unowned Gtk.Box main_box;
+        unowned Gtk.Box main_box;
         [GtkChild]
-        private unowned PlaylistOptionsButton playlist_options_button;
+        unowned PlaylistOptionsButton playlist_options_button;
         [GtkChild]
-        private unowned Gtk.Switch visibility_switch;
+        unowned Gtk.Switch visibility_switch;
 
         public override bool can_refresh { get; default = true; }
 
@@ -77,7 +77,7 @@ namespace Cassette {
             var add_to_queue_action = new SimpleAction ("add-to-queue", null);
             add_to_queue_action.activate.connect (() => {
                 var playlist_info = (YaMAPI.Playlist) object_info;
-            
+
                 var track_list = playlist_info.get_filtered_track_list (
                     storager.settings.get_boolean ("explicit-visible"),
                     storager.settings.get_boolean ("child-visible")
@@ -250,7 +250,7 @@ namespace Cassette {
                 }
             }
 
-            duration_label.label = Utils.ms2str (playlist_info.duration_ms, false);
+            duration_label.label = ms2str (playlist_info.duration_ms, false);
 
             if (playlist_info.kind == "3") {
                 if (playlist_info.owner.uid == yam_talker.me.oid) {
@@ -261,9 +261,9 @@ namespace Cassette {
             } else {
                 // Translators: 0 - female, 1 - male (different gender endings)
                 string format_string = ngettext ("%s updated playlist %s", "%s updated playlist %s", playlist_info.owner.sex == "female"? 0 : 1);
-                playlist_status.label = format_string.printf (playlist_info.owner.name, Utils.get_when (playlist_info.modified));
+                playlist_status.label = format_string.printf (playlist_info.owner.name, get_when (playlist_info.modified));
             }
-            
+
             var ptrack_list = playlist_info.get_track_list ();
             if (!track_list.compare_tracks (ptrack_list)) {
                 track_list.set_tracks_default (ptrack_list, playlist_info);
@@ -285,13 +285,13 @@ namespace Cassette {
         public bool on_switch_change (Gtk.Switch sw, bool is_active) {
             on_switch_change_async.begin (is_active, (obj, res) => {
                 YaMAPI.Playlist? playlist_info = on_switch_change_async.end (res);
-                
+
                 if (playlist_info == null) {
                     application.show_message (_("Can't change visibility of '%s'").printf (playlist_info.title));
                     return;
                 }
 
-                visibility_switch.freeze_notify ();
+                visibility_switch.state_set.disconnect (on_switch_change);
                 if (playlist_info.is_public) {
                     application.show_message (_("Playlist '%s' is public now").printf (playlist_info.title));
                     visibility_switch.active = true;
@@ -299,12 +299,12 @@ namespace Cassette {
                     application.show_message (_("Playlist '%s' is private now").printf (playlist_info.title));
                     visibility_switch.active = false;
                 }
-                visibility_switch.thaw_notify ();
+                visibility_switch.state_set.connect (on_switch_change);
             });
-            return true;
+            return false;
         }
 
-        private async YaMAPI.Playlist? on_switch_change_async (bool is_active) {
+        async YaMAPI.Playlist? on_switch_change_async (bool is_active) {
             YaMAPI.Playlist? playlist_info = null;
 
             threader.add (() => {
@@ -337,7 +337,7 @@ namespace Cassette {
             if (object_info != null) {
                 set_values ();
 
-                cover_image.init_content ((HasCover) this.object_info, Utils.BIG_ART_SIZE);
+                cover_image.init_content ((HasCover) this.object_info, BIG_ART_SIZE);
                 cover_image.load_image.begin ();
                 return -1;
             }
@@ -364,8 +364,8 @@ namespace Cassette {
 
             if (object_info != null) {
                 set_values ();
-                
-                cover_image.init_content ((HasCover) this.object_info, Utils.BIG_ART_SIZE);
+
+                cover_image.init_content ((HasCover) this.object_info, BIG_ART_SIZE);
                 cover_image.load_image.begin ();
                 return true;
             }

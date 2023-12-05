@@ -22,7 +22,7 @@ namespace CassetteClient.YaMAPI {
     public class LikedPlaylist : YaMObject {
 
         public Playlist playlist { get; set; }
-        
+
         public LikedPlaylist () {
             Object ();
         }

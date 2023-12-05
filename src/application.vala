@@ -239,11 +239,15 @@ namespace Cassette {
         }
 
         void on_next () {
-            player.next ();
+            if (!player.is_loading) {
+                player.next ();
+            }
         }
 
         void on_prev () {
-            player.prev ();
+            if (!player.is_loading) {
+                player.prev ();
+            }
         }
 
         void on_preferences_action () {

@@ -156,11 +156,15 @@ namespace CassetteClient.Mpris {
         }
 
         public void next (BusName sender) throws Error {
-            player.next ();
+            if (!player.is_loading) {
+                player.next ();
+            }
         }
 
         public void previous (BusName sender) throws Error {
-            player.prev ();
+            if (!player.is_loading) {
+                player.prev ();
+            }
         }
 
         public void play (BusName sender) throws Error {

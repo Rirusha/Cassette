@@ -7,53 +7,60 @@
     <property name="default-height">600</property>
     <property name="title" translatable="true">Choose playlist to add</property>
     <property name="modal">true</property>
-    <child>
-      <object class="AdwClamp">
-        <property name="maximum-size">800</property>
-        <child>
-          <object class="GtkStack" id="main_stack">
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar"/>
+        </child>
+        <property name="content">
+          <object class="AdwClamp">
+            <property name="maximum-size">800</property>
             <child>
-              <object class="GtkStackPage">
-                <property name="name">loading</property>
-                <property name="child">
-                  <object class="GtkSpinner" id="spinner_loading">
-                    <property name="vexpand">false</property>
-                    <property name="hexpand">false</property>
-                    <property name="valign">center</property>
-                    <property name="halign">center</property>
-                    <property name="height-request">32</property>
-                    <property name="width-request">32</property>
+              <object class="GtkStack" id="main_stack">
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">loading</property>
+                    <property name="child">
+                      <object class="GtkSpinner" id="spinner_loading">
+                        <property name="vexpand">false</property>
+                        <property name="hexpand">false</property>
+                        <property name="valign">center</property>
+                        <property name="halign">center</property>
+                        <property name="height-request">32</property>
+                        <property name="width-request">32</property>
+                      </object>
+                    </property>
                   </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">done</property>
-                <property name="child">
-                  <object class="GtkScrolledWindow">
-                    <property name="hscrollbar-policy">never</property>
-                    <child>
-                      <object class="AdwClamp">
-                        <property name="margin-top">6</property>
-                        <property name="margin-bottom">6</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">14</property>
-                        <property name="maximum_size">700</property>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">done</property>
+                    <property name="child">
+                      <object class="GtkScrolledWindow">
+                        <property name="hscrollbar-policy">never</property>
                         <child>
-                          <object class="GtkBox" id="main_box">
-                            <property name="orientation">vertical</property>
+                          <object class="AdwClamp">
+                            <property name="margin-top">16</property>
+                            <property name="margin-bottom">16</property>
+                            <property name="margin-start">16</property>
+                            <property name="margin-end">16</property>
+                            <property name="maximum_size">700</property>
+                            <child>
+                              <object class="GtkBox" id="main_box">
+                                <property name="orientation">vertical</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
-                    </child>
+                    </property>
                   </object>
-                </property>
+                </child>
               </object>
             </child>
           </object>
-        </child>
+        </property>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

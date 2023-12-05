@@ -24,7 +24,7 @@ using CassetteClient;
 
 namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_choose_window.ui")]
-    public class PlaylistChooseWindow : Gtk.Window {
+    public class PlaylistChooseWindow : Adw.Window {
         [GtkChild]
         unowned Gtk.Box main_box;
         [GtkChild]

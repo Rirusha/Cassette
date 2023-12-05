@@ -242,9 +242,6 @@ namespace CassetteClient.Cachier {
                     }
                     return;
                 }
-
-                Idle.add (cache_async.callback);
-                yield;
             }
             job_done (JobDoneStatus.SUCCESS);
         }

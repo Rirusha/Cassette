@@ -104,6 +104,8 @@ namespace Cassette {
         void on_can_cache_switch_changed () {
             if (!can_cache_switch.active) {
                 ask_about_deletion ();
+            } else {
+                storager.settings.set_boolean ("can-cache", true);
             }
         }
 

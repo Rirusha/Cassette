@@ -4,7 +4,7 @@ using CassetteClient.YaMAPI;
 
 public static Storager storager;
 
-public int main (string[] args){
+public int main (string[] args) {
     Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
     Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
@@ -47,7 +47,7 @@ public int main (string[] args){
     Test.add_func ("/storager/tracks/save", () => {
         string track_url = "123456789";
 
-        var test_track = new Bytes ("i swear, thats music string...".data);
+        var test_track = new Bytes ("i swear, this a music string".data);
 
         storager.save_audio (test_track, track_url, true);
     });

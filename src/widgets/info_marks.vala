@@ -26,7 +26,7 @@ using Gee;
 namespace Cassette {
     // Может принимать вид кнопки, так и простого текста
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/info_marks.ui")]
-    public class InfoMarks : Adw.Bin {   
+    public class InfoMarks : Adw.Bin {
 
         [GtkChild]
         unowned Gtk.Image track_replaced_mark;
@@ -68,13 +68,13 @@ namespace Cassette {
                     check_replaced_mark_visible ();
                 }
             });
-        } 
+        }
 
         void check_replaced_mark_visible () {
             if (_replaced_by != null && storager.settings.get_boolean ("show-replaced-mark")) {
                 track_replaced_mark.visible = true;
             } else {
-                track_replaced_mark.visible = false;   
+                track_replaced_mark.visible = false;
             }
         }
     }

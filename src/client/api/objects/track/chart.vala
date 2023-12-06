@@ -19,14 +19,14 @@
  */
 
 namespace CassetteClient.YaMAPI {
-public class Chart : YaMObject {
+    public class Chart : YaMObject {
 
-    public string id { get; set; }
-    public int listeners { get; set; }
-    public int shift { get; set; }
+        public string id { get; set; }
+        public int listeners { get; set; }
+        public int shift { get; set; }
 
-    public Chart () {
-        Object ();
+        public Chart () {
+            Object ();
+        }
     }
-}
 }

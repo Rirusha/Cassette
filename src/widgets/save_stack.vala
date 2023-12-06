@@ -73,7 +73,7 @@ namespace Cassette {
                 }
             });
 
-            save_spin.tooltip_text = _("%s saving...").printf (get_content_name ());
+            save_spin.tooltip_text = _("%s saving…").printf (get_content_name ());
             temp_mark_image.tooltip_text = _("%s saved to temp folder").printf (get_content_name ());
             perm_mark_image.tooltip_text = _("%s saved").printf (get_content_name ());
 
@@ -133,7 +133,7 @@ namespace Cassette {
                     } else {
                         save_stack.visible_child_name = "none";
                     }
-                    save_spin.stop ();   
+                    save_spin.stop ();
                     break;
                 case Cachier.CacheingState.PERM:
                     save_stack.visible_child_name = "perm";

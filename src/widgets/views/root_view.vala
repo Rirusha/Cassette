@@ -97,7 +97,7 @@ namespace Cassette {
             main_stack.set_visible_child_name ("add-loading-screen");
             spinner_loading.start ();
 
-            view.show_ready.connect(set_visible_child);
+            view.show_ready.connect (set_visible_child);
             view.root_view = this;
 
             view.first_show.begin ();
@@ -107,7 +107,7 @@ namespace Cassette {
             main_stack.set_visible_child_name ("add-loading-screen");
             spinner_loading.start ();
 
-            view.show_ready.connect(set_visible_child);
+            view.show_ready.connect (set_visible_child);
             view.refresh.begin ();
         }
 

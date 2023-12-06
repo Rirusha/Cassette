@@ -59,7 +59,7 @@ namespace CassetteClient.Player {
         public PlayerState player_state {
             get {
                 return _player_state;
-            } 
+            }
             set {
                 _player_state = value;
 
@@ -147,10 +147,10 @@ namespace CassetteClient.Player {
             }
         }
 
-        public bool is_slider_moving    { get; set; default = false; }
-        public Gtk.Scale play_slider    { get; set; }
-        public bool is_loading          { get; private set; default = false; }
-        public IPlayerMod? player_mod   { get; private set; default = null; }
+        public bool is_slider_moving { get; set; default = false; }
+        public Gtk.Scale play_slider { get; set; }
+        public bool is_loading { get; private set; default = false; }
+        public IPlayerMod? player_mod { get; private set; default = null; }
 
         Gst.Pipeline pipeline;
         Gst.Element source;
@@ -166,21 +166,21 @@ namespace CassetteClient.Player {
             pipeline = new Gst.Pipeline (null);
             var bus = pipeline.get_bus ();
 
-            source = Gst.ElementFactory.make("uridecodebin", null);
-            var audioconvert = Gst.ElementFactory.make("audioconvert", null);
-            var audioresample = Gst.ElementFactory.make("audioresample", null);
-            var sink = Gst.ElementFactory.make("autoaudiosink", null);
-            _volume = Gst.ElementFactory.make("volume", null);
+            source = Gst.ElementFactory.make ("uridecodebin", null);
+            var audioconvert = Gst.ElementFactory.make ("audioconvert", null);
+            var audioresample = Gst.ElementFactory.make ("audioresample", null);
+            var sink = Gst.ElementFactory.make ("autoaudiosink", null);
+            _volume = Gst.ElementFactory.make ("volume", null);
 
             pipeline.add_many (source, audioconvert, audioresample, sink, _volume);
 
-            source.pad_added.connect((src, pad) => {
-                var sinkpad = audioconvert.get_static_pad("sink");
-                pad.link(sinkpad);
+            source.pad_added.connect ((src, pad) => {
+                var sinkpad = audioconvert.get_static_pad ("sink");
+                pad.link (sinkpad);
             });
 
-            audioresample.link(_volume);
-            _volume.link(sink);
+            audioresample.link (_volume);
+            _volume.link (sink);
             audioconvert.link (audioresample);
             audioresample.link (sink);
 

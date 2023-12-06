@@ -25,7 +25,7 @@ using Gee;
 
 namespace Cassette {
     //  Кнопка лайка
-    public class LikeButton : CustomButton, Initable {   
+    public class LikeButton : CustomButton, Initable {
 
         protected string content_id { get; set; }
         public LikableType object_content_type { get; construct; }

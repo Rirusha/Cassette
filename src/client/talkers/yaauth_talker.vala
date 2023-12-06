@@ -64,7 +64,7 @@ namespace CassetteClient {
             CompleteInfo? complete_info = null;
 
             net_run (() => {
-                complete_info =  auth.login_password (password);
+                complete_info = auth.login_password (password);
             });
 
             return complete_info;
@@ -75,11 +75,11 @@ namespace CassetteClient {
             string? qr_code_url = null;
 
             net_run (() => {
-                qr_code_url =  auth.get_qr_url ();
+                qr_code_url = auth.get_qr_url ();
 
                 try {
                     qr_code = Gdk.Texture.from_bytes (auth.get_content_of (qr_code_url));
-                } catch (Error e) {  }
+                } catch (Error e) { }
             });
 
             return qr_code;

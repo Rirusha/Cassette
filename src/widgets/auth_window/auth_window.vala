@@ -43,7 +43,7 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.PasswordEntry password_entry;
         [GtkChild]
-        unowned Gtk.Image image_qr;   
+        unowned Gtk.Image image_qr;
         [GtkChild]
         unowned Gtk.Button button_local_mode;
         [GtkChild]
@@ -228,7 +228,7 @@ namespace Cassette {
             threader.add (() => {
                 try {
                     complete_info = auth.login_password (password);
-                } catch (BadStatusCodeError e) {  }
+                } catch (BadStatusCodeError e) { }
 
                 Idle.add (enter_password.callback);
             });

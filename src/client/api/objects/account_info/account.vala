@@ -23,15 +23,15 @@ using Gee;
 namespace CassetteClient.YaMAPI {
     public class Account : YaMObject {
 
-        public string   uid { get; set; }
-        public string?  login { get; set; }
-        public int      region { get; set; }
-        public string?  full_name { get; set; }
-        public string?  second_name { get; set; }
-        public string?  first_name { get; set; }
-        public string?  display_name { get; set; }
-        public string?  birthday { get; set; }
-        public bool     service_available { get; set; }
+        public string uid { get; set; }
+        public string? login { get; set; }
+        public int region { get; set; }
+        public string? full_name { get; set; }
+        public string? second_name { get; set; }
+        public string? first_name { get; set; }
+        public string? display_name { get; set; }
+        public string? birthday { get; set; }
+        public bool service_available { get; set; }
         public ArrayList<PassportPhone> passport_phones { get; set; default = new ArrayList<PassportPhone> (); }
         public bool child { get; set; }
 

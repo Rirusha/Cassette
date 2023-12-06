@@ -22,13 +22,13 @@ using Gee;
 
 namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/lyrics_line.ui")]
-    public class LyricsLine : Adw.Bin {   
+    public class LyricsLine : Adw.Bin {
         [GtkChild]
-        unowned Gtk.Revealer line_small;     
+        unowned Gtk.Revealer line_small;
         [GtkChild]
-        unowned Gtk.Label line_big_label;   
+        unowned Gtk.Label line_big_label;
         [GtkChild]
-        unowned Gtk.Label line_small_label;  
+        unowned Gtk.Label line_small_label;
 
         public bool is_big {
             get {

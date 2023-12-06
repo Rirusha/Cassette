@@ -114,7 +114,7 @@ namespace Cassette {
                 margin_end = 16
             };
 
-            loading_win = new Adw.Window  () {
+            loading_win = new Adw.Window () {
                 resizable = false,
                 transient_for = pref_win,
                 modal = true,
@@ -129,11 +129,11 @@ namespace Cassette {
             };
             box.append (spinner);
 
-            var label = new Gtk.Label (_("Deleting..."));
+            var label = new Gtk.Label (_("Deleting…"));
             label.add_css_class ("title-1");
             box.append (label);
 
-            loading_win.present  ();
+            loading_win.present ();
             spinner.start ();
 
             storager.delete_temp_cache.begin (() => {

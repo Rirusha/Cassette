@@ -43,14 +43,14 @@ namespace CassetteClient {
         construct {
             instance = this;
 
-            log_file = File.new_for_path (log_path); 
+            log_file = File.new_for_path (log_path);
             if (!log_file.query_exists ()) {
                 try {
                     log_file.create (FileCreateFlags.NONE);
                 } catch (Error e) {
                     // Translators: %s is path
                     GLib.warning (_("Can't create log on %s").printf (log_path));
-                }    
+                }
             }
         }
 

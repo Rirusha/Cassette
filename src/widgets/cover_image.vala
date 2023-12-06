@@ -24,7 +24,7 @@ using Gee;
 
 
 namespace Cassette {
-    public class CoverImage : Adw.Bin {   
+    public class CoverImage : Adw.Bin {
 
         Gtk.Image real_image { get; default = new Gtk.Image.from_icon_name ("audio-x-generic-symbolic"); }
         HasCover yam_object;

@@ -36,7 +36,7 @@ namespace CassetteClient.YaMAPI {
         public string? type_ { get; set; }
         public ArrayList<string> items_uri { get; set; default = new ArrayList<string> (); }
         public string? uri { get; set; default = null; }
-        public string? version  { get; set; }
+        public string? version { get; set; }
         public bool custom { get; set; }
 
         public Cover () {

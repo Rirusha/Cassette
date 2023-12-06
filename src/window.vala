@@ -75,8 +75,19 @@ namespace Cassette {
                 }
 
                 _current_view = value;
-                current_view_can_back_binding = _current_view.bind_property ("can-back", button_backward, "sensitive", GLib.BindingFlags.SYNC_CREATE);
-                current_view_can_refresh_binding = _current_view.bind_property ("can-refresh", button_refresh, "visible", GLib.BindingFlags.SYNC_CREATE);
+                current_view_can_back_binding = _current_view.bind_property (
+                    "can-back",
+                    button_backward,
+                    "sensitive",
+                    GLib.BindingFlags.SYNC_CREATE
+                );
+
+                current_view_can_refresh_binding = _current_view.bind_property (
+                    "can-refresh",
+                    button_refresh,
+                    "visible",
+                    GLib.BindingFlags.SYNC_CREATE
+                );
             }
         }
 
@@ -172,7 +183,7 @@ namespace Cassette {
                     title_stack.set_visible_child_name ("search-entry");
                     title_stack.get_visible_child ().grab_focus ();
                 } else {
-                    title_stack.set_visible_child_name("view-switcher");
+                    title_stack.set_visible_child_name ("view-switcher");
                 }
             });
 
@@ -205,7 +216,11 @@ namespace Cassette {
                 button_refresh.sensitive = true;
 
                 notify["is-active"].connect (() => {
-                    if (is_active && storager.settings.get_boolean ("try-load-queue-every-activate") && player.player_state != Player.PlayerState.PLAYING) {
+                    if (
+                        is_active &&
+                        storager.settings.get_boolean ("try-load-queue-every-activate") &&
+                        player.player_state != Player.PlayerState.PLAYING
+                    ) {
                         player_bar.update_queue.begin ();
                     }
                 });
@@ -288,8 +303,8 @@ namespace Cassette {
                         }
 
                     // album 4545465
-                    }  else if (parts[0] == "album") {
-                        //  string album_id = parts[1];
+                    } else if (parts[0] == "album") {
+                        // string album_id = parts[1];
 
                         if (parts.length == 2) {
                             show_message (_("Albums view not implemented yet"));

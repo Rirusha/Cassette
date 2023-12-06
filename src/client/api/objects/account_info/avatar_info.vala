@@ -34,8 +34,8 @@ namespace CassetteClient.YaMAPI {
 
     public class AvatarInfo : YaMObject {
 
-        public string?  default_avatar_id { get; set; }
-        public bool     is_avatar_empty { get; set; }
+        public string? default_avatar_id { get; set; }
+        public bool is_avatar_empty { get; set; }
 
         public AvatarInfo () {
             Object ();

@@ -35,5 +35,5 @@ namespace CassetteClient {
     }
 
     // Класс, от которого наследуются все ямобъекты. Функционал на будущее
-    public abstract class YaMObject : Object {  }
+    public abstract class YaMObject : Object { }
 }

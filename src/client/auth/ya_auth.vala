@@ -26,7 +26,7 @@ namespace CassetteClient.YaMAuth {
         ERROR
     }
 
-    public class YaAuth : Object{
+    public class YaAuth : Object {
 
         public SoupWrapper soup_wrapper { get; construct; }
 

@@ -57,7 +57,6 @@ namespace CassetteClient.YaMAPI {
         public ArrayList<Album> albums { get; set; default = new ArrayList<Album> (); }
         public bool available_for_premium_users { get; set; }
         public bool lyrics_available { get; set; }
-        //public string? type_ { get; set; }
         public string? cover_uri { get; set; }
         public Label major { get; set; }
         public int duration_ms { get; set; }

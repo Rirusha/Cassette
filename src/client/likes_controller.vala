@@ -42,8 +42,7 @@ namespace CassetteClient {
         }
 
         HashSet<string> get_id_array (LikableType content_type) {
-            switch (content_type)
-            {
+            switch (content_type) {
                 case LikableType.TRACK:
                     return liked_tracks_ids;
                 case LikableType.PLAYLIST:

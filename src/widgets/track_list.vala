@@ -174,7 +174,7 @@ namespace Cassette {
             search_box.visible = false;
         }
 
-        construct {        
+        construct {
             track_box.bind_property ("visible", status_page, "visible", GLib.BindingFlags.INVERT_BOOLEAN);
 
             if (adjustment != null) {

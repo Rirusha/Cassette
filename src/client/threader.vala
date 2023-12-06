@@ -101,7 +101,7 @@ namespace CassetteClient {
         WorkManager single_pool;
 
         construct {
-            int max_size = storager.settings.get_int("max-thread-number");
+            int max_size = storager.settings.get_int ("max-thread-number");
 
             default_pool = new WorkManager (max_size);
             image_pool = new WorkManager (max_size);

@@ -94,7 +94,7 @@ namespace CassetteClient.Cachier {
         */
 
         public InfoDB db { get; private set; }
-        public Settings settings { get; default = new Settings("com.github.Rirusha.Cassette"); }
+        public Settings settings { get; default = new Settings ("com.github.Rirusha.Cassette"); }
 
         public signal void moving_done ();
 
@@ -134,7 +134,7 @@ namespace CassetteClient.Cachier {
             }
         }
 
-        string home_dir = Environment.get_home_dir();
+        string home_dir = Environment.get_home_dir ();
         string temp_dir;
         public string log_file_path { get; private set; }
         public string cookies_file_path { get; private set; }
@@ -157,7 +157,7 @@ namespace CassetteClient.Cachier {
                 temp_dir = Environment.get_tmp_dir ();
             }
 
-            settings.bind("cache-path", this, "cache-path", SettingsBindFlags.DEFAULT);
+            settings.bind ("cache-path", this, "cache-path", SettingsBindFlags.DEFAULT);
             //  temp_track_path = Path.build_filename (get_path ("cur", true), "track");
             temp_track_path = Path.build_filename (temp_dir, "track");
             temp_cache_path = Path.build_filename (temp_dir, "cassette");
@@ -213,7 +213,7 @@ namespace CassetteClient.Cachier {
 
             try {
                 src_file.move (dst_file, FileCopyFlags.OVERWRITE);
-            } catch (Error e) {  }
+            } catch (Error e) { }
         }
 
         void move_dir (string src_dir, string dst_dir) {
@@ -237,7 +237,7 @@ namespace CassetteClient.Cachier {
                         string dst_file_path = Path.build_filename (dst_dir, file_name);
 
                         if (file_info.get_file_type () == FileType.DIRECTORY) {
-                            move_dir(src_file_path, dst_file_path);
+                            move_dir (src_file_path, dst_file_path);
                         } else {
                             File file = File.new_for_path (src_file_path);
                             file.move (File.new_for_path (dst_file_path), FileCopyFlags.OVERWRITE);
@@ -245,8 +245,7 @@ namespace CassetteClient.Cachier {
                     }
                 }
 
-                File sourceDir = File.new_for_path (src_dir);
-                sourceDir.delete ();
+                File.new_for_path (src_dir).delete ();
 
             } catch (Error e) {
                 Logger.warning (_("Can't move directory. Message: %s").printf (e.message));
@@ -281,7 +280,7 @@ namespace CassetteClient.Cachier {
                         string file_path = Path.build_filename (dir, file_name);
 
                         if (file_info.get_file_type () == FileType.DIRECTORY) {
-                            remove_dir(file_name);
+                            remove_dir (file_name);
                         } else {
                             File file = File.new_for_path (file_path);
                             file.delete ();

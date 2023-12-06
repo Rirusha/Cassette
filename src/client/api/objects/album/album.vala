@@ -37,7 +37,7 @@ namespace CassetteClient.YaMAPI {
 
         public string id { get; set; }
         public string title { get; set; }
-        public int   track_count { get; set; }
+        public int track_count { get; set; }
         public ArrayList<Artist> artists { get; set; default = new ArrayList<Artist> (); }
         public ArrayList<Label> labels { get; set; default = new ArrayList<Label> (); }
         public bool available { get; set; }
@@ -57,7 +57,7 @@ namespace CassetteClient.YaMAPI {
         public int year { get; set; }
         public string? release_date { get; set; }
         public ArrayList<Album> albums { get; set; default = new ArrayList<Album> (); }
-        public int   duration_ms { get; set; }
+        public int duration_ms { get; set; }
         public int likes_count { get; set; }
 
         public Album () {

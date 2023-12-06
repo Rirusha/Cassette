@@ -43,7 +43,7 @@ namespace CassetteClient.Mpris {
     [DBus (name = "org.mpris.MediaPlayer2.Player")]
     public class MprisPlayer : Object {
 
-        DBusConnection con; 
+        DBusConnection con;
 
         public bool can_control { get; default = true; }
         public bool can_go_next { get; default = true; }
@@ -101,7 +101,7 @@ namespace CassetteClient.Mpris {
 
             var current_track = player.current_track;
             if (current_track == null) {
-                metadata.insert ("mpris:trackid", new ObjectPath (@"/com/github/Rirusha/Cassette/Track/0"));
+                metadata.insert ("mpris:trackid", new ObjectPath ("/com/github/Rirusha/Cassette/Track/0"));
             } else {
                 ObjectPath obj_path;
                 if ("-" in current_track.id) {
@@ -127,10 +127,10 @@ namespace CassetteClient.Mpris {
         }
 
         // thanks to https://github.com/bcedu/MuseIC
-        bool send_property_change(string property, Variant variant) {
-            var builder = new VariantBuilder(VariantType.ARRAY);
-            var invalidated_builder = new VariantBuilder(new VariantType("as"));
-            builder.add("{sv}", property, variant);
+        bool send_property_change (string property, Variant variant) {
+            var builder = new VariantBuilder (VariantType.ARRAY);
+            var invalidated_builder = new VariantBuilder (new VariantType ("as"));
+            builder.add ("{sv}", property, variant);
 
             try {
                 con.emit_signal (
@@ -138,7 +138,7 @@ namespace CassetteClient.Mpris {
                     "/org/mpris/MediaPlayer2",
                     "org.freedesktop.DBus.Properties",
                     "PropertiesChanged",
-                    new Variant("(sa{sv}as)",
+                    new Variant ("(sa{sv}as)",
                     "org.mpris.MediaPlayer2.Player",
                     builder,
                     invalidated_builder)
@@ -150,9 +150,9 @@ namespace CassetteClient.Mpris {
             return false;
         }
 
-        public void update_properties() throws Error {
-            send_property_change("PlaybackStatus", this.playback_status);
-            send_property_change("Metadata", _get_metadata());
+        public void update_properties () throws Error {
+            send_property_change ("PlaybackStatus", this.playback_status);
+            send_property_change ("Metadata", _get_metadata ());
         }
 
         public void next (BusName sender) throws Error {
@@ -180,7 +180,7 @@ namespace CassetteClient.Mpris {
         }
 
         public void stop (BusName sender) throws Error {
-            player.stop (); 
+            player.stop ();
         }
 
         public void seek (int64 position, BusName sender) throws Error {

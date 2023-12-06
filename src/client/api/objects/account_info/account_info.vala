@@ -30,16 +30,16 @@ namespace CassetteClient.YaMAPI {
             }
         }
 
-        public Account      account { get; set; default = new Account (); }
-        public Permissions  permissions { get; set; }
-        public bool         subeditor { get; set; }
-        public int          subeditor_level { get; set; }
-        public bool         pretrial_active { get; set; }
-        //  public MasterHub    masterhub { get; set; }
-        public Plus         plus { get; set; default = new Plus (); }
+        public Account account { get; set; default = new Account (); }
+        public Permissions permissions { get; set; }
+        public bool subeditor { get; set; }
+        public int subeditor_level { get; set; }
+        public bool pretrial_active { get; set; }
+        public MasterHub masterhub { get; set; }
+        public Plus plus { get; set; default = new Plus (); }
         public ArrayList<string> has_options { get; set; default = new ArrayList<string> (); }
-        public string?      default_email { get; set; }
-        public AvatarInfo   avatar_info { get; set; }
+        public string? default_email { get; set; }
+        public AvatarInfo avatar_info { get; set; }
 
         public AccountInfo () {
             Object ();

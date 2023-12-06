@@ -40,7 +40,7 @@ namespace CassetteClient.YaMAPI {
         public bool is_available { get; set; }
         public Ratings? ratings { get; set; }
         public ArrayList<Link> links { get; set; default = new ArrayList<Link> (); }
-        public int   likes_count { get; set; }
+        public int likes_count { get; set; }
         public ArrayList<Track> popular_tracks { get; set; default = new ArrayList<Track> (); }
         public string? hand_made_description { get; set; }
         public string? description { get; set; }

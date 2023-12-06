@@ -26,7 +26,7 @@ namespace CassetteClient.YaMAPI {
     public class Volume : YaMObject {
 
         public string id { get; set; }
-        public int   disk_num { get; set; }
+        public int disk_num { get; set; }
         public ArrayList<Track> tracks { get; set; default = new ArrayList<Track> (); }
 
         public Volume (string id, int disk_num) {

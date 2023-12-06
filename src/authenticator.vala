@@ -69,7 +69,7 @@ namespace Cassette {
                 margin_end = 16
             };
 
-            loading_win = new Adw.Window  () {
+            loading_win = new Adw.Window () {
                 resizable = false,
                 transient_for = application.main_window,
                 modal = true,
@@ -84,11 +84,11 @@ namespace Cassette {
             };
             box.append (spinner);
 
-            var label = new Gtk.Label (_("Moving..."));
+            var label = new Gtk.Label (_("Moving…"));
             label.add_css_class ("title-1");
             box.append (label);
 
-            loading_win.present  ();
+            loading_win.present ();
             spinner.start ();
 
             storager.moving_done.connect (application.quit);

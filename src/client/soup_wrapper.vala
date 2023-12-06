@@ -37,7 +37,7 @@ namespace CassetteClient {
     protected class Headers {
         Header[] headers_arr = new Header[0];
 
-        public Headers () {  }
+        public Headers () { }
 
         public void add (Header header) {
             headers_arr.resize (headers_arr.length + 1);
@@ -123,7 +123,7 @@ namespace CassetteClient {
 
         public void add_headers_preset (string preset_name, Header[] headers_arr) {
             var headers = new Headers ();
-            headers.set_headers (headers_arr); 
+            headers.set_headers (headers_arr);
             presets_table.set (preset_name, headers);
         }
 
@@ -216,7 +216,7 @@ namespace CassetteClient {
 
                 jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE_CASE);
                 error = (YaMAPI.ApiError) jsoner.deserialize_object (typeof (YaMAPI.ApiError));
-            } catch (ClientError e) {  }
+            } catch (ClientError e) { }
 
             error.status_code = msg.status_code;
 
@@ -271,7 +271,7 @@ namespace CassetteClient {
         ) throws ClientError, BadStatusCodeError {
             var msg = message_get (uri, header_preset_names, parameters, headers);
 
-            return run_sync(msg);
+            return run_sync (msg);
         }
 
         public async Bytes get_async (
@@ -295,7 +295,7 @@ namespace CassetteClient {
         ) throws ClientError, BadStatusCodeError {
             var msg = message_post (uri, header_preset_names, post_content, parameters, headers);
 
-            return run_sync(msg);
+            return run_sync (msg);
         }
 
         public async Bytes post_async (

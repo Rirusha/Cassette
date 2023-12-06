@@ -117,7 +117,7 @@ namespace CassetteClient.Player {
                         break;
                 }
             }
-            
+
             return index;
         }
 
@@ -142,7 +142,7 @@ namespace CassetteClient.Player {
                     if (index - 1 == -1) {
                         index = _queue.tracks.size - 1;
                     } else {
-                        index--;;
+                        index--;
                     }
                     break;
             }

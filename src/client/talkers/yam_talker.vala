@@ -360,7 +360,7 @@ namespace CassetteClient {
                 var stream = new MemoryInputStream.from_bytes (bytes);
                 try {
                     image = new Gdk.Pixbuf.from_stream (stream);
-                } catch (Error e) {  }
+                } catch (Error e) { }
             });
 
             return image;
@@ -373,7 +373,7 @@ namespace CassetteClient {
                 Bytes? bytes = client.get_content_of (image_uri);
                 try {
                     image = Gdk.Texture.from_bytes (bytes);
-                } catch (Error e) {  }
+                } catch (Error e) { }
             });
 
             return image;

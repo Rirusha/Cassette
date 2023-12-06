@@ -98,7 +98,7 @@ namespace Cassette {
             }
         }
 
-        public void show_queue () {             
+        public void show_queue () {
             clear ();
             clean_button.visible = true;
             var playertl = player.player_mod as Player.PlayerTL;

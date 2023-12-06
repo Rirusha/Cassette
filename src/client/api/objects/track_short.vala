@@ -25,7 +25,7 @@ namespace CassetteClient.YaMAPI {
 
         public string id { get; set; }
         public string album_id { get; set; }
-        public int    play_count { get; set; }
+        public int play_count { get; set; }
         public Chart? chart { get; set; }
         public Track? track { get; set; }
 

@@ -46,7 +46,7 @@ namespace CassetteClient {
 
             try {
                 net_run (net_func, should_init);
-            } catch (BadStatusCodeError e) {  }
+            } catch (BadStatusCodeError e) { }
         }
 
         protected void net_run (NetFunc net_func, bool should_init = true) throws BadStatusCodeError {

@@ -240,7 +240,7 @@ namespace CassetteClient {
 
                 switch (sub_node.get_node_type ()) {
                     case Json.NodeType.ARRAY:
-                        var arrayval = Value (prop_type); 
+                        var arrayval = Value (prop_type);
                         yam_object.get_property (property.name, ref arrayval);
                         ArrayList array_list = (Gee.ArrayList) arrayval.get_object ();
 

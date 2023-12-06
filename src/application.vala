@@ -110,9 +110,9 @@ namespace Cassette {
                 application_state = ApplicationState.OFFLINE;
             });
 
-            _application_state = (ApplicationState) storager.settings.get_enum("application-state");
+            _application_state = (ApplicationState) storager.settings.get_enum ("application-state");
 
-            storager.settings.bind("application-state", this, "application-state", SettingsBindFlags.DEFAULT);
+            storager.settings.bind ("application-state", this, "application-state", SettingsBindFlags.DEFAULT);
 
             ActionEntry[] action_entries = {
                 { "about", on_about_action },
@@ -169,7 +169,6 @@ namespace Cassette {
         public void show_message (string message, bool is_notify = false) {
             main_window.show_message (message);
 
-            //  TODO: Отправлять уведомление только когда окно не видно
             if (is_notify) {
                 var ntf = new Notification (APP_NAME);
                 ntf.set_body (message);

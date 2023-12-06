@@ -37,9 +37,10 @@ namespace CassetteClient.YaMAPI {
         construct {
             soup_wrapper.add_headers_preset (
                 "queue",
-                {
-                    {"X-Yandex-Music-Device", "os=Linux; os_version=; manufacturer=Rirusha; model=Yandex Music API; clid=; device_id=random; uuid=random"}
-                }
+                {{
+                    "X-Yandex-Music-Device",
+                    "os=Linux; os_version=; manufacturer=Rirusha; model=Yandex Music API; clid=; device_id=random; uuid=random"
+                }}
             );
         }
 
@@ -443,7 +444,7 @@ namespace CassetteClient.YaMAPI {
             string timestamp = new DateTime.now_utc ().to_unix ().to_string ();
             string msg = @"$track_id$timestamp";
 
-            var hmac  = new Hmac (ChecksumType.SHA256, "p93jhgh689SBReK6ghtw62".data);
+            var hmac = new Hmac (ChecksumType.SHA256, "p93jhgh689SBReK6ghtw62".data);
             hmac.update (msg.data);
             uint8[] hmac_sign = new uint8[32];
             size_t digest_length = 32;
@@ -497,7 +498,7 @@ namespace CassetteClient.YaMAPI {
         public Playlist change_playlist_visibility (
             owned string? uid,
             string kind,
-            string visibility 
+            string visibility
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
 

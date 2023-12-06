@@ -116,7 +116,7 @@ namespace Cassette {
 
             storager.settings.changed.connect ((key) => {
                 if (
-                    (key == "show-main" || 
+                    (key == "show-main" ||
                     key == "show-liked" ||
                     key == "show-playlists") &&
                     storager.settings.get_boolean ("default-pages-set")
@@ -153,11 +153,25 @@ namespace Cassette {
         }
 
         public void update_page (string page_id, string? new_page_title, string? new_page_icon_name) {
-            if (new_page_title != null && (PAGER_ARGS_DELIMETER in new_page_title || PAGER_PARTS_DELIMETER in new_page_title || PAGER_PAGES_DELIMETER in new_page_title)) {
+            if (
+                new_page_title != null &&
+                (
+                    PAGER_ARGS_DELIMETER in new_page_title ||
+                    PAGER_PARTS_DELIMETER in new_page_title ||
+                    PAGER_PAGES_DELIMETER in new_page_title
+                )
+            ) {
                 window.show_message (_("Can't set title \"%s\" to page").printf (new_page_title));
                 return;
             }
-            if (new_page_icon_name != null && (PAGER_ARGS_DELIMETER in new_page_icon_name || PAGER_PARTS_DELIMETER in new_page_icon_name || PAGER_PAGES_DELIMETER in new_page_icon_name)) {
+            if (
+                new_page_icon_name != null &&
+                (
+                    PAGER_ARGS_DELIMETER in new_page_icon_name ||
+                    PAGER_PARTS_DELIMETER in new_page_icon_name ||
+                    PAGER_PAGES_DELIMETER in new_page_icon_name
+                )
+            ) {
                 window.show_message (_("Can't set icon with name \"%s\" to page").printf (new_page_icon_name));
                 return;
             }
@@ -241,13 +255,32 @@ namespace Cassette {
 
         void load_static_pages () {
             if (storager.settings.get_boolean ("show-main")) {
-                add_page ({"main", _("Main"), "go-home-symbolic", typeof (MainView).name ()});
+                add_page ({
+                    "main",
+                    _("Main"),
+                    "go-home-symbolic",
+                    typeof (MainView).name ()
+                });
             }
+
             if (storager.settings.get_boolean ("show-liked")) {
-                add_page ({"liked", _("Liked"), "emblem-favorite-symbolic", typeof (PlaylistView).name (), {null, "3"}});
+                add_page ({
+                    "liked",
+                    _("Liked"),
+                    "emblem-favorite-symbolic",
+                    typeof (PlaylistView).name (),
+                    {null, "3"}
+                });
             }
+
             if (storager.settings.get_boolean ("show-playlists")) {
-                add_page ({"playlists", _("Playlists"), "view-list-symbolic", typeof (PlaylistsView).name (), {null}});
+                add_page ({
+                    "playlists",
+                    _("Playlists"),
+                    "view-list-symbolic",
+                    typeof (PlaylistsView).name (),
+                    {null}
+                });
             }
         }
 
@@ -305,7 +338,7 @@ namespace Cassette {
             stack.remove (stack.get_child_by_name ( page_id));
 
             for (int i = 0; i < _custom_pages.size; i++) {
-                if (_custom_pages[i].id ==  page_id) {
+                if (_custom_pages[i].id == page_id) {
                     _custom_pages.remove_at (i);
                     break;
                 }
@@ -327,7 +360,7 @@ namespace Cassette {
             save_pages ();
         }
 
-        public void remove_page (string  page_id) {
+        public void remove_page (string page_id) {
             clear_page (page_id);
 
             save_pages ();

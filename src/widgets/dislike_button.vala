@@ -25,7 +25,7 @@ using Gee;
 
 namespace Cassette {
     //  Кнопка дизлайка
-    public class DislikeButton : CustomButton, Initable {   
+    public class DislikeButton : CustomButton, Initable {
 
         protected string content_id { get; set; }
 

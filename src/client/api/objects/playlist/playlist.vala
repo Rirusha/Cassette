@@ -66,31 +66,31 @@ namespace CassetteClient.YaMAPI {
             }
         }
 
-        public string?                  uid { get; set; default = null; }
-        public string                   kind { get; set; default = "3"; }
-        public string?                  playlist_uuid { get; set; }
-        public int                      track_count { get; set; default = -1; }  // Для срабатывания условия несоответствия размера списка треков
-        public int                      revision { get; set; }
-        public int                      snapshot { get; set; }
-        public string?                  visibility { get; set; }
-        public User                     owner { get; set; }
-        public Cover                    cover {get; set; default = new Cover.empty (); }
-        public ArrayList<TrackShort>    tracks { get; set; default = new ArrayList<TrackShort> (); }
-        public MadeFor?                 made_for { get; set; }
-        public PlayCounter?             play_counter { get; set; }
-        public PlaylistAbsence?         playlist_absence { get; set; }
-        public string?                  url_part { get; set; }
-        public string?                  created { get; set; }
-        public string?                  modified { get; set; }
-        public int                      duration_ms { get; set; }
-        public string?                  background_color { get; set; }
-        public string?                  text_color { get; set; }
-        public int                      likes_count { get; set; }
-        public ArrayList<Playlist>      similar_playlists { get; set; default = new ArrayList<Playlist> (); }
-        public ArrayList<Playlist>      last_owner_playlists { get; set; default = new ArrayList<Playlist> (); }
-        public string?                  generated_playlist_type { get; set; }
-        public string?                  description { get; set; }
-        public string?                  type_ { get; set; }
+        public string? uid { get; set; default = null; }
+        public string kind { get; set; default = "3"; }
+        public string? playlist_uuid { get; set; }
+        public int track_count { get; set; default = -1; }  // Для срабатывания условия несоответствия размера списка треков
+        public int revision { get; set; }
+        public int snapshot { get; set; }
+        public string? visibility { get; set; }
+        public User owner { get; set; }
+        public Cover cover {get; set; default = new Cover.empty (); }
+        public ArrayList<TrackShort> tracks { get; set; default = new ArrayList<TrackShort> (); }
+        public MadeFor? made_for { get; set; }
+        public PlayCounter? play_counter { get; set; }
+        public PlaylistAbsence? playlist_absence { get; set; }
+        public string? url_part { get; set; }
+        public string? created { get; set; }
+        public string? modified { get; set; }
+        public int duration_ms { get; set; }
+        public string? background_color { get; set; }
+        public string? text_color { get; set; }
+        public int likes_count { get; set; }
+        public ArrayList<Playlist> similar_playlists { get; set; default = new ArrayList<Playlist> (); }
+        public ArrayList<Playlist> last_owner_playlists { get; set; default = new ArrayList<Playlist> (); }
+        public string? generated_playlist_type { get; set; }
+        public string? description { get; set; }
+        public string? type_ { get; set; }
 
         public Playlist () {
             Object ();

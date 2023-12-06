@@ -42,7 +42,7 @@ namespace Cassette {
             main_stack.visible_child_name = "loading";
             spinner_loading.start ();
 
-            load_playlists.begin (); 
+            load_playlists.begin ();
 
             if (Config.POSTFIX == ".Devel") {
                 add_css_class ("devel");

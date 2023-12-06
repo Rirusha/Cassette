@@ -159,17 +159,17 @@ namespace CassetteClient {
             pixbufs[2].composite (pixbuf, 0, new_size, new_size, new_size, 0, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
         } else {
             pixbufs[1].composite (pixbuf, 0, new_size, new_size, new_size, 0, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
-            pixbufs[0].composite(pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[0].composite (pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
 
             return pixbuf;
         }
 
         if (pixbufs.length == 4) {
-            pixbufs[3].composite(pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[3].composite (pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
         } else {
-            pixbufs[0].composite(pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[0].composite (pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
         }
-        return pixbuf;  
+        return pixbuf;
     }
 
     public async void save_track (YaMAPI.Track track_info) {

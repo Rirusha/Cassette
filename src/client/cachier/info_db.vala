@@ -45,14 +45,14 @@ namespace CassetteClient.Cachier {
                 Logger.error ("Error while opening db %s, Sqlite error code: %s, message: %s".printf (db_path, db.errcode ().to_string (), db.errmsg ()));
             }
 
-            string query =  "CREATE TABLE IF NOT EXISTS additional (" +
-                            "   name    TEXT    PRIMARY KEY NOT NULL," +
-                            "   data    TEXT                NOT NULL" +
-                            ");" +
-                            "CREATE TABLE IF NOT EXISTS content_refs (" +
-                            "   what_id     TEXT    NOT NULL," +
-                            "   source_id   TEXT    NOT NULL," +
-                            "   PRIMARY KEY (what_id, source_id));";
+            string query = "CREATE TABLE IF NOT EXISTS additional (" +
+                           "   name    TEXT    PRIMARY KEY NOT NULL," +
+                           "   data    TEXT                NOT NULL" +
+                           ");" +
+                           "CREATE TABLE IF NOT EXISTS content_refs (" +
+                           "   what_id     TEXT    NOT NULL," +
+                           "   source_id   TEXT    NOT NULL," +
+                           "   PRIMARY KEY (what_id, source_id));";
 
             error_code = db.exec (query, null);
             if (error_code != Sqlite.OK) {
@@ -115,7 +115,7 @@ namespace CassetteClient.Cachier {
                 return;
             }
 
-            string query = "REPLACE INTO content_refs VALUES ($WHAT_ID, $SOURCE_ID)";;
+            string query = "REPLACE INTO content_refs VALUES ($WHAT_ID, $SOURCE_ID)";
 
             Sqlite.Statement statement;
             db.prepare_v2 (query, query.length, out statement);

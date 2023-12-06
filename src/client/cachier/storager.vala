@@ -145,9 +145,10 @@ namespace CassetteClient.Cachier {
         public string temp_cache_path { get; private set; }
 
         public bool is_devel { get; construct; }
+        public bool should_init_log_db { get; construct; }
 
-        public Storager (bool is_devel) {
-            Object (is_devel: is_devel);
+        public Storager (bool is_devel, bool should_init_log_db = true) {
+            Object (is_devel: is_devel, should_init_log_db: should_init_log_db);
         }
 
         construct {
@@ -163,8 +164,10 @@ namespace CassetteClient.Cachier {
             temp_cache_path = Path.build_filename (temp_dir, "cassette");
             temp_track_uri = @"file://$temp_track_path";
 
-            init_log ();
-            init_db ();
+            if (should_init_log_db) {
+                init_log ();
+                init_db ();
+            }
         }
 
         void init_log () {

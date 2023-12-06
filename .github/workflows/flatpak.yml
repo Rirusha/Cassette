@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+name: CI
+jobs:
+  flatpak-builder:
+    name: "Flatpak Builder"
+    runs-on: gnome-45
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@master
+        with:
+          bundle: "cassette.flatpak"
+          manifest-path: "com.github.Rirusha.Cassette.json"
+          run-tests: true
+          cache-key: "flatpak-builder-${{ github.sha }}"

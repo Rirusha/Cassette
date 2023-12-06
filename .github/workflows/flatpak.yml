@@ -1,8 +1,10 @@
+name: "CI: Flatpak"
+
 on:
   push:
     branches: [master]
   pull_request:
-name: CI
+
 jobs:
   flatpak-builder:
     name: "Flatpak Builder"

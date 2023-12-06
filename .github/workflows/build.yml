@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: "Build"
-    runs-on: gnome-45
+    runs-on: ubuntu-latest
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
     steps:

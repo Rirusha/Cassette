@@ -10,10 +10,10 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
     steps:
     - uses: actions/checkout@v1
-    # - name: Install Dependencies
-    #   run: |
-    #     apt update
-    #     apt install -y meson libgranite-dev libgtk-3-dev libjson-glib-dev libgudev-1.0-dev libevdev-dev libgtksourceview-3.0-dev libxml2-dev libglib2.0-dev libgda-5.0-dev libmysqlclient-dev libpq-dev libgda-5.0-mysql libgda-5.0-postgres libsecret-1-dev libssh2-1-dev valac
+    - name: Install Dependencies
+      run: |
+        apt update
+        apt install -y meson ninja cmake appstream-util libadwaita-1-dev libgtk-4-dev libgstreamer1.0-dev libgee-0.8-dev libsoup-3.0-dev libjson-glib-dev valac
     - name: Build
       env:
         DESTDIR: out

@@ -40,14 +40,14 @@
             "name" : "cassette",
             "builddir" : true,
             "buildsystem" : "meson",
-            "x-checker-data": {
-                "type": "git",
-                "tag-pattern": "^ver-([\\d.]+)$"
-            },
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/Rirusha/Cassette.git"
+                    "url" : "https://github.com/Rirusha/Cassette.git",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^ver-([\\d.]+)$"
+                    }
                 }
             ]
         }

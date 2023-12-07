@@ -14,8 +14,6 @@
         "--device=dri",
         "--socket=pulseaudio",
         "--socket=wayland",
-        "--filesystem=~/.local/share",
-        "--filesystem=/var/tmp",
         "--filesystem=xdg-music:ro",
         "--filesystem=xdg-download:ro",
         "--talk-name=org.mpris.MediaPlayer2.Player",

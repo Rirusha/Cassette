@@ -40,6 +40,10 @@
             "name" : "cassette",
             "builddir" : true,
             "buildsystem" : "meson",
+            "x-checker-data": {
+                "type": "git",
+                "tag-pattern": "^ver-([\\d.]+)$"
+            },
             "sources" : [
                 {
                     "type" : "git",

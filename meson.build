@@ -43,7 +43,7 @@ else
   postfix = ''
 endif
 
-app_id = 'com.github.Rirusha.Cassette@0@'.format(postfix)
+app_id = 'io.github.Rirusha.Cassette@0@'.format(postfix)
 
 conf = configuration_data()
 conf.set_quoted('APP_ID', app_id)

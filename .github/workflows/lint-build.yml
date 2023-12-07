@@ -31,6 +31,6 @@ jobs:
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: cassette.flatpak
-        manifest-path: com.github.Rirusha.Cassette.json
+        manifest-path: io.github.Rirusha.Cassette.json
         run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}

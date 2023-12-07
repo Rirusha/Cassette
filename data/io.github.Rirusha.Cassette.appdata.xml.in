@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <name>Cassette</name>
-  <id>com.github.Rirusha.Cassette.desktop</id>
+  <id>io.github.Rirusha.Cassette.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>
@@ -56,7 +56,7 @@
     </screenshot>
   </screenshots>
   <summary>Unofficial Yandex.Music client</summary>
-  <launchable type="desktop-id">com.github.Rirusha.Cassette.desktop</launchable>
+  <launchable type="desktop-id">io.github.Rirusha.Cassette.desktop</launchable>
   <releases>
     <release version="0.1" date="2023-12-01">
       <description>

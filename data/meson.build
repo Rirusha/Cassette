@@ -13,8 +13,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'com.github.Rirusha.Cassette.appdata.xml.in',
-  output: 'com.github.Rirusha.Cassette.appdata.xml',
+  input: 'io.github.Rirusha.Cassette.appdata.xml.in',
+  output: 'io.github.Rirusha.Cassette.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -25,7 +25,7 @@ if appstream_util.found()
   test('Validate appstream file', appstream_util, args: ['validate-relax', appstream_file])
 endif
 
-install_data('com.github.Rirusha.Cassette.gschema.xml',
+install_data('io.github.Rirusha.Cassette.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 
@@ -38,7 +38,7 @@ endif
 
 subdir('icons')
 
-resource_files = files('com.github.Rirusha.Cassette.gresource.xml')
+resource_files = files('io.github.Rirusha.Cassette.gresource.xml')
 resources = gnome.compile_resources(
   'cassette-resources',
   resource_files,

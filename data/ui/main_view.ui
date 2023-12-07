@@ -8,7 +8,7 @@
         <child>
           <object class="AdwStatusPage">
             <property name="title" translatable="true">Not implemented yet</property>
-            <property name="icon-name">com.github.Rirusha.Cassette-symbolic</property>
+            <property name="icon-name">io.github.Rirusha.Cassette-symbolic</property>
           </object>
         </child>
       </object>

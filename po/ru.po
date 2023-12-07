@@ -19,22 +19,22 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.4.1\n"
 
-#: data/com.github.Rirusha.Cassette.desktop.in:3
-#: data/com.github.Rirusha.Cassette.desktop.in:4
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:3 src/main.vala:26
+#: data/io.github.Rirusha.Cassette.desktop.in:3
+#: data/io.github.Rirusha.Cassette.desktop.in:4
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:3 src/main.vala:26
 msgid "Cassette"
 msgstr "Cassette"
 
-#: data/com.github.Rirusha.Cassette.desktop.in:5
+#: data/io.github.Rirusha.Cassette.desktop.in:5
 msgid "Unofficial Yandex.Music client for GNOME"
 msgstr "Неофициальный клиент сервиса Я.Музыка для GNOME"
 
 # Translators: don't translate ';'
-#: data/com.github.Rirusha.Cassette.desktop.in:6
+#: data/io.github.Rirusha.Cassette.desktop.in:6
 msgid "yandex;yandex music;yam;music;"
 msgstr "яндекс;яндекс музыка;ям;музыка;"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:8
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:8
 msgid ""
 "GTK/Adwaita application that allows to use Yandex Music service on Linux "
 "operating systems."
@@ -42,20 +42,20 @@ msgstr ""
 "GTK/Adwaita приложение, позволяющий использовать сервис Яндекс Музыки на "
 "операционных системах Линукс."
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:13
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:13
 msgid "Of the features:"
 msgstr "Из особенностей:"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:17
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:17
 msgid "Allows you to save playlists and albums for offline listening"
 msgstr "Позволяет вам сохранять плейлисты и альбомы для оффлайн прослушивания"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:20
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:20
 msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
 msgstr ""
 "Имеет динамический \"режим караоке\" прямо на панели информации о треке"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:23
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:23
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
 "content, such as explicit or suitable for chidlern."
@@ -63,15 +63,15 @@ msgstr ""
 "Позволяет более точно настроить отображение и воспроизведение детского или "
 "предназначенного для несовершеннолетних контента."
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:27
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:27
 msgid "Displays tracks that are currently unavailable in the service"
 msgstr "Отображает треки, не доступные в сервисе на данный момент"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:30
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:30
 msgid "Shows which tracks have been replaced and by what"
 msgstr "Показывает, какие треки были заменены и чем"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:35
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:35
 msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
@@ -79,29 +79,29 @@ msgstr ""
 "Cassette является неофициальным клиентом, не связан с компанией Яндекс и не "
 "одобрен ей."
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:57
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:57
 msgid "Unofficial Yandex.Music client"
 msgstr "Неофициальный клиент сервиса Я.Музыка"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:62
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:62
 msgid "First release of Cassette"
 msgstr "Первый релиз Cassette"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:64
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:64
 msgid "Allows you to listen to music"
 msgstr "Позволяет вам слушать музыку"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:65
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:65
 msgid "View your playlists"
 msgstr "Просматривать ваши плейлисты"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:66
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:66
 msgid "Manage the playback queue, for example shuffle or puts on repeat"
 msgstr ""
 "Управлять очередью воспроизведения, например, перемешивать или ставить на "
 "повтор"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:67
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:67
 msgid ""
 "Sends whether the track has been listened to and the playback queue, if it "
 "has been changed"
@@ -109,11 +109,11 @@ msgstr ""
 "Отправлять информацию о том, был ли прослушан трек, и о очереди "
 "воспроизведения, если она была изменена"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:68
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:68
 msgid "Implemented mpris2"
 msgstr "Реализован mpris2"
 
-#: data/com.github.Rirusha.Cassette.appdata.xml.in:76
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:76
 msgid "Rirusha"
 msgstr "Rirusha"
 

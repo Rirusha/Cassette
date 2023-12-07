@@ -94,7 +94,7 @@ namespace CassetteClient.Cachier {
         */
 
         public InfoDB db { get; private set; }
-        public Settings settings { get; default = new Settings ("com.github.Rirusha.Cassette"); }
+        public Settings settings { get; default = new Settings ("io.github.Rirusha.Cassette"); }
 
         public signal void moving_done ();
 

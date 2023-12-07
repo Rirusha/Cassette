@@ -135,7 +135,8 @@ namespace CassetteClient.Cachier {
         }
 
         string home_dir = Environment.get_home_dir ();
-        string temp_dir;
+        string temp_dir = Environment.get_user_cache_dir ();
+
         public string log_file_path { get; private set; }
         public string cookies_file_path { get; private set; }
         public string db_file_path { get; private set; }
@@ -152,12 +153,6 @@ namespace CassetteClient.Cachier {
         }
 
         construct {
-            if (File.new_for_path ("/var/tmp").query_exists ()) {
-                temp_dir = "/var/tmp";
-            } else {
-                temp_dir = Environment.get_tmp_dir ();
-            }
-
             settings.bind ("cache-path", this, "cache-path", SettingsBindFlags.DEFAULT);
             //  temp_track_path = Path.build_filename (get_path ("cur", true), "track");
             temp_track_path = Path.build_filename (temp_dir, "track");

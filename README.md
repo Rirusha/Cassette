@@ -1,4 +1,4 @@
-![com github Rirusha Cassette](https://raw.githubusercontent.com/Rirusha/Cassette/f3d8b175098498ccef5d693b720f7b47ae8a9052/data/icons/hicolor/scalable/apps/io.github.Rirusha.Cassette.svg)
+![com github Rirusha Cassette](https://raw.githubusercontent.com/Rirusha/Cassette/master/data/icons/hicolor/scalable/apps/io.github.Rirusha.Cassette.svg)
 
 
 # Cassette

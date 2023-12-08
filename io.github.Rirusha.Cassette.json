@@ -46,7 +46,7 @@
                     "type" : "git",
                     "url" : "https://github.com/Rirusha/Cassette.git",
                     "tag" : "ver-0.1",
-                    "commit" : "3ccbad70a8692112b593f91b0d88052ea02da9cf",
+                    "commit" : "3446733c9301fc1560aa4991f464bc4a0eb9a832",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^ver-([\\d.]+)$"

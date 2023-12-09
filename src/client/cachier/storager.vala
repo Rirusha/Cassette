@@ -157,6 +157,11 @@ namespace CassetteClient.Cachier {
             temp_cache_path = Path.build_filename (temp_dir, "cassette");
             log_file_path = Path.build_filename (temp_cache_path, "cassette.log");
 
+            var cache_dir_file = File.new_for_path (cache_path);
+            if (!cache_dir_file.query_exists) {
+                cache_dir_file.create ();
+            }
+
             cookies_file_path = Path.build_filename (cache_path, "cassette.cookies");
             db_file_path = Path.build_filename (cache_path, "cassette.db");
 
@@ -170,7 +175,7 @@ namespace CassetteClient.Cachier {
 
         void init_log () {
             /*
-                Инициализировать файл логов. Удаляет файл лога при каждом выполнении
+                Инициализировать файл логов
             */
 
             FileUtils.remove (log_file_path);
@@ -186,7 +191,7 @@ namespace CassetteClient.Cachier {
 
         void init_db () {
             /*
-                Инициализировать файл логов. Удаляет файл лога при каждом выполнении
+                Инициализировать файл базы данных
             */
 
             db = new InfoDB (db_file_path);

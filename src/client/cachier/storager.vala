@@ -158,7 +158,7 @@ namespace CassetteClient.Cachier {
             log_file_path = Path.build_filename (temp_cache_path, "cassette.log");
 
             var cache_dir_file = File.new_for_path (cache_path);
-            if (!cache_dir_file.query_exists) {
+            if (!cache_dir_file.query_exists ()) {
                 cache_dir_file.create (FileCreateFlags.PRIVATE);
             }
 
@@ -346,7 +346,7 @@ namespace CassetteClient.Cachier {
                 path_file = File.new_build_filename (cache_path, filename);
             }
 
-            if (path_file.query_exists () == false) {
+            if (!path_file.query_exists ()) {
                 try {
                     path_file.make_directory_with_parents ();
                 } catch (Error e) {

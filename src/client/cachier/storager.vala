@@ -159,7 +159,11 @@ namespace CassetteClient.Cachier {
 
             var cache_dir_file = File.new_for_path (cache_path);
             if (!cache_dir_file.query_exists ()) {
-                cache_dir_file.create (FileCreateFlags.PRIVATE);
+                try {
+                    cache_dir_file.make_directory ();
+                } catch (Error e) {
+                    Logger.error (@"Error while making directory $(_cache_path)\n")
+                }
             }
 
             cookies_file_path = Path.build_filename (cache_path, "cassette.cookies");

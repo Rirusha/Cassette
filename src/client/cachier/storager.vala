@@ -162,7 +162,7 @@ namespace CassetteClient.Cachier {
                 try {
                     cache_dir_file.make_directory ();
                 } catch (Error e) {
-                    Logger.error (@"Error while making directory $(_cache_path)\n")
+                    Logger.error (@"Error while making directory $(_cache_path)\n");
                 }
             }
 

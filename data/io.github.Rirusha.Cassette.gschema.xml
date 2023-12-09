@@ -38,9 +38,9 @@
 		<key name="window-maximized" type="b">
 			<default>false</default>
 		</key>
-		<key name="cache-path" type="s">
+		<!-- <key name="cache-path" type="s">
 			<default>'~/.local/share/cassette'</default>
-		</key>
+		</key> -->
 		<key name="volume" type="d">
 			<default>10.0</default>
 		</key>

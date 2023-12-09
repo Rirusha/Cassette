@@ -17,3 +17,4 @@ my.*
 .flatpak-builder
 build-dir
 repo
+.flatpak

@@ -98,44 +98,44 @@ namespace CassetteClient.Cachier {
 
         public signal void moving_done ();
 
-        string old_cache_path;
+        //  string old_cache_path;
 
-        string _cache_path;
-        public string cache_path {
-            get { return _cache_path; }
-            set {
-                if ("~/" in value) {
-                    _cache_path = Path.build_filename (home_dir, value[2:]);
-                } else {
-                    _cache_path = value;
-                }
+        //  string _cache_path;
+        //  public string cache_path {
+        //      get { return _cache_path; }
+        //      set {
+        //          if ("~/" in value) {
+        //              _cache_path = Path.build_filename (home_dir, value[2:]);
+        //          } else {
+        //              _cache_path = value;
+        //          }
 
-                File cache_file = File.new_for_path (_cache_path);
-                if (_cache_path != old_cache_path) {
-                    if (cache_file.query_exists () == false) {
-                        try {
-                            cache_file.make_directory_with_parents ();
-                        } catch (Error e) {
-                            stderr.printf (@"Error: while making directory $(_cache_path)\n");
-                        }
-                    }
+        //          File cache_file = File.new_for_path (_cache_path);
+        //          if (_cache_path != old_cache_path) {
+        //              if (cache_file.query_exists () == false) {
+        //                  try {
+        //                      cache_file.make_directory_with_parents ();
+        //                  } catch (Error e) {
+        //                      stderr.printf (@"Error: while making directory $(_cache_path)\n");
+        //                  }
+        //              }
 
-                    if (old_cache_path != null) {
-                        move_dir (old_cache_path, _cache_path);
-                        init_db ();
-                    }
+        //              if (old_cache_path != null) {
+        //                  move_dir (old_cache_path, _cache_path);
+        //                  init_db ();
+        //              }
 
-                    old_cache_path = _cache_path;
-                }
+        //              old_cache_path = _cache_path;
+        //          }
 
-                log_file_path = Path.build_filename (temp_dir, "cassette", "cassette.log");
-                cookies_file_path = Path.build_filename (_cache_path, "cassette.cookies");
-                db_file_path = Path.build_filename (cache_path, "cassette.db");
-            }
-        }
+        //          log_file_path = Path.build_filename (temp_dir, "cassette", "cassette.log");
+        //          cookies_file_path = Path.build_filename (_cache_path, "cassette.cookies");
+        //          db_file_path = Path.build_filename (cache_path, "cassette.db");
+        //      }
+        //  }
 
-        string home_dir = Environment.get_home_dir ();
-        string temp_dir = Environment.get_user_cache_dir ();
+        public string cache_path { get; default = Path.build_filename (Environment.get_user_data_dir (), "cassette"); }
+        public string temp_dir { get; default = Environment.get_user_cache_dir (); }
 
         public string log_file_path { get; private set; }
         public string cookies_file_path { get; private set; }
@@ -154,9 +154,14 @@ namespace CassetteClient.Cachier {
 
         construct {
             settings.bind ("cache-path", this, "cache-path", SettingsBindFlags.DEFAULT);
-            //  temp_track_path = Path.build_filename (get_path ("cur", true), "track");
+
             temp_track_path = Path.build_filename (temp_dir, "track");
             temp_cache_path = Path.build_filename (temp_dir, "cassette");
+            log_file_path = Path.build_filename (temp_cache_path, "cassette.log");
+
+            cookies_file_path = Path.build_filename (cache_path, "cassette.cookies");
+            db_file_path = Path.build_filename (cache_path, "cassette.db");
+
             temp_track_uri = @"file://$temp_track_path";
 
             if (should_init_log_db) {
@@ -342,7 +347,7 @@ namespace CassetteClient.Cachier {
                 try {
                     path_file.make_directory_with_parents ();
                 } catch (Error e) {
-                    Logger.warning (_("Can't create %s").printf (_cache_path));
+                    Logger.warning (_("Can't create %s").printf (cache_path));
                 }
             }
             return path_file.get_path ();

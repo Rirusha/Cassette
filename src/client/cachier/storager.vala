@@ -153,8 +153,6 @@ namespace CassetteClient.Cachier {
         }
 
         construct {
-            settings.bind ("cache-path", this, "cache-path", SettingsBindFlags.DEFAULT);
-
             temp_track_path = Path.build_filename (temp_dir, "track");
             temp_cache_path = Path.build_filename (temp_dir, "cassette");
             log_file_path = Path.build_filename (temp_cache_path, "cassette.log");

@@ -162,7 +162,16 @@ namespace CassetteClient.Cachier {
                 try {
                     cache_dir_file.make_directory ();
                 } catch (Error e) {
-                    Logger.error (@"Error while making directory $(_cache_path)\n");
+                    Logger.error ("Error while making permanent cache directory. Message: %s".printf (e.message));
+                }
+            }
+
+            var temp_dir_file = File.new_for_path (temp_cache_path);
+            if (!temp_dir_file.query_exists ()) {
+                try {
+                    temp_dir_file.make_directory ();
+                } catch (Error e) {
+                    Logger.error ("Error while making temporary cache directory. Message: %s".printf (e.message));
                 }
             }
 

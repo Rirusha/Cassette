@@ -200,14 +200,22 @@ namespace CassetteClient {
         }
 
         public void update_position_queue (YaMAPI.Queue queue) {
-            net_run_wout_code (() => {
-                //  На случай если пользователь после формирования очереди быстро сменит трек и id после создания не успеет придти
-                if (queue.id == null) {
-                    queue.id = create_queue (queue);
-                }
+            try {
+                net_run (() => {
+                    //  На случай если пользователь после формирования очереди быстро сменит трек и id после создания не успеет придти
+                    if (queue.id == null) {
+                        queue.id = create_queue (queue);
+                    }
 
-                client.update_position_queue (queue.id, queue.current_index);
-            });
+                    client.update_position_queue (queue.id, queue.current_index);
+                });
+            } catch (CassetteClient.BadStatusCodeError e) {
+                if (e is CassetteClient.BadStatusCodeError.NOT_FOUND) {
+                    queue.id = null;
+
+                    update_position_queue (queue);
+                }
+            }
         }
 
         public string? get_download_uri (string track_id, bool is_hq) {

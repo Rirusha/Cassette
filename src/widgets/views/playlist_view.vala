@@ -95,7 +95,7 @@ namespace Cassette {
             });
             actions.add_action (share_action);
 
-            if ((uid == null || uid == yam_talker.me.oid) && kind != "3") {
+            if (yam_talker.is_me (uid) && kind != "3") {
                 visibility_switch.visible = true;
 
                 playlist_options_button.add_delete_playlist_action ();

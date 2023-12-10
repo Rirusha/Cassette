@@ -82,6 +82,14 @@ namespace CassetteClient {
             }
         }
 
+        public bool is_me (string? uid) {
+            return uid == null || uid == me.oid;
+        }
+
+        public bool is_my_liked (string? uid, string kind) {
+            return is_me (uid) && kind == "3";
+        }
+
         public void init () throws BadStatusCodeError {
             client = new YaMClient (create_soup_wrapper (true));
 
@@ -107,7 +115,7 @@ namespace CassetteClient {
             net_run (() => {
                 playlist_info = client.get_playlist_info (uid, kind);
 
-                if (kind == "3") {
+                if (is_my_liked (uid, kind)) {
                     likes_controller.update_liked_tracks (playlist_info.tracks);
                 }
 

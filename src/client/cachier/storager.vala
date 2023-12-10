@@ -98,42 +98,6 @@ namespace CassetteClient.Cachier {
 
         public signal void moving_done ();
 
-        //  string old_cache_path;
-
-        //  string _cache_path;
-        //  public string cache_path {
-        //      get { return _cache_path; }
-        //      set {
-        //          if ("~/" in value) {
-        //              _cache_path = Path.build_filename (home_dir, value[2:]);
-        //          } else {
-        //              _cache_path = value;
-        //          }
-
-        //          File cache_file = File.new_for_path (_cache_path);
-        //          if (_cache_path != old_cache_path) {
-        //              if (cache_file.query_exists () == false) {
-        //                  try {
-        //                      cache_file.make_directory_with_parents ();
-        //                  } catch (Error e) {
-        //                      stderr.printf (@"Error: while making directory $(_cache_path)\n");
-        //                  }
-        //              }
-
-        //              if (old_cache_path != null) {
-        //                  move_dir (old_cache_path, _cache_path);
-        //                  init_db ();
-        //              }
-
-        //              old_cache_path = _cache_path;
-        //          }
-
-        //          log_file_path = Path.build_filename (temp_dir, "cassette", "cassette.log");
-        //          cookies_file_path = Path.build_filename (_cache_path, "cassette.cookies");
-        //          db_file_path = Path.build_filename (cache_path, "cassette.db");
-        //      }
-        //  }
-
         public string cache_path { get; default = Path.build_filename (Environment.get_user_data_dir (), "cassette"); }
         public string temp_dir { get; default = Environment.get_user_cache_dir (); }
 

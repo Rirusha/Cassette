@@ -286,6 +286,11 @@ namespace Cassette {
 
         void load_custom_pages () {
             try {
+                File pages_file = File.new_for_path (pages_path);
+                if (!pages_file.query_exists ()) {
+                    return;
+                }
+
                 string content_str;
                 FileUtils.get_contents (pages_path, out content_str, null);
                 content_str = (string) Base64.decode (content_str);

@@ -35,7 +35,6 @@ namespace Cassette {
         DESCENDING
     }
 
-    //  [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_row.ui")]
     protected class TrackRow : Gtk.FlowBoxChild {
 
         public YaMAPI.Track track_info { get; construct; }
@@ -50,10 +49,10 @@ namespace Cassette {
             vexpand = false;
 
             var motion_controller = new Gtk.EventControllerMotion ();
-            motion_controller.enter.connect ((mc, x, y) => {
+            motion_controller.enter.connect (() => {
                 add_css_class ("track-row");
             });
-            motion_controller.leave.connect ((mc) => {
+            motion_controller.leave.connect (() => {
                 remove_css_class ("track-row");
             });
             add_controller (motion_controller);

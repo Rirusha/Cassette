@@ -130,11 +130,11 @@ namespace CassetteClient {
             builder.begin_object ();
             var cls = (ObjectClass) yam_obj.get_type ().class_ref ();
             foreach (ParamSpec property in cls.list_properties ()) {
-                if ((property.flags & ParamFlags.READABLE) == 0) {
+                if ((property.flags & ParamFlags.READABLE) == 0 || (property.flags & ParamFlags.WRITABLE) == 0) {
                     continue;
                 }
 
-                builder.set_member_name (property.name);
+                builder.set_member_name (strip (property.name, '-'));
 
                 var prop_val = Value (property.value_type);
                 yam_obj.get_property (property.name, ref prop_val);

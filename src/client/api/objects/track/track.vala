@@ -21,6 +21,12 @@
 using Gee;
 
 namespace CassetteClient.YaMAPI {
+    public enum TrackType {
+        MUSIC,
+        AUDIOBOOK,
+        PODCAST
+    }
+
     public class Track : YaMObject, HasCover {
 
         public bool explicit {
@@ -50,6 +56,25 @@ namespace CassetteClient.YaMAPI {
             }
         }
 
+        public TrackType track_type {
+            get {
+                switch (type_) {
+                    case "audiobook":
+                        return TrackType.AUDIOBOOK;
+                    case "podcast-episode":
+                        return TrackType.PODCAST;
+                    default:
+                        return TrackType.MUSIC;
+                }
+            }
+        }
+
+        public bool need_bookmate {
+            get {
+                return "bookmate" in available_for_options;
+            }
+        }
+
         public string id { get; set; }
         public string? title { get; set; }
         public bool available { get; set; }
@@ -62,6 +87,7 @@ namespace CassetteClient.YaMAPI {
         public int duration_ms { get; set; }
         public Track? substituted { get; set; }
         public MetaData? meta_data { get; set; }
+        public string? type_ { get; set; }
         public string? content_warning { get; set; }
         public string? version { get; set; }
         public string? background_video_uri { get; set; }

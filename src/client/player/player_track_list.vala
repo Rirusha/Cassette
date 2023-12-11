@@ -88,34 +88,33 @@ namespace CassetteClient.Player {
             update_queue.begin ();
         }
 
-        public int get_next_index (bool consider_repeat_mode) {
+        public int get_next_index (bool consider_repeat_one) {
             int index = _queue.current_index;
 
-            if (!consider_repeat_mode) {
-                if (index + 1 == _queue.tracks.size) {
-                    // Неразрешимая ситуация
-                } else {
-                    index++;
-                }
-            } else {
-                switch (player.repeat_mode) {
-                    case RepeatMode.OFF:
+            switch (player.repeat_mode) {
+                case RepeatMode.OFF:
+                    if (index + 1 == _queue.tracks.size) {
+                        // Неразрешимая ситуация
+                    } else {
+                        index++;
+                    }
+                    break;
+                case RepeatMode.REPEAT_ONE:
+                    if (!consider_repeat_one) {
                         if (index + 1 == _queue.tracks.size) {
                             // Неразрешимая ситуация
                         } else {
                             index++;
                         }
-                        break;
-                    case RepeatMode.REPEAT_ONE:
-                        break;
-                    case RepeatMode.REPEAT_ALL:
-                        if (index + 1 == _queue.tracks.size) {
-                            index = 0;
-                        } else {
-                            index++;
-                        }
-                        break;
-                }
+                    }
+                    break;
+                case RepeatMode.REPEAT_ALL:
+                    if (index + 1 == _queue.tracks.size) {
+                        index = 0;
+                    } else {
+                        index++;
+                    }
+                    break;
             }
 
             return index;

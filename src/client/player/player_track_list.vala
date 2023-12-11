@@ -127,24 +127,18 @@ namespace CassetteClient.Player {
 
         public int get_prev_index () {
             int index = _queue.current_index;
-            switch (player.repeat_mode) {
-                case RepeatMode.OFF:
-                    if (index - 1 == -1) {
-                        player.seek (0);
-                    } else {
-                        index--;
-                    }
-                    break;
-                case RepeatMode.REPEAT_ONE:
-                    break;
-                case RepeatMode.REPEAT_ALL:
-                    if (index - 1 == -1) {
-                        index = _queue.tracks.size - 1;
-                    } else {
-                        index--;
-                    }
-                    break;
+
+            if (index - 1 == -1) {
+                if (player.repeat_mode == RepeatMode.REPEAT_ONE || player.repeat_mode == RepeatMode.OFF) {
+                    player.seek (0);
+                } else {
+                    index = _queue.tracks.size - 1;
+                }
+
+            } else {
+                index--;
             }
+
             return index;
         }
 

@@ -211,6 +211,7 @@ namespace Cassette {
                 spin.stop ();
 
                 load_avatar.begin ();
+                player_bar.update_queue.begin ();
 
                 app_menu_button.sensitive = true;
                 button_refresh.sensitive = true;

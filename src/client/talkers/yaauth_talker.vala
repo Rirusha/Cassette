@@ -26,7 +26,7 @@ namespace CassetteClient {
 
     public class YaAuthTalker : AbstractTalker {
 
-        public YaAuth auth { get; private set; }
+        public YaAuth auth { get; default = new YaAuth (create_soup_wrapper (false)); }
 
         public override void init_if_not () throws BadStatusCodeError {
             bool is_need_init = false;
@@ -43,8 +43,6 @@ namespace CassetteClient {
         }
 
         public void init () throws BadStatusCodeError {
-            auth = new YaAuth (create_soup_wrapper (false));
-
             net_run (() => {
                 auth.init ();
             }, false);

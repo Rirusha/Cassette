@@ -26,7 +26,7 @@ cassette_gui_sources = files(
   'widgets/track_list/track_list.vala',
   'widgets/track_list/tracks_model.vala',
   'widgets/track_list/tracks_view.vala',
-  'widgets/track_list/track_row.vala',
+  'widgets/track_list/track_row_base.vala',
   'widgets/play_button/play_button.vala',
   'widgets/play_button/play_button_context.vala',
   'widgets/play_button/play_button_default.vala',

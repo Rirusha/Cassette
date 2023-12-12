@@ -621,4 +621,3 @@ namespace CassetteClient.YaMAPI {
         }
     }
 }
-

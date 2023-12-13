@@ -16,6 +16,7 @@ cassette_gui_sources = files(
   'widgets/sidebar.vala',
   'widgets/save_stack.vala',
   'widgets/label_button.vala',
+  'widgets/loading_widget.vala',
   'widgets/custom_button.vala',
   'widgets/like_button.vala',
   'widgets/dislike_button.vala',
@@ -56,9 +57,7 @@ cassette_gui_sources = files(
   'widgets/views/cachiable_view.vala',
   'widgets/views/playlist_view.vala',
   'widgets/views/playlists_view.vala',
-  'widgets/views/cant_show_view.vala',
-  'widgets/auth_window/auth_window.vala',
-  'widgets/auth_window/phone_entry.vala'
+  'widgets/views/cant_show_view.vala'
 )
 
 subdir('client')

@@ -29,7 +29,7 @@ namespace CassetteClient {
     // Класс для выполнения всяких вещей, связанных с интернетом, чтобы можно было оповестить пользователя о проблемах с соединением
     public class YaMTalker : AbstractTalker {
 
-        public YaMClient client { get; default = new YaMClient (create_soup_wrapper (true)); }
+        private YaMClient client = new YaMClient (create_soup_wrapper (true));
         public LikesController likes_controller { get; default = new LikesController (); }
 
         public signal void track_likes_start_change (string track_id);
@@ -91,7 +91,7 @@ namespace CassetteClient {
         }
 
         public void init () throws BadStatusCodeError {
-            //  client = new YaMClient (create_soup_wrapper (true));
+            client.soup_wrapper.reload_cookies (storager.cookies_file_path);
 
             net_run (() => {
                 client.init ();

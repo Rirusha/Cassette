@@ -358,10 +358,14 @@ namespace Cassette {
                 }
             }
 
-            if (width / height < 0.6) {
-                is_mobile = true;
+            if ((float) width / (float) height < 0.6) {
+                if (is_mobile == false) {
+                    is_mobile = true;
+                }
             } else {
-                is_mobile = false;
+                if (is_mobile == true) {
+                    is_mobile = false;
+                }
             }
         }
     }

@@ -6,7 +6,7 @@ vapi_sources = files(
 cassette_gui_sources = files(
   'main.vala',
   'application.vala',
-  'window.vala',
+  'main_window.vala',
   'utils.vala',
   'pager.vala',
   'authenticator.vala',
@@ -22,6 +22,7 @@ cassette_gui_sources = files(
   'widgets/playlist_row.vala',
   'widgets/info_marks.vala',
   'widgets/account_info_window.vala',
+  'widgets/auth_window.vala',
   'widgets/playlist_choose_window.vala',
   'widgets/track_list/track_list.vala',
   'widgets/track_list/tracks_model.vala',

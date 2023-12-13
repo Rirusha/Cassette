@@ -83,8 +83,7 @@ namespace CassetteClient {
                     return;
                 }
 
-                var cookie_jar = new Soup.CookieJarDB (value, false);
-                session.add_feature (cookie_jar);
+                reload_cookies (value);
             }
         }
 
@@ -110,6 +109,15 @@ namespace CassetteClient {
                 });
                 session.add_feature (logger);
             }
+        }
+
+        public void reload_cookies (string cookie_path) {
+            if (session.has_feature (typeof (Soup.CookieJarDB))) {
+                session.remove_feature_by_type (typeof (Soup.CookieJarDB));
+            }
+
+            var cookie_jar = new Soup.CookieJarDB (cookie_path, true);
+            session.add_feature (cookie_jar);
         }
 
         public void clear_cookies () {

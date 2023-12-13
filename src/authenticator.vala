@@ -132,15 +132,17 @@ namespace Cassette {
                 storager.remove_file (storager.cookies_file_path);
             }
 
-            var auth_window = new AuthWindow (application.main_window);
+            var auth_window = new AuthWindow () {
+                transient_for = application.main_window
+            };
 
             auth_window.bad_close.connect (() => {
                 failed ();
             });
-            auth_window.choosed_local.connect (() => {
+            auth_window.local_choosed.connect (() => {
                 local ();
             });
-            auth_window.complete.connect (init_client_async);
+            auth_window.online_complete.connect (init_client_async);
 
             auth_window.present ();
         }

@@ -39,7 +39,7 @@ msgid ""
 msgstr ""
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:13
-msgid "Of the features:"
+msgid "Features:"
 msgstr ""
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:17
@@ -53,7 +53,7 @@ msgstr ""
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:23
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for chidlern."
+"content, such as explicit or suitable for children."
 msgstr ""
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:27
@@ -186,7 +186,7 @@ msgstr ""
 
 #: data/ui/auth_window.ui:148
 msgctxt "auth window"
-msgid "Loading..."
+msgid "Loading…"
 msgstr ""
 
 #: data/ui/auth_window.ui:164
@@ -455,7 +455,7 @@ msgstr ""
 #. Translators: title of preference
 #: data/ui/preferences_window.ui:44
 msgctxt "preference window"
-msgid "Download hight quality tracks"
+msgid "Download high quality tracks"
 msgstr ""
 
 #. Translators: tooltip of preference
@@ -633,7 +633,7 @@ msgid ""
 msgstr ""
 
 #: data/ui/save_stack.ui:25
-msgid "Content saving..."
+msgid "Content saving…"
 msgstr ""
 
 #: data/ui/save_stack.ui:42
@@ -721,7 +721,7 @@ msgid "duration"
 msgstr ""
 
 #: data/ui/track_placeholder.ui:9
-msgid "Loading..."
+msgid "Loading…"
 msgstr ""
 
 #. Translators: tooltip of "backward" button
@@ -801,7 +801,7 @@ msgid "Cancel"
 msgstr ""
 
 #: src/authenticator.vala:87
-msgid "Moving..."
+msgid "Moving…"
 msgstr ""
 
 #. Translators: Playlist with liked tracks
@@ -1103,7 +1103,7 @@ msgid ""
 msgstr ""
 
 #: src/widgets/preferences/cache_deletion_preferences.vala:132
-msgid "Deleting..."
+msgid "Deleting…"
 msgstr ""
 
 #: src/widgets/track_rows/track_default_content.vala:193
@@ -1304,7 +1304,7 @@ msgid "Telegram channel"
 msgstr ""
 
 #: src/utils.vala:45
-msgid "Need authoriation"
+msgid "Need authorization"
 msgstr ""
 
 #: src/utils.vala:48

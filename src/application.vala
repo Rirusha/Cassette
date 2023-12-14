@@ -65,6 +65,16 @@ namespace Cassette {
             }
         }
 
+        public bool is_mobile {
+            get {
+                if (main_window == null) {
+                    return false;
+                }
+
+                return main_window.is_mobile_orientation;
+            }
+        }
+
         const string APP_NAME = "Cassette";
         const string RIRUSHA = "Rirusha <anerin.sidiver@yandex.ru>";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
@@ -100,8 +110,6 @@ namespace Cassette {
             yam_talker = CassetteClient.yam_talker;
             player = CassetteClient.player;
             cachier_controller = CassetteClient.cachier_controller;
-
-            authenticator.failed.connect (quit);
 
             yam_talker.connection_established.connect (() => {
                 application_state = ApplicationState.ONLINE;
@@ -209,7 +217,7 @@ namespace Cassette {
                 issue_url = ISSUE_LINK,
                 release_notes_version = Config.VERSION
             };
-            about.release_notes = _("<p>First release. For additional info check telegram channel</p>");
+            about.release_notes = _("<p>Added new authorization via WebView</p>");
             about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
 
             about.present ();

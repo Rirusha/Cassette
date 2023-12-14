@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CassetteBeginView" parent="CassetteLoadablePage">
+    <property name="nav-view">navigation_view</property>
+    <child>
+      <object class="AdwNavigationView" id="navigation_view">
+        <child>
+          <object class="AdwNavigationPage">
+            <!-- Translators: usage mode of application. Online mode or Local mode available-->
+            <property name="title" translatable="true">Usage mode</property>
+            <property name="child">
+              <object class="AdwToolbarView">
+                <child type="top">
+                  <object class="AdwHeaderBar">
+                    <property name="show-end-title-buttons">false</property>
+                  </object>
+                </child>
+                <property name="content">
+                  <object class="GtkBox" id="main_box">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">12</property>
+                    <property name="margin-top">8</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="margin-start">8</property>
+                    <property name="margin-end">8</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="valign">center</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <style>
+                              <class name="title-1"/>
+                            </style>
+                            <!-- Translators: usage mode of application. Online mode or Local mode available-->
+                            <property name="label" translatable="true" context="auth window">Choose usage mode</property>
+                            <property name="wrap">true</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                            <property name="vexpand">true</property>
+                            <property name="label" translatable="true" context="auth window">If you select the "Online mode", you can access local music by enabling the display of the corresponding pages in the pages preferences, as well as log in later when selecting "Local mode"</property>
+                            <property name="wrap">true</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwClamp">
+                        <property name="maximum_size">300</property>
+                        <property name="margin-top">8</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-end">8</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="valign">center</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkButton" id="button_online_mode">
+                                <style>
+                                  <class name="pill"/>
+                                </style>
+                                <property name="action-name">auth.online</property>
+                                <!-- Translators: usage mode of application. Online mode or Local mode available-->
+                                <property name="label" translatable="true" context="auth window">Online mode</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="button_local_mode">
+                                <style>
+                                  <class name="pill"/>
+                                </style>
+                                <property name="action-name">auth.local</property>
+                                <!-- Translators: usage mode of application. Online mode or Local mode available-->
+                                <property name="label" translatable="true" context="auth window">Local mode</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="button_bad_close">
+                                <style>
+                                  <class name="destructive-action"/>
+                                  <class name="pill"/>
+                                </style>
+                                <property name="margin-top">24</property>
+                                <property name="action-name">auth.bad-close</property>
+                                <!-- Translators: "Close" window button label-->
+                                <property name="label" translatable="true" context="auth window">Close</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwNavigationPage">
+            <property name="title" translatable="yes">Authorization</property>
+            <property name="tag">auth-page</property>
+            <property name="child">
+              <object class="AdwToolbarView" id="toolbar_view_auth">
+                <child type="top">
+                  <object class="AdwHeaderBar">
+                    <property name="show-end-title-buttons">false</property>
+                    <child type="start">
+                      <object class="GtkButton" id="button_refresh">
+                        <property name="icon-name">view-refresh-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

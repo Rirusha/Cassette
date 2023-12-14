@@ -216,7 +216,7 @@ namespace Cassette {
                 }
             });
 
-            yam_talker.init_end.connect (update_queue);
+            //  yam_talker.init_end.connect (update_queue);
         }
 
         public async void update_queue () {

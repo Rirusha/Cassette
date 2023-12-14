@@ -58,6 +58,11 @@
   <summary>Unofficial Yandex.Music client</summary>
   <launchable type="desktop-id">io.github.Rirusha.Cassette.desktop</launchable>
   <releases>
+    <release version="0.1.1" date="2023-12-15">
+      <description>
+        <p>Added new authorization via WebView</p>
+      </description>
+    </release>
     <release version="0.1" date="2023-12-01">
       <description>
         <p>First release of Cassette</p>

@@ -1,4 +1,4 @@
-/* phone_entry.vala
+/* tracks_model.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -17,15 +17,3 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-
-
-namespace Cassette {
-    public class PhoneEntry : Gtk.Entry {
-
-        public PhoneEntry () {
-            Object ();
-        }
-
-
-    }
-}

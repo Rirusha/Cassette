@@ -3,12 +3,12 @@
   <gresource prefix="/com/github/Rirusha/Cassette">
     <file alias="gtk/help-overlay.ui" preprocess="xml-stripblanks">ui/help-overlay.ui</file>
     <file>style.css</file>
-    <file preprocess="xml-stripblanks">ui/window.ui</file>
+    <file preprocess="xml-stripblanks">ui/main_window.ui</file>
     <file preprocess="xml-stripblanks">ui/root_view.ui</file>
     <file preprocess="xml-stripblanks">ui/playlist_view.ui</file>
     <file preprocess="xml-stripblanks">ui/playlists_view.ui</file>
     <file preprocess="xml-stripblanks">ui/main_view.ui</file>
-    <file preprocess="xml-stripblanks">ui/auth_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/begin_view.ui</file>
     <file preprocess="xml-stripblanks">ui/track_local_content.ui</file>
     <file preprocess="xml-stripblanks">ui/player_bar.ui</file>
     <file preprocess="xml-stripblanks">ui/track_default_content.ui</file>

@@ -111,8 +111,6 @@ namespace Cassette {
             player = CassetteClient.player;
             cachier_controller = CassetteClient.cachier_controller;
 
-            authenticator.failed.connect (quit);
-
             yam_talker.connection_established.connect (() => {
                 application_state = ApplicationState.ONLINE;
             });

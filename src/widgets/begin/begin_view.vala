@@ -1,4 +1,4 @@
-/* auth_window.vala
+/* begin_view.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -24,8 +24,9 @@ using WebKit;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/auth_window.ui")]
-    public class AuthWindow : Adw.Window {
+
+    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/begin_view.ui")]
+    public class BeginView : LoadablePage {
         [GtkChild]
         unowned Adw.NavigationView navigation_view;
         [GtkChild]
@@ -39,43 +40,29 @@ namespace Cassette {
 
         private WebView webview = new WebView ();
 
-        public signal void bad_close ();
         public signal void local_choosed ();
         public signal void online_complete ();
 
-        public AuthWindow () {
-            Object ();
+        public BeginView (bool with_header_bar) {
+            Object (with_header_bar: with_header_bar);
         }
 
         construct {
-            // Размещение кнопок выбора снизу и развёртывание окна при мобильном соотношении сторон
             if (Cassette.application.is_mobile) {
-                main_box.valign = Gtk.Align.CENTER;
-
-            } else {
                 main_box.valign = Gtk.Align.FILL;
 
-                main_box.map.connect (() => {
-                    width_request = 100;
-                    height_request = 300;
-                });
-
-                webview.map.connect (() => {
-                    width_request = 700;
-                    height_request = 900;
-                });
+            } else {
+                main_box.valign = Gtk.Align.CENTER;
             }
 
-            button_refresh.clicked.connect (webview.reload);
+            button_refresh.clicked.connect (refresh);
 
             toolbar_view_auth.content = webview;
 
             var action_group = new SimpleActionGroup ();
 
             var bad_close_action = new SimpleAction ("bad-close", null);
-            bad_close_action.activate.connect (() => {
-                bad_close ();
-            });
+            bad_close_action.activate.connect (application.quit);
             action_group.add_action (bad_close_action);
 
             var login_action = new SimpleAction ("online", null);
@@ -91,8 +78,10 @@ namespace Cassette {
             webview.load_changed.connect ((event) => {
                 if (!("https://passport.yandex.ru/" in webview.uri) && event != LoadEvent.STARTED) {
                     online_complete ();
+                }
 
-                    close ();
+                if (event == LoadEvent.FINISHED && is_loading) {
+                    stop_loading ();
                 }
             });
 
@@ -101,17 +90,27 @@ namespace Cassette {
 
             cookie_manager.set_persistent_storage (storager.cookies_file_path, CookiePersistentStorage.SQLITE);
 
-            block_widget (button_local_mode, BlockReason.NOT_IMPLEMENTED);
+            Idle.add_once (() => {
+                block_widget (button_local_mode, BlockReason.NOT_IMPLEMENTED);
+            });
 
             if (Config.POSTFIX == ".Devel") {
                 add_css_class ("devel");
             }
         }
 
+        void refresh () {
+            start_loading ();
+
+            webview.reload ();
+        }
+
         void online () {
             navigation_view.push_by_tag ("auth-page");
 
-            webview.load_uri ("https://oauth.yandex.ru/authorize");
+            start_loading ();
+
+            webview.load_uri ("https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d");
         }
 
         void local () {

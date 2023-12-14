@@ -23,7 +23,8 @@ cassette_gui_sources = files(
   'widgets/playlist_row.vala',
   'widgets/info_marks.vala',
   'widgets/account_info_window.vala',
-  'widgets/auth_window.vala',
+  'widgets/begin/begin_window.vala',
+  'widgets/begin/begin_view.vala',
   'widgets/playlist_choose_window.vala',
   'widgets/track_list/track_list.vala',
   'widgets/track_list/tracks_model.vala',
@@ -57,7 +58,9 @@ cassette_gui_sources = files(
   'widgets/views/cachiable_view.vala',
   'widgets/views/playlist_view.vala',
   'widgets/views/playlists_view.vala',
-  'widgets/views/cant_show_view.vala'
+  'widgets/views/cant_show_view.vala',
+  'widgets/pages/loading_page.vala',
+  'widgets/pages/loadable_page.vala'
 )
 
 subdir('client')

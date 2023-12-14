@@ -26,6 +26,17 @@ namespace Cassette {
             Виджет для избавления от повторяющегося кода и автоматизации
             начала и завершении анимации загрузки
         */
+
+        public int size {
+            get {
+                return width_request;
+            }
+            set {
+                width_request = value;
+                height_request = value;
+            }
+        }
+
         private Gtk.Spinner spinner = new Gtk.Spinner ();
 
         public LoadingWidget () {

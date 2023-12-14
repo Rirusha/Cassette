@@ -49,7 +49,7 @@ namespace Cassette {
 
         construct {
             // Размещение кнопок выбора снизу и развёртывание окна при мобильном соотношении сторон
-            if (Cassette.application.main_window.is_mobile) {
+            if (Cassette.application.is_mobile) {
                 main_box.valign = Gtk.Align.CENTER;
 
             } else {

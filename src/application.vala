@@ -65,6 +65,16 @@ namespace Cassette {
             }
         }
 
+        public bool is_mobile {
+            get {
+                if (main_window == null) {
+                    return false;
+                }
+
+                return main_window.is_mobile_orientation;
+            }
+        }
+
         const string APP_NAME = "Cassette";
         const string RIRUSHA = "Rirusha <anerin.sidiver@yandex.ru>";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";

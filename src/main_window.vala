@@ -23,7 +23,7 @@ using CassetteClient;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/window.ui")]
+    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/main_window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         [GtkChild]
         unowned Gtk.Box main_box;
@@ -56,7 +56,15 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.MenuButton app_menu_button;
 
-        public bool is_mobile { get; private set; }
+        public bool is_mobile_orientation {
+            get {
+                if ((float) get_width () / (float) get_height () < 0.6f) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
 
         public Pager pager;
         public PlayerBar player_bar { get; construct; }
@@ -355,16 +363,6 @@ namespace Cassette {
             } else {
                 if (!sidebar.collapsed) {
                     sidebar.collapsed = true;
-                }
-            }
-
-            if ((float) width / (float) height < 0.6) {
-                if (is_mobile == false) {
-                    is_mobile = true;
-                }
-            } else {
-                if (is_mobile == true) {
-                    is_mobile = false;
                 }
             }
         }

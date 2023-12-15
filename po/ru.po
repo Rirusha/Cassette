@@ -337,8 +337,8 @@ msgid "Also you liked this playlists"
 msgstr "Вам также понравились эти плейлисты"
 
 #: data/ui/save_stack.ui:25
-msgid "Content saving..."
-msgstr "Сохранение контента..."
+msgid "Content saving…"
+msgstr "Сохранение контента…"
 
 #: data/ui/save_stack.ui:42
 msgid "Content saved to temp folder"
@@ -390,8 +390,8 @@ msgid "SIMILAR TRACKS"
 msgstr "Похожие треки"
 
 #: data/ui/track_placeholder.ui:9
-msgid "Loading..."
-msgstr "Загрузка..."
+msgid "Loading…"
+msgstr "Загрузка…"
 
 #: data/ui/playlist_choose_window.ui:8
 msgid "Choose playlist to add"
@@ -1350,8 +1350,8 @@ msgstr "Показ альбома пока не реализован"
 #~ msgstr "По QR-код"
 
 #~ msgctxt "auth window"
-#~ msgid "Loading..."
-#~ msgstr "Загрузка..."
+#~ msgid "Loading…"
+#~ msgstr "Загрузка…"
 
 #~ msgctxt "auth window"
 #~ msgid "Enter password"

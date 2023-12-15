@@ -201,7 +201,7 @@ msgstr "Uso local"
 
 #: data/ui/auth_window.ui:148
 msgctxt "auth window"
-msgid "Loading..."
+msgid "Loading…"
 msgstr "Cargando…"
 
 #: data/ui/auth_window.ui:164
@@ -673,7 +673,7 @@ msgstr ""
 "contenido ya descargado."
 
 #: data/ui/save_stack.ui:25
-msgid "Content saving..."
+msgid "Content saving…"
 msgstr "Ahorro de contenidos…"
 
 #: data/ui/save_stack.ui:42
@@ -761,7 +761,7 @@ msgid "duration"
 msgstr "duración"
 
 #: data/ui/track_placeholder.ui:9
-msgid "Loading..."
+msgid "Loading…"
 msgstr "Cargando…"
 
 #. Translators: tooltip of "backward" button
@@ -841,7 +841,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/authenticator.vala:87
-msgid "Moving..."
+msgid "Moving…"
 msgstr "Moviendo…"
 
 #. Translators: Playlist with liked tracks
@@ -1155,7 +1155,7 @@ msgstr ""
 "reproducción o álbumes guardados."
 
 #: src/widgets/preferences/cache_deletion_preferences.vala:132
-msgid "Deleting..."
+msgid "Deleting…"
 msgstr "Borrando…"
 
 #: src/widgets/track_rows/track_default_content.vala:193
@@ -1316,7 +1316,7 @@ msgstr "Canción"
 
 #: src/widgets/save_stack.vala:76
 #, c-format
-msgid "%s saving..."
+msgid "%s saving…"
 msgstr "%s guardando…"
 
 #: src/widgets/save_stack.vala:77

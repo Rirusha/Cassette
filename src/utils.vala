@@ -42,7 +42,7 @@ namespace Cassette {
                 widget.tooltip_text = _("Not implemented yet");
                 break;
             case BlockReason.NEED_ONLINE:
-                widget.tooltip_text = _("Need authoriation");
+                widget.tooltip_text = _("Need authorization");
                 break;
             case BlockReason.NEED_PLUS:
                 widget.tooltip_text = _("Need Plus subscription");

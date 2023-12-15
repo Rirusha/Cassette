@@ -22,7 +22,7 @@
             <property name="name">loading</property>
             <property name="child">
               <object class="GtkSpinner" id="save_spin">
-                <property name="tooltip-text" translatable="true">Content saving...</property>
+                <property name="tooltip-text" translatable="true">Content saving…</property>
                 <property name="vexpand">false</property>
                 <property name="hexpand">false</property>
                 <property name="halign">center</property>

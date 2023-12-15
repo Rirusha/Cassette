@@ -33,12 +33,11 @@ namespace CassetteClient {
 
         public abstract void init_if_not () throws BadStatusCodeError;
 
-        protected SoupWrapper create_soup_wrapper (bool with_user_agent) {
+        protected static SoupWrapper create_soup_wrapper (bool with_user_agent) {
             return new SoupWrapper (
                 with_user_agent? "Cassette Application" : null,
                 storager.cookies_file_path
             );
-
         }
 
         //  Функция-обёртка для сетевых действий
@@ -58,10 +57,12 @@ namespace CassetteClient {
                 net_func ();
 
                 connection_established ();
+
             } catch (ClientError e) {
                 Logger.warning (e.message);
 
                 connection_lost ();
+
             } catch (BadStatusCodeError e) {
                 Logger.warning (e.message);
 

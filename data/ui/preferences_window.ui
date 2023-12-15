@@ -14,7 +14,6 @@
             <property name="title" translatable="true" context="preference window">General</property>
             <child>
               <object class="AdwSpinRow" id="max_thread_number_spin">
-                <property name="editable">false</property>
                 <!-- Translators: title of preference -->
                 <property name="title" translatable="true" context="preference window">Max active threads</property>
                 <!-- Translators: tooltip of preference -->

@@ -1,5 +1,5 @@
 {
-    "app-id" : "io.github.Rirusha.Cassette",
+    "app-id" : "io.github.Rirusha.Cassette.Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "45",
     "sdk" : "org.gnome.Sdk",
@@ -40,10 +40,11 @@
             "name" : "cassette",
             "builddir" : true,
             "buildsystem" : "meson",
+            "config-opts": [ "-Dprofile=development" ],
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/Rirusha/Cassette.git"
+                    "type" : "dir",
+                    "path" : "./"
                 }
             ]
         }

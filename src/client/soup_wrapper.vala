@@ -23,10 +23,10 @@ using Soup;
 namespace CassetteClient {
 
     public errordomain BadStatusCodeError {
-        BAD_REQUEST,
-        NOT_FOUND,
-        UNAUTHORIZE_ERROR,
-        UNKNOWN
+        BAD_REQUEST = 400,
+        NOT_FOUND = 404,
+        UNAUTHORIZE_ERROR = 403,
+        UNKNOWN = 0
     }
 
     public struct Header {
@@ -83,8 +83,7 @@ namespace CassetteClient {
                     return;
                 }
 
-                var cookie_jar = new Soup.CookieJarDB (value, false);
-                session.add_feature (cookie_jar);
+                reload_cookies (value);
             }
         }
 
@@ -110,6 +109,15 @@ namespace CassetteClient {
                 });
                 session.add_feature (logger);
             }
+        }
+
+        public void reload_cookies (string cookie_path) {
+            if (session.has_feature (typeof (Soup.CookieJarDB))) {
+                session.remove_feature_by_type (typeof (Soup.CookieJarDB));
+            }
+
+            var cookie_jar = new Soup.CookieJarDB (cookie_path, true);
+            session.add_feature (cookie_jar);
         }
 
         public void clear_cookies () {
@@ -212,10 +220,10 @@ namespace CassetteClient {
                 var jsoner = Jsoner.from_bytes (bytes, {"error"}, Case.CAMEL_CASE);
                 if (jsoner.root.get_node_type () == Json.NodeType.OBJECT) {
                     error = (YaMAPI.ApiError) jsoner.deserialize_object (typeof (YaMAPI.ApiError));
+                } else {
+                    jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE_CASE);
+                    error = (YaMAPI.ApiError) jsoner.deserialize_object (typeof (YaMAPI.ApiError));
                 }
-
-                jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE_CASE);
-                error = (YaMAPI.ApiError) jsoner.deserialize_object (typeof (YaMAPI.ApiError));
             } catch (ClientError e) { }
 
             error.status_code = msg.status_code;

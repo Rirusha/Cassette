@@ -1,4 +1,4 @@
-/* complete_info.vala
+/* tracks_view.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -17,17 +17,3 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-
-using Gee;
-
-namespace CassetteClient.YaMAuth {
-    public class CompleteInfo : YaMObject {
-
-        public string status { get; set; }
-        public ArrayList<string> errors { get; set; default = new ArrayList<string> (); }
-
-        public CompleteInfo () {
-            Object ();
-        }
-    }
-}

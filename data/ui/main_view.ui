@@ -6,7 +6,7 @@
     <child>
       <object class="GtkScrolledWindow">
         <child>
-          <object class="AdwStatusPage">
+          <object class="AdwStatusPage" id="status_page">
             <property name="title" translatable="true">Not implemented yet</property>
             <property name="icon-name">io.github.Rirusha.Cassette-symbolic</property>
           </object>

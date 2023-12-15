@@ -6,24 +6,30 @@ vapi_sources = files(
 cassette_gui_sources = files(
   'main.vala',
   'application.vala',
-  'window.vala',
+  'main_window.vala',
   'utils.vala',
   'pager.vala',
   'authenticator.vala',
   'widgets/playlist_create_button.vala',
   'widgets/player_bar.vala',
   'widgets/playlist_micro.vala',
-  'widgets/track_list.vala',
   'widgets/sidebar.vala',
   'widgets/save_stack.vala',
   'widgets/label_button.vala',
+  'widgets/loading_widget.vala',
   'widgets/custom_button.vala',
   'widgets/like_button.vala',
   'widgets/dislike_button.vala',
   'widgets/playlist_row.vala',
   'widgets/info_marks.vala',
   'widgets/account_info_window.vala',
+  'widgets/begin/begin_window.vala',
+  'widgets/begin/begin_view.vala',
   'widgets/playlist_choose_window.vala',
+  'widgets/track_list/track_list.vala',
+  'widgets/track_list/tracks_model.vala',
+  'widgets/track_list/tracks_view.vala',
+  'widgets/track_list/track_row_base.vala',
   'widgets/play_button/play_button.vala',
   'widgets/play_button/play_button_context.vala',
   'widgets/play_button/play_button_default.vala',
@@ -53,8 +59,8 @@ cassette_gui_sources = files(
   'widgets/views/playlist_view.vala',
   'widgets/views/playlists_view.vala',
   'widgets/views/cant_show_view.vala',
-  'widgets/auth_window/auth_window.vala',
-  'widgets/auth_window/phone_entry.vala'
+  'widgets/pages/loading_page.vala',
+  'widgets/pages/abstract_loadable_page.vala'
 )
 
 subdir('client')

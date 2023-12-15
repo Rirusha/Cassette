@@ -99,16 +99,29 @@ namespace CassetteClient.YaMAPI {
         public Playlist.liked () {
             Object (
                 cover: new Cover.liked (),
-                title: _("Liked")
+                title: _("Liked"),
+                kind: "3"
             );
+        }
+
+        public void filter_by_track_type (TrackType track_type) {
+            var new_track_list = new ArrayList<TrackShort> ();
+
+            foreach (TrackShort track_short in tracks) {
+                if (track_short.track.track_type == track_type) {
+                    new_track_list.add (track_short);
+                }
+            }
+
+            tracks = new_track_list;
         }
 
         public ArrayList<Track> get_filtered_track_list (bool show_explicit, bool show_child, string? exception_track_id = null) {
             var out_track_list = new ArrayList<Track> ();
 
-            foreach (TrackShort track in tracks) {
-                if ((track.track.available && ((!track.track.explicit | show_explicit) && (!track.track.is_suitable_for_children | show_child))) | track.id == exception_track_id) {
-                    out_track_list.add (track.track);
+            foreach (TrackShort track_short in tracks) {
+                if ((track_short.track.available && ((!track_short.track.explicit | show_explicit) && (!track_short.track.is_suitable_for_children | show_child))) | track_short.id == exception_track_id) {
+                    out_track_list.add (track_short.track);
                 }
             }
 

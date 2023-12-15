@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-15 06:49+0800\n"
+"POT-Creation-Date: 2023-12-15 17:28+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgid ""
 "operating systems."
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:13
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:12
 msgid "Features:"
 msgstr ""
 
@@ -258,10 +258,6 @@ msgstr ""
 msgid "Child content"
 msgstr ""
 
-#: data/ui/main_view.ui:10 src/utils.vala:42
-msgid "Not implemented yet"
-msgstr ""
-
 #: data/ui/player_bar.ui:78
 msgid "Previous"
 msgstr ""
@@ -376,7 +372,7 @@ msgstr ""
 msgid "SIMILAR TRACKS"
 msgstr ""
 
-#: data/ui/track_placeholder.ui:9
+#: data/ui/track_placeholder.ui:9 src/widgets/pages/loading_page.vala:40
 msgid "Loading…"
 msgstr ""
 
@@ -456,6 +452,111 @@ msgstr ""
 
 #: data/ui/track_list.ui:142
 msgid "duration"
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:12
+msgid "Usage mode"
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:41
+msgctxt "auth window"
+msgid "Choose usage mode"
+msgstr ""
+
+#: data/ui/begin_view.ui:51
+msgctxt "auth window"
+msgid ""
+"If you select the \"Online mode\", you can access local music by enabling "
+"the display of the corresponding pages in the pages preferences, as well as "
+"log in later when selecting \"Local mode\""
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:76
+msgctxt "auth window"
+msgid "Online mode"
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:86
+msgctxt "auth window"
+msgid "Local mode"
+msgstr ""
+
+#. Translators: "Close" window button label
+#: data/ui/begin_view.ui:98
+msgctxt "auth window"
+msgid "Close"
+msgstr ""
+
+#: data/ui/begin_view.ui:113
+msgid "Authorization"
+msgstr ""
+
+#: data/ui/main_view.ui:10 src/utils.vala:42
+msgid "Not implemented yet"
+msgstr ""
+
+#. Translators: tooltip of "backward" button
+#: data/ui/main_window.ui:49
+msgid "Backward"
+msgstr ""
+
+#. Translators: tooltip of "refresh" button
+#: data/ui/main_window.ui:57
+msgid "Refresh"
+msgstr ""
+
+#. Translators: tooltip of "main menu" button
+#: data/ui/main_window.ui:65
+msgid "Main menu"
+msgstr ""
+
+#: data/ui/main_window.ui:76
+msgid "Account menu"
+msgstr ""
+
+#. Translators: tooltip of "search over yandex music" button
+#: data/ui/main_window.ui:86
+msgid "Global search"
+msgstr ""
+
+#: data/ui/main_window.ui:139
+msgid "Compact mode"
+msgstr ""
+
+#: data/ui/main_window.ui:143
+msgid "Big picture mode"
+msgstr ""
+
+#: data/ui/main_window.ui:153
+msgid "Parse URL from clipboard"
+msgstr ""
+
+#: data/ui/main_window.ui:159
+msgid "Preferences"
+msgstr ""
+
+#: data/ui/main_window.ui:163
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: data/ui/main_window.ui:167
+msgid "About Cassette"
+msgstr ""
+
+#: data/ui/main_window.ui:175
+msgid "Open in browser"
+msgstr ""
+
+#: data/ui/main_window.ui:179
+msgid "Account info"
+msgstr ""
+
+#: data/ui/main_window.ui:185 src/authenticator.vala:46
+msgid "Log out"
 msgstr ""
 
 #. Translators: title of preference page
@@ -679,107 +780,6 @@ msgid ""
 "not delete already downloaded content"
 msgstr ""
 
-#. Translators: tooltip of "backward" button
-#: data/ui/main_window.ui:49
-msgid "Backward"
-msgstr ""
-
-#. Translators: tooltip of "refresh" button
-#: data/ui/main_window.ui:57
-msgid "Refresh"
-msgstr ""
-
-#. Translators: tooltip of "main menu" button
-#: data/ui/main_window.ui:65
-msgid "Main menu"
-msgstr ""
-
-#: data/ui/main_window.ui:76
-msgid "Account menu"
-msgstr ""
-
-#. Translators: tooltip of "search over yandex music" button
-#: data/ui/main_window.ui:86
-msgid "Global search"
-msgstr ""
-
-#: data/ui/main_window.ui:139
-msgid "Compact mode"
-msgstr ""
-
-#: data/ui/main_window.ui:143
-msgid "Big picture mode"
-msgstr ""
-
-#: data/ui/main_window.ui:153
-msgid "Parse URL from clipboard"
-msgstr ""
-
-#: data/ui/main_window.ui:159
-msgid "Preferences"
-msgstr ""
-
-#: data/ui/main_window.ui:163
-msgid "Keyboard Shortcuts"
-msgstr ""
-
-#: data/ui/main_window.ui:167
-msgid "About Cassette"
-msgstr ""
-
-#: data/ui/main_window.ui:175
-msgid "Open in browser"
-msgstr ""
-
-#: data/ui/main_window.ui:179
-msgid "Account info"
-msgstr ""
-
-#: data/ui/main_window.ui:185 src/authenticator.vala:46
-msgid "Log out"
-msgstr ""
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:12
-msgid "Usage mode"
-msgstr ""
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:41
-msgctxt "auth window"
-msgid "Choose usage mode"
-msgstr ""
-
-#: data/ui/begin_view.ui:51
-msgctxt "auth window"
-msgid ""
-"If you select the \"Online mode\", you can access local music by enabling "
-"the display of the corresponding pages in the pages preferences, as well as "
-"log in later when selecting \"Local mode\""
-msgstr ""
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:76
-msgctxt "auth window"
-msgid "Online mode"
-msgstr ""
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:86
-msgctxt "auth window"
-msgid "Local mode"
-msgstr ""
-
-#. Translators: "Close" window button label
-#: data/ui/begin_view.ui:98
-msgctxt "auth window"
-msgid "Close"
-msgstr ""
-
-#: data/ui/begin_view.ui:113
-msgid "Authorization"
-msgstr ""
-
 #: src/client/cachier/storager.vala:166
 #, c-format
 msgid "Log created, loc - %s"
@@ -864,12 +864,6 @@ msgstr ""
 msgid "New Playlist"
 msgstr ""
 
-#: src/client/jsoner.vala:199 src/client/jsoner.vala:294
-#: src/client/jsoner.vala:307
-#, c-format
-msgid "Wrong type: expected %s, got %s"
-msgstr ""
-
 #. Translators: %s is path
 #: src/client/logger.vala:52
 #, c-format
@@ -900,6 +894,12 @@ msgstr ""
 #. Translators: Unknown playlist
 #: src/client/api/objects/playlist/playlist.vala:60
 msgid "Unknown"
+msgstr ""
+
+#: src/client/jsoner.vala:199 src/client/jsoner.vala:294
+#: src/client/jsoner.vala:307
+#, c-format
+msgid "Wrong type: expected %s, got %s"
 msgstr ""
 
 #: src/widgets/options_button/options_button.vala:48
@@ -1151,8 +1151,34 @@ msgstr ""
 msgid "Track list"
 msgstr ""
 
-#: src/widgets/pages/loading_page.vala:40
-msgid "Loading…"
+#: src/utils.vala:45
+msgid "Need authorization"
+msgstr ""
+
+#: src/utils.vala:48
+msgid "Need Plus subscription"
+msgstr ""
+
+#: src/utils.vala:59 src/utils.vala:68
+msgid "Link copied to clipboard"
+msgstr ""
+
+#: src/utils.vala:106
+#, c-format
+msgid "Duration: %s h. %s min."
+msgstr ""
+
+#: src/utils.vala:108
+#, c-format
+msgid "Duration: %s min."
+msgstr ""
+
+#: src/utils.vala:169
+msgid "today"
+msgstr ""
+
+#: src/utils.vala:171
+msgid "yesterday"
 msgstr ""
 
 #: src/application.vala:196
@@ -1182,6 +1208,36 @@ msgstr ""
 
 #: src/authenticator.vala:86
 msgid "Moving…"
+msgstr ""
+
+#: src/main_window.vala:134
+#, c-format
+msgid "Error while opening uri: %s"
+msgstr ""
+
+#: src/main_window.vala:173
+msgid "Connection restored"
+msgstr ""
+
+#: src/main_window.vala:177
+msgid "Connection problems"
+msgstr ""
+
+#: src/main_window.vala:260
+#, c-format
+msgid "Window info message: %s"
+msgstr ""
+
+#: src/main_window.vala:289 src/main_window.vala:334
+msgid "Can't parse clipboard content"
+msgstr ""
+
+#: src/main_window.vala:305
+msgid "Users view not implemented yet"
+msgstr ""
+
+#: src/main_window.vala:321 src/main_window.vala:329
+msgid "Albums view not implemented yet"
 msgstr ""
 
 #: src/pager.vala:164
@@ -1219,64 +1275,4 @@ msgstr ""
 #: src/pager.vala:326
 #, c-format
 msgid "Can't create pages file. Messsage: %s"
-msgstr ""
-
-#: src/utils.vala:45
-msgid "Need authorization"
-msgstr ""
-
-#: src/utils.vala:48
-msgid "Need Plus subscription"
-msgstr ""
-
-#: src/utils.vala:59 src/utils.vala:68
-msgid "Link copied to clipboard"
-msgstr ""
-
-#: src/utils.vala:106
-#, c-format
-msgid "Duration: %s h. %s min."
-msgstr ""
-
-#: src/utils.vala:108
-#, c-format
-msgid "Duration: %s min."
-msgstr ""
-
-#: src/utils.vala:169
-msgid "today"
-msgstr ""
-
-#: src/utils.vala:171
-msgid "yesterday"
-msgstr ""
-
-#: src/main_window.vala:134
-#, c-format
-msgid "Error while opening uri: %s"
-msgstr ""
-
-#: src/main_window.vala:173
-msgid "Connection restored"
-msgstr ""
-
-#: src/main_window.vala:177
-msgid "Connection problems"
-msgstr ""
-
-#: src/main_window.vala:260
-#, c-format
-msgid "Window info message: %s"
-msgstr ""
-
-#: src/main_window.vala:289 src/main_window.vala:334
-msgid "Can't parse clipboard content"
-msgstr ""
-
-#: src/main_window.vala:305
-msgid "Users view not implemented yet"
-msgstr ""
-
-#: src/main_window.vala:321 src/main_window.vala:329
-msgid "Albums view not implemented yet"
 msgstr ""

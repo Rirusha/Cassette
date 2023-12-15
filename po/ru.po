@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-15 06:49+0800\n"
-"PO-Revision-Date: 2023-12-15 06:57+0800\n"
+"POT-Creation-Date: 2023-12-15 17:28+0800\n"
+"PO-Revision-Date: 2023-12-15 17:29+0800\n"
 "Last-Translator: Rirusha <anerin_sidiver@outlook.com>\n"
 "Language-Team: Russian <LL@li.org>\n"
 "Language: ru\n"
@@ -43,7 +43,7 @@ msgstr ""
 "операционных системах Линукс."
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:12
-msgid "Of the features:"
+msgid "Features:"
 msgstr "Из особенностей:"
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:16
@@ -58,7 +58,7 @@ msgstr ""
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:22
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for chidlern."
+"content, such as explicit or suitable for children."
 msgstr ""
 "Позволяет более точно настроить отображение и воспроизведение детского или "
 "предназначенного для несовершеннолетних контента."
@@ -271,10 +271,6 @@ msgstr "Контент не предназначен для несовершен
 msgid "Child content"
 msgstr "Детский контент"
 
-#: data/ui/main_view.ui:10 src/utils.vala:42
-msgid "Not implemented yet"
-msgstr "Пока не реализовано"
-
 #: data/ui/player_bar.ui:78
 msgid "Previous"
 msgstr "Предыдущий"
@@ -389,7 +385,7 @@ msgstr "Источник"
 msgid "SIMILAR TRACKS"
 msgstr "Похожие треки"
 
-#: data/ui/track_placeholder.ui:9
+#: data/ui/track_placeholder.ui:9 src/widgets/pages/loading_page.vala:40
 msgid "Loading…"
 msgstr "Загрузка…"
 
@@ -471,6 +467,114 @@ msgstr "альбому"
 msgid "duration"
 msgstr "продолжительности"
 
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:12
+msgid "Usage mode"
+msgstr "Режим использования"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:41
+msgctxt "auth window"
+msgid "Choose usage mode"
+msgstr "Выберите режим использования"
+
+#: data/ui/begin_view.ui:51
+msgctxt "auth window"
+msgid ""
+"If you select the \"Online mode\", you can access local music by enabling "
+"the display of the corresponding pages in the pages preferences, as well as "
+"log in later when selecting \"Local mode\""
+msgstr ""
+"Если вы выберете \"Онлайн-режим\", вы сможете получить доступ к локальной "
+"музыке, включив отображение соответствующих страниц в настройках, а также "
+"войти в систему позже, выбрав \"Локальный режим\""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:76
+msgctxt "auth window"
+msgid "Online mode"
+msgstr "Использование Яндекс Музыки"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin_view.ui:86
+msgctxt "auth window"
+msgid "Local mode"
+msgstr "Локальное использование"
+
+#. Translators: "Close" window button label
+#: data/ui/begin_view.ui:98
+msgctxt "auth window"
+msgid "Close"
+msgstr "Закрыть"
+
+#: data/ui/begin_view.ui:113
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: data/ui/main_view.ui:10 src/utils.vala:42
+msgid "Not implemented yet"
+msgstr "Пока не реализовано"
+
+#. Translators: tooltip of "backward" button
+#: data/ui/main_window.ui:49
+msgid "Backward"
+msgstr "Назад"
+
+#. Translators: tooltip of "refresh" button
+#: data/ui/main_window.ui:57
+msgid "Refresh"
+msgstr "Обновить"
+
+#. Translators: tooltip of "main menu" button
+#: data/ui/main_window.ui:65
+msgid "Main menu"
+msgstr "Главное меню"
+
+#: data/ui/main_window.ui:76
+msgid "Account menu"
+msgstr "Информация об аккаунте"
+
+#. Translators: tooltip of "search over yandex music" button
+#: data/ui/main_window.ui:86
+msgid "Global search"
+msgstr "Поиск по всей Яндекс музыке"
+
+#: data/ui/main_window.ui:139
+msgid "Compact mode"
+msgstr "Компактный режим"
+
+#: data/ui/main_window.ui:143
+msgid "Big picture mode"
+msgstr "Режим Big picture"
+
+#: data/ui/main_window.ui:153
+msgid "Parse URL from clipboard"
+msgstr "Спарсить URL-адрес из буфера обмена"
+
+#: data/ui/main_window.ui:159
+msgid "Preferences"
+msgstr "Параметры"
+
+#: data/ui/main_window.ui:163
+msgid "Keyboard Shortcuts"
+msgstr "Сочетания клавиш"
+
+#: data/ui/main_window.ui:167
+msgid "About Cassette"
+msgstr "О Cassette"
+
+#: data/ui/main_window.ui:175
+msgid "Open in browser"
+msgstr "Открыть в браузере"
+
+#: data/ui/main_window.ui:179
+msgid "Account info"
+msgstr "Информация об аккаунте"
+
+#: data/ui/main_window.ui:185 src/authenticator.vala:46
+msgid "Log out"
+msgstr "Выйти из аккаунта"
+
 #. Translators: title of preference page
 #: data/ui/preferences_window.ui:9
 msgctxt "preference window"
@@ -520,7 +624,7 @@ msgstr ""
 #. Translators: title of preference
 #: data/ui/preferences_window.ui:43
 msgctxt "preference window"
-msgid "Download hight quality tracks"
+msgid "Download high quality tracks"
 msgstr "Загружать треки в высоком качестве"
 
 #. Translators: tooltip of preference
@@ -715,110 +819,6 @@ msgstr ""
 "воспроизведения или альбомы). Отключение параметра не приводит к удалению "
 "уже загруженного содержимого"
 
-#. Translators: tooltip of "backward" button
-#: data/ui/main_window.ui:49
-msgid "Backward"
-msgstr "Назад"
-
-#. Translators: tooltip of "refresh" button
-#: data/ui/main_window.ui:57
-msgid "Refresh"
-msgstr "Обновить"
-
-#. Translators: tooltip of "main menu" button
-#: data/ui/main_window.ui:65
-msgid "Main menu"
-msgstr "Главное меню"
-
-#: data/ui/main_window.ui:76
-msgid "Account menu"
-msgstr "Информация об аккаунте"
-
-#. Translators: tooltip of "search over yandex music" button
-#: data/ui/main_window.ui:86
-msgid "Global search"
-msgstr "Поиск по всей Яндекс музыке"
-
-#: data/ui/main_window.ui:139
-msgid "Compact mode"
-msgstr "Компактный режим"
-
-#: data/ui/main_window.ui:143
-msgid "Big picture mode"
-msgstr "Режим Big picture"
-
-#: data/ui/main_window.ui:153
-msgid "Parse URL from clipboard"
-msgstr "Спарсить URL-адрес из буфера обмена"
-
-#: data/ui/main_window.ui:159
-msgid "Preferences"
-msgstr "Параметры"
-
-#: data/ui/main_window.ui:163
-msgid "Keyboard Shortcuts"
-msgstr "Сочетания клавиш"
-
-#: data/ui/main_window.ui:167
-msgid "About Cassette"
-msgstr "О Cassette"
-
-#: data/ui/main_window.ui:175
-msgid "Open in browser"
-msgstr "Открыть в браузере"
-
-#: data/ui/main_window.ui:179
-msgid "Account info"
-msgstr "Информация об аккаунте"
-
-#: data/ui/main_window.ui:185 src/authenticator.vala:46
-msgid "Log out"
-msgstr "Выйти из аккаунта"
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:12
-msgid "Usage mode"
-msgstr "Режим использования"
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:41
-msgctxt "auth window"
-msgid "Choose usage mode"
-msgstr "Выберите режим использования"
-
-#: data/ui/begin_view.ui:51
-msgctxt "auth window"
-msgid ""
-"If you select the \"Online mode\", you can access local music by enabling "
-"the display of the corresponding pages in the pages preferences, as well as "
-"log in later when selecting \"Local mode\""
-msgstr ""
-"Если вы выберете \"Онлайн-режим\", вы сможете получить доступ к локальной "
-"музыке, включив отображение соответствующих страниц в настройках, а также "
-"войти в систему позже, выбрав \"Локальный режим\""
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:76
-msgctxt "auth window"
-msgid "Online mode"
-msgstr "Использование Яндекс Музыки"
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin_view.ui:86
-msgctxt "auth window"
-msgid "Local mode"
-msgstr "Локальное использование"
-
-#. Translators: "Close" window button label
-#: data/ui/begin_view.ui:98
-msgctxt "auth window"
-msgid "Close"
-msgstr "Закрыть"
-
-#: data/ui/begin_view.ui:113
-msgid "Authorization"
-msgstr "Авторизация"
-
 #: src/client/cachier/storager.vala:166
 #, c-format
 msgid "Log created, loc - %s"
@@ -908,12 +908,6 @@ msgstr "Проблемы с очередью"
 msgid "New Playlist"
 msgstr "Новый плейлист"
 
-#: src/client/jsoner.vala:199 src/client/jsoner.vala:294
-#: src/client/jsoner.vala:307
-#, c-format
-msgid "Wrong type: expected %s, got %s"
-msgstr "Неверный тип: ожидалось %s, получено %s"
-
 #. Translators: %s is path
 #: src/client/logger.vala:52
 #, c-format
@@ -945,6 +939,12 @@ msgstr "Плейлист дня"
 #: src/client/api/objects/playlist/playlist.vala:60
 msgid "Unknown"
 msgstr "Неизвестный"
+
+#: src/client/jsoner.vala:199 src/client/jsoner.vala:294
+#: src/client/jsoner.vala:307
+#, c-format
+msgid "Wrong type: expected %s, got %s"
+msgstr "Неверный тип: ожидалось %s, получено %s"
 
 #: src/widgets/options_button/options_button.vala:48
 msgid "Options menu"
@@ -1201,9 +1201,35 @@ msgstr "РЕЗУЛЬТАТЫ ПОИСКА"
 msgid "Track list"
 msgstr "Список треков"
 
-#: src/widgets/pages/loading_page.vala:40
-msgid "Loading…"
-msgstr "Загрузка…"
+#: src/utils.vala:45
+msgid "Need authorization"
+msgstr "Нужна авторизация"
+
+#: src/utils.vala:48
+msgid "Need Plus subscription"
+msgstr "Нужна подписка Я.Плюс"
+
+#: src/utils.vala:59 src/utils.vala:68
+msgid "Link copied to clipboard"
+msgstr "Ссылка скопирована в буфер обмена"
+
+#: src/utils.vala:106
+#, c-format
+msgid "Duration: %s h. %s min."
+msgstr "Продолжительность: %s ч. %s мин."
+
+#: src/utils.vala:108
+#, c-format
+msgid "Duration: %s min."
+msgstr "Продолжительность: %s мин."
+
+#: src/utils.vala:169
+msgid "today"
+msgstr "сегодня"
+
+#: src/utils.vala:171
+msgid "yesterday"
+msgstr "вчера"
 
 #: src/application.vala:196
 msgid "Arseniy Nechkin <krisgeniusnos@gmail.com>"
@@ -1235,6 +1261,36 @@ msgstr "Вам нужно будет заново авторизоваться, 
 #: src/authenticator.vala:86
 msgid "Moving…"
 msgstr "Перемещение…"
+
+#: src/main_window.vala:134
+#, c-format
+msgid "Error while opening uri: %s"
+msgstr "Ошибка при получении ответа: %s"
+
+#: src/main_window.vala:173
+msgid "Connection restored"
+msgstr "Соединение восстановлено"
+
+#: src/main_window.vala:177
+msgid "Connection problems"
+msgstr "Проблемы с соединением"
+
+#: src/main_window.vala:260
+#, c-format
+msgid "Window info message: %s"
+msgstr "Информационное сообщение об окне: %s"
+
+#: src/main_window.vala:289 src/main_window.vala:334
+msgid "Can't parse clipboard content"
+msgstr "Не удается спарсить содержимое буфера обмена"
+
+#: src/main_window.vala:305
+msgid "Users view not implemented yet"
+msgstr "Показ пользователя пока не реализован"
+
+#: src/main_window.vala:321 src/main_window.vala:329
+msgid "Albums view not implemented yet"
+msgstr "Показ альбома пока не реализован"
 
 #: src/pager.vala:164
 #, c-format
@@ -1272,66 +1328,6 @@ msgstr "Не удается прочитать файл страницы. Соо
 #, c-format
 msgid "Can't create pages file. Messsage: %s"
 msgstr "Не удается создать файл страницы. Сообщение: %s"
-
-#: src/utils.vala:45
-msgid "Need authoriation"
-msgstr "Нужна авторизация"
-
-#: src/utils.vala:48
-msgid "Need Plus subscription"
-msgstr "Нужна подписка Я.Плюс"
-
-#: src/utils.vala:59 src/utils.vala:68
-msgid "Link copied to clipboard"
-msgstr "Ссылка скопирована в буфер обмена"
-
-#: src/utils.vala:106
-#, c-format
-msgid "Duration: %s h. %s min."
-msgstr "Продолжительность: %s ч. %s мин."
-
-#: src/utils.vala:108
-#, c-format
-msgid "Duration: %s min."
-msgstr "Продолжительность: %s мин."
-
-#: src/utils.vala:169
-msgid "today"
-msgstr "сегодня"
-
-#: src/utils.vala:171
-msgid "yesterday"
-msgstr "вчера"
-
-#: src/main_window.vala:134
-#, c-format
-msgid "Error while opening uri: %s"
-msgstr "Ошибка при получении ответа: %s"
-
-#: src/main_window.vala:173
-msgid "Connection restored"
-msgstr "Соединение восстановлено"
-
-#: src/main_window.vala:177
-msgid "Connection problems"
-msgstr "Проблемы с соединением"
-
-#: src/main_window.vala:260
-#, c-format
-msgid "Window info message: %s"
-msgstr "Информационное сообщение об окне: %s"
-
-#: src/main_window.vala:289 src/main_window.vala:334
-msgid "Can't parse clipboard content"
-msgstr "Не удается спарсить содержимое буфера обмена"
-
-#: src/main_window.vala:305
-msgid "Users view not implemented yet"
-msgstr "Показ пользователя пока не реализован"
-
-#: src/main_window.vala:321 src/main_window.vala:329
-msgid "Albums view not implemented yet"
-msgstr "Показ альбома пока не реализован"
 
 #~ msgctxt "auth window"
 #~ msgid "By username"

@@ -21,7 +21,7 @@
 
 namespace Cassette {
 
-    public abstract class LoadablePage : Adw.Bin {
+    public abstract class AbstractLoadablePage : Adw.Bin {
         public Adw.NavigationView nav_view { get; set; }
         public bool with_header_bar { get; construct; }
 

@@ -26,7 +26,7 @@ using WebKit;
 namespace Cassette {
 
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/begin_view.ui")]
-    public class BeginView : LoadablePage {
+    public class BeginView : AbstractLoadablePage {
         [GtkChild]
         unowned Adw.NavigationView navigation_view;
         [GtkChild]

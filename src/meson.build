@@ -60,7 +60,7 @@ cassette_gui_sources = files(
   'widgets/views/playlists_view.vala',
   'widgets/views/cant_show_view.vala',
   'widgets/pages/loading_page.vala',
-  'widgets/pages/loadable_page.vala'
+  'widgets/pages/abstract_loadable_page.vala'
 )
 
 subdir('client')

@@ -38,8 +38,8 @@ msgid ""
 "operating systems."
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:12
-msgid "Of the features:"
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:13
+msgid "Features:"
 msgstr ""
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:16
@@ -53,7 +53,7 @@ msgstr ""
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:22
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for chidlern."
+"content, such as explicit or suitable for children."
 msgstr ""
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:26
@@ -324,7 +324,7 @@ msgid "Also you liked this playlists"
 msgstr ""
 
 #: data/ui/save_stack.ui:25
-msgid "Content saving..."
+msgid "Content saving…"
 msgstr ""
 
 #: data/ui/save_stack.ui:42
@@ -377,7 +377,7 @@ msgid "SIMILAR TRACKS"
 msgstr ""
 
 #: data/ui/track_placeholder.ui:9
-msgid "Loading..."
+msgid "Loading…"
 msgstr ""
 
 #: data/ui/playlist_choose_window.ui:8
@@ -502,7 +502,7 @@ msgstr ""
 #. Translators: title of preference
 #: data/ui/preferences_window.ui:43
 msgctxt "preference window"
-msgid "Download hight quality tracks"
+msgid "Download high quality tracks"
 msgstr ""
 
 #. Translators: tooltip of preference
@@ -1222,7 +1222,7 @@ msgid "Can't create pages file. Messsage: %s"
 msgstr ""
 
 #: src/utils.vala:45
-msgid "Need authoriation"
+msgid "Need authorization"
 msgstr ""
 
 #: src/utils.vala:48

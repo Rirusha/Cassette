@@ -23,18 +23,19 @@ using CassetteClient;
 
 namespace Cassette {
 
+    static Authenticator authenticator;
+
     public static Application application;
     public static CassetteClient.Cachier.Storager storager;
     public static CassetteClient.Threader threader;
-    static Authenticator authenticator;
     public static CassetteClient.YaMTalker yam_talker;
     public static CassetteClient.Player.Player player;
     public static CassetteClient.Cachier.CachierController cachier_controller;
 
     public enum ApplicationState {
         BEGIN,
-        ONLINE,
         LOCAL,
+        ONLINE,
         OFFLINE
     }
 

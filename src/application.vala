@@ -52,17 +52,16 @@ namespace Cassette {
                     return;
                 }
 
-                bool should_notify = false;
-
-                if (_application_state != ApplicationState.BEGIN) {
-                    should_notify = true;
-                }
+                var old_state = _application_state;
 
                 _application_state = value;
 
-                if (should_notify) {
-                    application_state_changed (_application_state);
+                // Don't write "Connection restored" after auth
+                if (old_state == ApplicationState.BEGIN) {
+                    return;
                 }
+
+                application_state_changed (_application_state);
             }
         }
 

@@ -14,6 +14,44 @@ GTK/Adwaita приложение, которое позволит вам исп�
 * [ ] 0.6: Реализовать компактный режим и Big Picture
 * 0.x: …
 
+# Установка
+### Используя flatpak
+
+```
+flatpak install flathub io.github.Rirusha.Cassette
+```
+
+### Сборка из исходного кода
+
+Зависимости:
+* ```gtk4```, version >= 4.5
+* ```libadwaita-1```, version >= 1.4
+* ```libsoup-3.0```
+* ```gdk-pixbuf-2.0```
+* ```json-glib-1.0```
+* ```sqlite3```
+* ```gee-0.8```
+* ```libxml-2.0```
+* ```gstreamer-1.0```
+* ```webkitgtk-6.0```
+* ```gio-2.0```
+
+Утилиты:
+* ```meson```
+* ```ninja```
+* ```cmake```
+* ```gcc```
+* ```valac```
+* ```pkg```
+* ```appstream-utils```
+
+Сборка:
+```
+meson setup builddir
+ninja -C builddir test
+ninja -C builddir install
+```
+
 # Полезные ссылки
 * Телеграм-канал с девлогами: https://t.me/CassetteGNOME_Devlog
 * Чат в телеграме с обсуждением: https://t.me/CassetteGNOME_Discussion

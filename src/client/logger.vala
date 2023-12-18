@@ -64,7 +64,6 @@ namespace CassetteClient {
 
         static void write_to_file (string log_level_str, string message) {
             if (log_file == null) {
-                GLib.warning (_("Log file does not exist"));
                 return;
             }
 
@@ -80,7 +79,6 @@ namespace CassetteClient {
 
         static void write_net_to_file (string direction, string data) {
             if (log_file == null) {
-                GLib.warning (_("Can't write to log"));
                 return;
             }
 

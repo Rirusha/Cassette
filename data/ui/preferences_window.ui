@@ -5,8 +5,7 @@
   <template class="CassettePreferencesWindow" parent="AdwPreferencesWindow">
     <child>
       <object class="AdwPreferencesPage">
-        <!-- Translators: title of preference page -->
-        <property name="title" translatable="true" context="preference window">Main preferences</property>
+        <property name="title" translatable="true" context="preference window">Main</property>
         <property name="icon-name">user-home-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
@@ -127,7 +126,7 @@
     </child>
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title" translatable="true" context="preference window">Pages preferences</property>
+        <property name="title" translatable="true" context="preference window">Pages</property>
         <property name="icon-name">view-paged-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
@@ -162,7 +161,8 @@
     </child>
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title" translatable="true" context="preference window">Cache preferences</property>
+        <!-- Translators: Cache preference -->
+        <property name="title" translatable="true" context="preference window">Cache</property>
         <property name="icon-name">user-trash-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">

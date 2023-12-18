@@ -22,49 +22,54 @@
 namespace CassetteClient {
 
     public enum LogLevel {
-        DEBUG_SOUP,  //  От супа много логов, поэтому специальный енам
+        // Включают все логи полностью
+        DEVEL,
+        // Нет логов libsoup
         DEBUG,
-        INFO,
-        WARNING,
-        ERROR
+        // Нет debug логов
+        USER
     }
 
-    public class Logger : Object {
-        public static Logger instance;
+    public class Logger {
 
-        public LogLevel log_level { get; set; default = LogLevel.INFO; }
-        public File log_file { get; private set; }
-        public string log_path { get; construct; }
+        public static LogLevel log_level { get; private set; default = LogLevel.USER; }
 
-        public Logger (string log_path, LogLevel log_level) {
-            Object (log_path: log_path, log_level: log_level);
-        }
+        private static File log_file;
 
-        construct {
-            instance = this;
-
+        public static void base_setting (string log_path, LogLevel log_level) {
             log_file = File.new_for_path (log_path);
             if (!log_file.query_exists ()) {
                 try {
-                    log_file.create (FileCreateFlags.NONE);
+                    log_file.create (FileCreateFlags.PRIVATE);
                 } catch (Error e) {
                     // Translators: %s is path
-                    GLib.warning (_("Can't create log on %s").printf (log_path));
+                    GLib.warning (_("Can't create log on %s. Message: %s").printf (log_path, e.message));
                 }
+            }
+
+            Logger.log_level = log_level;
+        }
+
+        public static void debug_enable () {
+            if (log_level != LogLevel.DEVEL) {
+                log_level = LogLevel.DEBUG;
+            }
+        }
+
+        public static void debug_disable () {
+            if (log_level != LogLevel.DEVEL) {
+                log_level = LogLevel.USER;
             }
         }
 
         static void write_to_file (string log_level_str, string message) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_file == null) {
+            if (log_file == null) {
+                GLib.warning (_("Log file does not exist"));
                 return;
             }
 
             try {
-                FileOutputStream os = instance.log_file.append_to (FileCreateFlags.NONE);
+                FileOutputStream os = log_file.append_to (FileCreateFlags.NONE);
                 string current_time = new DateTime.now ().format ("%T.%f");
                 string final_message = log_level_str + " : " + current_time + " : " + message + "\n";
                 os.write (final_message.data);
@@ -74,16 +79,13 @@ namespace CassetteClient {
         }
 
         static void write_net_to_file (string direction, string data) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_file == null) {
+            if (log_file == null) {
+                GLib.warning (_("Can't write to log"));
                 return;
             }
 
             try {
-                FileOutputStream os = instance.log_file.append_to (FileCreateFlags.NONE);
+                FileOutputStream os = log_file.append_to (FileCreateFlags.NONE);
                 string final_message = direction + " : " + data + "\n";
                 os.write (final_message.data);
             } catch (Error e) {
@@ -92,41 +94,25 @@ namespace CassetteClient {
         }
 
         public static void time () {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_file == null) {
-                return;
-            }
-
-            if (instance.log_level <= LogLevel.DEBUG_SOUP) {
+            if (log_level == LogLevel.DEVEL) {
                 write_to_file ("*TIME*  ", "\n\n");
             }
         }
 
-        public static void net_in (Soup.LoggerLogLevel log_level, string data) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_level <= LogLevel.DEBUG_SOUP) {
-                if (log_level == Soup.LoggerLogLevel.BODY && data != "") {
-                    write_net_to_file ("*BODY* <\n", data);
+        public static void net_in (Soup.LoggerLogLevel soup_log_level, string data) {
+            if (log_level == LogLevel.DEVEL) {
+                if (soup_log_level == Soup.LoggerLogLevel.BODY && data != "") {
+                    write_net_to_file ("*BODY* <", data);
                 } else {
                     write_net_to_file ("*IN*   <", data);
                 }
             }
         }
 
-        public static void net_out (Soup.LoggerLogLevel log_level, string data) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_level <= LogLevel.DEBUG_SOUP) {
-                if (log_level == Soup.LoggerLogLevel.BODY && data != "") {
-                    write_net_to_file ("*BODY* <\n", data);
+        public static void net_out (Soup.LoggerLogLevel soup_log_level, string data) {
+            if (log_level == LogLevel.DEVEL) {
+                if (soup_log_level == Soup.LoggerLogLevel.BODY && data != "") {
+                    write_net_to_file ("*BODY* <", data);
                 } else {
                     write_net_to_file ("*OUT*  >", data);
                 }
@@ -134,42 +120,26 @@ namespace CassetteClient {
         }
 
         public static void debug (string message) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_level <= LogLevel.DEBUG) {
+            if (log_level <= LogLevel.DEBUG) {
                 write_to_file ("*DEBUG*  ", message);
             }
         }
 
         public static void info (string message) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_level <= LogLevel.INFO) {
+            if (log_level <= LogLevel.USER) {
                 write_to_file ("*INFO*   ", message);
             }
         }
 
         public static void warning (string message) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_level <= LogLevel.WARNING) {
+            if (log_level <= LogLevel.USER) {
                 write_to_file ("*WARNING*", message);
                 GLib.warning (message);
             }
         }
 
         public static void error (string message) {
-            if (instance == null) {
-                return;
-            }
-
-            if (instance.log_level <= LogLevel.ERROR) {
+            if (log_level <= LogLevel.USER) {
                 write_to_file ("*ERROR*  ", message);
                 GLib.error (message);
             }

@@ -89,5 +89,8 @@
 		<key name="show-playlists" type="b">
 			<default>true</default>
 		</key>
+		<key name="debug-mode" type="b">
+			<default>false</default>
+		</key>
 	</schema>
 </schemalist>

@@ -85,6 +85,12 @@ namespace Cassette {
 
         public MainWindow main_window = null;
 
+        public bool is_devel {
+            get {
+                return Config.POSTFIX == ".Devel";
+            }
+        }
+
         public Application () {
             Object (
                 application_id: Config.APP_ID,
@@ -95,7 +101,8 @@ namespace Cassette {
         construct {
             application = this;
 
-            CassetteClient.init (Config.POSTFIX == ".Devel");
+            CassetteClient.init (is_devel? LogLevel.DEVEL : (LogLevel) null);
+
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
             });

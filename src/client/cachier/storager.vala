@@ -109,11 +109,8 @@ namespace CassetteClient.Cachier {
 
         public string temp_cache_path { get; private set; }
 
-        public bool is_devel { get; construct; }
-        public bool should_init_log_db { get; construct; }
-
-        public Storager (bool is_devel, bool should_init_log_db = true) {
-            Object (is_devel: is_devel, should_init_log_db: should_init_log_db);
+        public Storager () {
+            Object ();
         }
 
         construct {
@@ -143,30 +140,22 @@ namespace CassetteClient.Cachier {
             db_file_path = Path.build_filename (cache_path, "cassette.db");
 
             temp_track_uri = @"file://$temp_track_path";
-
-            if (should_init_log_db) {
-                init_log ();
-                init_db ();
-            }
         }
 
-        void init_log () {
+        public void create_log (LogLevel? log_level) {
             /*
                 Инициализировать файл логов
             */
 
             FileUtils.remove (log_file_path);
 
-            if (is_devel) {
-                new Logger (log_file_path, LogLevel.DEBUG_SOUP);
-            } else {
-                new Logger (log_file_path, LogLevel.WARNING);
-            }
+            LogLevel user_log_level = settings.get_boolean ("debug-mode")? LogLevel.DEBUG : LogLevel.USER;
+            Logger.base_setting (log_file_path, log_level ?? user_log_level);
 
-            Logger.info (_("Log created, loc - %s").printf (Logger.instance.log_path));
+            Logger.info (_("Log created, loc - %s").printf (log_file_path));
         }
 
-        void init_db () {
+        public void init_db () {
             /*
                 Инициализировать файл базы данных
             */

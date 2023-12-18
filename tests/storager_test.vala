@@ -12,7 +12,7 @@ public int main (string[] args) {
     Test.init (ref args);
 
     Test.add_func ("/storager/init", () => {
-        storager = new Storager (true, false);
+        storager = new Storager ();
     });
 
     Test.add_func ("/storager/move", () => {

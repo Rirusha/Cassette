@@ -113,6 +113,16 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="true" context="preference window">Other</property>
+            <child>
+              <object class="AdwSwitchRow" id="debug_mode_switch">
+                <property name="title" translatable="true" context="preference window">Enable debug mode</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
     <child>

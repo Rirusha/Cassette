@@ -35,8 +35,11 @@ namespace CassetteClient {
     public static Player.Player player;
     public static Cachier.CachierController cachier_controller;
 
-    public static void init (bool is_devel) {
-        storager = new Cachier.Storager (is_devel);
+    public static void init (LogLevel? log_level) {
+        storager = new Cachier.Storager ();
+        storager.create_log (log_level);
+        storager.init_db ();
+
         threader = new Threader ();
         yam_talker = new YaMTalker ();
         player = new Player.Player ();

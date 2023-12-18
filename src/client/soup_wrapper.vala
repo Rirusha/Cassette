@@ -92,7 +92,7 @@ namespace CassetteClient {
         }
 
         construct {
-            if (Logger.instance.log_level == LogLevel.DEBUG_SOUP) {
+            if (Logger.log_level == LogLevel.DEVEL) {
                 var logger = new Soup.Logger (Soup.LoggerLogLevel.BODY);
                 logger.set_printer ((logger, level, direction, data) => {
                     switch (direction) {

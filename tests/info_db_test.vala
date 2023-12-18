@@ -10,7 +10,7 @@ public int main (string[] args) {
     Test.init (ref args);
 
     FileUtils.remove ("test.db");
-    new Logger ("test.log", LogLevel.DEBUG);
+    Logger.base_setting ("test.log", LogLevel.DEBUG);
 
     Test.add_func ("/db_info/open_db", () => {
         new InfoDB ("test.db");

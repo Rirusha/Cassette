@@ -65,15 +65,7 @@ namespace Cassette {
             }
         }
 
-        public bool is_mobile {
-            get {
-                if (main_window == null) {
-                    return false;
-                }
-
-                return main_window.is_mobile_orientation;
-            }
-        }
+        public bool is_mobile { get; private set; default = false; }
 
         const string APP_NAME = "Cassette";
         const string RIRUSHA = "Rirusha <anerin.sidiver@yandex.ru>";
@@ -169,6 +161,15 @@ namespace Cassette {
                 }
 
                 main_window.present ();
+
+                // Detection device "mobility"
+                // TODO: that also works on notebooks with touch...
+                var display = Gdk.Display.get_default ();
+                var seat = display?.get_default_seat ();
+
+                foreach (var device in seat?.get_devices (Gdk.SeatCapabilities.TOUCH)) {
+                    is_mobile = true;
+                }
 
                 if (_application_state == ApplicationState.LOCAL) {
                     main_window.load_local_views ();

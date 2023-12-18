@@ -179,7 +179,9 @@
               </object>
             </child>
             <child>
-              <object class="CassetteCacheDeletionPreferences" id="deletion_preferences"/>
+              <object class="CassetteCacheDeletionPreferences" id="deletion_preferences">
+                <property name="pref-win">CassettePreferencesWindow</property>
+              </object>
             </child>
           </object>
         </child>

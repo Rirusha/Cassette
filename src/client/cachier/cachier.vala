@@ -93,7 +93,9 @@ namespace CassetteClient.Cachier {
                     }
 
                 } else {
-                    storager.remove_file (obj_location.file);
+                    if (obj_location.file != null) {
+                        storager.remove_file (obj_location.file);
+                    }
                 }
 
                 storager.save_object ((HasID) yam_object, false);

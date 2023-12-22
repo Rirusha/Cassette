@@ -112,7 +112,7 @@ namespace CassetteClient.Cachier {
                     assert_not_reached ();
             }
 
-            if (location.path != null && location.is_tmp == true) {
+            if (location.file != null && location.is_tmp == true) {
                 return CacheingState.TEMP;
             }
 

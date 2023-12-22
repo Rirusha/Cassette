@@ -93,7 +93,7 @@ namespace Cassette {
         construct {
             application = this;
 
-            CassetteClient.init (is_devel? LogLevel.DEVEL : (LogLevel) null);
+            CassetteClient.init ();
 
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
@@ -116,6 +116,20 @@ namespace Cassette {
             yam_talker.connection_lost.connect (() => {
                 application_state = ApplicationState.OFFLINE;
             });
+
+            if (is_devel) {
+                Logger.log_level = LogLevel.DEVEL;
+            } else {
+                storager.settings.changed.connect ((key) => {
+                    if (key == "debug-mode") {
+                        if (storager.settings.get_boolean ("debug-mode")) {
+                            Logger.log_level = LogLevel.DEBUG;
+                        } else {
+                            Logger.log_level = LogLevel.USER;
+                        }
+                    }
+                });
+            }
 
             _application_state = (ApplicationState) storager.settings.get_enum ("application-state");
 
@@ -163,7 +177,7 @@ namespace Cassette {
                 main_window.present ();
 
                 // Detection device "mobility"
-                // TODO: that also works on notebooks with touch...
+                // TODO: that also can work on notebooks with touch...
                 var display = Gdk.Display.get_default ();
                 var seat = display?.get_default_seat ();
 

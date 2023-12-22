@@ -93,7 +93,7 @@ namespace CassetteClient.Cachier {
                     }
 
                 } else {
-                    storager.remove_file (obj_location.path);
+                    storager.remove_file (obj_location.file);
                 }
 
                 storager.save_object ((HasID) yam_object, false);
@@ -120,7 +120,7 @@ namespace CassetteClient.Cachier {
             if (has_cover_yam_obj != null) {
                 foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (BIG_ART_SIZE)) {
                     var image_location = storager.image_cache_location (cover_uri);
-                    if (image_location.path != null) {
+                    if (image_location.file != null) {
                         yield image_location.move_to_perm ();
 
                     } else {
@@ -158,7 +158,7 @@ namespace CassetteClient.Cachier {
                 cachier_controller.start_loading (ContentType.TRACK, track_info.id);
 
                 var image_location = storager.image_cache_location (image_cover_uri);
-                if (image_location.path != null) {
+                if (image_location.file != null) {
                     if (image_location.is_tmp == true) {
                         progress_bar_visible = true;
                         yield image_location.move_to_perm ();
@@ -194,7 +194,7 @@ namespace CassetteClient.Cachier {
                 }
 
                 var track_location = storager.audio_cache_location (track_info.id);
-                if (track_location.path != null) {
+                if (track_location.file != null) {
                     if (track_location.is_tmp == true) {
                         progress_bar_visible = true;
                         yield track_location.move_to_perm ();
@@ -287,7 +287,7 @@ namespace CassetteClient.Cachier {
                 if (storager.db.get_content_ref_count (track_info.id) == 0) {
                     var track_location = storager.audio_cache_location (track_info.id);
                     yield track_location.move_to_temp ();
-                    if (track_location.path != null && storager.settings.get_boolean ("can-cache")) {
+                    if (track_location.file != null && storager.settings.get_boolean ("can-cache")) {
                         cachier_controller.change_state (ContentType.TRACK, track_info.id, CacheingState.TEMP);
                     } else {
                         cachier_controller.change_state (ContentType.TRACK, track_info.id, CacheingState.NONE);

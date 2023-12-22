@@ -91,7 +91,7 @@ namespace CassetteClient {
         }
 
         public void init () throws BadStatusCodeError {
-            client.soup_wrapper.reload_cookies (storager.cookies_file_path);
+            client.soup_wrapper.reload_cookies (storager.cookies_file);
 
             net_run (() => {
                 client.init ();

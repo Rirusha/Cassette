@@ -27,39 +27,30 @@ namespace CassetteClient {
         // Нет логов libsoup
         DEBUG,
         // Нет debug логов
-        USER
+        USER,
+        // Не оставлять следов
+        NONE
     }
 
     public class Logger {
 
-        public static LogLevel log_level { get; private set; default = LogLevel.USER; }
+        public static LogLevel log_level { get; set; default = LogLevel.NONE; }
 
-        private static File log_file;
+        static File log_file;
 
-        public static void base_setting (string log_path, LogLevel log_level) {
-            log_file = File.new_for_path (log_path);
-            if (!log_file.query_exists ()) {
-                try {
-                    log_file.create (FileCreateFlags.PRIVATE);
-                } catch (Error e) {
-                    // Translators: %s is path
-                    GLib.warning (_("Can't create log on %s. Message: %s").printf (log_path, e.message));
-                }
+        public static void set_log_file (File new_log_file) {
+            if (log_file != null) {
+                Logger.log_file.delete_async.begin (Priority.DEFAULT, null, (obj, res) => {
+                    try {
+                        log_file.delete_async.end (res);
+
+                    } catch (Error e) {
+                        if (e is IOError.NOT_FOUND) { }
+                    }
+                });
             }
 
-            Logger.log_level = log_level;
-        }
-
-        public static void debug_enable () {
-            if (log_level != LogLevel.DEVEL) {
-                log_level = LogLevel.DEBUG;
-            }
-        }
-
-        public static void debug_disable () {
-            if (log_level != LogLevel.DEVEL) {
-                log_level = LogLevel.USER;
-            }
+            Logger.log_file = new_log_file;
         }
 
         static void write_to_file (string log_level_str, string message) {

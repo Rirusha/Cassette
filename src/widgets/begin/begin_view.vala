@@ -88,7 +88,7 @@ namespace Cassette {
             var network_session = webview.get_network_session ();
             var cookie_manager = network_session.get_cookie_manager ();
 
-            cookie_manager.set_persistent_storage (storager.cookies_file_path, CookiePersistentStorage.SQLITE);
+            cookie_manager.set_persistent_storage (storager.cookies_file.peek_path (), CookiePersistentStorage.SQLITE);
 
             Idle.add_once (() => {
                 block_widget (button_local_mode, BlockReason.NOT_IMPLEMENTED);

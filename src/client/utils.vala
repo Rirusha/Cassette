@@ -35,11 +35,8 @@ namespace CassetteClient {
     public static Player.Player player;
     public static Cachier.CachierController cachier_controller;
 
-    public static void init (LogLevel? log_level) {
+    public static void init () {
         storager = new Cachier.Storager ();
-        storager.create_log (log_level);
-        storager.init_db ();
-
         threader = new Threader ();
         yam_talker = new YaMTalker ();
         player = new Player.Player ();
@@ -61,7 +58,7 @@ namespace CassetteClient {
     }
 
     public async static void download_track_async (string track_id, owned string? track_uri = null, bool is_tmp = true) {
-        if (storager.audio_cache_location (track_id).path != null) {
+        if (storager.audio_cache_location (track_id).file != null) {
             cachier_controller.stop_loading (Cachier.ContentType.TRACK, track_id, null);
             return;
         }
@@ -155,22 +152,105 @@ namespace CassetteClient {
         var pixbuf = new Gdk.Pixbuf (Gdk.Colorspace.RGB, true, 8, size, size);
 
         if (pixbufs.length >= 2) {
-            pixbufs[0].composite (pixbuf, 0, 0, new_size, new_size, 0, 0, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
-            pixbufs[1].composite (pixbuf, new_size, 0, new_size, new_size, new_size, 0, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[0].composite (
+                pixbuf,
+                0,
+                0, new_size,
+                new_size,
+                0,
+                0,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
+            pixbufs[1].composite (
+                pixbuf,
+                new_size,
+                0,
+                new_size,
+                new_size,
+                new_size,
+                0,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
         }
+
         if (pixbufs.length >= 3) {
-            pixbufs[2].composite (pixbuf, 0, new_size, new_size, new_size, 0, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[2].composite (
+                pixbuf,
+                0,
+                new_size,
+                new_size,
+                new_size,
+                0,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
         } else {
-            pixbufs[1].composite (pixbuf, 0, new_size, new_size, new_size, 0, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
-            pixbufs[0].composite (pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[1].composite (
+                pixbuf,
+                0,
+                new_size,
+                new_size,
+                new_size,
+                0,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
+            pixbufs[0].composite (
+                pixbuf,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
 
             return pixbuf;
         }
 
         if (pixbufs.length == 4) {
-            pixbufs[3].composite (pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[3].composite (
+                pixbuf,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
         } else {
-            pixbufs[0].composite (pixbuf, new_size, new_size, new_size, new_size, new_size, new_size, 0.5, 0.5, Gdk.InterpType.BILINEAR, 255);
+            pixbufs[0].composite (
+                pixbuf,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255);
         }
         return pixbuf;
     }
@@ -214,71 +294,75 @@ namespace CassetteClient {
 
     //  Переделывает camelCase строку в kebab-case. Входная строка должна быть корректной camelCase
     public string camel2kebab (string camel_string) {
-        string kebab_string = "";
+        var builder = new StringBuilder ();
 
         int i = 0;
         while (i < camel_string.length) {
             if (camel_string[i].isupper ()) {
-                kebab_string += "-";
-                kebab_string += camel_string[i].tolower ().to_string ();
+                builder.append_c ('-');
+                builder.append_c (camel_string[i].tolower ());
+
             } else {
-                kebab_string += camel_string[i].to_string ();
+                builder.append_c (camel_string[i]);
             }
             i += 1;
         }
 
-        return kebab_string;
+        return builder.free_and_steal ();
     }
 
     //  Переделывает kebab-case строку в camelCase. Входная строка должна быть корректной kebab-case
     public string kebab2camel (string kebab_string) {
-        string camel_string = "";
+        var builder = new StringBuilder ();
 
         int i = 0;
         while (i < kebab_string.length) {
             if (kebab_string[i] == '-') {
                 i += 1;
-                camel_string += kebab_string[i].toupper ().to_string ();
+                builder.append_c (kebab_string[i].toupper ());
+
             } else {
-                camel_string += kebab_string[i].to_string ();
+                builder.append_c (kebab_string[i]);
             }
             i += 1;
         }
 
-        return camel_string;
+        return builder.free_and_steal ();
     }
 
     //  Переделывает kebab-case строку в snake_case. Входная строка должна быть корректной kebab-case
     public string kebab2snake (string kebab_string) {
-        string snake_string = "";
+        var builder = new StringBuilder ();
 
         int i = 0;
         while (i < kebab_string.length) {
             if (kebab_string[i] == '-') {
-                snake_string += "_";
+                builder.append_c ('_');
+
             } else {
-                snake_string += kebab_string[i].to_string ();
+                builder.append_c (kebab_string[i]);
             }
             i += 1;
         }
 
-        return snake_string;
+        return builder.free_and_steal ();
     }
 
     //  Переделывает snake_case строку в kebab-case. Входная строка должна быть корректной snake_case
     public string snake2kebab (string snake_string) {
-        string kebab_string = "";
+        var builder = new StringBuilder ();
 
         int i = 0;
         while (i < snake_string.length) {
             if (snake_string[i] == '_') {
-                kebab_string += "-";
+                builder.append_c ('-');
+
             } else {
-                kebab_string += snake_string[i].to_string ();
+                builder.append_c (snake_string[i]);
             }
             i += 1;
         }
 
-        return kebab_string;
+        return builder.free_and_steal ();
     }
 }

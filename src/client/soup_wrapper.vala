@@ -77,7 +77,7 @@ namespace CassetteClient {
             }
         }
 
-        public string? cookie_file_path {
+        public File? cookies_file {
             construct set {
                 if (value == null) {
                     return;
@@ -87,8 +87,8 @@ namespace CassetteClient {
             }
         }
 
-        public SoupWrapper (string? user_agent, string? cookie_file_path) {
-            Object (user_agent: user_agent, cookie_file_path: cookie_file_path);
+        public SoupWrapper (string? user_agent, File? cookies_file) {
+            Object (user_agent: user_agent, cookies_file: cookies_file);
         }
 
         construct {
@@ -111,22 +111,22 @@ namespace CassetteClient {
             }
         }
 
-        public void reload_cookies (string cookie_path) {
+        public void reload_cookies (File cookies_file) {
             if (session.has_feature (typeof (Soup.CookieJarDB))) {
                 session.remove_feature_by_type (typeof (Soup.CookieJarDB));
             }
 
-            var cookie_jar = new Soup.CookieJarDB (cookie_path, true);
+            var cookie_jar = new Soup.CookieJarDB (cookies_file.peek_path (), true);
             session.add_feature (cookie_jar);
         }
 
         public void clear_cookies () {
             session.remove_feature_by_type (typeof (CookieJarDB));
             if (storager.cookies_exists ()) {
-                storager.remove_file (storager.cookies_file_path);
+                storager.remove_file (storager.cookies_file);
             }
 
-            cookie_file_path = storager.cookies_file_path;
+            cookies_file = storager.cookies_file;
         }
 
         public void add_headers_preset (string preset_name, Header[] headers_arr) {

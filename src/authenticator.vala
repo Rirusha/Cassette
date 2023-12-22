@@ -90,9 +90,8 @@ namespace Cassette {
             loading_win.present ();
             spinner.start ();
 
-            storager.moving_done.connect (application.quit);
-
-            threader.add (storager.clear_user);
+            // TODO: Let user choose save content ot not
+            storager.clear_user.begin (true, application.quit);
         }
 
         public void log_in () {
@@ -128,7 +127,7 @@ namespace Cassette {
         public void start_auth () {
             application.application_state = ApplicationState.BEGIN;
             if (storager.cookies_exists ()) {
-                storager.remove_file (storager.cookies_file_path);
+                storager.remove_file (storager.cookies_file);
             }
 
             var begin_window = new BeginWindow () {

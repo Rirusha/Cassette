@@ -34,7 +34,7 @@ public int main (string[] args) {
         string image_url = "test_url";
         var location = storager.image_cache_location (image_url);
 
-        if (location.is_tmp != true || location.path == null) {
+        if (location.is_tmp != true || location.file == null) {
             Test.fail_printf ("Image not found");
         }
     });
@@ -56,7 +56,7 @@ public int main (string[] args) {
         string track_url = "123456789";
         var location = storager.audio_cache_location (track_url);
 
-        if (location.is_tmp != true || location.path == null) {
+        if (location.is_tmp != true || location.file == null) {
             Test.fail_printf ("Track not found");
         }
     });
@@ -75,7 +75,7 @@ public int main (string[] args) {
     Test.add_func ("/storager/objects/location", () => {
         var location = storager.object_cache_location (typeof (Playlist), "123:3");
 
-        if (location.is_tmp != true || location.path == null) {
+        if (location.is_tmp != true || location.file == null) {
             Test.fail_printf ("Object not found");
         }
     });

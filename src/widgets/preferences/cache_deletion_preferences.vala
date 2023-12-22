@@ -121,20 +121,13 @@ namespace Cassette {
                 content = box
             };
 
-            var spinner = new Gtk.Spinner () {
-                width_request = 16,
-                height_request = 16,
-                hexpand = true,
-                vexpand = true
-            };
-            box.append (spinner);
+            box.append (new LoadingWidget ());
 
             var label = new Gtk.Label (_("Deleting…"));
             label.add_css_class ("title-1");
             box.append (label);
 
             loading_win.present ();
-            spinner.start ();
 
             storager.delete_temp_cache.begin (() => {
                 loading_win.close ();

@@ -21,11 +21,12 @@
 namespace CassetteClient.Cachier {
 
     namespace Filenames {
+        public const string ROOT_DIR_NAME = "cassette";
         public const string COOKIES = "cassette.cookies";
         public const string LOG = "cassette.log";
         public const string DATABASE = "cassette.db";
         public const string IMAGES = "images";
-        public const string TRACKS = "tracks";
+        public const string AUDIOS = "audios";
         public const string OBJECTS = "objs";
     }
 
@@ -42,14 +43,14 @@ namespace CassetteClient.Cachier {
         */
 
         public bool is_tmp { get; construct; }
-        public string? path { get; construct; }
+        public File? file { get; construct; }
 
-        public Location (bool is_tmp, string? path) {
-            Object (is_tmp: is_tmp, path: path);
+        public Location (bool is_tmp, File? file) {
+            Object (is_tmp: is_tmp, file: file);
         }
 
         public Location.none () {
-            Object (is_tmp: true, path: null);
+            Object (is_tmp: true, file: null);
         }
 
         public async void move_to_temp () {
@@ -57,12 +58,12 @@ namespace CassetteClient.Cachier {
                 Переместить файл во временное хранилище, если он в постоянном
             */
 
-            if (path != null && is_tmp == false) {
+            if (file != null && is_tmp == false) {
                 threader.add (() => {
                     if (storager.settings.get_boolean ("can-cache")) {
-                        storager.move (path, null, true);
+                        storager.move_file_to (file, true);
                     } else {
-                        storager.remove_file (path);
+                        storager.remove_file (file);
                     }
 
                     Idle.add (move_to_temp.callback);
@@ -77,9 +78,9 @@ namespace CassetteClient.Cachier {
                 Переместить файл в постоянное хранилище, если он во временном
             */
 
-            if (path != null && is_tmp == true) {
+            if (file != null && is_tmp == true) {
                 threader.add (() => {
-                    storager.move (path, null, false);
+                    storager.move_file_to (file, false);
                     Idle.add (move_to_perm.callback);
                 });
 
@@ -90,111 +91,232 @@ namespace CassetteClient.Cachier {
 
     public class Storager : Object {
         /*
-            Класс для работы с файлами клиента
+           A class for working with client files
         */
 
-        public InfoDB db { get; private set; }
         public Settings settings { get; default = new Settings ("io.github.Rirusha.Cassette"); }
 
-        public signal void moving_done ();
+        InfoDB? _db = null;
+        public InfoDB db {
+            get {
+                if (_db == null) {
+                    _db = new InfoDB (db_file.peek_path ());
 
-        public string cache_path { get; default = Path.build_filename (Environment.get_user_data_dir (), "cassette"); }
-        public string temp_dir { get; default = Environment.get_user_cache_dir (); }
+                    Logger.info (_("Database was initialized, loc - %s").printf (db.db_path));
+                }
 
-        public string log_file_path { get; private set; }
-        public string cookies_file_path { get; private set; }
-        public string db_file_path { get; private set; }
-        string temp_track_path;
-        string temp_track_uri;
+                return _db;
+            }
+        }
 
-        public string temp_cache_path { get; private set; }
+        // Permanent root dir
+        File _data_dir_file;
+        public File data_dir_file {
+            get {
+                create_dir_if_not_existing (_data_dir_file);
+
+                return _data_dir_file;
+            }
+        }
+
+        // Permanent images dir
+        File _data_images_dir_file;
+        public File data_images_dir_file {
+            get {
+                create_dir_if_not_existing (_data_images_dir_file);
+
+                return _data_images_dir_file;
+            }
+        }
+
+        // Permanent audios dir
+        File _data_audios_dir_file;
+        public File data_audios_dir_file {
+            get {
+                create_dir_if_not_existing (_data_audios_dir_file);
+
+                return _data_audios_dir_file;
+            }
+        }
+
+        // Permanent objects dir
+        File _data_objects_dir_file;
+        public File data_objects_dir_file {
+            get {
+                create_dir_if_not_existing (_data_objects_dir_file);
+
+                return _data_objects_dir_file;
+            }
+        }
+
+        // Temporary root dir
+        File _cache_dir_file;
+        public File cache_dir_file {
+            get {
+                create_dir_if_not_existing (_cache_dir_file);
+
+                return _cache_dir_file;
+            }
+        }
+
+        // Temporary images dir
+        File _cache_images_dir_file;
+        public File cache_images_dir_file {
+            get {
+                create_dir_if_not_existing (_cache_images_dir_file);
+
+                return _cache_images_dir_file;
+            }
+        }
+
+        // Temporary audios dir
+        File _cache_audios_dir_file;
+        public File cache_audios_dir_file {
+            get {
+                create_dir_if_not_existing (_cache_audios_dir_file);
+
+                return _cache_audios_dir_file;
+            }
+        }
+
+        // Temporary objects dir
+        File _cache_objects_dir_file;
+        public File cache_objects_dir_file {
+            get {
+                create_dir_if_not_existing (_cache_objects_dir_file);
+
+                return _cache_objects_dir_file;
+            }
+        }
+
+        File _log_file;
+        public File log_file {
+            get {
+                file_exists (_log_file);
+
+                return _log_file;
+            }
+        }
+
+        File _db_file;
+        public File db_file {
+            get {
+                file_exists (_db_file);
+
+                return _db_file;
+            }
+        }
+
+        File _cookies_file;
+        public File cookies_file {
+            get {
+                file_exists (_cookies_file);
+
+                return _cookies_file;
+            }
+        }
+
+        string temp_audio_path;
+        string temp_audio_uri;
 
         public Storager () {
             Object ();
         }
 
         construct {
-            temp_track_path = Path.build_filename (temp_dir, "track");
-            temp_cache_path = Path.build_filename (temp_dir, "cassette");
-            log_file_path = Path.build_filename (temp_cache_path, "cassette.log");
+            _data_dir_file = File.new_build_filename (Environment.get_user_data_dir (), Filenames.ROOT_DIR_NAME);
 
-            var cache_dir_file = File.new_for_path (cache_path);
-            if (!cache_dir_file.query_exists ()) {
+            _db_file = File.new_build_filename (data_dir_file.peek_path (), Filenames.DATABASE);
+            _cookies_file = File.new_build_filename (data_dir_file.peek_path (), Filenames.COOKIES);
+
+            _data_images_dir_file = File.new_build_filename (data_dir_file.peek_path (), Filenames.IMAGES);
+            _data_audios_dir_file = File.new_build_filename (data_dir_file.peek_path (), Filenames.AUDIOS);
+            _data_objects_dir_file = File.new_build_filename (data_dir_file.peek_path (), Filenames.OBJECTS);
+
+
+            _cache_dir_file = File.new_build_filename (Environment.get_user_cache_dir (), Filenames.ROOT_DIR_NAME);
+
+            _log_file = File.new_build_filename (cache_dir_file.peek_path (), Filenames.LOG);
+            Logger.set_log_file (_log_file);
+
+            _cache_images_dir_file = File.new_build_filename (cache_dir_file.peek_path (), Filenames.IMAGES);
+            _cache_audios_dir_file = File.new_build_filename (cache_dir_file.peek_path (), Filenames.AUDIOS);
+            _cache_objects_dir_file = File.new_build_filename (cache_dir_file.peek_path (), Filenames.OBJECTS);
+
+
+            temp_audio_path = Path.build_filename (cache_dir_file.peek_path (), ".track");
+            temp_audio_uri = @"file://$temp_audio_path";
+        }
+
+        static bool file_exists (File target_file) {
+            if (target_file.query_exists ()) {
+                return true;
+
+            } else {
+                Logger.warning ("Location '%s' was not found.".printf (target_file.peek_path ()));
+
+                return false;
+            }
+        }
+
+        static void create_dir_if_not_existing (File target_file) {
+            if (!file_exists (target_file)) {
                 try {
-                    cache_dir_file.make_directory ();
+                    target_file.make_directory_with_parents ();
+
+                    Logger.info ("Directory '%s' created".printf (target_file.peek_path ()));
                 } catch (Error e) {
-                    Logger.error ("Error while making permanent cache directory. Message: %s".printf (e.message));
+                    Logger.error ("Error while creating directory '%s'. Error message: %s".printf (
+                        target_file.peek_path (),
+                        e.message
+                    ));
                 }
             }
-
-            var temp_dir_file = File.new_for_path (temp_cache_path);
-            if (!temp_dir_file.query_exists ()) {
-                try {
-                    temp_dir_file.make_directory ();
-                } catch (Error e) {
-                    Logger.error ("Error while making temporary cache directory. Message: %s".printf (e.message));
-                }
-            }
-
-            cookies_file_path = Path.build_filename (cache_path, "cassette.cookies");
-            db_file_path = Path.build_filename (cache_path, "cassette.db");
-
-            temp_track_uri = @"file://$temp_track_path";
         }
 
-        public void create_log (LogLevel? log_level) {
-            /*
-                Инициализировать файл логов
-            */
-
-            FileUtils.remove (log_file_path);
-
-            LogLevel user_log_level = settings.get_boolean ("debug-mode")? LogLevel.DEBUG : LogLevel.USER;
-            Logger.base_setting (log_file_path, log_level ?? user_log_level);
-
-            Logger.info (_("Log created, loc - %s").printf (log_file_path));
+        public void move_to (string src_path, bool is_tmp) {
+             move_file_to (
+                File.new_for_path (src_path),
+                is_tmp
+            );
         }
 
-        public void init_db () {
-            /*
-                Инициализировать файл базы данных
-            */
+        public void move_file_to (File src_file, bool is_tmp) {
+            var b = src_file.peek_path ().split ("/cassette/");
+            string dst = Path.build_filename (
+                is_tmp? cache_dir_file.peek_path () : data_dir_file.peek_path (),
+                b[b.length - 1]
+            );
 
-            db = new InfoDB (db_file_path);
-
-            Logger.info (_("Database was initialized, loc - %s").printf (db.db_path));
+            move_file (
+                src_file,
+                File.new_for_path (dst)
+            );
         }
 
-        public void move (string src, owned string? dst = null, bool to_tmp = false) {
+        void move_file (File src_file, File dst_file) {
             /*
                 Перемещает файл
             */
 
-            if (dst == null) {
-                if (to_tmp) {
-                    var b = src.split ("/cassette/");
-                    dst = Path.build_filename (temp_cache_path, b[b.length - 1]);
-                } else {
-                    var b = src.split ("/cassette/");
-                    dst = Path.build_filename (cache_path, b[b.length - 1]);
-                }
-            }
-
-            var src_file = File.new_for_path (src);
-            var dst_file = File.new_for_path (dst);
-
             try {
                 src_file.move (dst_file, FileCopyFlags.OVERWRITE);
-            } catch (Error e) { }
+            } catch (Error e) {
+                Logger.warning (_("Can't move file '%s' to '%s'. Error message: %s").printf (
+                    src_file.peek_path (),
+                    dst_file.peek_path (),
+                    e.message
+                ));
+            }
         }
 
-        void move_dir (string src_dir, string dst_dir) {
+        void move_file_dir (File src_dir_file, File dst_dir_file) {
             /*
                 Перемещает директорию рекурсивно
             */
 
             try {
-                FileEnumerator? enumerator = File.new_for_path (src_dir).enumerate_children (
+                FileEnumerator? enumerator = src_dir_file.enumerate_children (
                     "standard::*",
                     FileQueryInfoFlags.NONE,
                     null
@@ -205,40 +327,64 @@ namespace CassetteClient.Cachier {
 
                     while ((file_info = enumerator.next_file ()) != null) {
                         string file_name = file_info.get_name ();
-                        string src_file_path = Path.build_filename (src_dir, file_name);
-                        string dst_file_path = Path.build_filename (dst_dir, file_name);
+
+                        File src_file = File.new_build_filename (src_dir_file.peek_path (), file_name);
+                        File dst_file = File.new_build_filename (dst_dir_file.peek_path (), file_name);
 
                         if (file_info.get_file_type () == FileType.DIRECTORY) {
-                            move_dir (src_file_path, dst_file_path);
+                            move_file_dir (src_file, dst_file);
+                        } else if (file_info.get_file_type () == FileType.REGULAR) {
+                            move_file (src_file, dst_file);
                         } else {
-                            File file = File.new_for_path (src_file_path);
-                            file.move (File.new_for_path (dst_file_path), FileCopyFlags.OVERWRITE);
+                            src_file.trash ();
+                            Logger.warning (
+                                _("In cache folder found suspicious file '%s'. It moved to thrash.").printf (file_name)
+                            );
                         }
                     }
                 }
 
-                File.new_for_path (src_dir).delete ();
+                src_dir_file.delete ();
 
             } catch (Error e) {
-                Logger.warning (_("Can't move directory. Message: %s").printf (e.message));
+                Logger.warning (_("Can't move directory '%s' to '%s'. Error message: %s").printf (
+                    src_dir_file.peek_path (),
+                    dst_dir_file.peek_path (),
+                    e.message
+                ));
             }
         }
 
-        public void remove_file (string file_path) {
+        public void remove_file (File target_file) {
             /*
                 Удалить файл
             */
 
-            FileUtils.remove (file_path);
+            try {
+                target_file.delete ();
+
+            } catch (Error e) {
+                Logger.warning (_("Can't delete file '%s'.").printf (
+                    target_file.peek_path ()
+                ));
+            }
         }
 
-        void remove_dir (string dir) {
+        public void remove (string file_path) {
+            /*
+                Удалить файл
+            */
+
+            remove_file (File.new_for_path (file_path));
+        }
+
+        void remove_dir_file (File dir_file) {
             /*
                 Удаляет директорию рекурсивно
             */
 
             try {
-                FileEnumerator? enumerator = File.new_for_path (dir).enumerate_children (
+                FileEnumerator? enumerator = dir_file.enumerate_children (
                     "standard::*",
                     FileQueryInfoFlags.NONE,
                     null
@@ -249,39 +395,52 @@ namespace CassetteClient.Cachier {
 
                     while ((file_info = enumerator.next_file ()) != null) {
                         string file_name = file_info.get_name ();
-                        string file_path = Path.build_filename (dir, file_name);
+
+                        File file = File.new_build_filename (dir_file.peek_path (), file_name);
 
                         if (file_info.get_file_type () == FileType.DIRECTORY) {
-                            remove_dir (file_name);
+                            remove_dir_file (file);
+                        } else if (file_info.get_file_type () == FileType.REGULAR) {
+                            remove_file (file);
                         } else {
-                            File file = File.new_for_path (file_path);
-                            file.delete ();
+                            file.trash ();
+                            Logger.warning (
+                                _("In cache folder found suspicious file '%s'. It moved to thrash.").printf (file_name)
+                            );
                         }
                     }
                 }
 
-                File file_dir = File.new_for_path (dir);
-                file_dir.delete ();
+                dir_file.delete ();
 
             } catch (Error e) {
-                Logger.warning (_("Can't move directory. Message: %s").printf (e.message));
+                Logger.warning (_("Can't remove directory '%s'. Error message: %s").printf (
+                    dir_file.peek_path (),
+                    e.message
+                ));
             }
-
         }
 
-        public void clear_user () {
+        public async void clear_user (bool keep_content) {
             /*
                 Удаляет пользовательские данные и переносить содержимое
                 кэшей во временное 
             */
 
-            move_dir (get_path (Filenames.OBJECTS, false), get_path (Filenames.OBJECTS, true));
-            move_dir (get_path (Filenames.TRACKS, false), get_path (Filenames.TRACKS, true));
-            move_dir (get_path (Filenames.IMAGES, false), get_path (Filenames.IMAGES, true));
+            threader.add (() => {
+                if (keep_content) {
+                    move_file_dir (data_images_dir_file, cache_images_dir_file);
+                    move_file_dir (data_objects_dir_file, cache_objects_dir_file);
+                    move_file_dir (data_audios_dir_file, cache_audios_dir_file);
+                }
 
-            remove_dir (cache_path);
+                _db = null;
+                remove_dir_file (data_dir_file);
 
-            moving_done ();
+                Idle.add (clear_user.callback);
+            });
+
+            yield;
         }
 
         public async void delete_temp_cache () {
@@ -290,9 +449,7 @@ namespace CassetteClient.Cachier {
             */
 
             threader.add (() => {
-                remove_dir (get_path (Filenames.OBJECTS, true));
-                remove_dir (get_path (Filenames.TRACKS, true));
-                remove_dir (get_path (Filenames.IMAGES, true));
+                remove_dir_file (cache_dir_file);
 
                 Idle.add (delete_temp_cache.callback);
             });
@@ -300,31 +457,12 @@ namespace CassetteClient.Cachier {
             yield;
         }
 
-        string get_path (string filename, bool is_tmp) {
+        void simple_dencode (ref uint8[] data) {
             /*
-                Даёт путь и создает директории при необходимости
-            */
-
-            File path_file;
-            if (is_tmp) {
-                path_file = File.new_build_filename (temp_cache_path, filename);
-            } else {
-                path_file = File.new_build_filename (cache_path, filename);
-            }
-
-            if (!path_file.query_exists ()) {
-                try {
-                    path_file.make_directory_with_parents ();
-                } catch (Error e) {
-                    Logger.warning (_("Can't create %s").printf (cache_path));
-                }
-            }
-            return path_file.get_path ();
-        }
-
-        void dencode (ref uint8[] data) {
-            /*
-                "Перевернуть" данные (допустим закодировал)
+                Простое кодирование для защиты DRM контента от прямого доступа.
+                Просьба не публиковать в интернете версию без кодирования и 
+                не распространять способ обхода (пусть и простой).
+                Это может вызвать у разработчика проблемы с Яндексом
             */
 
             for (int i = 0; i < data.length; i++) {
@@ -332,12 +470,26 @@ namespace CassetteClient.Cachier {
             }
         }
 
-        string dencode_name (string name) {
+        string replace_many (string in_str, char[] targets, char replacement) {
+            var builder = new StringBuilder ();
+
+            for (int i = 0; i < in_str.length; i++) {
+                if (in_str[i] in targets) {
+                    builder.append_c (replacement);
+                } else {
+                    builder.append_c (in_str[i]);
+                }
+            }
+
+            return builder.free_and_steal ();
+        }
+
+        string encode_name (string name) {
             /*
                 Закодировать имя в Base64
             */
 
-            return Base64.encode (name.data).replace ("/", "=");
+            return replace_many (Base64.encode (name.data), {'/', '+', '='}, '-');
         }
 
         //////////////
@@ -349,8 +501,7 @@ namespace CassetteClient.Cachier {
                 Проверка существования файла куки
             */
 
-            var cookie_file = File.new_for_path (cookies_file_path);
-            return cookie_file.query_exists ();
+            return cookies_file.query_exists ();
         }
 
         /////////////
@@ -362,41 +513,47 @@ namespace CassetteClient.Cachier {
                 Получение файла кэширования изображения по его uri
             */
 
-            string imagedir_path = get_path (Filenames.IMAGES, is_tmp);
-            string image_name = dencode_name (image_uri);
-            return File.new_build_filename (imagedir_path, image_name);
+            return File.new_build_filename (
+                is_tmp? cache_images_dir_file.peek_path () : data_images_dir_file.peek_path (),
+                encode_name (image_uri)
+            );
         }
 
         public Location image_cache_location (string image_uri) {
             File image_file;
             image_file = get_image_cache_file (image_uri, false);
             if (image_file.query_exists ()) {
-                return new Location (false, image_file.get_path ());
+                return new Location (false, image_file);
             }
             image_file = get_image_cache_file (image_uri, true);
             if (image_file.query_exists ()) {
-                return new Location (true, image_file.get_path ());
+                return new Location (true, image_file);
             }
             return new Location.none ();
         }
 
         public Gdk.Pixbuf? load_image (string image_uri) {
             Location image_location = image_cache_location (image_uri);
-            if (image_location.path == null) {
+            if (image_location.file == null) {
                 return null;
             }
 
             while (true) {
                 try {
                     uint8[] idata;
-                    FileUtils.get_data (image_location.path, out idata);
-                    dencode (ref idata);
+                    image_location.file.load_contents (null, out idata, null);
+                    simple_dencode (ref idata);
 
                     var stream = new MemoryInputStream.from_data (idata);
                     var pixbuf = new Gdk.Pixbuf.from_stream (stream);
                     stream.close ();
                     return pixbuf;
+
                 } catch (Error e) {
+                    Logger.warning (_("Can't load image '%s'. Error message: %s").printf (
+                        image_location.file.peek_path (),
+                        e.message
+                    ));
                     GLib.Thread.usleep (1000000);
                     continue;
                 }
@@ -408,53 +565,64 @@ namespace CassetteClient.Cachier {
             try {
                 uint8[] odata;
                 image.save_to_buffer (out odata, "png");
-                dencode (ref odata);
+                simple_dencode (ref odata);
 
-                FileUtils.set_data (image_file.get_path (), odata);
+                FileUtils.set_data (image_file.peek_path (), odata);
+
             } catch (Error e) {
                 Logger.warning ((_("Can't save image %s").printf (image_url)));
             }
         }
 
         /////////////
-        // Tracks  //
+        // Audios  //
         /////////////
 
-        File get_track_cache_file (string track_id, bool is_tmp) {
-            string trackdir_path = get_path (Filenames.TRACKS, is_tmp);
-            string track_name = dencode_name (track_id);
-            return File.new_build_filename (trackdir_path, track_name);
+        File get_audio_cache_file (string track_id, bool is_tmp) {
+            /*
+                Получение файла аудио по id трека
+            */
+
+            return File.new_build_filename (
+                is_tmp? cache_audios_dir_file.peek_path () : data_audios_dir_file.peek_path (),
+                encode_name (track_id)
+            );
         }
 
         public Location audio_cache_location (string track_id) {
             File track_file;
-            track_file = get_track_cache_file (track_id, false);
+            track_file = get_audio_cache_file (track_id, false);
             if (track_file.query_exists ()) {
-                return new Location (false, track_file.get_path ());
+                return new Location (false, track_file);
             }
-            track_file = get_track_cache_file (track_id, true);
+            track_file = get_audio_cache_file (track_id, true);
             if (track_file.query_exists ()) {
-                return new Location (true, track_file.get_path ());
+                return new Location (true, track_file);
             }
             return new Location.none ();
         }
 
         //  Расшифровывает трек, помещает его во временные файлы и даёт его uri
         public string? load_audio (string track_id) {
-            Location track_location = audio_cache_location (track_id);
-            if (track_location.path == null) {
+            Location audio_location = audio_cache_location (track_id);
+            if (audio_location.file == null) {
                 return null;
             }
 
             while (true) {
                 try {
                     uint8[] idata;
-                    FileUtils.get_data (track_location.path, out idata);
-                    dencode (ref idata);
+                    audio_location.file.load_contents (null, out idata, null);
+                    simple_dencode (ref idata);
 
-                    FileUtils.set_data (temp_track_path, idata);
-                    return temp_track_uri;
-                } catch (FileError e) {
+                    FileUtils.set_data (temp_audio_path, idata);
+                    return temp_audio_uri;
+
+                } catch (Error e) {
+                    Logger.warning (_("Can't load audio '%s'. Error message: %s").printf (
+                        audio_location.file.peek_path (),
+                        e.message
+                    ));
                     GLib.Thread.usleep (100000);
                     continue;
                 }
@@ -462,18 +630,22 @@ namespace CassetteClient.Cachier {
         }
 
         public void clear_temp_track () {
-            FileUtils.remove (temp_track_path);
+            FileUtils.remove (temp_audio_path);
         }
 
-        public void save_audio (Bytes audio_bytes, string track_id, bool is_tmp = true) {
-            File track_file = get_track_cache_file (track_id, is_tmp);
+        public void save_audio (Bytes audio_bytes, string track_id, bool is_tmp) {
+            File audio_file = get_audio_cache_file (track_id, is_tmp);
             try {
                 uint8[] odata = audio_bytes.get_data ();
-                dencode (ref odata);
+                simple_dencode (ref odata);
 
-                FileUtils.set_data (track_file.get_path (), odata);
+                FileUtils.set_data (audio_file.peek_path (), odata);
+
             } catch (FileError e) {
-                Logger.warning (_("Can't save audio %s").printf (track_id));
+                Logger.warning (_("Can't save audio '%s'. Error message: %s").printf (
+                    audio_file.peek_path (),
+                    e.message
+                ));
             }
         }
 
@@ -482,42 +654,48 @@ namespace CassetteClient.Cachier {
         ///////////////
 
         string build_id (Type build_type, string oid) {
-            return build_type.name () + "/" + oid;
+            return build_type.name () + "-" + oid;
         }
 
         File get_object_cache_file (Type obj_type, string oid, bool is_tmp) {
-            string objdir_path = get_path (Filenames.OBJECTS, is_tmp);
-            string object_name = dencode_name (build_id (obj_type, oid));
-            return File.new_build_filename (objdir_path, object_name);
+            /*
+                Получение файла файлла аудио по его типу и id
+            */
+
+            return File.new_build_filename (
+                is_tmp? cache_objects_dir_file.peek_path () : data_objects_dir_file.peek_path (),
+                encode_name (build_id (obj_type, oid))
+            );
         }
 
         public Location object_cache_location (Type obj_type, string oid) {
             File object_file;
             object_file = get_object_cache_file (obj_type, oid, false);
             if (object_file.query_exists ()) {
-                return new Location (false, object_file.get_path ());
+                return new Location (false, object_file);
             }
             object_file = get_object_cache_file (obj_type, oid, true);
             if (object_file.query_exists ()) {
-                return new Location (true, object_file.get_path ());
+                return new Location (true, object_file);
             }
             return new Location.none ();
         }
 
         public HasID? load_object (Type obj_type, string oid) {
             Location object_location = object_cache_location (obj_type, oid);
-            if (object_location.path == null) {
+            if (object_location.file == null) {
                 return null;
             }
 
             while (true) {
                 try {
                     uint8[] idata;
-                    FileUtils.get_data (object_location.path, out idata);
-                    dencode (ref idata);
+                    object_location.file.load_contents (null, out idata, null);
+                    simple_dencode (ref idata);
 
                     var jsoner = Jsoner.from_data (idata);
                     return (HasID) jsoner.deserialize_object (obj_type);
+
                 } catch (Error e) {
                     GLib.Thread.usleep (1000000);
                     continue;
@@ -529,15 +707,19 @@ namespace CassetteClient.Cachier {
             File object_file = get_object_cache_file (yam_object.get_type (), yam_object.oid, is_tmp);
             try {
                 uint8[] odata = Jsoner.serialize (yam_object).data;
-                dencode (ref odata);
+                simple_dencode (ref odata);
 
-                FileUtils.set_data (object_file.get_path (), odata);
+                FileUtils.set_data (object_file.peek_path (), odata);
             } catch (Error e) {
                 Logger.warning (_("Can't save object %s").printf (yam_object.get_type ().name ()));
             }
         }
 
-        // 253.3M -> 253.3 Megabyte
+        /////////////
+        //  Other  //
+        /////////////
+
+        // 253.3M -> 253.3 Megabytes
         HumanitySize to_human (string input) {
             string size = input[0:input.length - 1];
             string unit;
@@ -572,7 +754,9 @@ namespace CassetteClient.Cachier {
 
             threader.add (() => {
                 try {
-                    Process.spawn_command_line_sync ("du -sh %s --exclude=\"*.log\"".printf (storager.temp_cache_path), out size);
+                    Process.spawn_command_line_sync ("du -sh %s --exclude=\"*.log\"".printf (
+                        storager.cache_dir_file.peek_path ()
+                    ), out size);
 
                     Regex regex = null;
                     regex = new Regex ("^[\\d.,]+[A-Z]", RegexCompileFlags.OPTIMIZE, RegexMatchFlags.NOTEMPTY);
@@ -605,7 +789,9 @@ namespace CassetteClient.Cachier {
 
             threader.add (() => {
                 try {
-                    Process.spawn_command_line_sync ("du -sh %s --exclude=\"*.db\" --exclude=\"*.cookies\"".printf (storager.cache_path), out size);
+                    Process.spawn_command_line_sync ("du -sh %s --exclude=\"*.db\" --exclude=\"*.cookies\"".printf (
+                        storager.data_dir_file.peek_path ()
+                    ), out size);
 
                     Regex regex = null;
                     regex = new Regex ("^[\\d.,]+[A-Z]", RegexCompileFlags.OPTIMIZE, RegexMatchFlags.NOTEMPTY);

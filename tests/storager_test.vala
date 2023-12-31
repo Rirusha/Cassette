@@ -12,7 +12,7 @@ public int main (string[] args) {
     Test.init (ref args);
 
     Test.add_func ("/storager/init", () => {
-        storager = new Storager ();
+        storager = new Storager ("io.github.Rirusha.Cassette");
     });
 
     Test.add_func ("/storager/move", () => {
@@ -20,7 +20,7 @@ public int main (string[] args) {
     });
 
     Test.add_func ("/storager/cookies_exists/exists", () => {
-        storager.cookies_exists ();
+        storager.cookies_file.query_exists ();
     });
 
     Test.add_func ("/storager/images/save", () => {

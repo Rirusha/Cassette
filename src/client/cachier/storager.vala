@@ -53,7 +53,21 @@ namespace CassetteClient.Cachier {
             Object (is_tmp: true, file: null);
         }
 
-        public async void move_to_temp () {
+        public void move_to_temp () {
+            /*
+                Переместить файл во временное хранилище, если он в постоянном
+            */
+
+            if (file != null && is_tmp == false) {
+                if (storager.settings.get_boolean ("can-cache")) {
+                    storager.move_file_to (file, true);
+                } else {
+                    storager.remove_file (file);
+                }
+            }
+        }
+
+        public async void move_to_temp_async () {
             /*
                 Переместить файл во временное хранилище, если он в постоянном
             */
@@ -66,14 +80,24 @@ namespace CassetteClient.Cachier {
                         storager.remove_file (file);
                     }
 
-                    Idle.add (move_to_temp.callback);
+                    Idle.add (move_to_temp_async.callback);
                 });
 
                 yield;
             }
         }
 
-        public async void move_to_perm () {
+        public void move_to_perm () {
+            /*
+                Переместить файл в постоянное хранилище, если он во временном
+            */
+
+            if (file != null && is_tmp == true) {
+                storager.move_file_to (file, false);
+            }
+        }
+
+        public async void move_to_perm_async () {
             /*
                 Переместить файл в постоянное хранилище, если он во временном
             */
@@ -81,7 +105,7 @@ namespace CassetteClient.Cachier {
             if (file != null && is_tmp == true) {
                 threader.add (() => {
                     storager.move_file_to (file, false);
-                    Idle.add (move_to_perm.callback);
+                    Idle.add (move_to_perm_async.callback);
                 });
 
                 yield;
@@ -94,7 +118,7 @@ namespace CassetteClient.Cachier {
            A class for working with client files
         */
 
-        public Settings settings { get; default = new Settings ("io.github.Rirusha.Cassette"); }
+        public Settings settings { get; construct; }
 
         InfoDB? _db = null;
         public InfoDB db {
@@ -219,8 +243,8 @@ namespace CassetteClient.Cachier {
         string temp_audio_path;
         string temp_audio_uri;
 
-        public Storager () {
-            Object ();
+        public Storager (string application_id) {
+            Object (settings: new Settings (application_id));
         }
 
         construct {
@@ -246,6 +270,8 @@ namespace CassetteClient.Cachier {
 
             temp_audio_path = Path.build_filename (cache_dir_file.peek_path (), ".track");
             temp_audio_uri = @"file://$temp_audio_path";
+
+            Logger.debug ("Storager initialized");
         }
 
         static bool file_exists (File target_file) {
@@ -283,14 +309,14 @@ namespace CassetteClient.Cachier {
 
         public void move_file_to (File src_file, bool is_tmp) {
             var b = src_file.peek_path ().split ("/cassette/");
-            string dst = Path.build_filename (
+            File dst_file = File.new_build_filename (
                 is_tmp? cache_dir_file.peek_path () : data_dir_file.peek_path (),
                 b[b.length - 1]
             );
 
             move_file (
                 src_file,
-                File.new_for_path (dst)
+                dst_file
             );
         }
 
@@ -481,7 +507,9 @@ namespace CassetteClient.Cachier {
                 }
             }
 
-            return builder.free_and_steal ();
+            var o = builder.free_and_steal ();
+
+            return o;
         }
 
         string encode_name (string name) {
@@ -490,18 +518,6 @@ namespace CassetteClient.Cachier {
             */
 
             return replace_many (Base64.encode (name.data), {'/', '+', '='}, '-');
-        }
-
-        //////////////
-        // Cookies  //
-        //////////////
-
-        public bool cookies_exists () {
-            /*
-                Проверка существования файла куки
-            */
-
-            return cookies_file.query_exists ();
         }
 
         /////////////
@@ -570,7 +586,7 @@ namespace CassetteClient.Cachier {
                 FileUtils.set_data (image_file.peek_path (), odata);
 
             } catch (Error e) {
-                Logger.warning ((_("Can't save image %s").printf (image_url)));
+                Logger.warning (("Can't save image %s".printf (image_url)));
             }
         }
 

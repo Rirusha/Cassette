@@ -136,7 +136,7 @@ namespace CassetteClient {
                 var object_location = storager.object_cache_location (playlist_info.get_type (), playlist_info.oid);
                 if (object_location.is_tmp && storager.settings.get_boolean ("can-cache")) {
                     storager.save_object (playlist_info, true);
-                    cachier_controller.change_state (
+                    cachier.controller.change_state (
                         Cachier.ContentType.PLAYLIST,
                         playlist_info.oid,
                         Cachier.CacheingState.TEMP);

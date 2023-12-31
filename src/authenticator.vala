@@ -109,6 +109,8 @@ namespace Cassette {
                 try {
                     yam_talker.init_if_not ();
                 } catch (BadStatusCodeError e) {
+                    Logger.warning ("Bad status code while trying init client. Error message: %s".printf (e.message));
+
                     should_auth = true;
                 }
 
@@ -126,7 +128,7 @@ namespace Cassette {
 
         public void start_auth () {
             application.application_state = ApplicationState.BEGIN;
-            if (storager.cookies_exists ()) {
+            if (storager.cookies_file.query_exists ()) {
                 storager.remove_file (storager.cookies_file);
             }
 

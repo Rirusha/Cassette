@@ -261,18 +261,12 @@ namespace Cassette {
         }
 
         async void load_avatar () {
-            threader.add (() => {
-                avatar.text = yam_talker.me.account.get_user_name ();
-                avatar.size = 22;
-                var pixbuf = get_image (yam_talker.me, 28);
-                if (pixbuf != null) {
-                    avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
-                }
-
-                Idle.add (load_avatar.callback);
-            });
-
-            yield;
+            avatar.text = yam_talker.me.account.get_user_name ();
+            avatar.size = 22;
+            var pixbuf = yield Cachier.get_image (yam_talker.me, 28);
+            if (pixbuf != null) {
+                avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
+            }
 
             avatar_button.sensitive = true;
         }

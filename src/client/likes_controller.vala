@@ -26,7 +26,7 @@ namespace CassetteClient {
         TRACK,
         PLAYLIST,
         ALBUM,
-        //  ARTIST
+        ARTIST
     }
 
     // Контроллер лайков различного контента. Хранит в себе все лайки пользователя.

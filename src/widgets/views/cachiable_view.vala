@@ -27,23 +27,6 @@ namespace Cassette {
         protected Gtk.Stack download_stack { get; set; }
         protected Gtk.ProgressBar loading_progress_bar { get; set; }
 
-        Cachier.YaMObjectCachier? yamc = null;
-
-        construct {
-            cachier_controller.content_cache_state_changed.connect ((content_type, content_id) => {
-                if (object_info == null) {
-                    return;
-                }
-
-                if (content_type == Cachier.ContentType.PLAYLIST || content_type == Cachier.ContentType.ALBUM) {
-                    if (((YaMAPI.Playlist) object_info).oid == content_id && yamc == null) {
-                        download_stack.sensitive = false;
-                        download_stack.tooltip_text = _("Cache state of this object was changed out of this view. Please refresh");
-                    }
-                }
-            });
-        }
-
         public async override void first_show () {
             download_stack.sensitive = false;
             bool cache_success = yield try_load_from_cache ();
@@ -102,32 +85,33 @@ namespace Cassette {
         }
 
         public virtual void start_saving (bool tell_status) {
-            if (yamc != null) {
-                yamc.stop ();
-                yamc = null;
-            }
-
             download_stack.visible_child_name = "abort";
 
-            yamc = new Cachier.YaMObjectCachier.with_progress_bar (object_info, loading_progress_bar);
-            yamc.job_done.connect ((obj, status) => {
+            var job = cachier.start_cache (object_info);
+
+            job.cache_callback.connect ((progress) => {
+                loading_progress_bar.visible = true;
+                loading_progress_bar.fraction = progress;
+            });
+
+            job.job_done.connect ((obj, status) => {
                 switch (status) {
                     case Cachier.JobDoneStatus.SUCCESS:
                         if (tell_status) {
-                            var content_info = get_content_name (yamc.yam_object, true, true);
+                            var content_info = get_content_name (object_info, true, true);
                             // Translators: first %s - content type (Playlist), second - name
                             application.show_message (_("%s%s successfully cached").printf (content_info[0], content_info[1]), true);
                         }
                         download_stack.visible_child_name = "delete";
                         break;
                     case Cachier.JobDoneStatus.FAILED:
-                        var content_info = get_content_name (yamc.yam_object, false, true);
+                        var content_info = get_content_name (object_info, false, true);
                         // Translators: first %s - content type (Playlist), second - name
                         application.show_message (_("Caching of %s%s was canceled, due to network error").printf (content_info[0], content_info[1]));
                         download_stack.visible_child_name = "save";
                         break;
                     case Cachier.JobDoneStatus.ABORTED:
-                        var content_info = get_content_name (yamc.yam_object, false, true);
+                        var content_info = get_content_name (object_info, false, true);
                         // Translators: first %s - content type (Playlist), second - name
                         application.show_message (_("Caching of %s%s was aborted").printf (content_info[0], content_info[1]));
                         download_stack.visible_child_name = "save";
@@ -136,12 +120,10 @@ namespace Cassette {
                 download_stack.sensitive = true;
                 loading_progress_bar.fraction = 0;
                 loading_progress_bar.visible = false;
-                yamc = null;
             });
-            yamc.cache_async.begin ();
 
             if (tell_status) {
-                var content_info = get_content_name (yamc.yam_object, false, false);
+                var content_info = get_content_name (object_info, false, false);
                 // Translators: first %s - content type (Playlist), second - name
                 application.show_message (_("Cacheing of %s%s started").printf (content_info[0], content_info[1]));
             }
@@ -149,36 +131,38 @@ namespace Cassette {
 
         public virtual void abort_saving () {
             download_stack.sensitive = false;
-            yamc.abort ();
+            cachier.abort_job (object_info.oid);
         }
 
         public virtual void uncache_playlist (bool tell_status) {
             download_stack.sensitive = false;
-            yamc = new Cachier.YaMObjectCachier (object_info);
 
-            yamc.uncache_async.begin (() => {
+            cachier.uncache.begin (object_info, () => {
                 download_stack.visible_child_name = "save";
                 download_stack.sensitive = true;
 
                 if (tell_status) {
-                    var content_info = get_content_name (yamc.yam_object, true, true);
+                    var content_info = get_content_name (object_info, true, true);
                     // Translators: first %s - content type (Playlist), second - name
                     application.show_message (_("%s%s was removed from cache folder").printf (content_info[0], content_info[1]), true);
                 }
             });
 
             if (tell_status) {
-                var content_info = get_content_name (yamc.yam_object, true, false);
+                var content_info = get_content_name (object_info, true, false);
                 // Translators: first %s - content type (Playlist), second - name
                 application.show_message (_("%s%s is removing, please do not close the app").printf (content_info[0], content_info[1]));
             }
         }
 
         public virtual void check_cache () {
-            var location = storager.object_cache_location (object_info.get_type (), ((HasID) object_info).oid);
-            if (location.is_tmp == false) {
-                start_saving (false);
+            if (cachier.find_job (object_info.oid) != null) {
+                var location = storager.object_cache_location (object_info.get_type (), ((HasID) object_info).oid);
+                if (location.is_tmp == false) {
+                    start_saving (false);
+                }
             }
+            
             download_stack.sensitive = true;
         }
     }

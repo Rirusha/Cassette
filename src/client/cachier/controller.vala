@@ -45,30 +45,36 @@ namespace CassetteClient.Cachier {
     }
 
     // Контроллер состояния кэширования треков. Все отображалки состояния привязаны к этому контроллеру
-    public class CachierController : Object {
+    public class Controller : Object {
         ArrayList<ContentInfo?> loading_content = new ArrayList<ContentInfo?> ();
 
         public signal void content_cache_state_changed (ContentType content_type, string content_id, CacheingState state);
 
         ContentInfo? get_content_info (ContentInfo content_info) {
-            foreach (var ci in loading_content) {
-                if (content_info.content_id == ci.content_id && content_info.content_type == ci.content_type) {
-                    return ci;
+            lock (loading_content) {
+                foreach (var ci in loading_content) {
+                    if (content_info.content_id == ci.content_id && content_info.content_type == ci.content_type) {
+                        return ci;
+                    }
                 }
+                return null;
             }
-            return null;
         }
 
         void add_content_info (ContentInfo content_info) {
-            if (get_content_info (content_info) == null) {
-                loading_content.add (content_info);
+            lock (loading_content) {
+                if (get_content_info (content_info) == null) {
+                    loading_content.add (content_info);
+                }
             }
         }
 
         void remove_content_info (ContentInfo content_info) {
-            var ci = get_content_info (content_info);
-            if (ci != null) {
-                loading_content.remove (ci);
+            lock (loading_content) {
+                var ci = get_content_info (content_info);
+                if (ci != null) {
+                    loading_content.remove (ci);
+                }
             }
         }
 

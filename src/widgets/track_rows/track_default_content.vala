@@ -114,7 +114,7 @@ namespace Cassette {
             track_options_button.add_save_action ();
             SimpleAction save_action = new SimpleAction ("save", null);
             save_action.activate.connect (() => {
-                save_track.begin (track_info);
+                Cachier.save_track.begin (track_info);
             });
             actions.add_action (save_action);
 

@@ -92,7 +92,7 @@ namespace CassetteClient {
         }
 
         construct {
-            if (Logger.log_level == LogLevel.DEVEL) {
+            if (Logger.log_level <= LogLevel.DEVEL) {
                 var logger = new Soup.Logger (Soup.LoggerLogLevel.BODY);
                 logger.set_printer ((logger, level, direction, data) => {
                     switch (direction) {
@@ -118,15 +118,10 @@ namespace CassetteClient {
 
             var cookie_jar = new Soup.CookieJarDB (cookies_file.peek_path (), true);
             session.add_feature (cookie_jar);
-        }
 
-        public void clear_cookies () {
-            session.remove_feature_by_type (typeof (CookieJarDB));
-            if (storager.cookies_exists ()) {
-                storager.remove_file (storager.cookies_file);
-            }
-
-            cookies_file = storager.cookies_file;
+            Logger.debug ("Cookies was reloaded. New cookiess file %s".printf (
+                cookies_file.peek_path ()
+            ));
         }
 
         public void add_headers_preset (string preset_name, Header[] headers_arr) {

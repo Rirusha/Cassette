@@ -72,13 +72,7 @@ namespace Cassette {
         public async void load_image () {
             Gdk.Pixbuf? pixbuf_buffer = null;
 
-            threader.add_image (() => {
-                pixbuf_buffer = get_image (yam_object, cover_size);
-
-                Idle.add (load_image.callback);
-            });
-
-            yield;
+            pixbuf_buffer = yield Cachier.get_image (yam_object, cover_size);
 
             if (pixbuf_buffer != null) {
                 real_image.set_from_paintable (Gdk.Texture.for_pixbuf (pixbuf_buffer));

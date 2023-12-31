@@ -16,6 +16,7 @@ cassette_client_sources = files(
   'cachier/info_db.vala',
   'cachier/storager.vala',
   'cachier/cachier.vala',
+  'cachier/job.vala',
   'cachier/controller.vala',
   'api/yam_client.vala',
   'api/difference_builder.vala',

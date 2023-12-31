@@ -26,11 +26,11 @@ namespace Cassette {
     static Authenticator authenticator;
 
     public static Application application;
+    public static CassetteClient.Cachier.Cachier cachier;
     public static CassetteClient.Cachier.Storager storager;
     public static CassetteClient.Threader threader;
     public static CassetteClient.YaMTalker yam_talker;
     public static CassetteClient.Player.Player player;
-    public static CassetteClient.Cachier.CachierController cachier_controller;
 
     public enum ApplicationState {
         BEGIN,
@@ -93,7 +93,7 @@ namespace Cassette {
         construct {
             application = this;
 
-            CassetteClient.init ();
+            CassetteClient.init ("io.github.Rirusha.Cassette");
 
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
@@ -103,12 +103,12 @@ namespace Cassette {
             });
 
             // Shortcuts
+            cachier = CassetteClient.cachier;
             storager = CassetteClient.storager;
             threader = CassetteClient.threader;
             authenticator = new Authenticator ();
             yam_talker = CassetteClient.yam_talker;
             player = CassetteClient.player;
-            cachier_controller = CassetteClient.cachier_controller;
 
             yam_talker.connection_established.connect (() => {
                 application_state = ApplicationState.ONLINE;
@@ -168,10 +168,6 @@ namespace Cassette {
 
                 if (_application_state == ApplicationState.OFFLINE) {
                     _application_state = ApplicationState.ONLINE;
-                }
-
-                if (!storager.cookies_exists () && _application_state != ApplicationState.LOCAL) {
-                    _application_state = ApplicationState.BEGIN;
                 }
 
                 main_window.present ();

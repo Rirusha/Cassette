@@ -112,5 +112,13 @@ namespace CassetteClient.YaMAPI {
             }
             return string.joinv (", ", artists_names);
         }
+
+        public string form_debug_info () {
+            /*
+                Сформировать debug информацию о треке            
+            */
+
+            return "%s-%s".printf (id, full_title);
+        }
     }
 }

@@ -21,7 +21,7 @@
 using Gee;
 
 namespace CassetteClient.YaMAPI {
-    public class TrackHeap : YaMObject, HasTrackList, HasID {
+    public class TrackHeap : YaMObject, HasID, HasTrackList {
 
         public string? oid {
             owned get {

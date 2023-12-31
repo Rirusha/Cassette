@@ -322,7 +322,7 @@ namespace CassetteClient.Player {
 
             send_play_audio.begin (0.0);
 
-            string? track_uri = yield get_track_uri (current_track.id);
+            string? track_uri = yield Cachier.get_track_uri (current_track.id);
             if (track_uri == null) {
                 source.set_property ("uri", Value (Type.STRING));
             } else {
@@ -367,7 +367,7 @@ namespace CassetteClient.Player {
             yield;
 
             if (next_track != current_track) {
-                save_track.begin (next_track);
+                Cachier.save_track.begin (next_track);
             }
         }
 

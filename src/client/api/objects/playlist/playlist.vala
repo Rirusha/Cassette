@@ -22,7 +22,7 @@
 using Gee;
 
 namespace CassetteClient.YaMAPI {
-    public class Playlist : YaMObject, HasCover, HasTrackList, HasID {
+    public class Playlist : YaMObject, HasCover, HasID, HasTrackList {
 
         public bool is_public {
             get {

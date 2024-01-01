@@ -279,7 +279,7 @@ namespace CassetteClient.Cachier {
                 return true;
 
             } else {
-                Logger.warning ("Location '%s' was not found.".printf (target_file.peek_path ()));
+                Logger.info ("Location '%s' was not found.".printf (target_file.peek_path ()));
 
                 return false;
             }
@@ -398,7 +398,7 @@ namespace CassetteClient.Cachier {
 
         public void remove (string file_path) {
             /*
-                Удалить файл
+                Удалить файл используя путь
             */
 
             remove_file (File.new_for_path (file_path));

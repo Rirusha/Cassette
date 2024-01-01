@@ -162,7 +162,7 @@ namespace Cassette {
                     start_saving (false);
                 }
             }
-            
+
             download_stack.sensitive = true;
         }
     }

@@ -164,7 +164,7 @@ namespace CassetteClient.Cachier {
         threader.add_image (() => {
             for (int i = 0; i < cover_uris.size; i++) {
                 pixbufs[i] = storager.load_image (cover_uris[i]);
-    
+
                 if (pixbufs[i] == null) {
                     pixbufs[i] = yam_talker.load_pixbuf (cover_uris[i]);
 

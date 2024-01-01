@@ -74,7 +74,7 @@ namespace CassetteClient {
                 try {
                     new_log_file.create (FileCreateFlags.PRIVATE);
 
-                    Logger.warning ("Logger file created");
+                    Logger.info ("Logger file created");
 
                 } catch (Error e) {
                     GLib.warning ("Can't create log file on %s. Error message: %s".printf (

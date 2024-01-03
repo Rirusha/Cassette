@@ -20,8 +20,7 @@ Cassette доступен в репозиториях:
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
 ### ALT Sisyphus
-```angular2html
-```angular2html
+```
 apt-get install cassette
 ```
 ### Используя flatpak

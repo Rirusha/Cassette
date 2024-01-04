@@ -28,6 +28,9 @@ apt-get install cassette
 ```
 flatpak install flathub io.github.Rirusha.Cassette
 ```
+<a href='https://flathub.org/apps/org.gimp.GIMP'>
+  <img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/>
+</a>
 
 ### Сборка из исходного кода
 

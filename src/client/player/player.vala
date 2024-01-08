@@ -397,10 +397,21 @@ namespace CassetteClient.Player {
             }
         }
 
-        public void remove_track (uint position) {
+        public void remove_track_by_pos (uint position) {
             var player_tl = player_mod as PlayerTL;
             if (player_tl != null) {
-                player_tl.remove_track (position);
+                player_tl.remove_track_by_pos (position);
+
+                if (player_tl.queue.tracks.size != 0 && storager.settings.get_boolean ("can-cache")) {
+                    prepare_next_track.begin ();
+                }
+            }
+        }
+
+        public void remove_track (YaMAPI.Track track_info) {
+            var player_tl = player_mod as PlayerTL;
+            if (player_tl != null) {
+                player_tl.remove_track (track_info);
 
                 if (player_tl.queue.tracks.size != 0 && storager.settings.get_boolean ("can-cache")) {
                     prepare_next_track.begin ();

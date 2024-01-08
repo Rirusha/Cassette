@@ -228,14 +228,25 @@ namespace CassetteClient.Player {
             player.queue_changed ();
         }
 
-        public void remove_track (uint position) {
-            _queue.tracks.remove_at ((int) position);
-            original_tracks.remove_at ((int) position);
+        public void remove_track_by_pos (uint position) {
+            var track_info = _queue.tracks[(int) position];
+            remove_track (track_info);
+        }
+
+        public void remove_track (Track track_info) {
+            int track_pos = _queue.tracks.index_of (track_info);
+
+            if (track_pos == -1) {
+                return;
+            }
+
+            _queue.tracks.remove_at (track_pos);
+            original_tracks.remove (track_info);
 
             if (_queue.tracks.size != 0) {
-                if (position == _queue.current_index) {
+                if (track_pos == _queue.current_index) {
                     player.change_track (current_track);
-                } else if (position < _queue.current_index) {
+                } else if (track_pos < _queue.current_index) {
                     _queue.current_index--;
                 }
 

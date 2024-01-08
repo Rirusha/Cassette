@@ -128,7 +128,7 @@ namespace Cassette {
                 real_button.sensitive = true;
 
                 if (is_disliked && player.current_track.id == track_id) {
-                    player.next ();
+                    player.remove_track (player.current_track);
                 }
             }
         }

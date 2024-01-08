@@ -92,5 +92,8 @@
 		<key name="debug-mode" type="b">
 			<default>false</default>
 		</key>
+		<key name="force-mobile" type="b">
+			<default>false</default>
+		</key>
 	</schema>
 </schemalist>

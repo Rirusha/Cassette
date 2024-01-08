@@ -172,14 +172,23 @@ namespace Cassette {
 
                 main_window.present ();
 
-                // Detection device "mobility"
-                // TODO: that also can work on notebooks with touch...
-                var display = Gdk.Display.get_default ();
-                var seat = display?.get_default_seat ();
+                main_window.show.connect (() => {
+                    // Detection device "mobility"
+                    // TODO: that also can work on notebooks with touch...
+                    if (storager.settings.get_boolean ("force-mobile")) {
+                        is_mobile = true;
 
-                foreach (var device in seat?.get_devices (Gdk.SeatCapabilities.TOUCH)) {
-                    is_mobile = true;
-                }
+                    } else {
+                        var display = Gdk.Display.get_default ();
+                        var seat = display?.get_default_seat ();
+
+                        foreach (var device in seat?.get_devices (Gdk.SeatCapabilities.TOUCH)) {
+                            is_mobile = true;
+
+                            storager.settings.set_double ("volume", 100.0);
+                        }
+                    }
+                });
 
                 if (_application_state == ApplicationState.LOCAL) {
                     main_window.load_local_views ();

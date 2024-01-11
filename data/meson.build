@@ -36,11 +36,20 @@ if compile_schemas.found()
   args: ['--strict', '--dry-run', meson.current_source_dir()])
 endif
 
-subdir('icons')
+blueprints = custom_target('blueprints',
+  input: files(
+    'ui/account_info_window.blp'
+  ),
+  output: 'ui',
+  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+)
 
 resource_files = files('io.github.Rirusha.Cassette.gresource.xml')
 resources = gnome.compile_resources(
   'cassette-resources',
   resource_files,
+  dependencies: blueprints,
   c_name: 'cassette'
 )
+
+subdir('icons')

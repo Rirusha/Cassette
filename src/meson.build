@@ -26,6 +26,8 @@ cassette_gui_sources = files(
   'widgets/begin/begin_window.vala',
   'widgets/begin/begin_view.vala',
   'widgets/playlist_choose_window.vala',
+  'widgets/cache_indicator/cache_indicator.vala',
+  'widgets/cache_indicator/job_info_badge.vala',
   'widgets/track_list/track_list.vala',
   'widgets/track_list/tracks_model.vala',
   'widgets/track_list/tracks_view.vala',
@@ -67,6 +69,7 @@ subdir('client')
 
 cassette_sources = [
   vapi_sources,
+  blueprints,
   cassette_gui_sources,
   cassette_client_sources,
   resources
@@ -75,9 +78,9 @@ cassette_sources = [
 cassette_vala_args = [
   '--target-glib', '2.76',
   '--vapidir', meson.current_source_dir(),
-  '--gresources', resource_files
+  '--gresources', resource_files,
+  '--gresourcesdir=data/'
 ]
-
 
 cassette_c_args = [
   '-include', 'config.h',

@@ -22,21 +22,6 @@ gstreamer = dependency('gstreamer-1.0')
 webkit = dependency('webkitgtk-6.0')
 gio = dependency('gio-2.0', version: '>= 2.72')
 
-cassette_dependencies = [
-  gtk,
-  libadwaita,
-  threads,
-  libsoup,
-  gdkpixbuf,
-  jsonglib,
-  sqlite3,
-  gee,
-  libxml,
-  gstreamer,
-  gio,
-  webkit
-]
-
 if get_option('profile') == 'development'
   name_prefix = '(Development) '
   postfix = '.Devel'
@@ -59,11 +44,27 @@ conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
 conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 
+subdir('data')
+
+cassette_dependencies = [
+  gtk,
+  libadwaita,
+  threads,
+  libsoup,
+  gdkpixbuf,
+  jsonglib,
+  sqlite3,
+  gee,
+  libxml,
+  gstreamer,
+  gio,
+  webkit
+]
+
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
 subdir('po')
-subdir('data')
 subdir('src')
 subdir('tests')
 

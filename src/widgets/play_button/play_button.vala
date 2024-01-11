@@ -21,32 +21,21 @@
 namespace Cassette {
     public abstract class PlayButton : CustomButton {
 
-        public string label { get; construct; }
-
-        Adw.ButtonContent button_content = new Adw.ButtonContent ();
-
         public bool is_playing { get; private set; default = false; }
 
         construct {
-            child = real_button;
             tooltip_text = _("Play/Pause");
 
-            button_content.icon_name = "media-playback-start-symbolic";
-
-            if (label != null) {
-                button_content.label = label;
-            }
-
-            real_button.child = button_content;
+            icon_name = "media-playback-start-symbolic";
         }
 
         public void set_playing () {
-            button_content.icon_name = "media-playback-pause-symbolic";
+            icon_name = "media-playback-pause-symbolic";
             is_playing = true;
         }
 
         public void set_paused () {
-            button_content.icon_name = "media-playback-start-symbolic";
+            icon_name = "media-playback-start-symbolic";
             is_playing = true;
         }
 

@@ -42,6 +42,14 @@ namespace Cassette {
                 real_button.height_request = value;
             }
         }
+        
+        public bool is_circular {
+            construct {
+                if (value) {
+                    real_button.add_css_class ("circular");
+                }
+            }
+        }
 
         construct {
             child = real_button;

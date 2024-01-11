@@ -295,7 +295,7 @@ namespace Cassette {
             track_version_label.label = track_info.version;
             track_authors_label.label = track_info.get_artists_names ();
 
-            if (track_info.ugc) {
+            if (track_info.is_ugc) {
                 action_set_enabled ("track.share", false);
                 dislike_button.visible = false;
             } else {
@@ -303,7 +303,7 @@ namespace Cassette {
                 dislike_button.visible = true;
             }
 
-            info_marks.is_exp = track_info.explicit;
+            info_marks.is_exp = track_info.is_explicit;
             info_marks.is_child = track_info.is_suitable_for_children;
             info_marks.replaced_by = track_info.substituted;
 

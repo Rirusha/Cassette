@@ -82,7 +82,7 @@ namespace Cassette {
                 }
             }
 
-            if (track_info.ugc == false) {
+            if (track_info.is_ugc == false) {
                 SimpleAction share_action = new SimpleAction ("share", null);
                 share_action.activate.connect (() => {
                     track_share (track_info);
@@ -161,7 +161,7 @@ namespace Cassette {
             track_name_label.label = track_info.title;
             track_name_label.tooltip_text = track_info.title;
 
-            info_marks.is_exp = track_info.explicit;
+            info_marks.is_exp = track_info.is_explicit;
             info_marks.is_child = track_info.is_suitable_for_children;
             info_marks.replaced_by = track_info.substituted;
 

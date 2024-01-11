@@ -295,7 +295,7 @@ namespace Cassette {
         }
 
         void on_share_current_track () {
-            if (player.current_track?.ugc == false) {
+            if (player.current_track?.is_ugc == false) {
                 track_share (player.current_track);
             }
         }

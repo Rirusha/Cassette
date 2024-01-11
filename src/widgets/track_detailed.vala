@@ -85,7 +85,7 @@ namespace Cassette {
 
             var actions = new SimpleActionGroup ();
 
-            if (track_info.ugc == false) {
+            if (track_info.is_ugc == false) {
                 SimpleAction share_action = new SimpleAction ("share", null);
                 share_action.activate.connect (() => {
                     track_share (track_info);
@@ -117,7 +117,7 @@ namespace Cassette {
             insert_action_group ("track", actions);
 
             LabelButton sbutton;
-            if (track_info.ugc) {
+            if (track_info.is_ugc) {
                 ugc_mark.visible = true;
                 dislike_button.visible = false;
 

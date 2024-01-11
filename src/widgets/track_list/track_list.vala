@@ -267,7 +267,7 @@ namespace Cassette {
                     bool show_explicit = storager.settings.get_boolean ("explicit-visible");
                     bool show_child = storager.settings.get_boolean ("child-visible");
                     bool is_available = storager.settings.get_boolean ("available-visible");
-                    bool track_can_show = track_row.track_info.track_type == track_type && (track_row.track_info.available | is_available) && (!track_row.track_info.explicit | show_explicit) && (!track_row.track_info.is_suitable_for_children | show_child);
+                    bool track_can_show = track_row.track_info.track_type == track_type && (track_row.track_info.available | is_available) && (!track_row.track_info.is_explicit | show_explicit) && (!track_row.track_info.is_suitable_for_children | show_child);
                     if (track_can_show | track_row is TrackQueueRow) {
                         filtered_rows.add (track_row);
                         track_row.visible = true;

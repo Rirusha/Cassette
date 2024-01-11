@@ -54,6 +54,11 @@ namespace Cassette {
                     _job.cancelled.connect (() => {
                         download_stack.sensitive = false;
                     });
+                    if (_job.is_cancelled) {
+                        download_stack.set_visible_child_name ("abort");
+                        download_stack.sensitive = false;
+                    }
+                    download_stack.sensitive = !_job.is_cancelled;
 
                     _job.track_saving_ended.connect ((saved, total) => {
                         saving_progress_bar.fraction = (double) saved / (double) total;

@@ -35,6 +35,15 @@ namespace Cassette {
             Object ();
         }
 
+        construct {
+            success.connect (() => {
+                application.application_state = ApplicationState.ONLINE;
+            });
+            local.connect (() => {
+                application.application_state = ApplicationState.LOCAL;
+            });
+        }
+
         public void log_out () {
             var dialog = new Adw.MessageDialog (
                 application.main_window,

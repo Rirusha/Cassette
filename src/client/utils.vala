@@ -35,9 +35,24 @@ namespace CassetteClient {
     public static YaMTalker yam_talker;
     public static Player.Player player;
 
-    public static void init (string application_id) {
+    public static void init (string application_id, bool is_devel) {
         cachier = new Cachier.Cachier ();
         storager = new Cachier.Storager (application_id);
+
+        if (is_devel) {
+            Logger.log_level = LogLevel.DEVEL;
+        } else {
+            storager.settings.changed.connect ((key) => {
+                if (key == "debug-mode") {
+                    if (storager.settings.get_boolean ("debug-mode")) {
+                        Logger.log_level = LogLevel.DEBUG;
+                    } else {
+                        Logger.log_level = LogLevel.USER;
+                    }
+                }
+            });
+        }
+
         threader = new Threader ();
         yam_talker = new YaMTalker ();
         player = new Player.Player ();

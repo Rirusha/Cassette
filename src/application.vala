@@ -57,11 +57,9 @@ namespace Cassette {
                 _application_state = value;
 
                 // Don't write "Connection restored" after auth
-                if (old_state == ApplicationState.BEGIN) {
-                    return;
+                if (old_state != ApplicationState.BEGIN) {
+                    application_state_changed (_application_state);
                 }
-
-                application_state_changed (_application_state);
             }
         }
 
@@ -93,7 +91,7 @@ namespace Cassette {
         construct {
             application = this;
 
-            CassetteClient.init ("io.github.Rirusha.Cassette");
+            CassetteClient.init ("io.github.Rirusha.Cassette", is_devel);
 
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
@@ -116,20 +114,6 @@ namespace Cassette {
             yam_talker.connection_lost.connect (() => {
                 application_state = ApplicationState.OFFLINE;
             });
-
-            if (is_devel) {
-                Logger.log_level = LogLevel.DEVEL;
-            } else {
-                storager.settings.changed.connect ((key) => {
-                    if (key == "debug-mode") {
-                        if (storager.settings.get_boolean ("debug-mode")) {
-                            Logger.log_level = LogLevel.DEBUG;
-                        } else {
-                            Logger.log_level = LogLevel.USER;
-                        }
-                    }
-                });
-            }
 
             _application_state = (ApplicationState) storager.settings.get_enum ("application-state");
 

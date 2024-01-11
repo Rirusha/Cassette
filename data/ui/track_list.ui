@@ -72,9 +72,7 @@
             </child>
             <child>
               <object class="GtkBox">
-                <style>
-                  <class name="linked"/>
-                </style>
+                <property name="spacing">1</property>
                 <child>
                   <object class="GtkMenuButton">
                     <style>

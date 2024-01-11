@@ -137,7 +137,9 @@ namespace CassetteClient.Cachier {
         File _data_dir_file;
         public File data_dir_file {
             get {
-                create_dir_if_not_existing (_data_dir_file);
+                lock (_data_dir_file) {
+                    create_dir_if_not_existing (_data_dir_file);
+                }
 
                 return _data_dir_file;
             }
@@ -147,7 +149,9 @@ namespace CassetteClient.Cachier {
         File _data_images_dir_file;
         public File data_images_dir_file {
             get {
-                create_dir_if_not_existing (_data_images_dir_file);
+                lock (_data_images_dir_file) {
+                    create_dir_if_not_existing (_data_images_dir_file);
+                }
 
                 return _data_images_dir_file;
             }
@@ -157,7 +161,9 @@ namespace CassetteClient.Cachier {
         File _data_audios_dir_file;
         public File data_audios_dir_file {
             get {
-                create_dir_if_not_existing (_data_audios_dir_file);
+                lock (_data_audios_dir_file) {
+                    create_dir_if_not_existing (_data_audios_dir_file);
+                }
 
                 return _data_audios_dir_file;
             }
@@ -167,7 +173,9 @@ namespace CassetteClient.Cachier {
         File _data_objects_dir_file;
         public File data_objects_dir_file {
             get {
-                create_dir_if_not_existing (_data_objects_dir_file);
+                lock (_data_objects_dir_file) {
+                    create_dir_if_not_existing (_data_objects_dir_file);
+                }
 
                 return _data_objects_dir_file;
             }
@@ -177,7 +185,9 @@ namespace CassetteClient.Cachier {
         File _cache_dir_file;
         public File cache_dir_file {
             get {
-                create_dir_if_not_existing (_cache_dir_file);
+                lock (_cache_dir_file) {
+                    create_dir_if_not_existing (_cache_dir_file);
+                }
 
                 return _cache_dir_file;
             }
@@ -187,7 +197,9 @@ namespace CassetteClient.Cachier {
         File _cache_images_dir_file;
         public File cache_images_dir_file {
             get {
-                create_dir_if_not_existing (_cache_images_dir_file);
+                lock (_cache_images_dir_file) {
+                    create_dir_if_not_existing (_cache_images_dir_file);
+                }
 
                 return _cache_images_dir_file;
             }
@@ -197,7 +209,9 @@ namespace CassetteClient.Cachier {
         File _cache_audios_dir_file;
         public File cache_audios_dir_file {
             get {
-                create_dir_if_not_existing (_cache_audios_dir_file);
+                lock (_cache_audios_dir_file) {
+                    create_dir_if_not_existing (_cache_audios_dir_file);
+                }
 
                 return _cache_audios_dir_file;
             }
@@ -207,7 +221,9 @@ namespace CassetteClient.Cachier {
         File _cache_objects_dir_file;
         public File cache_objects_dir_file {
             get {
-                create_dir_if_not_existing (_cache_objects_dir_file);
+                lock (_cache_objects_dir_file) {
+                    create_dir_if_not_existing (_cache_objects_dir_file);
+                }
 
                 return _cache_objects_dir_file;
             }
@@ -261,7 +277,7 @@ namespace CassetteClient.Cachier {
             _cache_dir_file = File.new_build_filename (Environment.get_user_cache_dir (), Filenames.ROOT_DIR_NAME);
 
             _log_file = File.new_build_filename (cache_dir_file.peek_path (), Filenames.LOG);
-            Logger.set_log_file (_log_file);
+            Logger.log_file = _log_file;
 
             _cache_images_dir_file = File.new_build_filename (cache_dir_file.peek_path (), Filenames.IMAGES);
             _cache_audios_dir_file = File.new_build_filename (cache_dir_file.peek_path (), Filenames.AUDIOS);
@@ -671,6 +687,10 @@ namespace CassetteClient.Cachier {
 
         string build_id (Type build_type, string oid) {
             return build_type.name () + "-" + oid;
+        }
+
+        public HasID[] get_saved_objects () {
+            return {};
         }
 
         File get_object_cache_file (Type obj_type, string oid, bool is_tmp) {

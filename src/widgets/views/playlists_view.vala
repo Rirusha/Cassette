@@ -36,6 +36,8 @@ namespace Cassette {
 
         public override bool can_refresh { get; default = true; }
 
+        PlaylistMicro liked_micro;
+
         public override RootView root_view { get; set; }
 
         public string? uid { get; construct set; }
@@ -48,7 +50,20 @@ namespace Cassette {
             yam_talker.playlists_updated.connect (() => {
                 refresh.begin ();
             });
+
+            liked_micro = new PlaylistMicro (this, new YaMAPI.Playlist.liked ());
         }
+
+        // На тот случай, если удаление страниц когда-нибудь не будет обновлять все страницы
+        //  void on_show_liked_change () {
+        //      if (storager.settings.get_boolean ("show-liked")) {
+        //          if (flow_box.get_first_child () == liked_micro) {
+        //              flow_box.remove (liked_micro);
+        //          }
+        //      } else {
+        //          flow_box.prepend (liked_micro);
+        //      }
+        //  }
 
         void set_values (Gee.ArrayList<YaMAPI.Playlist?>? playlists_info, Gee.ArrayList<YaMAPI.LikedPlaylist?>? likes_playlists_info) {
             while (flow_box.get_last_child () != null) {
@@ -58,7 +73,13 @@ namespace Cassette {
                 likes_flow_box.remove (likes_flow_box.get_last_child ());
             }
 
-            flow_box.append (new PlaylistMicro (this, new YaMAPI.Playlist.liked ()));
+            // На тот случай, если удаление страниц когда-нибудь не будет обновлять все страницы
+            //  storager.settings.changed["show-liked"].connect (on_show_liked_change);
+            //  on_show_liked_change ();
+
+            if (!storager.settings.get_boolean ("show-liked")) {
+                flow_box.append (liked_micro);
+            }
             flow_box.append (new PlaylistCreateButton ());
 
             if (playlists_info != null) {

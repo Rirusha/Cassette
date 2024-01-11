@@ -59,37 +59,41 @@ namespace CassetteClient {
             }
         }
 
-        static File log_file;
-
-        public static void set_log_file (File new_log_file) {
-            if (log_file != null) {
-                try {
-                    Logger.log_file.delete ();
-                } catch (Error e) {
-                    if (e is IOError.NOT_FOUND) { }
-                }
+        static File _log_file = null;
+        public static File log_file {
+            get {
+                return _log_file;
             }
-
-            if (!new_log_file.query_exists ()) {
-                try {
-                    new_log_file.create (FileCreateFlags.PRIVATE);
-
-                    Logger.info ("Logger file created");
-
-                } catch (Error e) {
-                    GLib.warning ("Can't create log file on %s. Error message: %s".printf (
-                        new_log_file.peek_path (),
-                        e.message
-                    ));
+            set {
+                if (_log_file != null) {
+                    try {
+                        Logger._log_file.delete ();
+                    } catch (Error e) {
+                        if (e is IOError.NOT_FOUND) { }
+                    }
                 }
+
+                if (!value.query_exists ()) {
+                    try {
+                        value.create (FileCreateFlags.PRIVATE);
+
+                        Logger.info ("Logger file created");
+
+                    } catch (Error e) {
+                        GLib.warning ("Can't create log file on %s. Error message: %s".printf (
+                            value.peek_path (),
+                            e.message
+                        ));
+                    }
+                }
+
+                Logger._log_file = value;
+
+                write_to_file (SYSTEM_PREFIX, null);
+                write_to_file (SYSTEM_PREFIX, null);
+                write_to_file (SYSTEM_PREFIX, "Log initialized");
+                write_to_file (SYSTEM_PREFIX, null);
             }
-
-            Logger.log_file = new_log_file;
-
-            write_to_file (SYSTEM_PREFIX, null);
-            write_to_file (SYSTEM_PREFIX, null);
-            write_to_file (SYSTEM_PREFIX, "Log initialized");
-            write_to_file (SYSTEM_PREFIX, null);
         }
 
         static void write_to_file (string log_level_str, string? message) {
@@ -125,33 +129,27 @@ namespace CassetteClient {
                 string final_message = direction + " : " + data + "\n";
                 os.write (final_message.data);
             } catch (Error e) {
-                GLib.warning ("Can't write to log");
+                GLib.warning ("Can't write to log file. Error message: %s".printf (e.message));
             }
         }
 
         public static void time () {
-            if (log_level <= LogLevel.DEVEL) {
-                write_to_file (TIME_PREFIX, "\n\n");
-            }
+            write_to_file (TIME_PREFIX, "\n\n");
         }
 
         public static void net_in (Soup.LoggerLogLevel soup_log_level, string data) {
-            if (log_level <= LogLevel.DEVEL) {
-                if (soup_log_level == Soup.LoggerLogLevel.BODY && data != "") {
-                    write_net_to_file (BODY_IN_PREFIX, data);
-                } else {
-                    write_net_to_file (IN_PREFIX, data);
-                }
+            if (soup_log_level == Soup.LoggerLogLevel.BODY && data != "") {
+                write_net_to_file (BODY_IN_PREFIX, data);
+            } else {
+                write_net_to_file (IN_PREFIX, data);
             }
         }
 
         public static void net_out (Soup.LoggerLogLevel soup_log_level, string data) {
-            if (log_level <= LogLevel.DEVEL) {
-                if (soup_log_level == Soup.LoggerLogLevel.BODY && data != "") {
-                    write_net_to_file (BODY_OUT_PREFIX, data);
-                } else {
-                    write_net_to_file (OUT_PREFIX, data);
-                }
+            if (soup_log_level == Soup.LoggerLogLevel.BODY && data != "") {
+                write_net_to_file (BODY_OUT_PREFIX, data);
+            } else {
+                write_net_to_file (OUT_PREFIX, data);
             }
         }
 

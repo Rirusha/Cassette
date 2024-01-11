@@ -66,7 +66,7 @@ namespace CassetteClient {
             while (true) {
                 mutex.lock ();
 
-                if (running_jobs_count >= 10) {
+                if (running_jobs_count >= max_running_jobs) {
                     cond.wait (mutex);
                 }
 
@@ -114,7 +114,7 @@ namespace CassetteClient {
             default_pool = new WorkManager (max_size);
             image_pool = new WorkManager (max_size);
             audio_pool = new WorkManager (max_size);
-            cache_pool = new WorkManager (max_size);
+            cache_pool = new WorkManager (max_size / 2);
             single_pool = new WorkManager (1);
         }
 

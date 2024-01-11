@@ -81,7 +81,12 @@ namespace Cassette {
 
             clear ();
 
-            volume_button.set_icons ({"audio-volume-muted-symbolic", "audio-volume-high-symbolic", "audio-volume-low-symbolic", "audio-volume-medium-symbolic"});
+            volume_button.set_icons ({
+                "audio-volume-muted-symbolic",
+                "audio-volume-high-symbolic",
+                "audio-volume-low-symbolic",
+                "audio-volume-medium-symbolic"
+            });
             volume_button.value_changed.connect ((widget, volume) => {
                 player.volume = 0.01 * volume;
             });

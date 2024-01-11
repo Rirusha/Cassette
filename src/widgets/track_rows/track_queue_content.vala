@@ -90,7 +90,7 @@ namespace Cassette {
 
             SimpleAction remove_from_queue_action = new SimpleAction ("remove-from-queue", null);
             remove_from_queue_action.activate.connect (() => {
-                player.remove_track (position);
+                player.remove_track_by_pos (position);
             });
             actions.add_action (remove_from_queue_action);
 

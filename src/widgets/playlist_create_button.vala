@@ -24,16 +24,16 @@ using CassetteClient;
 
 namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_create_button.ui")]
-    public class PlaylistCreateButton : CustomButton {
+    public class PlaylistCreateButton : Adw.Bin {
         [GtkChild]
-        unowned Gtk.Button self;
+        unowned Gtk.Button real_button;
 
         public PlaylistCreateButton () {
             Object ();
         }
 
         construct {
-            self.clicked.connect (create_playlist_button_clicked_async);
+            real_button.clicked.connect (create_playlist_button_clicked_async);
             application.application_state_changed.connect (application_state_changed);
             application_state_changed (application.application_state);
         }

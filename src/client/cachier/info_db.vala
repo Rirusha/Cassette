@@ -40,9 +40,14 @@ namespace CassetteClient.Cachier {
         }
 
         construct {
-            int error_code = Sqlite.Database.open_v2 (db_path, out db, Sqlite.OPEN_FULLMUTEX | Sqlite.OPEN_READWRITE | Sqlite.OPEN_CREATE);
+            int error_code = Sqlite.Database.open_v2 (
+                db_path, out db, Sqlite.OPEN_FULLMUTEX | Sqlite.OPEN_READWRITE | Sqlite.OPEN_CREATE);
             if (error_code != Sqlite.OK) {
-                Logger.error ("Error while opening db %s, Sqlite error code: %s, message: %s".printf (db_path, db.errcode ().to_string (), db.errmsg ()));
+                Logger.error ("Error while opening db %s, Sqlite error code: %s, message: %s".printf (
+                    db_path,
+                    db.errcode ().to_string (),
+                    db.errmsg ()
+                ));
             }
 
             string query = "CREATE TABLE IF NOT EXISTS additional (" +
@@ -56,7 +61,11 @@ namespace CassetteClient.Cachier {
 
             error_code = db.exec (query, null);
             if (error_code != Sqlite.OK) {
-                Logger.error ("Error while creating tables %s, Sqlite error code: %s, message: %s".printf (db_path, db.errcode ().to_string (), db.errmsg ()));
+                Logger.error ("Error while creating tables %s, Sqlite error code: %s, message: %s".printf (
+                    db_path,
+                    db.errcode ().to_string (),
+                    db.errmsg ()
+                ));
             }
         }
 
@@ -75,7 +84,15 @@ namespace CassetteClient.Cachier {
 
             int error_code = statement.step ();
             if (error_code != Sqlite.DONE) {
-                Logger.error ("Error while replacing additional_data %s=%s in %s, Sqlite error code: %s, message: %s".printf (name, data, db_path, db.errcode ().to_string (), db.errmsg ()));
+                Logger.error (
+                    "Error while replacing additional_data %s=%s in %s, Sqlite error code: %s, message: %s".printf (
+                        name,
+                        data,
+                        db_path,
+                        db.errcode ().to_string (),
+                        db.errmsg ()
+                    )
+                );
             }
         }
 
@@ -94,7 +111,14 @@ namespace CassetteClient.Cachier {
 
             int error_code = statement.step ();
             if (error_code != Sqlite.DONE && error_code != Sqlite.ROW) {
-                Logger.error ("Error while getting additional_data %s in %s, Sqlite error code: %s, message: %s".printf (name, db_path, db.errcode ().to_string (), db.errmsg ()));
+                Logger.error (
+                    "Error while getting additional_data %s in %s, Sqlite error code: %s, message: %s".printf (
+                        name,
+                        db_path,
+                        db.errcode ().to_string (),
+                        db.errmsg ()
+                    )
+                );
             }
 
             string result = statement.column_text (1);
@@ -125,7 +149,13 @@ namespace CassetteClient.Cachier {
 
             int error_code = statement.step ();
             if (error_code != Sqlite.DONE) {
-                Logger.error ("Error while set ref for %s %s in %s, Sqlite error code: %s, message: %s".printf (what_id, source_id, db_path, db.errcode ().to_string (), db.errmsg ()));
+                Logger.error ("Error while set ref for %s %s in %s, Sqlite error code: %s, message: %s".printf (
+                    what_id,
+                    source_id,
+                    db_path,
+                    db.errcode ().to_string (),
+                    db.errmsg ()
+                ));
             }
         }
 
@@ -147,7 +177,13 @@ namespace CassetteClient.Cachier {
 
             int error_code = statement.step ();
             if (error_code != Sqlite.DONE) {
-                Logger.error ("Error while set ref for %s %s in %s, Sqlite error code: %s, message: %s".printf (what_id, source_id, db_path, db.errcode ().to_string (), db.errmsg ()));
+                Logger.error ("Error while set ref for %s %s in %s, Sqlite error code: %s, message: %s".printf (
+                    what_id,
+                    source_id,
+                    db_path,
+                    db.errcode ().to_string (),
+                    db.errmsg ()
+                ));
             }
         }
 

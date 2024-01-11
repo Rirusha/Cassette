@@ -39,7 +39,7 @@ namespace CassetteClient.YaMAPI {
             var out_track_list = new ArrayList<Track> ();
 
             foreach (Track track in tracks) {
-                if ((track.available && ((!track.explicit | show_explicit) && (!track.is_suitable_for_children | show_child))) | track.id == exception_track_id) {
+                if ((track.available && ((!track.is_explicit | show_explicit) && (!track.is_suitable_for_children | show_child))) | track.id == exception_track_id) {
                     out_track_list.add (track);
                 }
             }

@@ -30,11 +30,9 @@ namespace Cassette {
         protected string content_id { get; set; }
         public LikableType object_content_type { get; construct; }
 
-        Adw.ButtonContent button_content = new Adw.ButtonContent () { icon_name = "image-loading-symbolic" };
-
         bool is_liked {
             get {
-                return button_content.icon_name == "emblem-favorite-symbolic";
+                return icon_name == "emblem-favorite-symbolic";
             }
             set {
                 if (value) {
@@ -42,14 +40,14 @@ namespace Cassette {
                         likes_count++;
                     }
 
-                    button_content.icon_name = "emblem-favorite-symbolic";
+                    icon_name = "emblem-favorite-symbolic";
                     real_button.tooltip_text = _("Remove like");
                 } else {
                     if (is_liked && should_change_likes_count && likes_count != -1) {
                         likes_count--;
                     }
 
-                    button_content.icon_name = "not-like-symbolic";
+                    icon_name = "not-like-symbolic";
                     real_button.tooltip_text = _("Set like");
                 }
 
@@ -69,9 +67,9 @@ namespace Cassette {
 
                 if (show_label) {
                     if (_likes_count > 0) {
-                        button_content.label = prettify_num (_likes_count);
+                        label = prettify_num (_likes_count);
                     } else {
-                        button_content.label = "";
+                        label = "";
                     }
                 }
             }
@@ -88,8 +86,7 @@ namespace Cassette {
         }
 
         construct {
-            child = real_button;
-            real_button.child = button_content;
+            icon_name = "image-loading-symbolic";
 
             width_request = 42;
             height_request = 42;

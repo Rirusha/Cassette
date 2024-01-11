@@ -53,8 +53,6 @@ namespace Cassette {
         }
 
         construct {
-            child = real_button;
-
             width_request = 42;
             height_request = 42;
             valign = Gtk.Align.CENTER;

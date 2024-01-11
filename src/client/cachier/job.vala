@@ -32,36 +32,88 @@ namespace CassetteClient.Cachier {
 
         public HasTrackList yam_object { get; construct; }
 
-        public signal void cache_callback (double finished_part);
+        public string object_id { get; construct; }
+        public ContentType object_type { get; construct; }
+        public string object_title { get; construct; }
 
-        int cached_tracks_count = 0;
-        int tracks_count = 1;
+        int _now_saving_tracks_count = 0;
+        public int now_saving_tracks_count {
+            get {
+                return _now_saving_tracks_count;
+            }
+            private set {
+                _now_saving_tracks_count = value;
+
+                if (cancellable.is_cancelled () && value == 0) {
+                    unsave_async.begin (() => {
+                        Idle.add (() => {
+                            job_done (JobDoneStatus.ABORTED);
+
+                            return Source.REMOVE;
+                        }, Priority.HIGH_IDLE);
+                    });
+                }
+            }
+        }
+
+        public signal void track_saving_started (
+            int saved_tracks_count,
+            int total_tracks_count,
+            int now_saving_tracks_count);
+
+        public signal void track_saving_ended (
+            int saved_tracks_count,
+            int total_tracks_count,
+            int now_saving_tracks_count
+        );
+
+        JobDoneStatus? done_status = null;
+
+        public int saved_tracks_count { get; private set; default = 0; }
+        public int total_tracks_count { get; private set; default = 1; }
 
         //  Для отмены изменяется переменная should_stop, чтобы объект успел докэшировать то, что он кэширует
         Cancellable cancellable = new Cancellable ();
 
-        string object_id;
-        ContentType object_type;
+        public bool is_cancelled {
+            get {
+                return cancellable.is_cancelled ();
+            }
+        }
+
+        public signal void cancelled ();
 
         //  В случае завершения кэширования поднимает сигнал со статусом окончания: завершено с ошибкой, успешно или отменено
         public signal void job_done (JobDoneStatus status);
+
+        // Сделано значимое действие. Например, не проверка, сохранен ли трек, а его загрузка.
+        public signal void action_done ();
 
         public Job (HasTrackList yam_object) {
             Object (yam_object: yam_object);
         }
 
         construct {
-            object_id = ((HasID) yam_object).oid;
+            object_id = yam_object.oid;
 
             if (yam_object is YaMAPI.Playlist) {
                 object_type = ContentType.PLAYLIST;
+                object_title = ((YaMAPI.Playlist) yam_object).title;
+
             } else if (yam_object is YaMAPI.Album) {
                 object_type = ContentType.ALBUM;
+                object_title = ((YaMAPI.Album) yam_object).title;
+
             } else {
                 assert_not_reached ();
             }
 
+            cancellable.cancelled.connect (() => {
+                cancelled ();
+            });
+
             job_done.connect ((status) => {
+                done_status = status;
                 cachier.controller.stop_loading (object_type, object_id, null);
 
                 switch (status) {
@@ -93,7 +145,7 @@ namespace CassetteClient.Cachier {
             cancellable.cancel ();
         }
 
-        public async void cache_async () {
+        public async void save_async () {
             cachier.controller.start_loading (object_type, object_id);
 
             var need_cache_track_ids = new Gee.ArrayList<string> ();
@@ -129,14 +181,14 @@ namespace CassetteClient.Cachier {
                     }
                 }
 
-                storager.save_object ((HasID) yam_object, false);
+                storager.save_object (yam_object, false);
 
                 Logger.debug ("Job %s.%s, object saved".printf (
                     object_type.to_string (),
                     yam_object.oid
                 ));
 
-                Idle.add (cache_async.callback);
+                Idle.add (save_async.callback);
             });
 
             yield;
@@ -183,7 +235,7 @@ namespace CassetteClient.Cachier {
                                     return Source.REMOVE;
                                 }, Priority.HIGH_IDLE);
 
-                                Idle.add (cache_async.callback);
+                                Idle.add (save_async.callback);
                                 return;
                             }
                         }
@@ -197,18 +249,24 @@ namespace CassetteClient.Cachier {
                     ));
                 }
 
-                Idle.add (cache_async.callback);
+                Idle.add (save_async.callback);
             });
 
             yield;
 
-            tracks_count = track_list.size;
+            total_tracks_count = track_list.size;
             foreach (var track_info in track_list) {
-                cache_track_async.begin (track_info);
+                save_track_async.begin (track_info);
+            }
+
+            if (total_tracks_count == 0) {
+                Idle.add_once (() => {
+                    job_done (JobDoneStatus.SUCCESS);
+                });
             }
         }
 
-        public async void uncache_async () {
+        public async void unsave_async () {
             Logger.debug ("Job %s.%s, uncache object started".printf (
                 object_type.to_string (),
                 yam_object.oid
@@ -257,7 +315,7 @@ namespace CassetteClient.Cachier {
                     }
                 }
 
-                Idle.add (uncache_async.callback);
+                Idle.add (unsave_async.callback);
                 yield;
             }
 
@@ -267,14 +325,21 @@ namespace CassetteClient.Cachier {
             ));
         }
 
-        async void cache_track_async (YaMAPI.Track track_info) {
+        async void save_track_async (YaMAPI.Track track_info) {
             Logger.debug ("Job %s.%s, saving track %s was started".printf (
                 object_type.to_string (),
                 yam_object.oid,
                 track_info.form_debug_info ()
             ));
 
-            threader.add_audio (() => {
+            threader.add_cache (() => {
+                lock (now_saving_tracks_count) {
+                    now_saving_tracks_count++;
+                    Idle.add_once (() => {
+                        track_saving_started (saved_tracks_count, total_tracks_count, now_saving_tracks_count);
+                    });
+                }
+
                 Logger.debug ("Job %s.%s, audio of track %s was started".printf (
                     object_type.to_string (),
                     yam_object.oid,
@@ -291,6 +356,10 @@ namespace CassetteClient.Cachier {
                 if (track_location.file != null) {
                     if (track_location.is_tmp == true) {
                         track_location.move_to_perm ();
+
+                        Idle.add_once (() => {
+                            action_done ();
+                        });
                     }
 
                 } else {
@@ -305,6 +374,10 @@ namespace CassetteClient.Cachier {
 
                         if (audio_bytes != null) {
                             storager.save_audio (audio_bytes, track_info.id, false);
+
+                            Idle.add_once (() => {
+                                action_done ();
+                            });
                         }
                     } else {
                         cancellable.cancel ();
@@ -314,7 +387,7 @@ namespace CassetteClient.Cachier {
                             return Source.REMOVE;
                         }, Priority.HIGH_IDLE);
 
-                        Idle.add (cache_track_async.callback);
+                        Idle.add (save_track_async.callback);
                         return;
                     }
                 }
@@ -327,12 +400,6 @@ namespace CassetteClient.Cachier {
                     track_info.form_debug_info ()
                 ));
 
-                Idle.add (cache_track_async.callback);
-            }, cancellable);
-
-            yield;
-
-            threader.add_image (() => {
                 Logger.debug ("Job %s.%s, cover of track %s was started".printf (
                     object_type.to_string (),
                     yam_object.oid,
@@ -344,6 +411,10 @@ namespace CassetteClient.Cachier {
                 if (image_location.file != null) {
                     if (image_location.is_tmp == true) {
                         image_location.move_to_perm ();
+
+                        Idle.add_once (() => {
+                            action_done ();
+                        });
                     }
                 } else {
                     Gdk.Pixbuf? pixbuf = null;
@@ -353,6 +424,10 @@ namespace CassetteClient.Cachier {
                     if (pixbuf != null) {
                         storager.save_image (pixbuf, image_cover_uri, false);
 
+                        Idle.add_once (() => {
+                            action_done ();
+                        });
+
                     } else {
                         cancellable.cancel ();
                         Idle.add (() => {
@@ -361,7 +436,7 @@ namespace CassetteClient.Cachier {
                             return Source.REMOVE;
                         }, Priority.HIGH_IDLE);
 
-                        Idle.add (cache_track_async.callback);
+                        Idle.add (save_track_async.callback);
                         return;
                     }
                 }
@@ -374,57 +449,46 @@ namespace CassetteClient.Cachier {
                     track_info.form_debug_info ()
                 ));
 
-                Idle.add (cache_track_async.callback);
+                Idle.add (() => {
+                    cachier.controller.stop_loading (ContentType.TRACK, track_info.id, CacheingState.PERM);
+
+                    Logger.debug ("Job %s.%s, saving track %s was finished".printf (
+                        object_type.to_string (),
+                        yam_object.oid,
+                        track_info.form_debug_info ()
+                    ));
+
+                    return Source.REMOVE;
+                }, Priority.HIGH_IDLE);
+
+                lock (now_saving_tracks_count) {
+                    now_saving_tracks_count--;
+                }
+
+                Idle.add (save_track_async.callback);
             }, cancellable);
 
             yield;
 
-            if (!cancellable.is_cancelled ()) {
-                yield track_cached_callback (track_info);
+            lock (saved_tracks_count) {
+                saved_tracks_count++;
             }
-        }
 
-        async void track_cached_callback (YaMAPI.Track track_info) {
-            Idle.add (() => {
-                cachier.controller.stop_loading (ContentType.TRACK, track_info.id, CacheingState.PERM);
+            Idle.add_once (() => {
+                track_saving_ended (saved_tracks_count, total_tracks_count, now_saving_tracks_count);
+            });
 
-                Logger.debug ("Job %s.%s, saving track %s was finished".printf (
-                    object_type.to_string (),
-                    yam_object.oid,
-                    track_info.form_debug_info ()
-                ));
-
-                return Source.REMOVE;
-            }, Priority.HIGH_IDLE);
-
-            lock (cached_tracks_count) {
-                cached_tracks_count++;
-
-                if (cached_tracks_count == tracks_count) {
-                    Idle.add (() => {
-                        job_done (JobDoneStatus.SUCCESS);
-
-                        return Source.REMOVE;
-                    }, Priority.HIGH_IDLE);
-
-                } else {
+            if (!cancellable.is_cancelled ()) {
+                lock (saved_tracks_count) {
                     Idle.add_once (() => {
-                        cache_callback ((double) cached_tracks_count / (double) tracks_count);
+                        if (saved_tracks_count == total_tracks_count && done_status == null) {
+                            job_done (JobDoneStatus.SUCCESS);
+                        }
                     });
-
-                    if (cancellable.is_cancelled ()) {
-                        uncache_async.begin (() => {
-                            Idle.add (() => {
-                                job_done (JobDoneStatus.ABORTED);
-
-                                return Source.REMOVE;
-                            }, Priority.HIGH_IDLE);
-                        });
-                    }
                 }
             }
 
-            Idle.add (track_cached_callback.callback);
+            Idle.add (save_track_async.callback);
             yield;
         }
     }

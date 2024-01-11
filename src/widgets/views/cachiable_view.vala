@@ -21,11 +21,99 @@
 
 using CassetteClient;
 
-
 namespace Cassette {
     public abstract class CachiableView : HasTracksView {
-        protected Gtk.Stack download_stack { get; set; }
-        protected Gtk.ProgressBar loading_progress_bar { get; set; }
+        public Gtk.Stack download_stack { get; set; }
+        Gtk.Overlay overlay { get; default = new Gtk.Overlay (); }
+        public Gtk.ProgressBar saving_progress_bar { get; default = new Gtk.ProgressBar (); }
+
+        public new Gtk.Widget child {
+            get {
+                return overlay.child;
+            }
+            set {
+                overlay.child = value;
+            }
+        }
+
+        Cachier.Job? _job = null;
+        Cachier.Job? job {
+            get {
+                return _job;
+            }
+            set {
+                _job = value;
+
+                if (_job != null) {
+                    _job.action_done.connect (() => {
+                        if (!saving_progress_bar.visible) {
+                            saving_progress_bar.visible = true;
+                        }
+                    });
+
+                    _job.cancelled.connect (() => {
+                        download_stack.sensitive = false;
+                    });
+
+                    _job.track_saving_ended.connect ((saved, total) => {
+                        saving_progress_bar.fraction = (double) saved / (double) total;
+                    });
+
+                    _job.job_done.connect ((obj, status) => {
+                        switch (status) {
+                            case Cachier.JobDoneStatus.SUCCESS:
+                                var content_info = get_content_name (object_info, true, true);
+                                // Translators: first %s - content type (Playlist), second - name
+                                application.show_message (_("%s%s successfully cached").printf (
+                                    content_info[0],
+                                    content_info[1]
+                                ), true);
+                                download_stack.visible_child_name = "delete";
+                                break;
+
+                            case Cachier.JobDoneStatus.FAILED:
+                                var content_info = get_content_name (object_info, false, true);
+                                // Translators: first %s - content type (Playlist), second - name
+                                application.show_message (_("Caching of %s%s was canceled, due to network error")
+                                    .printf (
+                                        content_info[0],
+                                        content_info[1]
+                                    ));
+                                download_stack.visible_child_name = "save";
+                                break;
+
+                            case Cachier.JobDoneStatus.ABORTED:
+                                var content_info = get_content_name (object_info, false, true);
+                                // Translators: first %s - content type (Playlist), second - name
+                                application.show_message (_("Caching of %s%s was aborted").printf (
+                                    content_info[0],
+                                    content_info[1]
+                                ));
+                                download_stack.visible_child_name = "save";
+                                break;
+                        }
+
+                        download_stack.sensitive = true;
+                        saving_progress_bar.fraction = 0;
+                        saving_progress_bar.visible = false;
+
+                        _job = null;
+                    });
+                }
+            }
+        }
+
+        construct {
+            base.child = overlay;
+
+            saving_progress_bar.add_css_class ("osd");
+            saving_progress_bar.visible = false;
+
+            saving_progress_bar.valign = Gtk.Align.START;
+            saving_progress_bar.vexpand = false;
+
+            overlay.add_overlay (saving_progress_bar);
+        }
 
         public async override void first_show () {
             download_stack.sensitive = false;
@@ -84,43 +172,10 @@ namespace Cassette {
             return {content_name, content_title};
         }
 
-        public virtual void start_saving (bool tell_status) {
+        protected void start_saving (bool tell_status) {
             download_stack.visible_child_name = "abort";
 
-            var job = cachier.start_cache (object_info);
-
-            job.cache_callback.connect ((progress) => {
-                loading_progress_bar.visible = true;
-                loading_progress_bar.fraction = progress;
-            });
-
-            job.job_done.connect ((obj, status) => {
-                switch (status) {
-                    case Cachier.JobDoneStatus.SUCCESS:
-                        if (tell_status) {
-                            var content_info = get_content_name (object_info, true, true);
-                            // Translators: first %s - content type (Playlist), second - name
-                            application.show_message (_("%s%s successfully cached").printf (content_info[0], content_info[1]), true);
-                        }
-                        download_stack.visible_child_name = "delete";
-                        break;
-                    case Cachier.JobDoneStatus.FAILED:
-                        var content_info = get_content_name (object_info, false, true);
-                        // Translators: first %s - content type (Playlist), second - name
-                        application.show_message (_("Caching of %s%s was canceled, due to network error").printf (content_info[0], content_info[1]));
-                        download_stack.visible_child_name = "save";
-                        break;
-                    case Cachier.JobDoneStatus.ABORTED:
-                        var content_info = get_content_name (object_info, false, true);
-                        // Translators: first %s - content type (Playlist), second - name
-                        application.show_message (_("Caching of %s%s was aborted").printf (content_info[0], content_info[1]));
-                        download_stack.visible_child_name = "save";
-                        break;
-                }
-                download_stack.sensitive = true;
-                loading_progress_bar.fraction = 0;
-                loading_progress_bar.visible = false;
-            });
+            job = cachier.start_cache (object_info);
 
             if (tell_status) {
                 var content_info = get_content_name (object_info, false, false);
@@ -129,9 +184,25 @@ namespace Cassette {
             }
         }
 
+        protected virtual void check_cache () {
+            if (job == null) {
+                job = cachier.find_job (object_info.oid);
+
+                if (job == null) {
+                    var location = storager.object_cache_location (object_info.get_type (), object_info.oid);
+                    if (!location.is_tmp) {
+                        start_saving (false);
+                    }
+                }
+            }
+
+            download_stack.sensitive = true;
+        }
+
         public virtual void abort_saving () {
-            download_stack.sensitive = false;
-            cachier.abort_job (object_info.oid);
+            if (job != null) {
+                job.abort ();
+            }
         }
 
         public virtual void uncache_playlist (bool tell_status) {
@@ -144,26 +215,21 @@ namespace Cassette {
                 if (tell_status) {
                     var content_info = get_content_name (object_info, true, true);
                     // Translators: first %s - content type (Playlist), second - name
-                    application.show_message (_("%s%s was removed from cache folder").printf (content_info[0], content_info[1]), true);
+                    application.show_message (_("%s%s was removed from cache folder").printf (
+                        content_info[0],
+                        content_info[1]
+                    ), true);
                 }
             });
 
             if (tell_status) {
                 var content_info = get_content_name (object_info, true, false);
                 // Translators: first %s - content type (Playlist), second - name
-                application.show_message (_("%s%s is removing, please do not close the app").printf (content_info[0], content_info[1]));
+                application.show_message (_("%s%s is removing, please do not close the app").printf (
+                    content_info[0],
+                    content_info[1]
+                ));
             }
-        }
-
-        public virtual void check_cache () {
-            if (cachier.find_job (object_info.oid) != null) {
-                var location = storager.object_cache_location (object_info.get_type (), ((HasID) object_info).oid);
-                if (location.is_tmp == false) {
-                    start_saving (false);
-                }
-            }
-
-            download_stack.sensitive = true;
         }
     }
 }

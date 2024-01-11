@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="CassetteJobInfoBadge" parent="GtkGrid">
+    <property name="vexpand">false</property>
+    <property name="row-spacing">8</property>
+    <property name="column-spacing">16</property>
+    <child>
+      <object class="GtkLabel" id="title_label">
+        <style>
+          <class name="title-4"/>
+        </style>
+        <property name="hexpand">true</property>
+        <property name="halign">start</property>
+        <property name="wrap">true</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="GtkProgressBar" id="progress_bar">
+        <property name="hexpand">true</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="progress_label">
+        <style>
+          <class name="dim-label"/>
+        </style>
+        <property name="hexpand">true</property>
+        <property name="halign">start</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton" id="abort_button">
+        <style>
+          <class name="circular"/>
+        </style>
+        <property name="icon-name">edit-delete-symbolic</property>
+        <property name="vexpand">false</property>
+        <property name="hexpand">false</property>
+        <property name="valign">center</property>
+        <property name="halign">end</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="row">0</property>
+          <property name="row-span">3</property>
+        </layout>
+      </object>
+    </child>
+  </template>
+</interface>

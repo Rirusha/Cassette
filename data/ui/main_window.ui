@@ -57,6 +57,9 @@
                 <property name="tooltip-text" translatable="true">Refresh</property>
               </object>
             </child>
+            <child type="start">
+              <object class="CassetteCacheIndicator"/>
+            </child>
             <child type="end">
               <object class="GtkMenuButton" id="app_menu_button">
                 <property name="icon-name">open-menu-symbolic</property>

@@ -30,35 +30,47 @@ namespace CassetteClient.Cachier {
 
         public signal void job_started (Job job);
 
+        public signal void job_added (Job job);
+        public signal void job_removed (Job job);
+
         public Cachier () {
             Object ();
         }
 
         public async void uncache (HasTrackList yam_obj) {
+            /*
+                Удалить или переместить во временную папку объект с треками
+            */
+
             var job = new Job (yam_obj);
 
-            yield job.uncache_async ();
+            yield job.unsave_async ();
         }
 
         public Job start_cache (HasTrackList yam_obj) {
+            /*
+                Начать сохранение объекта с треками
+            */
+
             var job = new Job (yam_obj);
             job_list.add (job);
+            job_added (job);
 
-            job.cache_async.begin ();
+            job.job_done.connect (() => {
+                job_list.remove (job);
+                job_removed (job);
+            });
+
+            job.save_async.begin ();
+
             job_started (job);
 
             return job;
         }
 
-        public void abort_job (string yam_obj_id) {
-            var job = find_job (yam_obj_id);
-
-            job?.abort ();
-        }
-
         public Job? find_job (string yam_obj_id) {
             /*
-                Return job object. Otherwise return null.
+                Находит job в списке job'ов. Если таковой нет, возвращает null
             */
 
             foreach (var job in job_list) {
@@ -76,11 +88,23 @@ namespace CassetteClient.Cachier {
     ///////////
 
     public async static void save_track (YaMAPI.Track track_info) {
+        /*
+            Функция удобства, объединяющая сохранение аудио и изображения
+        */
+
         download_audio_async.begin (track_info.id);
         get_image.begin (track_info, TRACK_ART_SIZE);
     }
 
-    public async static void download_audio_async (string track_id, owned string? track_uri = null, bool is_tmp = true) {
+    public async static void download_audio_async (
+        string track_id,
+        owned string? track_uri = null,
+        bool is_tmp = true) {
+        /*
+            Скачивание аудио по его id. Если не передан uri трека, то uri будет самостоятельно загружен.
+            Аргумент is_tmp определяет место, куда будет загружено аудио
+        */
+
         if (storager.audio_cache_location (track_id).file != null) {
             cachier.controller.stop_loading (ContentType.TRACK, track_id, null);
             return;
@@ -118,8 +142,12 @@ namespace CassetteClient.Cachier {
         cachier.controller.stop_loading (ContentType.TRACK, track_id, cacheing_state);
     }
 
-    //  Проверяет, сохранен ли трек. Если да, то выдает его uri, иначе загружает uri по сети и сохраняет
     public async static string? get_track_uri (string track_id) {
+        /*
+            Выдает uri трека: локальный, если трек сохранен; интернет ссылку в ином случае.
+            Если трек не был сохранен, то сохраняет его
+        */
+
         string? track_uri = null;
 
         threader.add_audio (() => {
@@ -154,6 +182,11 @@ namespace CassetteClient.Cachier {
 
     // Получение изображения ямобъекта, если есть, иначе получение из сети и сохранение
     public async static Gdk.Pixbuf? get_image (HasCover yam_object, int size) {
+        /*
+            Выдает объект Pixbuf с артом трека. Если изображение не найдено локально, загружает его.
+            Если арт не был сохранен, то сохраняет его
+        */
+
         Gee.ArrayList<string> cover_uris = yam_object.get_cover_items_by_size (size);
         if (cover_uris.size == 0) {
             return null;

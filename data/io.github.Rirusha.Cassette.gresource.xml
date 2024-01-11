@@ -34,5 +34,7 @@
     <file preprocess="xml-stripblanks">ui/cache_deletion_preferences.ui</file>
     <file preprocess="xml-stripblanks">ui/custom_pages_preferences.ui</file>
     <file preprocess="xml-stripblanks">ui/custom_page_preferences.ui</file>
+    <file preprocess="xml-stripblanks">ui/cache_indicator.ui</file>
+    <file preprocess="xml-stripblanks">ui/job_info_badge.ui</file>
   </gresource>
 </gresources>

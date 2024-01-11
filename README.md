@@ -78,9 +78,11 @@ ninja -C builddir install
 * Сообщить об ошибке: https://github.com/Rirusha/Cassette/issues
 
 ## Поддержка
-* Создать ишью с проблемой или предложением по улучшению
-* Сделать PR с фиксом или добавлением функционала
-* [Поддержать рублём](https://www.tinkoff.ru/cf/21GCxLuFuE9)
+Вы можете поддержать несколькими способами:
+* Создать ишью с проблемой или предложением по улучшению;
+* Сделать pul request с фиксом или добавлением функционала;
+* [Поддержать рублём](https://www.tinkoff.ru/cf/21GCxLuFuE9);
+* Похвалить автора в телеграм-чате :3.
 
 ## Благодарность
 Спасибо [MarshalX](https://github.com/MarshalX). Библиотека [yandex-music-api](https://github.com/MarshalX/yandex-music-api) была использована в качестве документации к api.

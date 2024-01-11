@@ -229,7 +229,13 @@ namespace Cassette {
                 release_notes_version = Config.VERSION
             };
             about.release_notes = _("<p>Added new authorization via WebView</p>");
+
             about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
+            about.add_link (_("Financial support"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
+
+            about.add_acknowledgement_section ("Donaters", {
+                
+            });
 
             about.present ();
         }

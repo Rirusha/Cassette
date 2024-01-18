@@ -38,9 +38,17 @@ endif
 
 blueprints = custom_target('blueprints',
   input: files(
-    'ui/account_info_window.blp'
+    'ui/account_info_window.blp',
+    'ui/player_bar.blp',
+    'ui/volume_button.blp',
+    'ui/main_window.blp',
+    'ui/track_info_panel.blp',
+    'ui/cover_image.blp',
+    'ui/sidebar.blp',
+    'ui/track_detailed.blp',
+    'ui/track_default_content.blp'
   ),
-  output: 'ui',
+  output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 

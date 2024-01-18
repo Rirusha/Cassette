@@ -29,36 +29,29 @@
                     <property name="spacing">10</property>
                     <property name="orientation">horizontal</property>
                     <child>
-                      <object class="GtkFrame">
-                        <style>
-                          <class name="big-art"/>
-                        </style>
-                        <child>
-                          <object class="CassetteCoverImage" id="cover_image">
-                            <property name="hexpand">false</property>
-                            <property name="vexpand">false</property>
-                            <property name="valign">start</property>
-                            <property name="halign">start</property>
-                          </object>
-                        </child>
+                      <object class="CassetteCoverImage" id="cover_image">
+                        <property name="hexpand">false</property>
+                        <property name="vexpand">false</property>
+                        <property name="valign">start</property>
+                        <property name="halign">start</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkBox">
                         <property name="vexpand">false</property>
-                        <property name="spacing">3</property>
+                        <property name="spacing">4</property>
                         <property name="orientation">vertical</property>
+                        <property name="margin-start">8</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="margin-start">11</property>
                             <child>
                               <object class="GtkLabel">
                                 <style>
-                                  <class name="dim-label"/>
+                                  <class name="title-3"/>
                                 </style>
                                 <property name="margin-end">20</property>
                                 <property name="justify">left</property>
-                                <property name="label" translatable="true">PLAYLIST</property>
+                                <property name="label" translatable="true">Playlist</property>
                                 <property name="halign">start</property>
                                 <property name="hexpand">true</property>
                               </object>
@@ -75,51 +68,69 @@
                             </child>
                           </object>
                         </child>
-                        <child>
+                        <!-- <child>
                           <object class="GtkEntry" id="playlist_name_entry">
                             <style>
-                              <class name="text-entry"/>
-                              <class name="playlist-name"/>
+                              <class name="title-1"/>
                             </style>
                             <property name="hexpand">true</property>
                           </object>
-                        </child>
+                        </child> -->
                         <child>
-                          <object class="GtkLabel" id="playlist_name_label">
-                            <style>
-                              <class name="playlist-name"/>
-                            </style>
-                            <property name="margin-start">9</property>
-                            <property name="halign">start</property>
-                            <property name="visible">false</property>
-                            <property name="justify">left</property>
-                            <property name="wrap">true</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="playlist_desc_label">
-                            <style>
-                              <class name="dim-label"/>
-                            </style>
-                            <property name="margin-start">11</property>
-                            <property name="halign">start</property>
-                            <property name="justify">left</property>
-                            <property name="wrap">true</property>
+                          <object class="GtkBox">
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">4</property>
+                                <child>
+                                  <object class="GtkLabel" id="playlist_name_label">
+                                    <style>
+                                      <class name="title-1"/>
+                                    </style>
+                                    <property name="halign">start</property>
+                                    <!-- <property name="visible">false</property> -->
+                                    <property name="justify">left</property>
+                                    <property name="wrap">true</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="playlist_desc_label">
+                                    <style>
+                                      <class name="body"/>
+                                    </style>
+                                    <property name="halign">start</property>
+                                    <property name="justify">left</property>
+                                    <property name="wrap">true</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="edit_button">
+                                <style>
+                                  <class name="flat"/>
+                                  <class name="circular"/>
+                                </style>
+                                <property name="halign">end</property>
+                                <property name="valign">start</property>
+                                <property name="icon-name">document-edit-symbolic</property>
+                                <property name="visible">false</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child>
                           <object class="GtkLabel" id="playlist_status">
                             <style>
-                              <class name="dim-label"/>
+                              <class name="caption"/>
                             </style>
-                            <property name="margin-start">11</property>
                             <property name="halign">start</property>
                             <property name="wrap">true</property>
                           </object>
                         </child>
                         <child>
                           <object class="GtkBox">
-                            <property name="margin-start">11</property>
                             <property name="margin-bottom">2</property>
                             <property name="spacing">8</property>
                             <property name="vexpand">true</property>
@@ -130,7 +141,6 @@
                                 <property name="context-type">playlist</property>
                                 <property name="vexpand">false</property>
                                 <property name="valign">center</property>
-                                <!-- <property name="size">32</property> -->
                                 <property name="is-pill">true</property>
                                 <property name="label" translatable="true">Play</property>
                               </object>
@@ -139,14 +149,6 @@
                               <object class="CassetteLikeButton" id="like_button">
                                 <property name="is-flat">true</property>
                                 <property name="object-content-type">playlist</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="CassettePlaylistOptionsButton" id="playlist_options_button">
-                                <property name="is-flat">true</property>
-                                <property name="valign">center</property>
-                                <property name="halign">start</property>
-                                <property name="hexpand">false</property>
                               </object>
                             </child>
                             <child>
@@ -160,12 +162,22 @@
                               </object>
                             </child>
                             <child>
+                              <object class="CassettePlaylistOptionsButton" id="playlist_options_button">
+                                <property name="is-flat">true</property>
+                                <property name="is-circular">true</property>
+                                <property name="valign">center</property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">false</property>
+                              </object>
+                            </child>
+                            <child>
                               <object class="GtkButton" id="add_page_button">
                                 <style>
                                   <class name="flat"/>
+                                  <class name="circular"/>
                                 </style>
                                 <property name="visible">false</property>
-                                <property name="icon-name">user-bookmarks-symbolic</property>
+                                <property name="icon-name">bookmark-new-symbolic</property>
                                 <property name="valign">center</property>
                                 <property name="halign">start</property>
                                 <property name="tooltip-text" translatable="true">Add page to header</property>

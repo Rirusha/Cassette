@@ -57,6 +57,8 @@ namespace Cassette {
         unowned CacheDeletionPreferences deletion_preferences;
         [GtkChild]
         unowned Adw.SwitchRow debug_mode_switch;
+        [GtkChild]
+        unowned Adw.SwitchRow force_mobile_switch;
 
         construct {
             //  deletion_preferences.pref_win = this;
@@ -75,10 +77,6 @@ namespace Cassette {
                 }
             });
 
-            debug_mode_switch.notify["active"].connect (() => {
-                storager.settings.set_boolean ("debug-mode", debug_mode_switch.active);
-            });
-
             storager.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("child-visible", child_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
@@ -87,6 +85,8 @@ namespace Cassette {
             storager.settings.bind ("show-save-stack", show_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            storager.settings.bind ("force-mobile", force_mobile_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            storager.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("try-load-queue-every-activate", try_load_queue_every_activate_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
             storager.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);

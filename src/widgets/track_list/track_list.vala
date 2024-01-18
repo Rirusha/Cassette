@@ -50,10 +50,10 @@ namespace Cassette {
 
             var motion_controller = new Gtk.EventControllerMotion ();
             motion_controller.enter.connect (() => {
-                add_css_class ("track-row");
+                add_css_class ("track-row-hover");
             });
             motion_controller.leave.connect (() => {
-                remove_css_class ("track-row");
+                remove_css_class ("track-row-hover");
             });
             add_controller (motion_controller);
 
@@ -249,6 +249,7 @@ namespace Cassette {
             }
 
             track_box.child_activated.connect ((row) => {
+                //  ((TrackDefault) ((TrackRow) row).child).play_pause ();
                 application.main_window.sidebar.show_track_info (((TrackRow) row).track_info);
             });
         }
@@ -451,7 +452,7 @@ namespace Cassette {
                 index = 0;
             }
 
-            int track_number = application.main_window.get_height () / 77 + 3;
+            int track_number = application.main_window.get_height () / 98 + 5;
 
             int start = 0;
             if (index - track_number > 0) {

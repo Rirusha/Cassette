@@ -87,8 +87,8 @@ namespace CassetteClient.Mpris {
 
             });
 
-            player.notify["player-mod"].connect (() => {
-                if (player.player_mod is Player.PlayerTL) {
+            player.notify["player-type"].connect (() => {
+                if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
                     can_go_previous = true;
                 } else {
                     can_go_previous = false;
@@ -99,7 +99,7 @@ namespace CassetteClient.Mpris {
         HashTable<string,Variant> _get_metadata () {
             HashTable<string,Variant> metadata = new HashTable<string, Variant> (null, null);
 
-            var current_track = player.current_track;
+            var current_track = player.get_current_track ();
             if (current_track == null) {
                 metadata.insert ("mpris:trackid", new ObjectPath ("/com/github/Rirusha/Cassette/Track/0"));
             } else {

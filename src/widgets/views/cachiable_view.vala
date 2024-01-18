@@ -190,6 +190,8 @@ namespace Cassette {
         }
 
         protected virtual void check_cache () {
+            download_stack.sensitive = true;
+
             if (job == null) {
                 job = cachier.find_job (object_info.oid);
 
@@ -200,8 +202,6 @@ namespace Cassette {
                     }
                 }
             }
-
-            download_stack.sensitive = true;
         }
 
         public virtual void abort_saving () {

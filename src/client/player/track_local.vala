@@ -1,4 +1,4 @@
-/* player_flow.vala
+/* track.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -18,35 +18,21 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using CassetteClient.YaMAPI;
 using Gee;
 
-namespace CassetteClient.Player {
-    public class PlayerFlow : PlayerMode {
+namespace CassetteClient {
+    public class TrackLocal : Track {
 
-        public Player player { get; construct; }
-
-        public PlayerFlow (Player player) {
-            Object (player: player);
+        construct {
+            type_ = "local";
         }
 
-        public async override YaMAPI.Track? get_prev_track () {
-            assert_not_reached ();
-        }
-
-        public override YaMAPI.Track? get_current_track () {
-            assert_not_reached ();
-        }
-
-        public async override YaMAPI.Track? get_next_track () {
-            assert_not_reached ();
-        }
-
-        public override void next (bool consider_repeat_mode) {
-            assert_not_reached ();
-        }
-
-        public override void prev () {
-            assert_not_reached ();
+        public override ArrayList<string> get_cover_items_by_size (int size) {
+            var array = new ArrayList<string> ();
+            array.add ("https://es-static.z-dn.net/files/d6a/87164361f7d08a28bd93261b5ebacd8a.png");
+            return array;
         }
     }
 }
+ 

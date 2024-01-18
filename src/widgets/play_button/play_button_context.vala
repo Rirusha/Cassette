@@ -39,9 +39,10 @@ namespace Cassette {
         }
 
         bool object_playing_now () {
-            var player_tl = player.player_mod as Player.PlayerTL;
-            if (player_tl != null) {
-                if (player_tl.queue.context.id == content_id && player_tl.queue.context.type_ == context_type) {
+            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
+                var queue = player.get_queue ();
+
+                if (queue.context.id == content_id && queue.context.type_ == context_type) {
                     return true;
                 } else {
                     string uid = yam_talker.me.oid;
@@ -49,7 +50,7 @@ namespace Cassette {
                         return false;
                     }
 
-                    if ((content_id == @"$uid:3") && player_tl.queue.context.type_ == "my_music") {
+                    if ((content_id == @"$uid:3") && queue.context.type_ == "my_music") {
                         return true;
                     }
                 }

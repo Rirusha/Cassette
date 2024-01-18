@@ -50,6 +50,31 @@ namespace Cassette {
         }
     }
 
+    public static void roll_shuffle_mode () {
+        switch (player.shuffle_mode) {
+            case Player.ShuffleMode.OFF:
+                player.shuffle_mode = Player.ShuffleMode.ON;
+                break;
+            case Player.ShuffleMode.ON:
+                player.shuffle_mode = Player.ShuffleMode.OFF;
+                break;
+        }
+    }
+
+    public static void roll_repeat_mode () {
+        switch (player.repeat_mode) {
+            case Player.RepeatMode.OFF:
+                player.repeat_mode = Player.RepeatMode.REPEAT_ALL;
+                break;
+            case Player.RepeatMode.REPEAT_ALL:
+                player.repeat_mode = Player.RepeatMode.REPEAT_ONE;
+                break;
+            case Player.RepeatMode.REPEAT_ONE:
+                player.repeat_mode = Player.RepeatMode.OFF;
+                break;
+        }
+    }
+
     public static void track_share (CassetteClient.YaMAPI.Track track_info) {
         string url = @"https://music.yandex.ru/album/$(track_info.albums[0].id)/track/$(track_info.id)";
 

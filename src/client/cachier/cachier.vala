@@ -93,7 +93,7 @@ namespace CassetteClient.Cachier {
         */
 
         download_audio_async.begin (track_info.id);
-        get_image.begin (track_info, TRACK_ART_SIZE);
+        get_image.begin (track_info, ArtSize.TRACK);
     }
 
     public async static void download_audio_async (

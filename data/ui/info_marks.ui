@@ -11,6 +11,7 @@
             <property name="width-request">38</property>
             <property name="height-request">38</property>
             <property name="icon-name">replaced-symbolic</property>
+            <property name="visible">false</property>
           </object>
         </child>
         <child>

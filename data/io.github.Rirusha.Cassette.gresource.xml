@@ -36,5 +36,8 @@
     <file preprocess="xml-stripblanks">ui/custom_page_preferences.ui</file>
     <file preprocess="xml-stripblanks">ui/cache_indicator.ui</file>
     <file preprocess="xml-stripblanks">ui/job_info_badge.ui</file>
+    <file preprocess="xml-stripblanks">ui/volume_button.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_info_panel.ui</file>
+    <file preprocess="xml-stripblanks">ui/cover_image.ui</file>
   </gresource>
 </gresources>

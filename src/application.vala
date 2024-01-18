@@ -145,6 +145,10 @@ namespace Cassette {
             base.activate ();
 
             if (active_window == null) {
+                if (storager.settings.get_boolean ("force-mobile")) {
+                    is_mobile = true;
+                }
+
                 main_window = new MainWindow (this);
 
                 authenticator.success.connect (main_window.load_default_views);
@@ -154,25 +158,25 @@ namespace Cassette {
                     _application_state = ApplicationState.ONLINE;
                 }
 
+                //  main_window.show.connect (() => {
+                //      // Detection device "mobility"
+                //      // TODO: that also can work on notebooks with touch...
+                //      if (storager.settings.get_boolean ("force-mobile")) {
+                //          is_mobile = true;
+
+                //      } else {
+                //          var display = Gdk.Display.get_default ();
+                //          var seat = display?.get_default_seat ();
+
+                //          foreach (var device in seat?.get_devices (Gdk.SeatCapabilities.TOUCH)) {
+                //              is_mobile = true;
+
+                //              storager.settings.set_double ("volume", 100.0);
+                //          }
+                //      }
+                //  });
+
                 main_window.present ();
-
-                main_window.show.connect (() => {
-                    // Detection device "mobility"
-                    // TODO: that also can work on notebooks with touch...
-                    if (storager.settings.get_boolean ("force-mobile")) {
-                        is_mobile = true;
-
-                    } else {
-                        var display = Gdk.Display.get_default ();
-                        var seat = display?.get_default_seat ();
-
-                        foreach (var device in seat?.get_devices (Gdk.SeatCapabilities.TOUCH)) {
-                            is_mobile = true;
-
-                            storager.settings.set_double ("volume", 100.0);
-                        }
-                    }
-                });
 
                 if (_application_state == ApplicationState.LOCAL) {
                     main_window.load_local_views ();
@@ -255,11 +259,11 @@ namespace Cassette {
         }
 
         void on_shuffle () {
-            main_window.player_bar.roll_shuffle_mode ();
+            roll_shuffle_mode ();
         }
 
         void on_repeat () {
-            main_window.player_bar.roll_repeat_mode ();
+            roll_repeat_mode ();
         }
 
         void on_next () {
@@ -285,8 +289,10 @@ namespace Cassette {
         }
 
         void on_share_current_track () {
-            if (player.current_track?.is_ugc == false) {
-                track_share (player.current_track);
+            var current_track = player.get_current_track ();
+
+            if (current_track?.is_ugc == false) {
+                track_share (current_track);
             }
         }
     }

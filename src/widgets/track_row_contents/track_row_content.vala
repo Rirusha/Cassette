@@ -1,4 +1,4 @@
-/* play_button_action.vala
+/* track_row_content.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -22,25 +22,17 @@
 using CassetteClient;
 
 
+
 namespace Cassette {
-    public class PlayButtonAction : PlayButton {
+    public abstract class TrackRowContent : Gtk.Frame {
 
-        public PlayButtonAction () {
-            Object ();
-        }
+        public YaMAPI.Track track_info { get; construct; }
 
-        construct {
-            real_button.action_name = "app.play-pause";
+        protected abstract PlayButtonTrack play_button { get; set; }
 
-            player.played.connect (() => {
-                set_playing ();
-            });
-            player.paused.connect (() => {
-                set_paused ();
-            });
-            player.stopped.connect (() => {
-                set_stopped ();
-            });
+        // Триггер клика по кнопке
+        public void play_pause () {
+            play_button.button_clicked ();
         }
     }
 }

@@ -1,4 +1,4 @@
-/* player_local.vala
+/* clickable_label.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -18,37 +18,32 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Gee;
 
-namespace CassetteClient.Player {
-    public class PlayerLL: Object, IPlayerMod {
+namespace Cassette {
+    public class ClickableLabel : Adw.Bin {
 
-        public YaMAPI.Track? current_track {
-            owned get {
-                return null;
-            }
-        }
-        public YaMAPI.Track next_track {
-            owned get {
-                return new YaMAPI.Track ();
-            }
-        }
-        public YaMAPI.Track prev_track {
-            owned get {
-                return new YaMAPI.Track ();
+        public Gtk.Label real_label { get; construct; default = new Gtk.Label (null); }
+
+        public string text {
+            set {
+                real_label.label = value;
             }
         }
 
-        public PlayerLL () {
+        public signal void clicked ();
+
+        public ClickableLabel () {
             Object ();
         }
 
-        public void next (bool consider_repeat_mode) {
+        construct {
+            real_label.ellipsize = Pango.EllipsizeMode.END;
 
-        }
-
-        public void prev () {
-
+            var clck = new Gtk.GestureClick ();
+            clck.pressed.connect (() => {
+                clicked ();
+            });
+            real_label.add_controller (clck);
         }
     }
 }

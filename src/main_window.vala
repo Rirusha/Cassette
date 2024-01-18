@@ -26,12 +26,6 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/main_window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         [GtkChild]
-        unowned Gtk.Box main_box;
-        [GtkChild]
-        unowned Adw.HeaderBar header_bar;
-        [GtkChild]
-        unowned Gtk.Stack title_stack;
-        [GtkChild]
         unowned Adw.ViewSwitcher switcher_title;
         [GtkChild]
         unowned Gtk.Button button_backward;
@@ -52,9 +46,21 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Stack loading_stack;
         [GtkChild]
-        unowned Gtk.Spinner spin;
-        [GtkChild]
         unowned Gtk.MenuButton app_menu_button;
+        [GtkChild]
+        unowned PlayerBar player_bar;
+        [GtkChild]
+        unowned Gtk.Revealer search_revealer;
+        [GtkChild]
+        unowned Adw.ToolbarView toolbar_view;
+        [GtkChild]
+        unowned Gtk.SearchEntry search_entry;
+        [GtkChild]
+        unowned Gtk.ToggleButton sidebar_toggle_button;
+        [GtkChild]
+        unowned Adw.Banner info_banner;
+        [GtkChild]
+        unowned Adw.HeaderBar header_bar;
 
         public bool is_mobile_orientation {
             get {
@@ -66,8 +72,7 @@ namespace Cassette {
             }
         }
 
-        public Pager pager;
-        public PlayerBar player_bar { get; construct; }
+        public Pager pager { get; construct; }
 
         GLib.Binding? current_view_can_back_binding = null;
         GLib.Binding? current_view_can_refresh_binding = null;
@@ -110,7 +115,22 @@ namespace Cassette {
             gs.pressed.connect (() => {
                 set_focus (null);
             });
-            switcher_title.add_controller (gs);
+            header_bar.add_controller (gs);
+
+            sidebar.notify["is-shown"].connect (() => {
+                if (sidebar.is_shown) {
+                    sidebar_toggle_button.visible = true;
+                    sidebar_toggle_button.active = true;
+                } else {
+                    sidebar_toggle_button.visible = false;
+                }
+            });
+
+            sidebar_toggle_button.notify["active"].connect (() => {
+                if (!sidebar_toggle_button.active) {
+                    sidebar.is_shown = false;
+                }
+            });
 
             main_stack.notify["visible-child"].connect (() => {
                 Adw.ViewStackPage current_page = main_stack.get_page (main_stack.get_visible_child ());
@@ -147,8 +167,6 @@ namespace Cassette {
             });
             add_action (account_info_action);
 
-            player_bar = new PlayerBar (this);
-            main_box.append (player_bar);
             pager = new Pager (this, main_stack);
 
             CassetteClient.storager.settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
@@ -188,12 +206,10 @@ namespace Cassette {
             });
             add_action (search_action);
 
-            button_search.toggled.connect (() => {
-                if (button_search.active) {
-                    title_stack.set_visible_child_name ("search-entry");
-                    title_stack.get_visible_child ().grab_focus ();
-                } else {
-                    title_stack.set_visible_child_name ("view-switcher");
+            button_search.bind_property ("active", search_revealer, "reveal-child", BindingFlags.DEFAULT);
+            search_revealer.notify["reveal-child"].connect (() => {
+                if (search_revealer.reveal_child) {
+                    set_focus (search_entry);
                 }
             });
 
@@ -205,12 +221,12 @@ namespace Cassette {
         }
 
         public void set_online () {
-            header_bar.remove_css_class ("offline-mode");
+            info_banner.revealed = false;
             avatar_button.sensitive = true;
         }
 
         public void set_offline () {
-            header_bar.add_css_class ("offline-mode");
+            info_banner.revealed = true;
             avatar_button.sensitive = false;
         }
 
@@ -218,7 +234,6 @@ namespace Cassette {
             if (loading_stack.visible_child_name == "loading") {
                 pager.load_pages (PagesType.ONLINE);
                 loading_stack.visible_child_name = "done";
-                spin.stop ();
 
                 load_avatar.begin ();
                 player_bar.update_queue.begin ();
@@ -242,7 +257,6 @@ namespace Cassette {
             if (loading_stack.visible_child_name == "loading") {
                 pager.load_pages (PagesType.LOCAL);
                 loading_stack.visible_child_name = "done";
-                spin.stop ();
 
                 avatar_button.visible = false;
                 action_set_enabled ("win.show-disliked-tracks", false);
@@ -316,7 +330,13 @@ namespace Cassette {
 
                         // album 87894564 track 54654
                         } else {
-                            string track_id = parts[3];
+                            string track_id;
+
+                            if ("?" in parts[3]) {
+                                track_id = parts[3].split ("?")[0];
+                            } else {
+                                track_id = parts[3];
+                            }
 
                             show_track_by_id.begin (track_id);
 
@@ -328,6 +348,14 @@ namespace Cassette {
                     show_message (_("Can't parse clipboard content"));
                 }
             });
+        }
+
+        public void show_player_bar () {
+            toolbar_view.reveal_bottom_bars = true;
+        }
+
+        public void hide_player_bar () {
+            toolbar_view.reveal_bottom_bars = false;
         }
 
         // Адаптивное окно, не используется Adw.Breakpoint, так как каждый

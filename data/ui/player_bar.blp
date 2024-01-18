@@ -1,0 +1,241 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassettePlayerBar : Adw.Bin {
+  sensitive: false;
+
+  Grid {
+    column-homogeneous: true;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 12;
+    // column-spacing: 8;
+
+    Button track_detailed_button {
+      styles [
+        "flat"
+      ]
+
+      halign: fill;
+      hexpand: true;
+
+      Adw.Carousel carousel {
+        interactive: false;
+        spacing: 5;
+        halign: start;
+
+        $CassetteTrackInfoPanel {
+          orientation: horizontal;
+          has-cover-placeholder: false;
+        }
+
+        $CassetteTrackInfoPanel {
+          orientation: horizontal;
+          has-cover-placeholder: false;
+        }
+
+        $CassetteTrackInfoPanel {
+          orientation: horizontal;
+          has-cover-placeholder: false;
+        }
+      }
+
+      layout {
+        column: 0;
+        column-span: 2;
+      }
+    }
+
+    Adw.Clamp {
+      maximum-size: 800;
+
+      Box {
+        orientation: vertical;
+        hexpand: true;
+        valign: center;
+        margin-end: 12;
+        margin-start: 12;
+
+        CenterBox {
+          halign: center;
+          hexpand: true;
+
+          start-widget: Box {
+            halign: end;
+            hexpand: true;
+            spacing: 4;
+
+            $CassetteLikeButton like_button {
+              is-flat: true;
+              is-circular: true;
+              object-content-type: "track";
+            }
+
+            Button shuffle_button {
+              styles [
+                "circular",
+                "flat"
+              ]
+
+              valign: center;
+              margin-end: 8;
+              action-name: "app.change-shuffle";
+              icon-name: "media-playlist-shuffle-symbolic";
+            }
+
+            Button prev_track_button {
+              styles [
+                "circular",
+                "flat"
+              ]
+
+              valign: center;
+              action-name: "app.prev";
+              icon-name: "media-skip-backward-symbolic";
+            }
+          };
+
+          center-widget: $CassettePlayButtonAction play_button {
+            is-flat: true;
+            is-circular: true;
+            valign: center;
+            margin-start: 4;
+            margin-end: 4;
+          };
+
+          end-widget: Box {
+            halign: start;
+            hexpand: true;
+            spacing: 4;
+
+            Button {
+              styles [
+                "circular",
+                "flat"
+              ]
+
+              valign: center;
+              action-name: "app.next";
+              icon-name: "media-skip-forward-symbolic";
+            }
+
+            Button repeat_button {
+              styles [
+                "circular",
+                "flat"
+              ]
+
+              valign: center;
+              margin-start: 8;
+              action-name: "app.change-repeat";
+              icon-name: "media-playlist-repeat-song-symbolic";
+            }
+
+            $CassetteDislikeButton dislike_button {
+              is-flat: true;
+              is-circular: true;
+            }
+          };
+        }
+
+        Box {
+          spacing: 8;
+
+          Label current_time_mark {
+            styles [
+              "dim-label",
+              "caption"
+            ]
+
+            label: "0:00";
+            halign: start;
+            width-request: 32;
+          }
+
+          Scale slider {
+            hexpand: true;
+            orientation: horizontal;
+
+            adjustment: Adjustment {
+              lower: 0.0;
+              value: 0.0;
+              page-increment: 5.0;
+            };
+          }
+
+          // Scale slider {
+          //   hexpand: true;
+          //   orientation: horizontal;
+
+          //   adjustment: Adjustment {
+          //     value: 0.0;
+          //     lower: 0.0;
+          //   };
+          // }
+
+          Label total_time_mark {
+            styles [
+              "dim-label",
+              "caption"
+            ]
+
+            label: "0:00";
+            halign: end;
+            width-request: 32;
+          }
+        }
+      }
+
+      layout {
+        column: 2;
+        column-span: 3;
+      }
+    }
+
+    Box {
+      spacing: 8;
+      halign: end;
+      
+      $CassetteSaveStack save_stack {
+        halign: "end";
+        content-type: "track";
+      }
+
+      Button queue_show_button {
+        styles [
+          "flat",
+          "circular"
+        ]
+
+        valign: center;
+        icon-name: "music-queue-symbolic";
+      }
+      
+      $CassetteTrackOptionsButton track_options_button {
+        is-flat: true;
+        is-circular: true;
+        valign: center;
+      }
+
+      $CassetteVolumeButton volume_button {
+        valign: center;
+      }
+
+      Button fullscreen_button {
+        styles [
+          "flat",
+          "circular"
+        ]
+
+        valign: center;
+        icon-name: "view-fullscreen-symbolic";
+      }
+
+      layout {
+        column: 5;
+        column-span: 2;
+      }
+    }
+  }
+}

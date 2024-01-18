@@ -19,17 +19,7 @@
                     <property name="spacing">8</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkFrame">
-                        <style>
-                          <class name="big-art"/>
-                        </style>
-                        <child>
-                          <object class="CassetteCoverImage" id="cover_image">
-                            <property name="width-request">200</property>
-                            <property name="height-request">200</property>
-                          </object>
-                        </child>
-                      </object>
+                      <object class="CassetteCoverImage" id="cover_image"/>
                     </child>
                     <child>
                       <object class="GtkBox">

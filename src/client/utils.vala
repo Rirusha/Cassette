@@ -24,9 +24,12 @@ using Gee;
 
 namespace CassetteClient {
 
-    public const int TRACK_ART_SIZE = 75;
-    public const int BIG_ART_SIZE = 400;
-    public const int SMALL_BIG_ART_SIZE = 100;
+    public enum ArtSize {
+        TRACK = 75,
+        BIG_ART = 400,
+        BIG_SMALL = 200
+    }
+
     public const int TIMEOUT = 10;
 
     public static Cachier.Cachier cachier;

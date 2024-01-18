@@ -27,15 +27,7 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_detailed.ui")]
     public class TrackDetailed : Adw.Bin {
         [GtkChild]
-        unowned Gtk.Label track_name_label;
-        [GtkChild]
-        unowned Gtk.Label track_version_label;
-        [GtkChild]
-        unowned Adw.Bin album_socket;
-        [GtkChild]
-        unowned Gtk.FlowBox artists_box;
-        [GtkChild]
-        unowned Gtk.Label ugc_mark;
+        unowned Gtk.Label track_type_label;
         [GtkChild]
         unowned LyricsPanel lyrics_panel;
         [GtkChild]
@@ -43,11 +35,7 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Label major_label;
         [GtkChild]
-        unowned Gtk.Spinner spin;
-        [GtkChild]
         unowned Gtk.Stack loading_stack;
-        [GtkChild]
-        unowned Gtk.Box add_box;
         [GtkChild]
         unowned Gtk.Box lyrics_box;
         [GtkChild]
@@ -61,9 +49,7 @@ namespace Cassette {
         [GtkChild]
         unowned DislikeButton dislike_button;
         [GtkChild]
-        unowned Gtk.Box album_box;
-        [GtkChild]
-        unowned Gtk.Box artists_main_box;
+        unowned TrackInfoPanel info_panel;
 
         public YaMAPI.Track track_info { get; construct set; }
 
@@ -72,14 +58,7 @@ namespace Cassette {
         }
 
         construct {
-            add_box.bind_property ("visible", spin, "spinning", GLib.BindingFlags.INVERT_BOOLEAN);
-
-            track_name_label.label = track_info.title;
-            if (track_info.version != null) {
-                track_version_label.label = track_info.version;
-            } else {
-                track_version_label.visible = false;
-            }
+            info_panel.track_info = track_info;
 
             play_button.clicked_not_playing.connect (play_pause);
 
@@ -118,40 +97,41 @@ namespace Cassette {
 
             LabelButton sbutton;
             if (track_info.is_ugc) {
-                ugc_mark.visible = true;
+                track_type_label.label = _("Your music track");
                 dislike_button.visible = false;
 
-                if (track_info.meta_data.album != null) {
-                    album_socket.child = new LabelButton (track_info.meta_data.album, false);
-                } else {
-                    album_box.visible = false;
-                }
+                //  if (track_info.meta_data.album != null) {
+                //      album_socket.child = new LabelButton (track_info.meta_data.album, false);
+                //  } else {
+                //      album_box.visible = false;
+                //  }
 
-                if (track_info.get_artists_names () != "") {
-                    artists_box.append (new LabelButton (track_info.get_artists_names (), false));
-                } else {
-                    artists_main_box.visible = false;
-                }
+                //  if (track_info.get_artists_names () != "") {
+                //      artists_box.append (new LabelButton (track_info.get_artists_names (), false));
+                //  } else {
+                //      artists_main_box.visible = false;
+                //  }
 
             } else {
+                track_type_label.label = _("Music track");
                 dislike_button.visible = true;
-                sbutton = new LabelButton (track_info.albums[0].title, true);
-                album_socket.child = sbutton;
-                sbutton.button.clicked.connect (() => {
-                    message ("Show album page");
-                    //  applicationance.main_window.current_view.add_view (...)
-                });
-                block_widget (sbutton, BlockReason.NOT_IMPLEMENTED);
+                //  sbutton = new LabelButton (track_info.albums[0].title, true);
+                //  album_socket.child = sbutton;
+                //  sbutton.button.clicked.connect (() => {
+                //      message ("Show album page");
+                //      //  applicationance.main_window.current_view.add_view (...)
+                //  });
+                //  block_widget (sbutton, BlockReason.NOT_IMPLEMENTED);
 
-                foreach (var artist in track_info.artists) {
-                    sbutton = new LabelButton (artist.name, true);
-                    artists_box.append (sbutton);
-                    sbutton.button.clicked.connect (() => {
-                        message ("Show artist page");
-                        //  applicationance.main_window.current_view.add_view (...)
-                    });
-                    block_widget (sbutton, BlockReason.NOT_IMPLEMENTED);
-                }
+                //  foreach (var artist in track_info.artists) {
+                //      sbutton = new LabelButton (artist.name, true);
+                //      artists_box.append (sbutton);
+                //      sbutton.button.clicked.connect (() => {
+                //          message ("Show artist page");
+                //          //  applicationance.main_window.current_view.add_view (...)
+                //      });
+                //      block_widget (sbutton, BlockReason.NOT_IMPLEMENTED);
+                //  }
             }
 
             lyrics_panel.track_id = track_info.id;

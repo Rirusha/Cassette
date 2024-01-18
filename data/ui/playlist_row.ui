@@ -9,14 +9,7 @@
         <property name="margin-end">6</property>
         <property name="spacing">3</property>
         <child>
-          <object class="GtkFrame">
-            <style>
-              <class name="small-art"/>
-            </style>
-            <child>
-              <object class="CassetteCoverImage" id="cover_image"></object>
-            </child>
-          </object>
+          <object class="CassetteCoverImage" id="cover_image"/>
         </child>
         <child>
           <object class="GtkSeparator">

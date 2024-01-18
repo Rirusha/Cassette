@@ -26,33 +26,21 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/player_bar.ui")]
     public class PlayerBar : Adw.Bin {
         [GtkChild]
-        unowned Gtk.Revealer revealer;
-        [GtkChild]
         unowned Gtk.Label current_time_mark;
         [GtkChild]
         unowned Gtk.Label total_time_mark;
         [GtkChild]
         unowned Gtk.Scale slider;
         [GtkChild]
-        unowned Gtk.Box slider_overlay;
-        [GtkChild]
         unowned Gtk.Button prev_track_button;
         [GtkChild]
-        unowned CoverImage cover_image;
-        [GtkChild]
-        unowned Gtk.Label track_name_label;
-        [GtkChild]
-        unowned Gtk.Label track_version_label;
-        [GtkChild]
-        unowned Gtk.Label track_authors_label;
+        unowned Gtk.Button track_detailed_button;
         [GtkChild]
         unowned DislikeButton dislike_button;
         [GtkChild]
         unowned LikeButton like_button;
         [GtkChild]
         unowned Gtk.Button queue_show_button;
-        //  [GtkChild]
-        //unowned Gtk.Button temp_playlist_button;
         [GtkChild]
         unowned SaveStack save_stack;
         [GtkChild]
@@ -60,75 +48,80 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Button repeat_button;
         [GtkChild]
-        unowned Gtk.ScaleButton volume_button;
+        unowned VolumeButton volume_button;
         [GtkChild]
-        unowned InfoMarks info_marks;
+        unowned Adw.Carousel carousel;
         [GtkChild]
-        unowned Gtk.Button track_info_button;
+        unowned Gtk.Button fullscreen_button;
 
         public MainWindow window { get; construct set; }
 
-        YaMAPI.Track track_info = new YaMAPI.Track ();
+        TrackInfoPanel info_panel_prev {
+            get {
+                return (TrackInfoPanel) carousel.get_nth_page (0);
+            }
+        }
 
-        Gtk.EventControllerMotion slider_motion_controller;
+        TrackInfoPanel info_panel_center {
+            get {
+                return (TrackInfoPanel) carousel.get_nth_page (1);
+            }
+        }
+
+        TrackInfoPanel info_panel_next {
+            get {
+                return (TrackInfoPanel) carousel.get_nth_page (2);
+            }
+        }
+
+        //  public YaMAPI.Track? prev_track_info { get; private set; default = null; }
+        public YaMAPI.Track? current_track_info { get; private set; default = null; }
+        //  public YaMAPI.Track? next_track_info { get; private set; default = null; }
 
         public PlayerBar (MainWindow window) {
             Object (window: window);
         }
 
         construct {
-            player.play_slider = slider;
-
-            clear ();
-
-            volume_button.set_icons ({
-                "audio-volume-muted-symbolic",
-                "audio-volume-high-symbolic",
-                "audio-volume-low-symbolic",
-                "audio-volume-medium-symbolic"
-            });
-            volume_button.value_changed.connect ((widget, volume) => {
-                player.volume = 0.01 * volume;
+            player.stopped.connect (() => {
+                slider.set_value (0.0d);
             });
 
-            storager.settings.bind ("volume", volume_button, "value", SettingsBindFlags.DEFAULT);
+            if (application.is_mobile) {
+                player.volume = 1.0d;
+                volume_button.visible = false;
+            }
 
-            var gesture_click = new Gtk.GestureClick ();
-            gesture_click.pressed.connect ((n_press, x, y) => {
-                //  Проверка нужна для редких случаев, когда пользователь нажал ПКМ вне слайдера при зажатой ЛКМ.
-                if (slider_motion_controller != null) {
-                    slider_overlay.remove_controller (slider_motion_controller);
-                }
-
-                slider_motion_controller = new Gtk.EventControllerMotion ();
-                slider_motion_controller.motion.connect ((x, y) => {
-                    var value = x * (slider.adjustment.upper / slider_overlay.get_width ());
-                    slider.set_value (value);
-                });
-                slider_overlay.add_controller (slider_motion_controller);
-                slider_motion_controller.motion (x, y);
-
-                player.is_slider_moving = true;
-            });
-            gesture_click.released.connect (() => {
-                slider_overlay.remove_controller (slider_motion_controller);
-                slider_motion_controller = null;
-                player.seek ((int) (slider.get_value () * 1000));
-                //  mouse_time_mark.label = "";
-
-                player.is_slider_moving = false;
-            });
-            slider_overlay.add_controller (gesture_click);
-
-            slider.value_changed.connect (() => {
-                current_time_mark.label = sec2str ((int) slider.get_value (), true);
+            carousel.map.connect (() => {
+                carousel.scroll_to (info_panel_center, false);
             });
 
-            player.bind_property ("is-loading", this, "sensitive", BindingFlags.INVERT_BOOLEAN);
+            carousel.page_changed.connect (on_carousel_page_changed);
 
-            //  play_button.notify["is-playing"].connect (player_state_changed);
-            player.notify["player-state"].connect (player_state_changed);
-            player.notify["player-mod"].connect (player_mod_changed);
+            volume_button.notify["volume"].connect (() => {
+                player.volume = volume_button.volume;
+            });
+            storager.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
+
+            slider.change_value.connect ((scroll_type, new_value) => {
+                player.seek ((int) (new_value * 1000));
+            });
+
+            player.playback_callback.connect ((play_pos) => {
+                current_time_mark.label = sec2str ((int) play_pos, true);
+                slider.set_value (play_pos);
+            });
+
+            player.current_track_start_loading.connect (() => {
+                sensitive = false;
+            });
+            player.current_track_finish_loading.connect (() => {
+                sensitive = true;
+            });
+
+            player.near_changed.connect (on_player_current_track_changed);
+            player.mode_inited.connect (on_player_mode_inited);
+            player.notify["player-type"].connect (on_player_player_type_notify);
 
             var playerbar_actions = new SimpleActionGroup ();
 
@@ -156,75 +149,130 @@ namespace Cassette {
 
             SimpleAction add_next_action = new SimpleAction ("add-next", null);
             add_next_action.activate.connect (() => {
-                player.add_track (track_info, true);
+                if (current_track_info != null) {
+                    player.add_track (current_track_info, true);
+                }
             });
             track_actions.add_action (add_next_action);
 
             SimpleAction add_end_action = new SimpleAction ("add-end", null);
             add_end_action.activate.connect (() => {
-                player.add_track (track_info, false);
+                if (current_track_info != null) {
+                    player.add_track (current_track_info, false);
+                }
             });
             track_actions.add_action (add_end_action);
 
             SimpleAction add_to_playlist_action = new SimpleAction ("add-to-playlist", null);
             add_to_playlist_action.activate.connect (() => {
-                var win = new PlaylistChooseWindow (track_info) {
-                    transient_for = Cassette.application.main_window,
-                };
-                win.present ();
+                if (current_track_info != null) {
+                    var win = new PlaylistChooseWindow (current_track_info) {
+                        transient_for = Cassette.application.main_window,
+                    };
+                    win.present ();
+                }
             });
             track_actions.add_action (add_to_playlist_action);
 
             insert_action_group ("track", track_actions);
 
-            track_info_button.clicked.connect (() => {
-                if (track_info_button.has_css_class ("pressed")) {
-                    window.sidebar.close ();
+            track_detailed_button.clicked.connect (() => {
+                if (track_detailed_button.has_css_class ("flat")) {
+                    window.sidebar.show_track_info (current_track_info);
                 } else {
-                    window.sidebar.show_track_info (track_info);
+                    window.sidebar.close ();
                 }
             });
 
             queue_show_button.clicked.connect (() => {
-                if (queue_show_button.has_css_class ("pressed")) {
-                    window.sidebar.close ();
-                } else {
+                if (queue_show_button.has_css_class ("flat")) {
                     window.sidebar.show_queue ();
-                }
-            });
-
-            set_repeat_button_view ();
-            set_shuffle_button_view ();
-
-            window.sidebar.notify["track-detailed"].connect (() => {
-                if (window.sidebar.track_detailed != null && track_info != null) {
-                    if (window.sidebar.track_detailed.track_info.id == track_info.id) {
-                        track_info_button.add_css_class ("pressed");
-                        return;
-                    }
-                }
-
-                track_info_button.remove_css_class ("pressed");
-            });
-
-            window.sidebar.notify["is-shown"].connect (() => {
-                if (window.sidebar.is_shown == false) {
-                    queue_show_button.remove_css_class ("pressed");
-                    track_info_button.remove_css_class ("pressed");
-                }
-            });
-            window.sidebar.notify["track-list"].connect (() => {
-                if (window.sidebar.track_list == null) {
-                    queue_show_button.remove_css_class ("pressed");
                 } else {
-                    queue_show_button.add_css_class ("pressed");
+                    window.sidebar.close ();
                 }
             });
 
-            //  yam_talker.init_end.connect (update_queue);
+            player.notify["repeat-mode"].connect (on_repeat_mode_changed);
+            on_repeat_mode_changed ();
+            player.notify["shuffle-mode"].connect (on_shuffle_mode_changed);
+            on_shuffle_mode_changed ();
+
+            player.next_done.connect (() => {
+                info_panel_next.track_info = player.get_current_track ();
+                carousel.scroll_to (info_panel_next, true);
+            });
+
+            player.prev_done.connect (() => {
+                info_panel_prev.track_info = player.get_current_track ();
+                carousel.scroll_to (info_panel_prev, true);
+            });
+
+            Idle.add_once (() => {
+                window.sidebar.notify["track-detailed"].connect (() => {
+                    if (window.sidebar.track_detailed != null && current_track_info != null) {
+                        if (window.sidebar.track_detailed.track_info.id == current_track_info.id) {
+                            track_detailed_button.remove_css_class ("flat");
+                            return;
+                        }
+                    }
+
+                    track_detailed_button.add_css_class ("flat");
+                });
+
+                window.sidebar.notify["is-shown"].connect (() => {
+                    if (window.sidebar.is_shown == false) {
+                        queue_show_button.add_css_class ("flat");
+                        track_detailed_button.add_css_class ("flat");
+                    }
+                });
+
+                window.sidebar.notify["track-list"].connect (() => {
+                    if (window.sidebar.track_list == null) {
+                        queue_show_button.add_css_class ("flat");
+                    } else {
+                        queue_show_button.remove_css_class ("flat");
+                    }
+                });
+            });
+
+            block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED);
+        }
+
+        void on_carousel_page_changed (uint index) {
+            //  carousel.freeze_notify ();
+            carousel.page_changed.disconnect (on_carousel_page_changed);
+
+            if (index == 2) {
+                carousel.remove (info_panel_prev);
+                carousel.append (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
+
+                player.get_next_track.begin ((obj, res) => {
+                    info_panel_next.track_info = player.get_next_track.end (res);
+                });
+
+                carousel.scroll_to (info_panel_center, false);
+
+            } else if (index == 0) {
+                carousel.remove (info_panel_next);
+                carousel.prepend (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
+
+                player.get_prev_track.begin ((obj, res) => {
+                    info_panel_prev.track_info = player.get_prev_track.end (res);
+                });
+
+                carousel.scroll_to (info_panel_center, false);
+            }
+
+            carousel.page_changed.connect (on_carousel_page_changed);
+            //  carousel.thaw_notify ();
         }
 
         public async void update_queue () {
+            /*
+                Загрузка и обновление очереди с сравнением с текущей очередью, чтобы 
+                избежать сброс играющего трека без фактического обновления очереди
+            */
+
             YaMAPI.Queue? queue = null;
 
             threader.add_single (() => {
@@ -235,72 +283,85 @@ namespace Cassette {
 
             yield;
 
-            if (player.current_track != null) {
-                if (player.current_track.id == queue.tracks[queue.current_index].id) {
+            if (queue == null) {
+                return;
+            }
+
+            if (player.player_state == Player.PlayerState.PLAYING) {
+                return;
+            }
+
+            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
+                if (player.get_queue ().compare (queue) == true) {
                     return;
                 }
             }
 
-            //  if (player.player_mod != null) {
-            //      return;
-            //  }
-
-            if (queue != null) {
-                if (queue.context.type_ == "radio") {
-
-                } else {
-                    player.start_queue_init (queue);
-                    set_shuffle_button_view ();
+            if (queue.context.type_ == "radio") {
+                if (player.player_type == Player.PlayerModeType.FLOW) {
+                    return;
                 }
+
+                //  player.start_flow (queue);
+
+            } else {
+                player.start_queue_init (queue);
             }
         }
 
-        void player_mod_changed () {
-            if (player.player_mod is Player.PlayerTL) {
-                shuffle_button.visible = true;
-                repeat_button.visible = true;
-                queue_show_button.visible = true;
-                prev_track_button.visible = true;
-            } else if (player.player_mod is Player.PlayerFL) {
-                shuffle_button.visible = false;
-                repeat_button.visible = false;
-                queue_show_button.visible = false;
-                prev_track_button.visible = false;
+        void on_player_player_type_notify () {
+            switch (player.player_type) {
+                case Player.PlayerModeType.TRACK_LIST:
+                    shuffle_button.visible = true;
+                    repeat_button.visible = true;
+                    queue_show_button.visible = true;
+                    prev_track_button.visible = true;
+                    break;
+
+                case Player.PlayerModeType.FLOW:
+                    shuffle_button.visible = false;
+                    repeat_button.visible = false;
+                    queue_show_button.visible = false;
+                    prev_track_button.visible = false;
+                    break;
+
+                case Player.PlayerModeType.NONE:
+                    window.hide_player_bar ();
+                    break;
             }
         }
 
-        void player_state_changed () {
-            if (player.player_state == Player.PlayerState.PLAYING) {
-                if (player.current_track != null) {
-                    show_track (player.current_track);
-                }
+        void on_player_mode_inited () {
+            current_track_info = player.get_current_track ();
+
+            info_panel_prev.track_info = null;
+            if (info_panel_center.track_info == null) {
+                info_panel_center.track_info = current_track_info;
             }
-            if (player.current_track == null) {
+            carousel.scroll_to (info_panel_next, true);
+            info_panel_next.track_info = current_track_info;
+        }
+
+        void on_player_current_track_changed (YaMAPI.Track? new_track) {
+            if (new_track == null) {
                 clear ();
-                revealer.reveal_child = false;
+                return;
             }
-        }
 
-        void show_track (YaMAPI.Track track_info) {
-            this.track_info = track_info;
+            current_track_info = new_track;
 
             if (window.sidebar.track_detailed != null) {
-                if (track_info.id == window.sidebar.track_detailed.track_info.id) {
-                    track_info_button.add_css_class ("pressed");
+                if (current_track_info.id == window.sidebar.track_detailed.track_info.id) {
+                    track_detailed_button.remove_css_class ("flat");
                 } else {
-                    track_info_button.remove_css_class ("pressed");
+                    track_detailed_button.add_css_class ("flat");
                 }
             }
 
-
             var adjustment = slider.get_adjustment ();
-            adjustment.set_upper (ms2sec (track_info.duration_ms));
+            adjustment.set_upper (ms2sec (current_track_info.duration_ms));
 
-            track_name_label.label = track_info.title;
-            track_version_label.label = track_info.version;
-            track_authors_label.label = track_info.get_artists_names ();
-
-            if (track_info.is_ugc) {
+            if (current_track_info.is_ugc) {
                 action_set_enabled ("track.share", false);
                 dislike_button.visible = false;
             } else {
@@ -308,96 +369,62 @@ namespace Cassette {
                 dislike_button.visible = true;
             }
 
-            info_marks.is_exp = track_info.is_explicit;
-            info_marks.is_child = track_info.is_suitable_for_children;
-            info_marks.replaced_by = track_info.substituted;
-
-            if (player.player_mod is Player.PlayerTL) {
+            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
                 queue_show_button.visible = true;
             } else {
                 queue_show_button.visible = false;
             }
 
-            total_time_mark.label = ms2str (track_info.duration_ms, true);
+            total_time_mark.label = ms2str (current_track_info.duration_ms, true);
 
-            like_button.init_content (track_info.id);
-            dislike_button.init_content (track_info.id);
-            save_stack.init_content (track_info.id);
-            cover_image.init_content (track_info, TRACK_ART_SIZE);
-            cover_image.load_image.begin ();
+            like_button.init_content (current_track_info.id);
+            dislike_button.init_content (current_track_info.id);
+            save_stack.init_content (current_track_info.id);
 
-            revealer.reveal_child = true;
+            window.show_player_bar ();
         }
 
         void clear () {
+            current_track_info = null;
+
             sensitive = false;
 
-            track_name_label.label = "";
-            track_version_label.label = "";
-            track_authors_label.label = "";
-
             dislike_button.visible = true;
-            info_marks.is_exp = false;
-            info_marks.is_child = false;
-            info_marks.replaced_by = null;
             queue_show_button.visible = false;
             total_time_mark.label = "";
 
+            window.hide_player_bar ();
+
             save_stack.clear ();
-            cover_image.clear ();
         }
 
-        public void roll_shuffle_mode () {
-            switch (player.shuffle_mode) {
-                case Player.ShuffleMode.OFF:
-                    player.shuffle_mode = Player.ShuffleMode.ON;
-                    break;
-                case Player.ShuffleMode.ON:
-                    player.shuffle_mode = Player.ShuffleMode.OFF;
-                    break;
-            }
-            set_shuffle_button_view ();
-        }
-
-        void set_shuffle_button_view () {
+        void on_shuffle_mode_changed () {
             switch (player.shuffle_mode) {
                 case Player.ShuffleMode.ON:
-                    shuffle_button.add_css_class ("pressed");
+                    shuffle_button.remove_css_class ("flat");
                     break;
+
                 case Player.ShuffleMode.OFF:
-                    shuffle_button.remove_css_class ("pressed");
+                    shuffle_button.add_css_class ("flat");
                     break;
             }
         }
 
-        public void roll_repeat_mode () {
-            switch (player.repeat_mode) {
-                case Player.RepeatMode.OFF:
-                    player.repeat_mode = Player.RepeatMode.REPEAT_ALL;
-                    break;
-                case Player.RepeatMode.REPEAT_ALL:
-                    player.repeat_mode = Player.RepeatMode.REPEAT_ONE;
-                    break;
-                case Player.RepeatMode.REPEAT_ONE:
-                    player.repeat_mode = Player.RepeatMode.OFF;
-                    break;
-            }
-            set_repeat_button_view ();
-        }
-
-        void set_repeat_button_view () {
+        void on_repeat_mode_changed () {
             switch (player.repeat_mode) {
                 case Player.RepeatMode.REPEAT_ALL:
                     repeat_button.set_icon_name ("media-playlist-repeat-symbolic");
-                    repeat_button.add_css_class ("pressed");
+                    repeat_button.remove_css_class ("flat");
                     break;
+
                 case Player.RepeatMode.REPEAT_ONE:
                     repeat_button.set_icon_name ("media-playlist-repeat-song-symbolic");
-                    repeat_button.add_css_class ("pressed");
+                    repeat_button.remove_css_class ("flat");
                     break;
+
                 case Player.RepeatMode.OFF:
                     repeat_button.set_icon_name ("media-playlist-repeat-symbolic");
-                    repeat_button.remove_css_class ("pressed");
+                    repeat_button.add_css_class ("flat");
                     break;
             }
         }

@@ -24,7 +24,8 @@ namespace CassetteClient.YaMAPI {
     public enum TrackType {
         MUSIC,
         AUDIOBOOK,
-        PODCAST
+        PODCAST,
+        LOCAL
     }
 
     public class Track : YaMObject, HasCover {
@@ -67,6 +68,8 @@ namespace CassetteClient.YaMAPI {
                         return TrackType.AUDIOBOOK;
                     case "podcast-episode":
                         return TrackType.PODCAST;
+                    case "local":
+                        return TrackType.LOCAL;
                     default:
                         return TrackType.MUSIC;
                 }
@@ -101,7 +104,7 @@ namespace CassetteClient.YaMAPI {
         public ArrayList<string> available_for_options { get; set; default = new ArrayList<string> (); }
         public LyricsInfo lyrics_info { get; set; }
 
-        public ArrayList<string> get_cover_items_by_size (int size) {
+        public virtual ArrayList<string> get_cover_items_by_size (int size) {
             var array = new ArrayList<string> ();
             if (cover_uri != null) {
                 array.add ("https://" + cover_uri.replace ("%%", @"$(size)x$(size)"));

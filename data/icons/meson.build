@@ -18,6 +18,11 @@ install_data(
 )
 
 install_data(
+  join_paths(symbolic_dir, 'music-queue-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
   join_paths(symbolic_dir, 'replaced-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
@@ -44,5 +49,45 @@ install_data(
 
 install_data(
   join_paths(symbolic_dir, 'disliked-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'sound-wave-alt-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'list-add-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'list-remove-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'audio-volume-high-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'audio-volume-low-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'audio-volume-medium-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'audio-volume-muted-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
+  join_paths(symbolic_dir, 'sidebar-show-right-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )

@@ -31,23 +31,32 @@ namespace Cassette {
         }
 
         protected override void post_init () {
-            player.track_state_changed.connect (on_track_state_changed);
+            player.played.connect ((track_info) => {
+                if (content_id == track_info.id) {
+                    set_playing ();
+                }
+            });
 
-            check_state ();
-        }
+            player.paused.connect ((track_info) => {
+                if (content_id == track_info.id) {
+                    set_paused ();
+                }
+            });
 
-        public void check_state () {
-            var playing_track = player.current_track;
-            if (playing_track != null) {
-                on_track_state_changed (playing_track.id);
-            }
+            player.stopped.connect (() => {
+                set_stopped ();
+            });
+
+            check_track_play_state ();
         }
 
         protected override bool on_clicked () {
-            YaMAPI.Track? current_track = player.current_track;
+            var current_track = player.get_current_track ();
+
             if (current_track != null) {
                 if (current_track.id == content_id) {
                     player.play_pause ();
+
                     return false;
                 }
             }
@@ -55,8 +64,14 @@ namespace Cassette {
             return true;
         }
 
-        void on_track_state_changed (string playing_track_id) {
-            if (playing_track_id == content_id) {
+        void check_track_play_state () {
+            var current_track = player.get_current_track ();
+
+            if (current_track == null) {
+                return;
+            }
+
+            if (current_track.id == content_id) {
                 if (player.player_state == Player.PlayerState.PLAYING) {
                     set_playing ();
                     return;

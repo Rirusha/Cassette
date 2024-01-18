@@ -53,8 +53,6 @@ namespace Cassette {
         }
 
         construct {
-            width_request = 42;
-            height_request = 42;
             valign = Gtk.Align.CENTER;
             halign = Gtk.Align.CENTER;
 
@@ -125,8 +123,10 @@ namespace Cassette {
                 this.is_disliked = is_disliked;
                 real_button.sensitive = true;
 
-                if (is_disliked && player.current_track.id == track_id) {
-                    player.remove_track (player.current_track);
+                var current_track = player.get_current_track ();
+
+                if (is_disliked && current_track.id == track_id) {
+                    player.remove_track (current_track);
                 }
             }
         }

@@ -29,10 +29,6 @@ namespace Cassette {
         unowned Adw.OverlaySplitView root_flap;
         [GtkChild]
         public unowned Gtk.ScrolledWindow sidebar_content;
-        [GtkChild]
-        unowned Gtk.Button close_button;
-        [GtkChild]
-        unowned Gtk.Button clean_button;
 
         TrackList?_track_list = null;
         public TrackList? track_list {
@@ -73,9 +69,6 @@ namespace Cassette {
         }
 
         construct {
-            close_button.clicked.connect (close);
-            clean_button.clicked.connect (player.remove_all_tracks);
-
             sidebar_content.notify["child"].connect (() => {
                 root_flap.show_sidebar = true;
             });
@@ -100,34 +93,31 @@ namespace Cassette {
 
         public void show_queue () {
             clear ();
-            clean_button.visible = true;
-            var playertl = player.player_mod as Player.PlayerTL;
-            if (playertl != null) {
+
+            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
                 track_list = new TrackList (sidebar_content.vadjustment) {
                     margin_top = 12,
                     margin_bottom = 12,
                     margin_start = 12,
                     margin_end = 12
                 };
-                update_queue ();
+                update_queue (player.get_queue ());
             }
         }
 
-        void update_queue () {
+        void update_queue (YaMAPI.Queue queue) {
             if (track_list != null) {
-                var playertl = player.player_mod as Player.PlayerTL;
-
-                track_list.set_tracks_as_queue (playertl.queue.tracks);
+                track_list.set_tracks_as_queue (queue.tracks);
                 Idle.add (() => {
-                    track_list.move_to (playertl.queue.current_index, playertl.queue.tracks.size);
+                    track_list.move_to (queue.current_index, queue.tracks.size);
                     return Source.REMOVE;
                 });
 
                 track_list.title.visible = true;
-                switch (playertl.queue.context.type_) {
+                switch (queue.context.type_) {
                     case "playlist":
                         track_list.list_type_label.label = _("PLAYLIST");
-                        track_list.list_name_label.label = playertl.queue.context.description;
+                        track_list.list_name_label.label = queue.context.description;
                         break;
                     case "my_music":
                         track_list.list_type_label.label = "PLAYLIST";
@@ -135,11 +125,11 @@ namespace Cassette {
                         break;
                     case "album":
                         track_list.list_type_label.label = _("ALBUM");
-                        track_list.list_name_label.label = playertl.queue.context.description;
+                        track_list.list_name_label.label = queue.context.description;
                         break;
                     case "search":
                         track_list.list_type_label.label = _("SEARCH RESULTS");
-                        track_list.list_name_label.label = "\"%s\"".printf (playertl.queue.context.description);
+                        track_list.list_name_label.label = "\"%s\"".printf (queue.context.description);
                         break;
                     default:
                         track_list.list_type_label.label = "";
@@ -157,7 +147,6 @@ namespace Cassette {
             if (track_detailed != null) {
                 track_detailed = null;
             }
-            clean_button.visible = false;
         }
     }
 }

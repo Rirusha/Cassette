@@ -1,0 +1,57 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteTrackInfoPanel : Adw.Bin {
+  Box main_box {
+    spacing: 12;
+
+    Stack cover_stack {}
+
+    CenterBox title_and_marks_box {
+      shrink-center-last: false;
+
+      start-widget: Box {
+        orientation: vertical;
+        spacing: 6;
+        valign: center;
+        halign: start;
+
+        Box {
+          orientation: vertical;
+
+          Label track_name_label {
+            styles [
+              "heading"
+            ]
+
+            halign: start;
+            ellipsize: end;
+          }
+
+          Label track_version_label {
+            styles [
+              "dim-label"
+            ]
+
+            halign: start;
+            ellipsize: end;
+          }
+        }
+
+        Label track_authors_label {
+          styles [
+            "caption"
+          ]
+
+          ellipsize: end;
+          halign: start;
+        }
+      };
+
+      center-widget: $CassetteInfoMarks info_marks {
+        margin-start: 4;
+        halign: start;
+      };
+    }
+  }
+}

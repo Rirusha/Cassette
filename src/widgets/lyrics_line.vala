@@ -115,7 +115,7 @@ namespace Cassette {
             }
 
             diff_con = Timeout.add (100, () => {
-                var diff = (next_time - player.play_position_ms) / 1000;
+                var diff = (next_time - player.playback_pos_ms) / 1000;
 
                 if (diff > 6 ) {
                     line_big_label.label = "   < . . . >";

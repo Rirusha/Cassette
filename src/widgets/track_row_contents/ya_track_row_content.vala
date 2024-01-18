@@ -1,4 +1,4 @@
-/* play_button_action.vala
+/* track_row_content.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -23,24 +23,28 @@ using CassetteClient;
 
 
 namespace Cassette {
-    public class PlayButtonAction : PlayButton {
+    public abstract class YATrackRowContent : TrackRowContent {
 
-        public PlayButtonAction () {
-            Object ();
-        }
+        public HasTrackList yam_object { get; construct; }
 
-        construct {
-            real_button.action_name = "app.play-pause";
+        public async void remove_from_playlist_async () {
+            var playlist = (YaMAPI.Playlist) yam_object;
 
-            player.played.connect (() => {
-                set_playing ();
+            int position = -1;
+            for (int i = 0; i < playlist.tracks.size; i++) {
+                if (track_info.id == playlist.tracks[i].id) {
+                    position = i;
+                    break;
+                }
+            }
+
+            threader.add (() => {
+                yam_talker.remove_tracks_from_playlist (playlist.kind, position, playlist.revision);
+
+                Idle.add (remove_from_playlist_async.callback);
             });
-            player.paused.connect (() => {
-                set_paused ();
-            });
-            player.stopped.connect (() => {
-                set_stopped ();
-            });
+
+            yield;
         }
     }
 }

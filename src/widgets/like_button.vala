@@ -88,8 +88,6 @@ namespace Cassette {
         construct {
             icon_name = "image-loading-symbolic";
 
-            width_request = 42;
-            height_request = 42;
             valign = Gtk.Align.CENTER;
             halign = Gtk.Align.CENTER;
 

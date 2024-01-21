@@ -61,7 +61,19 @@ namespace Cassette {
             }
         }
 
-        public bool is_shown { get; set; }
+        bool _is_shown;
+        public bool is_shown {
+            get {
+                return _is_shown;
+            }
+            set {
+                _is_shown = value;
+
+                if (!_is_shown) {
+                    clear ();
+                }
+            }
+        }
         public bool collapsed { get; set; }
 
         public SideBar () {
@@ -70,23 +82,25 @@ namespace Cassette {
 
         construct {
             sidebar_content.notify["child"].connect (() => {
-                root_flap.show_sidebar = true;
+                if (sidebar_content.child != null) {
+                    is_shown = true;
+                }
             });
 
             this.bind_property ("is-shown", root_flap, "show-sidebar", GLib.BindingFlags.BIDIRECTIONAL);
-            this.bind_property ("collapsed", root_flap, "collapsed", GLib.BindingFlags.DEFAULT);
+            this.bind_property ("collapsed", root_flap, "collapsed", GLib.BindingFlags.BIDIRECTIONAL);
 
             player.queue_changed.connect (update_queue);
         }
 
         public void close () {
-            clear ();
-            root_flap.show_sidebar = false;
+            is_shown = false;
         }
 
         public void show_track_info (YaMAPI.Track track_info) {
+            clear ();
+
             if (track_info.available) {
-                clear ();
                 track_detailed = new TrackDetailed (track_info);
             }
         }

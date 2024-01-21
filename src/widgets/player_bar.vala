@@ -92,10 +92,6 @@ namespace Cassette {
                 volume_button.visible = false;
             }
 
-            carousel.map.connect (() => {
-                carousel.scroll_to (info_panel_center, false);
-            });
-
             carousel.page_changed.connect (on_carousel_page_changed);
 
             volume_button.notify["volume"].connect (() => {
@@ -197,7 +193,7 @@ namespace Cassette {
             player.notify["shuffle-mode"].connect (on_shuffle_mode_changed);
             on_shuffle_mode_changed ();
 
-            player.next_done.connect (() => {
+            player.next_done.connect ((repeat) => {
                 info_panel_next.track_info = player.get_current_track ();
                 carousel.scroll_to (info_panel_next, true);
             });
@@ -349,6 +345,10 @@ namespace Cassette {
             }
 
             current_track_info = new_track;
+
+            if (carousel.position != 1) {
+                carousel.scroll_to (info_panel_center, false);
+            }
 
             if (window.sidebar.track_detailed != null) {
                 if (current_track_info.id == window.sidebar.track_detailed.track_info.id) {

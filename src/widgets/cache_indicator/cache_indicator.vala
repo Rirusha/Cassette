@@ -81,7 +81,9 @@ namespace Cassette {
                     }
 
                 } else {
-                    jobs_revealer.reveal_child = false;
+                    if (cachier.job_list.size == 0) {
+                        jobs_revealer.reveal_child = false;
+                    }
                 }
             });
         }

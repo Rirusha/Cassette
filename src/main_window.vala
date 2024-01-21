@@ -36,7 +36,7 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.Avatar avatar;
         [GtkChild]
-        public unowned Cassette.SideBar sidebar;
+        public unowned SideBar sidebar;
         [GtkChild]
         unowned Gtk.ToggleButton button_search;
         [GtkChild]
@@ -240,6 +240,8 @@ namespace Cassette {
 
                 app_menu_button.sensitive = true;
                 button_refresh.sensitive = true;
+
+                cachier.check_all_cache ();
 
                 notify["is-active"].connect (() => {
                     if (

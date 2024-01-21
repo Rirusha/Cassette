@@ -50,7 +50,7 @@ namespace Cassette {
         }
         LinkedList<LyricsLine> line_list;
 
-        uint? tout = null;
+        //  uint? tout = null;
 
         public LyricsPanel () {
             Object ();
@@ -62,6 +62,7 @@ namespace Cassette {
             lyrics_line = new LyricsLine.sync ("", 0);
             lines_box.append (lyrics_line);
             line_list.add (lyrics_line);
+
             foreach (string line in lines) {
                 string[] data = line.split (" ", 2);
                 int64 time_ms = parse_time (data[0]);
@@ -70,17 +71,14 @@ namespace Cassette {
                 line_list.add (lyrics_line);
             }
 
-            tout = Timeout.add (100, () => {
-                if (player.current_track == null) {
-                    return Source.CONTINUE;
-                }
-
-                if (track_id != player.current_track.id | player.player_state != Player.PlayerState.PLAYING) {
+            player.playback_callback.connect (() => {
+                if (track_id != player.get_current_track ().id || player.player_state != Player.PlayerState.PLAYING) {
                     current_line = null;
                     show_as_text ();
+
                 } else {
                     show_as_sync ();
-                    int64 current_ms = player.play_position_ms;
+                    int64 current_ms = player.playback_pos_ms;
                     for (int i = 0; i < line_list.size - 1; i++) {
                         if (line_list[i].time_ms > current_ms) {
                             break;
@@ -93,14 +91,6 @@ namespace Cassette {
                             break;
                         }
                     }
-                }
-
-                return Source.CONTINUE;
-            }, Priority.LOW);
-
-            unmap.connect (() => {
-                if (tout != null) {
-                    Source.remove (tout);
                 }
             });
         }

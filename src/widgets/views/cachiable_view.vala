@@ -54,8 +54,10 @@ namespace Cassette {
                     _job.cancelled.connect (() => {
                         download_stack.sensitive = false;
                     });
+
+                    download_stack.set_visible_child_name ("abort");
+
                     if (_job.is_cancelled) {
-                        download_stack.set_visible_child_name ("abort");
                         download_stack.sensitive = false;
                     }
                     download_stack.sensitive = !_job.is_cancelled;
@@ -69,10 +71,12 @@ namespace Cassette {
                             case Cachier.JobDoneStatus.SUCCESS:
                                 var content_info = get_content_name (object_info, true, true);
                                 // Translators: first %s - content type (Playlist), second - name
-                                application.show_message (_("%s%s successfully cached").printf (
-                                    content_info[0],
-                                    content_info[1]
-                                ), true);
+                                if (yell_status) {
+                                    application.show_message (_("%s%s successfully cached").printf (
+                                        content_info[0],
+                                        content_info[1]
+                                    ), true);
+                                }
                                 download_stack.visible_child_name = "delete";
                                 break;
 
@@ -107,6 +111,8 @@ namespace Cassette {
                 }
             }
         }
+
+        bool yell_status = true;
 
         construct {
             base.child = overlay;
@@ -177,12 +183,13 @@ namespace Cassette {
             return {content_name, content_title};
         }
 
-        protected void start_saving (bool tell_status) {
+        protected void start_saving (bool yell_status) {
             download_stack.visible_child_name = "abort";
+            this.yell_status = yell_status;
 
             job = cachier.start_cache (object_info);
 
-            if (tell_status) {
+            if (yell_status) {
                 var content_info = get_content_name (object_info, false, false);
                 // Translators: first %s - content type (Playlist), second - name
                 application.show_message (_("Cacheing of %s%s started").printf (content_info[0], content_info[1]));
@@ -210,14 +217,15 @@ namespace Cassette {
             }
         }
 
-        public virtual void uncache_playlist (bool tell_status) {
+        public virtual void uncache_playlist (bool yell_status) {
             download_stack.sensitive = false;
+            this.yell_status = yell_status;
 
             cachier.uncache.begin (object_info, () => {
                 download_stack.visible_child_name = "save";
                 download_stack.sensitive = true;
 
-                if (tell_status) {
+                if (yell_status) {
                     var content_info = get_content_name (object_info, true, true);
                     // Translators: first %s - content type (Playlist), second - name
                     application.show_message (_("%s%s was removed from cache folder").printf (
@@ -227,7 +235,7 @@ namespace Cassette {
                 }
             });
 
-            if (tell_status) {
+            if (yell_status) {
                 var content_info = get_content_name (object_info, true, false);
                 // Translators: first %s - content type (Playlist), second - name
                 application.show_message (_("%s%s is removing, please do not close the app").printf (

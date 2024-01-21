@@ -81,6 +81,14 @@ namespace CassetteClient.Cachier {
 
             return null;
         }
+
+        public void check_all_cache () {
+            var objs = storager.get_saved_objects ();
+
+            foreach (var obj in objs) {
+                start_cache (obj);
+            }
+        }
     }
 
     ///////////

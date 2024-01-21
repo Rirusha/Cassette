@@ -689,8 +689,59 @@ namespace CassetteClient.Cachier {
             return build_type.name () + "-" + oid;
         }
 
-        public HasID[] get_saved_objects () {
-            return {};
+        public HasTrackList[] get_saved_objects () {
+            // Открыть папку с сохраненными оъектами, десериализовать их. Получить только альбомы и плейлисты.
+
+            var obj_arr = new Array<HasTrackList> ();
+
+            try {
+                FileEnumerator? enumerator = data_objects_dir_file.enumerate_children (
+                    "standard::*",
+                    FileQueryInfoFlags.NONE,
+                    null
+                );
+
+                if (enumerator != null) {
+                    FileInfo? file_info = null;
+
+                    string filename;
+                    File file;
+                    string decoded_name;
+                    Type obj_type;
+
+                    while ((file_info = enumerator.next_file ()) != null) {
+                        filename = file_info.get_name ();
+                        file = File.new_build_filename (data_objects_dir_file.peek_path (), filename);
+
+                        decoded_name = (string) (Base64.decode (filename));
+
+                        if ((typeof (YaMAPI.Playlist)).name () in decoded_name) {
+                            obj_type = typeof (YaMAPI.Playlist);
+                        } else if ((typeof (YaMAPI.Album)).name () in decoded_name) {
+                            obj_type = typeof (YaMAPI.Album);
+                        } else {
+                            continue;
+                        }
+
+                        uint8[] idata;
+                        file.load_contents (null, out idata, null);
+                        simple_dencode (ref idata);
+
+                        var jsoner = Jsoner.from_data (idata);
+                        var des_obj = (HasTrackList) jsoner.deserialize_object (obj_type);
+
+                        obj_arr.append_val (des_obj);
+                    }
+                }
+
+            } catch (Error e) {
+                Logger.warning (_("Can't find '%s'. Error message: %s").printf (
+                    data_objects_dir_file.peek_path (),
+                    e.message
+                ));
+            }
+
+            return obj_arr.data;
         }
 
         File get_object_cache_file (Type obj_type, string oid, bool is_tmp) {

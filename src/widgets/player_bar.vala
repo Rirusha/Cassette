@@ -330,12 +330,12 @@ namespace Cassette {
         void on_player_mode_inited () {
             current_track_info = player.get_current_track ();
 
-            info_panel_prev.track_info = null;
             if (info_panel_center.track_info == null) {
                 info_panel_center.track_info = current_track_info;
             }
-            carousel.scroll_to (info_panel_next, true);
+
             info_panel_next.track_info = current_track_info;
+            carousel.scroll_to (info_panel_next, true);
         }
 
         void on_player_current_track_changed (YaMAPI.Track? new_track) {
@@ -347,7 +347,7 @@ namespace Cassette {
             current_track_info = new_track;
 
             if (carousel.position != 1) {
-                carousel.scroll_to (info_panel_center, false);
+                info_panel_prev.track_info = current_track_info;
             }
 
             if (window.sidebar.track_detailed != null) {

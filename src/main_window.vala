@@ -52,6 +52,8 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Revealer search_revealer;
         [GtkChild]
+        unowned Gtk.Revealer sidebar_toggle_revealer;
+        [GtkChild]
         unowned Adw.ToolbarView toolbar_view;
         [GtkChild]
         unowned Gtk.SearchEntry search_entry;
@@ -119,10 +121,10 @@ namespace Cassette {
 
             sidebar.notify["is-shown"].connect (() => {
                 if (sidebar.is_shown) {
-                    sidebar_toggle_button.visible = true;
+                    sidebar_toggle_revealer.reveal_child = true;
                     sidebar_toggle_button.active = true;
                 } else {
-                    sidebar_toggle_button.visible = false;
+                    sidebar_toggle_revealer.reveal_child = false;
                 }
             });
 

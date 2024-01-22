@@ -65,13 +65,17 @@ template $CassetteMainWindow : Adw.ApplicationWindow {
           }
 
           [end]
-          ToggleButton sidebar_toggle_button {
-            styles [
-              "flat"
-            ]
+          Revealer sidebar_toggle_revealer {
+            reveal-child: false;
+            transition-type: crossfade;
 
-            visible: false;
-            icon-name: "sidebar-show-right-symbolic";
+            ToggleButton sidebar_toggle_button {
+              styles [
+                "flat"
+              ]
+
+              icon-name: "sidebar-show-right-symbolic";
+            }
           }
         }
 

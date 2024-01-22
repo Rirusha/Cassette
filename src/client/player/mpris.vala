@@ -45,17 +45,51 @@ namespace CassetteClient.Mpris {
 
         DBusConnection con;
 
-        public bool can_control { get; default = true; }
-        public bool can_go_next { get; default = true; }
+        public bool can_control {
+            get {
+                return true;
+            }
+        }
+
+        public bool can_go_next { get; private set; default = true; }
         public bool can_go_previous { get; private set; default = true; }
-        public bool can_pause { get; default = true; }
-        public bool can_play { get; default = true; }
-        public bool can_seek { get; default = true; }
+        public bool can_play { get; private set; default = true; }
 
-        public string playback_status { get; private set; default = "Paused"; }
+        public bool can_pause {
+            get {
+                return true;
+            }
+        }
 
-        public int64 position { get; private set; default = 0; }
-        public double volume { get; private set; default = 0.0; }
+        public bool can_seek {
+            get {
+                return !player.is_loading;
+            }
+        }
+
+        public string playback_status {
+            get {
+                switch (player.player_state) {
+                    case Player.PlayerState.PLAYING:
+                        return "Playing";
+                    case Player.PlayerState.PAUSED:
+                        return "Paused";
+                    case Player.PlayerState.NONE:
+                        return "Stopped";
+                    default:
+                        assert_not_reached ();
+                }
+            }
+        }
+
+        public int64 position {
+            get {
+                return player.playback_pos_ms;
+            }
+        }
+        public double volume { get; set; }
+
+        public signal void seeked (int64 position);
 
         public HashTable<string, Variant>? metadata {
             owned get {
@@ -66,33 +100,27 @@ namespace CassetteClient.Mpris {
         public MprisPlayer (DBusConnection con) {
             this.con = con;
 
-            player.notify["player-state"].connect (() => {
-                switch (player.player_state) {
-                    case Player.PlayerState.PLAYING:
-                        playback_status = "Playing";
-                        break;
-                    case Player.PlayerState.PAUSED:
-                        playback_status = "Paused";
-                        break;
-                    case Player.PlayerState.NONE:
-                        playback_status = "Stopped";
-                        break;
-                }
-
-                try {
-                    update_properties ();
-                } catch (Error e) {
-                    Logger.warning (e.message);
-                }
-
+            player.current_track_start_loading.connect (() => {
+                can_go_next = false;
+                can_go_previous = false;
+                can_play = false;
             });
 
-            player.notify["player-type"].connect (() => {
-                if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
-                    can_go_previous = true;
-                } else {
-                    can_go_previous = false;
-                }
+            player.current_track_finish_loading.connect (() => {
+                can_go_next = true;
+                can_go_previous = player.player_type == Player.PlayerModeType.TRACK_LIST;
+                can_play = true;
+            });
+
+            bind_property ("volume", player, "volume", BindingFlags.BIDIRECTIONAL);
+
+            player.playback_callback.connect ((position) => {
+                seeked ((int64) position);
+            });
+
+            player.notify["player-state"].connect (() => {
+                send_property_change ("PlaybackStatus", this.playback_status);
+                send_property_change ("Metadata", _get_metadata ());
             });
         }
 
@@ -117,8 +145,11 @@ namespace CassetteClient.Mpris {
 
                 metadata.insert ("mpris:trackid", obj_path);
                 metadata.insert ("mpris:length", current_track.duration_ms);
+                metadata.insert ("mpris:artUrl", current_track.get_cover_items_by_size (ArtSize.TRACK)[0]);
                 metadata.insert ("xesam:title", current_track.title);
-                metadata.insert ("xesam:album", current_track.albums.size != 0 ? current_track.albums[0].title : "Unknown Album");
+                metadata.insert ("xesam:album",
+                    current_track.albums.size != 0 ? current_track.albums[0].title : "Unknown Album"
+                );
                 metadata.insert ("xesam:albumArtist", artists);
                 metadata.insert ("xesam:artist", artists);
             }
@@ -126,7 +157,7 @@ namespace CassetteClient.Mpris {
             return metadata;
         }
 
-        // thanks to https://github.com/bcedu/MuseIC
+        // Спасибо https://github.com/bcedu/MuseIC
         bool send_property_change (string property, Variant variant) {
             var builder = new VariantBuilder (VariantType.ARRAY);
             var invalidated_builder = new VariantBuilder (new VariantType ("as"));
@@ -148,11 +179,6 @@ namespace CassetteClient.Mpris {
                 Logger.warning (@"Could not send MPRIS property change: $(e.message)");
             }
             return false;
-        }
-
-        public void update_properties () throws Error {
-            send_property_change ("PlaybackStatus", this.playback_status);
-            send_property_change ("Metadata", _get_metadata ());
         }
 
         public void next (BusName sender) throws Error {

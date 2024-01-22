@@ -94,9 +94,8 @@ namespace Cassette {
 
             carousel.page_changed.connect (on_carousel_page_changed);
 
-            volume_button.notify["volume"].connect (() => {
-                player.volume = volume_button.volume;
-            });
+            volume_button.bind_property ("volume", player, "volume", BindingFlags.BIDIRECTIONAL);
+
             storager.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
 
             slider.change_value.connect ((scroll_type, new_value) => {

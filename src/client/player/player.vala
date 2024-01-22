@@ -132,17 +132,7 @@ namespace CassetteClient.Player {
             }
         }
 
-        public double volume {
-            get {
-                var value = Value (Type.DOUBLE);
-                _volume.get_property ("volume", ref value);
-
-                return value.get_double ();
-            }
-            set {
-                _volume.set_property ("volume", value);
-            }
-        }
+        public double volume { get; set; }
 
         public double playback_pos_sec {
             get {
@@ -219,7 +209,7 @@ namespace CassetteClient.Player {
 
         Gst.Pipeline pipeline;
         Gst.Element source;
-        Gst.Element _volume;
+        Gst.Element _volume_el;
 
         public Player () {
             Object ();
@@ -235,17 +225,19 @@ namespace CassetteClient.Player {
             var audioconvert = Gst.ElementFactory.make ("audioconvert", null);
             var audioresample = Gst.ElementFactory.make ("audioresample", null);
             var sink = Gst.ElementFactory.make ("autoaudiosink", null);
-            _volume = Gst.ElementFactory.make ("volume", null);
+            _volume_el = Gst.ElementFactory.make ("volume", null);
 
-            pipeline.add_many (source, audioconvert, audioresample, sink, _volume);
+            _volume_el.bind_property ("volume", this, "volume", BindingFlags.BIDIRECTIONAL);
+
+            pipeline.add_many (source, audioconvert, audioresample, sink, _volume_el);
 
             source.pad_added.connect ((src, pad) => {
                 var sinkpad = audioconvert.get_static_pad ("sink");
                 pad.link (sinkpad);
             });
 
-            audioresample.link (_volume);
-            _volume.link (sink);
+            audioresample.link (_volume_el);
+            _volume_el.link (sink);
             audioconvert.link (audioresample);
             audioresample.link (sink);
 

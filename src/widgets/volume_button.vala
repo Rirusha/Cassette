@@ -35,14 +35,7 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Scale volume_level_scale;
 
-        public double volume {
-            get {
-                return volume_level_scale.get_value ();
-            }
-            set {
-                volume_level_scale.set_value (value);
-            }
-        }
+        public double volume { get; set; }
 
         public VolumeButton () {
             Object ();
@@ -78,6 +71,8 @@ namespace Cassette {
                 } else {
                     real_menu_button.icon_name = "audio-volume-high-symbolic";
                 }
+
+                volume_level_scale.set_value (volume);
             });
         }
     }

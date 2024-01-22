@@ -250,7 +250,7 @@ namespace CassetteClient.Player {
             }
         }
 
-        public override override YaMAPI.Track? get_current_track () {
+        public override YaMAPI.Track? get_current_track () {
             if (_queue.tracks.size != 0) {
                 if (_queue.current_index >= _queue.tracks.size) {
                     _queue.current_index = 0;

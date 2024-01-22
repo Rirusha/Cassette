@@ -178,9 +178,10 @@ namespace Cassette {
                 });
             }
 
-            yam_talker.object_updated.connect ((obj_oid) => {
-                if (obj_oid == ((YaMAPI.Playlist) object_info).oid) {
-                    refresh.begin ();
+            yam_talker.playlist_changed.connect ((new_playlist) => {
+                if (new_playlist.oid == ((YaMAPI.Playlist) object_info).oid) {
+                    object_info = new_playlist;
+                    set_values ();
                 }
             });
 

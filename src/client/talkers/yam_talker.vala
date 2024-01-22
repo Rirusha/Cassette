@@ -38,7 +38,7 @@ namespace CassetteClient {
         public signal void track_dislikes_start_change (string track_id);
         public signal void track_dislikes_end_change (string track_id, bool is_disliked);
 
-        public signal void object_updated (string oid);
+        public signal void playlist_changed (YaMAPI.Playlist new_playlist);
         public signal void playlists_updated ();
         public signal void playlist_start_delete (string oid);
         public signal void playlist_stop_delete (string oid);
@@ -422,7 +422,7 @@ namespace CassetteClient {
 
             net_run_wout_code (() => {
                 new_playlist = client.change_playlist (null, kind, diff.to_json (), revision);
-                object_updated (new_playlist.oid);
+                playlist_changed (new_playlist);
             });
 
             return new_playlist;
@@ -437,7 +437,7 @@ namespace CassetteClient {
 
             net_run_wout_code (() => {
                 new_playlist = client.change_playlist (null, kind, diff.to_json (), revision);
-                object_updated (new_playlist.oid);
+                playlist_changed (new_playlist);
             });
 
             return new_playlist;
@@ -448,7 +448,7 @@ namespace CassetteClient {
 
             net_run_wout_code (() => {
                 new_playlist = client.change_playlist_visibility (null, kind, is_public ? "public" : "private");
-                object_updated (new_playlist.oid);
+                playlist_changed (new_playlist);
             });
 
             return new_playlist;
@@ -487,7 +487,7 @@ namespace CassetteClient {
 
             net_run_wout_code (() => {
                 new_playlist = client.change_playlist_name (null, kind, new_name);
-                object_updated (new_playlist.oid);
+                playlist_changed (new_playlist);
             });
 
             return new_playlist;

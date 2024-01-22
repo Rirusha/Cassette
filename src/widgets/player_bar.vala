@@ -235,7 +235,6 @@ namespace Cassette {
         }
 
         void on_carousel_page_changed (uint index) {
-            //  carousel.freeze_notify ();
             carousel.page_changed.disconnect (on_carousel_page_changed);
 
             if (index == 2) {
@@ -253,14 +252,18 @@ namespace Cassette {
                 carousel.prepend (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
 
                 player.get_prev_track.begin ((obj, res) => {
-                    info_panel_prev.track_info = player.get_prev_track.end (res);
+                    // Исправление проблемы неизменения положения карусели, если карусель ещё не зааллокейчена
+                    if (carousel.position != 1) {
+                        info_panel_prev.track_info = current_track_info;
+                    } else {
+                        info_panel_prev.track_info = player.get_prev_track.end (res);
+                    }
                 });
 
                 carousel.scroll_to (info_panel_center, false);
             }
 
             carousel.page_changed.connect (on_carousel_page_changed);
-            //  carousel.thaw_notify ();
         }
 
         public async void update_queue () {
@@ -345,10 +348,6 @@ namespace Cassette {
             }
 
             current_track_info = new_track;
-
-            if (carousel.position != 1) {
-                info_panel_prev.track_info = current_track_info;
-            }
 
             if (window.sidebar.track_detailed != null) {
                 if (current_track_info.id == window.sidebar.track_detailed.track_info.id) {

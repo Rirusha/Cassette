@@ -452,15 +452,15 @@ namespace Cassette {
                 index = 0;
             }
 
-            int track_number = application.main_window.get_height () / 98 + 5;
+            int track_number = application.main_window.get_height () / 80;
 
             int start = 0;
-            if (index - track_number > 0) {
-                start = index - track_number;
+            if (index - 3 > 0) {
+                start = index - 3;
             }
             int end = length;
-            if (index + track_number < length) {
-                end = index + track_number;
+            if (index + track_number + 3 < length) {
+                end = index + track_number + 3;
             }
 
             var new_loaded_rows = range_set (start, end);

@@ -100,29 +100,34 @@ template $CassetteMainWindow : Adw.ApplicationWindow {
           }
         }
 
-        [top]
-        Adw.Banner info_banner {
-          revealed: false;
-        }
+        content: Box {
+          orientation: vertical;
 
-        content: $CassetteSideBar sidebar {
-          content: Adw.ToastOverlay toast_overlay {
-            vexpand: true;
-            child: Stack loading_stack {
+          Adw.Banner info_banner {
+            button-label: _("Reconnect");
+            title: _("Connection problems");
+            revealed: false;
+          }
 
-              StackPage {
-                name: "loading";
-                child: $CassetteLoadingWidget {
-                  size: 24;
-                };
-              }
+          $CassetteSideBar sidebar {
+            content: Adw.ToastOverlay toast_overlay {
+              vexpand: true;
+              child: Stack loading_stack {
 
-              StackPage {
-                name: "done";
-                child: Adw.ViewStack main_stack {};
-              }
+                StackPage {
+                  name: "loading";
+                  child: $CassetteLoadingWidget {
+                    size: 24;
+                  };
+                }
+
+                StackPage {
+                  name: "done";
+                  child: Adw.ViewStack main_stack {};
+                }
+              };
             };
-          };
+          }
         };
 
         [bottom]

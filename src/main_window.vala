@@ -74,6 +74,8 @@ namespace Cassette {
             }
         }
 
+        int reconnect_timer = 5;
+
         public Pager pager { get; construct; }
 
         GLib.Binding? current_view_can_back_binding = null;
@@ -138,6 +140,28 @@ namespace Cassette {
                 Adw.ViewStackPage current_page = main_stack.get_page (main_stack.get_visible_child ());
             });
 
+            info_banner.button_clicked.connect (try_reconnect);
+
+                //  try {
+                //      string cmd = "";
+
+                //      switch (Environment.get_variable ("XDG_CURRENT_DESKTOP")) {
+                //          case "GNOME":
+                //              cmd = "gnome-control-center network";
+                //              break;
+                //          default:
+                //              Logger.warning ("Unsupported DE '%s'. You can create issue on github: %s.".printf (
+                //                  Environment.get_variable ("XDG_CURRENT_DESKTOP"),
+                //                  "https://github.com/Rirusha/Cassette/issues/new/choose"
+                //              ));
+                //      }
+
+                //      Process.spawn_command_line_sync (cmd);
+                //  } catch (SpawnError e) {
+                //      Logger.warning ("Error while opening network settings. Error message: %s".printf (e.message));
+                //  }
+            //  });
+
             var show_disliked_tracks_action = new SimpleAction ("show-disliked-tracks", null);
             show_disliked_tracks_action.activate.connect (() => {
                 current_view.add_view (new DislikedTracksView ());
@@ -194,7 +218,6 @@ namespace Cassette {
                         set_online ();
                         break;
                     case ApplicationState.OFFLINE:
-                        show_message (_("Connection problems"));
                         set_offline ();
                         break;
                     default:
@@ -276,6 +299,27 @@ namespace Cassette {
             toast_overlay.add_toast (toast);
 
             Logger.info (_("Window info message: %s").printf (message));
+        }
+
+        async void try_reconnect () {
+            info_banner.sensitive = false;
+            info_banner.button_label = reconnect_timer.to_string ();
+
+            Timeout.add_seconds (1, () => {
+                if (reconnect_timer > 1) {
+                    reconnect_timer--;
+                    info_banner.button_label = reconnect_timer.to_string ();
+                    return Source.CONTINUE;
+
+                } else {
+                    info_banner.sensitive = true;
+                    info_banner.button_label = _("Reconnect");
+                    reconnect_timer = 5;
+                    return Source.REMOVE;
+                }
+            });
+
+            player_bar.update_queue.begin ();
         }
 
         async void load_avatar () {

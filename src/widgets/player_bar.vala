@@ -56,6 +56,8 @@ namespace Cassette {
 
         public MainWindow window { get; construct set; }
 
+        bool centerized = false;
+
         TrackInfoPanel info_panel_prev {
             get {
                 return (TrackInfoPanel) carousel.get_nth_page (0);
@@ -234,6 +236,15 @@ namespace Cassette {
         }
 
         void on_carousel_page_changed (uint index) {
+            if (index == 1) {
+                centerized = true;
+            }
+
+            if (!centerized) {
+                carousel.scroll_to (info_panel_center, false);
+                return;
+            }
+
             carousel.page_changed.disconnect (on_carousel_page_changed);
 
             if (index == 2) {
@@ -251,12 +262,7 @@ namespace Cassette {
                 carousel.prepend (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
 
                 player.get_prev_track.begin ((obj, res) => {
-                    // Исправление проблемы неизменения положения карусели, если карусель ещё не зааллокейчена
-                    if (carousel.position != 1) {
-                        info_panel_prev.track_info = current_track_info;
-                    } else {
-                        info_panel_prev.track_info = player.get_prev_track.end (res);
-                    }
+                    info_panel_prev.track_info = player.get_prev_track.end (res);
                 });
 
                 carousel.scroll_to (info_panel_center, false);

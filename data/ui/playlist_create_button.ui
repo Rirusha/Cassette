@@ -24,7 +24,7 @@
                       <object class="GtkImage">
                         <property name="width-request">200</property>
                         <property name="height-request">200</property>
-                        <property name="icon-name">list-add-symbolic</property>
+                        <property name="icon-name">adwaita-list-add-symbolic</property>
                         <property name="icon-size">large</property>
                       </object>
                     </child>

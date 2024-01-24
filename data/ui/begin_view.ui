@@ -119,7 +119,7 @@
                     <property name="show-end-title-buttons">false</property>
                     <child type="start">
                       <object class="GtkButton" id="button_refresh">
-                        <property name="icon-name">view-refresh-symbolic</property>
+                        <property name="icon-name">adwaita-view-refresh-symbolic</property>
                       </object>
                     </child>
                   </object>

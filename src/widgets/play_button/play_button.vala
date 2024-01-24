@@ -26,16 +26,16 @@ namespace Cassette {
         construct {
             tooltip_text = _("Play/Pause");
 
-            icon_name = "media-playback-start-symbolic";
+            icon_name = "adwaita-media-playback-start-symbolic";
         }
 
         public void set_playing () {
-            icon_name = "media-playback-pause-symbolic";
+            icon_name = "adwaita-media-playback-pause-symbolic";
             is_playing = true;
         }
 
         public void set_paused () {
-            icon_name = "media-playback-start-symbolic";
+            icon_name = "adwaita-media-playback-start-symbolic";
             is_playing = true;
         }
 

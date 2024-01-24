@@ -62,7 +62,7 @@ namespace Cassette {
         }
 
         public void clear () {
-            real_image.icon_name = "audio-x-generic-symbolic";
+            real_image.icon_name = "adwaita-audio-x-generic-symbolic";
         }
 
         public async void load_image () {

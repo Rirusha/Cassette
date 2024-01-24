@@ -63,13 +63,13 @@ namespace Cassette {
                 volume_dec_button.sensitive = volume != 0.0;
 
                 if (volume == 0.0) {
-                    real_menu_button.icon_name = "audio-volume-muted-symbolic";
+                    real_menu_button.icon_name = "adwaita-audio-volume-muted-symbolic";
                 } else if (volume < 0.45) {
-                    real_menu_button.icon_name = "audio-volume-low-symbolic";
+                    real_menu_button.icon_name = "adwaita-audio-volume-low-symbolic";
                 } else if (volume < 0.9) {
-                    real_menu_button.icon_name = "audio-volume-medium-symbolic";
+                    real_menu_button.icon_name = "adwaita-audio-volume-medium-symbolic";
                 } else {
-                    real_menu_button.icon_name = "audio-volume-high-symbolic";
+                    real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";
                 }
 
                 volume_level_scale.set_value (volume);

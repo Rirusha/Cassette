@@ -1,11 +1,32 @@
-![com github Rirusha Cassette](https://raw.githubusercontent.com/Rirusha/Cassette/master/data/icons/hicolor/scalable/apps/io.github.Rirusha.Cassette.svg)
+<h1 align="center">
+  <img src="data/icons/hicolor/scalable/apps/io.github.Rirusha.Cassette.svg" alt="Cassette"/>
+  <br/>
+  Cassette
+</h1>
 
+<p align="center">
+    GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux.
+</p>
 
-# Cassette
+<br/>
 
-GTK/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux.
+<p align="center">
+  <a href="https://stopthemingmy.app">
+    <img src="https://stopthemingmy.app/badge.svg"/>
+  </a>
+</p>
 
-## Версия 0.1.1
+<p align="center">
+  <a href="https://flathub.org/apps/details/io.github.Rirusha.Cassette">
+      <img width="200" src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub">
+  </a>
+</p>
+
+<p align="center">
+    <img src="data/images/first.png" alt="Screenshot"/>
+</p>
+
+## Последний релиз: 0.1.1
 * Добавлена новая авторизация через WebView;
 * Исправлена ошибка при некорректном выводе кода ошибки при попытке открыть, например, закрытый или несуществующий плейлист;
 * Исправлено появление предупреждение в терминал о невозможности прочитать файл страниц при условии, что страницы ещё не были созданы;
@@ -24,22 +45,19 @@ GTK/Adwaita приложение, которое позволит вам исп�
 Все запланированные фичи можете [посмотреть в бэклоге](https://github.com/users/Rirusha/projects/2)
 
 ## Установка
-### Репозитории
-Cassette доступен в репозиториях:
+### Через репозиторий...
+Приложение Cassette доступно здесь:
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
 ### ALT Sisyphus
 ```
 apt-get install cassette
 ```
-### Используя flatpak
-
+### ... или используя flatpak
+Вы можете скачать по [ссылке](https://flathub.org/apps/details/io.github.Rirusha.Cassette) или используя терминал
 ```
 flatpak install flathub io.github.Rirusha.Cassette
 ```
-<a href='https://flathub.org/apps/io.github.Rirusha.Cassette'>
-  <img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/>
-</a>
 
 ### Сборка из исходного кода
 
@@ -56,7 +74,7 @@ flatpak install flathub io.github.Rirusha.Cassette
 * ```webkitgtk-6.0```
 * ```gio-2.0```
 
-Утилиты:
+Утилиты для сборки:
 * ```meson```
 * ```ninja```
 * ```cmake```
@@ -81,7 +99,7 @@ ninja -C builddir install
 Вы можете поддержать несколькими способами:
 * Создать ишью с проблемой или предложением по улучшению;
 * Сделать pul request с фиксом или добавлением функционала;
-* [Поддержать рублём](https://www.tinkoff.ru/cf/21GCxLuFuE9);
+* [Поддержать рублём](https://www.tinkoff.ru/cf/21GCxLuFuE9) (Просьба указывать в сообщении свой никнейм, иначе я не смогу добавить вас в соответствующий блок окна About);
 * Похвалить автора в телеграм-чате :3.
 
 ## Благодарность

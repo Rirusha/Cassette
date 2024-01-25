@@ -19,6 +19,7 @@ template $CassettePlayerBar : Adw.Bin {
 
       halign: fill;
       hexpand: true;
+      tooltip-text: _("Show track info");
 
       Adw.Carousel carousel {
         interactive: false;
@@ -82,6 +83,7 @@ template $CassettePlayerBar : Adw.Bin {
               margin-end: 8;
               action-name: "app.change-shuffle";
               icon-name: "adwaita-media-playlist-shuffle-symbolic";
+              tooltip-text: "Change shuffle mode";
             }
 
             Button prev_track_button {
@@ -93,6 +95,7 @@ template $CassettePlayerBar : Adw.Bin {
               valign: center;
               action-name: "app.prev";
               icon-name: "adwaita-media-skip-backward-symbolic";
+              tooltip-text: "Play previous track";
             }
           };
 
@@ -118,6 +121,7 @@ template $CassettePlayerBar : Adw.Bin {
               valign: center;
               action-name: "app.next";
               icon-name: "adwaita-media-skip-forward-symbolic";
+              tooltip-text: "Play next track";
             }
 
             Button repeat_button {
@@ -130,6 +134,7 @@ template $CassettePlayerBar : Adw.Bin {
               margin-start: 8;
               action-name: "app.change-repeat";
               icon-name: "adwaita-media-playlist-repeat-song-symbolic";
+              tooltip-text: "Change repeat mode";
             }
 
             $CassetteDislikeButton dislike_button {
@@ -210,6 +215,7 @@ template $CassettePlayerBar : Adw.Bin {
 
         valign: center;
         icon-name: "il-music-queue-symbolic";
+        tooltip-text: "Show playback queue";
       }
       
       $CassetteTrackOptionsButton track_options_button {
@@ -220,6 +226,7 @@ template $CassettePlayerBar : Adw.Bin {
 
       $CassetteVolumeButton volume_button {
         valign: center;
+        tooltip-text: "Change volume";
       }
 
       Button fullscreen_button {

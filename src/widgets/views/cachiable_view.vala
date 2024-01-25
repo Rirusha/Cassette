@@ -21,27 +21,109 @@
 
 using CassetteClient;
 
-
 namespace Cassette {
     public abstract class CachiableView : HasTracksView {
-        protected Gtk.Stack download_stack { get; set; }
-        protected Gtk.ProgressBar loading_progress_bar { get; set; }
+        public Gtk.Stack download_stack { get; set; }
+        Gtk.Overlay overlay { get; default = new Gtk.Overlay (); }
+        public Gtk.ProgressBar saving_progress_bar { get; default = new Gtk.ProgressBar (); }
 
-        Cachier.YaMObjectCachier? yamc = null;
+        public new Gtk.Widget child {
+            get {
+                return overlay.child;
+            }
+            set {
+                overlay.child = value;
+            }
+        }
+
+        Cachier.Job? _job = null;
+        Cachier.Job? job {
+            get {
+                return _job;
+            }
+            set {
+                _job = value;
+
+                if (_job != null) {
+                    _job.action_done.connect (() => {
+                        if (!saving_progress_bar.visible) {
+                            saving_progress_bar.visible = true;
+                        }
+                    });
+
+                    _job.cancelled.connect (() => {
+                        download_stack.sensitive = false;
+                    });
+
+                    download_stack.set_visible_child_name ("abort");
+
+                    if (_job.is_cancelled) {
+                        download_stack.sensitive = false;
+                    }
+                    download_stack.sensitive = !_job.is_cancelled;
+
+                    _job.track_saving_ended.connect ((saved, total) => {
+                        saving_progress_bar.fraction = (double) saved / (double) total;
+                    });
+
+                    _job.job_done.connect ((obj, status) => {
+                        switch (status) {
+                            case Cachier.JobDoneStatus.SUCCESS:
+                                var content_info = get_content_name (object_info, true, true);
+                                // Translators: first %s - content type (Playlist), second - name
+                                if (yell_status) {
+                                    application.show_message (_("%s%s successfully cached").printf (
+                                        content_info[0],
+                                        content_info[1]
+                                    ), true);
+                                }
+                                download_stack.visible_child_name = "delete";
+                                break;
+
+                            case Cachier.JobDoneStatus.FAILED:
+                                var content_info = get_content_name (object_info, false, true);
+                                // Translators: first %s - content type (Playlist), second - name
+                                application.show_message (_("Caching of %s%s was canceled, due to network error")
+                                    .printf (
+                                        content_info[0],
+                                        content_info[1]
+                                    ));
+                                download_stack.visible_child_name = "save";
+                                break;
+
+                            case Cachier.JobDoneStatus.ABORTED:
+                                var content_info = get_content_name (object_info, false, true);
+                                // Translators: first %s - content type (Playlist), second - name
+                                application.show_message (_("Caching of %s%s was aborted").printf (
+                                    content_info[0],
+                                    content_info[1]
+                                ));
+                                download_stack.visible_child_name = "save";
+                                break;
+                        }
+
+                        download_stack.sensitive = true;
+                        saving_progress_bar.fraction = 0;
+                        saving_progress_bar.visible = false;
+
+                        _job = null;
+                    });
+                }
+            }
+        }
+
+        bool yell_status = true;
 
         construct {
-            cachier_controller.content_cache_state_changed.connect ((content_type, content_id) => {
-                if (object_info == null) {
-                    return;
-                }
+            base.child = overlay;
 
-                if (content_type == Cachier.ContentType.PLAYLIST || content_type == Cachier.ContentType.ALBUM) {
-                    if (((YaMAPI.Playlist) object_info).oid == content_id && yamc == null) {
-                        download_stack.sensitive = false;
-                        download_stack.tooltip_text = _("Cache state of this object was changed out of this view. Please refresh");
-                    }
-                }
-            });
+            saving_progress_bar.add_css_class ("osd");
+            saving_progress_bar.visible = false;
+
+            saving_progress_bar.valign = Gtk.Align.START;
+            saving_progress_bar.vexpand = false;
+
+            overlay.add_overlay (saving_progress_bar);
         }
 
         public async override void first_show () {
@@ -101,85 +183,66 @@ namespace Cassette {
             return {content_name, content_title};
         }
 
-        public virtual void start_saving (bool tell_status) {
-            if (yamc != null) {
-                yamc.stop ();
-                yamc = null;
-            }
-
+        protected void start_saving (bool yell_status) {
             download_stack.visible_child_name = "abort";
+            this.yell_status = yell_status;
 
-            yamc = new Cachier.YaMObjectCachier.with_progress_bar (object_info, loading_progress_bar);
-            yamc.job_done.connect ((obj, status) => {
-                switch (status) {
-                    case Cachier.JobDoneStatus.SUCCESS:
-                        if (tell_status) {
-                            var content_info = get_content_name (yamc.yam_object, true, true);
-                            // Translators: first %s - content type (Playlist), second - name
-                            application.show_message (_("%s%s successfully cached").printf (content_info[0], content_info[1]), true);
-                        }
-                        download_stack.visible_child_name = "delete";
-                        break;
-                    case Cachier.JobDoneStatus.FAILED:
-                        var content_info = get_content_name (yamc.yam_object, false, true);
-                        // Translators: first %s - content type (Playlist), second - name
-                        application.show_message (_("Caching of %s%s was canceled, due to network error").printf (content_info[0], content_info[1]));
-                        download_stack.visible_child_name = "save";
-                        break;
-                    case Cachier.JobDoneStatus.ABORTED:
-                        var content_info = get_content_name (yamc.yam_object, false, true);
-                        // Translators: first %s - content type (Playlist), second - name
-                        application.show_message (_("Caching of %s%s was aborted").printf (content_info[0], content_info[1]));
-                        download_stack.visible_child_name = "save";
-                        break;
-                }
-                download_stack.sensitive = true;
-                loading_progress_bar.fraction = 0;
-                loading_progress_bar.visible = false;
-                yamc = null;
-            });
-            yamc.cache_async.begin ();
+            job = cachier.start_cache (object_info);
 
-            if (tell_status) {
-                var content_info = get_content_name (yamc.yam_object, false, false);
+            if (yell_status) {
+                var content_info = get_content_name (object_info, false, false);
                 // Translators: first %s - content type (Playlist), second - name
                 application.show_message (_("Cacheing of %s%s started").printf (content_info[0], content_info[1]));
             }
         }
 
-        public virtual void abort_saving () {
-            download_stack.sensitive = false;
-            yamc.abort ();
+        protected virtual void check_cache () {
+            download_stack.sensitive = true;
+
+            if (job == null) {
+                job = cachier.find_job (object_info.oid);
+
+                if (job == null) {
+                    var location = storager.object_cache_location (object_info.get_type (), object_info.oid);
+                    if (!location.is_tmp) {
+                        start_saving (false);
+                    }
+                }
+            }
         }
 
-        public virtual void uncache_playlist (bool tell_status) {
-            download_stack.sensitive = false;
-            yamc = new Cachier.YaMObjectCachier (object_info);
+        public virtual void abort_saving () {
+            if (job != null) {
+                job.abort ();
+            }
+        }
 
-            yamc.uncache_async.begin (() => {
+        public virtual void uncache_playlist (bool yell_status) {
+            download_stack.sensitive = false;
+            this.yell_status = yell_status;
+
+            cachier.uncache.begin (object_info, () => {
                 download_stack.visible_child_name = "save";
                 download_stack.sensitive = true;
 
-                if (tell_status) {
-                    var content_info = get_content_name (yamc.yam_object, true, true);
+                if (yell_status) {
+                    var content_info = get_content_name (object_info, true, true);
                     // Translators: first %s - content type (Playlist), second - name
-                    application.show_message (_("%s%s was removed from cache folder").printf (content_info[0], content_info[1]), true);
+                    application.show_message (_("%s%s was removed from cache folder").printf (
+                        content_info[0],
+                        content_info[1]
+                    ), true);
                 }
             });
 
-            if (tell_status) {
-                var content_info = get_content_name (yamc.yam_object, true, false);
+            if (yell_status) {
+                var content_info = get_content_name (object_info, true, false);
                 // Translators: first %s - content type (Playlist), second - name
-                application.show_message (_("%s%s is removing, please do not close the app").printf (content_info[0], content_info[1]));
+                application.show_message (_("%s%s is removing, please do not close the app").printf (
+                    content_info[0],
+                    content_info[1]
+                ));
             }
-        }
-
-        public virtual void check_cache () {
-            var location = storager.object_cache_location (object_info.get_type (), ((HasID) object_info).oid);
-            if (location.is_tmp == false) {
-                start_saving (false);
-            }
-            download_stack.sensitive = true;
         }
     }
 }

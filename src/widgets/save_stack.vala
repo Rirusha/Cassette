@@ -69,7 +69,7 @@ namespace Cassette {
                 }
 
                 if (key == "show-save-stack" || key == "show-temp-save-mark") {
-                    cache_state_changed (cachier_controller.get_content_cache_state (content_type, content_id));
+                    cache_state_changed (cachier.controller.get_content_cache_state (content_type, content_id));
                 }
             });
 
@@ -98,13 +98,13 @@ namespace Cassette {
             this.content_id = content_id;
 
             if (con_id != -1) {
-                cachier_controller.content_cache_state_changed.disconnect (on_content_cache_state_changed);
+                cachier.controller.content_cache_state_changed.disconnect (on_content_cache_state_changed);
                 con_id = -1;
             }
 
-            con_id = cachier_controller.content_cache_state_changed.connect (on_content_cache_state_changed);
+            con_id = cachier.controller.content_cache_state_changed.connect (on_content_cache_state_changed);
 
-            cache_state_changed (cachier_controller.get_content_cache_state (content_type, content_id));
+            cache_state_changed (cachier.controller.get_content_cache_state (content_type, content_id));
         }
 
         void on_content_cache_state_changed (Cachier.ContentType content_type, string content_id, Cachier.CacheingState state) {

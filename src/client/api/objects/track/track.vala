@@ -24,30 +24,35 @@ namespace CassetteClient.YaMAPI {
     public enum TrackType {
         MUSIC,
         AUDIOBOOK,
-        PODCAST
+        PODCAST,
+        LOCAL
     }
 
     public class Track : YaMObject, HasCover {
 
-        public bool explicit {
+        public bool is_explicit {
             get {
                 return content_warning == "explicit"? true : false;
             }
         }
 
-        public bool ugc {
+        public bool is_ugc {
             get {
                 return track_source == "UGC"? true : false;
             }
         }
 
+        // Нужно для парсинга очереди
         public string track_id {
+            get {
+                return id;
+            }
             set {
                 id = value;
             }
         }
 
-        public string full_title {
+        public string title_with_version {
             owned get {
                 if (version != null) {
                     return @"$title $version";
@@ -63,13 +68,15 @@ namespace CassetteClient.YaMAPI {
                         return TrackType.AUDIOBOOK;
                     case "podcast-episode":
                         return TrackType.PODCAST;
+                    case "local":
+                        return TrackType.LOCAL;
                     default:
                         return TrackType.MUSIC;
                 }
             }
         }
 
-        public bool need_bookmate {
+        public bool is_need_bookmate {
             get {
                 return "bookmate" in available_for_options;
             }
@@ -90,14 +97,14 @@ namespace CassetteClient.YaMAPI {
         public string? type_ { get; set; }
         public string? content_warning { get; set; }
         public string? version { get; set; }
-        public string? background_video_uri { get; set; }
+        //  public string? background_video_uri { get; set; }
         public string? short_description { get; set; }
         public bool is_suitable_for_children { get; set; }
         public string track_source { get; set; }
         public ArrayList<string> available_for_options { get; set; default = new ArrayList<string> (); }
         public LyricsInfo lyrics_info { get; set; }
 
-        public ArrayList<string> get_cover_items_by_size (int size) {
+        public virtual ArrayList<string> get_cover_items_by_size (int size) {
             var array = new ArrayList<string> ();
             if (cover_uri != null) {
                 array.add ("https://" + cover_uri.replace ("%%", @"$(size)x$(size)"));
@@ -111,6 +118,14 @@ namespace CassetteClient.YaMAPI {
                 artists_names[i] = artists[i].name;
             }
             return string.joinv (", ", artists_names);
+        }
+
+        public string form_debug_info () {
+            /*
+                Сформировать debug информацию о треке            
+            */
+
+            return "%s-%s".printf (id, title_with_version);
         }
     }
 }

@@ -136,7 +136,10 @@ namespace CassetteClient.YaMAPI {
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
-        public Gee.ArrayList<Track> get_tracks (string[] id_list, bool with_positions = false) throws ClientError, BadStatusCodeError {
+        public Gee.ArrayList<Track> get_tracks (
+            string[] id_list,
+            bool with_positions = false
+        ) throws ClientError, BadStatusCodeError {
             var datalist = Datalist<string> ();
             datalist.set_data ("track-ids", string.joinv (",", id_list));
             datalist.set_data ("with-positions", with_positions.to_string ());
@@ -415,7 +418,9 @@ namespace CassetteClient.YaMAPI {
             return playlist_array;
         }
 
-        public Gee.ArrayList<LikedPlaylist> get_likes_playlists_list (owned string? uid = null) throws ClientError, BadStatusCodeError {
+        public Gee.ArrayList<LikedPlaylist> get_likes_playlists_list (
+            owned string? uid = null
+        ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
 
             Bytes bytes = soup_wrapper.get_sync (

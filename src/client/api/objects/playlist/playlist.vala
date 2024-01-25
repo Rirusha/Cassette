@@ -22,7 +22,7 @@
 using Gee;
 
 namespace CassetteClient.YaMAPI {
-    public class Playlist : YaMObject, HasCover, HasTrackList, HasID {
+    public class Playlist : YaMObject, HasCover, HasID, HasTrackList {
 
         public bool is_public {
             get {
@@ -120,7 +120,7 @@ namespace CassetteClient.YaMAPI {
             var out_track_list = new ArrayList<Track> ();
 
             foreach (TrackShort track_short in tracks) {
-                if ((track_short.track.available && ((!track_short.track.explicit | show_explicit) && (!track_short.track.is_suitable_for_children | show_child))) | track_short.id == exception_track_id) {
+                if ((track_short.track.available && ((!track_short.track.is_explicit | show_explicit) && (!track_short.track.is_suitable_for_children | show_child))) | track_short.id == exception_track_id) {
                     out_track_list.add (track_short.track);
                 }
             }

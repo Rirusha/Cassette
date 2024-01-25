@@ -4,108 +4,92 @@
   <requires lib="Adw" version="1.0"/>
   <template class="CassettePlaylistView" parent="CassetteCachiableView">
     <property name="download-stack">save_buttons_stack</property>
-    <property name="loading-progress-bar">progress_bar</property>
-    <child>
-      <object class="GtkOverlay">
+    <property name="child">
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="hexpand">true</property>
+        <property name="propagate-natural-height">true</property>
+        <property name="hscrollbar_policy">never</property>
         <child>
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
+          <object class="AdwClamp">
+            <property name="hexpand">true</property>
+            <property name="margin-top">16</property>
+            <property name="margin-bottom">16</property>
+            <property name="margin-start">16</property>
+            <property name="margin-end">16</property>
+            <property name="maximum-size">1000</property>
             <child>
-              <object class="GtkProgressBar" id="progress_bar">
-                <style>
-                  <class name="osd"/>
-                </style>
-                <property name="visible">false</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolled_window">
+              <object class="GtkBox" id="main_box">
                 <property name="hexpand">true</property>
-                <property name="propagate-natural-height">true</property>
-                <property name="hscrollbar_policy">never</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">16</property>
                 <child>
-                  <object class="AdwClamp">
-                    <property name="hexpand">true</property>
-                    <property name="margin-top">16</property>
-                    <property name="margin-bottom">16</property>
-                    <property name="margin-start">16</property>
-                    <property name="margin-end">16</property>
-                    <property name="maximum-size">1000</property>
+                  <object class="GtkBox">
+                    <property name="valign">center</property>
+                    <property name="vexpand">false</property>
+                    <property name="spacing">10</property>
+                    <property name="orientation">horizontal</property>
                     <child>
-                      <object class="GtkBox" id="main_box">
-                        <property name="hexpand">true</property>
+                      <object class="CassetteCoverImage" id="cover_image">
+                        <property name="hexpand">false</property>
+                        <property name="vexpand">false</property>
+                        <property name="valign">start</property>
+                        <property name="halign">start</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="vexpand">false</property>
+                        <property name="spacing">4</property>
                         <property name="orientation">vertical</property>
-                        <property name="spacing">16</property>
+                        <property name="margin-start">8</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="valign">center</property>
-                            <property name="vexpand">false</property>
-                            <property name="spacing">10</property>
-                            <property name="orientation">horizontal</property>
                             <child>
-                              <object class="GtkFrame">
+                              <object class="GtkLabel">
                                 <style>
-                                  <class name="big-art"/>
+                                  <class name="title-3"/>
                                 </style>
-                                <child>
-                                  <object class="CassetteCoverImage" id="cover_image">
-                                    <property name="hexpand">false</property>
-                                    <property name="vexpand">false</property>
-                                    <property name="valign">start</property>
-                                    <property name="halign">start</property>
-                                  </object>
-                                </child>
+                                <property name="margin-end">20</property>
+                                <property name="justify">left</property>
+                                <property name="label" translatable="true">Playlist</property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">true</property>
                               </object>
                             </child>
                             <child>
+                              <object class="GtkLabel" id="duration_label">
+                                <style>
+                                  <class name="dim-label"/>
+                                </style>
+                                <property name="margin-end">10</property>
+                                <property name="hexpand">false</property>
+                                <property name="halign">end</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <!-- <child>
+                          <object class="GtkEntry" id="playlist_name_entry">
+                            <style>
+                              <class name="title-1"/>
+                            </style>
+                            <property name="hexpand">true</property>
+                          </object>
+                        </child> -->
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">12</property>
+                            <child>
                               <object class="GtkBox">
-                                <property name="vexpand">false</property>
-                                <property name="spacing">3</property>
                                 <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="margin-start">11</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <style>
-                                          <class name="dim-label"/>
-                                        </style>
-                                        <property name="margin-end">20</property>
-                                        <property name="justify">left</property>
-                                        <property name="label" translatable="true">PLAYLIST</property>
-                                        <property name="halign">start</property>
-                                        <property name="hexpand">true</property>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel" id="duration_label">
-                                        <style>
-                                          <class name="dim-label"/>
-                                        </style>
-                                        <property name="margin-end">10</property>
-                                        <property name="hexpand">false</property>
-                                        <property name="halign">end</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="playlist_name_entry">
-                                    <style>
-                                      <class name="text-entry"/>
-                                      <class name="playlist-name"/>
-                                    </style>
-                                    <property name="hexpand">true</property>
-                                  </object>
-                                </child>
+                                <property name="spacing">4</property>
                                 <child>
                                   <object class="GtkLabel" id="playlist_name_label">
                                     <style>
-                                      <class name="playlist-name"/>
+                                      <class name="title-1"/>
                                     </style>
-                                    <property name="margin-start">9</property>
                                     <property name="halign">start</property>
-                                    <property name="visible">false</property>
+                                    <!-- <property name="visible">false</property> -->
                                     <property name="justify">left</property>
                                     <property name="wrap">true</property>
                                   </object>
@@ -113,139 +97,163 @@
                                 <child>
                                   <object class="GtkLabel" id="playlist_desc_label">
                                     <style>
-                                      <class name="dim-label"/>
+                                      <class name="body"/>
                                     </style>
-                                    <property name="margin-start">11</property>
                                     <property name="halign">start</property>
                                     <property name="justify">left</property>
                                     <property name="wrap">true</property>
                                   </object>
                                 </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="edit_button">
+                                <style>
+                                  <class name="flat"/>
+                                  <class name="circular"/>
+                                </style>
+                                <property name="halign">end</property>
+                                <property name="valign">start</property>
+                                <property name="icon-name">adwaita-document-edit-symbolic</property>
+                                <property name="visible">false</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="playlist_status">
+                            <style>
+                              <class name="caption"/>
+                            </style>
+                            <property name="halign">start</property>
+                            <property name="wrap">true</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="margin-bottom">2</property>
+                            <property name="spacing">8</property>
+                            <property name="vexpand">true</property>
+                            <property name="valign">end</property>
+                            <child>
+                              <object class="CassettePlayButtonContext" id="play_button">
+                                <property name="is-suggested-action">true</property>
+                                <property name="context-type">playlist</property>
+                                <property name="vexpand">false</property>
+                                <property name="valign">center</property>
+                                <property name="is-pill">true</property>
+                                <property name="label" translatable="true">Play</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="CassetteLikeButton" id="like_button">
+                                <property name="is-flat">true</property>
+                                <property name="object-content-type">playlist</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="visibility_switch">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">false</property>
+                                <property name="vexpand">false</property>
+                                <property name="visible">false</property>
+                                <property name="tooltip-text" translatable="true">Change playlist visibility</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="CassettePlaylistOptionsButton" id="playlist_options_button">
+                                <property name="is-flat">true</property>
+                                <property name="is-circular">true</property>
+                                <property name="valign">center</property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">false</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="add_page_button">
+                                <style>
+                                  <class name="flat"/>
+                                  <class name="circular"/>
+                                </style>
+                                <property name="visible">false</property>
+                                <property name="icon-name">adwaita-bookmark-new-symbolic</property>
+                                <property name="valign">center</property>
+                                <property name="halign">start</property>
+                                <property name="tooltip-text" translatable="true">Add page to header</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="CassetteSaveStack" id="save_stack">
+                                <property name="halign">end</property>
+                                <property name="hexpand">true</property>
+                                <property name="content-type">playlist</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkStack" id="save_buttons_stack">
+                                <property name="hexpand">false</property>
                                 <child>
-                                  <object class="GtkLabel" id="playlist_status">
-                                    <style>
-                                      <class name="dim-label"/>
-                                    </style>
-                                    <property name="margin-start">11</property>
-                                    <property name="halign">start</property>
-                                    <property name="wrap">true</property>
+                                  <object class="GtkStackPage">
+                                    <property name="name">save</property>
+                                    <property name="child">
+                                      <object class="GtkButton" id="save_button">
+                                        <property name="hexpand">true</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <!-- Translators: tooltip of "save" button -->
+                                        <property name="tooltip-text" translatable="true">Save</property>
+                                        <child>
+                                          <object class="AdwButtonContent">
+                                            <property name="icon-name">adwaita-cache-perm-symbolic</property>
+                                            <property name="label" translatable="true">Save</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkBox">
-                                    <property name="margin-start">11</property>
-                                    <property name="margin-bottom">2</property>
-                                    <property name="spacing">8</property>
-                                    <property name="vexpand">true</property>
-                                    <property name="valign">end</property>
-                                    <child>
-                                      <object class="CassettePlayButtonContext" id="play_button">
-                                        <property name="is-suggested-action">true</property>
-                                        <property name="context-type">playlist</property>
-                                        <property name="size">42</property>
-                                        <property name="label" translatable="true">Play</property>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="CassetteLikeButton" id="like_button">
-                                        <property name="width-request">24</property>
-                                        <property name="height-request">24</property>
-                                        <property name="is-flat">false</property>
-                                        <property name="object-content-type">playlist</property>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="CassettePlaylistOptionsButton" id="playlist_options_button">
-                                        <property name="valign">center</property>
-                                        <property name="halign">start</property>
-                                        <property name="hexpand">false</property>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkSwitch" id="visibility_switch">
-                                        <property name="halign">start</property>
-                                        <property name="valign">center</property>
-                                        <property name="hexpand">false</property>
-                                        <property name="vexpand">false</property>
-                                        <property name="visible">false</property>
-                                        <property name="tooltip-text" translatable="true">Change playlist visibility</property>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="CassetteSaveStack" id="save_stack">
-                                        <property name="halign">end</property>
+                                  <object class="GtkStackPage">
+                                    <property name="name">delete</property>
+                                    <property name="child">
+                                      <object class="GtkButton" id="delete_button">
+                                        <style>
+                                          <class name="destructive-action"/>
+                                        </style>
                                         <property name="hexpand">true</property>
-                                        <property name="content-type">playlist</property>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkStack" id="save_buttons_stack">
-                                        <property name="hexpand">false</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <!-- Translators: tooltip of "delete" button -->
+                                        <property name="tooltip-text" translatable="true">Delete</property>
                                         <child>
-                                          <object class="GtkStackPage">
-                                            <property name="name">save</property>
-                                            <property name="child">
-                                              <object class="GtkButton" id="save_button">
-                                                <property name="hexpand">true</property>
-                                                <property name="halign">end</property>
-                                                <property name="valign">center</property>
-                                                <!-- Translators: tooltip of "save" button -->
-                                                <property name="tooltip-text" translatable="true">Save</property>
-                                                <child>
-                                                  <object class="AdwButtonContent">
-                                                    <property name="icon-name">folder-download-symbolic</property>
-                                                    <property name="label" translatable="true">Save</property>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                            </property>
-                                          </object>
-                                        </child>
-                                        <child>
-                                          <object class="GtkStackPage">
-                                            <property name="name">delete</property>
-                                            <property name="child">
-                                              <object class="GtkButton" id="delete_button">
-                                                <style>
-                                                  <class name="destructive-action"/>
-                                                </style>
-                                                <property name="hexpand">true</property>
-                                                <property name="halign">end</property>
-                                                <property name="valign">center</property>
-                                                <!-- Translators: tooltip of "delete" button -->
-                                                <property name="tooltip-text" translatable="true">Delete</property>
-                                                <child>
-                                                  <object class="AdwButtonContent">
-                                                    <property name="icon-name">edit-delete-symbolic</property>
-                                                    <property name="label" translatable="true">Delete</property>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                            </property>
-                                          </object>
-                                        </child>
-                                        <child>
-                                          <object class="GtkStackPage">
-                                            <property name="name">abort</property>
-                                            <property name="child">
-                                              <object class="GtkButton" id="abort_button">
-                                                <property name="hexpand">true</property>
-                                                <property name="halign">end</property>
-                                                <property name="valign">center</property>
-                                                <!-- Translators: tooltip of "abort" button -->
-                                                <property name="tooltip-text" translatable="true">Abort</property>
-                                                <child>
-                                                  <object class="AdwButtonContent">
-                                                    <property name="icon-name">edit-delete-symbolic</property>
-                                                    <property name="label" translatable="true">Stop</property>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                            </property>
+                                          <object class="AdwButtonContent">
+                                            <property name="icon-name">adwaita-edit-delete-symbolic</property>
+                                            <property name="label" translatable="true">Delete</property>
                                           </object>
                                         </child>
                                       </object>
-                                    </child>
+                                    </property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkStackPage">
+                                    <property name="name">abort</property>
+                                    <property name="child">
+                                      <object class="GtkButton" id="abort_button">
+                                        <property name="hexpand">true</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <!-- Translators: tooltip of "abort" button -->
+                                        <property name="tooltip-text" translatable="true">Abort</property>
+                                        <child>
+                                          <object class="AdwButtonContent">
+                                            <property name="icon-name">adwaita-edit-delete-symbolic</property>
+                                            <property name="label" translatable="true">Stop</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
                                   </object>
                                 </child>
                               </object>
@@ -260,26 +268,7 @@
             </child>
           </object>
         </child>
-        <child type="overlay">
-          <object class="GtkButton" id="add_page_button">
-            <style>
-              <class name="flat"/>
-              <class name="circular"/>
-            </style>
-            <property name="visible">false</property>
-            <property name="margin-end">20</property>
-            <property name="margin-top">6</property>
-            <property name="has-frame">true</property>
-            <property name="icon-name">list-add-symbolic</property>
-            <property name="hexpand">false</property>
-            <property name="vexpand">false</property>
-            <property name="hexpand">false</property>
-            <property name="valign">start</property>
-            <property name="halign">end</property>
-            <property name="tooltip-text" translatable="true">Add page to header</property>
-          </object>
-        </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

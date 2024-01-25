@@ -34,7 +34,7 @@ namespace Cassette {
         NEED_PLUS
     }
 
-    public void block_widget (Gtk.Widget widget, BlockReason reason) {
+    public static void block_widget (Gtk.Widget widget, BlockReason reason) {
         widget.sensitive = false;
 
         switch (reason) {
@@ -46,6 +46,31 @@ namespace Cassette {
                 break;
             case BlockReason.NEED_PLUS:
                 widget.tooltip_text = _("Need Plus subscription");
+                break;
+        }
+    }
+
+    public static void roll_shuffle_mode () {
+        switch (player.shuffle_mode) {
+            case Player.ShuffleMode.OFF:
+                player.shuffle_mode = Player.ShuffleMode.ON;
+                break;
+            case Player.ShuffleMode.ON:
+                player.shuffle_mode = Player.ShuffleMode.OFF;
+                break;
+        }
+    }
+
+    public static void roll_repeat_mode () {
+        switch (player.repeat_mode) {
+            case Player.RepeatMode.OFF:
+                player.repeat_mode = Player.RepeatMode.REPEAT_ALL;
+                break;
+            case Player.RepeatMode.REPEAT_ALL:
+                player.repeat_mode = Player.RepeatMode.REPEAT_ONE;
+                break;
+            case Player.RepeatMode.REPEAT_ONE:
+                player.repeat_mode = Player.RepeatMode.OFF;
                 break;
         }
     }
@@ -68,7 +93,7 @@ namespace Cassette {
         application.show_message (_("Link copied to clipboard"));
     }
 
-    public async void show_track_by_id (string track_id) {
+    public static async void show_track_by_id (string track_id) {
         threader.add (() => {
             var track_infos = yam_talker.get_tracks_info ({track_id});
 
@@ -82,11 +107,11 @@ namespace Cassette {
         yield;
     }
 
-    public int ms2sec (int ms) {
+    public static int ms2sec (int ms) {
         return ms / 1000;
     }
 
-    public string sec2str (int seconds, bool is_short) {
+    public static string sec2str (int seconds, bool is_short) {
         int minutes = (int) seconds / 60;
         int oth_seconds = (seconds - minutes * 60);
 
@@ -109,13 +134,13 @@ namespace Cassette {
         }
     }
 
-    public string ms2str (int ms, bool is_short) {
+    public static string ms2str (int ms, bool is_short) {
         int seconds = ms2sec (ms);
         return sec2str (seconds, is_short);
     }
 
     //  ("111", 6) -> "000111"
-    public string zfill (string str, int width) {
+    public static string zfill (string str, int width) {
         if (str.length >= width) {
             return str;
         } else {
@@ -125,7 +150,7 @@ namespace Cassette {
     }
 
     // (1, 6, 1) -> {1, 2, 3, 4, 5}
-    public HashSet<int> range_set (int start, int end, int step = 1) {
+    public static HashSet<int> range_set (int start, int end, int step = 1) {
         var rng = new HashSet<int> ();
         for (int item = start; item < end; item += step) {
             rng.add (item);
@@ -134,7 +159,7 @@ namespace Cassette {
     }
 
     // set_1 - set_2
-    public HashSet<int> difference (HashSet<int> set_1, HashSet<int> set_2) {
+    public static HashSet<int> difference (HashSet<int> set_1, HashSet<int> set_2) {
         var out_set = new HashSet<int> ();
         foreach (int el in set_1) {
             if (!(el in set_2)) {
@@ -145,7 +170,7 @@ namespace Cassette {
     }
 
     //  [2:23.24] -> 143240
-    public int64 parse_time (owned string time_str) {
+    public static int64 parse_time (owned string time_str) {
         time_str.strip ();
         time_str = time_str[1:time_str.length - 1];
 
@@ -159,7 +184,7 @@ namespace Cassette {
         return mins_ms + secs_ms + pure_ms;
     }
 
-    public string get_when (string iso8601_datetime_str) {
+    public static string get_when (string iso8601_datetime_str) {
         var dt = new DateTime.from_iso8601 (iso8601_datetime_str, null);
         var now_dt = new DateTime.now ();
 
@@ -174,13 +199,13 @@ namespace Cassette {
         }
     }
 
-    public string prettify_num (int num) {
+    public static string prettify_num (int num) {
         string num_str = num.to_string ();
 
         return prettify_chunk (num_str, num_str.length - 3, "");
     }
 
-    string prettify_chunk (string num_str, int start_pos, string res_str) {
+    static string prettify_chunk (string num_str, int start_pos, string res_str) {
         if (start_pos == -3) {
             return res_str;
         }
@@ -192,5 +217,13 @@ namespace Cassette {
         }
 
         return prettify_chunk (num_str, start_pos - 3, num_str[start_pos:end_pos] + " " + res_str);
+    }
+
+    static double min (double a, double b) {
+        return a < b ? a : b;
+    }
+
+    static double max (double a, double b) {
+        return a > b ? a : b;
     }
 }

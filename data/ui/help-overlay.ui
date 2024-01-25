@@ -51,13 +51,13 @@
             <property name="title" translatable="true" context="shortcut window">Queue control</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="true" context="shortcut window">Change Shuffle-Mode</property>
+                <property name="title" translatable="true" context="shortcut window">Change shuffle mode</property>
                 <property name="action-name">app.change-shuffle</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="true" context="shortcut window">Change Repeat-Mode</property>
+                <property name="title" translatable="true" context="shortcut window">Change repeat mode</property>
                 <property name="action-name">app.change-repeat</property>
               </object>
             </child>

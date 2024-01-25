@@ -53,16 +53,12 @@ namespace Cassette {
         }
 
         construct {
-            child = real_button;
-
-            width_request = 42;
-            height_request = 42;
             valign = Gtk.Align.CENTER;
             halign = Gtk.Align.CENTER;
 
             is_disliked = false;
 
-            real_button.icon_name = "disliked-symbolic";
+            real_button.icon_name = "adwaita-disliked-symbolic";
             real_button.add_css_class ("dim-label");
             real_button.clicked.connect (like_dislike);
 
@@ -127,8 +123,10 @@ namespace Cassette {
                 this.is_disliked = is_disliked;
                 real_button.sensitive = true;
 
-                if (is_disliked && player.current_track.id == track_id) {
-                    player.next ();
+                var current_track = player.get_current_track ();
+
+                if (is_disliked && current_track.id == track_id) {
+                    player.remove_track (current_track);
                 }
             }
         }

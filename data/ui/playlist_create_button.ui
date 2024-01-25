@@ -2,14 +2,14 @@
 <interface>
   <requires lib="Gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
-  <template class="CassettePlaylistCreateButton" parent="CassetteCustomButton">
+  <template class="CassettePlaylistCreateButton" parent="AdwBin">
     <property name="hexpand">false</property>
     <property name="vexpand">false</property>
     <child>
       <object class="AdwClamp">
         <property name="maximum_size">220</property>
         <child>
-          <object class="GtkButton" id="self">
+          <object class="GtkButton" id="real_button">
             <property name="has-frame">false</property>
             <child>
               <object class="GtkBox">
@@ -24,7 +24,7 @@
                       <object class="GtkImage">
                         <property name="width-request">200</property>
                         <property name="height-request">200</property>
-                        <property name="icon-name">list-add-symbolic</property>
+                        <property name="icon-name">adwaita-list-add-symbolic</property>
                         <property name="icon-size">large</property>
                       </object>
                     </child>

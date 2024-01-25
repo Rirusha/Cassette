@@ -21,34 +21,32 @@
 using Gee;
 
 namespace CassetteClient.Player {
-    public class PlayerFL: Object, IPlayerMod {
+    public class PlayerFlow : PlayerMode {
 
-        public YaMAPI.Track? current_track {
-            owned get {
-                return null;
-            }
-        }
-        public YaMAPI.Track next_track {
-            owned get {
-                return new YaMAPI.Track ();
-            }
-        }
-        public YaMAPI.Track prev_track {
-            owned get {
-                return new YaMAPI.Track ();
-            }
+        public Player player { get; construct; }
+
+        public PlayerFlow (Player player) {
+            Object (player: player);
         }
 
-        public PlayerFL () {
-            Object ();
+        public async override YaMAPI.Track? get_prev_track () {
+            assert_not_reached ();
         }
 
-        public void next (bool consider_repeat_mode) {
-
+        public override YaMAPI.Track? get_current_track () {
+            assert_not_reached ();
         }
 
-        public void prev () {
+        public async override YaMAPI.Track? get_next_track () {
+            assert_not_reached ();
+        }
 
+        public override void next (bool consider_repeat_mode) {
+            assert_not_reached ();
+        }
+
+        public override void prev () {
+            assert_not_reached ();
         }
     }
 }

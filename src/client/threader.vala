@@ -20,21 +20,27 @@
 
 namespace CassetteClient {
 
-    public delegate void ThreadFunc (Value[]? func_args);
+    public delegate void ThreadFunc ();
     //  public delegate void SourceFunc ();
 
   class ThreadInfo {
 
         public weak ThreadFunc func;
-        public Value[]? func_args;  //  Список чего-либо, в котором хрянится что-либо для сохранения от непредвиденного освобождения
+        public Cancellable? cancellable;
 
-        public ThreadInfo (ThreadFunc func, owned Value[] func_args) {
+        public ThreadInfo (ThreadFunc func, Cancellable? cancellable) {
             this.func = func;
-            this.func_args = func_args;
+            this.cancellable = cancellable;
         }
 
         public void run () {
-            func (func_args);
+            if (cancellable != null) {
+                if (cancellable.is_cancelled ()) {
+                    return;
+                }
+            }
+
+            func ();
         }
     }
 
@@ -60,7 +66,7 @@ namespace CassetteClient {
             while (true) {
                 mutex.lock ();
 
-                if (running_jobs_count >= 10) {
+                if (running_jobs_count >= max_running_jobs) {
                     cond.wait (mutex);
                 }
 
@@ -83,8 +89,8 @@ namespace CassetteClient {
             }
         }
 
-        public void add (ThreadFunc func, Value[]? func_args = null) {
-            thread_datas.push (new ThreadInfo (func, func_args));
+        public void add (ThreadFunc func, Cancellable? cancellable) {
+            thread_datas.push (new ThreadInfo (func, cancellable));
         }
     }
 
@@ -93,10 +99,12 @@ namespace CassetteClient {
 
         //  Стандартный пул потоков
         WorkManager default_pool;
-        //  Пул потоков для задач кэширования
+        //  Пул потоков для задач кэширования изображений
         WorkManager image_pool;
-        //  Пул потоков для важных задач, так как первые два могут быть заполнены
+        //  Пул потоков для аудио
         WorkManager audio_pool;
+        //  Пул потоков для класса Job
+        WorkManager cache_pool;
         //  Пул потоков для задач, выполнение которых не должно пересекаться (размер - 1)
         WorkManager single_pool;
 
@@ -106,23 +114,28 @@ namespace CassetteClient {
             default_pool = new WorkManager (max_size);
             image_pool = new WorkManager (max_size);
             audio_pool = new WorkManager (max_size);
+            cache_pool = new WorkManager (max_size / 2);
             single_pool = new WorkManager (1);
         }
 
-        public void add (ThreadFunc func, Value[]? func_args = null) {
-            default_pool.add (func, func_args);
+        public void add (ThreadFunc func, Cancellable? cancellable = null) {
+            default_pool.add (func, cancellable);
         }
 
-        public void add_image (ThreadFunc func, Value[]? func_args = null) {
-            image_pool.add (func, func_args);
+        public void add_image (ThreadFunc func, Cancellable? cancellable = null) {
+            image_pool.add (func, cancellable);
         }
 
-        public void add_audio (ThreadFunc func, Value[]? func_args = null) {
-            audio_pool.add (func, func_args);
+        public void add_audio (ThreadFunc func, Cancellable? cancellable = null) {
+            audio_pool.add (func, cancellable);
         }
 
-        public void add_single (ThreadFunc func, Value[]? func_args = null) {
-            single_pool.add (func, func_args);
+        public void add_cache (ThreadFunc func, Cancellable? cancellable = null) {
+            cache_pool.add (func, cancellable);
+        }
+
+        public void add_single (ThreadFunc func, Cancellable? cancellable = null) {
+            single_pool.add (func, cancellable);
         }
     }
 }

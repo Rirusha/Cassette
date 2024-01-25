@@ -1,0 +1,19 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteSideBar : Adw.Bin {
+  Adw.OverlaySplitView root_flap {
+    show-sidebar: false;
+    sidebar-position: end;
+    collapsed: true;
+    pin-sidebar: true;
+    enable-show-gesture: false;
+
+    [sidebar]
+    Gtk.ScrolledWindow sidebar_content {
+      hscrollbar-policy: never;
+      hexpand: false;
+      width-request: 470;
+    }
+  }
+}

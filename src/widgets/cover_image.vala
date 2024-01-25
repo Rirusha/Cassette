@@ -24,61 +24,51 @@ using Gee;
 
 
 namespace Cassette {
+    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cover_image.ui")]
     public class CoverImage : Adw.Bin {
+        [GtkChild]
+        unowned Gtk.Frame cover_frame;
+        [GtkChild]
+        unowned Gtk.Image real_image;
 
-        Gtk.Image real_image { get; default = new Gtk.Image.from_icon_name ("audio-x-generic-symbolic"); }
         HasCover yam_object;
-
         int cover_size;
-        public int size {
-            get {
-                return cover_size;
-            }
-            set {
-                int widget_size;
-                if (value == BIG_ART_SIZE) {
-                    widget_size = 200;
-                } else if (value == TRACK_ART_SIZE) {
-                    widget_size = 50;
-                } else if (value == SMALL_BIG_ART_SIZE) {
-                    widget_size = 50;
-                } else {
-                    assert_not_reached ();
-                }
-
-                width_request = widget_size;
-                height_request = widget_size;
-                cover_size = value;
-            }
-        }
 
         public CoverImage () {
             Object ();
         }
 
-        construct {
-            child = real_image;
-        }
-
-        public void init_content (HasCover yam_object, int size) {
+        public void init_content (HasCover yam_object, ArtSize size) {
             this.yam_object = yam_object;
-            this.size = size;
+
+            int widget_size;
+            if (size == ArtSize.BIG_ART) {
+                cover_frame.add_css_class ("big-art");
+                widget_size = 200;
+
+            } else if (size == ArtSize.TRACK || size == ArtSize.BIG_SMALL) {
+                cover_frame.add_css_class ("small-art");
+                widget_size = 60;
+
+            } else {
+                assert_not_reached ();
+            }
+
+            width_request = widget_size;
+            real_image.width_request = widget_size;
+            height_request = widget_size;
+            real_image.height_request = widget_size;
+            cover_size = (int) size;
         }
 
         public void clear () {
-            real_image.icon_name = "audio-x-generic-symbolic";
+            real_image.icon_name = "adwaita-audio-x-generic-symbolic";
         }
 
         public async void load_image () {
             Gdk.Pixbuf? pixbuf_buffer = null;
 
-            threader.add_image (() => {
-                pixbuf_buffer = get_image (yam_object, cover_size);
-
-                Idle.add (load_image.callback);
-            });
-
-            yield;
+            pixbuf_buffer = yield Cachier.get_image (yam_object, cover_size);
 
             if (pixbuf_buffer != null) {
                 real_image.set_from_paintable (Gdk.Texture.for_pixbuf (pixbuf_buffer));

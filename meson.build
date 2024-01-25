@@ -1,7 +1,7 @@
 project(
   'cassette',
   ['c', 'vala'],
-  version: '0.1',
+  version: '0.1.2',
   meson_version: '>= 0.62.0',
   license: 'GPL-3.0-or-later',
 )
@@ -10,7 +10,7 @@ i18n = import('i18n')
 gnome = import('gnome')
 
 gtk = dependency('gtk4', version: '>= 4.5')
-libadwaita = dependency('libadwaita-1', version: '>= 1.2')
+libadwaita = dependency('libadwaita-1', version: '>= 1.4')
 threads = dependency('threads')
 libsoup = dependency('libsoup-3.0')
 gdkpixbuf = dependency('gdk-pixbuf-2.0')
@@ -21,21 +21,6 @@ libxml = dependency('libxml-2.0')
 gstreamer = dependency('gstreamer-1.0')
 webkit = dependency('webkitgtk-6.0')
 gio = dependency('gio-2.0', version: '>= 2.72')
-
-cassette_dependencies = [
-  gtk,
-  libadwaita,
-  threads,
-  libsoup,
-  gdkpixbuf,
-  jsonglib,
-  sqlite3,
-  gee,
-  libxml,
-  gstreamer,
-  gio,
-  webkit
-]
 
 if get_option('profile') == 'development'
   name_prefix = '(Development) '
@@ -59,11 +44,27 @@ conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
 conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 
+subdir('data')
+
+cassette_dependencies = [
+  gtk,
+  libadwaita,
+  threads,
+  libsoup,
+  gdkpixbuf,
+  jsonglib,
+  sqlite3,
+  gee,
+  libxml,
+  gstreamer,
+  gio,
+  webkit
+]
+
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
 subdir('po')
-subdir('data')
 subdir('src')
 subdir('tests')
 

@@ -18,295 +18,332 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+
+using Gee;
+
 namespace CassetteClient.Cachier {
 
-    public enum JobDoneStatus {
-        SUCCESS,
-        ABORTED,
-        FAILED
+    public class Cachier : Object {
+        public ArrayList<Job> job_list { get; default = new ArrayList<Job> (); }
+
+        public Controller controller { get; default = new Controller (); }
+
+        public signal void job_started (Job job);
+
+        public signal void job_added (Job job);
+        public signal void job_removed (Job job);
+
+        public Cachier () {
+            Object ();
+        }
+
+        public async void uncache (HasTrackList yam_obj) {
+            /*
+                Удалить или переместить во временную папку объект с треками
+            */
+
+            var job = new Job (yam_obj);
+
+            yield job.unsave_async ();
+        }
+
+        public Job start_cache (HasTrackList yam_obj) {
+            /*
+                Начать сохранение объекта с треками
+            */
+
+            var job = new Job (yam_obj);
+            job_list.add (job);
+            job_added (job);
+
+            job.job_done.connect (() => {
+                job_list.remove (job);
+                job_removed (job);
+            });
+
+            job.save_async.begin ();
+
+            job_started (job);
+
+            return job;
+        }
+
+        public Job? find_job (string yam_obj_id) {
+            /*
+                Находит job в списке job'ов. Если таковой нет, возвращает null
+            */
+
+            foreach (var job in job_list) {
+                if (yam_obj_id == job.yam_object.oid) {
+                    return job;
+                }
+            }
+
+            return null;
+        }
+
+        public void check_all_cache () {
+            var objs = storager.get_saved_objects ();
+
+            foreach (var obj in objs) {
+                start_cache (obj);
+            }
+        }
+
+        public async void uncache_all () {
+            var objs = storager.get_saved_objects ();
+
+            foreach (var job in job_list) {
+                yield job.abort_with_wait ();
+            }
+
+            foreach (var obj in objs) {
+                yield uncache (obj);
+            }
+        }
     }
 
-    //  Класс представляющий объект для кэширования объекта ямы и его составных частей по интерфейсам
-    public class YaMObjectCachier : Object {
+    ///////////
+    // utils //
+    ///////////
 
-        public HasTrackList yam_object { get; construct; }
-        public Gtk.ProgressBar? progress_bar { get; construct; }
-        //  Для отмены изменяется переменная should_stop, чтобы объект успел докэшировать то, что он кэшировать
-        bool should_stop = false;
-        bool is_abort;
+    public async static void save_track (YaMAPI.Track track_info) {
+        /*
+            Функция удобства, объединяющая сохранение аудио и изображения
+        */
 
-        string object_id;
-        ContentType object_type;
+        download_audio_async.begin (track_info.id);
+        get_image.begin (track_info, ArtSize.TRACK);
+    }
 
-        bool progress_bar_visible = false;
+    public async static void download_audio_async (
+        string track_id,
+        owned string? track_uri = null,
+        bool is_tmp = true) {
+        /*
+            Скачивание аудио по его id. Если не передан uri трека, то uri будет самостоятельно загружен.
+            Аргумент is_tmp определяет место, куда будет загружено аудио
+        */
 
-        //  В случае завершения кэширования поднимает сигнал со статусом окончания: завершено с ошибкой, успешно или отменено
-        public signal void job_done (JobDoneStatus status);
-
-        public YaMObjectCachier (HasTrackList yam_object) {
-            Object (yam_object: yam_object);
+        if (storager.audio_cache_location (track_id).file != null) {
+            cachier.controller.stop_loading (ContentType.TRACK, track_id, null);
+            return;
         }
 
-        public YaMObjectCachier.with_progress_bar (HasTrackList yam_object, Gtk.ProgressBar progress_bar) {
-            Object (yam_object: yam_object, progress_bar: progress_bar);
-        }
+        cachier.controller.start_loading (ContentType.TRACK, track_id);
 
-        construct {
-            object_id = ((HasID) yam_object).oid;
+        CacheingState? cacheing_state = null;
 
-            if (yam_object is YaMAPI.Playlist) {
-                object_type = ContentType.PLAYLIST;
-            } else if (yam_object is YaMAPI.Album) {
-                object_type = ContentType.ALBUM;
-            } else {
-                assert_not_reached ();
+        threader.add_audio (() => {
+            if (track_uri == null) {
+                track_uri = yam_talker.get_download_uri (
+                    track_id,
+                   storager.settings.get_boolean ("is-hq")
+                );
             }
 
-            job_done.connect (() => {
-                cachier_controller.stop_loading (object_type, object_id, null);
-            });
-        }
-
-        public async void cache_async () {
-            cachier_controller.start_loading (object_type, object_id);
-
-            var need_cache_track_ids = new Gee.ArrayList<string> ();
-            var need_uncache_tracks = new Gee.ArrayList<YaMAPI.Track> ();
-
-            var track_list = yam_object.get_filtered_track_list (true, true);
-
-            threader.add (() => {
-                foreach (var track_info in track_list) {
-                    need_cache_track_ids.add (track_info.id);
-                }
-
-                var obj_location = storager.object_cache_location (yam_object.get_type (), object_id);
-                if (obj_location.is_tmp == false) {
-                    var cachied_obj_wt = (HasTrackList) storager.load_object (yam_object.get_type (), object_id);
-
-                    var cachied_obj_track_list = cachied_obj_wt.get_filtered_track_list (true, true);
-
-                    foreach (var track_info in cachied_obj_track_list) {
-                        if (!(track_info.id in need_cache_track_ids)) {
-                            need_uncache_tracks.add (track_info);
-                        }
-                    }
-
-                } else {
-                    storager.remove_file (obj_location.path);
-                }
-
-                storager.save_object ((HasID) yam_object, false);
-
-                Idle.add (cache_async.callback);
-            });
-
-            yield;
-
-            foreach (var track_info in need_uncache_tracks) {
-                storager.db.remove_content_ref (track_info.id, object_id);
-                if (storager.db.get_content_ref_count (track_info.id) == 0) {
-                    yield storager.audio_cache_location (track_info.id).move_to_temp ();
-                }
-
-                string image_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
-                storager.db.remove_content_ref (image_uri, object_id);
-                if (storager.db.get_content_ref_count (image_uri) == 0) {
-                    yield storager.image_cache_location (image_uri).move_to_temp ();
-                }
-            }
-
-            var has_cover_yam_obj = yam_object as HasCover;
-            if (has_cover_yam_obj != null) {
-                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (BIG_ART_SIZE)) {
-                    var image_location = storager.image_cache_location (cover_uri);
-                    if (image_location.path != null) {
-                        yield image_location.move_to_perm ();
-
+            if (track_uri != null && (storager.settings.get_boolean ("can-cache") || !is_tmp)) {
+                Bytes audio_bytes = yam_talker.load_track (track_uri);
+                if (audio_bytes != null) {
+                    storager.save_audio (audio_bytes, track_id, is_tmp);
+                    if (is_tmp) {
+                        cacheing_state = CacheingState.TEMP;
                     } else {
-                        Gdk.Pixbuf? pixbuf = null;
-
-                        threader.add_image (() => {
-                            pixbuf = yam_talker.load_pixbuf (cover_uri);
-
-                            Idle.add (cache_async.callback);
-                        });
-
-                        yield;
-
-                        if (pixbuf != null) {
-                            storager.save_image (pixbuf, cover_uri, false);
-                        } else {
-                            job_done (JobDoneStatus.FAILED);
-                            return;
-                        }
+                        cacheing_state = CacheingState.PERM;
                     }
-
-                    storager.db.set_content_ref (cover_uri, object_id);
                 }
             }
 
-            for (int i = 0; i < track_list.size; i++) {
-                if (progress_bar != null && progress_bar_visible) {
-                    progress_bar.visible = true;
-                    progress_bar.fraction = (double) i / (double) track_list.size;
-                }
+            Idle.add (download_audio_async.callback);
+        });
 
-                YaMAPI.Track track_info = track_list[i];
-                string image_cover_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
+        yield;
 
-                cachier_controller.start_loading (ContentType.TRACK, track_info.id);
+        cachier.controller.stop_loading (ContentType.TRACK, track_id, cacheing_state);
+    }
 
-                var image_location = storager.image_cache_location (image_cover_uri);
-                if (image_location.path != null) {
-                    if (image_location.is_tmp == true) {
-                        progress_bar_visible = true;
-                        yield image_location.move_to_perm ();
-                    }
-                } else {
-                    Gdk.Pixbuf? pixbuf = null;
+    public async static string? get_track_uri (string track_id) {
+        /*
+            Выдает uri трека: локальный, если трек сохранен; интернет ссылку в ином случае.
+            Если трек не был сохранен, то сохраняет его
+        */
 
-                    threader.add_image (() => {
-                        pixbuf = yam_talker.load_pixbuf (image_cover_uri);
+        string? track_uri = null;
 
-                        Idle.add (cache_async.callback);
-                    });
+        threader.add_audio (() => {
+            track_uri = storager.load_audio (track_id);
 
-                    yield;
+            Idle.add (get_track_uri.callback);
+        });
 
-                    if (pixbuf != null) {
-                        progress_bar_visible = true;
-                        storager.save_image (pixbuf, image_cover_uri, false);
-                    } else {
-                        job_done (JobDoneStatus.FAILED);
-                        return;
-                    }
-                }
+        yield;
 
-                storager.db.set_content_ref (image_cover_uri, track_info.id);
-
-                if (should_stop) {
-                    if (is_abort) {
-                        yield uncache_async ();
-                        job_done (JobDoneStatus.ABORTED);
-                    }
-                    return;
-                }
-
-                var track_location = storager.audio_cache_location (track_info.id);
-                if (track_location.path != null) {
-                    if (track_location.is_tmp == true) {
-                        progress_bar_visible = true;
-                        yield track_location.move_to_perm ();
-                    }
-
-                } else {
-                    string? track_uri = null;
-
-                    threader.add_image (() => {
-                        track_uri = yam_talker.get_download_uri (track_info.id, true);
-
-                        Idle.add (cache_async.callback);
-                    });
-
-                    yield;
-
-                    if (track_uri != null) {
-                        Bytes? audio_bytes = null;
-
-                        threader.add_image (() => {
-                            audio_bytes = yam_talker.load_track (track_uri);
-
-                            Idle.add (cache_async.callback);
-                        });
-
-                        yield;
-
-                        if (audio_bytes != null) {
-                            progress_bar_visible = true;
-                            storager.save_audio (audio_bytes, track_info.id, false);
-                        }
-                    } else {
-                        job_done (JobDoneStatus.FAILED);
-                        return;
-                    }
-                }
-
-                storager.db.set_content_ref (track_info.id, object_id);
-                cachier_controller.stop_loading (ContentType.TRACK, track_info.id, CacheingState.PERM);
-
-                if (should_stop) {
-                    if (is_abort) {
-                        yield uncache_async ();
-                        job_done (JobDoneStatus.ABORTED);
-                    }
-                    return;
-                }
-            }
-            job_done (JobDoneStatus.SUCCESS);
+        if (track_uri != null) {
+            return track_uri;
         }
 
-        public async void uncache_async () {
-            string object_id = ((HasID) yam_object).oid;
+        threader.add_audio (() => {
+            track_uri = yam_talker.get_download_uri (
+                track_id,
+            storager.settings.get_boolean ("is-hq")
+            );
 
-            var has_cover_yam_obj = yam_object as HasCover;
-            if (has_cover_yam_obj != null) {
-                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (BIG_ART_SIZE)) {
-                    storager.db.remove_content_ref (cover_uri, object_id);
+            Idle.add (get_track_uri.callback);
+        });
 
-                    if (storager.db.get_content_ref_count (cover_uri) == 0) {
-                        var image_location = storager.image_cache_location (cover_uri);
-                        yield image_location.move_to_temp ();
+        yield;
+
+        if (track_uri != null) {
+            download_audio_async.begin (track_id, track_uri);
+        }
+
+        return track_uri;
+    }
+
+    // Получение изображения ямобъекта, если есть, иначе получение из сети и сохранение
+    public async static Gdk.Pixbuf? get_image (HasCover yam_object, int size) {
+        /*
+            Выдает объект Pixbuf с артом трека. Если изображение не найдено локально, загружает его.
+            Если арт не был сохранен, то сохраняет его
+        */
+
+        Gee.ArrayList<string> cover_uris = yam_object.get_cover_items_by_size (size);
+        if (cover_uris.size == 0) {
+            return null;
+        }
+
+        var pixbufs = new Gdk.Pixbuf?[cover_uris.size];
+
+        threader.add_image (() => {
+            for (int i = 0; i < cover_uris.size; i++) {
+                pixbufs[i] = storager.load_image (cover_uris[i]);
+
+                if (pixbufs[i] == null) {
+                    pixbufs[i] = yam_talker.load_pixbuf (cover_uris[i]);
+
+                    if (pixbufs[i] != null && storager.settings.get_boolean ("can-cache")) {
+                       storager.save_image (pixbufs[i], cover_uris[i], true);
                     }
                 }
             }
 
-            var yam_object_with_id = yam_object as HasID;
-            if (yam_object_with_id != null) {
-                var object_location = storager.object_cache_location (yam_object_with_id.get_type (), yam_object_with_id.oid);
-                yield object_location.move_to_temp ();
-                if (storager.settings.get_boolean ("can-cache")) {
-                    cachier_controller.change_state (ContentType.PLAYLIST, object_id, CacheingState.TEMP);
-                } else {
-                    cachier_controller.change_state (ContentType.PLAYLIST, object_id, CacheingState.NONE);
-                }
+            Idle.add (get_image.callback);
+        });
 
-            }
+        yield;
 
-            var track_list = yam_object.get_filtered_track_list (true, true);
-
-            foreach (var track_info in track_list) {
-                string image_cover_uri = track_info.get_cover_items_by_size (TRACK_ART_SIZE)[0];
-                storager.db.remove_content_ref (image_cover_uri, track_info.id);
-                if (storager.db.get_content_ref_count (image_cover_uri) == 0) {
-                    var image_location = storager.image_cache_location (image_cover_uri);
-                    yield image_location.move_to_temp ();
-                }
-
-                storager.db.remove_content_ref (track_info.id, object_id);
-                if (storager.db.get_content_ref_count (track_info.id) == 0) {
-                    var track_location = storager.audio_cache_location (track_info.id);
-                    yield track_location.move_to_temp ();
-                    if (track_location.path != null && storager.settings.get_boolean ("can-cache")) {
-                        cachier_controller.change_state (ContentType.TRACK, track_info.id, CacheingState.TEMP);
-                    } else {
-                        cachier_controller.change_state (ContentType.TRACK, track_info.id, CacheingState.NONE);
-                    }
-                }
-
-                Idle.add (uncache_async.callback);
-                yield;
-            }
+        if (null in pixbufs) {
+            return null;
         }
 
-        public void abort () {
-            should_stop = true;
-            is_abort = true;
+        if (pixbufs.length == 1) {
+            return pixbufs[0];
         }
 
-        public void stop () {
-            should_stop = true;
-            is_abort = false;
+        int new_size = size / 2;
+        var pixbuf = new Gdk.Pixbuf (Gdk.Colorspace.RGB, true, 8, size, size);
+
+        if (pixbufs.length >= 2) {
+            pixbufs[0].composite (
+                pixbuf,
+                0,
+                0, new_size,
+                new_size,
+                0,
+                0,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
+            pixbufs[1].composite (
+                pixbuf,
+                new_size,
+                0,
+                new_size,
+                new_size,
+                new_size,
+                0,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
         }
+
+        if (pixbufs.length >= 3) {
+            pixbufs[2].composite (
+                pixbuf,
+                0,
+                new_size,
+                new_size,
+                new_size,
+                0,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
+        } else {
+            pixbufs[1].composite (
+                pixbuf,
+                0,
+                new_size,
+                new_size,
+                new_size,
+                0,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
+            pixbufs[0].composite (
+                pixbuf,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
+
+            return pixbuf;
+        }
+
+        if (pixbufs.length == 4) {
+            pixbufs[3].composite (
+                pixbuf,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255
+            );
+        } else {
+            pixbufs[0].composite (
+                pixbuf,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                new_size,
+                0.5,
+                0.5,
+                Gdk.InterpType.BILINEAR,
+                255);
+        }
+        return pixbuf;
     }
 }

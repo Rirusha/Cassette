@@ -77,7 +77,7 @@ namespace CassetteClient {
             }
         }
 
-        public string? cookie_file_path {
+        public File? cookies_file {
             construct set {
                 if (value == null) {
                     return;
@@ -87,12 +87,12 @@ namespace CassetteClient {
             }
         }
 
-        public SoupWrapper (string? user_agent, string? cookie_file_path) {
-            Object (user_agent: user_agent, cookie_file_path: cookie_file_path);
+        public SoupWrapper (string? user_agent, File? cookies_file) {
+            Object (user_agent: user_agent, cookies_file: cookies_file);
         }
 
         construct {
-            if (Logger.instance.log_level == LogLevel.DEBUG_SOUP) {
+            if (Logger.log_level == LogLevel.DEVEL) {
                 var logger = new Soup.Logger (Soup.LoggerLogLevel.BODY);
                 logger.set_printer ((logger, level, direction, data) => {
                     switch (direction) {
@@ -111,22 +111,17 @@ namespace CassetteClient {
             }
         }
 
-        public void reload_cookies (string cookie_path) {
+        public void reload_cookies (File cookies_file) {
             if (session.has_feature (typeof (Soup.CookieJarDB))) {
                 session.remove_feature_by_type (typeof (Soup.CookieJarDB));
             }
 
-            var cookie_jar = new Soup.CookieJarDB (cookie_path, true);
+            var cookie_jar = new Soup.CookieJarDB (cookies_file.peek_path (), true);
             session.add_feature (cookie_jar);
-        }
 
-        public void clear_cookies () {
-            session.remove_feature_by_type (typeof (CookieJarDB));
-            if (storager.cookies_exists ()) {
-                storager.remove_file (storager.cookies_file_path);
-            }
-
-            cookie_file_path = storager.cookies_file_path;
+            Logger.debug ("Cookies was reloaded. New cookiess file %s".printf (
+                cookies_file.peek_path ()
+            ));
         }
 
         public void add_headers_preset (string preset_name, Header[] headers_arr) {

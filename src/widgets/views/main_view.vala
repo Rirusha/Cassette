@@ -26,7 +26,7 @@ namespace Cassette {
 
         public override bool can_refresh { get; default = false; }
 
-        public override RootView root_view { get; set; }
+        public override PageRoot root_view { get; set; }
 
         public MainView () {
             Object ();

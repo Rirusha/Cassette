@@ -37,9 +37,25 @@ namespace CassetteClient.YaMAPI {
             current_index = Random.int_range (0, tracks.size);
         }
 
+        public bool compare (Queue other) {
+            if (tracks.size != other.tracks.size || current_index != other.current_index) {
+                return false;
+            }
+
+            for (int i = 0; i < tracks.size; i++) {
+                if (tracks[i].id != other.tracks[i].id) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public Bytes to_json () {
             var builder = new Json.Builder ();
             builder.begin_object ();
+
+            int cur_index = current_index;
 
             builder.set_member_name ("context");
             builder.begin_object ();
@@ -59,7 +75,17 @@ namespace CassetteClient.YaMAPI {
 
             builder.set_member_name ("tracks");
             builder.begin_array ();
-            foreach (var track_info in tracks) {
+            for (int i = 0; i < tracks.size; i++ ) {
+                var track_info = tracks[i];
+
+                if (track_info.track_type == TrackType.LOCAL) {
+                    if (cur_index >= i) {
+                        cur_index--;
+                    }
+
+                    continue;
+                }
+
                 builder.begin_object ();
                 builder.set_member_name ("trackId");
                 builder.add_string_value (track_info.id);
@@ -79,7 +105,7 @@ namespace CassetteClient.YaMAPI {
             builder.end_array ();
 
             builder.set_member_name ("currentIndex");
-            builder.add_int_value (current_index);
+            builder.add_int_value (cur_index);
 
             builder.set_member_name ("from");
             builder.add_null_value ();

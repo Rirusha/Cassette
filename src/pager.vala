@@ -98,14 +98,14 @@ namespace Cassette {
             }
         }
 
-        string pages_path;
+        File pages_file;
 
         public Pager (MainWindow window, Adw.ViewStack stack) {
             Object (window: window, stack: stack);
         }
 
         construct {
-            pages_path = Path.build_filename (storager.cache_path, "cassette.pages");
+            pages_file = File.new_build_filename (storager.cache_dir_file.peek_path (), "cassette.pages");
 
             // Регистрация типов, так как имя типа преобразуется в сам тип до их регистрации
             // в другом месте кода
@@ -142,7 +142,7 @@ namespace Cassette {
                 view = (BaseView) Object.new_with_properties (view_type, get_args_names (view_type), vals);
             }
 
-            var ready_view = new RootView (window, view);
+            var ready_view = new PageRoot (window, view);
 
             stack.add_titled_with_icon (
                 ready_view,
@@ -286,19 +286,18 @@ namespace Cassette {
 
         void load_custom_pages () {
             try {
-                File pages_file = File.new_for_path (pages_path);
                 if (!pages_file.query_exists ()) {
                     return;
                 }
 
-                string content_str;
-                FileUtils.get_contents (pages_path, out content_str, null);
-                content_str = (string) Base64.decode (content_str);
+                uint8[] content;
+                pages_file.load_contents (null, out content, null);
+                string content_str = (string) Base64.decode ((string) content);
 
-                string[] content = content_str.split (PAGER_PAGES_DELIMETER);
+                string[] contents = content_str.split (PAGER_PAGES_DELIMETER);
 
-                for (int i = 0; i < content.length; i++) {
-                    add_custom_page (PageInfo.from_string (content[i]));
+                for (int i = 0; i < contents.length; i++) {
+                    add_custom_page (PageInfo.from_string (contents[i]));
                 }
 
             } catch (Error e) {
@@ -314,13 +313,12 @@ namespace Cassette {
             }
 
             try {
-                File pages_file = File.new_for_path (pages_path);
                 if (!pages_file.query_exists ()) {
                     pages_file.create (FileCreateFlags.PRIVATE);
                 }
 
                 string content_str = Base64.encode (string.joinv (PAGER_PAGES_DELIMETER, content).data);
-                FileUtils.set_contents (pages_path, content_str, content_str.length);
+                FileUtils.set_contents (pages_file.peek_path (), content_str, content_str.length);
 
             } catch (Error e) {
                 Logger.warning (_("Can't create pages file. Messsage: %s").printf (e.message));
@@ -354,15 +352,6 @@ namespace Cassette {
             if (stack.get_child_by_name (page_id) != null) {
                 clear_page (page_id);
             }
-        }
-
-        public void remove_pages () {
-            File pages_file = File.new_for_path (pages_path);
-            if (pages_file.query_exists ()) {
-                FileUtils.remove (pages_path);
-            }
-
-            save_pages ();
         }
 
         public void remove_page (string page_id) {

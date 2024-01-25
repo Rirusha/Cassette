@@ -52,8 +52,7 @@
             <child>
             <object class="GtkSearchEntry" id="search_entry">
               <style>
-                <class name="inline"/>
-                <class name="text-entry"/>
+                <class name="transparent-background"/>
               </style>
               <property name="search-delay">900</property>
               <property name="hexpand">true</property>
@@ -72,9 +71,7 @@
             </child>
             <child>
               <object class="GtkBox">
-                <style>
-                  <class name="linked"/>
-                </style>
+                <property name="spacing">1</property>
                 <child>
                   <object class="GtkMenuButton">
                     <style>
@@ -90,7 +87,7 @@
                       <class name="flat"/>
                     </style>
                     <!-- <property name="visible">false</property> -->
-                    <property name="icon-name">view-sort-ascending-symbolic</property>
+                    <property name="icon-name">adwaita-view-sort-ascending-symbolic</property>
                   </object>
                 </child>
                 <child>
@@ -99,7 +96,7 @@
                       <class name="flat"/>
                     </style>
                     <property name="visible">false</property>
-                    <property name="icon-name">window-close-symbolic</property>
+                    <property name="icon-name">adwaita-window-close-symbolic</property>
                   </object>
                 </child>
               </object>
@@ -117,7 +114,7 @@
         <child>
           <object class="AdwStatusPage" id="status_page">
             <property name="title" translatable="true">No tracks to display</property>
-            <property name="icon-name">face-sad-symbolic</property>
+            <property name="icon-name">adwaita-face-sad-symbolic</property>
             <property name="visible">false</property>
           </object>
         </child>

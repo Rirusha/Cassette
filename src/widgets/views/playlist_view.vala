@@ -33,8 +33,8 @@ namespace Cassette {
         unowned CoverImage cover_image;
         [GtkChild]
         unowned Gtk.Label duration_label;
-        [GtkChild]
-        unowned Gtk.Entry playlist_name_entry;
+        //  [GtkChild]
+        //  unowned Gtk.Entry playlist_name_entry;
         [GtkChild]
         unowned Gtk.Label playlist_name_label;
         [GtkChild]
@@ -59,10 +59,12 @@ namespace Cassette {
         unowned PlaylistOptionsButton playlist_options_button;
         [GtkChild]
         unowned Gtk.Switch visibility_switch;
+        [GtkChild]
+        unowned Gtk.Button edit_button;
 
         public override bool can_refresh { get; default = true; }
 
-        public override RootView root_view { get; set; }
+        public override PageRoot root_view { get; set; }
 
         public string? uid { get; construct set; }
         public string kind { get; construct set; }
@@ -134,20 +136,20 @@ namespace Cassette {
 
             insert_action_group ("playlist", actions);
 
-            playlist_name_entry.activate.connect (() => {
-                string old_playlist_title = ((YaMAPI.Playlist) object_info).title;
+            //  playlist_name_entry.activate.connect (() => {
+            //      string old_playlist_title = ((YaMAPI.Playlist) object_info).title;
 
-                if (old_playlist_title == "") {
-                    application.show_message (_("Playlist name can't be empty"));
-                    return;
-                }
+            //      if (old_playlist_title == "") {
+            //          application.show_message (_("Playlist name can't be empty"));
+            //          return;
+            //      }
 
-                playlist_name_entry_activate_async.begin ((obj, res) => {
-                    var new_playlist_info = playlist_name_entry_activate_async.end (res);
+            //      playlist_name_entry_activate_async.begin ((obj, res) => {
+            //          var new_playlist_info = playlist_name_entry_activate_async.end (res);
 
-                    application.show_message (_("Playlist '%s' was renamed to '%s'").printf (old_playlist_title, new_playlist_info.title));
-                });
-            });
+            //          application.show_message (_("Playlist '%s' was renamed to '%s'").printf (old_playlist_title, new_playlist_info.title));
+            //      });
+            //  });
 
             track_list = new TrackList (scrolled_window.vadjustment);
             main_box.append (track_list);
@@ -176,29 +178,29 @@ namespace Cassette {
                 });
             }
 
-            yam_talker.object_updated.connect ((obj_oid) => {
-                if (obj_oid == ((YaMAPI.Playlist) object_info).oid) {
-                    refresh.begin ();
+            yam_talker.playlist_changed.connect ((new_playlist) => {
+                if (new_playlist.oid == ((YaMAPI.Playlist) object_info).oid) {
+                    object_info = new_playlist;
+                    set_values ();
                 }
             });
 
-            playlist_name_entry.bind_property ("text", playlist_name_label, "label", GLib.BindingFlags.DEFAULT);
-            playlist_name_entry.bind_property ("visible", playlist_name_label, "visible", GLib.BindingFlags.INVERT_BOOLEAN);
+            block_widget (edit_button, BlockReason.NOT_IMPLEMENTED);
         }
 
-        async YaMAPI.Playlist? playlist_name_entry_activate_async () {
-            YaMAPI.Playlist? new_playlist = null;
+        //  async YaMAPI.Playlist? playlist_name_entry_activate_async () {
+        //      YaMAPI.Playlist? new_playlist = null;
 
-            threader.add (() => {
-                new_playlist = yam_talker.change_playlist_name (kind, playlist_name_entry.text);
+        //      threader.add (() => {
+        //          new_playlist = yam_talker.change_playlist_name (kind, playlist_name_entry.text);
 
-                Idle.add (playlist_name_entry_activate_async.callback);
-            });
+        //          Idle.add (playlist_name_entry_activate_async.callback);
+        //      });
 
-            yield;
+        //      yield;
 
-            return new_playlist;
-        }
+        //      return new_playlist;
+        //  }
 
         public async bool playlist_delete_async () {
             bool success = false;
@@ -223,9 +225,7 @@ namespace Cassette {
             var playlist_info = object_info as YaMAPI.Playlist;
 
             if (playlist_info.owner.uid == yam_talker.me.oid && playlist_info.kind != "3") {
-                playlist_name_entry.visible = true;
-            } else {
-                playlist_name_entry.visible = false;
+                edit_button.visible = true;
             }
 
             visibility_switch.state_set.disconnect (on_switch_change);
@@ -234,7 +234,9 @@ namespace Cassette {
 
             action_set_enabled ("playlist.share", playlist_info.is_public);
 
-            playlist_name_entry.text = playlist_info.title;
+            //  playlist_name_entry.text = playlist_info.title;
+            playlist_name_label.label = playlist_info.title;
+
             if (playlist_info.description != null) {
                 playlist_desc_label.label = playlist_info.description;
             }
@@ -336,7 +338,7 @@ namespace Cassette {
             if (object_info != null) {
                 set_values ();
 
-                cover_image.init_content ((HasCover) this.object_info, BIG_ART_SIZE);
+                cover_image.init_content ((HasCover) this.object_info, ArtSize.BIG_ART);
                 cover_image.load_image.begin ();
                 return -1;
             }
@@ -364,7 +366,7 @@ namespace Cassette {
             if (object_info != null) {
                 set_values ();
 
-                cover_image.init_content ((HasCover) this.object_info, BIG_ART_SIZE);
+                cover_image.init_content ((HasCover) this.object_info, ArtSize.BIG_ART);
                 cover_image.load_image.begin ();
                 return true;
             }

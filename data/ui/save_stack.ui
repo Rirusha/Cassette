@@ -40,7 +40,7 @@
                   <class name="dim-label"/>
                 </style>
                 <property name="tooltip-text" translatable="true">Content saved to temp folder</property>
-                <property name="icon-name">cache-temp-symbolic</property>
+                <property name="icon-name">cassette-cache-temp-symbolic</property>
               </object>
             </property>
           </object>
@@ -54,8 +54,7 @@
                   <class name="dim-label"/>
                 </style>
                 <property name="tooltip-text" translatable="true">Content saved</property>
-                <!-- Это то же, что и folder-download-symbolyc, но решил сохранить во избежания изменений в паках (всё же у меня не папка)-->
-                <property name="icon-name">cache-perm-symbolic</property>
+                <property name="icon-name">adwaita-cache-perm-symbolic</property>
               </object>
             </property>
           </object>

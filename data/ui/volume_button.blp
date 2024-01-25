@@ -1,0 +1,81 @@
+using Gtk 4.0;
+using Adw 1;
+
+Popover popover {
+  height-request: 230;
+
+  Box {
+    Revealer revealer {
+      reveal-child: false;
+      transition-type: slide_right;
+
+      Box {
+        Label {
+          label: "Equalizer here";
+        }
+
+        Separator {
+          margin-end: 4;
+        }
+      }
+    }
+
+    Box {
+      spacing: 4;
+      orientation: vertical;
+
+      ToggleButton equalaizer_button {
+        styles [
+          "flat",
+          "circular"
+        ]
+
+        icon-name: "il-sound-wave-alt-symbolic";
+      }
+
+      Button volume_inc_button {
+        styles [
+          "flat",
+          "circular"
+        ]
+
+        icon-name: "adwaita-list-add-symbolic";
+      }
+
+      Scale volume_level_scale {
+        orientation: vertical;
+        vexpand: true;
+        inverted: true;
+
+        adjustment: Adjustment {
+          lower: 0.0;
+          value: 0.0;
+          upper: 1.0;
+          page-increment: 0.1;
+        };
+      }
+
+      Button volume_dec_button {
+        styles [
+          "flat",
+          "circular"
+        ]
+
+        icon-name: "adwaita-list-remove-symbolic";
+      }
+    }
+  }
+}
+
+template $CassetteVolumeButton : Adw.Bin {
+  MenuButton real_menu_button {
+    styles [
+      "flat",
+      "circular"
+    ]
+
+    popover: popover;
+    direction: up;
+    icon-name: "adwaita-audio-volume-high-symbolic";
+  }
+}

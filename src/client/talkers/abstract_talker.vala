@@ -36,7 +36,7 @@ namespace CassetteClient {
         protected static SoupWrapper create_soup_wrapper (bool with_user_agent) {
             return new SoupWrapper (
                 with_user_agent? "Cassette Application" : null,
-                storager.cookies_file_path
+                storager.cookies_file
             );
         }
 

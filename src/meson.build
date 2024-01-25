@@ -15,17 +15,24 @@ cassette_gui_sources = files(
   'widgets/playlist_micro.vala',
   'widgets/sidebar.vala',
   'widgets/save_stack.vala',
+  'widgets/clickable_label.vala',
   'widgets/label_button.vala',
   'widgets/loading_widget.vala',
   'widgets/custom_button.vala',
+  'widgets/volume_button.vala',
+  'widgets/track_info_panel.vala',
   'widgets/like_button.vala',
   'widgets/dislike_button.vala',
   'widgets/playlist_row.vala',
   'widgets/info_marks.vala',
   'widgets/account_info_window.vala',
+  'widgets/lyrics/lyrics_line.vala',
+  'widgets/lyrics/lyrics_panel.vala',
   'widgets/begin/begin_window.vala',
   'widgets/begin/begin_view.vala',
   'widgets/playlist_choose_window.vala',
+  'widgets/cache_indicator/cache_indicator.vala',
+  'widgets/cache_indicator/job_info_badge.vala',
   'widgets/track_list/track_list.vala',
   'widgets/track_list/tracks_model.vala',
   'widgets/track_list/tracks_view.vala',
@@ -39,17 +46,17 @@ cassette_gui_sources = files(
   'widgets/options_button/options_button.vala',
   'widgets/options_button/playlist_options_button.vala',
   'widgets/cover_image.vala',
-  'widgets/lyrics_line.vala',
-  'widgets/lyrics_panel.vala',
   'widgets/track_detailed.vala',
   'widgets/preferences/custom_pages_preferences.vala',
   'widgets/preferences/cache_deletion_preferences.vala',
   'widgets/preferences/custom_page_preferences.vala',
   'widgets/preferences/preferences_window.vala',
-  'widgets/track_rows/track_local_content.vala',
-  'widgets/track_rows/track_default_content.vala',
-  'widgets/track_rows/track_queue_content.vala',
-  'widgets/track_rows/track_placeholder.vala',
+  'widgets/track_row_contents/track_local_content.vala',
+  'widgets/track_row_contents/track_default_content.vala',
+  'widgets/track_row_contents/track_queue_content.vala',
+  'widgets/track_row_contents/track_placeholder.vala',
+  'widgets/track_row_contents/track_row_content.vala',
+  'widgets/track_row_contents/ya_track_row_content.vala',
   'widgets/views/main_view.vala',
   'widgets/views/with_tracks_view.vala',
   'widgets/views/base_view.vala',
@@ -67,6 +74,7 @@ subdir('client')
 
 cassette_sources = [
   vapi_sources,
+  blueprints,
   cassette_gui_sources,
   cassette_client_sources,
   resources
@@ -75,9 +83,9 @@ cassette_sources = [
 cassette_vala_args = [
   '--target-glib', '2.76',
   '--vapidir', meson.current_source_dir(),
-  '--gresources', resource_files
+  '--gresources', resource_files,
+  '--gresourcesdir=data/'
 ]
-
 
 cassette_c_args = [
   '-include', 'config.h',

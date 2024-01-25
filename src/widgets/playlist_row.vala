@@ -51,7 +51,7 @@ namespace Cassette {
                 add_button_clicked_async.begin ();
             });
 
-            cover_image.init_content (playlist_info, SMALL_BIG_ART_SIZE);
+            cover_image.init_content (playlist_info, ArtSize.BIG_SMALL);
             cover_image.load_image.begin ();
         }
 
@@ -91,7 +91,7 @@ namespace Cassette {
         }
 
         public void success () {
-            add_button.icon_name = "emblem-ok-symbolic";
+            add_button.icon_name = "adwaita-emblem-ok-symbolic";
 
             set_track_count ();
         }

@@ -23,18 +23,19 @@ using CassetteClient;
 
 namespace Cassette {
 
+    static Authenticator authenticator;
+
     public static Application application;
+    public static CassetteClient.Cachier.Cachier cachier;
     public static CassetteClient.Cachier.Storager storager;
     public static CassetteClient.Threader threader;
-    static Authenticator authenticator;
     public static CassetteClient.YaMTalker yam_talker;
     public static CassetteClient.Player.Player player;
-    public static CassetteClient.Cachier.CachierController cachier_controller;
 
     public enum ApplicationState {
         BEGIN,
-        ONLINE,
         LOCAL,
+        ONLINE,
         OFFLINE
     }
 
@@ -51,29 +52,18 @@ namespace Cassette {
                     return;
                 }
 
-                bool should_notify = false;
-
-                if (_application_state != ApplicationState.BEGIN) {
-                    should_notify = true;
-                }
+                var old_state = _application_state;
 
                 _application_state = value;
 
-                if (should_notify) {
+                // Don't write "Connection restored" after auth
+                if (old_state != ApplicationState.BEGIN) {
                     application_state_changed (_application_state);
                 }
             }
         }
 
-        public bool is_mobile {
-            get {
-                if (main_window == null) {
-                    return false;
-                }
-
-                return main_window.is_mobile_orientation;
-            }
-        }
+        public bool is_mobile { get; private set; default = false; }
 
         const string APP_NAME = "Cassette";
         const string RIRUSHA = "Rirusha <anerin.sidiver@yandex.ru>";
@@ -85,6 +75,12 @@ namespace Cassette {
 
         public MainWindow main_window = null;
 
+        public bool is_devel {
+            get {
+                return Config.POSTFIX == ".Devel";
+            }
+        }
+
         public Application () {
             Object (
                 application_id: Config.APP_ID,
@@ -95,7 +91,8 @@ namespace Cassette {
         construct {
             application = this;
 
-            CassetteClient.init (Config.POSTFIX == ".Devel");
+            CassetteClient.init ("io.github.Rirusha.Cassette", is_devel);
+
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
             });
@@ -104,12 +101,12 @@ namespace Cassette {
             });
 
             // Shortcuts
+            cachier = CassetteClient.cachier;
             storager = CassetteClient.storager;
             threader = CassetteClient.threader;
             authenticator = new Authenticator ();
             yam_talker = CassetteClient.yam_talker;
             player = CassetteClient.player;
-            cachier_controller = CassetteClient.cachier_controller;
 
             yam_talker.connection_established.connect (() => {
                 application_state = ApplicationState.ONLINE;
@@ -148,6 +145,10 @@ namespace Cassette {
             base.activate ();
 
             if (active_window == null) {
+                if (storager.settings.get_boolean ("force-mobile")) {
+                    is_mobile = true;
+                }
+
                 main_window = new MainWindow (this);
 
                 authenticator.success.connect (main_window.load_default_views);
@@ -157,9 +158,23 @@ namespace Cassette {
                     _application_state = ApplicationState.ONLINE;
                 }
 
-                if (!storager.cookies_exists () && _application_state != ApplicationState.LOCAL) {
-                    _application_state = ApplicationState.BEGIN;
-                }
+                //  main_window.show.connect (() => {
+                //      // Detection device "mobility"
+                //      // TODO: that also can work on notebooks with touch...
+                //      if (storager.settings.get_boolean ("force-mobile")) {
+                //          is_mobile = true;
+
+                //      } else {
+                //          var display = Gdk.Display.get_default ();
+                //          var seat = display?.get_default_seat ();
+
+                //          foreach (var device in seat?.get_devices (Gdk.SeatCapabilities.TOUCH)) {
+                //              is_mobile = true;
+
+                //              storager.settings.set_double ("volume", 100.0);
+                //          }
+                //      }
+                //  });
 
                 main_window.present ();
 
@@ -218,7 +233,13 @@ namespace Cassette {
                 release_notes_version = Config.VERSION
             };
             about.release_notes = _("<p>Added new authorization via WebView</p>");
+
             about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
+            about.add_link (_("Financial support"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
+
+            about.add_acknowledgement_section ("Donaters", {
+                "Placeholder dude"
+            });
 
             about.present ();
         }
@@ -238,11 +259,11 @@ namespace Cassette {
         }
 
         void on_shuffle () {
-            main_window.player_bar.roll_shuffle_mode ();
+            roll_shuffle_mode ();
         }
 
         void on_repeat () {
-            main_window.player_bar.roll_repeat_mode ();
+            roll_repeat_mode ();
         }
 
         void on_next () {
@@ -268,8 +289,10 @@ namespace Cassette {
         }
 
         void on_share_current_track () {
-            if (player.current_track?.ugc == false) {
-                track_share (player.current_track);
+            var current_track = player.get_current_track ();
+
+            if (current_track?.is_ugc == false) {
+                track_share (current_track);
             }
         }
     }

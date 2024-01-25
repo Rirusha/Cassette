@@ -55,15 +55,27 @@ namespace Cassette {
         unowned Adw.SpinRow max_thread_number_spin;
         [GtkChild]
         unowned CacheDeletionPreferences deletion_preferences;
+        [GtkChild]
+        unowned Adw.SwitchRow debug_mode_switch;
+        [GtkChild]
+        unowned Adw.SwitchRow force_mobile_switch;
 
         construct {
-            deletion_preferences.pref_win = this;
+            //  deletion_preferences.pref_win = this;
 
-            show_save_stack_switch.notify["active"].connect (show_save_stack_switch_active_changed);
+            show_save_stack_switch.notify["active"].connect (on_show_save_stack_switch_changed);
 
             max_thread_number_spin.value = storager.settings.get_int ("max-thread-number");
             can_cache_switch.active = storager.settings.get_boolean ("can-cache");
-            can_cache_switch.notify["active"].connect (on_can_cache_switch_changed);
+            can_cache_switch.active = storager.settings.get_boolean ("debug-mode");
+
+            can_cache_switch.notify["active"].connect (() => {
+                if (!can_cache_switch.active) {
+                    ask_about_deletion ();
+                } else {
+                    storager.settings.set_boolean ("can-cache", true);
+                }
+            });
 
             storager.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
@@ -73,6 +85,8 @@ namespace Cassette {
             storager.settings.bind ("show-save-stack", show_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            storager.settings.bind ("force-mobile", force_mobile_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            storager.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             storager.settings.bind ("try-load-queue-every-activate", try_load_queue_every_activate_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
             storager.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);
@@ -83,7 +97,7 @@ namespace Cassette {
                 storager.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);
             });
 
-            show_save_stack_switch_active_changed ();
+            on_show_save_stack_switch_changed ();
 
             if (Config.POSTFIX == ".Devel") {
                 add_css_class ("devel");
@@ -92,20 +106,8 @@ namespace Cassette {
             focus_widget = null;
         }
 
-        void show_save_stack_switch_active_changed () {
-            if (show_save_stack_switch.active) {
-                show_temp_save_stack_switch.sensitive = true;
-            } else {
-                show_temp_save_stack_switch.sensitive = false;
-            }
-        }
-
-        void on_can_cache_switch_changed () {
-            if (!can_cache_switch.active) {
-                ask_about_deletion ();
-            } else {
-                storager.settings.set_boolean ("can-cache", true);
-            }
+        void on_show_save_stack_switch_changed () {
+            show_temp_save_stack_switch.sensitive = show_save_stack_switch.active;
         }
 
         void ask_about_deletion () {
@@ -126,7 +128,7 @@ namespace Cassette {
 
             dialog.response.connect ((dialog, response) => {
                 if (response == "delete") {
-                    deletion_preferences.delete_temp_cache ();
+                    deletion_preferences.delete_files (true);
                     storager.settings.set_boolean ("can-cache", can_cache_switch.active);
                 } else {
                     can_cache_switch.active = true;

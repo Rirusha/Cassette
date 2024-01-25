@@ -1,0 +1,161 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteMainWindow : Adw.ApplicationWindow {
+  default-width: 600;
+  default-height: 300;
+
+  content: Adw.NavigationView root_navigation_view {
+    Adw.NavigationPage {
+      title: "main";
+      child: Adw.ToolbarView toolbar_view {
+        bottom-bar-style: raised;
+        top-bar-style: raised;
+        reveal-bottom-bars: false;
+
+        [top]
+        Adw.HeaderBar header_bar {
+          title-widget: Adw.ViewSwitcher switcher_title {
+              stack: main_stack;
+              policy: wide;
+          };
+
+          [start]
+          Button button_backward {
+            icon-name: "adwaita-go-previous-symbolic";
+            sensitive: false;
+            tooltip-text: "Go back";
+          }
+
+          [start]
+          Button button_refresh {
+            icon-name: "adwaita-view-refresh-symbolic";
+            sensitive: false;
+            tooltip-text: "Refresh";
+          }
+
+          [start]
+          ToggleButton button_search {
+            icon-name: "adwaita-edit-find-symbolic";
+            tooltip-text: "Yandex.Muisc search";
+          }
+
+          [start]
+          $CassetteCacheIndicator {}
+
+          [end]
+          MenuButton app_menu_button {
+            icon-name: "adwaita-open-menu-symbolic";
+            menu-model: primary_menu;
+            sensitive: false;
+            tooltip-text: "Main menu";
+          }
+
+          [end]
+          MenuButton avatar_button {
+            styles [
+              "flat"
+            ]
+
+            sensitive: false;
+            menu-model: avatar_menu;
+            tooltip-text: "Account mneu";
+
+            Adw.Avatar avatar {}
+          }
+
+          [end]
+          Revealer sidebar_toggle_revealer {
+            reveal-child: false;
+            transition-type: crossfade;
+
+            ToggleButton sidebar_toggle_button {
+              styles [
+                "flat"
+              ]
+
+              icon-name: "adwaita-sidebar-show-right-symbolic";
+            }
+          }
+        }
+
+        [top]
+        Revealer search_revealer {
+          reveal-child: false;
+          transition-type: slide_down;
+
+          Box {
+            orientation: vertical;
+            spacing: 3;
+
+            Separator {}
+
+            Adw.Clamp {
+              maximum-size: 600;
+
+              SearchEntry search_entry {
+                search-delay: 1500;
+              }
+            }
+          }
+        }
+
+        content: Box {
+          orientation: vertical;
+
+          Adw.Banner info_banner {
+            button-label: _("Reconnect");
+            title: _("Connection problems");
+            revealed: false;
+          }
+
+          $CassetteSideBar sidebar {
+            content: Adw.ToastOverlay toast_overlay {
+              vexpand: true;
+              child: Stack loading_stack {
+
+                StackPage {
+                  name: "loading";
+                  child: $CassetteLoadingWidget {
+                    size: 24;
+                  };
+                }
+
+                StackPage {
+                  name: "done";
+                  child: Adw.ViewStack main_stack {};
+                }
+              };
+            };
+          }
+        };
+
+        [bottom]
+        $CassettePlayerBar player_bar {
+          window: template;
+        }
+      };
+    }
+  };
+}
+
+menu primary_menu {
+  section {
+    item (_("Disliked tracks"), "win.show-disliked-tracks")
+    item (_("Parse URL from clipboard"), "win.parse-url")
+  }
+  section {
+    item (_("Preferences"), "app.preferences")
+    item (_("Keyboard Shortcuts"), "win.show-help-overlay")
+    item (_("About Cassette"), "app.about")
+  }
+}
+menu avatar_menu {
+  section {
+    item (_("Open in browser"), "win.open-in-browser")
+    item (_("Account info"), "win.accoint-info")
+  }
+  section {
+    item (_("Log out"), "app.log-out")
+  }
+}

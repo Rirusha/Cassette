@@ -94,6 +94,15 @@ namespace Cassette {
                     });
                 }
 
+                yam_talker.playlist_changed.connect ((new_playlist) => {
+                    if (new_playlist.oid == short_playlist_info.oid) {
+                        short_playlist_info.cover = new_playlist.cover;
+                        short_playlist_info.title = new_playlist.title;
+
+                        set_values ();
+                    }
+                });
+
                 var motion_controller = new Gtk.EventControllerMotion ();
                 add_controller (motion_controller);
 
@@ -116,6 +125,11 @@ namespace Cassette {
 
                 add_to_queue_button.clicked.connect (() => {
                     add_to_queue.begin ();
+                });
+
+                play_button.clicked_not_playing.connect (() => {
+                    player.stop ();
+                    play.begin ();
                 });
 
                 set_values ();
@@ -164,12 +178,8 @@ namespace Cassette {
             }
 
             play_button.init_content (short_playlist_info.oid);
-            play_button.clicked_not_playing.connect (() => {
-                player.stop ();
-                play.begin ();
-            });
 
-            cover_image.init_content (short_playlist_info, BIG_ART_SIZE);
+            cover_image.init_content (short_playlist_info, ArtSize.BIG_ART);
             cover_image.load_image.begin ();
     }
 

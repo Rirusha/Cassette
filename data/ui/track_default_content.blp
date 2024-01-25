@@ -1,0 +1,59 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteTrackDefault : $CassetteYATrackRowContent {
+  Box {
+    margin-bottom: 6;
+    margin-top: 6;
+    margin-start: 6;
+    margin-end: 6;
+    spacing: 8;
+
+    $CassetteTrackInfoPanel info_panel {
+      has-play-button: true;
+      hexpand: true;
+      halign: start;
+    }
+
+    $CassetteSaveStack save_stack {
+      content-type: track;
+      halign: end;
+    }
+
+    $CassetteDislikeButton dislike_button {
+      is-flat: true;
+      is-circular: true;
+      visible: false;
+      halign: end;
+      valign: center;
+    }
+
+    $CassetteLikeButton like_button {
+      is-flat: true;
+      is-circular: true;
+      object-content-type: track;
+      halign: end;
+      valign: center;
+    }
+
+    Label duration_label {
+      styles [
+        "dim-label"
+      ]
+
+      width-request: 32;
+      xalign: 1;
+      halign: end;
+      label: "0:00";
+      margin-end: 4;
+      margin-start: 4;
+    }
+
+    $CassetteTrackOptionsButton track_options_button {
+      is-flat: true;
+      is-circular: true;
+      halign: end;
+      valign: center;
+    }
+  }
+}

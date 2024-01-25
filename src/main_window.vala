@@ -26,12 +26,6 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/main_window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         [GtkChild]
-        unowned Gtk.Box main_box;
-        [GtkChild]
-        unowned Adw.HeaderBar header_bar;
-        [GtkChild]
-        unowned Gtk.Stack title_stack;
-        [GtkChild]
         unowned Adw.ViewSwitcher switcher_title;
         [GtkChild]
         unowned Gtk.Button button_backward;
@@ -42,7 +36,7 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.Avatar avatar;
         [GtkChild]
-        public unowned Cassette.SideBar sidebar;
+        public unowned SideBar sidebar;
         [GtkChild]
         unowned Gtk.ToggleButton button_search;
         [GtkChild]
@@ -52,9 +46,23 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Stack loading_stack;
         [GtkChild]
-        unowned Gtk.Spinner spin;
-        [GtkChild]
         unowned Gtk.MenuButton app_menu_button;
+        [GtkChild]
+        unowned PlayerBar player_bar;
+        [GtkChild]
+        unowned Gtk.Revealer search_revealer;
+        [GtkChild]
+        unowned Gtk.Revealer sidebar_toggle_revealer;
+        [GtkChild]
+        unowned Adw.ToolbarView toolbar_view;
+        [GtkChild]
+        unowned Gtk.SearchEntry search_entry;
+        [GtkChild]
+        unowned Gtk.ToggleButton sidebar_toggle_button;
+        [GtkChild]
+        unowned Adw.Banner info_banner;
+        [GtkChild]
+        unowned Adw.HeaderBar header_bar;
 
         public bool is_mobile_orientation {
             get {
@@ -66,13 +74,14 @@ namespace Cassette {
             }
         }
 
-        public Pager pager;
-        public PlayerBar player_bar { get; construct; }
+        int reconnect_timer = 5;
+
+        public Pager pager { get; construct; }
 
         GLib.Binding? current_view_can_back_binding = null;
         GLib.Binding? current_view_can_refresh_binding = null;
-        RootView _current_view;
-        public RootView current_view {
+        PageRoot _current_view;
+        public PageRoot current_view {
             get {
                 return _current_view;
             }
@@ -110,11 +119,48 @@ namespace Cassette {
             gs.pressed.connect (() => {
                 set_focus (null);
             });
-            switcher_title.add_controller (gs);
+            header_bar.add_controller (gs);
+
+            sidebar.notify["is-shown"].connect (() => {
+                if (sidebar.is_shown) {
+                    sidebar_toggle_revealer.reveal_child = true;
+                    sidebar_toggle_button.active = true;
+                } else {
+                    sidebar_toggle_revealer.reveal_child = false;
+                }
+            });
+
+            sidebar_toggle_button.notify["active"].connect (() => {
+                if (!sidebar_toggle_button.active) {
+                    sidebar.is_shown = false;
+                }
+            });
 
             main_stack.notify["visible-child"].connect (() => {
                 Adw.ViewStackPage current_page = main_stack.get_page (main_stack.get_visible_child ());
             });
+
+            info_banner.button_clicked.connect (try_reconnect);
+
+                //  try {
+                //      string cmd = "";
+
+                //      switch (Environment.get_variable ("XDG_CURRENT_DESKTOP")) {
+                //          case "GNOME":
+                //              cmd = "gnome-control-center network";
+                //              break;
+                //          default:
+                //              Logger.warning ("Unsupported DE '%s'. You can create issue on github: %s.".printf (
+                //                  Environment.get_variable ("XDG_CURRENT_DESKTOP"),
+                //                  "https://github.com/Rirusha/Cassette/issues/new/choose"
+                //              ));
+                //      }
+
+                //      Process.spawn_command_line_sync (cmd);
+                //  } catch (SpawnError e) {
+                //      Logger.warning ("Error while opening network settings. Error message: %s".printf (e.message));
+                //  }
+            //  });
 
             var show_disliked_tracks_action = new SimpleAction ("show-disliked-tracks", null);
             show_disliked_tracks_action.activate.connect (() => {
@@ -147,8 +193,6 @@ namespace Cassette {
             });
             add_action (account_info_action);
 
-            player_bar = new PlayerBar (this);
-            main_box.append (player_bar);
             pager = new Pager (this, main_stack);
 
             CassetteClient.storager.settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
@@ -174,7 +218,6 @@ namespace Cassette {
                         set_online ();
                         break;
                     case ApplicationState.OFFLINE:
-                        show_message (_("Connection problems"));
                         set_offline ();
                         break;
                     default:
@@ -188,12 +231,10 @@ namespace Cassette {
             });
             add_action (search_action);
 
-            button_search.toggled.connect (() => {
-                if (button_search.active) {
-                    title_stack.set_visible_child_name ("search-entry");
-                    title_stack.get_visible_child ().grab_focus ();
-                } else {
-                    title_stack.set_visible_child_name ("view-switcher");
+            button_search.bind_property ("active", search_revealer, "reveal-child", BindingFlags.DEFAULT);
+            search_revealer.notify["reveal-child"].connect (() => {
+                if (search_revealer.reveal_child) {
+                    set_focus (search_entry);
                 }
             });
 
@@ -205,12 +246,12 @@ namespace Cassette {
         }
 
         public void set_online () {
-            header_bar.remove_css_class ("offline-mode");
+            info_banner.revealed = false;
             avatar_button.sensitive = true;
         }
 
         public void set_offline () {
-            header_bar.add_css_class ("offline-mode");
+            info_banner.revealed = true;
             avatar_button.sensitive = false;
         }
 
@@ -218,13 +259,14 @@ namespace Cassette {
             if (loading_stack.visible_child_name == "loading") {
                 pager.load_pages (PagesType.ONLINE);
                 loading_stack.visible_child_name = "done";
-                spin.stop ();
 
                 load_avatar.begin ();
                 player_bar.update_queue.begin ();
 
                 app_menu_button.sensitive = true;
                 button_refresh.sensitive = true;
+
+                cachier.check_all_cache ();
 
                 notify["is-active"].connect (() => {
                     if (
@@ -242,7 +284,6 @@ namespace Cassette {
             if (loading_stack.visible_child_name == "loading") {
                 pager.load_pages (PagesType.LOCAL);
                 loading_stack.visible_child_name = "done";
-                spin.stop ();
 
                 avatar_button.visible = false;
                 action_set_enabled ("win.show-disliked-tracks", false);
@@ -260,19 +301,34 @@ namespace Cassette {
             Logger.info (_("Window info message: %s").printf (message));
         }
 
-        async void load_avatar () {
-            threader.add (() => {
-                avatar.text = yam_talker.me.account.get_user_name ();
-                avatar.size = 22;
-                var pixbuf = get_image (yam_talker.me, 28);
-                if (pixbuf != null) {
-                    avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
-                }
+        async void try_reconnect () {
+            info_banner.sensitive = false;
+            info_banner.button_label = reconnect_timer.to_string ();
 
-                Idle.add (load_avatar.callback);
+            Timeout.add_seconds (1, () => {
+                if (reconnect_timer > 1) {
+                    reconnect_timer--;
+                    info_banner.button_label = reconnect_timer.to_string ();
+                    return Source.CONTINUE;
+
+                } else {
+                    info_banner.sensitive = true;
+                    info_banner.button_label = _("Reconnect");
+                    reconnect_timer = 5;
+                    return Source.REMOVE;
+                }
             });
 
-            yield;
+            player_bar.update_queue.begin ();
+        }
+
+        async void load_avatar () {
+            avatar.text = yam_talker.me.account.get_user_name ();
+            avatar.size = 22;
+            var pixbuf = yield Cachier.get_image (yam_talker.me, 28);
+            if (pixbuf != null) {
+                avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
+            }
 
             avatar_button.sensitive = true;
         }
@@ -322,7 +378,13 @@ namespace Cassette {
 
                         // album 87894564 track 54654
                         } else {
-                            string track_id = parts[3];
+                            string track_id;
+
+                            if ("?" in parts[3]) {
+                                track_id = parts[3].split ("?")[0];
+                            } else {
+                                track_id = parts[3];
+                            }
 
                             show_track_by_id.begin (track_id);
 
@@ -334,6 +396,14 @@ namespace Cassette {
                     show_message (_("Can't parse clipboard content"));
                 }
             });
+        }
+
+        public void show_player_bar () {
+            toolbar_view.reveal_bottom_bars = true;
+        }
+
+        public void hide_player_bar () {
+            toolbar_view.reveal_bottom_bars = false;
         }
 
         // Адаптивное окно, не используется Adw.Breakpoint, так как каждый

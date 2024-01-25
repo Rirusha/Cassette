@@ -30,7 +30,7 @@ namespace CassetteClient {
         public abstract Gee.ArrayList<string> get_cover_items_by_size (int size);
     }
 
-    public interface HasTrackList : YaMObject {
+    public interface HasTrackList : YaMObject, HasID {
         public abstract Gee.ArrayList<YaMAPI.Track> get_filtered_track_list (bool show_explicit, bool show_child, string? exception_track_id = null);
     }
 

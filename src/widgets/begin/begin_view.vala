@@ -48,7 +48,7 @@ namespace Cassette {
         }
 
         construct {
-            if (Cassette.application.is_mobile) {
+            if (application.is_mobile) {
                 main_box.valign = Gtk.Align.FILL;
 
             } else {
@@ -88,13 +88,14 @@ namespace Cassette {
             var network_session = webview.get_network_session ();
             var cookie_manager = network_session.get_cookie_manager ();
 
-            cookie_manager.set_persistent_storage (storager.cookies_file_path, CookiePersistentStorage.SQLITE);
+            cookie_manager.set_persistent_storage (storager.cookies_file.peek_path (), CookiePersistentStorage.SQLITE);
 
+            // Кнопка не блокируется, если выполнять не добавлять в Idle
             Idle.add_once (() => {
                 block_widget (button_local_mode, BlockReason.NOT_IMPLEMENTED);
             });
 
-            if (Config.POSTFIX == ".Devel") {
+            if (application.is_devel) {
                 add_css_class ("devel");
             }
         }
@@ -110,7 +111,9 @@ namespace Cassette {
 
             start_loading ();
 
-            webview.load_uri ("https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d");
+            webview.load_uri (
+                "https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d"
+            );
         }
 
         void local () {

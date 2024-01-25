@@ -31,18 +31,15 @@ namespace Cassette {
 
         construct {
             real_button.action_name = "app.play-pause";
-            player.track_state_changed.connect ((playing_track_id) => {
-                switch (player.player_state) {
-                    case Player.PlayerState.PLAYING:
-                        set_playing ();
-                        break;
-                    case Player.PlayerState.PAUSED:
-                        set_paused ();
-                        break;
-                    case Player.PlayerState.NONE:
-                        set_stopped ();
-                        break;
-                }
+
+            player.played.connect (() => {
+                set_playing ();
+            });
+            player.paused.connect (() => {
+                set_paused ();
+            });
+            player.stopped.connect (() => {
+                set_stopped ();
             });
         }
     }

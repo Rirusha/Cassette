@@ -5,9 +5,8 @@
   <template class="CassettePreferencesWindow" parent="AdwPreferencesWindow">
     <child>
       <object class="AdwPreferencesPage">
-        <!-- Translators: title of preference page -->
-        <property name="title" translatable="true" context="preference window">Main preferences</property>
-        <property name="icon-name">user-home-symbolic</property>
+        <property name="title" translatable="true" context="preference window">Main</property>
+        <property name="icon-name">adwaita-user-home-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
@@ -113,12 +112,32 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="true" context="preference window">Other</property>
+            <child>
+              <object class="AdwSwitchRow" id="debug_mode_switch">
+                <property name="title" translatable="true" context="preference window">Enable Debug-Mode</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="true" context="preference window">Experimental</property>
+            <child>
+              <object class="AdwSwitchRow" id="force_mobile_switch">
+                <property name="title" translatable="true" context="preference window">Force enable mobile mode</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title" translatable="true" context="preference window">Pages preferences</property>
-        <property name="icon-name">view-paged-symbolic</property>
+        <property name="title" translatable="true" context="preference window">Pages</property>
+        <property name="icon-name">adwaita-view-paged-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
@@ -152,8 +171,9 @@
     </child>
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title" translatable="true" context="preference window">Cache preferences</property>
-        <property name="icon-name">user-trash-symbolic</property>
+        <!-- Translators: Cache preference -->
+        <property name="title" translatable="true" context="preference window">Cache</property>
+        <property name="icon-name">adwaita-user-trash-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
@@ -163,13 +183,15 @@
             <child>
               <object class="AdwSwitchRow" id="can_cache_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Cache content to ~/.cache</property>
+                <property name="title" translatable="true" context="preference window">Cache content for better performance (Over time, it starts to take up a lot of space. So far, manual cleaning is required)</property>
                 <!-- Translators: tooltip of preference -->
                 <property name="tooltip-text" translatable="true" context="preference window">If enabled, the application will cache all content in /var/tmp/cassette for better performance, otherwise, the application will load content only when caching objects (such as playlists or albums). Disabling the parameter does not delete already downloaded content</property>
               </object>
             </child>
             <child>
-              <object class="CassetteCacheDeletionPreferences" id="deletion_preferences"/>
+              <object class="CassetteCacheDeletionPreferences" id="deletion_preferences">
+                <property name="pref-win">CassettePreferencesWindow</property>
+              </object>
             </child>
           </object>
         </child>

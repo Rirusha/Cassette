@@ -38,9 +38,6 @@
 		<key name="window-maximized" type="b">
 			<default>false</default>
 		</key>
-		<!-- <key name="cache-path" type="s">
-			<default>'~/.local/share/cassette'</default>
-		</key> -->
 		<key name="volume" type="d">
 			<default>10.0</default>
 		</key>
@@ -88,6 +85,12 @@
 		</key>
 		<key name="show-playlists" type="b">
 			<default>true</default>
+		</key>
+		<key name="debug-mode" type="b">
+			<default>false</default>
+		</key>
+		<key name="force-mobile" type="b">
+			<default>false</default>
 		</key>
 	</schema>
 </schemalist>

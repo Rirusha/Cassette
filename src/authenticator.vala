@@ -35,6 +35,15 @@ namespace Cassette {
             Object ();
         }
 
+        construct {
+            success.connect (() => {
+                application.application_state = ApplicationState.ONLINE;
+            });
+            local.connect (() => {
+                application.application_state = ApplicationState.LOCAL;
+            });
+        }
+
         public void log_out () {
             var dialog = new Adw.MessageDialog (
                 application.main_window,
@@ -90,9 +99,8 @@ namespace Cassette {
             loading_win.present ();
             spinner.start ();
 
-            storager.moving_done.connect (application.quit);
-
-            threader.add (storager.clear_user);
+            // TODO: Let user choose save content ot not
+            storager.clear_user.begin (true, application.quit);
         }
 
         public void log_in () {
@@ -110,6 +118,8 @@ namespace Cassette {
                 try {
                     yam_talker.init_if_not ();
                 } catch (BadStatusCodeError e) {
+                    Logger.warning ("Bad status code while trying init client. Error message: %s".printf (e.message));
+
                     should_auth = true;
                 }
 
@@ -127,8 +137,8 @@ namespace Cassette {
 
         public void start_auth () {
             application.application_state = ApplicationState.BEGIN;
-            if (storager.cookies_exists ()) {
-                storager.remove_file (storager.cookies_file_path);
+            if (storager.cookies_file.query_exists ()) {
+                storager.remove_file (storager.cookies_file);
             }
 
             var begin_window = new BeginWindow () {

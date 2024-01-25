@@ -9,7 +9,7 @@
         <property name="label" translatable="true">Loading…</property>
         <property name="halign">start</property>
         <property name="margin-start">14</property>
-        <property name="height-request">58</property>
+        <property name="height-request">78</property>
       </object>
 		</child>
 	</template>

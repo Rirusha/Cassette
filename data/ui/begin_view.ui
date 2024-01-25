@@ -3,8 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
   <template class="CassetteBeginView" parent="CassetteAbstractLoadablePage">
-    <property name="nav-view">navigation_view</property>
-    <child>
+    <property name="nav-view">
       <object class="AdwNavigationView" id="navigation_view">
         <child>
           <object class="AdwNavigationPage">
@@ -119,7 +118,7 @@
                     <property name="show-end-title-buttons">false</property>
                     <child type="start">
                       <object class="GtkButton" id="button_refresh">
-                        <property name="icon-name">view-refresh-symbolic</property>
+                        <property name="icon-name">adwaita-view-refresh-symbolic</property>
                       </object>
                     </child>
                   </object>
@@ -129,6 +128,6 @@
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

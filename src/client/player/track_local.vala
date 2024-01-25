@@ -1,4 +1,4 @@
-/* player_local.vala
+/* track.vala
  *
  * Copyright 2023 Rirusha
  *
@@ -18,37 +18,20 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using CassetteClient.YaMAPI;
 using Gee;
 
-namespace CassetteClient.Player {
-    public class PlayerLL: Object, IPlayerMod {
+namespace CassetteClient {
+    public class TrackLocal : Track {
 
-        public YaMAPI.Track? current_track {
-            owned get {
-                return null;
-            }
-        }
-        public YaMAPI.Track next_track {
-            owned get {
-                return new YaMAPI.Track ();
-            }
-        }
-        public YaMAPI.Track prev_track {
-            owned get {
-                return new YaMAPI.Track ();
-            }
+        construct {
+            type_ = "local";
         }
 
-        public PlayerLL () {
-            Object ();
-        }
-
-        public void next (bool consider_repeat_mode) {
-
-        }
-
-        public void prev () {
-
+        public override ArrayList<string> get_cover_items_by_size (int size) {
+            var array = new ArrayList<string> ();
+            array.add ("https://es-static.z-dn.net/files/d6a/87164361f7d08a28bd93261b5ebacd8a.png");
+            return array;
         }
     }
 }

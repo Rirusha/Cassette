@@ -45,34 +45,70 @@ namespace CassetteClient.Cachier {
     }
 
     // Контроллер состояния кэширования треков. Все отображалки состояния привязаны к этому контроллеру
-    public class CachierController : Object {
+    public class Controller : Object {
         ArrayList<ContentInfo?> loading_content = new ArrayList<ContentInfo?> ();
 
-        public signal void content_cache_state_changed (ContentType content_type, string content_id, CacheingState state);
+        public signal void content_cache_state_changed (
+            ContentType content_type,
+            string content_id,
+            CacheingState state);
 
-        ContentInfo? get_content_info (ContentInfo content_info) {
-            foreach (var ci in loading_content) {
-                if (content_info.content_id == ci.content_id && content_info.content_type == ci.content_type) {
-                    return ci;
+        ContentInfo? find_content_info (ContentInfo content_info) {
+            /*
+                Поиск информации о контенте в списке сохраняемого. Возвращает null, если не найдено
+
+                content_info: информация о контенте
+            */
+
+            lock (loading_content) {
+                foreach (var ci in loading_content) {
+                    if (content_info.content_id == ci.content_id && content_info.content_type == ci.content_type) {
+                        return ci;
+                    }
                 }
+
+                return null;
             }
-            return null;
         }
 
         void add_content_info (ContentInfo content_info) {
-            if (get_content_info (content_info) == null) {
-                loading_content.add (content_info);
+            /*
+                Добавить информацию о контенте в список сохраняемого
+
+                content_info: информация о контенте
+            */
+
+            lock (loading_content) {
+                if (find_content_info (content_info) == null) {
+                    loading_content.add (content_info);
+                }
             }
         }
 
         void remove_content_info (ContentInfo content_info) {
-            var ci = get_content_info (content_info);
-            if (ci != null) {
-                loading_content.remove (ci);
+            /*
+                Удалить информацию о контенте в список сохраняемого
+
+                content_info: информация о контенте
+            */
+
+            lock (loading_content) {
+                var ci = find_content_info (content_info);
+                if (ci != null) {
+                    loading_content.remove (ci);
+                }
             }
         }
 
         public void change_state (ContentType content_type, string content_id, CacheingState state) {
+            /*
+                Изменить состояние контента
+
+                content_type: тип контента
+                content_id: id контента
+                content_info: информация о контенте
+            */
+
             if (state != CacheingState.LOADING) {
                 remove_content_info (new ContentInfo (content_type, content_id));
             }
@@ -81,19 +117,43 @@ namespace CassetteClient.Cachier {
         }
 
         public void start_loading (ContentType content_type, string content_id) {
+            /*
+                Пометить контент как то, что начало загружаться
+
+                content_type: тип контента
+                content_id: id контента
+            */
+
             add_content_info (new ContentInfo (content_type, content_id));
 
             content_cache_state_changed (content_type, content_id, CacheingState.LOADING);
         }
 
         public void stop_loading (ContentType content_type, string content_id, CacheingState? state) {
+            /*
+                Пометить контент как то, что закончило загрузку
+
+                content_type: тип контента
+                content_id: id контента
+                content_info: информация о контенте. Если null, то текущее состояние будет 
+                    определено самостоятельно
+            */
+
             remove_content_info (new ContentInfo (content_type, content_id));
 
-            content_cache_state_changed (content_type, content_id, state != null? state : get_content_cache_state (content_type, content_id));
+            content_cache_state_changed (
+                content_type, content_id, state != null? state : get_content_cache_state (content_type, content_id));
         }
 
         public CacheingState get_content_cache_state (ContentType content_type, string content_id) {
-            if (get_content_info (new ContentInfo (content_type, content_id)) != null) {
+            /*
+                Получить состояние сохранения по типу контента и его id
+
+                content_type: тип контента
+                content_id: id контента
+            */
+
+            if (find_content_info (new ContentInfo (content_type, content_id)) != null) {
                 return CacheingState.LOADING;
             }
 
@@ -112,7 +172,7 @@ namespace CassetteClient.Cachier {
                     assert_not_reached ();
             }
 
-            if (location.path != null && location.is_tmp == true) {
+            if (location.file != null && location.is_tmp == true) {
                 return CacheingState.TEMP;
             }
 

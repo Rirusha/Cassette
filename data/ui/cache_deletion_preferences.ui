@@ -81,7 +81,7 @@
                         <child>
                           <object class="AdwButtonContent">
                             <property name="icon-name">adwaita-user-trash-symbolic</property>
-                            <property name="label" translatable="yes">Delete temporary</property>
+                            <property name="label" translatable="yes">Clear cache</property>
                           </object>
                         </child>
                       </object>
@@ -152,7 +152,7 @@
                         <child>
                           <object class="AdwButtonContent">
                             <property name="icon-name">adwaita-user-trash-symbolic</property>
-                            <property name="label" translatable="yes">Delete permanent</property>
+                            <property name="label" translatable="true">Move saved</property>
                           </object>
                         </child>
                       </object>

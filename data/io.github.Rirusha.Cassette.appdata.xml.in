@@ -80,7 +80,6 @@
           <li>Added the ability to move all saved objects to the cache folder, that is, move them to temporary storage</li>
           <li>Other bug fixes</li>
         </ul>
-        <p>For full list chack telegram channel: https://t.me/CassetteGNOME_Discussion/1339</p>
       </description>
     </release>
     <release version="0.1.1" date="2023-12-15">

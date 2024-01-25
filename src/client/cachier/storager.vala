@@ -344,7 +344,7 @@ namespace CassetteClient.Cachier {
             try {
                 src_file.move (dst_file, FileCopyFlags.OVERWRITE);
             } catch (Error e) {
-                Logger.warning (_("Can't move file '%s' to '%s'. Error message: %s").printf (
+                Logger.warning ("Can't move file '%s' to '%s'. Error message: %s".printf (
                     src_file.peek_path (),
                     dst_file.peek_path (),
                     e.message
@@ -380,7 +380,7 @@ namespace CassetteClient.Cachier {
                         } else {
                             src_file.trash ();
                             Logger.warning (
-                                _("In cache folder found suspicious file '%s'. It moved to thrash.").printf (file_name)
+                                _("In cache folder found suspicious file '%s'. It moved to trash.").printf (file_name)
                             );
                         }
                     }
@@ -389,7 +389,7 @@ namespace CassetteClient.Cachier {
                 src_dir_file.delete ();
 
             } catch (Error e) {
-                Logger.warning (_("Can't move directory '%s' to '%s'. Error message: %s").printf (
+                Logger.warning ("Can't move directory '%s' to '%s'. Error message: %s".printf (
                     src_dir_file.peek_path (),
                     dst_dir_file.peek_path (),
                     e.message
@@ -406,8 +406,9 @@ namespace CassetteClient.Cachier {
                 target_file.delete ();
 
             } catch (Error e) {
-                Logger.warning (_("Can't delete file '%s'.").printf (
-                    target_file.peek_path ()
+                Logger.warning ("Can't delete file '%s'. Error message: %s".printf (
+                    target_file.peek_path (),
+                    e.message
                 ));
             }
         }
@@ -447,7 +448,7 @@ namespace CassetteClient.Cachier {
                         } else {
                             file.trash ();
                             Logger.warning (
-                                _("In cache folder found suspicious file '%s'. It moved to thrash.").printf (file_name)
+                                _("In cache folder found suspicious file '%s'. It moved to trash.").printf (file_name)
                             );
                         }
                     }
@@ -456,7 +457,7 @@ namespace CassetteClient.Cachier {
                 dir_file.delete ();
 
             } catch (Error e) {
-                Logger.warning (_("Can't remove directory '%s'. Error message: %s").printf (
+                Logger.warning ("Can't remove directory '%s'. Error message: %s".printf (
                     dir_file.peek_path (),
                     e.message
                 ));
@@ -582,7 +583,7 @@ namespace CassetteClient.Cachier {
                     return pixbuf;
 
                 } catch (Error e) {
-                    Logger.warning (_("Can't load image '%s'. Error message: %s").printf (
+                    Logger.warning ("Can't load image '%s'. Error message: %s".printf (
                         image_location.file.peek_path (),
                         e.message
                     ));
@@ -651,7 +652,7 @@ namespace CassetteClient.Cachier {
                     return temp_audio_uri;
 
                 } catch (Error e) {
-                    Logger.warning (_("Can't load audio '%s'. Error message: %s").printf (
+                    Logger.warning ("Can't load audio '%s'. Error message: %s".printf (
                         audio_location.file.peek_path (),
                         e.message
                     ));
@@ -674,7 +675,7 @@ namespace CassetteClient.Cachier {
                 FileUtils.set_data (audio_file.peek_path (), odata);
 
             } catch (FileError e) {
-                Logger.warning (_("Can't save audio '%s'. Error message: %s").printf (
+                Logger.warning ("Can't save audio '%s'. Error message: %s".printf (
                     audio_file.peek_path (),
                     e.message
                 ));
@@ -735,7 +736,7 @@ namespace CassetteClient.Cachier {
                 }
 
             } catch (Error e) {
-                Logger.warning (_("Can't find '%s'. Error message: %s").printf (
+                Logger.warning ("Can't find '%s'. Error message: %s".printf (
                     data_objects_dir_file.peek_path (),
                     e.message
                 ));

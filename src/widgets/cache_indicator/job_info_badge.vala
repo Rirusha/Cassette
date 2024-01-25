@@ -75,6 +75,7 @@ namespace Cassette {
         }
 
         void update_info (int saved, int total, int now) {
+            // Translators: n track from n tracks saved
             progress_label.label = _("%d / %d saved%s").printf (
                 saved,
                 total,

@@ -117,7 +117,7 @@
             <property name="title" translatable="true" context="preference window">Other</property>
             <child>
               <object class="AdwSwitchRow" id="debug_mode_switch">
-                <property name="title" translatable="true" context="preference window">Enable debug mode</property>
+                <property name="title" translatable="true" context="preference window">Enable Debug-Mode</property>
               </object>
             </child>
           </object>

@@ -380,7 +380,7 @@ namespace CassetteClient.Cachier {
                         } else {
                             src_file.trash ();
                             Logger.warning (
-                                _("In cache folder found suspicious file '%s'. It moved to trash.").printf (file_name)
+                                "In cache folder found suspicious file '%s'. It moved to trash.".printf (file_name)
                             );
                         }
                     }
@@ -448,7 +448,7 @@ namespace CassetteClient.Cachier {
                         } else {
                             file.trash ();
                             Logger.warning (
-                                _("In cache folder found suspicious file '%s'. It moved to trash.").printf (file_name)
+                                "In cache folder found suspicious file '%s'. It moved to trash.".printf (file_name)
                             );
                         }
                     }

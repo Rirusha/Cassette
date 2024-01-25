@@ -93,6 +93,10 @@ namespace CassetteClient.Cachier {
         public async void uncache_all () {
             var objs = storager.get_saved_objects ();
 
+            foreach (var job in job_list) {
+                yield job.abort_with_wait ();
+            }
+
             foreach (var obj in objs) {
                 yield uncache (obj);
             }

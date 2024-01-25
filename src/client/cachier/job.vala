@@ -145,6 +145,16 @@ namespace CassetteClient.Cachier {
             cancellable.cancel ();
         }
 
+        public async void abort_with_wait () {
+            job_done.connect (() => {
+                Idle.add (abort_with_wait.callback);
+            });
+
+            abort ();
+
+            yield;
+        }
+
         public async void save_async () {
             cachier.controller.start_loading (object_type, object_id);
 

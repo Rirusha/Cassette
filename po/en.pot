@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-26 03:45+0800\n"
+"POT-Creation-Date: 2024-01-26 04:07+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,7 +113,7 @@ msgid "Delete cache files?"
 msgstr ""
 
 #: src/widgets/preferences/cache_deletion_preferences.vala:93
-msgid "Delete saved files?"
+msgid "Moved saved files?"
 msgstr ""
 
 #: src/widgets/preferences/cache_deletion_preferences.vala:94
@@ -336,12 +336,13 @@ msgstr ""
 msgid "Delete playlist"
 msgstr ""
 
-#: src/widgets/cache_indicator/job_info_badge.vala:78
+#. Translators: n track from n tracks saved
+#: src/widgets/cache_indicator/job_info_badge.vala:79
 #, c-format
 msgid "%d / %d saved%s"
 msgstr ""
 
-#: src/widgets/cache_indicator/job_info_badge.vala:82
+#: src/widgets/cache_indicator/job_info_badge.vala:83
 #, c-format
 msgid ". %d track saving now"
 msgid_plural ". %d tracks saving now"
@@ -575,92 +576,47 @@ msgstr ""
 msgid "Database was initialized, loc - %s"
 msgstr ""
 
-#: src/client/cachier/storager.vala:347
-#, c-format
-msgid "Can't move file '%s' to '%s'. Error message: %s"
-msgstr ""
-
-#: src/client/cachier/storager.vala:383 src/client/cachier/storager.vala:450
-#, c-format
-msgid "In cache folder found suspicious file '%s'. It moved to thrash."
-msgstr ""
-
-#: src/client/cachier/storager.vala:392
-#, c-format
-msgid "Can't move directory '%s' to '%s'. Error message: %s"
-msgstr ""
-
-#: src/client/cachier/storager.vala:409
-#, c-format
-msgid "Can't delete file '%s'."
-msgstr ""
-
-#: src/client/cachier/storager.vala:459
-#, c-format
-msgid "Can't remove directory '%s'. Error message: %s"
-msgstr ""
-
-#: src/client/cachier/storager.vala:585
-#, c-format
-msgid "Can't load image '%s'. Error message: %s"
-msgstr ""
-
-#: src/client/cachier/storager.vala:654
-#, c-format
-msgid "Can't load audio '%s'. Error message: %s"
-msgstr ""
-
-#: src/client/cachier/storager.vala:677
-#, c-format
-msgid "Can't save audio '%s'. Error message: %s"
-msgstr ""
-
-#: src/client/cachier/storager.vala:738
-#, c-format
-msgid "Can't find '%s'. Error message: %s"
-msgstr ""
-
-#: src/client/cachier/storager.vala:801
+#: src/client/cachier/storager.vala:802
 #, c-format
 msgid "Can't save object %s"
 msgstr ""
 
-#: src/client/cachier/storager.vala:818
+#: src/client/cachier/storager.vala:819
 msgid "Byte"
 msgid_plural "Bytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/client/cachier/storager.vala:821
+#: src/client/cachier/storager.vala:822
 msgid "Kilobyte"
 msgid_plural "Kilobytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/client/cachier/storager.vala:824
+#: src/client/cachier/storager.vala:825
 msgid "Megabyte"
 msgid_plural "Megabytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/client/cachier/storager.vala:827
+#: src/client/cachier/storager.vala:828
 msgid "Gigabyte"
 msgid_plural "Gigabytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/client/cachier/storager.vala:830
+#: src/client/cachier/storager.vala:831
 msgid "Terabyte"
 msgid_plural "Terabytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/client/cachier/storager.vala:859
+#: src/client/cachier/storager.vala:860
 #, c-format
 msgid "Error while getting temporary dir size. Message %s"
 msgstr ""
 
-#: src/client/cachier/storager.vala:894
+#: src/client/cachier/storager.vala:895
 #, c-format
 msgid "Error while getting permanent dir size. Message %s"
 msgstr ""
@@ -1062,7 +1018,7 @@ msgstr ""
 
 #: data/ui/preferences_window.ui:120
 msgctxt "preference window"
-msgid "Enable debug mode"
+msgid "Enable Debug-Mode"
 msgstr ""
 
 #: data/ui/preferences_window.ui:127

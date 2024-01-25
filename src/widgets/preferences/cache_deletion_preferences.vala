@@ -140,7 +140,7 @@ namespace Cassette {
                 storager.delete_temp_cache.begin (() => {
                     loading_win.close ();
                     loading_win = null;
-    
+
                     update_data ();
                 });
             } else {

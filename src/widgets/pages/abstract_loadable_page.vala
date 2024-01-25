@@ -45,7 +45,6 @@ namespace Cassette {
 
             nav_view.animate_transitions = false;
             nav_view.push (loading_page);
-            
         }
 
         public void stop_loading () {

@@ -183,7 +183,7 @@
             <child>
               <object class="AdwSwitchRow" id="can_cache_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Cache content to ~/.cache</property>
+                <property name="title" translatable="true" context="preference window">Cache content for better performance (Over time, it starts to take up a lot of space. So far, manual cleaning is required)</property>
                 <!-- Translators: tooltip of preference -->
                 <property name="tooltip-text" translatable="true" context="preference window">If enabled, the application will cache all content in /var/tmp/cassette for better performance, otherwise, the application will load content only when caching objects (such as playlists or albums). Disabling the parameter does not delete already downloaded content</property>
               </object>

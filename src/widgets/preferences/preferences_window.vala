@@ -128,7 +128,7 @@ namespace Cassette {
 
             dialog.response.connect ((dialog, response) => {
                 if (response == "delete") {
-                    deletion_preferences.delete_temp_cache ();
+                    deletion_preferences.delete_files (true);
                     storager.settings.set_boolean ("can-cache", can_cache_switch.active);
                 } else {
                     can_cache_switch.active = true;

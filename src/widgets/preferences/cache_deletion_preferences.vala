@@ -38,6 +38,8 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Button temp_delete_button;
         [GtkChild]
+        unowned Gtk.Button perm_delete_button;
+        [GtkChild]
         unowned Gtk.Stack perm_stack;
         [GtkChild]
         unowned Gtk.Spinner perm_spinner;
@@ -52,7 +54,12 @@ namespace Cassette {
         construct {
             map.connect (update_data);
 
-            temp_delete_button.clicked.connect (ask_about_deletion);
+            temp_delete_button.clicked.connect (() => {
+                ask_about_deletion (true);
+            });
+            perm_delete_button.clicked.connect (() => {
+                ask_about_deletion (false);
+            });
         }
 
         void update_data () {
@@ -79,13 +86,13 @@ namespace Cassette {
                 });
         }
 
-
-
-        void ask_about_deletion () {
+        void ask_about_deletion (bool is_tmp) {
             var dialog = new Adw.MessageDialog (
                 pref_win,
-                _("Delete temporary files?"),
-                _("All temporary cache will be deleted. This doesn't affect on saved playlists or albums")
+                is_tmp ? _("Delete cache files?") :
+                    _("Delete saved files"),
+                is_tmp ? _("All temporary cached files will be deleted. This doesn't affect on saved playlists or albums") :
+                    _("All saved playlists and albums will be moved to cache files.")
             );
 
             // Translators: cancel of deleting playlist
@@ -99,14 +106,14 @@ namespace Cassette {
 
             dialog.response.connect ((dialog, response) => {
                 if (response == "delete") {
-                    delete_temp_cache ();
+                    delete_files (is_tmp);
                 }
             });
 
             dialog.present ();
         }
 
-        public void delete_temp_cache () {
+        public void delete_files (bool is_tmp) {
             var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 16) {
                 margin_top = 16,
                 margin_bottom = 16,
@@ -123,18 +130,27 @@ namespace Cassette {
 
             box.append (new LoadingWidget ());
 
-            var label = new Gtk.Label (_("Deleting…"));
+            var label = new Gtk.Label (is_tmp? _("Deleting…") : _("Moving…"));
             label.add_css_class ("title-1");
             box.append (label);
 
             loading_win.present ();
 
-            storager.delete_temp_cache.begin (() => {
-                loading_win.close ();
-                loading_win = null;
+            if (is_tmp) {
+                storager.delete_temp_cache.begin (() => {
+                    loading_win.close ();
+                    loading_win = null;
+    
+                    update_data ();
+                });
+            } else {
+                cachier.uncache_all.begin (() => {
+                    loading_win.close ();
+                    loading_win = null;
 
-                update_data ();
-            });
+                    update_data ();
+                });
+            }
         }
     }
 }

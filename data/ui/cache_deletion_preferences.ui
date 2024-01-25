@@ -140,6 +140,23 @@
                         </style>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <style>
+                          <class name="spacer"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="perm_delete_button">
+                        <child>
+                          <object class="AdwButtonContent">
+                            <property name="icon-name">adwaita-user-trash-symbolic</property>
+                            <property name="label" translatable="yes">Delete permanent</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </property>
               </object>

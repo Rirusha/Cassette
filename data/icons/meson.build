@@ -220,3 +220,8 @@ install_data(
   join_paths(symbolic_dir, 'adwaita-bookmark-new-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
+
+install_data(
+  join_paths(symbolic_dir, 'adwaita-document-edit-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)

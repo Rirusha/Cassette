@@ -80,8 +80,8 @@ namespace Cassette {
 
         GLib.Binding? current_view_can_back_binding = null;
         GLib.Binding? current_view_can_refresh_binding = null;
-        RootView _current_view;
-        public RootView current_view {
+        PageRoot _current_view;
+        public PageRoot current_view {
             get {
                 return _current_view;
             }

@@ -3,8 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
   <template class="CassetteBeginView" parent="CassetteAbstractLoadablePage">
-    <property name="nav-view">navigation_view</property>
-    <child>
+    <property name="nav-view">
       <object class="AdwNavigationView" id="navigation_view">
         <child>
           <object class="AdwNavigationPage">
@@ -129,6 +128,6 @@
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

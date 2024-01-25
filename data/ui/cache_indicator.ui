@@ -31,12 +31,12 @@
             <style>
               <class name="flat"/>
             </style>
-            <property name="tooltip_text" translatable="yes">Show all cache jobs</property>
+            <property name="tooltip-text" translatable="yes">Show all cache jobs</property>
             <property name="popover">jobs_popover</property>
             <child>
               <object class="GtkDrawingArea" id="jobs_icon">
-                <property name="width_request">16</property>
-                <property name="height_request">16</property>
+                <property name="width-request">16</property>
+                <property name="height-request">16</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
               </object>

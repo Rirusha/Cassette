@@ -27,7 +27,7 @@ namespace Cassette {
         public async abstract int try_load_from_web ();
         public async abstract bool try_load_from_cache ();
 
-        public abstract RootView root_view { get; set; }
+        public abstract PageRoot root_view { get; set; }
 
         public async virtual void first_show () {
             bool cache_is_success = yield try_load_from_cache ();

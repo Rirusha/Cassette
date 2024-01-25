@@ -33,7 +33,7 @@ namespace Cassette {
 
         public override bool can_refresh { get; default = true; }
 
-        public override RootView root_view { get; set; }
+        public override PageRoot root_view { get; set; }
 
         YaMAPI.TrackHeap? _track_list = null;
 

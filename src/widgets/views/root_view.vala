@@ -19,122 +19,140 @@
  */
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/root_view.ui")]
-    public class RootView : Adw.Bin {
-        [GtkChild]
-        unowned Gtk.Stack main_stack;
-        [GtkChild]
-        unowned Gtk.Spinner spinner_loading;
+    public class PageRoot : AbstractLoadablePage {
 
         public bool can_back { get; private set; default = false; }
         public bool can_refresh { get; private set; default = true; }
 
-        bool main_view_content_is_loaded = false;
-        bool main_view_content_is_loading = false;
-
-        Queue<BaseView> additional_views = new Queue<BaseView> ();
+        bool main_view_is_loaded = false;
 
         public MainWindow window { get; construct; }
         public BaseView main_view { get; construct; }
 
-        public RootView (MainWindow window, BaseView main_view) {
-            Object (window: window, main_view: main_view);
+        public Gtk.Widget current_widget {
+            get {
+                return nav_view.visible_page.child;
+            }
+        }
+
+        public PageRoot (MainWindow window, BaseView main_view) {
+            Object (window: window, main_view: main_view, with_header_bar: false);
         }
 
         construct {
-            main_stack.add_named (main_view, "main-view");
+            nav_view.add (new Adw.NavigationPage.with_tag (main_view, "title", "main-view"));
+            main_view.root_view = this;
+            load_view (main_view);
 
-            map.connect ((obj) => {
-                if (!main_view_content_is_loaded && !main_view_content_is_loading) {
-                    load_view (main_view);
-                    main_view_content_is_loading = true;
-                }
-                can_back = false;
+            notify["is-loading"].connect (() => {
+                can_back = !is_loading && can_back;
+            });
+
+            map.connect (() => {
+                //  if (main_view_is_loaded) {
+                //      nav_view.push_by_tag ("main-view");
+                //      can_back = false;
+                //  }
+
                 window.current_view = this;
             });
 
             unmap.connect (() => {
-                main_stack.visible_child = main_view;
-                for (int i = 0; i < additional_views.length; i++) {
-                    var elem = additional_views.pop_tail ();
-                    main_stack.remove (elem);
+                if (main_view_is_loaded && !is_loading) {
+                    nav_view.pop_to_tag ("main-view");
                 }
             });
         }
 
         public void add_view (BaseView view) {
-            main_stack.add_child (view);
+            nav_view.push (new Adw.NavigationPage (view, "title"));
+            view.root_view = this;
             load_view (view);
         }
 
         public void refresh () {
-            var current_child = main_stack.visible_child as BaseView;
+            var current_child = current_widget as BaseView;
             if (current_child != null) {
                 refresh_view (current_child);
                 return;
             }
 
-            var error_view = main_stack.visible_child as CantShowView;
+            var error_view = current_widget as CantShowView;
             if (error_view != null) {
+                nav_view.pop ();
                 refresh_view (error_view.base_view);
-                main_stack.remove (error_view);
             }
         }
 
         public void backward () {
-            BaseView view = additional_views.pop_tail ();
-            if (additional_views.length != 0) {
-                main_stack.set_visible_child (additional_views.peek_tail ());
-            } else {
-                main_stack.set_visible_child (main_view);
+            nav_view.pop ();
+
+            if (current_widget == main_view) {
                 can_back = false;
             }
 
-            main_stack.remove (view);
+            //  BaseView view = additional_views.pop_tail ();
+            //  if (additional_views.length != 0) {
+            //      main_stack.set_visible_child (additional_views.peek_tail ());
+            //  } else {
+            //      main_stack.set_visible_child (main_view);
+            //      can_back = false;
+            //  }
+
+            //  main_stack.remove (view);
         }
 
         void load_view (BaseView view) {
-            main_stack.set_visible_child_name ("add-loading-screen");
-            spinner_loading.start ();
+            start_loading ();
 
-            view.show_ready.connect (set_visible_child);
-            view.root_view = this;
-
+            view.show_ready.connect (show_view);
             view.first_show.begin ();
         }
 
         void refresh_view (BaseView view) {
-            main_stack.set_visible_child_name ("add-loading-screen");
-            spinner_loading.start ();
+            start_loading ();
 
-            view.show_ready.connect (set_visible_child);
+            view.show_ready.connect (show_view);
             view.refresh.begin ();
         }
 
-        void set_visible_child (BaseView view) {
+        void show_view (BaseView view) {
             if (view == main_view) {
-                main_view_content_is_loaded = true;
-            } else if (additional_views.find (view).length () == 0) {
-                additional_views.push_tail (view);
+                main_view_is_loaded = true;
+
+            } else {
                 can_back = true;
             }
-            main_stack.set_visible_child (view);
-            spinner_loading.stop ();
-            view.show_ready.disconnect (set_visible_child);
+
+            //  else if (nav_view.find_page (string tag)) {
+            //      additional_views.push_tail (view);
+            //      can_back = true;
+            //  }
+
+            stop_loading ();
+            view.show_ready.disconnect (show_view);
+
+            //  main_stack.set_visible_child (view);
+            //  spinner_loading.stop ();
+
             can_refresh = view.can_refresh;
         }
 
         public void show_error (BaseView base_view, int code) {
             if (base_view == main_view) {
                 can_back = false;
-            } else if (additional_views.find (base_view).length () == 0) {
-                additional_views.push_tail (base_view);
+
+            } else {
                 can_back = true;
             }
 
+            stop_loading ();
+            base_view.show_ready.disconnect (show_view);
+
             var error_view = new CantShowView (base_view, code);
-            main_stack.add_child (error_view);
-            main_stack.set_visible_child (error_view);
+
+            nav_view.pop ();
+            nav_view.push (new Adw.NavigationPage (error_view, "title"));
         }
     }
 }

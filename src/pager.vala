@@ -142,7 +142,7 @@ namespace Cassette {
                 view = (BaseView) Object.new_with_properties (view_type, get_args_names (view_type), vals);
             }
 
-            var ready_view = new RootView (window, view);
+            var ready_view = new PageRoot (window, view);
 
             stack.add_titled_with_icon (
                 ready_view,

@@ -22,7 +22,7 @@
 namespace Cassette {
 
     public abstract class AbstractLoadablePage : Adw.Bin {
-        public Adw.NavigationView nav_view { get; set; }
+        public Adw.NavigationView nav_view { get; set; default = new Adw.NavigationView (); }
         public bool with_header_bar { get; construct; }
 
         public LoadingPage loading_page { get; private set; }
@@ -31,16 +31,21 @@ namespace Cassette {
 
         construct {
             loading_page = new LoadingPage (with_header_bar);
+
+            child = nav_view;
+
+            nav_view.animate_transitions = application.is_mobile;
         }
 
         public void start_loading () {
             assert (is_loading == false);
             assert (nav_view != null);
 
+            is_loading = true;
+
             nav_view.animate_transitions = false;
             nav_view.push (loading_page);
-
-            is_loading = true;
+            
         }
 
         public void stop_loading () {
@@ -48,7 +53,7 @@ namespace Cassette {
             assert (nav_view != null);
 
             nav_view.pop ();
-            nav_view.animate_transitions = true;
+            nav_view.animate_transitions = application.is_mobile;
 
             is_loading = false;
         }

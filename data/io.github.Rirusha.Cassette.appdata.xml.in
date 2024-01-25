@@ -54,6 +54,12 @@
     <screenshot type="default">
       <image>https://github.com/Rirusha/Cassette/blob/master/data/images/third.png?raw=true</image>
     </screenshot>
+    <screenshot type="default">
+      <image>https://github.com/Rirusha/Cassette/blob/master/data/images/fourth.png?raw=true</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://github.com/Rirusha/Cassette/blob/master/data/images/fifth.png?raw=true</image>
+    </screenshot>
   </screenshots>
   <summary>Unofficial Yandex.Music client</summary>
   <launchable type="desktop-id">io.github.Rirusha.Cassette.desktop</launchable>

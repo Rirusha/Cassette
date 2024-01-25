@@ -64,6 +64,25 @@
   <summary>Unofficial Yandex.Music client</summary>
   <launchable type="desktop-id">io.github.Rirusha.Cassette.desktop</launchable>
   <releases>
+    <release version="0.1.2" date="2024-01-26">
+      <description>
+        <p>Cosmetic and code changes</p>
+        <ul>
+          <li>The transition to the blueprints interface language is slowly but surely underway.</li>
+          <li>The playback panel has been completely redesigned. Now there are fewer buttons (if someone has lost the track information button, you need to poke to the right of the playback slider)</li>
+          <li>The appearance of the playlist has been changed</li>
+          <li>The sidebar widget has been changed</li>
+          <li>Added the feature with parallel loading of tracks while saving playlists. And not only that, now when the application starts, all saved playlists will be checked and updated. You can also view the progress of saving on the top left</li>
+          <li>Added the removal of a track from the queue when it is disliked</li>
+          <li>The Belarusian language has been added. Thanks to Yahor Haurylenka for the translation</li>
+          <li>Added a debug mod</li>
+          <li>Increased the maximum volume level from 60 to 100</li>
+          <li>Added the ability to move all saved objects to the cache folder, that is, move them to temporary storage</li>
+          <li>Other bug fixes</li>
+        </ul>
+        <p>For full list chack telegram channel: https://t.me/CassetteGNOME_Discussion/1339</p>
+      </description>
+    </release>
     <release version="0.1.1" date="2023-12-15">
       <description>
         <p>Added new authorization via WebView</p>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-27 05:03+0800\n"
-"PO-Revision-Date: 2024-01-27 05:04+0800\n"
+"POT-Creation-Date: 2024-01-27 05:36+0800\n"
+"PO-Revision-Date: 2024-01-27 05:37+0800\n"
 "Last-Translator: Rirusha <anerin_sidiver@outlook.com>\n"
 "Language-Team: Russian <LL@li.org>\n"
 "Language: ru\n"
@@ -84,16 +84,41 @@ msgid "Unofficial Yandex.Music client"
 msgstr "Неофициальный клиент сервиса Я.Музыка"
 
 #: data/io.github.Rirusha.Cassette.appdata.xml.in:69
+msgid "Hotfix"
+msgstr "Срочные исправления"
+
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:71
+msgid ""
+"Crashes that I couldn't reproduce for a long time have been fixed. The "
+"reason was an attempt to save a custom track with an empty cover"
+msgstr ""
+"Были исправлены вылеты, которые я долго не мог воспроизвести. Причина была в "
+"попытке сохранения пользовательского трека с пустой обложкой"
+
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:72
+msgid ""
+"The button for creating a playlist has changed, as well as some other shadows"
+msgstr "Изменилась кнопка добавления нового плейлиста, как и некоторые тени"
+
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:73
+msgid ""
+"The translation has been corrected. The text on the widgets written using "
+"blueprints has not been translated. Now fixed"
+msgstr ""
+"Был исправлен перевод. Текст на виджетах, написанных с использованием "
+"blueprints не был переведен. Теперь исправлено"
+
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:79
 msgid "Cosmetic and code changes"
 msgstr "Косметические изменения и изменения в коде"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:71
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:81
 msgid ""
 "The transition to the blueprints interface language is slowly but surely "
 "underway"
 msgstr "Медленно, но верно выполняется переход на язык интерфейса blueprints"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:72
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:82
 msgid ""
 "The playback panel has been completely redesigned. Now there are fewer "
 "buttons (if someone has lost the track information button, you need to poke "
@@ -103,16 +128,16 @@ msgstr ""
 "то потерял кнопку информации о треке, нужно ткнуть справа от слайдера "
 "воспроизведения)"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:73
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:83
 msgid "The appearance of the playlist has been changed"
 msgstr "Изменен внешний вид плейлиста"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:74
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:84
 msgid "The sidebar widget has been changed"
 msgstr ""
 "Изменен виджет боковой панели для показа дополнительной информации о треке"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:75
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:85
 msgid ""
 "Added the feature with parallel loading of tracks while saving playlists. "
 "And not only that, now when the application starts, all saved playlists will "
@@ -124,25 +149,25 @@ msgstr ""
 "выполнятся проверка всех сохраненных плейлистов и их обновление. Также "
 "просмотреть прогресс сохранения можно слева сверху"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:76
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:86
 msgid "Added the removal of a track from the queue when it is disliked"
 msgstr "Добавлено удаление трека из очереди при его дизлайке"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:77
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:87
 msgid ""
 "The Belarusian language has been added. Thanks to Yahor Haurylenka for the "
 "translation"
 msgstr "Был добавлен белорусский язык. Спасибо Yahor Haurylenka за перевод"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:78
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:88
 msgid "Added a debug mod"
 msgstr "Добавлен дебаг-мод"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:79
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:89
 msgid "Increased the maximum volume level from 60 to 100"
 msgstr "Увеличен максимальный уровень громкости с 60 до 100"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:80
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:90
 msgid ""
 "Added the ability to move all saved objects to the cache folder, that is, "
 "move them to temporary storage"
@@ -150,33 +175,33 @@ msgstr ""
 "Добавлена возможность перемещать все сохраненные объекты в папку кэшей, то "
 "есть перемещать их во временное хранилище"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:81
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:91
 msgid "Other bug fixes"
 msgstr "Другие баг фиксы"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:87
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:97
 msgid "Added new authorization via WebView"
 msgstr "Добавлена новая авторизация через WebView"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:92
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:102
 msgid "First release of Cassette"
 msgstr "Первый релиз Cassette"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:94
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:104
 msgid "Allows you to listen to music"
 msgstr "Позволяет вам слушать музыку"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:95
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:105
 msgid "View your playlists"
 msgstr "Просматривать ваши плейлисты"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:96
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:106
 msgid "Manage the playback queue, for example shuffle or puts on repeat"
 msgstr ""
 "Управлять очередью воспроизведения, например, перемешивать или ставить на "
 "повтор"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:97
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:107
 msgid ""
 "Sends whether the track has been listened to and the playback queue, if it "
 "has been changed"
@@ -184,11 +209,11 @@ msgstr ""
 "Отправлять информацию о том, был ли прослушан трек, и о очереди "
 "воспроизведения, если она была изменена"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:98
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:108
 msgid "Implemented mpris2"
 msgstr "Реализован mpris2"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:106
+#: data/io.github.Rirusha.Cassette.appdata.xml.in:116
 msgid "Rirusha"
 msgstr "Rirusha"
 
@@ -1019,8 +1044,8 @@ msgstr "Достигнуто максимальное количество ст�
 
 #: src/pager.vala:207
 #, c-format
-msgid "Page %s already added"
-msgstr "Страница %s уже добавлена"
+msgid "Page '%s' already added"
+msgstr "Страница '%s' уже добавлена"
 
 #: src/pager.vala:260
 msgid "Main"

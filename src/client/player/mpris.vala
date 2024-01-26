@@ -143,9 +143,16 @@ namespace CassetteClient.Mpris {
                     artists[i] = current_track.artists[i].name;
                 }
 
+                var cover_items = current_track.get_cover_items_by_size (ArtSize.TRACK);
+
+                string cover_uri = "";
+                if (cover_items.size != 0) {
+                    cover_uri = cover_items[0];
+                }
+
                 metadata.insert ("mpris:trackid", obj_path);
                 metadata.insert ("mpris:length", current_track.duration_ms);
-                metadata.insert ("mpris:artUrl", current_track.get_cover_items_by_size (ArtSize.TRACK)[0]);
+                metadata.insert ("mpris:artUrl", cover_uri);
                 metadata.insert ("xesam:title", current_track.title);
                 metadata.insert ("xesam:album",
                     current_track.albums.size != 0 ? current_track.albums[0].title : "Unknown Album"

@@ -19,6 +19,7 @@
                   <object class="GtkFrame">
                     <style>
                       <class name="big-art"/>
+                      <class name="gray-background"/>
                     </style>
                     <child>
                       <object class="GtkImage">

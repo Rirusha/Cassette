@@ -109,7 +109,7 @@
         </child>
         <child>
           <object class="AdwNavigationPage">
-            <property name="title" translatable="yes">Authorization</property>
+            <property name="title" translatable="true">Authorization</property>
             <property name="tag">auth-page</property>
             <property name="child">
               <object class="AdwToolbarView" id="toolbar_view_auth">

@@ -44,6 +44,7 @@ namespace Cassette {
             int widget_size;
             if (size == ArtSize.BIG_ART) {
                 cover_frame.add_css_class ("big-art");
+                real_image.icon_size = Gtk.IconSize.LARGE;
                 widget_size = 200;
 
             } else if (size == ArtSize.TRACK || size == ArtSize.BIG_SMALL) {
@@ -72,6 +73,8 @@ namespace Cassette {
 
             if (pixbuf_buffer != null) {
                 real_image.set_from_paintable (Gdk.Texture.for_pixbuf (pixbuf_buffer));
+            } else {
+                cover_frame.add_css_class ("gray-background");
             }
         }
     }

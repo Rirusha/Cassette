@@ -124,19 +124,19 @@
   <menu id="sort_menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">name</attribute>
+        <attribute name="label" translatable="true">name</attribute>
         <attribute name="action">tracklist.sort-name</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">artist</attribute>
+        <attribute name="label" translatable="true">artist</attribute>
         <attribute name="action">tracklist.sort-artists</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">album</attribute>
+        <attribute name="label" translatable="true">album</attribute>
         <attribute name="action">tracklist.sort-album</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">duration</attribute>
+        <attribute name="label" translatable="true">duration</attribute>
         <attribute name="action">tracklist.sort-duration</attribute>
       </item>
     </section>

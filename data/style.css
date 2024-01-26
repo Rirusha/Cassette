@@ -4,13 +4,19 @@
 .big-art {
     border-style: none;
     border-radius: 12px;
-    box-shadow: 0px 0px 5px -1px black;
+    box-shadow: 0px 0px 5px -2px rgb(0, 0, 0);
+    background-color: alpha(@window_fg_color, 0.08);
+}
+
+.gray-background {
+    background-color: alpha(@window_fg_color, 0.08);
 }
 
 .small-art {
     border-style: none;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px -1px black;
+    box-shadow: 0px 0px 5px -2px rgb(0, 0, 0);
+    background-color: alpha(@window_fg_color, 0.08);
 }
 
 frame {
@@ -24,10 +30,6 @@ frame {
 
 .track-row-playing {
     background-color: alpha(@accent_bg_color, 0.5);
-}
-
-.track-row-hover {
-    background-color: alpha(@window_fg_color, 0.08);
 }
 
 .disliked {

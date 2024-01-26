@@ -210,17 +210,21 @@ namespace CassetteClient.Cachier {
                     yield storager.audio_cache_location (track_info.id).move_to_temp_async ();
                 }
 
-                string image_uri = track_info.get_cover_items_by_size (ArtSize.TRACK)[0];
-                storager.db.remove_content_ref (image_uri, object_id);
-                if (storager.db.get_content_ref_count (image_uri) == 0) {
-                    yield storager.image_cache_location (image_uri).move_to_temp_async ();
-                }
+                var cover_items = track_info.get_cover_items_by_size (ArtSize.TRACK);
 
-                Logger.debug ("Job %s.%s, track %s in db was fixed".printf (
-                    object_type.to_string (),
-                    yam_object.oid,
-                    track_info.form_debug_info ()
-                ));
+                if (cover_items.size != 0) {
+                    string image_uri = cover_items[0];
+                    storager.db.remove_content_ref (image_uri, object_id);
+                    if (storager.db.get_content_ref_count (image_uri) == 0) {
+                        yield storager.image_cache_location (image_uri).move_to_temp_async ();
+                    }
+
+                    Logger.debug ("Job %s.%s, track %s in db was fixed".printf (
+                        object_type.to_string (),
+                        yam_object.oid,
+                        track_info.form_debug_info ()
+                    ));
+                }
             }
 
             threader.add_image (() => {
@@ -307,26 +311,30 @@ namespace CassetteClient.Cachier {
             var track_list = yam_object.get_filtered_track_list (true, true);
 
             foreach (var track_info in track_list) {
-                string image_cover_uri = track_info.get_cover_items_by_size (ArtSize.TRACK)[0];
-                storager.db.remove_content_ref (image_cover_uri, track_info.id);
-                if (storager.db.get_content_ref_count (image_cover_uri) == 0) {
-                    var image_location = storager.image_cache_location (image_cover_uri);
-                    yield image_location.move_to_temp_async ();
-                }
+                var cover_items = track_info.get_cover_items_by_size (ArtSize.TRACK);
 
-                storager.db.remove_content_ref (track_info.id, object_id);
-                if (storager.db.get_content_ref_count (track_info.id) == 0) {
-                    var track_location = storager.audio_cache_location (track_info.id);
-                    yield track_location.move_to_temp_async ();
-                    if (track_location.file != null && storager.settings.get_boolean ("can-cache")) {
-                        cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.TEMP);
-                    } else {
-                        cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.NONE);
+                if (cover_items.size != 0) {
+                    string image_cover_uri = cover_items[0];
+                    storager.db.remove_content_ref (image_cover_uri, track_info.id);
+                    if (storager.db.get_content_ref_count (image_cover_uri) == 0) {
+                        var image_location = storager.image_cache_location (image_cover_uri);
+                        yield image_location.move_to_temp_async ();
                     }
-                }
 
-                Idle.add (unsave_async.callback);
-                yield;
+                    storager.db.remove_content_ref (track_info.id, object_id);
+                    if (storager.db.get_content_ref_count (track_info.id) == 0) {
+                        var track_location = storager.audio_cache_location (track_info.id);
+                        yield track_location.move_to_temp_async ();
+                        if (track_location.file != null && storager.settings.get_boolean ("can-cache")) {
+                            cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.TEMP);
+                        } else {
+                            cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.NONE);
+                        }
+                    }
+
+                    Idle.add (unsave_async.callback);
+                    yield;
+                }
             }
 
             Logger.debug ("Job %s.%s, uncache object finished".printf (
@@ -416,48 +424,53 @@ namespace CassetteClient.Cachier {
                     track_info.form_debug_info ()
                 ));
 
-                string image_cover_uri = track_info.get_cover_items_by_size (ArtSize.TRACK)[0];
-                var image_location = storager.image_cache_location (image_cover_uri);
-                if (image_location.file != null) {
-                    if (image_location.is_tmp == true) {
-                        image_location.move_to_perm ();
+                var cover_items = track_info.get_cover_items_by_size (ArtSize.TRACK);
 
-                        Idle.add_once (() => {
-                            action_done ();
-                        });
-                    }
-                } else {
-                    Gdk.Pixbuf? pixbuf = null;
+                if (cover_items.size != 0) {
+                    string image_cover_uri = cover_items[0];
+                    var image_location = storager.image_cache_location (image_cover_uri);
+                    if (image_location.file != null) {
+                        if (image_location.is_tmp == true) {
+                            image_location.move_to_perm ();
 
-                    pixbuf = yam_talker.load_pixbuf (image_cover_uri);
-
-                    if (pixbuf != null) {
-                        storager.save_image (pixbuf, image_cover_uri, false);
-
-                        Idle.add_once (() => {
-                            action_done ();
-                        });
+                            Idle.add_once (() => {
+                                action_done ();
+                            });
+                        }
 
                     } else {
-                        cancellable.cancel ();
-                        Idle.add (() => {
-                            job_done (JobDoneStatus.FAILED);
+                        Gdk.Pixbuf? pixbuf = null;
 
-                            return Source.REMOVE;
-                        }, Priority.HIGH_IDLE);
+                        pixbuf = yam_talker.load_pixbuf (image_cover_uri);
 
-                        Idle.add (save_track_async.callback);
-                        return;
+                        if (pixbuf != null) {
+                            storager.save_image (pixbuf, image_cover_uri, false);
+
+                            Idle.add_once (() => {
+                                action_done ();
+                            });
+
+                        } else {
+                            cancellable.cancel ();
+                            Idle.add (() => {
+                                job_done (JobDoneStatus.FAILED);
+
+                                return Source.REMOVE;
+                            }, Priority.HIGH_IDLE);
+
+                            Idle.add (save_track_async.callback);
+                            return;
+                        }
                     }
+
+                    storager.db.set_content_ref (image_cover_uri, track_info.id);
+
+                    Logger.debug ("Job %s.%s, cover of track %s was saved".printf (
+                        object_type.to_string (),
+                        yam_object.oid,
+                        track_info.form_debug_info ()
+                    ));
                 }
-
-                storager.db.set_content_ref (image_cover_uri, track_info.id);
-
-                Logger.debug ("Job %s.%s, cover of track %s was saved".printf (
-                    object_type.to_string (),
-                    yam_object.oid,
-                    track_info.form_debug_info ()
-                ));
 
                 Idle.add (() => {
                     cachier.controller.stop_loading (ContentType.TRACK, track_info.id, CacheingState.PERM);

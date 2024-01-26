@@ -320,21 +320,21 @@ namespace CassetteClient.Cachier {
                         var image_location = storager.image_cache_location (image_cover_uri);
                         yield image_location.move_to_temp_async ();
                     }
-
-                    storager.db.remove_content_ref (track_info.id, object_id);
-                    if (storager.db.get_content_ref_count (track_info.id) == 0) {
-                        var track_location = storager.audio_cache_location (track_info.id);
-                        yield track_location.move_to_temp_async ();
-                        if (track_location.file != null && storager.settings.get_boolean ("can-cache")) {
-                            cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.TEMP);
-                        } else {
-                            cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.NONE);
-                        }
-                    }
-
-                    Idle.add (unsave_async.callback);
-                    yield;
                 }
+
+                storager.db.remove_content_ref (track_info.id, object_id);
+                if (storager.db.get_content_ref_count (track_info.id) == 0) {
+                    var track_location = storager.audio_cache_location (track_info.id);
+                    yield track_location.move_to_temp_async ();
+                    if (track_location.file != null && storager.settings.get_boolean ("can-cache")) {
+                        cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.TEMP);
+                    } else {
+                        cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.NONE);
+                    }
+                }
+
+                Idle.add (unsave_async.callback);
+                yield;
             }
 
             Logger.debug ("Job %s.%s, uncache object finished".printf (

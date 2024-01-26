@@ -31,7 +31,7 @@
             <style>
               <class name="flat"/>
             </style>
-            <property name="tooltip-text" translatable="yes">Show all cache jobs</property>
+            <property name="tooltip-text" translatable="true">Show all cache jobs</property>
             <property name="popover">jobs_popover</property>
             <child>
               <object class="GtkDrawingArea" id="jobs_icon">

@@ -204,7 +204,7 @@ namespace Cassette {
 
             foreach (var pg_i in _custom_pages) {
                 if (pg_i.id == page_info.id) {
-                    window.show_message (_("Page %s already added").printf (page_info.title));
+                    window.show_message (_("Page '%s' already added").printf (page_info.title));
                     return;
                 }
             }

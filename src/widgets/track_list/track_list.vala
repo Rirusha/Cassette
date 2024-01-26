@@ -50,10 +50,10 @@ namespace Cassette {
 
             var motion_controller = new Gtk.EventControllerMotion ();
             motion_controller.enter.connect (() => {
-                add_css_class ("track-row-hover");
+                add_css_class ("gray-background");
             });
             motion_controller.leave.connect (() => {
-                remove_css_class ("track-row-hover");
+                remove_css_class ("gray-background");
             });
             add_controller (motion_controller);
 

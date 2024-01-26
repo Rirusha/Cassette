@@ -68,7 +68,7 @@
       <description>
         <p>Cosmetic and code changes</p>
         <ul>
-          <li>The transition to the blueprints interface language is slowly but surely underway.</li>
+          <li>The transition to the blueprints interface language is slowly but surely underway</li>
           <li>The playback panel has been completely redesigned. Now there are fewer buttons (if someone has lost the track information button, you need to poke to the right of the playback slider)</li>
           <li>The appearance of the playlist has been changed</li>
           <li>The sidebar widget has been changed</li>

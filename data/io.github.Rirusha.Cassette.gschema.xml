@@ -33,7 +33,7 @@
 			<default>600</default>
 		</key>
 		<key name="window-height" type="i">
-			<default>400</default>
+			<default>500</default>
 		</key>
 		<key name="window-maximized" type="b">
 			<default>false</default>
@@ -51,7 +51,7 @@
 			<default>true</default>
 		</key>
 		<key name="max-thread-number" type="i">
-			<default>5</default>
+			<default>6</default>
 		</key>
 		<key name="is-hq" type="b">
 			<default>true</default>

@@ -712,7 +712,7 @@ msgstr "Экспериментальные функции"
 #: data/ui/preferences_window.ui:130
 msgctxt "preference window"
 msgid "Force enable mobile mode"
-msgstr "Насильно включить мобильный режим"
+msgstr "Принудительно включить мобильный режим"
 
 #: data/ui/preferences_window.ui:139
 msgctxt "preference window"

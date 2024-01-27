@@ -78,6 +78,7 @@ flatpak install flathub io.github.Rirusha.Cassette
 * ```meson```
 * ```ninja```
 * ```cmake```
+* ```blueprint-compiler```
 * ```gcc```
 * ```valac```
 * ```pkg```

@@ -39,7 +39,7 @@
 			<default>false</default>
 		</key>
 		<key name="volume" type="d">
-			<default>10.0</default>
+			<default>0.2</default>
 		</key>
 		<key name="available-visible" type="b">
 			<default>false</default>

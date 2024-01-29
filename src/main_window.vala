@@ -64,16 +64,6 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.HeaderBar header_bar;
 
-        public bool is_mobile_orientation {
-            get {
-                if ((float) get_width () / (float) get_height () < 0.6f) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-
         int reconnect_timer = 5;
 
         public Pager pager { get; construct; }

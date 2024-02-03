@@ -331,7 +331,7 @@ msgstr "Постоянный"
 
 #: data/ui/cache_deletion_preferences.ui:155
 msgid "Move saved"
-msgstr "Прееместить сохраненное"
+msgstr "Переместить сохраненное"
 
 #: data/ui/cache_indicator.ui:34
 msgid "Show all cache jobs"

@@ -185,7 +185,7 @@ namespace Cassette {
 
             pager = new Pager (this, main_stack);
 
-            CassetteClient.storager.settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
+            storager.settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
             storager.settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
             storager.settings.bind ("window-maximized", this, "maximized", SettingsBindFlags.DEFAULT);
 

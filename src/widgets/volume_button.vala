@@ -47,11 +47,19 @@ namespace Cassette {
             block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED);
 
             volume_inc_button.clicked.connect (() => {
-                volume = volume_level_scale.get_value () + 0.1;
+                volume = volume_level_scale.get_value () + volume_level_scale.adjustment.page_increment;
+
+                if (volume > volume_level_scale.adjustment.upper) {
+                    volume = volume_level_scale.adjustment.upper;
+                }
             });
 
             volume_dec_button.clicked.connect (() => {
-                volume = volume_level_scale.get_value () - 0.1;
+                volume = volume_level_scale.get_value () - volume_level_scale.adjustment.page_increment;
+
+                if (volume < volume_level_scale.adjustment.lower) {
+                    volume = volume_level_scale.adjustment.lower;
+                }
             });
 
             volume_level_scale.change_value.connect ((scroll, new_value) => {
@@ -59,14 +67,14 @@ namespace Cassette {
             });
 
             notify["volume"].connect (() => {
-                volume_inc_button.sensitive = volume != 1;
-                volume_dec_button.sensitive = volume != 0.0;
+                volume_inc_button.sensitive = volume != volume_level_scale.adjustment.upper;
+                volume_dec_button.sensitive = volume != volume_level_scale.adjustment.lower;
 
-                if (volume == 0.0) {
+                if (volume == volume_level_scale.adjustment.lower) {
                     real_menu_button.icon_name = "adwaita-audio-volume-muted-symbolic";
-                } else if (volume < 0.45) {
+                } else if (volume < volume_level_scale.adjustment.upper * 0.45) {
                     real_menu_button.icon_name = "adwaita-audio-volume-low-symbolic";
-                } else if (volume < 0.9) {
+                } else if (volume < volume_level_scale.adjustment.upper * 0.9) {
                     real_menu_button.icon_name = "adwaita-audio-volume-medium-symbolic";
                 } else {
                     real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";

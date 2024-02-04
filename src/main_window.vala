@@ -197,7 +197,7 @@ namespace Cassette {
                 current_view.refresh ();
             });
 
-            if (Config.POSTFIX == ".Devel") {
+            if (Cassette.application.is_devel) {
                 add_css_class ("devel");
             }
 

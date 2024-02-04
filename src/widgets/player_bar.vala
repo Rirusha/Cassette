@@ -417,17 +417,17 @@ namespace Cassette {
         void on_repeat_mode_changed () {
             switch (player.repeat_mode) {
                 case Player.RepeatMode.REPEAT_ALL:
-                    repeat_button.set_icon_name ("media-playlist-repeat-symbolic");
+                    repeat_button.set_icon_name ("adwaita-media-playlist-repeat-symbolic");
                     repeat_button.remove_css_class ("flat");
                     break;
 
                 case Player.RepeatMode.REPEAT_ONE:
-                    repeat_button.set_icon_name ("media-playlist-repeat-song-symbolic");
+                    repeat_button.set_icon_name ("adwaita-media-playlist-repeat-song-symbolic");
                     repeat_button.remove_css_class ("flat");
                     break;
 
                 case Player.RepeatMode.OFF:
-                    repeat_button.set_icon_name ("media-playlist-repeat-symbolic");
+                    repeat_button.set_icon_name ("adwaita-media-playlist-repeat-symbolic");
                     repeat_button.add_css_class ("flat");
                     break;
             }

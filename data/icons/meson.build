@@ -102,6 +102,11 @@ install_data(
 )
 
 install_data(
+  join_paths(symbolic_dir, 'adwaita-media-playlist-repeat-symbolic.svg'),
+  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
+)
+
+install_data(
   join_paths(symbolic_dir, 'adwaita-replaced-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )

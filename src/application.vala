@@ -73,7 +73,11 @@ namespace Cassette {
 
         public signal void application_state_changed (ApplicationState new_state);
 
-        public MainWindow main_window = null;
+        public MainWindow? main_window {
+            get {
+                return (MainWindow?) active_window;
+            }
+        }
 
         public bool is_devel {
             get {
@@ -144,21 +148,21 @@ namespace Cassette {
         public override void activate () {
             base.activate ();
 
-            if (active_window == null) {
+            if (main_window == null) {
                 if (storager.settings.get_boolean ("force-mobile")) {
                     is_mobile = true;
                 }
 
-                main_window = new MainWindow (this);
+                var win = new MainWindow (this);
 
-                authenticator.success.connect (main_window.load_default_views);
-                authenticator.local.connect (main_window.load_local_views);
+                authenticator.success.connect (win.load_default_views);
+                authenticator.local.connect (win.load_local_views);
 
                 if (_application_state == ApplicationState.OFFLINE) {
                     _application_state = ApplicationState.ONLINE;
                 }
 
-                //  main_window.show.connect (() => {
+                //  win.show.connect (() => {
                 //      // Detection device "mobility"
                 //      // TODO: that also can work on notebooks with touch...
                 //      if (storager.settings.get_boolean ("force-mobile")) {
@@ -176,10 +180,10 @@ namespace Cassette {
                 //      }
                 //  });
 
-                main_window.present ();
+                win.present ();
 
                 if (_application_state == ApplicationState.LOCAL) {
-                    main_window.load_local_views ();
+                    win.load_local_views ();
                 } else {
                     authenticator.log_in ();
                 }

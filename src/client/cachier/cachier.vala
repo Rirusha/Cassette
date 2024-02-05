@@ -216,14 +216,25 @@ namespace CassetteClient.Cachier {
 
         threader.add_image (() => {
             for (int i = 0; i < cover_uris.size; i++) {
-                pixbufs[i] = storager.load_image (cover_uris[i]);
 
-                if (pixbufs[i] == null) {
-                    pixbufs[i] = yam_talker.load_pixbuf (cover_uris[i]);
+                if (cover_uris[i] != null) {
+                    pixbufs[i] = storager.load_image (cover_uris[i]);
 
-                    if (pixbufs[i] != null && storager.settings.get_boolean ("can-cache")) {
-                       storager.save_image (pixbufs[i], cover_uris[i], true);
+                    if (pixbufs[i] == null) {
+                        pixbufs[i] = yam_talker.load_pixbuf (cover_uris[i]);
+
+                        if (pixbufs[i] != null && storager.settings.get_boolean ("can-cache")) {
+                        storager.save_image (pixbufs[i], cover_uris[i], true);
+                        }
                     }
+
+                } else {
+                    // Непонятна причина непустого массива с null внутри
+                    // https://github.com/Rirusha/Cassette/issues/52
+                    Logger.info ("Hello, send this to developer: %s, %d".printf (
+                        yam_object.get_type ().to_string (),
+                        cover_uris.size
+                    ));
                 }
             }
 

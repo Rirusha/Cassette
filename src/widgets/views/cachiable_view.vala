@@ -75,7 +75,7 @@ namespace Cassette {
                                     application.show_message (_("%s%s successfully cached").printf (
                                         content_info[0],
                                         content_info[1]
-                                    ), true);
+                                    ));
                                 }
                                 download_stack.visible_child_name = "delete";
                                 break;
@@ -231,7 +231,7 @@ namespace Cassette {
                     application.show_message (_("%s%s was removed from cache folder").printf (
                         content_info[0],
                         content_info[1]
-                    ), true);
+                    ));
                 }
             });
 

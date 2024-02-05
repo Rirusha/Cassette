@@ -211,7 +211,7 @@ namespace Cassette {
             };
             string[] artists = {
                 RIRUSHA,
-                _("Arseniy Nechkin <krisgeniusnos@gmail.com>")
+                "Arseniy Nechkin <krisgeniusnos@gmail.com>"
             };
             string[] documenters = {
 

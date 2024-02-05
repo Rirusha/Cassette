@@ -35,7 +35,42 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Scale volume_level_scale;
 
-        public double volume { get; set; }
+        double _volume = 0.0;
+        public double volume {
+            get {
+                return _volume;
+            }
+            set {
+                if (value < volume_lower) {
+                    value = volume_lower;
+                } else if (value > volume_upper) {
+                    value = volume_upper;
+                }
+
+                volume_inc_button.sensitive = value != volume_upper;
+                volume_dec_button.sensitive = value != volume_lower;
+
+                if (value == volume_lower) {
+                    real_menu_button.icon_name = "adwaita-audio-volume-muted-symbolic";
+                } else if (value < volume_upper * 0.45) {
+                    real_menu_button.icon_name = "adwaita-audio-volume-low-symbolic";
+                } else if (value < volume_upper * 0.9) {
+                    real_menu_button.icon_name = "adwaita-audio-volume-medium-symbolic";
+                } else {
+                    real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";
+                }
+
+                volume_level_scale.set_value (value / mul);
+
+                _volume = value;
+            }
+        }
+
+        const double mul = 0.001;
+
+        double volume_upper;
+        double volume_lower;
+        double volume_step;
 
         public VolumeButton () {
             Object ();
@@ -46,41 +81,20 @@ namespace Cassette {
 
             block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED);
 
-            volume_inc_button.clicked.connect (() => {
-                volume = volume_level_scale.get_value () + volume_level_scale.adjustment.page_increment;
+            volume_upper = volume_level_scale.adjustment.upper * mul;
+            volume_lower = volume_level_scale.adjustment.lower * mul;
+            volume_step = volume_level_scale.adjustment.page_increment * mul;
 
-                if (volume > volume_level_scale.adjustment.upper) {
-                    volume = volume_level_scale.adjustment.upper;
-                }
+            volume_inc_button.clicked.connect (() => {
+                volume += volume_step;
             });
 
             volume_dec_button.clicked.connect (() => {
-                volume = volume_level_scale.get_value () - volume_level_scale.adjustment.page_increment;
-
-                if (volume < volume_level_scale.adjustment.lower) {
-                    volume = volume_level_scale.adjustment.lower;
-                }
+                volume -= volume_step;
             });
 
             volume_level_scale.change_value.connect ((scroll, new_value) => {
-                volume = new_value;
-            });
-
-            notify["volume"].connect (() => {
-                volume_inc_button.sensitive = volume != volume_level_scale.adjustment.upper;
-                volume_dec_button.sensitive = volume != volume_level_scale.adjustment.lower;
-
-                if (volume == volume_level_scale.adjustment.lower) {
-                    real_menu_button.icon_name = "adwaita-audio-volume-muted-symbolic";
-                } else if (volume < volume_level_scale.adjustment.upper * 0.45) {
-                    real_menu_button.icon_name = "adwaita-audio-volume-low-symbolic";
-                } else if (volume < volume_level_scale.adjustment.upper * 0.9) {
-                    real_menu_button.icon_name = "adwaita-audio-volume-medium-symbolic";
-                } else {
-                    real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";
-                }
-
-                volume_level_scale.set_value (volume);
+                volume = new_value * mul;
             });
         }
     }

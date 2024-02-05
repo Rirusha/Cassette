@@ -67,10 +67,9 @@ template $CassettePlayerBar : Adw.Bin {
             hexpand: true;
             spacing: 4;
 
-            $CassetteLikeButton like_button {
+            $CassetteDislikeButton dislike_button {
               is-flat: true;
               is-circular: true;
-              object-content-type: "track";
             }
 
             Button shuffle_button {
@@ -137,9 +136,10 @@ template $CassettePlayerBar : Adw.Bin {
               tooltip-text: _("Change repeat mode");
             }
 
-            $CassetteDislikeButton dislike_button {
+            $CassetteLikeButton like_button {
               is-flat: true;
               is-circular: true;
+              object-content-type: "track";
             }
           };
         }

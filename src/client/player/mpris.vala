@@ -240,8 +240,9 @@ namespace CassetteClient.Mpris {
             con.register_object ("/org/mpris/MediaPlayer2", mpris);
             var mpris_player = new MprisPlayer (con);
             con.register_object ("/org/mpris/MediaPlayer2", mpris_player);
+
         } catch (IOError e) {
-            message (e.message);
+            Logger.warning ("Error message: %s".printf (e.message));
         }
     }
 }

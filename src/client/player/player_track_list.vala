@@ -159,7 +159,6 @@ namespace CassetteClient.Player {
         }
 
         public void remove_track_by_pos (uint position) {
-            message (position.to_string () + " : " + queue.tracks.size.to_string ());
             var track_info = _queue.tracks[(int) position];
             remove_track (track_info);
         }

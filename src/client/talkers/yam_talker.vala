@@ -132,7 +132,7 @@ namespace CassetteClient {
                 }
 
                 // Пересохраняет объект, если он уже сохранен во временную.
-                // Постоянными объектами занимается уже YaMObjectCachier
+                // Постоянными объектами занимается уже Cachier.Job
                 var object_location = storager.object_cache_location (playlist_info.get_type (), playlist_info.oid);
                 if (object_location.is_tmp && storager.settings.get_boolean ("can-cache")) {
                     storager.save_object (playlist_info, true);

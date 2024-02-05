@@ -73,13 +73,13 @@ namespace CassetteClient.Player {
 
                 switch (_player_state) {
                     case PlayerState.NONE:
-                        pipeline.set_state (Gst.State.NULL);
+                        playbin.set_state (Gst.State.NULL);
                         break;
                     case PlayerState.PLAYING:
-                        pipeline.set_state (Gst.State.PLAYING);
+                        playbin.set_state (Gst.State.PLAYING);
                         break;
                     case PlayerState.PAUSED:
-                        pipeline.set_state (Gst.State.PAUSED);
+                        playbin.set_state (Gst.State.PAUSED);
                         break;
                 }
             }
@@ -132,12 +132,23 @@ namespace CassetteClient.Player {
             }
         }
 
-        public double volume { get; set; }
+        public double volume {
+            get {
+                Value val = Value (Type.DOUBLE);
+
+                playbin.get_property ("volume", ref val);
+
+                return val.get_double ();
+            }
+            set {
+                playbin.set_property ("volume", value);
+            }
+        }
 
         public double playback_pos_sec {
             get {
                 int64 cur;
-                pipeline.query_position (Gst.Format.TIME, out cur);
+                playbin.query_position (Gst.Format.TIME, out cur);
                 return (double) cur / Gst.SECOND;
             }
         }
@@ -145,7 +156,7 @@ namespace CassetteClient.Player {
         public int64 playback_pos_ms {
             get {
                 int64 cur;
-                pipeline.query_position (Gst.Format.TIME, out cur);
+                playbin.query_position (Gst.Format.TIME, out cur);
                 return cur / Gst.MSECOND;
             }
         }
@@ -207,9 +218,11 @@ namespace CassetteClient.Player {
             }
         }
 
-        Gst.Pipeline pipeline;
-        Gst.Element source;
-        Gst.Element _volume_el;
+        Gst.Element playbin;
+
+        //  Gst.Pipeline pipeline;
+        //  Gst.Element source;
+        //  Gst.Element _volume_el;
 
         public Player () {
             Object ();
@@ -218,28 +231,8 @@ namespace CassetteClient.Player {
         construct {
             init (null);
 
-            pipeline = new Gst.Pipeline (null);
-            var bus = pipeline.get_bus ();
-
-            source = Gst.ElementFactory.make ("uridecodebin", null);
-            var audioconvert = Gst.ElementFactory.make ("audioconvert", null);
-            var audioresample = Gst.ElementFactory.make ("audioresample", null);
-            var sink = Gst.ElementFactory.make ("autoaudiosink", null);
-            _volume_el = Gst.ElementFactory.make ("volume", null);
-
-            _volume_el.bind_property ("volume", this, "volume", BindingFlags.BIDIRECTIONAL);
-
-            pipeline.add_many (source, audioconvert, audioresample, sink, _volume_el);
-
-            source.pad_added.connect ((src, pad) => {
-                var sinkpad = audioconvert.get_static_pad ("sink");
-                pad.link (sinkpad);
-            });
-
-            audioresample.link (_volume_el);
-            _volume_el.link (sink);
-            audioconvert.link (audioresample);
-            audioresample.link (sink);
+            playbin = Gst.ElementFactory.make ("playbin", null);
+            var bus = playbin.get_bus ();
 
             bus.add_signal_watch ();
             bus.message["eos"].connect ((bus, message) => {
@@ -270,7 +263,7 @@ namespace CassetteClient.Player {
         }
 
         public void seek (int64 ms) {
-            pipeline.seek_simple (Gst.Format.TIME, Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, ms * Gst.MSECOND);
+            playbin.seek_simple (Gst.Format.TIME, Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, ms * Gst.MSECOND);
         }
 
         public async YaMAPI.Track? get_prev_track () {
@@ -361,7 +354,7 @@ namespace CassetteClient.Player {
         }
 
         public void stop () {
-            source.set_property ("uri", Value (Type.STRING));
+            playbin.set_property ("uri", Value (Type.STRING));
 
             pause ();
 
@@ -438,9 +431,9 @@ namespace CassetteClient.Player {
 
                 string? track_uri = yield Cachier.get_track_uri (current_track.id);
                 if (track_uri == null) {
-                    source.set_property ("uri", Value (Type.STRING));
+                    playbin.set_property ("uri", Value (Type.STRING));
                 } else {
-                    source.set_property ("uri", track_uri);
+                    playbin.set_property ("uri", track_uri);
 
                     play ();
                     storager.clear_temp_track ();
@@ -448,7 +441,7 @@ namespace CassetteClient.Player {
 
             } else {
                 // У локальных треков id - их uri
-                source.set_property ("uri", current_track.id);
+                playbin.set_property ("uri", current_track.id);
 
                 play ();
             }

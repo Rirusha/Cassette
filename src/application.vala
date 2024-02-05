@@ -189,14 +189,17 @@ namespace Cassette {
             }
         }
 
-        public void show_message (string message, bool is_notify = false) {
-            main_window.show_message (message);
-
-            if (is_notify) {
-                var ntf = new Notification (APP_NAME);
-                ntf.set_body (message);
-                send_notification (null, ntf);
+        public void show_message (string message) {
+            if (main_window != null) {
+                if (main_window.is_active) {
+                    main_window.show_message (message);
+                    return;
+               }
             }
+
+            var ntf = new Notification (APP_NAME);
+            ntf.set_body (message);
+            send_notification (null, ntf);
         }
 
         void on_about_action () {

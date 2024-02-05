@@ -62,7 +62,7 @@ namespace CassetteClient {
             liked_tracks_ids.clear ();
 
             foreach (var track in track_list) {
-                liked_tracks_ids.add (track.track.id);
+                liked_tracks_ids.add (track.track.id.dup ());
             }
         }
 

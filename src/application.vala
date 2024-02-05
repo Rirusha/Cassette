@@ -237,7 +237,8 @@ namespace Cassette {
             about.add_link (_("Financial support"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
 
             about.add_acknowledgement_section ("Donaters", {
-                "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium"
+                "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium", "fiersik", "belovmv",
+                "krylov_alexandr", 
             });
 
             about.present ();

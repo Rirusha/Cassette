@@ -90,8 +90,17 @@ ninja -C builddir install
 Вы можете поддержать несколькими способами:
 * Создать ишью с проблемой или предложением по улучшению;
 * Сделать pul request с фиксом или добавлением функционала;
-* [Поддержать рублём](https://www.tinkoff.ru/cf/21GCxLuFuE9) (Просьба указывать в "Сообщении получателю" свой никнейм, иначе я не смогу добавить вас в соответствующий блок окна About. Тинькофф не пишет имя отправителя, если перевод выполнен с карты другого банка);
-* Похвалить автора в телеграм-чате :3.
+* Поддержать рублём (Просьба указывать в "Сообщении получателю" свой никнейм при отправлении через Тинькофф):
+<p>
+  <a href="https://www.tinkoff.ru/cf/21GCxLuFuE9">
+      <img height="36" src="https://github.com/Rirusha/Cassette/assets/95986183/87496207-aa1c-40fc-a511-57bac188bc72" alt="Tinkoff">
+  </a>
+</p>
+<p>
+  <a href="https://boosty.to/rirusha/donate">
+      <img height="36" src="https://github.com/Rirusha/Cassette/assets/95986183/313ee5af-d374-4f95-af62-9445d1c27347" alt="boosty.to">
+  </a>
+</p>
 
 ## Благодарность
 Спасибо [MarshalX](https://github.com/MarshalX). Библиотека [yandex-music-api](https://github.com/MarshalX/yandex-music-api) была использована в качестве документации к api.

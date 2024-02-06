@@ -161,7 +161,7 @@ namespace Cassette {
                     PAGER_PAGES_DELIMETER in new_page_title
                 )
             ) {
-                window.show_message (_("Can't set title \"%s\" to page").printf (new_page_title));
+                window.show_toast (_("Can't set title \"%s\" to page").printf (new_page_title));
                 return;
             }
             if (
@@ -172,7 +172,7 @@ namespace Cassette {
                     PAGER_PAGES_DELIMETER in new_page_icon_name
                 )
             ) {
-                window.show_message (_("Can't set icon with name \"%s\" to page").printf (new_page_icon_name));
+                window.show_toast (_("Can't set icon with name \"%s\" to page").printf (new_page_icon_name));
                 return;
             }
 
@@ -198,13 +198,13 @@ namespace Cassette {
 
         public void add_custom_page (PageInfo page_info) {
             if (_custom_pages.size == 6) {
-                window.show_message (_("Reached max page count"));
+                window.show_toast (_("Reached max page count"));
                 return;
             }
 
             foreach (var pg_i in _custom_pages) {
                 if (pg_i.id == page_info.id) {
-                    window.show_message (_("Page '%s' already added").printf (page_info.title));
+                    window.show_toast (_("Page '%s' already added").printf (page_info.title));
                     return;
                 }
             }

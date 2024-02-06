@@ -270,7 +270,7 @@ namespace Cassette {
             }
         }
 
-        public void show_message (string message) {
+        public void show_toast (string message) {
             var toast = new Adw.Toast (message);
             toast_overlay.add_toast (toast);
 
@@ -318,7 +318,7 @@ namespace Cassette {
                     string url = clipboard.read_text_async.end (res);
 
                     if (!url.has_prefix ("https://music.yandex.ru/")) {
-                        show_message (_("Can't parse clipboard content"));
+                        show_toast (_("Can't parse clipboard content"));
                         return;
                     }
 
@@ -334,7 +334,7 @@ namespace Cassette {
                         // playlists ~
                         if (parts[2] == "playlists") {
                             if (parts.length == 3) {
-                                show_message (_("Users view not implemented yet"));
+                                show_toast (_("Users view not implemented yet"));
                                 return;
 
                             // playlists 3
@@ -350,7 +350,7 @@ namespace Cassette {
                         // string album_id = parts[1];
 
                         if (parts.length == 2) {
-                            show_message (_("Albums view not implemented yet"));
+                            show_toast (_("Albums view not implemented yet"));
 
                         // album 87894564 track 54654
                         } else {
@@ -364,12 +364,12 @@ namespace Cassette {
 
                             show_track_by_id.begin (track_id);
 
-                            show_message (_("Albums view not implemented yet"));
+                            show_toast (_("Albums view not implemented yet"));
                         }
                     }
 
                 } catch (Error e) {
-                    show_message (_("Can't parse clipboard content"));
+                    show_toast (_("Can't parse clipboard content"));
                 }
             });
         }

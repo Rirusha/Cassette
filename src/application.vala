@@ -260,7 +260,7 @@ namespace Cassette {
 
             about.add_acknowledgement_section ("Donaters", {
                 "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium", "fiersik", "belovmv",
-                "krylov_alexandr", 
+                "krylov_alexandr"
             });
 
             about.present ();

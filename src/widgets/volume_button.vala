@@ -60,13 +60,13 @@ namespace Cassette {
                     real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";
                 }
 
-                volume_level_scale.set_value (value / mul);
+                volume_level_scale.set_value (value / MUL);
 
                 _volume = value;
             }
         }
 
-        const double mul = 0.001;
+        const double MUL = 0.001;
 
         double volume_upper;
         double volume_lower;
@@ -81,9 +81,9 @@ namespace Cassette {
 
             block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED);
 
-            volume_upper = volume_level_scale.adjustment.upper * mul;
-            volume_lower = volume_level_scale.adjustment.lower * mul;
-            volume_step = volume_level_scale.adjustment.page_increment * mul;
+            volume_upper = volume_level_scale.adjustment.upper * MUL;
+            volume_lower = volume_level_scale.adjustment.lower * MUL;
+            volume_step = volume_level_scale.adjustment.page_increment * MUL;
 
             volume_inc_button.clicked.connect (() => {
                 volume += volume_step;
@@ -94,7 +94,7 @@ namespace Cassette {
             });
 
             volume_level_scale.change_value.connect ((scroll, new_value) => {
-                volume = new_value * mul;
+                volume = new_value * MUL;
             });
         }
     }

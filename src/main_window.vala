@@ -201,20 +201,6 @@ namespace Cassette {
                 add_css_class ("devel");
             }
 
-            Cassette.application.application_state_changed.connect ((new_state) => {
-                switch (new_state) {
-                    case ApplicationState.ONLINE:
-                        show_message (_("Connection restored"));
-                        set_online ();
-                        break;
-                    case ApplicationState.OFFLINE:
-                        set_offline ();
-                        break;
-                    default:
-                        break;
-                }
-            });
-
             SimpleAction search_action = new SimpleAction ("search", null);
             search_action.activate.connect (() => {
                 button_search.active = true;

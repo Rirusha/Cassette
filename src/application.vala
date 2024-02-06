@@ -123,6 +123,21 @@ namespace Cassette {
 
             storager.settings.bind ("application-state", this, "application-state", SettingsBindFlags.DEFAULT);
 
+            application.application_state_changed.connect ((new_state) => {
+                switch (new_state) {
+                    case ApplicationState.ONLINE:
+                        show_message (_("Connection restored"));
+                        main_window?.set_online ();
+                        break;
+                    case ApplicationState.OFFLINE:
+                        show_message (_("Connection problems"));
+                        main_window?.set_offline ();
+                        break;
+                    default:
+                        break;
+                }
+            });
+
             ActionEntry[] action_entries = {
                 { "about", on_about_action },
                 { "preferences", on_preferences_action },

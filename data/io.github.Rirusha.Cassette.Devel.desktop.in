@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=Cassette Devel
-GenericName=Cassette Devel
 Comment=Unofficial Yandex.Music client for GNOME (Development mode)
 Keywords=yandex;yandex music;yam;music;
 Exec=cassette
@@ -9,3 +8,4 @@ Terminal=false
 Type=Application
 Categories=Music;
 StartupNotify=true
+X-GNOME-UsesNotifications=true

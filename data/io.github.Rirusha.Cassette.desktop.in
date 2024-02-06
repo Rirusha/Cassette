@@ -1,7 +1,6 @@
 [Desktop Entry]
 # Translators: this should be translated
 Name=Cassette
-GenericName=Cassette
 Comment=Unofficial Yandex.Music client for GNOME
 Keywords=yandex;yandex music;yam;music;
 Exec=cassette
@@ -10,3 +9,4 @@ Terminal=false
 Type=Application
 Categories=Music;
 StartupNotify=true
+X-GNOME-UsesNotifications=true

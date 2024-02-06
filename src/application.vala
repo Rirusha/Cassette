@@ -211,9 +211,9 @@ namespace Cassette {
         public void show_message (string message) {
             if (main_window != null) {
                 if (main_window.is_active) {
-                    main_window.show_message (message);
+                    main_window.show_toast (message);
                     return;
-               }
+                }
             }
 
             var ntf = new Notification (APP_NAME);

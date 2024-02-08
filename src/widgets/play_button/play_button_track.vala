@@ -79,7 +79,7 @@ namespace Cassette {
                 set_paused ();
                 return;
             }
-            if (is_playing == true) {
+            if (is_current_playing == true) {
                 set_stopped ();
             }
         }

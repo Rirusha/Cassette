@@ -110,13 +110,13 @@ namespace Cassette {
                     buttons_box.visible = true;
                 });
                 motion_controller.leave.connect ((mc) => {
-                    if (!play_button.is_playing) {
+                    if (!play_button.is_current_playing) {
                         buttons_box.visible = false;
                     }
                 });
 
                 play_button.notify["is-playing"].connect (() => {
-                    if (play_button.is_playing) {
+                    if (play_button.is_current_playing) {
                         buttons_box.visible = true;
                     } else {
                         buttons_box.visible = false;

@@ -21,7 +21,8 @@
 namespace Cassette {
     public abstract class PlayButton : CustomButton {
 
-        public bool is_playing { get; private set; default = false; }
+        // Не реальное воспроизведение, а считает ли плеер данный трек текущим
+        public bool is_current_playing { get; private set; default = false; }
 
         construct {
             tooltip_text = _("Play/Pause");
@@ -31,17 +32,17 @@ namespace Cassette {
 
         public void set_playing () {
             icon_name = "adwaita-media-playback-pause-symbolic";
-            is_playing = true;
+            is_current_playing = true;
         }
 
         public void set_paused () {
             icon_name = "adwaita-media-playback-start-symbolic";
-            is_playing = true;
+            is_current_playing = true;
         }
 
         public void set_stopped () {
             set_paused ();
-            is_playing = false;
+            is_current_playing = false;
         }
     }
 }

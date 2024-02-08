@@ -24,19 +24,41 @@ namespace Cassette {
         // Не реальное воспроизведение, а считает ли плеер данный трек текущим
         public bool is_current_playing { get; private set; default = false; }
 
-        construct {
-            tooltip_text = _("Play/Pause");
+        // Фактическое воспроизведение трека
+        protected bool is_playing { get; set; default = false; }
 
-            icon_name = "adwaita-media-playback-start-symbolic";
+        // Отображать ли текст с воспроизведении
+        public bool with_label { get; construct; default = false; }
+
+        construct {
+            notify["is-playing"].connect (on_is_playing_notify);
+            on_is_playing_notify ();
+        }
+
+        void on_is_playing_notify () {
+            if (is_playing) {
+                tooltip_text = _("Pause");
+                icon_name = "adwaita-media-playback-pause-symbolic";
+                if (with_label) {
+                    label = _("Pause");
+                }
+
+            } else {
+                tooltip_text = _("Play");
+                icon_name = "adwaita-media-playback-start-symbolic";
+                if (with_label) {
+                    label = _("Play");
+                }
+            }
         }
 
         public void set_playing () {
-            icon_name = "adwaita-media-playback-pause-symbolic";
+            is_playing = true;
             is_current_playing = true;
         }
 
         public void set_paused () {
-            icon_name = "adwaita-media-playback-start-symbolic";
+            is_playing = false;
             is_current_playing = true;
         }
 

@@ -142,7 +142,7 @@
                                 <property name="vexpand">false</property>
                                 <property name="valign">center</property>
                                 <property name="is-pill">true</property>
-                                <property name="label" translatable="true">Play</property>
+                                <property name="with-label">true</property>
                               </object>
                             </child>
                             <child>

@@ -61,7 +61,7 @@ namespace Cassette {
         }
 
         public void set_stopped () {
-            set_paused ();
+            is_playing = false;
             is_current_playing = false;
         }
     }

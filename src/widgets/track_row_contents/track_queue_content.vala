@@ -94,7 +94,7 @@ namespace Cassette {
 
             insert_action_group ("track", actions);
 
-            play_button.notify["is-playing"].connect (() => {
+            play_button.notify["is-current-playing"].connect (() => {
                 if (play_button.is_current_playing) {
                     add_css_class ("track-row-playing");
                 } else {

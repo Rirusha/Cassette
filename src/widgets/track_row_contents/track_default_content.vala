@@ -166,7 +166,7 @@ namespace Cassette {
             });
             actions.add_action (save_action);
 
-            play_button.notify["is-playing"].connect (() => {
+            play_button.notify["is-current-playing"].connect (() => {
                 if (play_button.is_current_playing) {
                     info_panel.show_play_button ();
                     add_css_class ("track-row-playing");

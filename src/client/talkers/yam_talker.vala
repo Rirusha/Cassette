@@ -129,7 +129,7 @@ namespace CassetteClient {
                     }
                 }
 
-                // Пересохраняет объект, если он уже сохранен во временную.
+                // Сохраняет объект, если он не сохранен в data
                 // Постоянными объектами занимается уже Cachier.Job
                 var object_location = storager.object_cache_location (playlist_info.get_type (), playlist_info.oid);
                 if (object_location.is_tmp && storager.settings.get_boolean ("can-cache")) {

@@ -16,6 +16,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+
+using CassetteClient.YaMAPI.Rotor;
+
 namespace CassetteClient.YaMAPI {
 
     public class YaMClient : Object {
@@ -625,6 +628,122 @@ namespace CassetteClient.YaMAPI {
             jsoner.deserialize_array (ref our_array);
 
             return our_array;
+        }
+
+        ///////////
+        // Radio //
+        ///////////
+
+        public StationInfo get_rotor_info (
+            string station_type
+        ) throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/station/$station_type/info",
+                {"default", "device"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+
+            var our_array = new Gee.ArrayList<StationInfo> ();
+            jsoner.deserialize_array (ref our_array);
+
+            if (our_array.size == 0) {
+                throw new ClientError.SOUP_ERROR ("Wrong station name: %s".printf (station_type));
+            }
+
+            return our_array[0];
+        }
+
+        public bool rotor_feedback_started (
+            string station_type
+        ) throws ClientError, BadStatusCodeError {
+            var datalist = Datalist<string> ();
+            datalist.set_data ("type", FeedbackType.STARTED);
+            datalist.set_data ("timestamp", new DateTime.now_utc ().format_iso8601 ());
+            datalist.set_data ("from", @"mobile-radio-$station_type");
+
+            PostContent post_content = {PostContentType.JSON};
+            post_content.set_datalist (datalist);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
+                {"default", "device"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            if (jsoner.root != null) {
+                return true;
+            }
+            return false;
+        }
+
+        public bool rotor_feedback_track_started (
+            string station_type,
+            string batch_id,
+            string track_id
+        ) throws ClientError, BadStatusCodeError {
+            var datalist = Datalist<string> ();
+            datalist.set_data ("type", FeedbackType.TRACK_STARTED);
+            datalist.set_data ("timestamp", new DateTime.now_utc ().format_iso8601 ());
+            datalist.set_data ("trackId", track_id);
+
+            PostContent post_content = {PostContentType.JSON};
+            post_content.set_datalist (datalist);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
+                {"default"},
+                post_content,
+                {{"batch-id", batch_id}}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            if (jsoner.root != null) {
+                return true;
+            }
+            return false;
+        }
+
+        public bool rotor_feedback_track_finished (
+            string station_type,
+            string batch_id,
+            string track_id,
+            double total_played_seconds
+        ) throws ClientError, BadStatusCodeError {
+            var datalist = Datalist<string> ();
+            datalist.set_data ("type", FeedbackType.TRACK_FINISHED);
+            datalist.set_data ("timestamp", new DateTime.now_utc ().format_iso8601 ());
+            datalist.set_data ("trackId", track_id);
+            datalist.set_data ("totalPlayedSeconds", total_played_seconds.to_string ());
+
+            PostContent post_content = {PostContentType.JSON};
+            post_content.set_datalist (datalist);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
+                {"default"},
+                post_content,
+                {{"batch-id", batch_id}}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            if (jsoner.root != null) {
+                return true;
+            }
+            return false;
+        }
+
+        public StationTracks get_station_tracks (
+            string station_type
+        ) throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/station/$station_type/tracks",
+                {"default"},
+                {{"settings2", "true"}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+
+            return (StationTracks) jsoner.deserialize_object (typeof (StationTracks));
         }
     }
 }

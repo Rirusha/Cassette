@@ -27,7 +27,7 @@ namespace CassetteClient {
     // Класс для выполнения всяких вещей, связанных с интернетом, чтобы можно было оповестить пользователя о проблемах с соединением
     public class YaMTalker : AbstractTalker {
 
-        private YaMClient client = new YaMClient (create_soup_wrapper (true));
+        public YaMClient client { get; default = new YaMClient (create_soup_wrapper (true)); }
         public LikesController likes_controller { get; default = new LikesController (); }
 
         public signal void track_likes_start_change (string track_id);

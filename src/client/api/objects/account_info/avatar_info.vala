@@ -17,17 +17,17 @@
  */
 
 namespace CassetteClient.YaMAPI {
-    public enum AvatarSize {
-        ISLANDS_SMALL = "islands-small",
-        ISLANDS_34 = "islands-34",
-        ISLANDS_MIDDLE = "islands-middle",
-        ISLANDS_50 = "islands-50",
-        ISLANDS_RETINA_SMALL = "islands-retina-small",
-        ISLANDS_68 = "islands-68",
-        ISLANDS_75 = "islands-75",
-        ISLANDS_RETINA_MIDDLE = "islands-retina-middle",
-        ISLANDS_RETINA_50 = "islands-retina-50",
-        ISLANDS_200 = "islands-200"
+    namespace AvatarSize {
+        const string ISLANDS_SMALL = "islands-small";
+        const string ISLANDS_34 = "islands-34";
+        const string ISLANDS_MIDDLE = "islands-middle";
+        const string ISLANDS_50 = "islands-50";
+        const string ISLANDS_RETINA_SMALL = "islands-retina-small";
+        const string ISLANDS_68 = "islands-68";
+        const string ISLANDS_75 = "islands-75";
+        const string ISLANDS_RETINA_MIDDLE = "islands-retina-middle";
+        const string ISLANDS_RETINA_50 = "islands-retina-50";
+        const string ISLANDS_200 = "islands-200";
     }
 
     public class AvatarInfo : YaMObject {
@@ -39,7 +39,7 @@ namespace CassetteClient.YaMAPI {
             Object ();
         }
 
-        public static AvatarSize num_size_to_avatar_size (int size) {
+        public static string num_size_to_avatar_size (int size) {
             switch (size) {
                 case 28:
                     return AvatarSize.ISLANDS_SMALL;

@@ -77,6 +77,24 @@ namespace CassetteClient {
         //  Serialize  //
         /////////////////
 
+        public static string datalist_to_json (Datalist<string> datalist) {
+            var builder = new Json.Builder ();
+            builder.begin_object ();
+
+            datalist.foreach ((key_id, data) => {
+                builder.set_member_name (key_id.to_string ());
+
+                Jsoner.serialize_value (builder, data);
+            });
+
+            builder.end_object ();
+
+            var generator = new Json.Generator ();
+            generator.set_root (builder.get_root ());
+
+            return generator.to_data (null);
+        }
+
         public static string serialize (YaMObject yam_obj) {
             var builder = new Json.Builder ();
             serialize_object (builder, yam_obj);

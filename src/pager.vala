@@ -111,6 +111,8 @@ namespace Cassette {
             register = typeof (PlaylistView);
             register = typeof (PlaylistsView);
             register = typeof (MainView);
+            register = typeof (DevelView);
+            register = Type.NONE;
 
             storager.settings.changed.connect ((key) => {
                 if (
@@ -278,6 +280,15 @@ namespace Cassette {
                     "view-list-symbolic",
                     typeof (PlaylistsView).name (),
                     {null}
+                });
+            }
+
+            if (application.is_devel) {
+                add_page ({
+                    "devel",
+                    "Devel",
+                    "face-cool-symbolic",
+                    typeof (DevelView).name ()
                 });
             }
         }

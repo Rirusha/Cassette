@@ -17,10 +17,14 @@
  */
 
 namespace CassetteClient.YaMAPI {
-    public class MasterHub : YaMObject {
+    public class Alert : YaMObject {
 
-        public MasterHub () {
-            Object ();
-        }
+        public string alert_id { get; set; }
+        public string text { get; set; }
+        public string bg_color { get; set; }
+        public string text_color { get; set; }
+        public string alert_type { get; set; }
+        public AlertButton button { get; set; }
+        public bool close_button { get; set; }
     }
 }

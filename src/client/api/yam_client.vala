@@ -33,11 +33,16 @@ namespace CassetteClient.YaMAPI {
         }
 
         construct {
+            string os = Environment.get_os_info (OsInfoKey.NAME);
+            string version = Environment.get_os_info (OsInfoKey.VERSION);
+
             soup_wrapper.add_headers_preset (
-                "queue",
+                "device",
                 {{
                     "X-Yandex-Music-Device",
-                    "os=Linux; os_version=; manufacturer=Rirusha; model=Yandex Music API; clid=; device_id=random; uuid=random"
+                    "os=%s; os_version=%s; manufacturer=Rirusha; model=Yandex Music API; clid=; device_id=random; uuid=random".printf (
+                        os, version
+                    )
                 }}
             );
         }
@@ -160,8 +165,7 @@ namespace CassetteClient.YaMAPI {
         public Gee.ArrayList<ShortQueue> queues () throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/queues",
-                {"default",
-                "queue"}
+                {"default", "device"}
             );
             var jsoner = Jsoner.from_bytes (bytes, {"result", "queues"}, Case.CAMEL_CASE);
 
@@ -185,12 +189,12 @@ namespace CassetteClient.YaMAPI {
         public string? create_queue (Queue queue) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/queues",
-                {"default", "queue"},
+                {"default", "device"},
                 {"application/json", queue.to_json ()}
             );
 
             var jsoner = Jsoner.from_bytes (bytes, {"result", "id"}, Case.CAMEL_CASE);
-            Value? val_id = jsoner.deserialize_value ();
+            var val_id = jsoner.deserialize_value ();
 
             if (val_id == null || !val_id.holds (Type.STRING)) {
                 return null;
@@ -202,7 +206,7 @@ namespace CassetteClient.YaMAPI {
         public void update_position_queue (string queue_id, int position) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/queues/$queue_id/update-position",
-                {"default", "queue"},
+                {"default", "device"},
                 null,
                 {
                     {"currentIndex", position.to_string ()},

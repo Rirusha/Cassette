@@ -30,4 +30,3 @@ namespace CassetteClient.YaMAPI.Rotor {
         public string genre_name { get; set; }
     }
 }
- 

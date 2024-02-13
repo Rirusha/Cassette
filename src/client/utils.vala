@@ -22,6 +22,19 @@ using Gee;
 
 namespace CassetteClient {
 
+    namespace YaMAPI.Rotor {
+        namespace FeedbackType {
+            public const string STARTED = "radioStarted";
+            public const string TRACK_STARTED = "trackStarted";
+            public const string TRACK_FINISHED = "trackFinished";
+            public const string FINISHED = "trackFinished";
+        }
+
+        namespace StationType {
+            public const string ON_YOUR_WAVE = "user:onyourwave";
+        }
+    }
+
     public enum ArtSize {
         TRACK = 75,
         BIG_ART = 400,

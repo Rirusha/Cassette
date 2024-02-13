@@ -51,12 +51,37 @@ namespace CassetteClient {
         }
     }
 
+    public enum PostContentType {
+        X_WWW_FORM_URLENCODED,
+        JSON
+    }
+
     public struct PostContent {
-        string content_type;
+        PostContentType content_type;
         Bytes data;
 
-        public void set_datalist (Datalist datalist) {
-            data = new Bytes (Soup.Form.encode_datalist (datalist).data);
+        public string get_content_type_string () {
+            switch (content_type) {
+                case X_WWW_FORM_URLENCODED:
+                    return "application/x-www-form-urlencoded";
+                case JSON:
+                    return "application/json";
+                default:
+                    assert_not_reached ();
+            }
+        }
+
+        public void set_datalist (Datalist<string> datalist) {
+            switch (content_type) {
+                case X_WWW_FORM_URLENCODED:
+                    data = new Bytes (Soup.Form.encode_datalist (datalist).data);
+                    break;
+                case JSON:
+                    data = new Bytes (Jsoner.datalist_to_json (datalist).data);
+                    break;
+                default:
+                    assert_not_reached ();
+            }
         }
     }
 
@@ -187,7 +212,10 @@ namespace CassetteClient {
             var msg = new Soup.Message ("POST", uri);
 
             if (post_content != null) {
-                msg.set_request_body_from_bytes (post_content.content_type, post_content.data);
+                msg.set_request_body_from_bytes (
+                    post_content.get_content_type_string (),
+                    post_content.data
+                );
             }
 
             if (header_preset_names != null) {

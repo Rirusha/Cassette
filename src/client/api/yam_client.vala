@@ -54,7 +54,7 @@ namespace CassetteClient.YaMAPI {
             datalist.set_data ("client_secret", "53bc75238f0c4d08a118e51fe9203300");
             datalist.set_data ("host", "oauth.yandex.ru");
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             var bytes = soup_wrapper.post_sync (
@@ -147,7 +147,7 @@ namespace CassetteClient.YaMAPI {
             datalist.set_data ("track-ids", string.joinv (",", id_list));
             datalist.set_data ("with-positions", with_positions.to_string ());
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             var bytes = soup_wrapper.post_sync (
@@ -190,7 +190,7 @@ namespace CassetteClient.YaMAPI {
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/queues",
                 {"default", "device"},
-                {"application/json", queue.to_json ()}
+                {PostContentType.JSON, queue.to_json ()}
             );
 
             var jsoner = Jsoner.from_bytes (bytes, {"result", "id"}, Case.CAMEL_CASE);
@@ -249,7 +249,7 @@ namespace CassetteClient.YaMAPI {
             datalist.set_data ("playlist-id", playlist_id);
             datalist.set_data ("client-now", time);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -320,7 +320,7 @@ namespace CassetteClient.YaMAPI {
             var datalist = Datalist<string> ();
             datalist.set_data (@"$what-ids", id);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -343,7 +343,7 @@ namespace CassetteClient.YaMAPI {
             var datalist = Datalist<string> ();
             datalist.set_data (@"$what-ids", id);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -366,7 +366,7 @@ namespace CassetteClient.YaMAPI {
             var datalist = Datalist<string> ();
             datalist.set_data ("track-ids", id);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -389,7 +389,7 @@ namespace CassetteClient.YaMAPI {
             var datalist = Datalist<string> ();
             datalist.set_data ("track-ids", id);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -488,7 +488,7 @@ namespace CassetteClient.YaMAPI {
             datalist.set_data ("revision", revision.to_string ());
             datalist.set_data ("diff", diff);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -512,7 +512,7 @@ namespace CassetteClient.YaMAPI {
             var datalist = Datalist<string> ();
             datalist.set_data ("value", visibility);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -537,7 +537,7 @@ namespace CassetteClient.YaMAPI {
             datalist.set_data ("title", title);
             datalist.set_data ("visibility", visibility);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -579,7 +579,7 @@ namespace CassetteClient.YaMAPI {
             var datalist = Datalist<string> ();
             datalist.set_data ("value", new_name);
 
-            PostContent post_content = {"application/x-www-form-urlencoded"};
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
             post_content.set_datalist (datalist);
 
             Bytes bytes = soup_wrapper.post_sync (

@@ -23,6 +23,7 @@ cassette_client_sources = files(
   'api/objects/api_error.vala',
   'api/objects/track_heap.vala',
   'api/objects/cover.vala',
+  'api/objects/icon.vala',
   'api/objects/track_short.vala',
   'api/objects/download_info.vala',
   'api/objects/account_info/account_info.vala',
@@ -58,5 +59,19 @@ cassette_client_sources = files(
   'api/objects/queue/context.vala',
   'api/objects/additional_info/similar_tracks.vala',
   'api/objects/additional_info/lyrics.vala',
-  'api/objects/additional_info/lyrics_major.vala'
+  'api/objects/additional_info/lyrics_major.vala',
+  'api/objects/rotor/station_info.vala',
+  'api/objects/rotor/station_tracks.vala',
+  'api/objects/rotor/settings.vala',
+  'api/objects/rotor/sequence.vala',
+  'api/objects/rotor/id.vala',
+  'api/objects/rotor/enum.vala',
+  'api/objects/rotor/value.vala',
+  'api/objects/rotor/discrete_scale.vala',
+  'api/objects/rotor/station_tracks.vala',
+  'api/objects/rotor/restrictions.vala',
+  'api/objects/rotor/dashboard.vala',
+  'api/objects/rotor/station_data.vala',
+  'api/objects/rotor/ad_params.vala',
+  'api/objects/rotor/station.vala'
 )

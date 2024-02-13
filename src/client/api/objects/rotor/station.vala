@@ -21,7 +21,7 @@ using Gee;
 
 namespace CassetteClient.YaMAPI.Rotor {
     public class Station : YaMObject {
-        
+
         public Id id { get; set; }
         public string name { get; set; }
         public Icon icon { get; set; }

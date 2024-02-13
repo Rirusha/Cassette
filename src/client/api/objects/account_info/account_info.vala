@@ -33,10 +33,13 @@ namespace CassetteClient.YaMAPI {
         public bool subeditor { get; set; }
         public int subeditor_level { get; set; }
         public bool pretrial_active { get; set; }
-        public MasterHub masterhub { get; set; }
         public Plus plus { get; set; default = new Plus (); }
         public ArrayList<string> has_options { get; set; default = new ArrayList<string> (); }
         public string? default_email { get; set; }
+        public int skips_per_hours { get; set; }
+        public bool station_exists { get; set; }
+        public Rotor.StationData? station_data { get; set; }
+        public Alert? bar_below { get; set; }
         public AvatarInfo avatar_info { get; set; }
 
         public AccountInfo () {

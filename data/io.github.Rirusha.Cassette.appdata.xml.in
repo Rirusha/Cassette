@@ -3,7 +3,7 @@
   <name>Cassette</name>
   <id>io.github.Rirusha.Cassette.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0-or-later</project_license>
+  <project_license>GPL-3.0-only</project_license>
   <description>
     <p>
       GTK/Adwaita application that allows to use Yandex Music 

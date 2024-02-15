@@ -253,6 +253,15 @@ namespace Cassette {
         }
 
         void load_static_pages () {
+            if (application.is_devel) {
+                add_page ({
+                    "devel",
+                    "Devel",
+                    "face-cool-symbolic",
+                    typeof (DevelView).name ()
+                });
+            }
+
             if (storager.settings.get_boolean ("show-main")) {
                 add_page ({
                     "main",
@@ -279,15 +288,6 @@ namespace Cassette {
                     "view-list-symbolic",
                     typeof (PlaylistsView).name (),
                     {null}
-                });
-            }
-
-            if (application.is_devel) {
-                add_page ({
-                    "devel",
-                    "Devel",
-                    "face-cool-symbolic",
-                    typeof (DevelView).name ()
                 });
             }
         }

@@ -3,7 +3,7 @@ project(
   ['c', 'vala'],
   version: '0.1.4',
   meson_version: '>= 0.62.0',
-  license: 'GPL-3.0-or-later',
+  license: 'GPL-3.0-only',
 )
 
 i18n = import('i18n')

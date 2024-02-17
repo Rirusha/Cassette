@@ -99,12 +99,10 @@ namespace Cassette {
 
             slider.change_value.connect ((scroll_type, new_value) => {
                 player.seek ((int) (new_value * 1000));
+                on_playback_callback (new_value);
             });
 
-            player.playback_callback.connect ((play_pos) => {
-                current_time_mark.label = sec2str ((int) play_pos, true);
-                slider.set_value (play_pos);
-            });
+            player.playback_callback.connect (on_playback_callback);
 
             player.current_track_start_loading.connect (() => {
                 sensitive = false;
@@ -230,6 +228,11 @@ namespace Cassette {
             });
 
             block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED);
+        }
+
+        void on_playback_callback (double pos) {
+            current_time_mark.label = sec2str ((int) pos, true);
+            slider.set_value (pos);
         }
 
         void on_carousel_page_changed (uint index) {

@@ -103,7 +103,7 @@ namespace CassetteClient.Cachier {
                 });
 
                 yield;
-                
+
                 if (new_obj != null) {
                     start_cache (new_obj);
                 }

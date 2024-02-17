@@ -225,7 +225,7 @@ namespace CassetteClient.Mpris {
         public void play_pause (BusName sender) throws Error {
             if (can_control) {
                 player.play_pause ();
-            }          
+            }
         }
 
         public void stop (BusName sender) throws Error {

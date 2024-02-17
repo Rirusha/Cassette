@@ -44,23 +44,37 @@ namespace CassetteClient.Mpris {
 
         public bool can_control {
             get {
-                return true;
+                return !player.is_loading;
             }
         }
 
-        public bool can_go_next { get; private set; default = true; }
-        public bool can_go_previous { get; private set; default = true; }
-        public bool can_play { get; private set; default = true; }
+        public bool can_go_next {
+            get {
+                return !player.is_loading;
+            }
+        }
+
+        public bool can_go_previous {
+            get {
+                return !player.is_loading && player.player_type == Player.PlayerModeType.TRACK_LIST;
+            }
+        }
 
         public bool can_pause {
             get {
-                return true;
+                return !player.is_loading;
             }
         }
 
         public bool can_seek {
             get {
                 return !player.is_loading;
+            }
+        }
+
+        public bool can_play {
+            get {
+                return true;
             }
         }
 
@@ -97,17 +111,8 @@ namespace CassetteClient.Mpris {
         public MprisPlayer (DBusConnection con) {
             this.con = con;
 
-            player.current_track_start_loading.connect (() => {
-                can_go_next = false;
-                can_go_previous = false;
-                can_play = false;
-            });
-
-            player.current_track_finish_loading.connect (() => {
-                can_go_next = true;
-                can_go_previous = player.player_type == Player.PlayerModeType.TRACK_LIST;
-                can_play = true;
-            });
+            player.current_track_start_loading.connect (send_can_properties);
+            player.current_track_finish_loading.connect (send_can_properties);
 
             bind_property ("volume", player, "volume", BindingFlags.BIDIRECTIONAL);
 
@@ -116,9 +121,17 @@ namespace CassetteClient.Mpris {
             });
 
             player.notify["player-state"].connect (() => {
-                send_property_change ("PlaybackStatus", this.playback_status);
+                send_property_change ("PlaybackStatus", playback_status);
                 send_property_change ("Metadata", _get_metadata ());
             });
+        }
+
+        void send_can_properties () {
+            send_property_change ("CanGoNext", can_go_next);
+            send_property_change ("CanGoPrevious", can_go_previous);
+            send_property_change ("CanControl", can_control);
+            send_property_change ("CanPause", can_pause);
+            send_property_change ("CanSeek", can_seek);
         }
 
         HashTable<string,Variant> _get_metadata () {
@@ -180,41 +193,51 @@ namespace CassetteClient.Mpris {
                 );
             }
             catch (Error e) {
-                Logger.warning (@"Could not send MPRIS property change: $(e.message)");
+                Logger.warning ("Could not send MPRIS property change: %s".printf (e.message));
             }
             return false;
         }
 
         public void next (BusName sender) throws Error {
-            if (!player.is_loading) {
+            if (can_go_next) {
                 player.next ();
             }
         }
 
         public void previous (BusName sender) throws Error {
-            if (!player.is_loading) {
+            if (can_go_previous) {
                 player.prev ();
             }
         }
 
         public void play (BusName sender) throws Error {
-            player.play ();
+            if (can_control) {
+                player.play ();
+            }
         }
 
         public void pause (BusName sender) throws Error {
-            player.pause ();
+            if (can_control) {
+                player.pause ();
+            }
         }
 
         public void play_pause (BusName sender) throws Error {
-            player.play_pause ();
+            if (can_control) {
+                player.play_pause ();
+            }          
         }
 
         public void stop (BusName sender) throws Error {
-            player.stop ();
+            if (can_control) {
+                player.stop ();
+            }
         }
 
         public void seek (int64 position, BusName sender) throws Error {
-            player.seek (position);
+            if (can_seek) {
+                player.seek (position);
+            }
         }
     }
 

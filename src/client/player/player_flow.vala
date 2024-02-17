@@ -21,9 +21,10 @@ namespace CassetteClient.Player {
     public class PlayerFlow : PlayerMode {
 
         public Player player { get; construct; }
+        public YaMAPI.Queue queue { get; construct set; }
 
-        public PlayerFlow (Player player) {
-            Object (player: player);
+        public PlayerFlow (Player player, YaMAPI.Queue queue) {
+            Object (player: player, queue: queue);
         }
 
         public async override YaMAPI.Track? get_prev_track () {

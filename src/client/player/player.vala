@@ -171,7 +171,7 @@ namespace CassetteClient.Player {
         public signal void next_done ();
         public signal void prev_done ();
 
-        public signal void mode_inited ();
+        public signal void mode_inited (PlayerModeType player_type);
 
         // playback_callback поднимается, если время воспроизведения > 0
         public signal void playback_callback (double playback_pos_sec);
@@ -287,8 +287,12 @@ namespace CassetteClient.Player {
             }
         }
 
-        public void start_flow () {
-            player_mode = new PlayerFlow (this);
+        public void start_flow (YaMAPI.Queue queue) {
+            stop ();
+
+            player_mode = new PlayerFlow (this, queue);
+
+            mode_inited (PlayerModeType.FLOW);
         }
 
         void set_queue (YaMAPI.Queue queue) {
@@ -298,7 +302,7 @@ namespace CassetteClient.Player {
             player_mode = playertl;
             playertl.queue = queue;
 
-            mode_inited ();
+            mode_inited (PlayerModeType.TRACK_LIST);
         }
 
         public void start_queue (YaMAPI.Queue queue) {

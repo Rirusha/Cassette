@@ -29,6 +29,8 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Scale slider;
         [GtkChild]
+        unowned Gtk.Button flow_settings_button;
+        [GtkChild]
         unowned Gtk.Button prev_track_button;
         [GtkChild]
         unowned Gtk.Button track_detailed_button;
@@ -90,6 +92,8 @@ namespace Cassette {
                 player.volume = 1.0d;
                 volume_button.visible = false;
             }
+
+            prev_track_button.bind_property ("visible", flow_settings_button, "visible", BindingFlags.INVERT_BOOLEAN | BindingFlags.SYNC_CREATE);
 
             carousel.page_changed.connect (on_carousel_page_changed);
 
@@ -302,11 +306,7 @@ namespace Cassette {
             }
 
             if (queue.context.type_ == "radio") {
-                if (player.player_type == Player.PlayerModeType.FLOW) {
-                    return;
-                }
-
-                //  player.start_flow (queue);
+                player.start_flow (queue);
 
             } else {
                 player.start_queue_init (queue);
@@ -335,7 +335,7 @@ namespace Cassette {
             }
         }
 
-        void on_player_mode_inited () {
+        void on_player_mode_inited (Player.PlayerModeType player_type) {
             current_track_info = player.get_current_track ();
 
             if (info_panel_center.track_info == null) {
@@ -344,6 +344,20 @@ namespace Cassette {
 
             info_panel_next.track_info = current_track_info;
             carousel.scroll_to (info_panel_next, true);
+
+            switch (player_type) {
+                case Player.PlayerModeType.FLOW:
+                    to_flow ();
+                    break;
+
+                case Player.PlayerModeType.TRACK_LIST:
+                    to_track_list ();
+                    break;
+
+                default:
+                    window.hide_player_bar ();
+                    break;
+            }
         }
 
         void on_player_current_track_changed (YaMAPI.Track? new_track) {
@@ -373,12 +387,6 @@ namespace Cassette {
                 dislike_button.visible = true;
             }
 
-            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
-                queue_show_button.visible = true;
-            } else {
-                queue_show_button.visible = false;
-            }
-
             total_time_mark.label = ms2str (current_track_info.duration_ms, true);
 
             like_button.init_content (current_track_info.id);
@@ -386,6 +394,20 @@ namespace Cassette {
             save_stack.init_content (current_track_info.id);
 
             window.show_player_bar ();
+        }
+
+        void to_flow () {
+            repeat_button.visible = false;
+            shuffle_button.visible = false;
+            prev_track_button.visible = false;
+            queue_show_button.visible = false;
+        }
+
+        void to_track_list () {
+            repeat_button.visible = true;
+            shuffle_button.visible = true;
+            prev_track_button.visible = true;
+            queue_show_button.visible = true;
         }
 
         void clear () {

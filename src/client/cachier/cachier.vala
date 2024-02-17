@@ -79,11 +79,34 @@ namespace CassetteClient.Cachier {
             return null;
         }
 
-        public void check_all_cache () {
+        public async void check_all_cache () {
+            Logger.debug ("Started full saves check");
+
             var objs = storager.get_saved_objects ();
 
             foreach (var obj in objs) {
-                start_cache (obj);
+                HasTrackList new_obj = null;
+
+                threader.add (() => {
+                    if (obj is YaMAPI.Playlist) {
+                        var pl_obj = (YaMAPI.Playlist) obj;
+
+                        try {
+                            new_obj = yam_talker.get_playlist_info (pl_obj.uid, pl_obj.kind);
+                        } catch (BadStatusCodeError e) { }
+
+                    } else {
+                        assert_not_reached ();
+                    }
+
+                    Idle.add (check_all_cache.callback);
+                });
+
+                yield;
+                
+                if (new_obj != null) {
+                    start_cache (new_obj);
+                }
             }
         }
 

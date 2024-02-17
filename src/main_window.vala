@@ -239,7 +239,7 @@ namespace Cassette {
                 app_menu_button.sensitive = true;
                 button_refresh.sensitive = true;
 
-                cachier.check_all_cache ();
+                cachier.check_all_cache.begin ();
 
                 notify["is-active"].connect (() => {
                     if (

@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-    <img src="data/images/first.png" alt="Screenshot"/>
+    <img src="data/images/1-liked.png" alt="Screenshot"/>
 </p>
 
 ## Последний релиз: 0.1.1

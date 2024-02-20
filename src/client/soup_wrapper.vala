@@ -76,7 +76,7 @@ namespace CassetteClient {
                     data = new Bytes (Soup.Form.encode_datalist (datalist).data);
                     break;
                 case JSON:
-                    data = new Bytes (Jsoner.datalist_to_json (datalist).data);
+                    data = new Bytes (Jsoner.serialize_datalist (datalist).data);
                     break;
                 default:
                     assert_not_reached ();

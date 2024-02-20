@@ -95,19 +95,19 @@ namespace CassetteClient {
             return generator.to_data (null);
         }
 
-        public static string serialize (YaMObject yam_obj) {
+        public static string serialize (YaMObject yam_obj, Case names_case = Case.KEBAB_CASE) {
             var builder = new Json.Builder ();
-            serialize_object (builder, yam_obj);
+            serialize_object (builder, yam_obj, names_case);
 
             return Json.to_string (builder.get_root (), false);
         }
 
-        static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type) {
+        static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type, Case names_case = Case.KEBAB_CASE) {
             builder.begin_array ();
 
             if (element_type.parent () == typeof (YaMObject)) {
                 foreach (var yam_obj in (ArrayList<YaMObject>) array_list) {
-                    serialize_object (builder, yam_obj);
+                    serialize_object (builder, yam_obj, names_case);
                 }
 
             } else if (element_type == typeof (ArrayList)) {
@@ -138,7 +138,7 @@ namespace CassetteClient {
             builder.end_array ();
         }
 
-        static void serialize_object (Json.Builder builder, YaMObject? yam_obj) {
+        static void serialize_object (Json.Builder builder, YaMObject? yam_obj, Case names_case = Case.KEBAB_CASE) {
             if (yam_obj == null) {
                 builder.add_null_value ();
                 return;
@@ -150,7 +150,23 @@ namespace CassetteClient {
                     continue;
                 }
 
-                builder.set_member_name (strip (property.name, '-'));
+                switch (names_case) {
+                    case Case.CAMEL_CASE:
+                        builder.set_member_name (kebab2camel (strip (property.name, '-')));
+                        break;
+
+                    case Case.SNAKE_CASE:
+                        builder.set_member_name (kebab2snake (strip (property.name, '-')));
+                        break;
+
+                    case Case.KEBAB_CASE:
+                        builder.set_member_name (strip (property.name, '-'));
+                        break;
+
+                    default:
+                        Logger.error ("Unknown case - %s".printf (names_case.to_string ()));
+                        assert_not_reached ();
+                }
 
                 var prop_val = Value (property.value_type);
                 yam_obj.get_property (property.name, ref prop_val);
@@ -162,7 +178,7 @@ namespace CassetteClient {
 
                     serialize_array (builder, array_list, element_type);
                 } else if (property.value_type.parent () == typeof (YaMObject)) {
-                    serialize_object (builder, (YaMObject) prop_val.get_object ());
+                    serialize_object (builder, (YaMObject) prop_val.get_object (), names_case);
                 } else {
                     serialize_value (builder, prop_val);
                 }

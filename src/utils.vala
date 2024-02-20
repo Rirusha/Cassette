@@ -32,7 +32,9 @@ namespace Cassette {
     }
 
     public static void block_widget (Gtk.Widget widget, BlockReason reason) {
-        widget.sensitive = false;
+        if (!application.is_devel) {
+            widget.sensitive = false;
+        }
 
         switch (reason) {
             case BlockReason.NOT_IMPLEMENTED:

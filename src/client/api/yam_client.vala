@@ -633,6 +633,31 @@ namespace CassetteClient.YaMAPI {
         // Radio //
         ///////////
 
+        public Dashboard get_rotor_dashboard () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/stations/dashboard",
+                {"default", "device"},
+                {{"language", get_language ()}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+
+            return (Dashboard) jsoner.deserialize_object (typeof (Dashboard));
+        }
+
+        public Gee.ArrayList<StationInfo> get_station_list () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/stations/list",
+                {"default", "device"},
+                {{"language", get_language ()}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+
+            var our_array = new Gee.ArrayList<StationInfo> ();
+            jsoner.deserialize_array (ref our_array);
+
+            return our_array;
+        }
+
         public StationInfo get_rotor_info (
             string station_type
         ) throws ClientError, BadStatusCodeError {
@@ -743,6 +768,25 @@ namespace CassetteClient.YaMAPI {
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
 
             return (StationTracks) jsoner.deserialize_object (typeof (StationTracks));
+        }
+
+        /////////
+        // New //
+        /////////
+
+        public LibraryData library_all_ids () throws ClientError, BadStatusCodeError {
+            /*
+                Получение id треков пользователя
+            */
+
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/library/all-ids",
+                {"default"}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+
+            return jsoner.deserialize_lib_data ();
         }
     }
 }

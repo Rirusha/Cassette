@@ -108,6 +108,10 @@ namespace CassetteClient {
     }
 
     public string strip (string str, char ch) {
+        /*
+            Delete `ch` from start and end of `str`
+        */
+
         int start = 0;
         int end = str.length;
 

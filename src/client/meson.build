@@ -27,6 +27,8 @@ cassette_client_sources = files(
   'api/objects/play.vala',
   'api/objects/track_short.vala',
   'api/objects/download_info.vala',
+  'api/objects/likes_data/likes_data.vala',
+  'api/objects/likes_data/likes_block.vala',
   'api/objects/account_info/account_info.vala',
   'api/objects/account_info/avatar_info.vala',
   'api/objects/account_info/passport_phone.vala',

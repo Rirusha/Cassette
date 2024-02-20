@@ -16,20 +16,23 @@
  */
 
 
+using Gee;
+
 namespace CassetteClient.YaMAPI {
-    public class LikesData : YaMObject {
+    public class LibraryData : YaMObject {
         /*
             Объект для хранения блоков с информацией о лайках/дизлайках
             различных сущностей
         */
 
-        public LikesBlock default_library { get; default = new LikesBlock (); }
-        public LikesBlock artists { get; default = new LikesBlock (); }
-        public LikesBlock albums { get; default = new LikesBlock (); }
-        public LikesBlock playlists { get; default = new LikesBlock (); }
-        public LikesBlock users { get; default = new LikesBlock (); }
-        public LikesBlock genres { get; default = new LikesBlock (); }
-        public LikesBlock labels { get; default = new LikesBlock (); }
-        public LikesBlock library { get; default = new LikesBlock (); }
+        public ArrayList<string> liked_tracks { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> disliked_tracks { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> artists { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> albums { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> playlists { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> users { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> genres { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> labels { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> library { get; set; default = new ArrayList<string> (); }
     }
 }

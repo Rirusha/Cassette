@@ -48,7 +48,7 @@ namespace CassetteClient {
     public static YaMTalker yam_talker;
     public static Player.Player player;
 
-    public static void get_language () {
+    public static string get_language () {
         string? locale = Environment.get_variable ("LANG");
         string language = "en";
 

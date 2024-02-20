@@ -25,6 +25,7 @@ namespace CassetteClient {
         namespace FeedbackType {
             public const string STARTED = "radioStarted";
             public const string TRACK_STARTED = "trackStarted";
+            public const string SKIP = "skip";
             public const string TRACK_FINISHED = "trackFinished";
             public const string FINISHED = "trackFinished";
         }

@@ -32,6 +32,7 @@ namespace CassetteClient {
 
         namespace StationType {
             public const string ON_YOUR_WAVE = "user:onyourwave";
+            public const string COLLECTION = "personal:collection";
         }
     }
 

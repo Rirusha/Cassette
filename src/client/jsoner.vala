@@ -77,7 +77,7 @@ namespace CassetteClient {
         //  Serialize  //
         /////////////////
 
-        public static string datalist_to_json (Datalist<string> datalist) {
+        public static string serialize_datalist (Datalist<string> datalist) {
             var builder = new Json.Builder ();
             builder.begin_object ();
 

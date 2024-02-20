@@ -59,6 +59,10 @@ namespace CassetteClient {
         return language;
     }
 
+    public static string get_timestamp () {
+        return new DateTime.now_utc ().format_iso8601 ();
+    }
+
     public static void init (string application_id, bool is_devel) {
         cachier = new Cachier.Cachier ();
         storager = new Cachier.Storager (application_id);

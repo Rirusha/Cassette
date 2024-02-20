@@ -48,6 +48,17 @@ namespace CassetteClient {
     public static YaMTalker yam_talker;
     public static Player.Player player;
 
+    public static void get_language () {
+        string? locale = Environment.get_variable ("LANG");
+        string language = "en";
+
+        if (locale != null) {
+            language = locale.split ("_")[0];
+        }
+
+        return language;
+    }
+
     public static void init (string application_id, bool is_devel) {
         cachier = new Cachier.Cachier ();
         storager = new Cachier.Storager (application_id);

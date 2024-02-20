@@ -231,7 +231,7 @@ namespace CassetteClient {
                     }
 
                 } else {
-                    var tval = Value ();
+                    var tval = Value (Type.OBJECT);
                     lib_data.get_property (camel2kebab (ld_type_name), ref tval);
 
                     var lb = (Gee.ArrayList<string>) tval.get_object ();

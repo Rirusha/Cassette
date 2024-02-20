@@ -691,7 +691,7 @@ namespace CassetteClient.YaMAPI {
 
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
-                {"default"},
+                {"default", "device"},
                 post_content,
                 {{"batch-id", batch_id}}
             );
@@ -720,7 +720,7 @@ namespace CassetteClient.YaMAPI {
 
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
-                {"default"},
+                {"default", "device"},
                 post_content,
                 {{"batch-id", batch_id}}
             );
@@ -737,7 +737,7 @@ namespace CassetteClient.YaMAPI {
         ) throws ClientError, BadStatusCodeError {
             var bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/rotor/station/$station_type/tracks",
-                {"default"},
+                {"default", "device"},
                 {{"settings2", "true"}}
             );
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);

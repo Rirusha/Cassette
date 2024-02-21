@@ -98,6 +98,7 @@ executable(
   include_directories: config_h_dir,
   vala_args: cassette_vala_args,
   c_args: cassette_c_args,
+  link_args: ['-lm'],
   dependencies: cassette_dependencies,
   install: true,
 )

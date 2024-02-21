@@ -32,67 +32,89 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Scale volume_level_scale;
 
-        double _volume = 0.0;
+        double _volume;
         public double volume {
             get {
                 return _volume;
             }
             set {
-                if (value < volume_lower) {
-                    value = volume_lower;
-                } else if (value > volume_upper) {
-                    value = volume_upper;
-                }
-
-                volume_inc_button.sensitive = value != volume_upper;
-                volume_dec_button.sensitive = value != volume_lower;
-
-                if (value == volume_lower) {
-                    real_menu_button.icon_name = "adwaita-audio-volume-muted-symbolic";
-                } else if (value < volume_upper * 0.45) {
-                    real_menu_button.icon_name = "adwaita-audio-volume-low-symbolic";
-                } else if (value < volume_upper * 0.9) {
-                    real_menu_button.icon_name = "adwaita-audio-volume-medium-symbolic";
-                } else {
-                    real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";
-                }
-
-                volume_level_scale.set_value (value / MUL);
-
                 _volume = value;
+
+                mute = false;
+
+                volume_level_scale.set_value (Math.pow (_volume, 1.0 / 3.0) / MUL);
+
+                check_button_sensetivity ();
             }
         }
 
-        const double MUL = 0.001;
+        bool _mute;
+        public bool mute {
+            get {
+                return _mute;
+            }
+            set {
+                _mute = value;
+
+                check_icon ();
+            }
+        }
+
+        const double MUL = 0.01;
 
         double volume_upper;
         double volume_lower;
         double volume_step;
-
-        public VolumeButton () {
-            Object ();
-        }
 
         construct {
             equalaizer_button.bind_property ("active", revealer, "reveal-child", BindingFlags.DEFAULT);
 
             block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED);
 
+            volume_level_scale.change_value.connect ((range, type, new_val) => {
+                var val = new_val * MUL;
+
+                volume = Math.pow (val, 3.0);
+
+                return true;
+            });
+
             volume_upper = volume_level_scale.adjustment.upper * MUL;
             volume_lower = volume_level_scale.adjustment.lower * MUL;
-            volume_step = volume_level_scale.adjustment.page_increment * MUL;
+            volume_step = volume_level_scale.adjustment.step_increment * MUL;
 
             volume_inc_button.clicked.connect (() => {
-                volume += volume_step;
+                if (volume + volume_step > volume_upper) {
+                    volume = volume_upper;
+                } else {
+                    volume += volume_step;
+                }
             });
 
             volume_dec_button.clicked.connect (() => {
-                volume -= volume_step;
+                if (volume - volume_step < volume_lower) {
+                    volume = volume_lower;
+                } else {
+                    volume -= volume_step;
+                }
             });
+        }
 
-            volume_level_scale.change_value.connect ((scroll, new_value) => {
-                volume = new_value * MUL;
-            });
+        void check_button_sensetivity () {
+            volume_inc_button.sensitive = volume < volume_upper;
+            volume_dec_button.sensitive = volume > volume_lower;
+        }
+
+        void check_icon () {
+            if (volume == volume_lower || mute) {
+                real_menu_button.icon_name = "adwaita-audio-volume-muted-symbolic";
+            } else if (volume < 0.025) {
+                real_menu_button.icon_name = "adwaita-audio-volume-low-symbolic";
+            } else if (volume < 0.35) {
+                real_menu_button.icon_name = "adwaita-audio-volume-medium-symbolic";
+            } else {
+                real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";
+            }
         }
     }
 }

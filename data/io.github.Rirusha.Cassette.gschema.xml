@@ -39,7 +39,10 @@
 			<default>false</default>
 		</key>
 		<key name="volume" type="d">
-			<default>0.1</default>
+			<default>1.0</default>
+		</key>
+		<key name="mute" type="b">
+			<default>false</default>
 		</key>
 		<key name="available-visible" type="b">
 			<default>false</default>

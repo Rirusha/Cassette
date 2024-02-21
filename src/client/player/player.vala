@@ -129,18 +129,8 @@ namespace CassetteClient.Player {
             }
         }
 
-        public double volume {
-            get {
-                Value val = Value (Type.DOUBLE);
-
-                playbin.get_property ("volume", ref val);
-
-                return val.get_double ();
-            }
-            set {
-                playbin.set_property ("volume", value);
-            }
-        }
+        public double volume { get; set; }
+        public bool mute { get; set; }
 
         public double playback_pos_sec {
             get {
@@ -245,6 +235,12 @@ namespace CassetteClient.Player {
             current_track_finish_loading.connect (() => {
                 is_loading = false;
             });
+
+            bind_property ("volume", playbin, "volume", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+            storager.settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
+
+            bind_property ("mute", playbin, "mute", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+            storager.settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
 
             Timeout.add ((int) (PLAY_STEP * 1000), () => {
                 if (playback_pos_sec > 0.0) {

@@ -225,30 +225,4 @@ namespace Cassette {
     static double max (double a, double b) {
         return a > b ? a : b;
     }
-
-    static double cube (double x) {
-        double low = 0.0;
-        double high = x;
-        double mid, approx, epsilon = 0.00001; // точность
-
-        if (x < 0) {
-            // Обработка отрицательных чисел (для простоты примера)
-            // Можно добавить нужную логику обработки
-            warning("Error: Negative number");
-            return -1.0;
-        }
-
-        while (high - low > epsilon) {
-            mid = (low + high) / 2.0;
-            approx = mid * mid * mid;
-
-            if (approx > x) {
-                high = mid;
-            } else {
-                low = mid;
-            }
-        }
-
-        return (low + high) / 2.0;
-    }
 }

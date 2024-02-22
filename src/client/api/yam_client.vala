@@ -64,7 +64,7 @@ namespace CassetteClient.YaMAPI {
                 null,
                 post_content
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"access_token"}, Case.SNAKE_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"access_token"}, Case.SNAKE);
 
             string token = jsoner.deserialize_value ().get_string ();
 
@@ -112,7 +112,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/account/status",
                 {"default"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             me = (AccountInfo) jsoner.deserialize_object (typeof (AccountInfo));
 
@@ -122,7 +122,7 @@ namespace CassetteClient.YaMAPI {
                 {{"format", "json"}},
                 {{"Host", "login.yandex.ru"}}
             );
-            jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE_CASE);
+            jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE);
 
             me.avatar_info = (AvatarInfo) jsoner.deserialize_object (typeof (AvatarInfo));
 
@@ -136,7 +136,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/users/$uid/playlists/$kind",
                 {"default"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
@@ -157,7 +157,7 @@ namespace CassetteClient.YaMAPI {
                 {"default"},
                 post_content
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             var array_list = new Gee.ArrayList<Track> ();
             jsoner.deserialize_array (ref array_list);
@@ -169,7 +169,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/queues",
                 {"default", "device"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "queues"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "queues"}, Case.CAMEL);
 
             var queue_list = new Gee.ArrayList<ShortQueue> ();
             jsoner.deserialize_array (ref queue_list);
@@ -181,7 +181,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/queues/$queue_id",
                 {"default"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             Queue queue = (Queue) jsoner.deserialize_object (typeof (Queue));
 
@@ -195,7 +195,7 @@ namespace CassetteClient.YaMAPI {
                 {PostContentType.JSON, queue.to_json ()}
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "id"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "id"}, Case.CAMEL);
             var val_id = jsoner.deserialize_value ();
 
             if (val_id == null || !val_id.holds (Type.STRING)) {
@@ -216,7 +216,7 @@ namespace CassetteClient.YaMAPI {
                 }
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "status"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "status"}, Case.CAMEL);
             string res = jsoner.deserialize_value ().get_string ();
 
             if (res != "ok") {
@@ -260,7 +260,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             string res = jsoner.deserialize_value ().get_string ();
 
             if (res != "ok") {
@@ -270,7 +270,7 @@ namespace CassetteClient.YaMAPI {
 
         public string? get_download_uri (string track_id, bool hq = true) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (@"$(YAM_BASE_URL)/tracks/$track_id/download-info", {"default"});
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             var di_array = new Gee.ArrayList<DownloadInfo> ();
             jsoner.deserialize_array (ref di_array);
@@ -331,7 +331,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -354,7 +354,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -377,7 +377,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -400,7 +400,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -414,7 +414,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/users/$uid/playlists/list",
                 {"default"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             var playlist_array = new Gee.ArrayList<Playlist> ();
             jsoner.deserialize_array (ref playlist_array);
@@ -431,7 +431,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/users/$uid/likes/playlists",
                 {"default"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             var playlist_array = new Gee.ArrayList<LikedPlaylist> ();
             jsoner.deserialize_array (ref playlist_array);
@@ -443,7 +443,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/tracks/$track_id/similar",
                 {"default"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (SimilarTracks) jsoner.deserialize_object (typeof (SimilarTracks));
         }
@@ -469,7 +469,7 @@ namespace CassetteClient.YaMAPI {
                     {"sign", sign}
                 }
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             var lyrics = (Lyrics) jsoner.deserialize_object (typeof (Lyrics));
             lyrics.is_sync = is_sync;
@@ -499,7 +499,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
@@ -523,7 +523,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
@@ -548,7 +548,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
@@ -564,7 +564,7 @@ namespace CassetteClient.YaMAPI {
                 {"default"}
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -590,7 +590,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
@@ -605,7 +605,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/recommendations",
                 {"default"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (PlaylistRecommendations) jsoner.deserialize_object (typeof (PlaylistRecommendations));
         }
@@ -621,7 +621,7 @@ namespace CassetteClient.YaMAPI {
                 {"default"},
                 {{"if_modified_since_revision", if_modified_since_revision.to_string ()}}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "library", "tracks"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "library", "tracks"}, Case.CAMEL);
 
             var our_array = new Gee.ArrayList<TrackShort> ();
             jsoner.deserialize_array (ref our_array);
@@ -639,7 +639,7 @@ namespace CassetteClient.YaMAPI {
                 {"default", "device"},
                 {{"language", get_language ()}}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (Dashboard) jsoner.deserialize_object (typeof (Dashboard));
         }
@@ -650,7 +650,7 @@ namespace CassetteClient.YaMAPI {
                 {"default", "device"},
                 {{"language", get_language ()}}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             var our_array = new Gee.ArrayList<StationInfo> ();
             jsoner.deserialize_array (ref our_array);
@@ -665,7 +665,7 @@ namespace CassetteClient.YaMAPI {
                 @"$(YAM_BASE_URL)/rotor/station/$station_type/info",
                 {"default", "device"}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             var our_array = new Gee.ArrayList<StationInfo> ();
             jsoner.deserialize_array (ref our_array);
@@ -694,7 +694,7 @@ namespace CassetteClient.YaMAPI {
                 post_content
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -721,7 +721,7 @@ namespace CassetteClient.YaMAPI {
                 {{"batch-id", batch_id}}
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -750,7 +750,7 @@ namespace CassetteClient.YaMAPI {
                 {{"batch-id", batch_id}}
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
             if (jsoner.root != null) {
                 return true;
             }
@@ -765,7 +765,7 @@ namespace CassetteClient.YaMAPI {
                 {"default", "device"},
                 {{"settings2", "true"}}
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (StationTracks) jsoner.deserialize_object (typeof (StationTracks));
         }
@@ -784,7 +784,7 @@ namespace CassetteClient.YaMAPI {
                 {"default"}
             );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL_CASE);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return jsoner.deserialize_lib_data ();
         }

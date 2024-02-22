@@ -237,11 +237,11 @@ namespace CassetteClient {
             YaMAPI.ApiError error = new YaMAPI.ApiError ();
 
             try {
-                var jsoner = Jsoner.from_bytes (bytes, {"error"}, Case.CAMEL_CASE);
+                var jsoner = Jsoner.from_bytes (bytes, {"error"}, Case.CAMEL);
                 if (jsoner.root.get_node_type () == Json.NodeType.OBJECT) {
                     error = (YaMAPI.ApiError) jsoner.deserialize_object (typeof (YaMAPI.ApiError));
                 } else {
-                    jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE_CASE);
+                    jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE);
                     error = (YaMAPI.ApiError) jsoner.deserialize_object (typeof (YaMAPI.ApiError));
                 }
             } catch (ClientError e) { }

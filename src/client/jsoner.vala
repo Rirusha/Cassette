@@ -116,6 +116,7 @@ namespace CassetteClient {
                 if (node.get_object ().has_member (member_name)) {
                     node = node.get_object ().get_member (member_name);
                     has_members += member_name + "-";
+
                 } else {
                     throw new ClientError.PARSE_ERROR ("Json has no %s%s".printf (has_members, member_name));
                 }
@@ -198,6 +199,7 @@ namespace CassetteClient {
                         serialize_array (builder, sub_array_list, sub_element_type);
                     }
                 }
+
             } else {
                 switch (element_type) {
                     case Type.STRING:
@@ -229,8 +231,10 @@ namespace CassetteClient {
                 builder.add_null_value ();
                 return;
             }
+
             builder.begin_object ();
             var cls = (ObjectClass) yam_obj.get_type ().class_ref ();
+
             foreach (ParamSpec property in cls.list_properties ()) {
                 if ((property.flags & ParamFlags.READABLE) == 0 || (property.flags & ParamFlags.WRITABLE) == 0) {
                     continue;
@@ -263,12 +267,15 @@ namespace CassetteClient {
                     Type element_type = array_list.element_type;
 
                     serialize_array (builder, array_list, element_type);
+
                 } else if (property.value_type.parent () == typeof (YaMObject)) {
                     serialize_object (builder, (YaMObject) prop_val.get_object (), names_case);
+
                 } else {
                     serialize_value (builder, prop_val);
                 }
             }
+
             builder.end_object ();
         }
 
@@ -341,6 +348,7 @@ namespace CassetteClient {
                     foreach (var ld_val_name in ld_type_obj.get_members ()) {
                         if (ld_type_obj.get_int_member (ld_val_name) == 1) {
                             lib_data.liked_tracks.add (ld_val_name);
+
                         } else {
                             lib_data.disliked_tracks.add (ld_val_name);
                         }
@@ -445,6 +453,7 @@ namespace CassetteClient {
                                 property.name,
                                 val.get_int64 ().to_string ()
                             );
+
                         } else {
                             yam_object.set_property (
                                 property.name,
@@ -452,6 +461,7 @@ namespace CassetteClient {
                             );
                         }
                         break;
+
                     case Json.NodeType.NULL:
                         yam_object.set_property (
                             property.name,
@@ -476,7 +486,7 @@ namespace CassetteClient {
         public Value? deserialize_value (Json.Node? node = null) throws ClientError {
             if (node == null) {
                 node = root;
-                            }
+            }
 
             if (node.get_node_type () != Json.NodeType.VALUE) {
                 Logger.warning (_("Wrong type: expected %s, got %s").printf (Json.NodeType.VALUE.to_string (), node.get_node_type ().to_string ()));
@@ -498,7 +508,7 @@ namespace CassetteClient {
         public void deserialize_array (ref ArrayList array_list, Json.Node? node = null) throws ClientError {
             if (node == null) {
                 node = root;
-                            }
+            }
 
             if (node.get_node_type () != Json.NodeType.ARRAY) {
                 Logger.warning (_("Wrong type: expected %s, got %s").printf (Json.NodeType.ARRAY.to_string (), node.get_node_type ().to_string ()));
@@ -532,6 +542,7 @@ namespace CassetteClient {
                     //  Добавлять новые типы при необходимости
                     if (sub_element_type == typeof (YaMAPI.Track)) {
                         new_array_list = new ArrayList<YaMAPI.Track> ();
+
                     } else {
                         Logger.warning ("Unknown type of element of subarray - %s".printf (sub_element_type.name ()));
                         return;
@@ -546,6 +557,7 @@ namespace CassetteClient {
 
             } else {
                 array_list.clear ();
+
                 switch (array_list.element_type) {
                     case Type.STRING:
                         var narray_list = array_list as ArrayList<string>;

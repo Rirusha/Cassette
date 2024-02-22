@@ -48,7 +48,7 @@ namespace Cassette {
         /**
          * Для работы функционала требуется выполнить авторизацию
          */
-        NEED_ONLINE,
+        NEED_AUTH,
         /**
          * Для работы функционала требуется активная подписка Я.Плюс
          */
@@ -74,7 +74,7 @@ namespace Cassette {
             case BlockReason.NOT_IMPLEMENTED:
                 widget.tooltip_text = _("Not implemented yet");
                 break;
-            case BlockReason.NEED_ONLINE:
+            case BlockReason.NEED_AUTH:
                 widget.tooltip_text = _("Need authorization");
                 break;
             case BlockReason.NEED_PLUS:

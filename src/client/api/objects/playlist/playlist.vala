@@ -31,7 +31,7 @@ namespace CassetteClient.YaMAPI {
             }
         }
 
-        public string? oid {
+        public string oid {
             owned get {
                 return @"$uid:$kind";
             }

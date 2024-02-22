@@ -21,7 +21,7 @@ namespace CassetteClient.YaMAPI {
 
     public class AccountInfo : YaMObject, HasID, HasCover {
 
-        public string? oid {
+        public string oid {
             owned get {
                 return account.uid;
             }

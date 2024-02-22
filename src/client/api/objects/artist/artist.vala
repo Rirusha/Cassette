@@ -20,7 +20,7 @@ using Gee;
 namespace CassetteClient.YaMAPI {
     public class Artist : YaMObject, HasID {
 
-        public string? oid {
+        public string oid {
             owned get {
                 return id;
             }

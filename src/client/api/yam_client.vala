@@ -774,11 +774,24 @@ namespace CassetteClient.YaMAPI {
         // New //
         /////////
 
-        public LibraryData library_all_ids () throws ClientError, BadStatusCodeError {
-            /*
-                Получение id треков пользователя
-            */
+        /*
+         * Получение информации о текущем пользователе
+         */
+        public Account.About account_about () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/account/about",
+                {"default"}
+            );
 
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Account.About) jsoner.deserialize_object (typeof (Account.About));
+        }
+
+        /*
+         * Получение данных о библиотеке пользователя
+         */
+        public Library.AllIds library_all_ids () throws ClientError, BadStatusCodeError {
             var bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/library/all-ids",
                 {"default"}

@@ -18,21 +18,53 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI {
-    public class LibraryData : YaMObject {
-        /*
-            Объект для хранения блоков с информацией о лайках/дизлайках
-            различных сущностей
-        */
+namespace CassetteClient.YaMAPI.Library {
 
+    public class AllIds : YaMObject {
+
+        /*
+         * Лайкнутые пользователем треки
+         */
         public ArrayList<string> liked_tracks { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Дизлайкнутые пользователем треки
+         */
         public ArrayList<string> disliked_tracks { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Любимые исполнители пользователя
+         */
         public ArrayList<string> artists { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Любимые альбомы пользователя
+         */
         public ArrayList<string> albums { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Любимые плейлисты пользователя
+         */
         public ArrayList<string> playlists { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * TODO
+         */
         public ArrayList<string> users { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Любимые жанры пользователя
+         */
         public ArrayList<string> genres { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Любимые лейблы пользователя
+         */
         public ArrayList<string> labels { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Все треки в библиотеке пользователя
+         */
         public ArrayList<string> library { get; set; default = new ArrayList<string> (); }
     }
 }

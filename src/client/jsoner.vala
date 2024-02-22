@@ -329,8 +329,8 @@ namespace CassetteClient {
          *
          * @return  десериализованный объект
          */
-        public YaMAPI.LibraryData deserialize_lib_data () throws ClientError {
-            var lib_data = new YaMAPI.LibraryData ();
+        public YaMAPI.Library.AllIds deserialize_lib_data () throws ClientError {
+            var lib_data = new YaMAPI.Library.AllIds ();
 
             var node = root;
 

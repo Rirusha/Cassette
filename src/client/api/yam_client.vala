@@ -801,5 +801,19 @@ namespace CassetteClient.YaMAPI {
 
             return jsoner.deserialize_lib_data ();
         }
+
+        /*
+         * Получение последней прослушиваемой волны текущим пользователем
+         */
+        public Rotor.Wave rotor_wave_last () {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/wave/last",
+                {"default"}
+            ); 
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Rotor.Wave) jsoner.deserialize_object (typeof (Rotor.Wave));
+        }
     }
 }

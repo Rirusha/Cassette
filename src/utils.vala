@@ -19,18 +19,48 @@ using CassetteClient;
 using Gee;
 
 namespace Cassette {
+    /**
+     * Интерйес инициализируемых виджетов. Такие виджеты зависят от id содержимого.
+     */
     public interface Initable {
+        /**
+         * Id контента. Не ставится напрямую, используется метод {@link init_content}
+         */
         protected abstract string content_id { get; set; }
 
+        /**
+         * Абстрактный метод инициализации контента.
+         * Сюда могут входить дополнительные действия
+         *
+         * @param content_id    id инициализируемого контента
+         */
         public abstract void init_content (string content_id);
     }
 
+    /**
+     * Перечисление с причинами блокировки виджета
+     */
     public enum BlockReason {
+        /**
+        * Виджет не реализован
+        */
         NOT_IMPLEMENTED,
+        /**
+        * Виджет может работать только, если выполнена авторизация
+        */
         NEED_ONLINE,
+        /**
+        * Виджет может работать только, если подключена подписка Я.Плюс
+        */
         NEED_PLUS
     }
 
+    /**
+     * Фукция блокировки виджета
+     *
+     * @param widget    блокируемый виджет
+     * @param reason    причина блокировки
+     */
     public static void block_widget (Gtk.Widget widget, BlockReason reason) {
         if (!application.is_devel) {
             widget.sensitive = false;
@@ -49,6 +79,11 @@ namespace Cassette {
         }
     }
 
+    /**
+     * Переключить режим перемешивания на следующий.
+     * ON -> OFF
+     * OFF -> ON
+     */
     public static void roll_shuffle_mode () {
         switch (player.shuffle_mode) {
             case Player.ShuffleMode.OFF:
@@ -60,6 +95,12 @@ namespace Cassette {
         }
     }
 
+    /**
+     * Переключить режим повтора на следующий.
+     * OFF -> REPEAT_ALL
+     * REPEAT_ALL -> REPEAT_ONE
+     * REPEAT_ONE -> OFF
+     */
     public static void roll_repeat_mode () {
         switch (player.repeat_mode) {
             case Player.RepeatMode.OFF:
@@ -74,6 +115,11 @@ namespace Cassette {
         }
     }
 
+    /**
+     * Поместить ссылку на трек в буфер обмена
+     *
+     * @param track_info    объект трека, ссылка на который будет скопирована в буфер обмена
+     */
     public static void track_share (CassetteClient.YaMAPI.Track track_info) {
         string url = @"https://music.yandex.ru/album/$(track_info.albums[0].id)/track/$(track_info.id)?utm_medium=copy_link";
 
@@ -83,6 +129,11 @@ namespace Cassette {
         application.show_message (_("Link copied to clipboard"));
     }
 
+    /**
+     * Поместить ссылку на плейлист в буфер обмена
+     *
+     * @param playlist_info объект плейлиста, ссылка на который будет скопирована в буфер обмена
+     */
     public static void playlist_share (CassetteClient.YaMAPI.Playlist playlist_info) {
         string url = @"https://music.yandex.ru/users/$(playlist_info.owner.login)/playlists/$(playlist_info.kind)?utm_medium=copy_link";
 
@@ -92,6 +143,11 @@ namespace Cassette {
         application.show_message (_("Link copied to clipboard"));
     }
 
+    /**
+     * Асинхронная функция для показа трека по его id.
+     *
+     * @param track_id  id трека
+     */
     public static async void show_track_by_id (string track_id) {
         threader.add (() => {
             var track_infos = yam_talker.get_tracks_info ({track_id});
@@ -106,10 +162,27 @@ namespace Cassette {
         yield;
     }
 
+    /**
+     * Функция удобства для преобразования миллисекунд в секунды.
+     *
+     * @param ms    миллисекунды
+     *
+     * @return      секунды
+     */
     public static int ms2sec (int ms) {
         return ms / 1000;
     }
 
+    /**
+     * Функция для формирования текстового представления времени.
+     * Короткое представление:  66 -> 1:06
+     * Длинное:                 Длительность: 1 мин.
+     *
+     * @param seconds   секунды
+     * @param is_short  короткое ли представление нужно
+     *
+     * @return          строка представления
+     */
     public static string sec2str (int seconds, bool is_short) {
         int minutes = (int) seconds / 60;
         int oth_seconds = (seconds - minutes * 60);
@@ -133,12 +206,32 @@ namespace Cassette {
         }
     }
 
+    /**
+     * Функция для формирования текстового представления времени.
+     * ``ms2str (66110, true) ->  "1:06"`` 
+     * ``ms2str (66110, false) -> "Длительность: 1 мин."`` 
+     *
+     * @param ms        миллисекунды
+     * @param is_short  короткое ли представление нужно
+     *
+     * @return          строка представления
+     */
     public static string ms2str (int ms, bool is_short) {
         int seconds = ms2sec (ms);
         return sec2str (seconds, is_short);
     }
 
-    //  ("111", 6) -> "000111"
+    /**
+     * Функция для заполнение строки символами слева.
+     * ``zfill ("56", 5) -> "00056"`` 
+     * ``zfill ("56", 2) -> "56"`` 
+     * ``zfill ("56", 1) -> "56"`` 
+     *
+     * @param str   исходная строка
+     * @param width целевая ширина
+     *
+     * @return      результат
+     */
     public static string zfill (string str, int width) {
         if (str.length >= width) {
             return str;
@@ -148,7 +241,16 @@ namespace Cassette {
         }
     }
 
-    // (1, 6, 1) -> {1, 2, 3, 4, 5}
+    /**
+     * Функция для получения заполненного множества
+     * ``range_set (1, 6, 1) -> {1, 2, 3, 4, 5}`` 
+     *
+     * @param start стартовое значение
+     * @param end   целевое значение
+     * @param step  размер шага
+     *
+     * @return      множество
+     */
     public static HashSet<int> range_set (int start, int end, int step = 1) {
         var rng = new HashSet<int> ();
         for (int item = start; item < end; item += step) {
@@ -157,7 +259,15 @@ namespace Cassette {
         return rng;
     }
 
-    // set_1 - set_2
+    /**
+     * Функция для поиска разницы численных множеств
+     * ``difference ({1, 2, 3}, {2, 3, 4}) -> {1}`` 
+     *
+     * @param set_1 первое множество
+     * @param set_2 второе множество
+     *
+     * @return      результирующее множество
+     */
     public static HashSet<int> difference (HashSet<int> set_1, HashSet<int> set_2) {
         var out_set = new HashSet<int> ();
         foreach (int el in set_1) {
@@ -168,7 +278,14 @@ namespace Cassette {
         return out_set;
     }
 
-    //  [2:23.24] -> 143240
+    /**
+     * Функция для парсинга строки определенного вида в миллисекунды.
+     * ``parse_time ("[2:23.24]") -> 143240`` 
+     *
+     * @param time_str  строка вида [hh:mm.ms]
+     *
+     * @return          миллисекунды
+     */
     public static int64 parse_time (owned string time_str) {
         time_str.strip ();
         time_str = time_str[1:time_str.length - 1];
@@ -183,6 +300,15 @@ namespace Cassette {
         return mins_ms + secs_ms + pure_ms;
     }
 
+    /**
+     * Функция для получения человеческого "когда?".
+     * get_when ("2006-04-30T03:01:38") -> "30.04.2006"
+     * get_when ("2006-04-30T03:01:38") -> "yesterday"
+     *
+     * @param iso8601_datetime_str  временная метка в формате iso8601
+     *
+     * @return                      человеческое "когда?"
+     */
     public static string get_when (string iso8601_datetime_str) {
         var dt = new DateTime.from_iso8601 (iso8601_datetime_str, null);
         var now_dt = new DateTime.now ();
@@ -198,12 +324,29 @@ namespace Cassette {
         }
     }
 
+    /**
+     * Функция для создания отступов между тысячами в числе в строковом формате.
+     * prettify_num (5124421) -> "5 124 421"
+     *
+     * @param num   число
+     *
+     * @return      преобразованное число в строковом формате
+     */
     public static string prettify_num (int num) {
         string num_str = num.to_string ();
 
         return prettify_chunk (num_str, num_str.length - 3, "");
     }
 
+    /**
+     * Функция для создания отступов между тысячами одной секции.
+     *
+     * @param num_str   строка, содержащая числовое значение
+     * @param start_pos начальная позиция куска в строке
+     * @param res_str   рекурсивный аргумент 
+     *
+     * @return          строка с отступами
+     */
     static string prettify_chunk (string num_str, int start_pos, string res_str) {
         if (start_pos == -3) {
             return res_str;
@@ -218,10 +361,26 @@ namespace Cassette {
         return prettify_chunk (num_str, start_pos - 3, num_str[start_pos:end_pos] + " " + res_str);
     }
 
+    /**
+     * Функция для нахождения меньшего значения из двух ``double`` чисел
+     *
+     * @param a первое число
+     * @param b второе число
+     *
+     * @return  меньшее из двух чисел
+     */
     static double min (double a, double b) {
         return a < b ? a : b;
     }
 
+    /**
+     * Функция для нахождения большего значения из двух ``double`` чисел
+     *
+     * @param a первое число
+     * @param b второе число
+     *
+     * @return  большее из двух чисел
+     */
     static double max (double a, double b) {
         return a > b ? a : b;
     }

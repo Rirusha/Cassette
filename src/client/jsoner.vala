@@ -20,18 +20,41 @@ using Gee;
 
 namespace CassetteClient {
 
+    /**
+     * Перечисление нейм кейсов.
+     */
     public enum Case {
         SNAKE,
         KEBAB,
         CAMEL
     }
 
-    //  Класс для сериализации и десериализации YaMObject'ов
+    /**
+     * Класс для сериализации и десериализации объектов ``CassetteClient.YaMObject``.
+     * Умеет работать с ``CassetteClient.YaMAPI.YaMObject``, ``Gee.ArrayList<YaMObject>`` и ``GLib.Value``
+     */
     public class Jsoner : Object {
 
+        /**
+         * Нейм кейс для десериализации
+         */
         public Case names_case { get; construct; }
+
+        /**
+         * Корневая нода, получается после прохождения по названиям элементов json,
+         * указанных в sub_members конструктора
+         */
         public Json.Node root { get; construct; }
 
+        /**
+         * Базовый конструктор класса. Выполняет инициализацию для десериализации.
+         * Принимает json строку. В случе ошибки при парсинге,
+         * выбрасывает ``CassetteCLient.ClientError.PARSE_ERROR``
+         *
+         * @param json_string   json строка
+         * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
+         * @param names_case    нейм кейс имён элементов в json строке
+         */
         public Jsoner (string json_string, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
             Json.Node? node;
             try {
@@ -51,14 +74,41 @@ namespace CassetteClient {
             Object (root: node, names_case: names_case);
         }
 
+        /**
+         * Конструктор класса. Выполняет инициализацию для десериализации.
+         * Принимает json строку в виде байтов, объекта ``GLib.Bytes``. В случе ошибки при парсинге,
+         * выбрасывает ``CassetteCLient.ClientError.PARSE_ERROR``
+         *
+         * @param bytes         json строка в виде байтов, объекта ``GLib.Bytes``
+         * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
+         * @param names_case    нейм кейс имён элементов в json строке
+         */
         public static Jsoner from_bytes (Bytes bytes, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
             return new Jsoner ((string) bytes.get_data (), sub_members, names_case);
         }
 
+        /**
+         * Конструктор класса. Выполняет инициализацию для десериализации.
+         * Принимает json строку в виде байтов, массива ``uint8``. В случе ошибки при парсинге,
+         * выбрасывает ``CassetteCLient.ClientError.PARSE_ERROR``
+         *
+         * @param bytes         json строка в виде байтов, массива ``uint8``
+         * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
+         * @param names_case    нейм кейс имён элементов в json строке
+         */
         public static Jsoner from_data (uint8[] data, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
             return new Jsoner ((string) data, sub_members, names_case);
         }
 
+        /**
+         * Функция для выполнения перехода в переданной ноде по названиям элементов.
+         * В случае, если элемент не найден, будет выкинута ``CassetteClient.ClientError.PARSE_ERROR``
+         *
+         * @param node          исходная json нода
+         * @param sub_members   массив "путь" имён элементов, по которому нужно пройти
+         *
+         * @return              целевая json нода
+         */
         static Json.Node? steps (Json.Node node, string[] sub_members) throws ClientError {
             string has_members = "";
 
@@ -77,6 +127,13 @@ namespace CassetteClient {
         //  Serialize  //
         /////////////////
 
+        /**
+         * Функция для сериализации ``GLib.Datalist<string>`` в json строку.
+         *
+         * @param datalist  объект ``Glib.Datalist``, который нужно сериализовать
+         *
+         * @return          json строка
+         */
         public static string serialize_datalist (Datalist<string> datalist) {
             var builder = new Json.Builder ();
             builder.begin_object ();
@@ -95,6 +152,14 @@ namespace CassetteClient {
             return generator.to_data (null);
         }
 
+        /**
+         * Функция для сериализации ``YaMObject`` в json строку.
+         *
+         * @param datalist      объект ``YaMObject``, который нужно сериализовать
+         * @param names_case    нейм кейс имён элементов в json строке
+         *
+         * @return              json строка
+         */
         public static string serialize (YaMObject yam_obj, Case names_case = Case.KEBAB) {
             var builder = new Json.Builder ();
             serialize_object (builder, yam_obj, names_case);
@@ -102,6 +167,21 @@ namespace CassetteClient {
             return Json.to_string (builder.get_root (), false);
         }
 
+        /**
+         * Функция для сериализации ``Gee.ArrayList``.
+         * Элементы списка могут быть:
+         *  - ``CassetteClient.YaMObject`` 
+         *  - ``string`` 
+         *  - ``int32`` 
+         *  - ``int64`` 
+         *  - ``double`` 
+         *  - ``Gee.ArrayList`` 
+         *
+         * @param builder       объект ``Json.Builder``
+         * @param array_list    объект ``Gee.ArrayList``, который нужно сериализовать
+         * @param element_type  тип элементов в array_list
+         * @param names_case    нейм кейс имён элементов в json строке
+         */
         static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type, Case names_case = Case.KEBAB) {
             builder.begin_array ();
 
@@ -136,6 +216,14 @@ namespace CassetteClient {
             builder.end_array ();
         }
 
+        /**
+         * Функция для сериализации ``CassetteClient.YaMAPI.YaMObject`` или ``null``.
+         *
+         * @param builder       объект ``Json.Builder``
+         * @param yam_obj       объект ``CassetteClient.YaMAPI.YaMObject``, который нужно сериализовать.
+         *                      Может быть ``null``
+         * @param names_case    нейм кейс имён элементов в json строке
+         */
         static void serialize_object (Json.Builder builder, YaMObject? yam_obj, Case names_case = Case.KEBAB) {
             if (yam_obj == null) {
                 builder.add_null_value ();
@@ -184,6 +272,13 @@ namespace CassetteClient {
             builder.end_object ();
         }
 
+        /**
+         * Функция для сериализации ``GLib.Value`` или ``null``.
+         *
+         * @param builder       объект ``Json.Builder``
+         * @param prop_val      значение базового типа, который нужно сериализовать.
+         *                      Может содержать ``null``
+         */
         static void serialize_value (Json.Builder builder, Value prop_val) {
             switch (prop_val.type ()) {
                 case Type.INT:
@@ -220,6 +315,13 @@ namespace CassetteClient {
         //  Deserialize  //
         ///////////////////
 
+        /**
+         * Метод для десериализации данных о библиотеке пользователя.
+         * Существует, так как API возвращает json, в котором вместо списков с id
+         * решили каждый элемент списка сделать отдельным элементом json объекта.
+         *
+         * @return  десериализованный объект
+         */
         public YaMAPI.LibraryData deserialize_lib_data () throws ClientError {
             var lib_data = new YaMAPI.LibraryData ();
 
@@ -259,6 +361,15 @@ namespace CassetteClient {
             return lib_data;
         }
 
+        /**
+         * Метод для десериализации объекта ``CassetteClient.YaMAPI.YaMObject``.
+         *
+         * @param obj_type  тип объекта, по которому будет десериализован json
+         * @param node      нода, которая будет десериализована. Будет использовано свойство
+         *                  root, если передан ``null``   
+         *
+         * @return          десериализованный объект
+         */
         public YaMObject? deserialize_object (GLib.Type obj_type, Json.Node? node = null) throws ClientError {
             if (node == null) {
                 node = root;
@@ -354,6 +465,14 @@ namespace CassetteClient {
             return yam_object;
         }
 
+        /**
+         * Метод для десериализации значения.
+         * 
+         * @param node      нода, которая будет десериализована. Будет использовано свойство
+         *                  root, если передан ``null``   
+         *
+         * @return          десериализованное значение
+         */
         public Value? deserialize_value (Json.Node? node = null) throws ClientError {
             if (node == null) {
                 node = root;
@@ -367,6 +486,14 @@ namespace CassetteClient {
             return node.get_value ();
         }
 
+        /**
+         * Метод для десериализации ``Gee.ArrayList``.
+         * Поддерживает только одиночную вложенность (список в списке).
+         * 
+         * @param array_list    ссылка на ``Gee.ArrayList``, который будет заполнен значениями
+         * @param node          нода, которая будет десериализована. Будет использовано свойство
+         *                      root, если передан ``null``   
+         */
         public void deserialize_array (ref ArrayList array_list, Json.Node? node = null) throws ClientError {
             if (node == null) {
                 node = root;

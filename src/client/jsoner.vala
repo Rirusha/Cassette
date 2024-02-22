@@ -21,9 +21,9 @@ using Gee;
 namespace CassetteClient {
 
     public enum Case {
-        SNAKE_CASE,
-        KEBAB_CASE,
-        CAMEL_CASE
+        SNAKE,
+        KEBAB,
+        CAMEL
     }
 
     //  Класс для сериализации и десериализации YaMObject'ов
@@ -32,7 +32,7 @@ namespace CassetteClient {
         public Case names_case { get; construct; }
         public Json.Node root { get; construct; }
 
-        public Jsoner (string json_string, string[]? sub_members = null, Case names_case = Case.KEBAB_CASE) throws ClientError {
+        public Jsoner (string json_string, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
             Json.Node? node;
             try {
                 node = Json.from_string (json_string);
@@ -51,11 +51,11 @@ namespace CassetteClient {
             Object (root: node, names_case: names_case);
         }
 
-        public static Jsoner from_bytes (Bytes bytes, string[]? sub_members = null, Case names_case = Case.KEBAB_CASE) throws ClientError {
+        public static Jsoner from_bytes (Bytes bytes, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
             return new Jsoner ((string) bytes.get_data (), sub_members, names_case);
         }
 
-        public static Jsoner from_data (uint8[] data, string[]? sub_members = null, Case names_case = Case.KEBAB_CASE) throws ClientError {
+        public static Jsoner from_data (uint8[] data, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
             return new Jsoner ((string) data, sub_members, names_case);
         }
 
@@ -95,14 +95,14 @@ namespace CassetteClient {
             return generator.to_data (null);
         }
 
-        public static string serialize (YaMObject yam_obj, Case names_case = Case.KEBAB_CASE) {
+        public static string serialize (YaMObject yam_obj, Case names_case = Case.KEBAB) {
             var builder = new Json.Builder ();
             serialize_object (builder, yam_obj, names_case);
 
             return Json.to_string (builder.get_root (), false);
         }
 
-        static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type, Case names_case = Case.KEBAB_CASE) {
+        static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type, Case names_case = Case.KEBAB) {
             builder.begin_array ();
 
             if (element_type.parent () == typeof (YaMObject)) {
@@ -138,7 +138,7 @@ namespace CassetteClient {
             builder.end_array ();
         }
 
-        static void serialize_object (Json.Builder builder, YaMObject? yam_obj, Case names_case = Case.KEBAB_CASE) {
+        static void serialize_object (Json.Builder builder, YaMObject? yam_obj, Case names_case = Case.KEBAB) {
             if (yam_obj == null) {
                 builder.add_null_value ();
                 return;
@@ -151,15 +151,15 @@ namespace CassetteClient {
                 }
 
                 switch (names_case) {
-                    case Case.CAMEL_CASE:
+                    case Case.CAMEL:
                         builder.set_member_name (kebab2camel (strip (property.name, '-')));
                         break;
 
-                    case Case.SNAKE_CASE:
+                    case Case.SNAKE:
                         builder.set_member_name (kebab2snake (strip (property.name, '-')));
                         break;
 
-                    case Case.KEBAB_CASE:
+                    case Case.KEBAB:
                         builder.set_member_name (strip (property.name, '-'));
                         break;
 
@@ -286,15 +286,15 @@ namespace CassetteClient {
 
                 string member_name;
                 switch (names_case) {
-                    case Case.CAMEL_CASE:
+                    case Case.CAMEL:
                         member_name = kebab2camel (strip (property.name, '-'));
                         break;
 
-                    case Case.SNAKE_CASE:
+                    case Case.SNAKE:
                         member_name = kebab2snake (strip (property.name, '-'));
                         break;
 
-                    case Case.KEBAB_CASE:
+                    case Case.KEBAB:
                         member_name = strip (property.name, '-');
                         break;
 

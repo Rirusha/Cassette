@@ -80,6 +80,11 @@ namespace Cassette {
             case BlockReason.NEED_PLUS:
                 widget.tooltip_text = _("Need Plus subscription");
                 break;
+            case BlockReason.NEED_BOOKMATE:
+                widget.tooltip_text = _("Need Bookmate subscription");
+                break;
+            default:
+                assert_not_reached ();
         }
     }
 

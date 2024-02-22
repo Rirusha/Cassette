@@ -36,12 +36,18 @@ namespace CassetteClient {
         }
     }
 
+    /**
+     * Перечисление со значениями предопределенных размеров для виджетов
+     */
     public enum ArtSize {
         TRACK = 75,
         BIG_ART = 400,
         BIG_SMALL = 200
     }
 
+    /**
+     * Таймаут всех запросов
+     */
     public const int TIMEOUT = 10;
 
     public static Cachier.Cachier cachier;
@@ -50,6 +56,10 @@ namespace CassetteClient {
     public static YaMTalker yam_talker;
     public static Player.Player player;
 
+    /**
+     * Получение кода языка для передачи в запросах api.
+     * Получает язык из системы и делает "ru_RU.UTF-8" -> "ru" штуку
+     */
     public static string get_language () {
         string? locale = Environment.get_variable ("LANG");
         string language = "en";
@@ -61,10 +71,16 @@ namespace CassetteClient {
         return language;
     }
 
+    /**
+     * Функция удобства. Получение текущей временной метки.
+     */
     public static string get_timestamp () {
         return new DateTime.now_utc ().format_iso8601 ();
     }
 
+    /**
+     * Инициализация клиента. Создание синглтонов.
+     */
     public static void init (string application_id, bool is_devel) {
         cachier = new Cachier.Cachier ();
         storager = new Cachier.Storager (application_id);
@@ -90,19 +106,37 @@ namespace CassetteClient {
         Mpris.init ();
     }
 
-    // Если переместить домен в другое место, то Jsoner перестанет его видеть
+    /**
+     * Ошибки клиента.
+     */
     public errordomain ClientError {
-        // Не получается спарсить ответ
+        /**
+         * Не получается спарсить ответ
+         */
         PARSE_ERROR,
-        // Не получается получить ответ
+        /**
+         * Не получается получить ответ
+         */
         SOUP_ERROR,
-        // Ответом пришла ошибка
+        /**
+         * Ответом пришла ошибка
+         */
         ANSWER_ERROR,
-        // Ошибка авторизации
+        /**
+         * Ошибка при авторизации
+         */
         AUTH_ERROR
     }
 
+    /**
+     * Утилиты, зависимые от типа.
+     */
     public class TypeUtils<T> {
+        /**
+        * Перемешивание списка
+        *
+        * @param list   ссылка на список ``Gee.ArrayList``, который будет перемешан
+        */
         public void shuffle (ref ArrayList<T> list) {
             for (int i = 0; i < list.size; i++) {
                 int random_index = Random.int_range (0, list.size);
@@ -113,6 +147,9 @@ namespace CassetteClient {
         }
     }
 
+    /**
+     * Утилиты, зависимые от типа.
+     */
     public string strip (string str, char ch) {
         /*
             Delete `ch` from start and end of `str`
@@ -131,7 +168,10 @@ namespace CassetteClient {
         return str[start:end];
     }
 
-    //  Переделывает camelCase строку в kebab-case. Входная строка должна быть корректной camelCase
+    /**
+     * Функция для перевода camelCase строки в kebab-case.
+     * Входная строка должна быть корректной camelCase
+     */
     public string camel2kebab (string camel_string) {
         var builder = new StringBuilder ();
 
@@ -150,7 +190,10 @@ namespace CassetteClient {
         return builder.free_and_steal ();
     }
 
-    //  Переделывает kebab-case строку в camelCase. Входная строка должна быть корректной kebab-case
+    /**
+     * Функция для перевода kebab-case строки в camelCase.
+     * Входная строка должна быть корректной kebab-case
+     */
     public string kebab2camel (string kebab_string) {
         var builder = new StringBuilder ();
 
@@ -169,7 +212,10 @@ namespace CassetteClient {
         return builder.free_and_steal ();
     }
 
-    //  Переделывает kebab-case строку в snake_case. Входная строка должна быть корректной kebab-case
+    /**
+     * Функция для перевода kebab-case строки в snake_case.
+     * Входная строка должна быть корректной kebab-case
+     */
     public string kebab2snake (string kebab_string) {
         var builder = new StringBuilder ();
 
@@ -187,7 +233,10 @@ namespace CassetteClient {
         return builder.free_and_steal ();
     }
 
-    //  Переделывает snake_case строку в kebab-case. Входная строка должна быть корректной snake_case
+    /**
+     * Функция для перевода snake_case строки в kebab-case.
+     * Входная строка должна быть корректной snake_case
+     */
     public string snake2kebab (string snake_string) {
         var builder = new StringBuilder ();
 

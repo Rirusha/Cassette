@@ -132,8 +132,6 @@ namespace CassetteClient {
                         }
                         break;
                 }
-
-
             }
             builder.end_array ();
         }

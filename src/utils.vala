@@ -75,7 +75,7 @@ namespace Cassette {
     }
 
     public static void track_share (CassetteClient.YaMAPI.Track track_info) {
-        string url = @"https://music.yandex.ru/album/$(track_info.albums[0].id)/track/$(track_info.id)";
+        string url = @"https://music.yandex.ru/album/$(track_info.albums[0].id)/track/$(track_info.id)?utm_medium=copy_link";
 
         Gdk.Display? display = Gdk.Display.get_default ();
         Gdk.Clipboard clipboard = display.get_clipboard ();
@@ -84,7 +84,7 @@ namespace Cassette {
     }
 
     public static void playlist_share (CassetteClient.YaMAPI.Playlist playlist_info) {
-        string url = @"https://music.yandex.ru/users/$(playlist_info.owner.login)/playlists/$(playlist_info.kind)";
+        string url = @"https://music.yandex.ru/users/$(playlist_info.owner.login)/playlists/$(playlist_info.kind)?utm_medium=copy_link";
 
         Gdk.Display? display = Gdk.Display.get_default ();
         Gdk.Clipboard clipboard = display.get_clipboard ();

@@ -246,7 +246,7 @@ public int main (string[] args) {
 
     Test.add_func ("/jsoner/deserialize/object_camel", () => {
         try {
-            var jsoner = new Jsoner ("{\"stringValue\":\"test\"}", null, Case.CAMEL_CASE);
+            var jsoner = new Jsoner ("{\"stringValue\":\"test\"}", null, Case.CAMEL);
             var result = (TestObjectStringCamel) jsoner.deserialize_object (typeof (TestObjectStringCamel));
 
             if (result.string_value != "test") {
@@ -259,7 +259,7 @@ public int main (string[] args) {
 
     Test.add_func ("/jsoner/deserialize/object_camel_", () => {
         try {
-            var jsoner = new Jsoner ("{\"stringValue\":\"test\"}", null, Case.CAMEL_CASE);
+            var jsoner = new Jsoner ("{\"stringValue\":\"test\"}", null, Case.CAMEL);
             var result = (TestObjectStringCamelW) jsoner.deserialize_object (typeof (TestObjectStringCamelW));
 
             if (result.string_value_ != "test") {

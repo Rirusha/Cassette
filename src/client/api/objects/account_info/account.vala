@@ -18,7 +18,7 @@
 using Gee;
 
 namespace CassetteClient.YaMAPI {
-    public class Account : YaMObject {
+    public class AccountStatus : YaMObject {
 
         public string uid { get; set; }
         public string? login { get; set; }
@@ -31,10 +31,6 @@ namespace CassetteClient.YaMAPI {
         public bool service_available { get; set; }
         public ArrayList<PassportPhone> passport_phones { get; set; default = new ArrayList<PassportPhone> (); }
         public bool child { get; set; }
-
-        public Account () {
-            Object ();
-        }
 
         public string get_user_name () {
             if (display_name != null) {

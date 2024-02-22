@@ -27,7 +27,7 @@ namespace CassetteClient.YaMAPI {
             }
         }
 
-        public Account account { get; set; default = new Account (); }
+        public AccountStatus account { get; set; default = new AccountStatus (); }
         public Permissions permissions { get; set; }
         public bool subeditor { get; set; }
         public int subeditor_level { get; set; }

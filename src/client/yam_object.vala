@@ -22,7 +22,7 @@ namespace CassetteClient {
     /**
      * Интерфейс объектов, имеющих уникальный идентификатор.
      * Существует, так как, например
-     * CassetteClient.YaMAPI.Playlist имеют составной id, разделенный
+     * ``CassetteClient.YaMAPI.Playlist`` имеют составной id, разделенный
      * на свойства uid и kind
      */
     public interface HasID : YaMObject {

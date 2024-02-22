@@ -26,7 +26,7 @@ namespace CassetteClient.YaMAPI {
             }
         }
 
-        public string? id { get; set; }
+        public string id { get; set; }
         public string? reason { get; set; }
         public string? name { get; set; }
         public Cover cover { get; set; }

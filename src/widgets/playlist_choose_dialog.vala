@@ -20,8 +20,8 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_choose_window.ui")]
-    public class PlaylistChooseWindow : Adw.Window {
+    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_choose_dialog.ui")]
+    public class PlaylistChooseDialog : Adw.Dialog {
         [GtkChild]
         unowned Gtk.Box main_box;
         [GtkChild]
@@ -31,7 +31,7 @@ namespace Cassette {
 
         public YaMAPI.Track target_track { get; construct; }
 
-        public PlaylistChooseWindow (YaMAPI.Track target_track) {
+        public PlaylistChooseDialog (YaMAPI.Track target_track) {
             Object (target_track: target_track);
         }
 

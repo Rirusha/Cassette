@@ -22,28 +22,20 @@ using WebKit;
 
 namespace Cassette {
 
-    public class BeginWindow : Adw.Window {
-        private BeginView _begin_view = new BeginView (true);
-        public BeginView begin_view {
-            get {
-                return _begin_view;
-            }
-        }
-
-        public BeginWindow () {
-            Object ();
-        }
+    public class BeginDialog : Adw.Dialog {
+        public BeginView begin_view { get; default = new BeginView (true); }
 
         construct {
-            content = begin_view;
+            child = begin_view;
 
-            default_width = 600;
-            default_height = 960;
+            content_width = 600;
+            content_height = 960;
 
-            modal = true;
+            begin_view.online_complete.connect (force_close);
+            begin_view.local_choosed.connect (force_close);
 
-            begin_view.online_complete.connect (close);
-            begin_view.local_choosed.connect (close);
+            can_close = false;
+            close_attempt.connect (application.quit);
         }
     }
 }

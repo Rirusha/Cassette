@@ -84,8 +84,7 @@ namespace Cassette {
         }
 
         void ask_about_deletion (bool is_tmp) {
-            var dialog = new Adw.MessageDialog (
-                pref_win,
+            var dialog = new Adw.AlertDialog (
                 is_tmp ? _("Delete cache files?") :
                     _("Moved saved files?"),
                 is_tmp ? _("All temporary cached files will be deleted. This doesn't affect on saved playlists or albums") :
@@ -107,7 +106,7 @@ namespace Cassette {
                 }
             });
 
-            dialog.present ();
+            dialog.present (pref_win);
         }
 
         public void delete_files (bool is_tmp) {

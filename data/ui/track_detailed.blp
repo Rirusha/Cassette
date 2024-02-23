@@ -23,12 +23,9 @@ template $CassetteTrackDetailed : Adw.Bin {
 
     CenterBox {
       center-widget: CenterBox {
-        start-widget: $CassetteLikeButton like_button {
+        start-widget: $CassetteDislikeButton dislike_button {
           is-flat: true;
           is-circular: true;
-          halign: start;
-          hexpand: false;
-          object-content-type: track;
           margin-end: 4;
         };
 
@@ -39,9 +36,10 @@ template $CassetteTrackDetailed : Adw.Bin {
           is-pill: true;
         };
 
-        end-widget: $CassetteDislikeButton dislike_button {
+        end-widget: $CassetteLikeButton like_button {
           is-flat: true;
           is-circular: true;
+          object-content-type: track;
           margin-start: 4;
         };
       };
@@ -58,7 +56,6 @@ template $CassetteTrackDetailed : Adw.Bin {
 
         $CassetteTrackOptionsButton track_options_button {
           is-flat: true;
-          is-circular: true;
           hexpand: false;
           valign: center;
         }

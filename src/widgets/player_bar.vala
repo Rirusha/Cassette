@@ -50,8 +50,8 @@ namespace Cassette {
         unowned VolumeButton volume_button;
         [GtkChild]
         unowned Adw.Carousel carousel;
-        [GtkChild]
-        unowned Gtk.Button fullscreen_button;
+        //  [GtkChild]
+        //  unowned Gtk.Button fullscreen_button;
 
         public MainWindow window { get; construct set; }
 
@@ -161,10 +161,7 @@ namespace Cassette {
             SimpleAction add_to_playlist_action = new SimpleAction ("add-to-playlist", null);
             add_to_playlist_action.activate.connect (() => {
                 if (current_track_info != null) {
-                    var win = new PlaylistChooseWindow (current_track_info) {
-                        transient_for = Cassette.application.main_window,
-                    };
-                    win.present ();
+                    add_track_to_playlist (current_track_info);
                 }
             });
             track_actions.add_action (add_to_playlist_action);
@@ -230,7 +227,7 @@ namespace Cassette {
                 });
             });
 
-            block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED);
+            //  block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED);
         }
 
         void on_playback_callback (double pos) {

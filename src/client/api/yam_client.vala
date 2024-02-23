@@ -103,6 +103,559 @@ namespace Cassette.Client.YaMAPI {
             }
         }
 
+        /**
+         * TODO: Placeholder
+         */
+        public void account_experiments () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void account_experiments_details () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void account_settings () throws ClientError, BadStatusCodeError { }
+
+        /*
+         * Получение информации о текущем пользователе
+         */
+        public Account.About account_about () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/account/about",
+                {"default"}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Account.About) jsoner.deserialize_object (typeof (Account.About));
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void albums_with_tracks (
+            string album_id,
+            bool rich_tracks
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void playlist (
+            string playlist_uuid
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void playlists () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_tracks (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_track_ids (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_track_ids (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_safe_direct_albums (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_brief_info (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+        
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_similar (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+        
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_discography_albums (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_direct_albums (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_also_albums (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void artists_concerts (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_playlists_list_kinds (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_playlists (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_playlists_list (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_playlists_playlist (
+            string? uid = null,
+            string playlist_kind,
+            bool rich_tracks
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_playlists_playlist_change_relative (
+            string? uid = null,
+            string playlist_kind
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_albums (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_artists (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_playlists (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_tracks_add (
+            string? uid = null,
+            string track_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_tracks_remove (
+            string? uid = null,
+            string track_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_dislikes_tracks_add (
+            string? uid = null,
+            string track_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_dislikes_tracks_remove (
+            string? uid = null,
+            string track_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_artists_add (
+            string? uid = null,
+            string artist_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_artists_remove (
+            string? uid = null,
+            string artist_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_dislikes_artists_add (
+            string? uid = null,
+            string artist_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+        
+        /**
+         * TODO: Placeholder
+         */
+        public void users_dislikes_artists_remove (
+            string? uid = null,
+            string artist_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_albums_add (
+            string? uid = null,
+            string album_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_albums_remove (
+            string? uid = null,
+            string album_id
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_playlists_add (
+            string? uid = null,
+            string playlist_uid,
+            string playlist_kind
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_likes_playlists_remove (
+            string? uid = null,
+            string playlist_uid,
+            string playlist_kind
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_presaves_add (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_presaves_remove (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_search_history (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_search_history_clear (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void users_search_history_clear (
+            string? uid = null
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+        }
+
+        /*
+         * Получение данных о библиотеке пользователя
+         */
+        public Library.AllIds library_all_ids () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/library/all-ids",
+                {"default"}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return jsoner.deserialize_lib_data ();
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void landing3_metatags () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void metatags_metatag (
+            string metatag
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void metatags_albums (
+            string metatag
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void metatags_artists (
+            string metatag
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void metatags_playlists (
+            string metatag
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void top_category (
+            string category
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_station_info (
+            string station_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_station_stream () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_session_new () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_session_tracks (
+            string radio_session_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_session_feedback (
+            string radio_session_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /*
+         * Получение последней прослушиваемой волны текущим пользователем
+         */
+        public Rotor.Wave rotor_wave_last () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/wave/last",
+                {"default"}
+            ); 
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Rotor.Wave) jsoner.deserialize_object (typeof (Rotor.Wave));
+        }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_wave_settings () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_wave_last () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rotor_wave_last_reset () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void search_feedback () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void search_instant_mixed () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void plays () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rewind_slides_user () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void rewind_slides_artist (
+            string artist_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void pins () throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void pins_albums (
+            bool pin
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void pins_playlist (
+            bool pin
+        ) throws ClientError, BadStatusCodeError { }
+
+         /**
+         * TODO: Placeholder
+         */
+        public void pins_artist (
+            bool pin
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void pins_wave (
+            bool pin
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void tags_playlist_ids (
+            string tag_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /**
+         * TODO: Placeholder
+         */
+        public void feed_promotions_promo (
+            string promo_id
+        ) throws ClientError, BadStatusCodeError { }
+
+        /////////
+        // Old //
+        /////////
+
         public Playlist get_playlist_info (owned string? uid = null, string kind = "3") throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
 
@@ -742,52 +1295,6 @@ namespace Cassette.Client.YaMAPI {
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
             return (StationTracks) jsoner.deserialize_object (typeof (StationTracks));
-        }
-
-        /////////
-        // New //
-        /////////
-
-        /*
-         * Получение информации о текущем пользователе
-         */
-        public Account.About account_about () throws ClientError, BadStatusCodeError {
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/account/about",
-                {"default"}
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Account.About) jsoner.deserialize_object (typeof (Account.About));
-        }
-
-        /*
-         * Получение данных о библиотеке пользователя
-         */
-        public Library.AllIds library_all_ids () throws ClientError, BadStatusCodeError {
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/library/all-ids",
-                {"default"}
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return jsoner.deserialize_lib_data ();
-        }
-
-        /*
-         * Получение последней прослушиваемой волны текущим пользователем
-         */
-        public Rotor.Wave rotor_wave_last () throws ClientError, BadStatusCodeError {
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/rotor/wave/last",
-                {"default"}
-            ); 
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Rotor.Wave) jsoner.deserialize_object (typeof (Rotor.Wave));
         }
     }
 }

@@ -42,8 +42,8 @@ namespace Cassette.Client {
 
         public signal void init_end ();
 
-        AccountInfo? _me = null;
-        public AccountInfo me {
+        Account.About? _me = null;
+        public Account.About me {
             owned get {
                 if (_me != null) {
                     return _me;
@@ -53,11 +53,11 @@ namespace Cassette.Client {
                 if (_me == null) {
                     string my_uid = storager.db.get_additional_data ("me");
                     if (my_uid != null) {
-                        _me = (AccountInfo) storager.load_object (typeof (AccountInfo), my_uid);
+                        _me = (Account.About) storager.load_object (typeof (Account.About), my_uid);
                     }
 
                     if (_me == null) {
-                        return new AccountInfo ();
+                        return new Account.About ();
                     }
                 }
 
@@ -80,7 +80,7 @@ namespace Cassette.Client {
         }
 
         public bool is_me (string? uid) {
-            return uid == null || uid == me.oid;
+            return uid == null || uid == me.uid;
         }
 
         public bool is_my_liked (string? uid, string kind) {

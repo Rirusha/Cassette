@@ -62,36 +62,34 @@ namespace Cassette {
 
             show_save_stack_switch.notify["active"].connect (on_show_save_stack_switch_changed);
 
-            max_thread_number_spin.value = storager.settings.get_int ("max-thread-number");
-            can_cache_switch.active = storager.settings.get_boolean ("can-cache");
-            can_cache_switch.active = storager.settings.get_boolean ("debug-mode");
+            max_thread_number_spin.value = CassetteClient.settings.get_int ("max-thread-number");
+            can_cache_switch.active = CassetteClient.settings.get_boolean ("can-cache");
+            can_cache_switch.active = CassetteClient.settings.get_boolean ("debug-mode");
 
             can_cache_switch.notify["active"].connect (() => {
                 if (!can_cache_switch.active) {
                     ask_about_deletion ();
                 } else {
-                    storager.settings.set_boolean ("can-cache", true);
+                    CassetteClient.settings.set_boolean ("can-cache", true);
                 }
             });
 
-            storager.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("child-visible", child_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("explicit-visible", explicit_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("show-replaced-mark", show_replaced_mark_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("show-save-stack", show_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("force-mobile", force_mobile_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("try-load-queue-every-activate", try_load_queue_every_activate_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            CassetteClient.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("child-visible", child_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("explicit-visible", explicit_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("show-replaced-mark", show_replaced_mark_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("show-save-stack", show_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            CassetteClient.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            CassetteClient.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
-            storager.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("show-playlists", show_playlists_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("show-playlists", show_playlists_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
             max_thread_number_spin.notify["value"].connect (() => {
-                storager.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);
+                CassetteClient.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);
             });
 
             on_show_save_stack_switch_changed ();
@@ -126,7 +124,7 @@ namespace Cassette {
             dialog.response.connect ((dialog, response) => {
                 if (response == "delete") {
                     deletion_preferences.delete_files (true);
-                    storager.settings.set_boolean ("can-cache", can_cache_switch.active);
+                    CassetteClient.settings.set_boolean ("can-cache", can_cache_switch.active);
                 } else {
                     can_cache_switch.active = true;
                 }

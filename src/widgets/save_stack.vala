@@ -60,7 +60,7 @@ namespace Cassette {
         }
 
         construct {
-            storager.settings.changed.connect ((key) => {
+            Cassette.settings.changed.connect ((key) => {
                 if (content_id == null) {
                     return;
                 }
@@ -111,7 +111,7 @@ namespace Cassette {
         }
 
         void cache_state_changed (owned Cachier.CacheingState state) {
-            if (!storager.settings.get_boolean ("show-save-stack")) {
+            if (!Cassette.settings.get_boolean ("show-save-stack")) {
                 state = Cachier.CacheingState.NONE;
             }
 
@@ -125,7 +125,7 @@ namespace Cassette {
                     save_spin.start ();
                     break;
                 case Cachier.CacheingState.TEMP:
-                    if (storager.settings.get_boolean ("show-temp-save-mark")) {
+                    if (Cassette.settings.get_boolean ("show-temp-save-mark")) {
                         save_stack.visible_child_name = "temp";
                     } else {
                         save_stack.visible_child_name = "none";

@@ -299,7 +299,7 @@ namespace CassetteClient.Cachier {
 
             var object_location = storager.object_cache_location (yam_object.get_type (), yam_object.oid);
             yield object_location.move_to_temp_async ();
-            if (storager.settings.get_boolean ("can-cache")) {
+            if (settings.get_boolean ("can-cache")) {
                 cachier.controller.change_state (object_type, object_id, CacheingState.TEMP);
             } else {
                 cachier.controller.change_state (object_type, object_id, CacheingState.NONE);
@@ -323,7 +323,7 @@ namespace CassetteClient.Cachier {
                 if (storager.db.get_content_ref_count (track_info.id) == 0) {
                     var track_location = storager.audio_cache_location (track_info.id);
                     yield track_location.move_to_temp_async ();
-                    if (track_location.file != null && storager.settings.get_boolean ("can-cache")) {
+                    if (track_location.file != null && settings.get_boolean ("can-cache")) {
                         cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.TEMP);
                     } else {
                         cachier.controller.change_state (ContentType.TRACK, track_info.id, CacheingState.NONE);

@@ -99,8 +99,8 @@ namespace Cassette {
 
         void form_queue () {
             var track_list = yam_object.get_filtered_track_list (
-                storager.settings.get_boolean ("explicit-visible"),
-                storager.settings.get_boolean ("child-visible"),
+                Cassette.settings.get_boolean ("explicit-visible"),
+                Cassette.settings.get_boolean ("child-visible"),
                 track_info.id
             );
 

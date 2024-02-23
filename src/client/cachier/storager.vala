@@ -56,7 +56,7 @@ namespace CassetteClient.Cachier {
             */
 
             if (file != null && is_tmp == false) {
-                if (storager.settings.get_boolean ("can-cache")) {
+                if (settings.get_boolean ("can-cache")) {
                     storager.move_file_to (file, true);
                 } else {
                     storager.remove_file (file);
@@ -71,7 +71,7 @@ namespace CassetteClient.Cachier {
 
             if (file != null && is_tmp == false) {
                 threader.add (() => {
-                    if (storager.settings.get_boolean ("can-cache")) {
+                    if (settings.get_boolean ("can-cache")) {
                         storager.move_file_to (file, true);
                     } else {
                         storager.remove_file (file);
@@ -114,8 +114,6 @@ namespace CassetteClient.Cachier {
         /*
            A class for working with client files
         */
-
-        public Settings settings { get; construct; }
 
         InfoDB? _db = null;
         public InfoDB db {
@@ -256,8 +254,8 @@ namespace CassetteClient.Cachier {
         string temp_audio_path;
         string temp_audio_uri;
 
-        public Storager (string application_id) {
-            Object (settings: new Settings (application_id));
+        public Storager () {
+            Object ();
         }
 
         construct {

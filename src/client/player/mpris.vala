@@ -101,7 +101,7 @@ namespace CassetteClient.Mpris {
 
         public double volume {
             get {
-                return storager.settings.get_double ("volume");
+                return settings.get_double ("volume");
             }
             set {
                 send_property_change ("Volume", value);
@@ -122,7 +122,7 @@ namespace CassetteClient.Mpris {
             player.current_track_start_loading.connect (send_can_properties);
             player.current_track_finish_loading.connect (send_can_properties);
 
-            storager.settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
+            settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
 
             player.playback_callback.connect ((position) => {
                 seeked ((int64) position);

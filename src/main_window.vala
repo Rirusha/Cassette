@@ -182,9 +182,9 @@ namespace Cassette {
 
             pager = new Pager (this, main_stack);
 
-            storager.settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("window-maximized", this, "maximized", SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("window-maximized", this, "maximized", SettingsBindFlags.DEFAULT);
 
             button_backward.clicked.connect ((obj) => {
                 current_view.backward ();
@@ -244,7 +244,6 @@ namespace Cassette {
                 notify["is-active"].connect (() => {
                     if (
                         is_active &&
-                        storager.settings.get_boolean ("try-load-queue-every-activate") &&
                         player.player_state != Player.PlayerState.PLAYING
                     ) {
                         player_bar.update_queue.begin ();

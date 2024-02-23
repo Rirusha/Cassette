@@ -78,8 +78,8 @@ namespace Cassette {
                 var playlist_info = (YaMAPI.Playlist) object_info;
 
                 var track_list = playlist_info.get_filtered_track_list (
-                    storager.settings.get_boolean ("explicit-visible"),
-                    storager.settings.get_boolean ("child-visible")
+                    Cassette.settings.get_boolean ("explicit-visible"),
+                    Cassette.settings.get_boolean ("child-visible")
                 );
 
                 player.add_many (track_list);

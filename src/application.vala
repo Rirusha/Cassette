@@ -29,6 +29,8 @@ namespace Cassette {
     public static CassetteClient.YaMTalker yam_talker;
     public static CassetteClient.Player.Player player;
 
+    public static Settings settings;
+
     public enum ApplicationState {
         BEGIN,
         LOCAL,
@@ -92,6 +94,8 @@ namespace Cassette {
         construct {
             application = this;
 
+            settings = new Settings ("io.github.Rirusha.Cassette.application");
+
             CassetteClient.init ("io.github.Rirusha.Cassette", is_devel);
 
             CassetteClient.Mpris.mpris.quit_triggered.connect (() => {
@@ -116,9 +120,9 @@ namespace Cassette {
                 application_state = ApplicationState.OFFLINE;
             });
 
-            _application_state = (ApplicationState) storager.settings.get_enum ("application-state");
+            _application_state = (ApplicationState) settings.get_enum ("application-state");
 
-            storager.settings.bind ("application-state", this, "application-state", SettingsBindFlags.DEFAULT);
+            settings.bind ("application-state", this, "application-state", SettingsBindFlags.DEFAULT);
 
             application.application_state_changed.connect ((new_state) => {
                 switch (new_state) {
@@ -161,10 +165,6 @@ namespace Cassette {
             base.activate ();
 
             if (main_window == null) {
-                if (storager.settings.get_boolean ("force-mobile")) {
-                    is_mobile = true;
-                }
-
                 var win = new MainWindow (this);
 
                 authenticator.success.connect (win.load_default_views);
@@ -173,24 +173,6 @@ namespace Cassette {
                 if (_application_state == ApplicationState.OFFLINE) {
                     _application_state = ApplicationState.ONLINE;
                 }
-
-                //  win.show.connect (() => {
-                //      // Detection device "mobility"
-                //      // TODO: that also can work on notebooks with touch...
-                //      if (storager.settings.get_boolean ("force-mobile")) {
-                //          is_mobile = true;
-
-                //      } else {
-                //          var display = Gdk.Display.get_default ();
-                //          var seat = display?.get_default_seat ();
-
-                //          foreach (var device in seat?.get_devices (Gdk.SeatCapabilities.TOUCH)) {
-                //              is_mobile = true;
-
-                //              storager.settings.set_double ("volume", 100.0);
-                //          }
-                //      }
-                //  });
 
                 win.present ();
 

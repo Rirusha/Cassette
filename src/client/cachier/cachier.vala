@@ -158,11 +158,11 @@ namespace CassetteClient.Cachier {
             if (track_uri == null) {
                 track_uri = yam_talker.get_download_uri (
                     track_id,
-                   storager.settings.get_boolean ("is-hq")
+                   settings.get_boolean ("is-hq")
                 );
             }
 
-            if (track_uri != null && (storager.settings.get_boolean ("can-cache") || !is_tmp)) {
+            if (track_uri != null && (settings.get_boolean ("can-cache") || !is_tmp)) {
                 Bytes audio_bytes = yam_talker.load_track (track_uri);
                 if (audio_bytes != null) {
                     storager.save_audio (audio_bytes, track_id, is_tmp);
@@ -205,7 +205,7 @@ namespace CassetteClient.Cachier {
         threader.add_audio (() => {
             track_uri = yam_talker.get_download_uri (
                 track_id,
-            storager.settings.get_boolean ("is-hq")
+            settings.get_boolean ("is-hq")
             );
 
             Idle.add (get_track_uri.callback);
@@ -243,7 +243,7 @@ namespace CassetteClient.Cachier {
                     if (pixbufs[i] == null) {
                         pixbufs[i] = yam_talker.load_pixbuf (cover_uris[i]);
 
-                        if (pixbufs[i] != null && storager.settings.get_boolean ("can-cache")) {
+                        if (pixbufs[i] != null && settings.get_boolean ("can-cache")) {
                         storager.save_image (pixbufs[i], cover_uris[i], true);
                         }
                     }

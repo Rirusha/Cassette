@@ -131,7 +131,7 @@ namespace CassetteClient {
                 // Сохраняет объект, если он не сохранен в data
                 // Постоянными объектами занимается уже Cachier.Job
                 var object_location = storager.object_cache_location (playlist_info.get_type (), playlist_info.oid);
-                if (object_location.is_tmp && storager.settings.get_boolean ("can-cache")) {
+                if (object_location.is_tmp && settings.get_boolean ("can-cache")) {
                     storager.save_object (playlist_info, true);
                     cachier.controller.change_state (
                         Cachier.ContentType.PLAYLIST,
@@ -406,19 +406,27 @@ namespace CassetteClient {
             return content;
         }
 
-        public Playlist? add_track_to_playlist (string kind, Track track, int position, int revision) {
-            return add_tracks_to_playlist (kind, {track}, position, revision);
+        public Playlist? add_track_to_playlist (Track track_info, Playlist playlist_info) {
+            return add_tracks_to_playlist ({track_info}, playlist_info);
         }
 
-        public Playlist? add_tracks_to_playlist (string kind, Track[] tracks, int position, int revision) {
+        //  playlist_info.kind,
+        //  track_info,
+        //  storager.settings.get_boolean ("add-tracks-to-start") ? 0 : playlist_info.track_count,
+        //  playlist_info.revision
+
+        public Playlist? add_tracks_to_playlist (Track[] tracks, Playlist playlist_info) {
             Playlist? new_playlist = null;
 
             var diff = new DifferenceBuilder ();
 
-            diff.add_insert (position, tracks);
+            diff.add_insert (
+                settings.get_boolean ("add-tracks-to-start") ? 0 : playlist_info.track_count,
+                tracks
+            );
 
             net_run_wout_code (() => {
-                new_playlist = client.change_playlist (null, kind, diff.to_json (), revision);
+                new_playlist = client.change_playlist (null, playlist_info.kind, diff.to_json (), playlist_info.revision);
                 playlist_changed (new_playlist);
             });
 

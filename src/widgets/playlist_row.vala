@@ -59,10 +59,8 @@ namespace Cassette {
 
             threader.add (() => {
                 new_playlist = yam_talker.add_track_to_playlist (
-                    playlist_info.kind,
                     track_info,
-                    storager.settings.get_boolean ("add-tracks-to-start") ? 0 : playlist_info.track_count,
-                    playlist_info.revision
+                    playlist_info
                 );
 
                 Idle.add (add_button_clicked_async.callback);

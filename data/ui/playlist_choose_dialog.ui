@@ -2,12 +2,11 @@
 <interface>
   <requires lib="Gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
-  <template class="CassettePlaylistChooseWindow" parent="AdwWindow">
-    <property name="default-width">600</property>
-    <property name="default-height">600</property>
+  <template class="CassettePlaylistChooseDialog" parent="AdwDialog">
+    <property name="content-width">600</property>
+    <property name="content-height">700</property>
     <property name="title" translatable="true">Choose playlist to add</property>
-    <property name="modal">true</property>
-    <property name="content">
+    <child>
       <object class="AdwToolbarView">
         <child type="top">
           <object class="AdwHeaderBar"/>
@@ -61,6 +60,6 @@
           </object>
         </property>
       </object>
-    </property>
+    </child>
   </template>
 </interface>

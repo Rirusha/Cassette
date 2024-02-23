@@ -172,11 +172,8 @@ namespace Cassette {
 
             var account_info_action = new SimpleAction ("accoint-info", null);
             account_info_action.activate.connect (() => {
-                var win = new AccountInfoWindow (yam_talker.me) {
-                    transient_for = this,
-                    modal = true
-                };
-                win.present ();
+                var dilaog = new AccountInfoDialog (yam_talker.me);
+                dilaog.present (this);
             });
             add_action (account_info_action);
 

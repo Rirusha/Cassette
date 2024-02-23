@@ -89,6 +89,18 @@ namespace Cassette {
     }
 
     /**
+     * Открыть окно для добавления трека в плейлист
+     *
+     * @param track_info    трек, который нужно добавить
+     */
+    public static void add_track_to_playlist (YaMAPI.Track track_info) {
+        if (application.main_window != null) {
+            var dialog = new PlaylistChooseDialog (track_info);
+            dialog.present (application.main_window);
+        }
+    }
+
+    /**
      * Переключить режим перемешивания на следующий.
      * ON -> OFF
      * OFF -> ON

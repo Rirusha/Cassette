@@ -42,8 +42,7 @@ namespace Cassette {
         }
 
         public void log_out () {
-            var dialog = new Adw.MessageDialog (
-                application.main_window,
+            var dialog = new Adw.AlertDialog (
                 _("Log out?"),
                 _("You will need to log in again to use the app")
             );
@@ -63,7 +62,7 @@ namespace Cassette {
                 }
             });
 
-            dialog.present ();
+            dialog.present (application.main_window);
         }
 
         void move_cache () {
@@ -138,16 +137,14 @@ namespace Cassette {
                 storager.remove_file (storager.cookies_file);
             }
 
-            var begin_window = new BeginWindow () {
-                transient_for = application.main_window
-            };
+            var begin_window = new BeginDialog ();
 
             begin_window.begin_view.local_choosed.connect (() => {
                 local ();
             });
             begin_window.begin_view.online_complete.connect (init_client_async);
 
-            begin_window.present ();
+            begin_window.present (application.main_window);
         }
     }
 }

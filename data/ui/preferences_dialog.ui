@@ -2,21 +2,21 @@
 <interface>
   <requires lib="Gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
-  <template class="CassettePreferencesWindow" parent="AdwPreferencesWindow">
+  <template class="CassettePreferencesDialog" parent="AdwPreferencesDialog">
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title" translatable="true" context="preference window">Main</property>
+        <property name="title" translatable="true" context="preference dialog">Main</property>
         <property name="icon-name">adwaita-user-home-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
-            <property name="title" translatable="true" context="preference window">General</property>
+            <property name="title" translatable="true" context="preference dialog">General</property>
             <child>
               <object class="AdwSpinRow" id="max_thread_number_spin">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Max active threads</property>
+                <property name="title" translatable="true" context="preference dialog">Max active threads</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">The maximum number of threads for content loading. A large value can affect the performance of the system. The changes will take effect after restarting the application.</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">The maximum number of threads for content loading. A large value can affect the performance of the system. The changes will take effect after restarting the application.</property>
                 <property name="adjustment">
                   <object class="GtkAdjustment">
                     <property name="lower">1</property>
@@ -31,17 +31,17 @@
             <child>
               <object class="AdwSwitchRow" id="is_hq_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Download high quality tracks</property>
+                <property name="title" translatable="true" context="preference dialog">Download high quality tracks</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">Attention! If the track was downloaded in low quality, and after the download is enabled in high quality, the audio will not be reloaded</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">Attention! If the track was downloaded in low quality, and after the download is enabled in high quality, the audio will not be reloaded</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="add_tracks_to_start_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Add track on top of playlist</property>
+                <property name="title" translatable="true" context="preference dialog">Add track on top of playlist</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">Will the track be added to the playlist as the first or as the last</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">Will the track be added to the playlist as the first or as the last</property>
               </object>
             </child>
           </object>
@@ -49,29 +49,29 @@
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
-            <property name="title" translatable="true" context="preference window">Show additional marks</property>
+            <property name="title" translatable="true" context="preference dialog">Show additional marks</property>
             <child>
               <object class="AdwSwitchRow" id="show_save_stack_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Show save mark</property>
+                <property name="title" translatable="true" context="preference dialog">Show save mark</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">Show a mark showing the current state of the track cache</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">Show a mark showing the current state of the track cache</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="show_temp_save_stack_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Show temp save mark</property>
+                <property name="title" translatable="true" context="preference dialog">Show temp save mark</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">Show a mark indicating that the track has been saved to temporary storage</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">Show a mark indicating that the track has been saved to temporary storage</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="show_replaced_mark_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Show replaced mark</property>
+                <property name="title" translatable="true" context="preference dialog">Show replaced mark</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">Show a mark that shows that the track has been replaced</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">Show a mark that shows that the track has been replaced</property>
               </object>
             </child>
           </object>
@@ -79,74 +79,74 @@
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
-            <property name="title" translatable="true" context="preference window">Tracks visibility</property>
+            <property name="title" translatable="true" context="preference dialog">Tracks visibility</property>
             <!-- Translators: description of preference group -->
-            <property name="description" translatable="true" context="preference window">Show special tracks in track lists. Filter doesn't work when searching in track list</property>
+            <property name="description" translatable="true" context="preference dialog">Show special tracks in track lists. Filter doesn't work when searching in track list</property>
             <child>
               <object class="AdwSwitchRow" id="available_visible_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Show unavailable content</property>
+                <property name="title" translatable="true" context="preference dialog">Show unavailable content</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">Show tracks that are not available in the service. You can't listen to them</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">Show tracks that are not available in the service. You can't listen to them</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="child_visible_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Show content suitable for children</property>
+                <property name="title" translatable="true" context="preference dialog">Show content suitable for children</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="explicit_visible_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Show explicit content</property>
+                <property name="title" translatable="true" context="preference dialog">Show explicit content</property>
               </object>
             </child>
           </object>
         </child>
         <child>
           <object class="AdwPreferencesGroup">
-            <property name="title" translatable="true" context="preference window">Other</property>
+            <property name="title" translatable="true" context="preference dialog">Other</property>
             <child>
               <object class="AdwSwitchRow" id="debug_mode_switch">
-                <property name="title" translatable="true" context="preference window">Enable Debug-Mode</property>
+                <property name="title" translatable="true" context="preference dialog">Enable Debug-Mode</property>
               </object>
             </child>
           </object>
         </child>
         <!-- <child>
           <object class="AdwPreferencesGroup">
-            <property name="title" translatable="true" context="preference window">Experimental</property>
+            <property name="title" translatable="true" context="preference dialog">Experimental</property>
           </object>
         </child> -->
       </object>
     </child>
     <child>
       <object class="AdwPreferencesPage">
-        <property name="title" translatable="true" context="preference window">Pages</property>
+        <property name="title" translatable="true" context="preference dialog">Pages</property>
         <property name="icon-name">adwaita-view-paged-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
-            <property name="title" translatable="true" context="preference window">Static pages</property>
+            <property name="title" translatable="true" context="preference dialog">Static pages</property>
             <!-- Translators: description of preference group -->
-            <property name="description" translatable="true" context="preference window">Here you can show or hide static pages. They will always be displayed on the left side of the header.</property>
+            <property name="description" translatable="true" context="preference dialog">Here you can show or hide static pages. They will always be displayed on the left side of the header.</property>
             <child>
               <object class="AdwSwitchRow" id="show_main_switch">
                 <!-- Translators: title of preference. Main page is page of Ya.Music with trending, recommendation etc -->
-                <property name="title" translatable="true" context="preference window">Show "Main" page</property>
+                <property name="title" translatable="true" context="preference dialog">Show "Main" page</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="show_liked_switch">
                 <!-- Translators: title of preference. Main page is page of Ya.Music with liked tracks -->
-                <property name="title" translatable="true" context="preference window">Show "Liked" page</property>
+                <property name="title" translatable="true" context="preference dialog">Show "Liked" page</property>
               </object>
             </child>
             <child>
               <object class="AdwSwitchRow" id="show_playlists_switch">
                 <!-- Translators: title of preference. Main page is page of Ya.Music with users playlists -->
-                <property name="title" translatable="true" context="preference window">Show "Playlists" page</property>
+                <property name="title" translatable="true" context="preference dialog">Show "Playlists" page</property>
               </object>
             </child>
           </object>
@@ -159,25 +159,25 @@
     <child>
       <object class="AdwPreferencesPage">
         <!-- Translators: Cache preference -->
-        <property name="title" translatable="true" context="preference window">Cache</property>
+        <property name="title" translatable="true" context="preference dialog">Cache</property>
         <property name="icon-name">adwaita-user-trash-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
-            <property name="title" translatable="true" context="preference window">Cache managing</property>
+            <property name="title" translatable="true" context="preference dialog">Cache managing</property>
             <!-- Translators: description of preference group -->
-            <property name="description" translatable="true" context="preference window">Here you can see application memory usage, delete all cache from temp folder and control downloading cache to disk</property>
+            <property name="description" translatable="true" context="preference dialog">Here you can see application memory usage, delete all cache from temp folder and control downloading cache to disk</property>
             <child>
               <object class="AdwSwitchRow" id="can_cache_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Cache content for better performance (Over time, it starts to take up a lot of space. So far, manual cleaning is required)</property>
+                <property name="title" translatable="true" context="preference dialog">Cache content for better performance (Over time, it starts to take up a lot of space. So far, manual cleaning is required)</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">If enabled, the application will cache all content in /var/tmp/cassette for better performance, otherwise, the application will load content only when caching objects (such as playlists or albums). Disabling the parameter does not delete already downloaded content</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">If enabled, the application will cache all content in /var/tmp/cassette for better performance, otherwise, the application will load content only when caching objects (such as playlists or albums). Disabling the parameter does not delete already downloaded content</property>
               </object>
             </child>
             <child>
               <object class="CassetteCacheDeletionPreferences" id="deletion_preferences">
-                <property name="pref-win">CassettePreferencesWindow</property>
+                <property name="pref-win">CassettePreferencesDialog</property>
               </object>
             </child>
           </object>

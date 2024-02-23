@@ -139,10 +139,7 @@ namespace Cassette {
 
             SimpleAction add_to_playlist_action = new SimpleAction ("add-to-playlist", null);
             add_to_playlist_action.activate.connect (() => {
-                var win = new PlaylistChooseWindow (track_info) {
-                    transient_for = Cassette.application.main_window,
-                };
-                win.present ();
+                add_track_to_playlist (track_info);
             });
             actions.add_action (add_to_playlist_action);
 

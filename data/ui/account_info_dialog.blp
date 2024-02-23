@@ -1,12 +1,12 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteAccountInfoWindow : Adw.Window {
+template $CassetteAccountInfoDialog : Adw.Dialog {
   title: _("Account information");
-  default-width: 300;
-  default-height: 420;
+  content-width: 300;
+  content-height: 420;
 
-  content: Adw.ToolbarView {
+  Adw.ToolbarView {
     [top]
     Adw.HeaderBar { }
 
@@ -60,5 +60,5 @@ template $CassetteAccountInfoWindow : Adw.Window {
         }
       }
     };
-  };
+  }
 }

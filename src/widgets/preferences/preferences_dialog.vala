@@ -20,8 +20,8 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/preferences_window.ui")]
-    public class PreferencesWindow : Adw.PreferencesWindow {
+    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/preferences_dialog.ui")]
+    public class PreferencesDialog : Adw.PreferencesDialog {
         [GtkChild]
         unowned Adw.SwitchRow show_save_stack_switch;
         [GtkChild]
@@ -60,7 +60,7 @@ namespace Cassette {
 
             max_thread_number_spin.value = Cassette.Client.settings.get_int ("max-thread-number");
             can_cache_switch.active = Cassette.Client.settings.get_boolean ("can-cache");
-            can_cache_switch.active = Cassette.Client.settings.get_boolean ("debug-mode");
+            debug_mode_switch.active = Cassette.Client.settings.get_boolean ("debug-mode");
 
             can_cache_switch.notify["active"].connect (() => {
                 if (!can_cache_switch.active) {
@@ -102,8 +102,7 @@ namespace Cassette {
         }
 
         void ask_about_deletion () {
-            var dialog = new Adw.MessageDialog (
-                this,
+            var dialog = new Adw.AlertDialog (
                 _("Delete temporary files?"),
                 _("All temporary cache will be deleted. This doesn't affect on saved playlists or albums")
             );
@@ -126,7 +125,7 @@ namespace Cassette {
                 }
             });
 
-            dialog.present ();
+            dialog.present (this);
         }
     }
 }

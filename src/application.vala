@@ -215,8 +215,7 @@ namespace Cassette {
 
             };
 
-            var about = new Adw.AboutWindow () {
-                transient_for = active_window,
+            var about = new Adw.AboutDialog () {
                 application_name = APP_NAME,
                 application_icon = Config.APP_ID,
                 developer_name = "Rirusha",
@@ -242,7 +241,7 @@ namespace Cassette {
                 "krylov_alexandr"
             });
 
-            about.present ();
+            about.present (main_window);
         }
 
         void on_log_out () {
@@ -280,13 +279,9 @@ namespace Cassette {
         }
 
         void on_preferences_action () {
-            var pref_win = new PreferencesWindow () {
-                transient_for = main_window,
-                modal = true
-            };
+            var pref_win = new PreferencesDialog ();
 
-            pref_win.present ();
-            pref_win.set_focus (null);
+            pref_win.present (main_window);
         }
 
         void on_share_current_track () {

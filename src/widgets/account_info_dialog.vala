@@ -20,8 +20,8 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/account_info_window.ui")]
-    public class AccountInfoWindow : Adw.Window {
+    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/account_info_dialog.ui")]
+    public class AccountInfoDialog : Adw.Dialog {
         [GtkChild]
         unowned Adw.Avatar avatar;
         [GtkChild]
@@ -33,7 +33,7 @@ namespace Cassette {
 
         public YaMAPI.Account.About account_info { get; construct; }
 
-        public AccountInfoWindow (YaMAPI.Account.About account_info) {
+        public AccountInfoDialog (YaMAPI.Account.About account_info) {
             Object (account_info: account_info);
         }
 
@@ -44,7 +44,8 @@ namespace Cassette {
             login_label.label = account_info.login;
 
             if (account_info.has_plus) {
-                plus_label.label = "   %s   ".printf (_("Has Plus"));
+                // Translators: Plus meen "Plus Subscription"
+                plus_label.label = "   %s   ".printf (_("Plus"));
                 plus_label.add_css_class ("plus-background");
 
             } else {

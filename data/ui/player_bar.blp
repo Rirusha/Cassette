@@ -156,7 +156,7 @@ template $CassettePlayerBar : Adw.Bin {
         }
 
         Box {
-          spacing: 8;
+          spacing: 4;
 
           Label current_time_mark {
             styles [
@@ -238,14 +238,15 @@ template $CassettePlayerBar : Adw.Bin {
         tooltip-text: _("Change volume");
       }
 
-      Button fullscreen_button {
-        styles [
-          "flat"
-        ]
+      // Button fullscreen_button {
+      //   styles [
+      //     "flat"
+      //   ]
 
-        valign: center;
-        icon-name: "adwaita-view-fullscreen-symbolic";
-      }
+      //   valign: center;
+      //   visible: false;
+      //   icon-name: "adwaita-view-fullscreen-symbolic";
+      // }
 
       layout {
         column: 5;

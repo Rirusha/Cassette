@@ -101,8 +101,7 @@ namespace Cassette {
 
                 var delete_playlist_action = new SimpleAction ("delete-playlist", null);
                 delete_playlist_action.activate.connect (() => {
-                    var dialog = new Adw.MessageDialog (
-                        application.main_window,
+                    var dialog = new Adw.AlertDialog (
                         _("Delete playlist?"),
                         _("Playlist '%s' will be permanently deleted.").printf (((YaMAPI.Playlist) object_info).title)
                     );
@@ -126,7 +125,7 @@ namespace Cassette {
                         }
                     });
 
-                    dialog.present ();
+                    dialog.present (application.main_window);
                 });
                 actions.add_action (delete_playlist_action);
             }

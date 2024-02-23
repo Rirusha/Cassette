@@ -35,7 +35,12 @@ namespace Cassette.Client.YaMAPI.Library {
         /*
          * Любимые исполнители пользователя
          */
-        public ArrayList<string> artists { get; set; default = new ArrayList<string> (); }
+        public ArrayList<string> liked_artists { get; set; default = new ArrayList<string> (); }
+
+        /*
+         * Нелюбимые исполнители пользователя
+         */
+        public ArrayList<string> disliked_artists { get; set; default = new ArrayList<string> (); }
 
         /*
          * Любимые альбомы пользователя

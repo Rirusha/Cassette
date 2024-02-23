@@ -1,5 +1,5 @@
-using CassetteClient;
-using CassetteClient.YaMAPI;
+using Cassette.Client;
+using Cassette.Client.YaMAPI;
 
 
 

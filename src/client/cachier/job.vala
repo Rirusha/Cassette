@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.Cachier {
+namespace Cassette.Client.Cachier {
 
     public enum JobDoneStatus {
         SUCCESS,

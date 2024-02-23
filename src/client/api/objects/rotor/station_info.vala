@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.YaMAPI.Rotor {
+namespace Cassette.Client.YaMAPI.Rotor {
     public class StationInfo : YaMObject {
 
         public Station station { get; set; }

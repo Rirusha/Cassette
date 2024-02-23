@@ -18,7 +18,7 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI.Rotor {
+namespace Cassette.Client.YaMAPI.Rotor {
     public class Enum : YaMObject {
 
         public string type_ { get; set; }

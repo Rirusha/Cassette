@@ -16,7 +16,7 @@
  */
 
 
-using CassetteClient;
+using Cassette.Client;
 
 namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cache_indicator.ui")]

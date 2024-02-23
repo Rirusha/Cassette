@@ -18,7 +18,7 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI.Rotor {
+namespace Cassette.Client.YaMAPI.Rotor {
 
     public class Wave : YaMObject {
 

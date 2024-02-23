@@ -16,7 +16,7 @@
  */
 
 
-using CassetteClient;
+using Cassette.Client;
 
 
 namespace Cassette {
@@ -62,34 +62,34 @@ namespace Cassette {
 
             show_save_stack_switch.notify["active"].connect (on_show_save_stack_switch_changed);
 
-            max_thread_number_spin.value = CassetteClient.settings.get_int ("max-thread-number");
-            can_cache_switch.active = CassetteClient.settings.get_boolean ("can-cache");
-            can_cache_switch.active = CassetteClient.settings.get_boolean ("debug-mode");
+            max_thread_number_spin.value = Cassette.Client.settings.get_int ("max-thread-number");
+            can_cache_switch.active = Cassette.Client.settings.get_boolean ("can-cache");
+            can_cache_switch.active = Cassette.Client.settings.get_boolean ("debug-mode");
 
             can_cache_switch.notify["active"].connect (() => {
                 if (!can_cache_switch.active) {
                     ask_about_deletion ();
                 } else {
-                    CassetteClient.settings.set_boolean ("can-cache", true);
+                    Cassette.Client.settings.set_boolean ("can-cache", true);
                 }
             });
 
-            CassetteClient.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.Client.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("child-visible", child_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("explicit-visible", explicit_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("show-replaced-mark", show_replaced_mark_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("show-save-stack", show_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            CassetteClient.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            CassetteClient.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.Client.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.Client.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
             Cassette.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("show-playlists", show_playlists_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
             max_thread_number_spin.notify["value"].connect (() => {
-                CassetteClient.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);
+                Cassette.Client.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);
             });
 
             on_show_save_stack_switch_changed ();
@@ -124,7 +124,7 @@ namespace Cassette {
             dialog.response.connect ((dialog, response) => {
                 if (response == "delete") {
                     deletion_preferences.delete_files (true);
-                    CassetteClient.settings.set_boolean ("can-cache", can_cache_switch.active);
+                    Cassette.Client.settings.set_boolean ("can-cache", can_cache_switch.active);
                 } else {
                     can_cache_switch.active = true;
                 }

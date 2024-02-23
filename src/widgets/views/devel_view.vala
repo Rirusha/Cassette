@@ -32,9 +32,9 @@ namespace Cassette {
         void on_ultra_button_clicked () {
             var client = yam_talker.client;
 
-            //  var a = client.get_rotor_info (CassetteClient.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
-            //  client.rotor_feedback_started (CassetteClient.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
-            //  var tra = client.get_station_tracks (CassetteClient.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
+            //  var a = client.get_rotor_info (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
+            //  client.rotor_feedback_started (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
+            //  var tra = client.get_station_tracks (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
 
             //  var n = client.get_rotor_dashboard ();
             //  foreach (var m in n.stations) {

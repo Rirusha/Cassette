@@ -19,7 +19,7 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     public class Volume : YaMObject {
 
         public string id { get; set; }

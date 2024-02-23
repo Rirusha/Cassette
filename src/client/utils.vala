@@ -19,7 +19,7 @@
 using Gee;
 
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     namespace YaMAPI.Rotor {
         namespace FeedbackType {

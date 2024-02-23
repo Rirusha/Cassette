@@ -17,7 +17,7 @@
 
 using Gee;
 
-namespace CassetteClient.Player {
+namespace Cassette.Client.Player {
 
     public enum PlayerModeType {
         NONE,

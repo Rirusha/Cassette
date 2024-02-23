@@ -16,7 +16,7 @@
  */
 
 
-using CassetteClient;
+using Cassette.Client;
 using Gee;
 
 

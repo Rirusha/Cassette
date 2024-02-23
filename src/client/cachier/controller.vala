@@ -17,7 +17,7 @@
 
 using Gee;
 
-namespace CassetteClient.Cachier {
+namespace Cassette.Client.Cachier {
     public enum ContentType {
         TRACK,
         PLAYLIST,

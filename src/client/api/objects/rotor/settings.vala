@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.YaMAPI.Rotor {
+namespace Cassette.Client.YaMAPI.Rotor {
     namespace StationLanguage {
         public const string NOT_RUSSIAN = "not-russian";
         public const string RUSSIAN = "russian";

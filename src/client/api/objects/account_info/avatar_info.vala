@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     namespace AvatarSize {
         const string ISLANDS_SMALL = "islands-small";
         const string ISLANDS_34 = "islands-34";

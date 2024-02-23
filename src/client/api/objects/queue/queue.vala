@@ -17,7 +17,7 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     public class Queue : YaMObject {
 
         public string id { get; set; }

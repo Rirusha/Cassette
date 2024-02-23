@@ -17,7 +17,7 @@
 
 using Soup;
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     public errordomain BadStatusCodeError {
         BAD_REQUEST = 400,

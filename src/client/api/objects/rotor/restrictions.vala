@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.YaMAPI.Rotor {
+namespace Cassette.Client.YaMAPI.Rotor {
     public class Restrictions : YaMObject {
 
         public Enum language { get; set; }

@@ -17,7 +17,7 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     public class Lyrics : YaMObject {
 
         public string download_url { get; set; }

@@ -16,10 +16,10 @@
  */
 
 
-using CassetteClient.YaMAPI;
+using Cassette.Client.YaMAPI;
 using Gee;
 
-namespace CassetteClient.Player {
+namespace Cassette.Client.Player {
     public class PlayerTrackList : PlayerMode {
 
         YaMAPI.Queue _queue;

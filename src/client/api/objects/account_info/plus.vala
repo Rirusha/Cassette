@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
- namespace CassetteClient.YaMAPI {
+ namespace Cassette.Client.YaMAPI {
     public class Plus : YaMObject {
 
         public bool has_plus { get; set; default = false; }

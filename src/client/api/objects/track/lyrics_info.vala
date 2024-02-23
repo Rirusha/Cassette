@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     public class LyricsInfo : YaMObject {
 
         public bool has_available_sync_lyrics { get; set; }

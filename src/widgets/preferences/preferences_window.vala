@@ -47,15 +47,11 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.SwitchRow can_cache_switch;
         [GtkChild]
-        unowned Adw.SwitchRow try_load_queue_every_activate_switch;
-        [GtkChild]
         unowned Adw.SpinRow max_thread_number_spin;
         [GtkChild]
         unowned CacheDeletionPreferences deletion_preferences;
         [GtkChild]
         unowned Adw.SwitchRow debug_mode_switch;
-        [GtkChild]
-        unowned Adw.SwitchRow force_mobile_switch;
 
         construct {
             //  deletion_preferences.pref_win = this;

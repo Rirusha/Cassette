@@ -26,7 +26,7 @@ namespace Cassette.Client.YaMAPI {
 
         public SoupWrapper soup_wrapper { get; construct; }
 
-        public AccountInfo? me { get; private set; default = null; }
+        public Account.About? me { get; private set; default = null; }
 
         public bool is_init_complete { get; set; default = false; }
 
@@ -82,7 +82,7 @@ namespace Cassette.Client.YaMAPI {
                 }
             );
 
-            get_account_info ();
+            me = account_about ();
             is_init_complete = true;
         }
 
@@ -96,37 +96,11 @@ namespace Cassette.Client.YaMAPI {
                     throw new ClientError.AUTH_ERROR ("Auth Error");
                 }
 
-                uid = me.oid;
+                uid = me.uid;
                 if (uid == null) {
                     throw new ClientError.AUTH_ERROR ("Auth Error");
                 }
             }
-        }
-
-        public AccountInfo get_account_info () throws ClientError, BadStatusCodeError {
-            if (me != null) {
-                return me;
-            }
-
-            Bytes bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/account/status",
-                {"default"}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            me = (AccountInfo) jsoner.deserialize_object (typeof (AccountInfo));
-
-            bytes = soup_wrapper.get_sync (
-                "https://login.yandex.ru/info",
-                {"auth"},
-                {{"format", "json"}},
-                {{"Host", "login.yandex.ru"}}
-            );
-            jsoner = Jsoner.from_bytes (bytes, null, Case.SNAKE);
-
-            me.avatar_info = (AvatarInfo) jsoner.deserialize_object (typeof (AvatarInfo));
-
-            return me;
         }
 
         public Playlist get_playlist_info (owned string? uid = null, string kind = "3") throws ClientError, BadStatusCodeError {

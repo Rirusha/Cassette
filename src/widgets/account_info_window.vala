@@ -25,93 +25,39 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.Avatar avatar;
         [GtkChild]
-        unowned Gtk.Label login_format_label;
-        [GtkChild]
-        unowned Gtk.Label phone_format_label;
+        unowned Gtk.Label login_label;
         [GtkChild]
         unowned Gtk.Label plus_label;
         [GtkChild]
-        unowned Gtk.Label add_label;
-        [GtkChild]
-        unowned Gtk.Box options_box;
-        [GtkChild]
-        unowned Gtk.Label first_name_format_label;
-        [GtkChild]
-        unowned Gtk.Label second_name_format_label;
-        [GtkChild]
-        unowned Gtk.Label display_name_format_label;
-        [GtkChild]
-        unowned Gtk.Label birthday_format_label;
+        unowned Gtk.Label public_name_label;
 
-        public YaMAPI.AccountInfo account_info { get; construct; }
+        public YaMAPI.Account.About account_info { get; construct; }
 
-        public AccountInfoWindow (YaMAPI.AccountInfo account_info) {
+        public AccountInfoWindow (YaMAPI.Account.About account_info) {
             Object (account_info: account_info);
         }
 
         construct {
             load_avatar.begin ();
 
-            if (account_info.account.login != null) {
-                login_format_label.label = login_format_label.label.printf (account_info.account.login);
-                login_format_label.visible = true;
+            public_name_label.label = account_info.public_name;
+            login_label.label = account_info.login;
+
+            if (account_info.has_plus) {
+                plus_label.label = "   %s   ".printf (_("Has Plus"));
+                plus_label.add_css_class ("plus-background");
+
+            } else {
+                plus_label.label = _("No Plus");
             }
 
-            if (account_info.account.passport_phones.size != 0) {
-                phone_format_label.label = phone_format_label.label.printf (account_info.account.passport_phones[0].phone);
-                phone_format_label.visible = true;
-            }
-
-            plus_label.visible = account_info.plus.has_plus;
-
-            if (account_info.has_options.size != 0) {
-                add_label.visible = true;
-                options_box.visible = true;
-
-                foreach (var option in account_info.has_options) {
-                    string name;
-
-                    switch (option) {
-                        case "bookmate":
-                            name = "Bookmate";
-                            break;
-                        default:
-                            assert_not_reached ();
-                    }
-
-                    var label = new Gtk.Label (name) { halign = Gtk.Align.START, margin_start = 4 };
-                    label.add_css_class ("title-5");
-                    options_box.append (label);
-                }
-            }
-
-            if (account_info.account.first_name != null) {
-                first_name_format_label.label = first_name_format_label.label.printf (account_info.account.first_name);
-                first_name_format_label.visible = true;
-            }
-
-            if (account_info.account.second_name != null) {
-                second_name_format_label.label = second_name_format_label.label.printf (account_info.account.second_name);
-                second_name_format_label.visible = true;
-            }
-
-            if (account_info.account.display_name != null) {
-                display_name_format_label.label = display_name_format_label.label.printf (account_info.account.display_name);
-                display_name_format_label.visible = true;
-            }
-
-            if (account_info.account.birthday != null) {
-                birthday_format_label.label = birthday_format_label.label.printf (account_info.account.birthday);
-                birthday_format_label.visible = true;
-            }
-
-            if (Config.POSTFIX == ".Devel") {
+            if (Cassette.application.is_devel) {
                 add_css_class ("devel");
             }
         }
 
         async void load_avatar () {
-            avatar.text = account_info.account.get_user_name ();
+            avatar.text = account_info.public_name;
             avatar.size = 200;
             var pixbuf = yield Cachier.get_image (account_info, 200);
             if (pixbuf != null) {

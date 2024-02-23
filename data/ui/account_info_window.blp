@@ -2,142 +2,60 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteAccountInfoWindow : Adw.Window {
-  content:   Adw.ToolbarView {
+  title: _("Account information");
+  default-width: 300;
+  default-height: 420;
+
+  content: Adw.ToolbarView {
     [top]
-    Adw.HeaderBar {
-    }
-    content: 
-    Adw.Clamp {
+    Adw.HeaderBar { }
+
+    content: Adw.Clamp {
       margin-top: 16;
       margin-bottom: 16;
       margin-start: 16;
       margin-end: 16;
-      maximum-size: 600;
+      maximum-size: 900;
 
       Box {
         spacing: 32;
+        orientation: vertical;
 
-        Adw.Avatar avatar {
-        }
+        Adw.Avatar avatar { }
 
         Box {
           valign: center;
           orientation: vertical;
           spacing: 8;
 
-          Label login_format_label {
+          Label public_name_label {
             styles [
               "title-1",
             ]
 
-            halign: start;
+            halign: center;
             hexpand: true;
-            visible: false;
             wrap: true;
-            label: C_("account info window", "Login: %s");
           }
 
-          Label phone_format_label {
+          Label login_label {
             styles [
               "title-2",
             ]
 
-            halign: start;
+            halign: center;
             hexpand: true;
-            visible: false;
-            ellipsize: middle;
-            label: C_("account info window", "Phone number: %s");
+            wrap: true;
           }
 
           Label plus_label {
             styles [
-              "title-4",
-              "accent",
+              "title-4"
             ]
 
-            halign: start;
+            halign: center;
             hexpand: true;
-            visible: false;
             wrap: true;
-            label: C_("account info window", "Has Plus");
-          }
-
-          Separator {
-            styles [
-              "spacer",
-            ]
-          }
-
-          Label first_name_format_label {
-            styles [
-              "title-4",
-            ]
-
-            halign: start;
-            hexpand: true;
-            visible: false;
-            wrap: true;
-            label: C_("account info window", "First name: %s");
-          }
-
-          Label second_name_format_label {
-            styles [
-              "title-4",
-            ]
-
-            halign: start;
-            hexpand: true;
-            visible: false;
-            wrap: true;
-            label: C_("account info window", "Second name: %s");
-          }
-
-          Label display_name_format_label {
-            styles [
-              "title-4",
-            ]
-
-            halign: start;
-            hexpand: true;
-            visible: false;
-            wrap: true;
-            label: C_("account info window", "Display name: %s");
-          }
-
-          Label birthday_format_label {
-            styles [
-              "title-4",
-            ]
-
-            halign: start;
-            hexpand: true;
-            visible: false;
-            wrap: true;
-            label: C_("account info window", "Birthday: %s");
-          }
-
-          Separator {
-            styles [
-              "spacer",
-            ]
-          }
-
-          Label add_label {
-            styles [
-              "title-4",
-            ]
-
-            halign: start;
-            hexpand: true;
-            visible: false;
-            wrap: true;
-            label: C_("account info window", "Additional options:");
-          }
-
-          Box options_box {
-            orientation: vertical;
-            spacing: 4;
-            visible: false;
           }
         }
       }

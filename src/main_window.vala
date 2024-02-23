@@ -295,7 +295,7 @@ namespace Cassette {
         }
 
         async void load_avatar () {
-            avatar.text = yam_talker.me.account.get_user_name ();
+            avatar.text = yam_talker.me.public_name;
             avatar.size = 22;
             var pixbuf = yield Cachier.get_image (yam_talker.me, 28);
             if (pixbuf != null) {

@@ -31,7 +31,7 @@ namespace Cassette.Client.YaMAPI.Account {
         const string ISLANDS_200 = "islands-200";
     }
 
-    public class About : YaMObject, HasID {
+    public class About : YaMObject, HasCover, HasID {
 
         public string oid {
             owned get {
@@ -47,12 +47,12 @@ namespace Cassette.Client.YaMAPI.Account {
         /*
          * Имеет ли пользователь активную подписку Я.Плюс
          */
-        public bool has_plus { get; set; }
+        public bool has_plus { get; set; default = false; }
 
         /*
          * Логин пользователя
          */
-        public string login { get; set; }
+        public string login { get; set; default = ""; }
 
         /*
          * Id аватара пользователя
@@ -67,7 +67,7 @@ namespace Cassette.Client.YaMAPI.Account {
         /*
          * Публичное имя пользователя
          */
-        public string public_name { get; set; }
+        public string public_name { get; set; default = ""; }
 
         /*
          * Является ли аккаунт детским
@@ -112,6 +112,17 @@ namespace Cassette.Client.YaMAPI.Account {
                 avatar_id,
                 avatar_size
             );
+        }
+
+        public Gee.ArrayList<string> get_cover_items_by_size (int size) {
+            var uris = new Gee.ArrayList<string> ();
+
+            string avatar_uri = get_avatar_uri (size);
+            if (avatar_uri != null) {
+                uris.add (avatar_uri);
+            }
+
+            return uris;
         }
     }
 }

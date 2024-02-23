@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace CassetteClient.Cachier {
+namespace Cassette.Client.Cachier {
 
     namespace Filenames {
         public const string ROOT_DIR_NAME = "cassette";

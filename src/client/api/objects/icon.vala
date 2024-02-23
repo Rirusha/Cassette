@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     public class Icon : YaMObject {
 
         public string background_color { get; set; }

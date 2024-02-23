@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using CassetteClient;
+using Cassette.Client;
 
 
 namespace Cassette {

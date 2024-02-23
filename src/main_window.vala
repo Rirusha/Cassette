@@ -16,7 +16,7 @@
  */
 
 
-using CassetteClient;
+using Cassette.Client;
 
 
 namespace Cassette {
@@ -61,7 +61,7 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.HeaderBar header_bar;
 
-        int reconnect_timer = CassetteClient.TIMEOUT;
+        int reconnect_timer = Cassette.Client.TIMEOUT;
 
         public Pager pager { get; construct; }
 
@@ -286,7 +286,7 @@ namespace Cassette {
                 } else {
                     info_banner.sensitive = true;
                     info_banner.button_label = _("Reconnect");
-                    reconnect_timer = CassetteClient.TIMEOUT;
+                    reconnect_timer = Cassette.Client.TIMEOUT;
                     return Source.REMOVE;
                 }
             });

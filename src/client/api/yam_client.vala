@@ -16,9 +16,9 @@
  */
 
 
-using CassetteClient.YaMAPI.Rotor;
+using Cassette.Client.YaMAPI.Rotor;
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
 
     public class YaMClient : Object {
 

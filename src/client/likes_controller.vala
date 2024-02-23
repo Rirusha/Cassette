@@ -17,7 +17,7 @@
 
 using Gee;
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     public enum LikableType {
         TRACK,

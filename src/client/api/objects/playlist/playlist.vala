@@ -18,7 +18,7 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     public class Playlist : YaMObject, HasCover, HasID, HasTrackList {
 
         public bool is_public {

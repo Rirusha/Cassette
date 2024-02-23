@@ -15,10 +15,10 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using CassetteClient.YaMAPI;
+using Cassette.Client.YaMAPI;
 using Gee;
 
-namespace CassetteClient {
+namespace Cassette.Client {
     public class TrackLocal : Track {
 
         construct {

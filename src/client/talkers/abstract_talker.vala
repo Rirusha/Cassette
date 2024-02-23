@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     public abstract class AbstractTalker : Object {
         /*

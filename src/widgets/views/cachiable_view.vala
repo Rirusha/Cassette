@@ -16,7 +16,7 @@
  */
 
 
-using CassetteClient;
+using Cassette.Client;
 
 namespace Cassette {
     public abstract class CachiableView : HasTracksView {

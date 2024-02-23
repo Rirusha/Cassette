@@ -1,5 +1,5 @@
-using CassetteClient;
-using CassetteClient.Cachier;
+using Cassette.Client;
+using Cassette.Client.Cachier;
 
 
 public int main (string[] args) {

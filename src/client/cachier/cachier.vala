@@ -18,7 +18,7 @@
 
 using Gee;
 
-namespace CassetteClient.Cachier {
+namespace Cassette.Client.Cachier {
 
     public class Cachier : Object {
         public ArrayList<Job> job_list { get; default = new ArrayList<Job> (); }

@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.YaMAPI {
+namespace Cassette.Client.YaMAPI {
     public class Play : YaMObject {
         /*
             Объект для отправки фидбека о прослушивании трека

@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.Mpris {
+namespace Cassette.Client.Mpris {
     [DBus (name = "org.mpris.MediaPlayer2")]
     public class Mpris : Object {
         public bool can_quit { get; set; default = true; }

@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     public delegate void ThreadFunc ();
     //  public delegate void SourceFunc ();

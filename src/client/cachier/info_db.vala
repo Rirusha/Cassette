@@ -18,7 +18,7 @@
 
 using Gee;
 
-namespace CassetteClient.Cachier {
+namespace Cassette.Client.Cachier {
     public class InfoDB : Object {
         /*
             Класс-обёртка для базы данных

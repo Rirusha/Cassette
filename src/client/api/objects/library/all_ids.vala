@@ -18,7 +18,7 @@
 
 using Gee;
 
-namespace CassetteClient.YaMAPI.Library {
+namespace Cassette.Client.YaMAPI.Library {
 
     public class AllIds : YaMObject {
 

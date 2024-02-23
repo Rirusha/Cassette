@@ -16,10 +16,10 @@
  */
 
 
-using CassetteClient.YaMAPI;
+using Cassette.Client.YaMAPI;
 
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     delegate void NetFunc () throws ClientError, BadStatusCodeError;
 
@@ -218,8 +218,8 @@ namespace CassetteClient {
 
                     client.update_position_queue (queue.id, queue.current_index);
                 });
-            } catch (CassetteClient.BadStatusCodeError e) {
-                if (e is CassetteClient.BadStatusCodeError.NOT_FOUND) {
+            } catch (Cassette.Client.BadStatusCodeError e) {
+                if (e is Cassette.Client.BadStatusCodeError.NOT_FOUND) {
                     queue.id = null;
 
                     update_position_queue (queue);

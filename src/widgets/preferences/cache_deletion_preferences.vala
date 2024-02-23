@@ -16,8 +16,8 @@
  */
 
 
-using CassetteClient;
-using CassetteClient.Cachier;
+using Cassette.Client;
+using Cassette.Client.Cachier;
 using Gee;
 
 

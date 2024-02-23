@@ -18,7 +18,7 @@
 
 using Gee;
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     /**
      * Перечисление нейм кейсов.
@@ -30,8 +30,8 @@ namespace CassetteClient {
     }
 
     /**
-     * Класс для сериализации и десериализации объектов ``CassetteClient.YaMObject``.
-     * Умеет работать с ``CassetteClient.YaMAPI.YaMObject``, ``Gee.ArrayList<YaMObject>`` и ``GLib.Value``
+     * Класс для сериализации и десериализации объектов ``Cassette.Client.YaMObject``.
+     * Умеет работать с ``Cassette.Client.YaMAPI.YaMObject``, ``Gee.ArrayList<YaMObject>`` и ``GLib.Value``
      */
     public class Jsoner : Object {
 
@@ -49,7 +49,7 @@ namespace CassetteClient {
         /**
          * Базовый конструктор класса. Выполняет инициализацию для десериализации.
          * Принимает json строку. В случе ошибки при парсинге,
-         * выбрасывает ``CassetteCLient.ClientError.PARSE_ERROR``
+         * выбрасывает ``Cassette.Client.ClientError.PARSE_ERROR``
          *
          * @param json_string   json строка
          * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
@@ -77,7 +77,7 @@ namespace CassetteClient {
         /**
          * Конструктор класса. Выполняет инициализацию для десериализации.
          * Принимает json строку в виде байтов, объекта ``GLib.Bytes``. В случе ошибки при парсинге,
-         * выбрасывает ``CassetteCLient.ClientError.PARSE_ERROR``
+         * выбрасывает ``Cassette.Client.ClientError.PARSE_ERROR``
          *
          * @param bytes         json строка в виде байтов, объекта ``GLib.Bytes``
          * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
@@ -90,7 +90,7 @@ namespace CassetteClient {
         /**
          * Конструктор класса. Выполняет инициализацию для десериализации.
          * Принимает json строку в виде байтов, массива ``uint8``. В случе ошибки при парсинге,
-         * выбрасывает ``CassetteCLient.ClientError.PARSE_ERROR``
+         * выбрасывает ``Cassette.Client.ClientError.PARSE_ERROR``
          *
          * @param bytes         json строка в виде байтов, массива ``uint8``
          * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
@@ -102,7 +102,7 @@ namespace CassetteClient {
 
         /**
          * Функция для выполнения перехода в переданной ноде по названиям элементов.
-         * В случае, если элемент не найден, будет выкинута ``CassetteClient.ClientError.PARSE_ERROR``
+         * В случае, если элемент не найден, будет выкинута ``Cassette.Client.ClientError.PARSE_ERROR``
          *
          * @param node          исходная json нода
          * @param sub_members   массив "путь" имён элементов, по которому нужно пройти
@@ -171,7 +171,7 @@ namespace CassetteClient {
         /**
          * Функция для сериализации ``Gee.ArrayList``.
          * Элементы списка могут быть:
-         *  - ``CassetteClient.YaMObject`` 
+         *  - ``Cassette.Client.YaMObject`` 
          *  - ``string`` 
          *  - ``int32`` 
          *  - ``int64`` 
@@ -219,10 +219,10 @@ namespace CassetteClient {
         }
 
         /**
-         * Функция для сериализации ``CassetteClient.YaMAPI.YaMObject`` или ``null``.
+         * Функция для сериализации ``Cassette.Client.YaMAPI.YaMObject`` или ``null``.
          *
          * @param builder       объект ``Json.Builder``
-         * @param yam_obj       объект ``CassetteClient.YaMAPI.YaMObject``, который нужно сериализовать.
+         * @param yam_obj       объект ``Cassette.Client.YaMAPI.YaMObject``, который нужно сериализовать.
          *                      Может быть ``null``
          * @param names_case    нейм кейс имён элементов в json строке
          */
@@ -370,7 +370,7 @@ namespace CassetteClient {
         }
 
         /**
-         * Метод для десериализации объекта ``CassetteClient.YaMAPI.YaMObject``.
+         * Метод для десериализации объекта ``Cassette.Client.YaMAPI.YaMObject``.
          *
          * @param obj_type  тип объекта, по которому будет десериализован json
          * @param node      нода, которая будет десериализована. Будет использовано свойство

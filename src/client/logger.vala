@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient {
+namespace Cassette.Client {
 
     public enum LogLevel {
         // Включают все логи полностью

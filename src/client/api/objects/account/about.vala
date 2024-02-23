@@ -16,7 +16,7 @@
  */
 
 
-namespace CassetteClient.YaMAPI.Account {
+namespace Cassette.Client.YaMAPI.Account {
 
     namespace AvatarSize {
         const string ISLANDS_SMALL = "islands-small";

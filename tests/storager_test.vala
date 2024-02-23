@@ -1,6 +1,6 @@
-using CassetteClient;
-using CassetteClient.Cachier;
-using CassetteClient.YaMAPI;
+using Cassette.Client;
+using Cassette.Client.Cachier;
+using Cassette.Client.YaMAPI;
 
 public static Storager storager;
 

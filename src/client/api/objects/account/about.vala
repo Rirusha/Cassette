@@ -31,7 +31,13 @@ namespace Cassette.Client.YaMAPI.Account {
         const string ISLANDS_200 = "islands-200";
     }
 
-    public class About : YaMObject {
+    public class About : YaMObject, HasID {
+
+        public string oid {
+            owned get {
+                return uid;
+            }
+        }
 
         /*
          * Id пользователя

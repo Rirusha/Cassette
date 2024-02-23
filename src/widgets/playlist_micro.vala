@@ -196,8 +196,8 @@ namespace Cassette {
             }
 
             var track_list = playlist_info.get_filtered_track_list (
-                storager.settings.get_boolean ("explicit-visible"),
-                storager.settings.get_boolean ("child-visible")
+                Cassette.settings.get_boolean ("explicit-visible"),
+                Cassette.settings.get_boolean ("child-visible")
             );
 
             var queue = new YaMAPI.Queue () {
@@ -205,6 +205,7 @@ namespace Cassette {
                 context = YaMAPI.Context.from_obj (playlist_info),
                 tracks = track_list
             };
+
             if (player.shuffle_mode == Player.ShuffleMode.ON) {
                 queue.randomize_index ();
             }
@@ -251,8 +252,8 @@ namespace Cassette {
             }
 
             var track_list = playlist_info.get_filtered_track_list (
-                storager.settings.get_boolean ("explicit-visible"),
-                storager.settings.get_boolean ("child-visible")
+                Cassette.settings.get_boolean ("explicit-visible"),
+                Cassette.settings.get_boolean ("child-visible")
             );
 
             player.add_many (track_list);

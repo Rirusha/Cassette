@@ -97,8 +97,8 @@ namespace Cassette {
 
             carousel.page_changed.connect (on_carousel_page_changed);
 
-            storager.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("mute", volume_button, "mute", SettingsBindFlags.DEFAULT);
+            CassetteClient.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
+            CassetteClient.settings.bind ("mute", volume_button, "mute", SettingsBindFlags.DEFAULT);
 
             slider.change_value.connect ((scroll_type, new_value) => {
                 player.seek ((int) (new_value * 1000));

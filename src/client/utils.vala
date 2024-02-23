@@ -55,6 +55,7 @@ namespace CassetteClient {
     public static Threader threader;
     public static YaMTalker yam_talker;
     public static Player.Player player;
+    public static Settings settings;
 
     /**
      * Получение кода языка для передачи в запросах api.
@@ -82,15 +83,17 @@ namespace CassetteClient {
      * Инициализация клиента. Создание синглтонов.
      */
     public static void init (string application_id, bool is_devel) {
+        settings = new Settings ("io.github.Rirusha.Cassette.client");
+
         cachier = new Cachier.Cachier ();
-        storager = new Cachier.Storager (application_id);
+        storager = new Cachier.Storager ();        
 
         if (is_devel) {
             Logger.log_level = LogLevel.DEVEL;
         } else {
-            storager.settings.changed.connect ((key) => {
+            settings.changed.connect ((key) => {
                 if (key == "debug-mode") {
-                    if (storager.settings.get_boolean ("debug-mode")) {
+                    if (settings.get_boolean ("debug-mode")) {
                         Logger.log_level = LogLevel.DEBUG;
                     } else {
                         Logger.log_level = LogLevel.USER;

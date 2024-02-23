@@ -60,7 +60,7 @@ namespace Cassette {
         }
 
         construct {
-            storager.settings.changed.connect ((key) => {
+            Cassette.settings.changed.connect ((key) => {
                 if (key == "show-replaced-mark") {
                     check_replaced_mark_visible ();
                 }
@@ -68,7 +68,7 @@ namespace Cassette {
         }
 
         void check_replaced_mark_visible () {
-            if (_replaced_by != null && storager.settings.get_boolean ("show-replaced-mark")) {
+            if (_replaced_by != null && Cassette.settings.get_boolean ("show-replaced-mark")) {
                 track_replaced_mark.visible = true;
             } else {
                 track_replaced_mark.visible = false;

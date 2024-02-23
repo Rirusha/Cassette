@@ -12,7 +12,7 @@ public int main (string[] args) {
     Test.init (ref args);
 
     Test.add_func ("/storager/init", () => {
-        storager = new Storager ("io.github.Rirusha.Cassette");
+        storager = new Storager ();
     });
 
     Test.add_func ("/storager/move", () => {

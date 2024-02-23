@@ -31,8 +31,8 @@ namespace Cassette {
 
         public virtual void start_playing () {
             var track_list = object_info.get_filtered_track_list (
-                storager.settings.get_boolean ("explicit-visible"),
-                storager.settings.get_boolean ("child-visible")
+                Cassette.settings.get_boolean ("explicit-visible"),
+                Cassette.settings.get_boolean ("child-visible")
             );
 
             var queue = new YaMAPI.Queue () {

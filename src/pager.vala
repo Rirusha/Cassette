@@ -113,12 +113,12 @@ namespace Cassette {
             register = typeof (DevelView);
             register = Type.NONE;
 
-            storager.settings.changed.connect ((key) => {
+            Cassette.settings.changed.connect ((key) => {
                 if (
                     (key == "show-main" ||
                     key == "show-liked" ||
                     key == "show-playlists") &&
-                    storager.settings.get_boolean ("default-pages-set")
+                    Cassette.settings.get_boolean ("default-pages-set")
                 ) {
                     load_pages ();
                 }
@@ -223,7 +223,7 @@ namespace Cassette {
             clear_pages ();
 
             if (pages_type_if_failed != null) {
-                if (!storager.settings.get_boolean ("default-pages-set")) {
+                if (!Cassette.settings.get_boolean ("default-pages-set")) {
                     switch (pages_type_if_failed) {
                         case PagesType.ONLINE:
                             set_online_default_pages ();
@@ -234,7 +234,7 @@ namespace Cassette {
                         default:
                             assert_not_reached ();
                     }
-                    storager.settings.set_boolean ("default-pages-set", true);
+                    Cassette.settings.set_boolean ("default-pages-set", true);
                 }
             }
 
@@ -243,9 +243,9 @@ namespace Cassette {
         }
 
         void set_online_default_pages () {
-            storager.settings.set_boolean ("show-main", true);
-            storager.settings.set_boolean ("show-liked", true);
-            storager.settings.set_boolean ("show-playlists", true);
+            Cassette.settings.set_boolean ("show-main", true);
+            Cassette.settings.set_boolean ("show-liked", true);
+            Cassette.settings.set_boolean ("show-playlists", true);
         }
 
         void set_local_default_pages () {
@@ -262,7 +262,7 @@ namespace Cassette {
                 });
             }
 
-            if (storager.settings.get_boolean ("show-main")) {
+            if (Cassette.settings.get_boolean ("show-main")) {
                 add_page ({
                     "main",
                     _("Main"),
@@ -271,7 +271,7 @@ namespace Cassette {
                 });
             }
 
-            if (storager.settings.get_boolean ("show-liked")) {
+            if (Cassette.settings.get_boolean ("show-liked")) {
                 add_page ({
                     "liked",
                     _("Liked"),
@@ -281,7 +281,7 @@ namespace Cassette {
                 });
             }
 
-            if (storager.settings.get_boolean ("show-playlists")) {
+            if (Cassette.settings.get_boolean ("show-playlists")) {
                 add_page ({
                     "playlists",
                     _("Playlists"),

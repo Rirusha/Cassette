@@ -74,7 +74,7 @@ namespace Cassette {
             //  storager.settings.changed["show-liked"].connect (on_show_liked_change);
             //  on_show_liked_change ();
 
-            if (!storager.settings.get_boolean ("show-liked")) {
+            if (!Cassette.settings.get_boolean ("show-liked")) {
                 flow_box.append (liked_micro);
             }
             flow_box.append (new PlaylistCreateButton ());

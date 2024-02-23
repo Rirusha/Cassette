@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="cassette">
 
-	<enum id="io.github.Rirusha.Cassette.application-state">
+    <schema id="io.github.Rirusha.Cassette" path="/com/github/Rirusha/Cassette/">
+        <child schema="io.github.Rirusha.Cassette.application" name="application"/>
+        <child schema="io.github.Rirusha.Cassette.client" name="client"/>
+    </schema>
+
+    <!-- GUI Application -->
+
+	<enum id="io.github.Rirusha.Cassette.application.application-state">
 		<value nick="begin" value="0"/>
 		<value nick="online" value="1"/>
 		<value nick="local" value="2"/>
 		<value nick="offline" value="3"/>
 	</enum>
-	<enum id="io.github.Rirusha.Cassette.repeat-mode">
-		<value nick="off" value="0"/>
-		<value nick="repeat-one" value="1"/>
-		<value nick="repeat-all" value="2"/>
-	</enum>
-	<enum id="io.github.Rirusha.Cassette.shuffle-mode">
-		<value nick="off" value="0"/>
-		<value nick="on" value="1"/>
-	</enum>
 
-	<schema id="io.github.Rirusha.Cassette" path="/com/github/Rirusha/Cassette/">
+	<schema id="io.github.Rirusha.Cassette.application" path="/com/github/Rirusha/Cassette/application/">
 		
-		<key name="application-state" enum="io.github.Rirusha.Cassette.application-state">
+		<key name="application-state" enum="io.github.Rirusha.Cassette.application.application-state">
 			<default>"begin"</default>
-		</key>
-		<key name="repeat-mode" enum="io.github.Rirusha.Cassette.repeat-mode">
-			<default>"off"</default>
-		</key>
-		<key name="shuffle-mode" enum="io.github.Rirusha.Cassette.shuffle-mode">
-			<default>"off"</default>
 		</key>
 
 		<key name="window-width" type="i">
@@ -38,12 +30,6 @@
 		<key name="window-maximized" type="b">
 			<default>false</default>
 		</key>
-		<key name="volume" type="d">
-			<default>1.0</default>
-		</key>
-		<key name="mute" type="b">
-			<default>false</default>
-		</key>
 		<key name="available-visible" type="b">
 			<default>false</default>
 		</key>
@@ -53,28 +39,13 @@
 		<key name="child-visible" type="b">
 			<default>true</default>
 		</key>
-		<key name="max-thread-number" type="i">
-			<default>6</default>
-		</key>
-		<key name="is-hq" type="b">
-			<default>true</default>
-		</key>
-		<key name="can-cache" type="b">
-			<default>true</default>
-		</key>
 		<key name="show-replaced-mark" type="b">
 			<default>false</default>
 		</key>
 		<key name="show-save-stack" type="b">
 			<default>true</default>
 		</key>
-		<key name="add-tracks-to-start" type="b">
-			<default>true</default>
-		</key>
 		<key name="show-temp-save-mark" type="b">
-			<default>false</default>
-		</key>
-		<key name="try-load-queue-every-activate" type="b">
 			<default>false</default>
 		</key>
 		<key name="default-pages-set" type="b">
@@ -89,11 +60,50 @@
 		<key name="show-playlists" type="b">
 			<default>true</default>
 		</key>
+	</schema>
+
+    <!-- Client -->
+
+    <enum id="io.github.Rirusha.Cassette.client.repeat-mode">
+		<value nick="off" value="0"/>
+		<value nick="repeat-one" value="1"/>
+		<value nick="repeat-all" value="2"/>
+	</enum>
+	<enum id="io.github.Rirusha.Cassette.client.shuffle-mode">
+		<value nick="off" value="0"/>
+		<value nick="on" value="1"/>
+	</enum>
+
+	<schema id="io.github.Rirusha.Cassette.client" path="/com/github/Rirusha/Cassette/client/">
+
+		<key name="repeat-mode" enum="io.github.Rirusha.Cassette.client.repeat-mode">
+			<default>"off"</default>
+		</key>
+		<key name="shuffle-mode" enum="io.github.Rirusha.Cassette.client.shuffle-mode">
+			<default>"off"</default>
+		</key>
+
+		<key name="volume" type="d">
+			<default>1.0</default>
+		</key>
+		<key name="mute" type="b">
+			<default>false</default>
+		</key>
+		<key name="max-thread-number" type="i">
+			<default>6</default>
+		</key>
+		<key name="add-tracks-to-start" type="b">
+			<default>true</default>
+		</key>
+		<key name="is-hq" type="b">
+			<default>true</default>
+		</key>
+		<key name="can-cache" type="b">
+			<default>true</default>
+		</key>
 		<key name="debug-mode" type="b">
 			<default>false</default>
 		</key>
-		<key name="force-mobile" type="b">
-			<default>false</default>
-		</key>
 	</schema>
+
 </schemalist>

@@ -121,7 +121,7 @@ namespace CassetteClient.Player {
                         break;
                 }
 
-                if (storager.settings.get_boolean ("can-cache")) {
+                if (settings.get_boolean ("can-cache")) {
                     prepare_next_track.begin ();
                 }
 
@@ -226,8 +226,8 @@ namespace CassetteClient.Player {
                 next_repeat ();
             });
 
-            storager.settings.bind ("repeat-mode", this, "repeat-mode", SettingsBindFlags.DEFAULT);
-            storager.settings.bind ("shuffle-mode", this, "shuffle-mode", SettingsBindFlags.DEFAULT);
+            settings.bind ("repeat-mode", this, "repeat-mode", SettingsBindFlags.DEFAULT);
+            settings.bind ("shuffle-mode", this, "shuffle-mode", SettingsBindFlags.DEFAULT);
 
             current_track_start_loading.connect (() => {
                 is_loading = true;
@@ -237,10 +237,10 @@ namespace CassetteClient.Player {
             });
 
             bind_property ("volume", playbin, "volume", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-            storager.settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
+            settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
 
             bind_property ("mute", playbin, "mute", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-            storager.settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
+            settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
 
             Timeout.add ((int) (PLAY_STEP * 1000), () => {
                 if (playback_pos_sec > 0.0) {
@@ -445,7 +445,7 @@ namespace CassetteClient.Player {
 
             current_track_finish_loading ();
 
-            if (storager.settings.get_boolean ("can-cache")) {
+            if (settings.get_boolean ("can-cache")) {
                 prepare_next_track.begin ();
             }
         }
@@ -484,7 +484,7 @@ namespace CassetteClient.Player {
                 player_tl.add_track_end (track_info);
             }
 
-            if (storager.settings.get_boolean ("can-cache")) {
+            if (settings.get_boolean ("can-cache")) {
                 prepare_next_track.begin ();
             }
         }
@@ -496,7 +496,7 @@ namespace CassetteClient.Player {
             if (player_tl != null) {
                 player_tl.add_many_end (track_list);
 
-                if (storager.settings.get_boolean ("can-cache")) {
+                if (settings.get_boolean ("can-cache")) {
                     prepare_next_track.begin ();
                 }
             }
@@ -508,7 +508,7 @@ namespace CassetteClient.Player {
             var player_tl = player_mode as PlayerTrackList;
             player_tl.remove_track_by_pos (position);
 
-            if (player_tl.queue.tracks.size != 0 && storager.settings.get_boolean ("can-cache")) {
+            if (player_tl.queue.tracks.size != 0 && settings.get_boolean ("can-cache")) {
                 prepare_next_track.begin ();
             }
         }
@@ -520,7 +520,7 @@ namespace CassetteClient.Player {
             if (player_tl != null) {
                 player_tl.remove_track (track_info);
 
-                if (player_tl.queue.tracks.size != 0 && storager.settings.get_boolean ("can-cache")) {
+                if (player_tl.queue.tracks.size != 0 && settings.get_boolean ("can-cache")) {
                     prepare_next_track.begin ();
                 }
             }

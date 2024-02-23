@@ -29,14 +29,6 @@
               </object>
             </child>
             <child>
-              <object class="AdwSwitchRow" id="try_load_queue_every_activate_switch">
-                <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference window">Try to load queue every window activation</property>
-                <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference window">Every time it is expanded or the focus changes from another window queue will loaded from the device on which you listened to music last time.</property>
-              </object>
-            </child>
-            <child>
               <object class="AdwSwitchRow" id="is_hq_switch">
                 <!-- Translators: title of preference -->
                 <property name="title" translatable="true" context="preference window">Download high quality tracks</property>
@@ -122,16 +114,11 @@
             </child>
           </object>
         </child>
-        <child>
+        <!-- <child>
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="true" context="preference window">Experimental</property>
-            <child>
-              <object class="AdwSwitchRow" id="force_mobile_switch">
-                <property name="title" translatable="true" context="preference window">Force enable mobile mode</property>
-              </object>
-            </child>
           </object>
-        </child>
+        </child> -->
       </object>
     </child>
     <child>

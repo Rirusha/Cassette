@@ -354,6 +354,16 @@ namespace Cassette.Client {
                         }
                     }
 
+                } else if (ld_type_name == "artists") {
+                    foreach (var ld_val_name in ld_type_obj.get_members ()) {
+                        if (ld_type_obj.get_int_member (ld_val_name) == 1) {
+                            lib_data.liked_artists.add (ld_val_name);
+
+                        } else {
+                            lib_data.disliked_artists.add (ld_val_name);
+                        }
+                    }
+
                 } else {
                     var tval = Value (Type.OBJECT);
                     lib_data.get_property (camel2kebab (ld_type_name), ref tval);

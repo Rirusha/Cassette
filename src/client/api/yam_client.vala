@@ -805,7 +805,7 @@ namespace CassetteClient.YaMAPI {
         /*
          * Получение последней прослушиваемой волны текущим пользователем
          */
-        public Rotor.Wave rotor_wave_last () {
+        public Rotor.Wave rotor_wave_last () throws ClientError, BadStatusCodeError {
             var bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/rotor/wave/last",
                 {"default"}

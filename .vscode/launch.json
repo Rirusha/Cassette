@@ -8,9 +8,12 @@
             "name": "Debug",
             "type": "gdb",
             "request": "launch",
-            "target": "${workspaceFolder}/_build/src/cassette",
-            "cwd": "${workspaceFolder}",
-            "preLaunchTask": "Compile"
-        }
+            "preLaunchTask": "Flatpak launch build",
+            "gdbpath": "${workspaceRoot}/.vscode/gdb.sh",
+            "target": "${workspaceRoot}/_build/src/cassette",
+            "arguments": "",
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText"
+        },        
     ]
 }

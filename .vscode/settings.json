@@ -7,5 +7,10 @@
         ".flatpak/**": true,
         "_build/**": true
     },
+<<<<<<< HEAD
     "vala.languageServerPath": "${workspaceFolder}/.flatpak/vala-language-server.sh"
+=======
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/_build/compile_commands.json",
+    "debug.allowBreakpointsEverywhere": true,
+>>>>>>> a44b6c9 (Изменить таски и т.д.)
 }

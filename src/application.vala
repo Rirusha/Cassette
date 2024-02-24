@@ -205,13 +205,16 @@ namespace Cassette {
                 RIRUSHA,
                 "NaumovSN"
             };
+
             string[] designers = {
                 RIRUSHA
             };
+
             string[] artists = {
                 RIRUSHA,
                 "Arseniy Nechkin <krisgeniusnos@gmail.com>"
             };
+
             string[] documenters = {
 
             };

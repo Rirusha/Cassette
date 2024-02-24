@@ -24,7 +24,7 @@ jobs:
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
       options: --privileged
-    
+
     steps:
     - uses: actions/checkout@v4
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6

@@ -35,15 +35,15 @@
 Все запланированные фичи можете [посмотреть в бэклоге](https://github.com/users/Rirusha/projects/2)
 
 ## Установка
-### Через репозиторий...
+### Через репозиторий …
 Приложение Cassette доступно здесь:
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
-### ALT Sisyphus
+#### ALT Sisyphus
 ```
-apt-get install cassette
+sudo apt-get install cassette
 ```
-### ... или используя flatpak
+### … или используя flatpak
 Вы можете скачать по [ссылке](https://flathub.org/apps/details/io.github.Rirusha.Cassette) или используя терминал
 ```
 flatpak install flathub io.github.Rirusha.Cassette
@@ -78,8 +78,29 @@ flatpak install flathub io.github.Rirusha.Cassette
 ```
 meson setup builddir
 ninja -C builddir test
-ninja -C builddir install
 ```
+
+Установка:
+```
+sudo ninja -C builddir install
+```
+
+Удаление:
+```
+sudo ninja -C builddir uninstall
+```
+
+## Для разработчиков
+Для возможности запуска devel версии понадобиться подключить [gnome-nightly](https://wiki.gnome.org/Apps/Nightly) репозиторий и установить:
+* org.gnome.Sdk//master
+* org.gnome.Platform//master
+* org.freedesktop.Sdk.Extension.vala-nightly//23.08beta 
+```
+flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+flatpak install org.gnome.Sdk//master org.gnome.Platform//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta 
+```
+#### … использующих Visual Studio Code
+Репозиторий имеет рекоммендуемые расширения и сценарии проверки линта и запуска приложения с gdb.
 
 ## Полезные ссылки
 * Телеграм-канал с девлогами: https://t.me/CassetteGNOME_Devlog

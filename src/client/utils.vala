@@ -86,7 +86,7 @@ namespace Cassette.Client {
         settings = new Settings ("io.github.Rirusha.Cassette.client");
 
         cachier = new Cachier.Cachier ();
-        storager = new Cachier.Storager ();        
+        storager = new Cachier.Storager ();
 
         if (is_devel) {
             Logger.log_level = LogLevel.DEVEL;

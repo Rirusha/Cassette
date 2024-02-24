@@ -179,14 +179,14 @@ namespace Cassette.Client.YaMAPI {
         public void artists_brief_info (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
-        
+
         /**
          * TODO: Placeholder
          */
         public void artists_similar (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
-        
+
         /**
          * TODO: Placeholder
          */
@@ -359,7 +359,7 @@ namespace Cassette.Client.YaMAPI {
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
-        
+
         /**
          * TODO: Placeholder
          */
@@ -545,7 +545,7 @@ namespace Cassette.Client.YaMAPI {
             var bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/rotor/wave/last",
                 {"default"}
-            ); 
+            );
 
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 

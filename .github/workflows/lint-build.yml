@@ -1,0 +1,35 @@
+name: "Lint & Build"
+
+on:  
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    name: "Lint"
+    runs-on: ubuntu-latest
+
+    container:
+      image: valalang/lint
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Lint
+      run: io.elementary.vala-lint -d .
+
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-45
+      options: --privileged
+    
+    steps:
+    - uses: actions/checkout@v4
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: cassette.flatpak
+        manifest-path: io.github.Rirusha.Cassette.Devel.json
+        # run-tests: true
+        cache-key: flatpak-builder-${{ github.sha }}

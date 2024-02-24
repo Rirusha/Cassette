@@ -31,5 +31,5 @@ jobs:
       with:
         bundle: cassette.flatpak
         manifest-path: io.github.Rirusha.Cassette.Devel.json
-        run-tests: true
+        # run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}

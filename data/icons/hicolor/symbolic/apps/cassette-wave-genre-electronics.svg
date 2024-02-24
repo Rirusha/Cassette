@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16px"
+   viewBox="0 0 16 16"
+   width="16px"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="cassette-wave-genre-electronics.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs5" />
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="16"
+     inkscape:cx="0.65625"
+     inkscape:cy="21.53125"
+     inkscape:window-width="1920"
+     inkscape:window-height="1131"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" />
+  <path
+     id="path99"
+     style="color:#000000;fill:#2e3436;fill-opacity:1;stroke-width:1.19517;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;-inkscape-stroke:none;paint-order:stroke fill markers"
+     d="M 8,-6e-8 C 3.6099645,-6e-8 -7e-8,3.609972 -6e-8,8 -6e-8,12.390028 3.6099645,16 8,16 12.390037,16 16,12.390028 16,8 16,3.609972 12.390037,-7e-8 8,-6e-8 Z M 9.5172057,2.6204398 A 5.6098,5.6098 0 0 1 12.917982,5.323674 c -0.01998,-0.00119 -0.03974,-0.00414 -0.06003,-0.00414 H 9.5172057 Z M 6.2633894,2.6804658 2.4838293,8.8051747 c -0.00744,0.00654 -0.015529,0.011871 -0.022768,0.018629 A 5.6098,5.6098 0 0 1 2.3906856,8 5.6098,5.6098 0 0 1 6.2633894,2.6804658 Z m 1.134282,2.196119 v 1.4323415 0.1407503 c 0,0.5481111 0.441281,0.989392 0.9893921,0.989392 H 8.5278138 10.875033 L 8.6023287,11.125485 V 9.5503231 c 0,-0.344836 -0.1748406,-0.6468252 -0.4408797,-0.823803 C 8.0842973,8.674483 7.9975526,8.6331563 7.9068565,8.6043985 h -0.00207 c -0.00143,-4.394e-4 -0.00271,-0.00164 -0.00414,-0.00207 C 7.8075931,8.5735066 7.7094979,8.5588617 7.606727,8.5588617 H 5.1249677 Z M 13.536869,7.1699871 A 5.6098,5.6098 0 0 1 13.609319,8 5.6098,5.6098 0 0 1 9.7366151,13.319534 L 13.524455,7.1803364 c 0.004,-0.00362 0.0085,-0.00667 0.01242,-0.010349 z M 3.0820181,10.674257 c 0.018624,10e-4 0.036995,0.0041 0.055886,0.0041 h 3.3448901 v 2.701164 A 5.6098,5.6098 0 0 1 3.0820181,10.674257 Z" />
+</svg>

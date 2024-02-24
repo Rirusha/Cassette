@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16px"
+   viewBox="0 0 16 16"
+   width="16px"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="cassette-wave-classes-driving.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs5" />
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="14.738757"
+     inkscape:cx="5.4617903"
+     inkscape:cy="21.67754"
+     inkscape:window-width="1920"
+     inkscape:window-height="1131"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" />
+  <path
+     id="path1633"
+     style="color:#000000;fill:#2e3436;fill-opacity:1;stroke-width:1.22411;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;-inkscape-stroke:none;paint-order:stroke fill markers"
+     d="M 7.9999999,6.25e-8 C 3.6116059,6.25e-8 1.25e-7,3.6116058 1.25e-7,7.9999999 1.25e-7,12.388395 3.6116059,16 8,16 12.388395,16 16,12.388395 16,7.9999999 16,3.6116059 12.388395,6.25e-8 7.9999999,6.25e-8 Z m 0,2.4486579375 c 1.8157663,0 3.4387291,0.8895013 4.4540761,2.253632 L 9.9344987,6.1561191 C 9.4430503,5.6534425 8.7583723,5.34227 7.9999999,5.3425264 7.2411426,5.3422699 6.554999,5.6528766 6.0635312,6.1561191 L 3.5459247,4.70229 C 4.5612722,3.3381592 6.1842337,2.448658 7.9999999,2.448658 Z M 2.6535337,6.5146515 5.2932776,8.039399 v 0.00197 c -3.672e-4,1.1380505 0.7031419,2.109907 1.6981038,2.509725 v 2.905687 C 4.4199111,12.976898 2.4486581,10.702182 2.4486581,7.9999998 c 0,-0.5139043 0.071721,-1.0116746 0.2048756,-1.4853483 z m 10.6929323,0.00197 C 13.479254,6.9896873 13.551342,7.4868323 13.551342,8 c 0,2.702182 -1.971253,4.976898 -4.5427234,5.456784 v -2.90569 C 10.003581,10.151276 10.70709,9.1794195 10.706723,8.0413658 c -1e-6,-6.561e-4 2e-6,-0.00131 0,-0.00197 z" />
+</svg>

@@ -202,8 +202,7 @@ namespace Cassette {
 
         void on_about_action () {
             string[] developers = {
-                RIRUSHA,
-                "NaumovSN"
+                RIRUSHA
             };
 
             string[] designers = {
@@ -212,7 +211,8 @@ namespace Cassette {
 
             string[] artists = {
                 RIRUSHA,
-                "Arseniy Nechkin <krisgeniusnos@gmail.com>"
+                "Arseniy Nechkin <krisgeniusnos@gmail.com>",
+                "NaumovSN"
             };
 
             string[] documenters = {

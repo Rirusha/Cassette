@@ -12,5 +12,9 @@
 =======
     "C_Cpp.default.compileCommands": "${workspaceFolder}/_build/compile_commands.json",
     "debug.allowBreakpointsEverywhere": true,
+<<<<<<< HEAD
 >>>>>>> a44b6c9 (Изменить таски и т.д.)
+=======
+    "vala.languageServerPath": "${workspaceFolder}/.flatpak/vala-language-server.sh",
+>>>>>>> 60916b5 (Изменить настроки среды)
 }

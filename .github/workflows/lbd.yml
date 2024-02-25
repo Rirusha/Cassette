@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'dev-*'  # Запускать workflow только для веток разработки
+      - 'master'
 
 jobs:
   lint:
@@ -40,6 +41,9 @@ jobs:
 
     - name: Off save dir check
       run: git config --global --add safe.directory '*'
+    
+    - name: "Clear"
+      run: git rm --cached
 
     - name: Commit to deploy branch
       if: success()
@@ -48,4 +52,5 @@ jobs:
         branch: deploy
         commit_options: '--no-verify --signoff'
         push_options: '--force'
+        skip_checkout: true
         

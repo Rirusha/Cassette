@@ -97,10 +97,10 @@ sudo ninja -C builddir uninstall
 * org.gnome.Sdk//master
 * org.gnome.Platform//master
 * org.freedesktop.Sdk.Extension.vala-nightly//23.08beta
-* org.gnome.Builder.Devel//master
+* org.gnome.Builder//stable
 ```
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-flatpak install org.gnome.Sdk//master org.gnome.Platform//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta org.gnome.Builder.Devel//master
+flatpak install org.gnome.Sdk//master org.gnome.Platform//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta org.gnome.Builder//stable
 ```
 #### … использующих Visual Studio Code
 Репозиторий имеет рекоммендуемые расширения и сценарии проверки линта и запуска приложения с gdb.

@@ -19,6 +19,7 @@ jobs:
       run: io.elementary.vala-lint -d .
 
   build:
+    name: "Build"
     runs-on: ubuntu-latest
 
     container:
@@ -37,7 +38,7 @@ jobs:
         # run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}
 
-    - name: Create Pull Request
+    - name: Commit to deploy branch
       if: success()
       uses: stefanzweifel/git-auto-commit-action@v5
       with:

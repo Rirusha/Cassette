@@ -9,4 +9,5 @@
     },
     "C_Cpp.default.compileCommands": "${workspaceFolder}/_build/compile_commands.json",
     "debug.allowBreakpointsEverywhere": true,
+    "vala.languageServerPath": "${workspaceFolder}/.flatpak/vala-language-server.sh",
 }

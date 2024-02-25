@@ -91,6 +91,8 @@ sudo ninja -C builddir uninstall
 ```
 
 ## Для разработчиков
+Все изменения должны нужно вносить в dev-* ветки. Коммиты в master и deploy ветки будут отклонены.
+
 Для возможности запуска devel версии понадобиться подключить [gnome-nightly](https://wiki.gnome.org/Apps/Nightly) репозиторий и установить:
 * org.gnome.Sdk//master
 * org.gnome.Platform//master

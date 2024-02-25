@@ -44,4 +44,6 @@ jobs:
       with:
         branch: deploy
         commit_options: '--no-verify --signoff'
+        push_options: '--force'
+        skip_dirty_check: true 
         

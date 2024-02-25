@@ -96,10 +96,11 @@ sudo ninja -C builddir uninstall
 Для возможности запуска devel версии понадобиться подключить [gnome-nightly](https://wiki.gnome.org/Apps/Nightly) репозиторий и установить:
 * org.gnome.Sdk//master
 * org.gnome.Platform//master
-* org.freedesktop.Sdk.Extension.vala-nightly//23.08beta 
+* org.freedesktop.Sdk.Extension.vala-nightly//23.08beta
+* org.gnome.Builder.Devel//master
 ```
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-flatpak install org.gnome.Sdk//master org.gnome.Platform//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta 
+flatpak install org.gnome.Sdk//master org.gnome.Platform//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta org.gnome.Builder.Devel//master
 ```
 #### … использующих Visual Studio Code
 Репозиторий имеет рекоммендуемые расширения и сценарии проверки линта и запуска приложения с gdb.

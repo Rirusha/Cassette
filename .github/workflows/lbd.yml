@@ -38,6 +38,9 @@ jobs:
         # run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}
 
+    - name: Off save dir check
+      run: git config --global --add safe.directory '*'
+
     - name: Commit to deploy branch
       if: success()
       uses: stefanzweifel/git-auto-commit-action@v5
@@ -45,5 +48,4 @@ jobs:
         branch: deploy
         commit_options: '--no-verify --signoff'
         push_options: '--force'
-        skip_dirty_check: true 
         

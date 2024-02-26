@@ -631,9 +631,9 @@ namespace Cassette.Client.YaMAPI {
             string promo_id
         ) throws ClientError, BadStatusCodeError { }
 
-        /////////
-        // Old //
-        /////////
+        ////////////////////////////////////////////////////////////
+        // TODO: Методы ниже должны быть ззаменены на методы выше //
+        ////////////////////////////////////////////////////////////
 
         public Playlist get_playlist_info (owned string? uid = null, string kind = "3") throws ClientError, BadStatusCodeError {
             check_uid (ref uid);

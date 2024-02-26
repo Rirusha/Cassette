@@ -17,7 +17,11 @@
 
 
 /**
+<<<<<<< HEAD
  * Точка входа в приложение
+=======
+ * Точка входа в приложение.
+>>>>>>> a83c2f6 (Добавить комментарий и исправить форматирование)
  */
 int main (string[] args) {
     Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);

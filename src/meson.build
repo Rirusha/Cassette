@@ -2,7 +2,6 @@ vapi_sources = files(
   'config.vapi',
 )
 
-
 cassette_gui_sources = files(
   'main.vala',
   'application.vala',

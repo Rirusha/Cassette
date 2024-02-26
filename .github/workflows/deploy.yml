@@ -31,9 +31,9 @@ jobs:
         run: git checkout $DEVEL_SLICE_BRANCH_NAME
       
       - name: Merge changes
+        # Должна существовать только одна ветка dev-*
         run: |
-          git merge origin/dev-* --no-edit
-          git push origin $DEVEL_SLICE_BRANCH_NAME
+          git branch | grep "dev-" | git merge origin --no-edit --strategy=ours -m "Срез devel версии"
 
   build:
     name: Build

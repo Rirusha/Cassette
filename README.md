@@ -49,6 +49,21 @@ sudo apt-get install cassette
 flatpak install flathub io.github.Rirusha.Cassette
 ```
 
+### Nightly версия
+Также можете установить dev версию, она обновляется каждые сутки.
+
+__ВНИМАНИЕ!__: эта версия нестабильна.
+
+Для этого нужно подключить репозиторий, после чего установить приложение:
+```
+flatpak remote-add -u --no-gpg-verify cassette-nightly https://rirusha.github.io/Cassette/index.flatpakrepo
+flatpak install io.github.Rirusha.Cassette-Devel
+```
+Для удаление репозитория нужно выполнить выполнить:
+```
+flatpak remote-delete cassette-nightly
+```
+
 ### Сборка из исходного кода
 
 Зависимости:
@@ -103,19 +118,6 @@ flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome
 flatpak install org.gnome.Sdk//master org.gnome.Platform//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta org.gnome.Builder//stable
 ```
 
-Также можете установить dev версию, она обновляется каждые сутки.
-
-__ВНИМАНИЕ!__: эта версия нестабильна.
-
-Для этого нужно подключить репозиторий, после чего установить приложение:
-```
-flatpak remote-add -u --no-gpg-verify cassette-nightly https://rirusha.github.io/Cassette/index.flatpakrepo
-flatpak install io.github.Rirusha.Cassette-Devel
-```
-Для удаление репозитория нужно выполнить выполнить:
-```
-flatpak remote-delete cassette-nightly
-```
 #### … использующих Visual Studio Code
 Репозиторий имеет рекоммендуемые расширения и сценарии проверки линта и запуска приложения с gdb.
 

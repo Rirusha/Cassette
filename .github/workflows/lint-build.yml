@@ -6,6 +6,9 @@ on:
       - 'dev-*'  # Запускать workflow только для веток разработки
       - 'master'
 
+env:
+  MANIFEST_PATH: build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
+
 jobs:
   lint:
     name: Lint
@@ -35,6 +38,6 @@ jobs:
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: cassette.flatpak
-        manifest-path: ${{ env.MANIFEST_PATH }}
+        manifest-path: $MANIFEST_PATH
         # run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}

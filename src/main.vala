@@ -15,6 +15,10 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+
+/**
+ * Точка входа в приложение
+ */
 int main (string[] args) {
     Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
     Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");

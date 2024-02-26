@@ -17,7 +17,3 @@ repo
 .flatpak
 
 _build
-
-# deploy
-cassette.flatpak
-build-aux/flatpak/flatpak-github-action-modified-io.github.Rirusha.Cassette.Devel.json

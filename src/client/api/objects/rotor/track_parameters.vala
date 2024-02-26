@@ -20,7 +20,7 @@ namespace Cassette.Client.YaMAPI.Rotor {
 
     /**
      * Датакласс с параметрами трека
-     */  
+     */
     public class TrackParameters : YaMObject {
 
         /**

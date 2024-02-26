@@ -33,7 +33,9 @@ jobs:
       - name: Merge changes
         # Должна существовать только одна ветка dev-*
         run: |
-          git branch --list "dev-*" | grep "dev-" | while read -r branch; do git merge --no-edit --strategy=ours "$branch" done
+          git branch --list "dev-*" | grep "dev-" | while read -r branch; do git merge --no-edit --strategy=ours "$branch"; done
+          git push --force origin devel-slice 
+          
 
   build:
     name: Build

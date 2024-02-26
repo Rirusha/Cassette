@@ -1,5 +1,5 @@
 {
-    "id" : "io.github.Rirusha.Cassette.Devel",
+    "id" : "io.github.Rirusha.Cassette-Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",

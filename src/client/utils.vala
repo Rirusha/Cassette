@@ -82,7 +82,7 @@ namespace Cassette.Client {
     /**
      * Инициализация клиента. Создание синглтонов.
      */
-    public static void init (string application_id, bool is_devel) {
+    public static void init (bool is_devel) {
         settings = new Settings ("io.github.Rirusha.Cassette.client");
 
         cachier = new Cachier.Cachier ();

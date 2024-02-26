@@ -1,21 +1,15 @@
 scalable_dir = join_paths('hicolor', 'scalable', 'apps')
 
 install_data(
-  join_paths(scalable_dir, ('@0@.svg').format(app_id)),
+  join_paths(scalable_dir, ('@0@.svg').format(app_id_dyn)),
   install_dir: join_paths(get_option('datadir'), 'icons', scalable_dir)
 )
 
 symbolic_dir = join_paths('hicolor', 'symbolic', 'apps')
 
-install_data(
-  join_paths(symbolic_dir, ('@0@-symbolic.svg').format(app_id)),
-  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
-)
-
 # All icons starting with "cassette-" are mine
 # All icons starting with "adwaita-" are taken from the libadwaita icon pack
 # All icons starting with "il-" are taken from Icon Library application
-
 
 install_data(
   join_paths(symbolic_dir, 'adwaita-audio-volume-high-symbolic.svg'),
@@ -229,11 +223,6 @@ install_data(
 
 install_data(
   join_paths(symbolic_dir, 'io.github.Rirusha.Cassette-symbolic.svg'),
-  install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
-)
-
-install_data(
-  join_paths(symbolic_dir, 'io.github.Rirusha.Cassette.Devel-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 

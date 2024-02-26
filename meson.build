@@ -9,8 +9,8 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-gtk = dependency('gtk4', version: '>= 4.5')
-libadwaita = dependency('libadwaita-1', version: '>= 1.4')
+gtk = dependency('gtk4', version: '>= 4.13')
+libadwaita = dependency('libadwaita-1', version: '>= 1.5')
 threads = dependency('threads')
 libsoup = dependency('libsoup-3.0')
 gdkpixbuf = dependency('gdk-pixbuf-2.0')
@@ -22,23 +22,25 @@ gstreamer = dependency('gstreamer-1.0')
 webkit = dependency('webkitgtk-6.0')
 gio = dependency('gio-2.0', version: '>= 2.72')
 
-if get_option('profile') == 'development'
-  name_prefix = '(Development) '
-  postfix = '.Devel'
-else
-  name_prefix = ''
-  postfix = ''
-endif
+app_id = 'io.github.Rirusha.Cassette'
 
-app_id = 'io.github.Rirusha.Cassette@0@'.format(postfix)
+if get_option('profile') == 'development'
+  name_postfix = ' (Dev ver.)'
+  app_id_dyn = '@0@-Devel'.format(app_id)
+  profile = 'Devel'
+else
+  name_postfix = ''
+  app_id_dyn = app_id
+  profile = ''
+endif
 
 conf = configuration_data()
 conf.set_quoted('APP_ID', app_id)
+conf.set_quoted('APP_ID_DYN', app_id_dyn)
 conf.set_quoted('G_LOG_DOMAIN', app_id)
-conf.set_quoted('NAME_PREFIX', name_prefix)
 conf.set_quoted('PACKAGE_NAME', meson.project_name())
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())
-conf.set_quoted('POSTFIX', postfix)
+conf.set_quoted('PROFILE', profile)
 conf.set_quoted('VERSION', meson.project_version())
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))

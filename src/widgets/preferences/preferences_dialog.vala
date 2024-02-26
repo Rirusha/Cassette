@@ -90,7 +90,7 @@ namespace Cassette {
 
             on_show_save_stack_switch_changed ();
 
-            if (Config.POSTFIX == ".Devel") {
+            if (Cassette.application.is_devel) {
                 add_css_class ("devel");
             }
 

@@ -80,13 +80,13 @@ namespace Cassette {
 
         public bool is_devel {
             get {
-                return Config.POSTFIX == ".Devel";
+                return Config.PROFILE == "Devel";
             }
         }
 
         public Application () {
             Object (
-                application_id: Config.APP_ID,
+                application_id: Config.APP_ID_DYN,
                 resource_base_path: "/com/github/Rirusha/Cassette/"
             );
         }
@@ -96,7 +96,7 @@ namespace Cassette {
 
             settings = new Settings ("io.github.Rirusha.Cassette.application");
 
-            Cassette.Client.init ("io.github.Rirusha.Cassette", is_devel);
+            Cassette.Client.init (is_devel);
 
             Cassette.Client.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
@@ -221,7 +221,7 @@ namespace Cassette {
 
             var about = new Adw.AboutDialog () {
                 application_name = APP_NAME,
-                application_icon = Config.APP_ID,
+                application_icon = Config.APP_ID_DYN,
                 developer_name = "Rirusha",
                 version = Config.VERSION,
                 developers = developers,

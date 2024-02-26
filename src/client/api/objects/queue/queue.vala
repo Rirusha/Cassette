@@ -48,7 +48,7 @@ namespace Cassette.Client.YaMAPI {
             return true;
         }
 
-        public Bytes to_json () {
+        public string to_json () {
             var builder = new Json.Builder ();
             builder.begin_object ();
 
@@ -114,7 +114,7 @@ namespace Cassette.Client.YaMAPI {
             var generator = new Json.Generator ();
             generator.set_root (builder.get_root ());
 
-            return new Bytes (generator.to_data (null).data);
+            return generator.to_data (null);
         }
     }
 }

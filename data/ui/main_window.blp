@@ -35,9 +35,15 @@ template $CassetteMainWindow : Adw.ApplicationWindow {
           }
 
           [start]
-          ToggleButton button_search {
-            icon-name: "adwaita-edit-find-symbolic";
-            tooltip-text: "Yandex.Muisc search";
+          Revealer search_button_revealer {
+            reveal-child: true;
+            transition-type: slide_up;
+
+            Button search_button {
+              action-name: "win.search";
+              icon-name: "adwaita-edit-find-symbolic";
+              tooltip-text: "Yandex.Muisc search";
+            }
           }
 
           [start]
@@ -93,8 +99,22 @@ template $CassetteMainWindow : Adw.ApplicationWindow {
             Adw.Clamp {
               maximum-size: 600;
 
-              SearchEntry search_entry {
-                search-delay: 1500;
+              Box {
+                spacing: 4;
+                hexpand: true;
+
+                SearchEntry search_entry {
+                  hexpand: true;
+                  search-delay: 1500;
+                }
+
+                Button search_close_button {
+                  styles [
+                    "flat"
+                  ]
+
+                  icon-name: "adwaita-window-close-symbolic";
+                }
               }
             }
           }
@@ -144,7 +164,7 @@ template $CassetteMainWindow : Adw.ApplicationWindow {
 
 menu primary_menu {
   section {
-    item (_("Disliked tracks"), "win.show-disliked-tracks")
+    item (_("Disliked tracks"), "`how-disliked-tracks")
     item (_("Parse URL from clipboard"), "win.parse-url")
   }
   section {

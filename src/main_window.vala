@@ -35,8 +35,6 @@ namespace Cassette {
         [GtkChild]
         public unowned SideBar sidebar;
         [GtkChild]
-        unowned Gtk.ToggleButton button_search;
-        [GtkChild]
          unowned Adw.ToastOverlay toast_overlay;
         [GtkChild]
         unowned Adw.ViewStack main_stack;
@@ -51,11 +49,17 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Revealer sidebar_toggle_revealer;
         [GtkChild]
+        unowned Gtk.ToggleButton sidebar_toggle_button;
+        [GtkChild]
         unowned Adw.ToolbarView toolbar_view;
         [GtkChild]
         unowned Gtk.SearchEntry search_entry;
         [GtkChild]
-        unowned Gtk.ToggleButton sidebar_toggle_button;
+        unowned Gtk.Revealer search_button_revealer;
+        [GtkChild]
+        unowned Gtk.Button search_button;
+        [GtkChild]
+        unowned Gtk.Button search_close_button;
         [GtkChild]
         unowned Adw.Banner info_banner;
         [GtkChild]
@@ -197,11 +201,16 @@ namespace Cassette {
 
             SimpleAction search_action = new SimpleAction ("search", null);
             search_action.activate.connect (() => {
-                button_search.active = true;
+                search_revealer.reveal_child = true;
             });
             add_action (search_action);
 
-            button_search.bind_property ("active", search_revealer, "reveal-child", BindingFlags.DEFAULT);
+            search_close_button.clicked.connect (() => {
+                search_revealer.reveal_child = false;
+            });
+
+            search_revealer.bind_property ("reveal-child", search_button_revealer, "reveal-child", BindingFlags.INVERT_BOOLEAN);
+
             search_revealer.notify["reveal-child"].connect (() => {
                 if (search_revealer.reveal_child) {
                     set_focus (search_entry);
@@ -212,7 +221,7 @@ namespace Cassette {
                 change (get_width (), get_height ());
             });
 
-            block_widget (button_search, BlockReason.NOT_IMPLEMENTED);
+            block_widget (search_button, BlockReason.NOT_IMPLEMENTED);
         }
 
         public void set_online () {

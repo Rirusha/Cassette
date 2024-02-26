@@ -17,25 +17,92 @@
 
 
 namespace Cassette.Client.YaMAPI {
-    public class Play : YaMObject {
-        /*
-            Объект для отправки фидбека о прослушивании трека
-        */
 
+    /**
+     * Датакласс с фидбеком о прослушивании
+     */
+    public class Play : YaMObject {
+
+        /**
+         * Id сессии прослушивания
+         */
         public string play_id { get; set; }
+
+        /**
+         * Временная метка запроса
+         */
         public string timestamp { get; set; }
+
+        /**
+         * Общее количество прослушанного времени в секундах
+         */
         public double total_played_seconds { get; set; }
+
+        /**
+         * Секунда, на которой закончилось прослушивание
+         */
         public double end_position_seconds { get; set; }
+
+        /**
+         * Общее количество секунд в треке
+         */
         public double track_length_seconds { get; set; }
+
+        /**
+         * Id трека
+         */
         public string track_id { get; set; }
-        public string album_id { get; set; }
+
+        /**
+         * Id альбома
+         */
+        public string? album_id { get; set; }
+
+        /**
+         * TODO
+         */
         public string from { get; set; }
+
+        /**
+         * Контекст воспроизведения (То же что и ``Queue.context.type``)
+         */
         public string context { get; set; }
+
+        /**
+         * Id контекста, (Тоже же, что и ``Queue.context.id``)
+         */
         public string context_item { get; set; }
+
+        /**
+         * TODO
+         */
         public string add_tracks_to_player_time { get; set; }
+
+        /**
+         * TODO
+         */
         public string audio_auto { get; set; }
+
+        /**
+         * TODO
+         */
         public string audio_output_name { get; set; }
+
+        /**
+         * TODO
+         */
         public string audio_output_type { get; set; }
-        public string radio_session_id { get; set; }
+
+        /**
+         * Id сессии волны
+         */
+        public string? radio_session_id { get; set; }
+
+        public static string generate_add_tracks_to_player_time () {
+            int64 random_part = (int64) (Random.double_range (0.0, 1.0) * Math.pow (10, 10));
+            int64 time_part = new DateTime.now ().to_unix () / 1000;
+
+            return @"$random_part-$time_part";
+        }
     }
 }

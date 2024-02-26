@@ -57,7 +57,7 @@ namespace Cassette.Client {
 
     public struct PostContent {
         PostContentType content_type;
-        Bytes data;
+        string content;
 
         public string get_content_type_string () {
             switch (content_type) {
@@ -70,13 +70,17 @@ namespace Cassette.Client {
             }
         }
 
+        public Bytes get_bytes () {
+            return new Bytes (content.data);
+        }
+
         public void set_datalist (Datalist<string> datalist) {
             switch (content_type) {
                 case X_WWW_FORM_URLENCODED:
-                    data = new Bytes (Soup.Form.encode_datalist (datalist).data);
+                    content = Soup.Form.encode_datalist (datalist);
                     break;
                 case JSON:
-                    data = new Bytes (Jsoner.serialize_datalist (datalist).data);
+                    content = Jsoner.serialize_datalist (datalist);
                     break;
                 default:
                     assert_not_reached ();
@@ -213,7 +217,7 @@ namespace Cassette.Client {
             if (post_content != null) {
                 msg.set_request_body_from_bytes (
                     post_content.get_content_type_string (),
-                    post_content.data
+                    post_content.get_bytes ()
                 );
             }
 

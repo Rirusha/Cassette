@@ -30,8 +30,8 @@ namespace Cassette {
         }
 
         construct {
-            if (Config.POSTFIX == ".Devel") {
-                status_page.icon_name = "io.github.Rirusha.Cassette.Devel-symbolic";
+            if (Cassette.application.is_devel) {
+                status_page.icon_name = "io.github.Rirusha.Cassette-symbolic";
             }
         }
 

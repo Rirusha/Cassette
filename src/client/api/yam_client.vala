@@ -246,9 +246,9 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_playlists_playlist (
-            owned string? uid = null,
             string playlist_kind,
-            bool rich_tracks
+            bool rich_tracks,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -257,8 +257,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_playlists_playlist_change_relative (
-            owned string? uid = null,
-            string playlist_kind
+            string playlist_kind,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -294,8 +294,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_tracks_add (
-            owned string? uid = null,
-            string track_id
+            string track_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -304,8 +304,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_tracks_remove (
-            owned string? uid = null,
-            string track_id
+            string track_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -314,8 +314,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_dislikes_tracks_add (
-            owned string? uid = null,
-            string track_id
+            string track_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -324,8 +324,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_dislikes_tracks_remove (
-            owned string? uid = null,
-            string track_id
+            string track_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -334,8 +334,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_artists_add (
-            owned string? uid = null,
-            string artist_id
+            string artist_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -344,8 +344,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_artists_remove (
-            owned string? uid = null,
-            string artist_id
+            string artist_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -354,8 +354,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_dislikes_artists_add (
-            owned string? uid = null,
-            string artist_id
+            string artist_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -364,8 +364,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_dislikes_artists_remove (
-            owned string? uid = null,
-            string artist_id
+            string artist_id,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -374,8 +374,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_albums_add (
-            owned string? uid = null,
-            string album_id
+            string album_id,
+            owned string? uid = null            
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -384,8 +384,8 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_albums_remove (
-            owned string? uid = null,
-            string album_id
+            string album_id,
+            owned string? uid = null            
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -394,9 +394,9 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_playlists_add (
-            owned string? uid = null,
             string playlist_uid,
-            string playlist_kind
+            string playlist_kind,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -405,9 +405,9 @@ namespace Cassette.Client.YaMAPI {
          * TODO: Placeholder
          */
         public void users_likes_playlists_remove (
-            owned string? uid = null,
             string playlist_uid,
-            string playlist_kind
+            string playlist_kind,
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }

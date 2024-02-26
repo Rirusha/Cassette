@@ -18,7 +18,6 @@ jobs:
         run: |
           git config --global user.name "auto-deployer"
           git config --global user.email "rirusha@noreply.github.com"
-
       - name: Checkout branch
         run: git checkout $DEVEL_SLICE_BRANCH_NAME
       
@@ -37,7 +36,7 @@ jobs:
 
     strategy:
       matrix:
-        arch: [x86_64, aarch64]
+        arch: [x86_64]
       fail-fast: false
       max-parallel: 1
 
@@ -63,7 +62,7 @@ jobs:
         uses: andyholmes/flatter@main
         with:
           files: |
-            build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
+            build-aux/flatpak/io.github.Rirusha.Cassette-Devel.json
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: true
@@ -71,7 +70,6 @@ jobs:
           upload-pages-includes: |
             default.css
             index.html
-
   deploy:
     name: Deploy
     runs-on: ubuntu-latest

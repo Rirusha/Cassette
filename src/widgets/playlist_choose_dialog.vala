@@ -41,7 +41,7 @@ namespace Cassette {
 
             load_playlists.begin ();
 
-            if (Config.POSTFIX == ".Devel") {
+            if (Cassette.application.is_devel) {
                 add_css_class ("devel");
             }
 

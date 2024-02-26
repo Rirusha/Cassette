@@ -57,7 +57,7 @@ namespace Cassette {
             //  message (lib.liked_tracks[0]);
             //  message (lib.playlists[0]);
 
-            client.rotor_wave_settings ();
+            message ("Magic happaned, i swear…");
         }
 
         void set_values () {

@@ -45,6 +45,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup QEMU
+        if: ${{ matrix.arch == 'aarch64' }}
         id: qemu
         uses: docker/setup-qemu-action@v3
         with:
@@ -56,17 +57,19 @@ jobs:
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-        
+
       - name: Build and install deps
-        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        run: |
+          flatpak-builder build --user --install-deps-from=${{ env.REPO_NAME }} --gpg-sign=${{ steps.gpg.outputs.fingerprint }} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo --default-branch=master ${{ env.MANIFEST_PATH }}
+          flatpak build-bundle --arch=${{ matrix.arch }} --gpg-sign=${{ steps.gpg.outputs.fingerprint }} repo ${{ env.DEVEL_APP_ID }}.flatpak --runtime-repo=${{ env.REPO_URL }} ${{ env.DEVEL_APP_ID }} master
+
+          flatpak build-update-repo --gpg-sign=${{ steps.gpg.outputs.fingerprint }} --generate-static-deltas --prune repo/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          bundle: ${{ env.DEVEL_APP_ID }}.flatpak
-          manifest-path: build-aux/flatpak/${{ env.DEVEL_APP_ID }}.json
-          repository-url: ${{ env.REPO_URL }}
-          repository-name: ${{ env.REPO_BANE }}
-          # run-tests: true
-          gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
-          cache-key: flatpak-builder-${{ github.sha }}
+          name: ${{ env.DEVEL_APP_ID }}-${{ matrix.arch }}  # имя вашего артефакта
+          path: repo/${{ env.DEVEL_APP_ID }}.flatpak  # путь к артефакту, который вы хотите сохранить
 
   deploy:
     name: Deploy

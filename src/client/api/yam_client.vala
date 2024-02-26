@@ -630,7 +630,7 @@ namespace Cassette.Client.YaMAPI {
 
             PostContent post_content = {
                 PostContentType.JSON,
-                Jsoner.serialize (play)
+                Jsoner.serialize (play, Case.CAMEL)
             };
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -641,11 +641,12 @@ namespace Cassette.Client.YaMAPI {
             );
 
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            string res = jsoner.deserialize_value ().get_string ();
 
-            if (res != "ok") {
-                throw new ClientError.ANSWER_ERROR ("Send play-audio failed");
+            if (jsoner.root == null) {
+                return false;
             }
+
+            return jsoner.deserialize_value ().get_string () == "ok";
         }
 
         /**

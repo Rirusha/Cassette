@@ -553,9 +553,24 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         * Сбросить значение последней прослушиваемой станции.
+         *
+         * @return  успешна ли было выполнение
          */
-        public void rotor_wave_last_reset () throws ClientError, BadStatusCodeError { }
+        public bool rotor_wave_last_reset () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/rotor/wave/last/reset",
+                {"default"}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            if (jsoner.root == null) {
+                return false;
+            }
+
+            return jsoner.deserialize_value ().get_string () == "ok";
+        }
 
         /**
          * TODO: Placeholder
@@ -570,7 +585,9 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO: Placeholder
          */
-        public void plays () throws ClientError, BadStatusCodeError { }
+        public void plays () throws ClientError, BadStatusCodeError {
+
+        }
 
         /**
          * TODO: Placeholder

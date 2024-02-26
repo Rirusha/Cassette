@@ -17,9 +17,20 @@
 
 
 namespace Cassette.Client.YaMAPI {
+
+    /**
+     * Класс иконки
+     */
     public class Icon : YaMObject {
 
+        /**
+         * Цвет заднего фона в HEX
+         */
         public string background_color { get; set; }
+
+        /**
+         * Ссылка на иконку
+         */
         public string image_url { get; set; }
 
         public string get_internal_icon_name () {
@@ -28,10 +39,12 @@ namespace Cassette.Client.YaMAPI {
             switch (ya_icon_name) {
                 case "rotor-personal-station-icon":
                     return "adwaita-emblem-favorite-symbolic";
+                case "rotor-activity-wake-up-icon":
+                    return "cassette-wave-classes-wake";
                 default:
-                    Logger.warning ("Unknown icon %s".printf (ya_icon_name));
+                    Logger.warning ("Unknown icon %s".printf (image_url));
 
-                    return "adwaita-audio-x-generic-symbolic";
+                    return "io.github.Rirusha.Cassette-symbolic";
             }
         }
     }

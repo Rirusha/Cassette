@@ -51,7 +51,7 @@ namespace Cassette.Client.Cachier {
             CacheingState state);
 
         ContentInfo? find_content_info (ContentInfo content_info) {
-            /*
+            /**
                 Поиск информации о контенте в списке сохраняемого. Возвращает null, если не найдено
 
                 content_info: информация о контенте
@@ -69,7 +69,7 @@ namespace Cassette.Client.Cachier {
         }
 
         void add_content_info (ContentInfo content_info) {
-            /*
+            /**
                 Добавить информацию о контенте в список сохраняемого
 
                 content_info: информация о контенте
@@ -83,7 +83,7 @@ namespace Cassette.Client.Cachier {
         }
 
         void remove_content_info (ContentInfo content_info) {
-            /*
+            /**
                 Удалить информацию о контенте в список сохраняемого
 
                 content_info: информация о контенте
@@ -98,7 +98,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void change_state (ContentType content_type, string content_id, CacheingState state) {
-            /*
+            /**
                 Изменить состояние контента
 
                 content_type: тип контента
@@ -114,7 +114,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void start_loading (ContentType content_type, string content_id) {
-            /*
+            /**
                 Пометить контент как то, что начало загружаться
 
                 content_type: тип контента
@@ -127,7 +127,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void stop_loading (ContentType content_type, string content_id, CacheingState? state) {
-            /*
+            /**
                 Пометить контент как то, что закончило загрузку
 
                 content_type: тип контента
@@ -143,7 +143,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public CacheingState get_content_cache_state (ContentType content_type, string content_id) {
-            /*
+            /**
                 Получить состояние сохранения по типу контента и его id
 
                 content_type: тип контента

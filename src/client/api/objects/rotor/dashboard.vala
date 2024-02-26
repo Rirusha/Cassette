@@ -19,10 +19,25 @@
 using Gee;
 
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * Список всех радиостанций
+     */
     public class Dashboard : YaMObject {
 
+        /**
+         * Id списка
+         */
         public string dashboard_id { get; set; }
+
+        /**
+         * Список станций
+         */
         public ArrayList<StationInfo> stations { get; set; default = new ArrayList<StationInfo> (); }
+
+        /**
+         * Хэллоуин (by Cosmo)
+         */
         public bool pumpkin { get; set; }
     }
 }

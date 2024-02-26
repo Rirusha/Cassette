@@ -17,12 +17,46 @@
 
 
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * TODO
+     */
     public class StationInfo : YaMObject {
 
-        public Station station { get; set; }
-        public Settings settings { get; set; }
-        public Settings settings2 { get; set; }
-        public string rup_title { get; set; }
-        public string rup_description { get; set; }
+        /**
+         * TODO
+         */
+        public Id id { get; set; }
+
+        /**
+         * TODO
+         */
+        public string name { get; set; }
+
+        /**
+         * TODO
+         */
+        public Icon icon { get; set; }
+
+        /**
+         * TODO
+         */
+        public string full_image_url { get; set; }
+
+        /**
+         * TODO
+         */
+        [Version (deprecated = true)]
+        public Restrictions restrictions { get; set; }
+
+        /**
+         * TODO
+         */
+        public Restrictions restrictions2 { get; set; }
+
+        /**
+         * TODO
+         */
+        public bool special_context { get; set; }
     }
 }

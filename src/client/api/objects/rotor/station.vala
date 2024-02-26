@@ -16,21 +16,31 @@
  */
 
 
-using Gee;
-
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * Информация о станции
+     */
     public class Station : YaMObject {
 
-        public Id id { get; set; }
-        public string name { get; set; }
-        public Icon icon { get; set; }
-        public Icon mts_icon { get; set; }
-        public Icon geocell_icon { get; set; }
-        public string id_for_from { get; set; }
-        public Restrictions restrictions { get; set; }
-        public Restrictions restrictions2 { get; set; }
-        public string? full_image_url { get; set; }
-        public string? mts_full_image_url { get; set; }
-        public Id parent_id { get; set; }
+        /**
+         * Id станции
+         */
+        public string station_id { get; set; }
+
+        /**
+         * Название станции
+         */
+        public string title { get; set; }
+
+        /**
+         * TODO
+         */
+        public string rup_title { get; set; }
+
+        /**
+         * TODO
+         */
+        public string rup_description { get; set; }
     }
 }

@@ -17,15 +17,25 @@
 
 
 namespace Cassette.Client.YaMAPI.Rotor {
-    public class AdParams : YaMObject {
 
-        public string partner_id { get; set; }
-        public string category_id { get; set; }
-        public string page_ref { get; set; }
-        public string target_reg { get; set; }
-        public string other_params { get; set; }
-        public int ad_volume { get; set; }
-        public string genre_id { get; set; }
-        public string genre_name { get; set; }
+    /**
+     * Датакласс с параметрами трека
+     */  
+    public class TrackParameters : YaMObject {
+
+        /**
+         * Удары в секунду
+         */
+        public int bpm { get; set; }
+
+        /**
+         * TODO
+         */
+        public int hue { get; set; }
+
+        /**
+         * TODO
+         */
+        public double energy { get; set; }
     }
 }

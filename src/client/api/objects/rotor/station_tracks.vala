@@ -19,12 +19,30 @@
 using Gee;
 
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * Список треков, возвращенные методом rotor
+     */
     public class StationTracks : YaMObject {
 
-        public Id id { get; set; }
+        /**
+         * Список объектов, содержащих трек
+         */
         public ArrayList<Sequence> sequence { get; set; default = new ArrayList<Sequence> (); }
+
+        /**
+         * TODO
+         */
         public string batch_id { get; set; }
+
+        /**
+         * Halloween
+         */
         public bool pumpkin { get; set; }
-        public string radio_session_id { get; set; }
+
+        /**
+         * TODO
+         */
+        public bool unknown_session { get; set; }
     }
 }

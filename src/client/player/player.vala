@@ -399,7 +399,7 @@ namespace Cassette.Client.Player {
         }
 
         public void change_track (YaMAPI.Track track_info) {
-            /*
+            /**
                 Находит трек в очереди и воспроизводит его
             */
             stop ();

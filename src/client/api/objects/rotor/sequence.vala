@@ -17,10 +17,30 @@
 
 
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * TODO
+     */
     public class Sequence : YaMObject {
 
+        /**
+         * Тип трека.
+         */
         public string type_ { get; set; }
+
+        /**
+         * Трек.
+         */
         public Track track { get; set; }
+
+        /**
+         * TODO
+         */
         public bool liked { get; set; }
+
+        /**
+         * Параметры трека
+         */
+        public TrackParameters track_parameters { get; set; }
     }
 }

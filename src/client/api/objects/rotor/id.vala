@@ -17,9 +17,20 @@
 
 
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * Класс Id станции
+     */
     public class Id : YaMObject {
 
+        /**
+         * Тип станции
+         */
         public string type_ { get; set; }
+
+        /**
+         * Тэг станции
+         */
         public string tag { get; set; }
     }
 }

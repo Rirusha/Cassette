@@ -20,7 +20,7 @@ using Gee;
 
 namespace Cassette.Client.Cachier {
     public class InfoDB : Object {
-        /*
+        /**
             Класс-обёртка для базы данных
             База данных имеет таблицу additional для всякой доп инфы по типу uid пользователя приложения
                 и таблицу tracks_refs, в которой ведется подсчёт обьектов, которые имют трек. Нужна для
@@ -67,7 +67,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void set_additional_data (string name, string data) {
-            /*
+            /**
                 Добавляет в базу данных кастомную запись
             */
 
@@ -94,7 +94,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public string get_additional_data (string name) {
-            /*
+            /**
                 Получает из базы данны кастомную запись по имени.
                 Получемые данные должны быть в базе данных
             */
@@ -125,7 +125,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void set_content_ref (string what_id, string source_id) {
-            /*
+            /**
                 Создать запись о сохраненном объекте
 
                 what_id: Индентификатор объекта
@@ -157,7 +157,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void remove_content_ref (string what_id, string source_id) {
-            /*
+            /**
                 Удалить запись о сохраненном объекте
 
                 what_id: Индентификатор объекта
@@ -185,7 +185,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public int get_content_ref_count (string what_id, string? source_id = null) {
-            /*
+            /**
                 Получить количество записей об объекте
 
                 what_id: Индентификатор объекта

@@ -86,10 +86,20 @@ namespace Cassette.Client.YaMAPI {
             is_init_complete = true;
         }
 
-        public Bytes get_content_of (string uri) throws ClientError, BadStatusCodeError {
-            return soup_wrapper.get_sync (uri);
+        /**
+         * Получит содержимое по url
+         *
+         * @param url   url, по котором нужно получить контент
+         *
+         * @return      контент в байтах
+         */
+        public Bytes get_content_of (string url) throws ClientError, BadStatusCodeError {
+            return soup_wrapper.get_sync (url);
         }
 
+        /**
+         * Проверить uid пользователя на наличие
+         */
         void check_uid (ref string? uid) throws ClientError {
             if (uid == null) {
                 if (me == null) {
@@ -118,7 +128,7 @@ namespace Cassette.Client.YaMAPI {
          */
         public void account_settings () throws ClientError, BadStatusCodeError { }
 
-        /*
+        /**
          * Получение информации о текущем пользователе
          */
         public Account.About account_about () throws ClientError, BadStatusCodeError {
@@ -375,7 +385,7 @@ namespace Cassette.Client.YaMAPI {
          */
         public void users_likes_albums_add (
             string album_id,
-            owned string? uid = null            
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -385,7 +395,7 @@ namespace Cassette.Client.YaMAPI {
          */
         public void users_likes_albums_remove (
             string album_id,
-            owned string? uid = null            
+            owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
         }
@@ -448,7 +458,7 @@ namespace Cassette.Client.YaMAPI {
             check_uid (ref uid);
         }
 
-        /*
+        /**
          * Получение данных о библиотеке пользователя
          */
         public Library.AllIds library_all_ids () throws ClientError, BadStatusCodeError {
@@ -534,22 +544,35 @@ namespace Cassette.Client.YaMAPI {
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         * Метод для получения всех возможных настроек волны
+         *
+         * @return  объект ``Cassette.Client.YaMAPI.Rotor.Settings``, содержащий все настройки
          */
-        public void rotor_wave_settings () throws ClientError, BadStatusCodeError { }
+        public Rotor.Settings rotor_wave_settings () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/wave/settings",
+                {"default"},
+                {{"language", get_language ()}}
+            );
 
-        /*
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Rotor.Settings) jsoner.deserialize_object (typeof (Rotor.Settings));
+        }
+
+        /**
          * Получение последней прослушиваемой волны текущим пользователем
          */
         public Rotor.Wave rotor_wave_last () throws ClientError, BadStatusCodeError {
             var bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/rotor/wave/last",
-                {"default"}
+                {"default"},
+                {{"language", get_language ()}}
             );
 
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
-            return (Rotor.Wave) jsoner.deserialize_object (typeof (Rotor.Wave));
+            return (Wave) jsoner.deserialize_object (typeof (Wave));
         }
 
         /**
@@ -570,6 +593,17 @@ namespace Cassette.Client.YaMAPI {
             }
 
             return jsoner.deserialize_value ().get_string () == "ok";
+        }
+
+        public Dashboard rotor_stations_dashboard () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/stations/dashboard",
+                {"default", "device"},
+                {{"language", get_language ()}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Dashboard) jsoner.deserialize_object (typeof (Dashboard));
         }
 
         /**
@@ -1239,18 +1273,6 @@ namespace Cassette.Client.YaMAPI {
         ///////////
         // Radio //
         ///////////
-
-        [Version (deprecated = true)]
-        public Dashboard get_rotor_dashboard () throws ClientError, BadStatusCodeError {
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/rotor/stations/dashboard",
-                {"default", "device"},
-                {{"language", get_language ()}}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Dashboard) jsoner.deserialize_object (typeof (Dashboard));
-        }
 
         [Version (deprecated = true)]
         public Gee.ArrayList<StationInfo> get_station_list () throws ClientError, BadStatusCodeError {

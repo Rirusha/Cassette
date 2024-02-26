@@ -19,10 +19,41 @@
 using Gee;
 
 namespace Cassette.Client.YaMAPI.Rotor {
-    public class Enum : YaMObject {
 
+    namespace ValueHeapType {
+        public const string DISCRETE_SCALE = "discrete-scale";
+        public const string ENUM = "enum";
+    }
+
+    /**
+     * Класс множеества значений в api.
+     */
+    public class ValueHeap : YaMObject {
+
+        /**
+         * Тип данных.
+         * Возможные значения: 'discrete-scale', 'enum'.
+         */
         public string type_ { get; set; }
+
+        /**
+         * Название кучи.
+         */
         public string name { get; set; }
+
+        /**
+         * Возможные значения (для 'enum').
+         */
         public ArrayList<Rotor.Value> possible_values { get; set; default = new ArrayList<Rotor.Value> (); }
+
+        /**
+         * Максимальное значение. (для 'discrete-scale')
+         */
+        public Rotor.Value min { get; set; }
+
+        /**
+         * Минимальное значение. (Для 'discrete-scale')
+         */
+        public Rotor.Value max { get; set; }
     }
 }

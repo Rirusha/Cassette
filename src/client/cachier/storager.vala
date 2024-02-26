@@ -35,7 +35,7 @@ namespace Cassette.Client.Cachier {
 
 
     public class Location : Object {
-        /*
+        /**
             Класс для удобного вывода месторасположения файла
         */
 
@@ -51,7 +51,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void move_to_temp () {
-            /*
+            /**
                 Переместить файл во временное хранилище, если он в постоянном
             */
 
@@ -65,7 +65,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public async void move_to_temp_async () {
-            /*
+            /**
                 Переместить файл во временное хранилище, если он в постоянном
             */
 
@@ -85,7 +85,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void move_to_perm () {
-            /*
+            /**
                 Переместить файл в постоянное хранилище, если он во временном
             */
 
@@ -95,7 +95,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public async void move_to_perm_async () {
-            /*
+            /**
                 Переместить файл в постоянное хранилище, если он во временном
             */
 
@@ -111,7 +111,7 @@ namespace Cassette.Client.Cachier {
     }
 
     public class Storager : Object {
-        /*
+        /**
            A class for working with client files
         */
 
@@ -332,7 +332,7 @@ namespace Cassette.Client.Cachier {
         }
 
         void move_file (File src_file, File dst_file) {
-            /*
+            /**
                 Перемещает файл
             */
 
@@ -348,7 +348,7 @@ namespace Cassette.Client.Cachier {
         }
 
         void move_file_dir (File src_dir_file, File dst_dir_file) {
-            /*
+            /**
                 Перемещает директорию рекурсивно
             */
 
@@ -393,7 +393,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void remove_file (File target_file) {
-            /*
+            /**
                 Удалить файл
             */
 
@@ -409,7 +409,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public void remove (string file_path) {
-            /*
+            /**
                 Удалить файл используя путь
             */
 
@@ -417,7 +417,7 @@ namespace Cassette.Client.Cachier {
         }
 
         void remove_dir_file (File dir_file) {
-            /*
+            /**
                 Удаляет директорию рекурсивно
             */
 
@@ -460,7 +460,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public async void clear_user (bool keep_content) {
-            /*
+            /**
                 Удаляет пользовательские данные и переносить содержимое
                 кэшей во временное 
             */
@@ -482,7 +482,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public async void delete_temp_cache () {
-            /*
+            /**
                 Удаляет временные файлы
             */
 
@@ -496,7 +496,7 @@ namespace Cassette.Client.Cachier {
         }
 
         void simple_dencode (ref uint8[] data) {
-            /*
+            /**
                 Простое кодирование для защиты DRM контента от прямого доступа.
                 Просьба не публиковать в интернете версию без кодирования и 
                 не распространять способ обхода (пусть и простой).
@@ -525,7 +525,7 @@ namespace Cassette.Client.Cachier {
         }
 
         string encode_name (string name) {
-            /*
+            /**
                 Закодировать имя в Base64
             */
 
@@ -537,7 +537,7 @@ namespace Cassette.Client.Cachier {
         /////////////
 
         File get_image_cache_file (string image_uri, bool is_tmp) {
-            /*
+            /**
                 Получение файла кэширования изображения по его uri
             */
 
@@ -607,7 +607,7 @@ namespace Cassette.Client.Cachier {
         /////////////
 
         File get_audio_cache_file (string track_id, bool is_tmp) {
-            /*
+            /**
                 Получение файла аудио по id трека
             */
 
@@ -741,7 +741,7 @@ namespace Cassette.Client.Cachier {
         }
 
         File get_object_cache_file (Type obj_type, string oid, bool is_tmp) {
-            /*
+            /**
                 Получение файла файлла аудио по его типу и id
             */
 

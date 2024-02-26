@@ -5,6 +5,14 @@ on:
     - cron: 0 0 * * *
   workflow_dispatch:
 
+env:
+  BUILD_OUTPUT_PATH: rirusha.github.io/Cassette.Devel/repo
+  DEVEL_APP_ID: io.github.Rirusha.Cassette.Devel
+  DEVEL_SLICE_BRANCH_NAME: devel-slice
+  MANIFEST_PATH: build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
+  REPO_NAME: gnome-nightly
+  REPO_URL: https://nightly.gnome.org/gnome-nightly.flatpakrepo
+
 jobs:
   pr-deploy:
     name: Pull Request to deploy branch
@@ -20,12 +28,12 @@ jobs:
           git config --global user.email "rirusha@noreply.github.com"
 
       - name: Checkout branch
-        run: git checkout ${{ env.DEVEL_SLICE_BRANCH_NAME }}
+        run: git checkout $DEVEL_SLICE_BRANCH_NAME
       
       - name: Merge changes
+        # Должна существовать только одна ветка dev-*
         run: |
-          git merge origin/dev-* --no-edit
-          git push origin ${{ env.DEVEL_SLICE_BRANCH_NAME }}
+          git branch | grep "dev-" | git merge origin --no-edit --strategy=ours -m "Срез devel версии"
 
   build:
     name: Build
@@ -60,16 +68,16 @@ jobs:
 
       - name: Build and install deps
         run: |
-          flatpak-builder build --user --install-deps-from=${{ env.REPO_NAME }} --gpg-sign=${{ steps.gpg.outputs.fingerprint }} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo --default-branch=master ${{ env.MANIFEST_PATH }}
-          flatpak build-bundle --arch=${{ matrix.arch }} --gpg-sign=${{ steps.gpg.outputs.fingerprint }} repo ${{ env.DEVEL_APP_ID }}.flatpak --runtime-repo=${{ env.REPO_URL }} ${{ env.DEVEL_APP_ID }} master
+          flatpak-builder build --user --install-deps-from=$REPO_NAME --gpg-sign=${{ steps.gpg.outputs.fingerprint }} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo --default-branch=master build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
+          flatpak build-bundle --arch=${{ matrix.arch }} --gpg-sign=${{ steps.gpg.outputs.fingerprint }} repo $DEVEL_APP_ID.flatpak --runtime-repo=$REPO_URL $DEVEL_APP_ID master
 
           flatpak build-update-repo --gpg-sign=${{ steps.gpg.outputs.fingerprint }} --generate-static-deltas --prune repo/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.DEVEL_APP_ID }}-${{ matrix.arch }}  # имя вашего артефакта
-          path: repo/${{ env.DEVEL_APP_ID }}.flatpak  # путь к артефакту, который вы хотите сохранить
+          name: io.github.Rirusha.Cassette.Devel-${{ matrix.arch }}  # имя вашего артефакта
+          path: repo/io.github.Rirusha.Cassette.Devel.flatpak  # путь к артефакту, который вы хотите сохранить
 
   deploy:
     name: Deploy

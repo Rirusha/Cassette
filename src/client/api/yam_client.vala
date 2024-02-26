@@ -555,7 +555,7 @@ namespace Cassette.Client.YaMAPI {
         /**
          * Сбросить значение последней прослушиваемой станции.
          *
-         * @return  успешна ли было выполнение
+         * @return  успех выполнения
          */
         public bool rotor_wave_last_reset () throws ClientError, BadStatusCodeError {
             var bytes = soup_wrapper.post_sync (
@@ -583,10 +583,69 @@ namespace Cassette.Client.YaMAPI {
         public void search_instant_mixed () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         * Метод отправки фидбека о прослушивании трека.
+         *
+         * @param play_id               id сессии прослушивания
+         * @param total_played_seconds  общее количество прослушанного времени в секундах
+         * @param end_position_seconds  секунда, на которой закончилось прослушивание
+         * @param track_length_seconds  общее количество секунд в треке
+         * @param track_id              id трека
+         * @param album_id              id вльбома, может быть ``null``
+         * @param from                  
+         * @param context               контекст воспроизведения (То же что и ``Queue.context.type``)
+         * @param context_item          id контекста, (Тоже же, что и ``Queue.context.id``)
+         * @param radio_session_id      id сессии волны
+         *
+         * @return                      успех выполнения
          */
-        public void plays () throws ClientError, BadStatusCodeError {
+        public bool plays (
+            string play_id,
+            double total_played_seconds,
+            double end_position_seconds,
+            double track_length_seconds,
+            string track_id,
+            string? album_id,
+            string from,
+            string context,
+            string context_item,
+            string? radio_session_id = null
+        ) throws ClientError, BadStatusCodeError {
+            var play = new Play () {
+                play_id = play_id,
+                timestamp = get_timestamp (),
+                total_played_seconds = total_played_seconds,
+                end_position_seconds = end_position_seconds,
+                track_length_seconds = track_length_seconds,
+                track_id = track_id,
+                album_id = album_id,
+                from = from,
+                context = context,
+                context_item = context_item,
+                add_tracks_to_player_time = Play.generate_add_tracks_to_player_time (),
+                audio_auto = "none",
+                audio_output_name = "Динамики",
+                audio_output_type = "Speaker",
+                radio_session_id = radio_session_id
+            };
 
+            PostContent post_content = {
+                PostContentType.JSON,
+                Jsoner.serialize (play)
+            };
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/plays",
+                {"default"},
+                post_content,
+                {{"clientNow", get_timestamp ()}}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+            string res = jsoner.deserialize_value ().get_string ();
+
+            if (res != "ok") {
+                throw new ClientError.ANSWER_ERROR ("Send play-audio failed");
+            }
         }
 
         /**
@@ -652,6 +711,7 @@ namespace Cassette.Client.YaMAPI {
         // TODO: Методы ниже должны быть ззаменены на методы выше //
         ////////////////////////////////////////////////////////////
 
+        [Deprocated]
         public Playlist get_playlist_info (owned string? uid = null, string kind = "3") throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
 
@@ -664,6 +724,7 @@ namespace Cassette.Client.YaMAPI {
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
+        [Deprocated]
         public Gee.ArrayList<Track> get_tracks (
             string[] id_list,
             bool with_positions = false
@@ -687,6 +748,7 @@ namespace Cassette.Client.YaMAPI {
             return array_list;
         }
 
+        [Deprocated]
         public Gee.ArrayList<ShortQueue> queues () throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/queues",
@@ -699,6 +761,7 @@ namespace Cassette.Client.YaMAPI {
             return queue_list;
         }
 
+        [Deprocated]
         public Queue queue (string queue_id) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/queues/$queue_id",
@@ -711,6 +774,7 @@ namespace Cassette.Client.YaMAPI {
             return queue;
         }
 
+        [Deprocated]
         public string? create_queue (Queue queue) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/queues",
@@ -728,6 +792,7 @@ namespace Cassette.Client.YaMAPI {
             }
         }
 
+        [Deprocated]
         public void update_position_queue (string queue_id, int position) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.post_sync (
                 @"$(YAM_BASE_URL)/queues/$queue_id/update-position",
@@ -747,6 +812,7 @@ namespace Cassette.Client.YaMAPI {
             }
         }
 
+        [Deprocated]
         public void play_audio (
             owned string? uid,
             string track_id,
@@ -791,6 +857,7 @@ namespace Cassette.Client.YaMAPI {
             }
         }
 
+        [Deprocated]
         public string? get_download_uri (string track_id, bool hq = true) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (@"$(YAM_BASE_URL)/tracks/$track_id/download-info", {"default"});
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
@@ -810,6 +877,7 @@ namespace Cassette.Client.YaMAPI {
             return form_download_uri (dl_info_uri);
         }
 
+        [Deprocated]
         string? form_download_uri (string dl_info_uri) throws ClientError, BadStatusCodeError {
             Bytes bytes = get_content_of (dl_info_uri);
             string xml_string = (string) bytes.get_data ();
@@ -838,6 +906,7 @@ namespace Cassette.Client.YaMAPI {
             return @"https://$host/get-mp3/$sign/$ts/$path";
         }
 
+        [Deprocated]
         public bool like (string what, string id) throws ClientError, BadStatusCodeError {
             string? uid = null;
             check_uid (ref uid);
@@ -861,6 +930,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public bool remove_like (string what, string id) throws ClientError, BadStatusCodeError {
             string? uid = null;
             check_uid (ref uid);
@@ -884,6 +954,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public bool dislike (string id) throws ClientError, BadStatusCodeError {
             string? uid = null;
             check_uid (ref uid);
@@ -907,6 +978,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public bool remove_dislike (string id) throws ClientError, BadStatusCodeError {
             string? uid = null;
             check_uid (ref uid);
@@ -930,6 +1002,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public Gee.ArrayList<Playlist> get_playlists_list (owned string? uid = null) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
 
@@ -945,6 +1018,7 @@ namespace Cassette.Client.YaMAPI {
             return playlist_array;
         }
 
+        [Deprocated]
         public Gee.ArrayList<LikedPlaylist> get_likes_playlists_list (
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
@@ -961,6 +1035,7 @@ namespace Cassette.Client.YaMAPI {
             return playlist_array;
         }
 
+        [Deprocated]
         public SimilarTracks similar_tracks (string track_id) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/tracks/$track_id/similar",
@@ -971,6 +1046,7 @@ namespace Cassette.Client.YaMAPI {
             return (SimilarTracks) jsoner.deserialize_object (typeof (SimilarTracks));
         }
 
+        [Deprocated]
         public Lyrics track_lyrics (string track_id, bool is_sync) throws ClientError, BadStatusCodeError {
             string format = is_sync ? "LRC" : "TEXT";
             string timestamp = new DateTime.now_utc ().to_unix ().to_string ();
@@ -1000,6 +1076,7 @@ namespace Cassette.Client.YaMAPI {
             return lyrics;
         }
 
+        [Deprocated]
         public Playlist change_playlist (
             owned string? uid,
             string kind,
@@ -1027,6 +1104,7 @@ namespace Cassette.Client.YaMAPI {
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
+        [Deprocated]
         public Playlist change_playlist_visibility (
             owned string? uid,
             string kind,
@@ -1051,6 +1129,7 @@ namespace Cassette.Client.YaMAPI {
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
+        [Deprocated]
         public Playlist create_playlist (
             owned string? uid,
             string title,
@@ -1076,6 +1155,7 @@ namespace Cassette.Client.YaMAPI {
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
+        [Deprocated]
         public bool delete_playlist (
             owned string? uid,
             string kind
@@ -1094,6 +1174,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public Playlist change_playlist_name (
             owned string? uid,
             string kind,
@@ -1118,6 +1199,7 @@ namespace Cassette.Client.YaMAPI {
             return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
+        [Deprocated]
         public PlaylistRecommendations get_playlist_recommendations (
             owned string? uid,
             string kind
@@ -1133,6 +1215,7 @@ namespace Cassette.Client.YaMAPI {
             return (PlaylistRecommendations) jsoner.deserialize_object (typeof (PlaylistRecommendations));
         }
 
+        [Deprocated]
         public Gee.ArrayList<TrackShort> get_disliked_tracks (
             owned string? uid,
             int if_modified_since_revision = 0
@@ -1156,6 +1239,7 @@ namespace Cassette.Client.YaMAPI {
         // Radio //
         ///////////
 
+        [Deprocated]
         public Dashboard get_rotor_dashboard () throws ClientError, BadStatusCodeError {
             var bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/rotor/stations/dashboard",
@@ -1167,6 +1251,7 @@ namespace Cassette.Client.YaMAPI {
             return (Dashboard) jsoner.deserialize_object (typeof (Dashboard));
         }
 
+        [Deprocated]
         public Gee.ArrayList<StationInfo> get_station_list () throws ClientError, BadStatusCodeError {
             var bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/rotor/stations/list",
@@ -1181,6 +1266,7 @@ namespace Cassette.Client.YaMAPI {
             return our_array;
         }
 
+        [Deprocated]
         public StationInfo get_rotor_info (
             string station_type
         ) throws ClientError, BadStatusCodeError {
@@ -1200,6 +1286,7 @@ namespace Cassette.Client.YaMAPI {
             return our_array[0];
         }
 
+        [Deprocated]
         public bool rotor_feedback_started (
             string station_type
         ) throws ClientError, BadStatusCodeError {
@@ -1224,6 +1311,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public bool rotor_feedback_track_started (
             string station_type,
             string batch_id,
@@ -1251,6 +1339,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public bool rotor_feedback_track_finished (
             string station_type,
             string batch_id,
@@ -1280,6 +1369,7 @@ namespace Cassette.Client.YaMAPI {
             return false;
         }
 
+        [Deprocated]
         public StationTracks get_station_tracks (
             string station_type
         ) throws ClientError, BadStatusCodeError {

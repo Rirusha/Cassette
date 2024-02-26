@@ -5,14 +5,6 @@ on:
     - cron: 0 0 * * *
   workflow_dispatch:
 
-env:
-  BUILD_OUTPUT_PATH: rirusha.github.io/Cassette.Devel/repo
-  DEVEL_APP_ID: io.github.Rirusha.Cassette.Devel
-  DEVEL_SLICE_BRANCH_NAME: devel-slice
-  MANIFEST_PATH: build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
-  REPO_NAME: gnome-nightly
-  REPO_URL: https://nightly.gnome.org/gnome-nightly.flatpakrepo
-
 jobs:
   pr-deploy:
     name: Pull Request to deploy branch
@@ -35,21 +27,20 @@ jobs:
         run: |
           git branch --list "dev-*" | grep "dev-" | while read -r branch; do git merge --no-edit --strategy=ours "$branch"; done
           git push --force origin devel-slice 
-          
 
-  build:
-    name: Build
+  flatter:
+    name: Flatter
     runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-nigthly
-      options: --priveleged
-    
+      image: ghcr.io/andyholmes/flatter/gnome:master
+      options: --privileged
+
     strategy:
       matrix:
         arch: [x86_64, aarch64]
       fail-fast: false
       max-parallel: 1
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -68,23 +59,23 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      - name: Build and install deps
-        run: |
-          flatpak-builder build --user --install-deps-from=$REPO_NAME --gpg-sign=${{ steps.gpg.outputs.fingerprint }} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo --default-branch=master build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
-          flatpak build-bundle --arch=${{ matrix.arch }} --gpg-sign=${{ steps.gpg.outputs.fingerprint }} repo $DEVEL_APP_ID.flatpak --runtime-repo=$REPO_URL $DEVEL_APP_ID master
-
-          flatpak build-update-repo --gpg-sign=${{ steps.gpg.outputs.fingerprint }} --generate-static-deltas --prune repo/
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Build 
+        uses: andyholmes/flatter@main
         with:
-          name: io.github.Rirusha.Cassette.Devel-${{ matrix.arch }}  # имя вашего артефакта
-          path: repo/io.github.Rirusha.Cassette.Devel.flatpak  # путь к артефакту, который вы хотите сохранить
+          files: |
+            build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
+          arch: ${{ matrix.arch }}
+          gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
+          upload-bundles: true
+          upload-pages-artifact: true
+          upload-pages-includes: |
+            default.css
+            index.html
 
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    needs: build
+    needs: flatter
     permissions:
       pages: write
       id-token: write

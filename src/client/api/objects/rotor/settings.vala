@@ -16,13 +16,22 @@
  */
 
 
+using Gee;
+
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * Настройки волны, связанные с языком
+     */
     namespace StationLanguage {
         public const string NOT_RUSSIAN = "not-russian";
         public const string RUSSIAN = "russian";
         public const string ANY = "any";
     }
 
+    /**
+     * Настройки волны, связанные с настроением
+     */
     namespace MoodEnergy {
         public const string FUN = "fun";
         public const string ACTIVE = "active";
@@ -31,6 +40,9 @@ namespace Cassette.Client.YaMAPI.Rotor {
         public const string ALL = "all";
     }
 
+    /**
+     * Настройки волны, связанные с предпочтениями
+     */
     namespace Diversity {
         public const string FAVORITE = "favorite";
         public const string POPULAR = "popular";
@@ -38,12 +50,24 @@ namespace Cassette.Client.YaMAPI.Rotor {
         public const string DEFAULT = "default";
     }
 
+    /**
+     * Класс настроек волны
+     */
     public class Settings : YaMObject {
 
-        public string language { get; set; }
-        public string diversity { get; set; }
-        public int mood { get; set; }
-        public int energy { get; set; }
-        public string mood_energy { get; set; }
+        /**
+         * TODO
+         */
+        public Station default_station { get; set; }
+
+        /**
+         * TODO
+         */
+        public ArrayList<Block> blocks { get; set; default = new ArrayList<Block> (); }
+
+        /**
+         * TODO
+         */
+        public Restrictions settings_restrictions { get; set; }
     }
 }

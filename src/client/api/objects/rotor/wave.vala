@@ -22,22 +22,22 @@ namespace Cassette.Client.YaMAPI.Rotor {
 
     public class Wave : YaMObject {
 
-        /*
+        /**
          * TODO
          */
         public string name { get; set; }
 
-        /*
+        /**
          * TODO
          */
         public string station_id { get; set; }
 
-        /*
+        /**
          * TODO
          */
         public ArrayList<string> seeds { get; set; default = new ArrayList<string> (); }
 
-        /*
+        /**
          * TODO
          */
         public string if_for_from { get; set; }

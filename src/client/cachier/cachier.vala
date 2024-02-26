@@ -35,7 +35,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public async void uncache (HasTrackList yam_obj) {
-            /*
+            /**
                 Удалить или переместить во временную папку объект с треками
             */
 
@@ -45,7 +45,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public Job start_cache (HasTrackList yam_obj) {
-            /*
+            /**
                 Начать сохранение объекта с треками
             */
 
@@ -66,7 +66,7 @@ namespace Cassette.Client.Cachier {
         }
 
         public Job? find_job (string yam_obj_id) {
-            /*
+            /**
                 Находит job в списке job'ов. Если таковой нет, возвращает null
             */
 
@@ -128,7 +128,7 @@ namespace Cassette.Client.Cachier {
     ///////////
 
     public async static void save_track (YaMAPI.Track track_info) {
-        /*
+        /**
             Функция удобства, объединяющая сохранение аудио и изображения
         */
 
@@ -140,7 +140,7 @@ namespace Cassette.Client.Cachier {
         string track_id,
         owned string? track_uri = null,
         bool is_tmp = true) {
-        /*
+        /**
             Скачивание аудио по его id. Если не передан uri трека, то uri будет самостоятельно загружен.
             Аргумент is_tmp определяет место, куда будет загружено аудио
         */
@@ -183,7 +183,7 @@ namespace Cassette.Client.Cachier {
     }
 
     public async static string? get_track_uri (string track_id) {
-        /*
+        /**
             Выдает uri трека: локальный, если трек сохранен; интернет ссылку в ином случае.
             Если трек не был сохранен, то сохраняет его
         */
@@ -222,7 +222,7 @@ namespace Cassette.Client.Cachier {
 
     // Получение изображения ямобъекта, если есть, иначе получение из сети и сохранение
     public async static Gdk.Pixbuf? get_image (HasCover yam_object, int size) {
-        /*
+        /**
             Выдает объект Pixbuf с артом трека. Если изображение не найдено локально, загружает его.
             Если арт не был сохранен, то сохраняет его
         */

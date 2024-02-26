@@ -19,7 +19,7 @@
 namespace Cassette.Client {
 
     public abstract class AbstractTalker : Object {
-        /*
+        /**
             Абстрактный класс всех классов-удобства для использования клиента/авторизации
         */
 

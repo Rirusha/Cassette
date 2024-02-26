@@ -17,12 +17,36 @@
 
 
 namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * Класс с параметрами волны
+     */
     public class Restrictions : YaMObject {
 
-        public Enum language { get; set; }
-        public Enum diversity { get; set; }
-        public DiscreteScale mood { get; set; }
-        public DiscreteScale energy { get; set; }
-        public Enum mood_energy { get; set; }
+        /**
+         * Язык волны
+         */
+        public ValueHeap language { get; set; }
+        /**
+         * Предаочтение волны
+         */
+        public ValueHeap diversity { get; set; }
+
+        /**
+         * Настроение волны
+         */
+        [Version (deprecated = true)]
+        public ValueHeap mood { get; set; }
+
+        /**
+         * Энергия волны
+         */
+        [Version (deprecated = true)]
+        public ValueHeap energy { get; set; }
+
+        /**
+         * Настроение и энергия волны
+         */
+        public ValueHeap mood_energy { get; set; }
     }
 }

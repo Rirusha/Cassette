@@ -118,7 +118,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         public string form_debug_info () {
-            /*
+            /**
                 Сформировать debug информацию о треке            
             */
 

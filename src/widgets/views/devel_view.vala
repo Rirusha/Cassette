@@ -52,10 +52,12 @@ namespace Cassette {
             //      message (seq.title);
             //  }
 
-            var lib = client.library_all_ids ();
+            //  var lib = client.library_all_ids ();
 
-            message (lib.liked_tracks[0]);
-            message (lib.playlists[0]);
+            //  message (lib.liked_tracks[0]);
+            //  message (lib.playlists[0]);
+
+            client.rotor_wave_settings ();
         }
 
         void set_values () {

@@ -154,7 +154,7 @@ namespace Cassette.Client {
      * Утилиты, зависимые от типа.
      */
     public string strip (string str, char ch) {
-        /*
+        /**
             Delete `ch` from start and end of `str`
         */
 

@@ -16,9 +16,23 @@
  */
 
 
-namespace Cassette.Client.YaMAPI.Rotor {
-    public class StationData : YaMObject {
+using Gee;
 
-        public string name { get; set; }
+namespace Cassette.Client.YaMAPI.Rotor {
+
+    /**
+     * TODO
+     */
+    public class Block : YaMObject {
+
+        /**
+         * TODO
+         */
+        public string type_ { get; set; }
+
+        /**
+         * TODO
+         */
+        public ArrayList<StationInfo> items { get; set; default = new ArrayList<StationInfo> (); }
     }
 }

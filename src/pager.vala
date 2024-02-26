@@ -215,7 +215,7 @@ namespace Cassette {
         }
 
         public void load_pages (PagesType? pages_type_if_failed = null) {
-            /*
+            /**
                 Загружает страницы из файлы. Если файла неи, то загружает страницы по-умолчанию
                 исходя из значения `is_online`
             */

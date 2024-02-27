@@ -19,6 +19,7 @@ jobs:
       - name: Checkout devel-slice
         run: |
           git clone -b devel-slice https://github.com/Rirusha/Cassette.git
+          cd Cassette/
 
           echo $(git branch -a)
 

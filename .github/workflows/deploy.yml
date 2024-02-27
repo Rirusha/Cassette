@@ -28,7 +28,7 @@ jobs:
 
           git branch -a | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
 
-          git push --force
+          git push --force origin devel-slice
 
   flatter:
     name: Flatter

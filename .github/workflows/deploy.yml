@@ -15,8 +15,6 @@ jobs:
         run: |
           git config --global user.name "auto-deployer"
           git config --global user.email "rirusha@noreply.github.com"
-          git remote set-url origin https://github.com/${{ github.repository }}
-          git config --global credential.helper store
 
       - name: Rebase & Push
         # Должна существовать только одна ветка dev-*

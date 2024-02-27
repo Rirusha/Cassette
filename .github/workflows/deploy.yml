@@ -7,19 +7,20 @@ on:
 
 jobs:
   sync-branches:
-    name: Pull Request to deploy branch
+    name: Rebase devel-slice on dev-*
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: devel-slice
-
       - name: Config git
         run: |
           git config --global user.name "auto-deployer"
           git config --global user.email "rirusha@noreply.github.com"
+
+      - name: Checkout devel-slice
+        run: |
+          git clone -b devel-slice https://github.com/Rirusha/Cassette.git
+
+          echo $(git branch -a)
 
       - name: Rebase branch
         # Должна существовать только одна ветка dev-*

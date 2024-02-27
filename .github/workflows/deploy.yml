@@ -19,14 +19,15 @@ jobs:
       - name: Rebase & Push
         # Должна существовать только одна ветка dev-*
         run: |
-          git clone -b devel-slice https://github.com/Rirusha/Cassette.git
+          git clone https://github.com/Rirusha/Cassette.git
           cd Cassette/
 
           git checkout -b dev-0.2 origin/dev-0.2
+          git checkout -b devel-slice origin/devel-slice
 
           echo $(git branch -a)
 
-          git branch -a | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
+          git branch -a | grep "^dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
 
           git push --force origin devel-slice
 

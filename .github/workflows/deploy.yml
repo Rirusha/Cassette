@@ -25,7 +25,7 @@ jobs:
         run: |
           remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
 
-          for branch in $remote_branches; do git checkout -b $branch origin/$branch; done
+          for branch in $remote_branches; do git checkout -B $branch origin/$branch; done
 
           git checkout devel-slice
 

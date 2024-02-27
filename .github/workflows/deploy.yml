@@ -27,6 +27,8 @@ jobs:
 
           for branch in $remote_branches; do git checkout -b $branch origin/$branch; done
 
+          git checkout devel-slice
+
       - name: Rebase branch
         # Должна существовать только одна ветка dev-*
         run: |

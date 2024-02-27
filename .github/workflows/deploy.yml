@@ -22,6 +22,8 @@ jobs:
           git clone https://github.com/Rirusha/Cassette.git
           cd Cassette/
 
+          git remote set-url origin https://Rirusha:${{ secrets.GITHUB_TOKEN }}@github.com/Rirusha/Cassette.git
+
           git checkout -b dev-0.2 origin/dev-0.2
           git checkout -b devel-slice origin/devel-slice
 
@@ -30,8 +32,6 @@ jobs:
           git branch -a | grep "^dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
 
           git push --force origin devel-slice
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   flatter:
     name: Flatter

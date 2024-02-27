@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync-branches:
-    name: Pull Request to deploy branch
+    name: Rebase devel-slice on dev-*
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,12 @@ jobs:
         run: |
           git config --global user.name "auto-deployer"
           git config --global user.email "rirusha@noreply.github.com"
+
+      - name: Checkout all
+        run: |
+          remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
+
+          for branch in $remote_branches; do git checkout -b $branch origin/$branch; done
 
       - name: Rebase branch
         # Должна существовать только одна ветка dev-*

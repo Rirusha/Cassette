@@ -28,6 +28,7 @@ namespace Cassette {
         construct {
             child = begin_view;
 
+            presentation_mode = Adw.DialogPresentationMode.FLOATING;
             content_width = 600;
             content_height = 960;
 

@@ -16,20 +16,18 @@ jobs:
           git config --global user.name "auto-deployer"
           git config --global user.email "rirusha@noreply.github.com"
 
-      - name: Checkout devel-slice
+      - name: Rebase & Push
+        # Должна существовать только одна ветка dev-*
         run: |
           git clone -b devel-slice https://github.com/Rirusha/Cassette.git
           cd Cassette/
 
+          git checkout -b dev-0.2 origin/dev-0.2
+
           echo $(git branch -a)
 
-      - name: Rebase branch
-        # Должна существовать только одна ветка dev-*
-        run: |
           git branch -a | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
 
-      - name: Push changes
-        run: |
           git push --force
 
   flatter:

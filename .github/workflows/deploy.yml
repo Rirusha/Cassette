@@ -21,7 +21,7 @@ jobs:
         run: |
           git branch --list | grep "^dev-" | while read -r branch; do git checkout -B $branch origin/$branch; git clone -b "$branch" https://github.com/Rirusha/Cassette.git tmp; done
 
-          checkout deve-slice
+          git checkout devel-slice
 
           rm -rf tmp/.git
 

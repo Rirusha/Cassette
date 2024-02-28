@@ -19,13 +19,15 @@ jobs:
 
       - name: Ultra commit
         run: |
-          git branch --list | grep "^dev-" | while read -r branch; do git checkout -B $branch origin/$branch; git clone -b "$branch" https://github.com/Rirusha/Cassette.git tmp; done
+          git clone -b dev-0.2 https://github.com/Rirusha/Cassette.git tmp
 
           git checkout devel-slice
 
           rm -rf tmp/.git
 
           mv -f tmp/* ./
+
+          rm -rf tmp
 
           git config user.name robot-debil
           git config user.email github-actions@github.com

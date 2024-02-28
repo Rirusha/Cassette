@@ -34,7 +34,7 @@ jobs:
     
       - name: Push
         run: |        
-          git push --force
+          git push --force origin devel-slice
       
 
   flatter:

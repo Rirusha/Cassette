@@ -23,8 +23,9 @@ jobs:
 
           rm -rf tmp/.git
 
-          sudo apt-get install rsync -y
-          rsync -av --delete tmp/ ./
+          yes | cp -Rf tmp/* ./
+
+          rm -rf tmp
 
           git config user.name robot-debil
           git config user.email github-actions@github.com

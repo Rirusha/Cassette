@@ -1,14 +1,50 @@
 name: Deploy
 
-on:  
-  push:
-    branches:
-      - 'devel-slice'
+on:
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch:
 
 jobs:
+  sync-branches:
+    name: Rebase devel-slice on dev-*
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Config git
+        run: |
+          git config --global user.name "auto-deployer"
+          git config --global user.email "rirusha@noreply.github.com"
+
+      - name: Checkout all
+        run: |
+          remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
+
+          echo $(remote_branches)
+
+          for branch in $remote_branches; do git checkout -B $branch origin/$branch; done
+
+          git checkout devel-slice
+
+      - name: Rebase & Push
+        # Должна существовать только одна ветка dev-*
+        run: |
+          echo $(git branch --all)     
+          echo $(git branch --list | grep "dev-") 
+          echo $(git branch --all | grep "dev-")           
+          git branch -a | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
+
+          git push --force
+
   flatter:
     name: Flatter
     runs-on: ubuntu-latest
+    needs: sync-branches
     container:
       image: ghcr.io/andyholmes/flatter/gnome:master
       options: --privileged

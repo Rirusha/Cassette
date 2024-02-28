@@ -59,7 +59,7 @@ __ВНИМАНИЕ!__: эта версия нестабильна.
 flatpak remote-add -u --no-gpg-verify cassette-nightly https://rirusha.github.io/Cassette/index.flatpakrepo
 flatpak install io.github.Rirusha.Cassette-Devel
 ```
-Для удаление репозитория нужно выполнить выполнить:
+Для удаления репозитория нужно выполнить выполнить:
 ```
 flatpak remote-delete cassette-nightly
 ```

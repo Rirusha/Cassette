@@ -9,23 +9,39 @@ jobs:
   sync-branches:
     name: Rebase devel-slice on dev-*
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Merge devel-slice -> dev-*
-        uses: devmasx/merge-branch@master
         with:
-          type: now
-          from_branch: dev-0.2
-          target_branch: devel-slice
-          message: Auto merge
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Config git
+        run: |
+          git config --global user.name "robot-debil"
+          git config --global user.email "rirusha@noreply.github.com"
+
+      - name: Checkout all
+        run: |
+          remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
+          for branch in $remote_branches; do git checkout -B $branch origin/$branch; done
+          git checkout devel-slice
+
+      - name: Rebase & Push
+        # Должна существовать только одна ветка dev-*
+        run: |        
+          git branch --list | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
+    
+      - name: Push
+        run: |        
+          git push --force
+      
 
   flatter:
     name: Flatter
     runs-on: ubuntu-latest
     needs: sync-branches
+
     container:
       image: ghcr.io/andyholmes/flatter/gnome:master
       options: --privileged

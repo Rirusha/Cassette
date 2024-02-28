@@ -19,7 +19,7 @@ jobs:
 
       - name: Ultra commit
         run: |
-          git branch -a | grep "^dev-" | while read -r branch; do git clone -b "$branch" tmp; done
+          git branch --list | grep "^dev-" | while read -r branch; do git clone -b "$branch" https://github.com/Rirusha/Cassette.git tmp; done
 
           rm -rf tmp/.git
 

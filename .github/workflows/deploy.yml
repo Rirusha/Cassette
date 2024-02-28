@@ -21,7 +21,7 @@ jobs:
         run: |
           git clone -b dev-0.2 https://github.com/Rirusha/Cassette.git tmp
 
-          git checkout devel-slice
+          rm -rf tmp/.git
 
           sudo apt-get install rsync -y
           rsync -av --delete tmp/ ./

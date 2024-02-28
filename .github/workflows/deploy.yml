@@ -6,38 +6,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync-branches:
-    name: Rebase devel-slice on dev-*
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: devel-slice
-
-      - name: Ultra commit
-        run: |
-          git clone -b dev-0.2 https://github.com/Rirusha/Cassette.git tmp
-
-          rm -rf tmp/.git
-
-          cp -Rf tmp/* ./
-
-          rm -rf tmp
-
-          git config user.name robot-debil
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "Auto commit"
-          git push --force
-          
-
   flatter:
     name: Flatter
     runs-on: ubuntu-latest
-    needs: sync-branches
     container:
       image: ghcr.io/andyholmes/flatter/gnome:master
       options: --privileged
@@ -52,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: devel-slice
+          ref: dev-0.2
 
       - name: Setup QEMU
         if: ${{ matrix.arch == 'aarch64' }}

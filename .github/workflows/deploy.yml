@@ -15,31 +15,24 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: devel-slice
 
-      - name: Config git
+      - name: Ultra commit
         run: |
-          git config --global user.name "auto-deployer"
-          git config --global user.email "rirusha@noreply.github.com"
+          git clone -b dev-0.2
 
-      - name: Checkout all
-        run: |
-          remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
+          git branch -a | grep "^dev-" | while read -r branch; do git clone -b "$branch" tmp; done
 
-          echo $(remote_branches)
+          rm -rf tmp/.git
 
-          for branch in $remote_branches; do git checkout -B $branch origin/$branch; done
+          mv -f tmp/* ./
 
-          git checkout devel-slice
-
-      - name: Rebase & Push
-        # Должна существовать только одна ветка dev-*
-        run: |
-          echo $(git branch --all)     
-          echo $(git branch --list | grep "dev-") 
-          echo $(git branch --all | grep "dev-")           
-          git branch -a | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
-
+          git config user.name robot-debil
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Auto commit"
           git push --force
+          
 
   flatter:
     name: Flatter

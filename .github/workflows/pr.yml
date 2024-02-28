@@ -18,5 +18,5 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          base: devel-slice
-          branch: dev-0.2
+          base: dev-0.2
+          branch: devel-slice

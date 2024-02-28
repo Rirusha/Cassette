@@ -9,37 +9,18 @@ jobs:
   sync-branches:
     name: Rebase devel-slice on dev-*
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Merge devel-slice -> dev-*
+        uses: devmasx/merge-branch@master
         with:
-          ref: devel-slice
-
-      - name: Config git
-        run: |
-          git config --global user.name "auto-deployer"
-          git config --global user.email "rirusha@noreply.github.com"
-
-      - name: Checkout all
-        run: |
-          remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
-
-          for branch in $remote_branches; do git checkout -B $branch origin/$branch; done
-
-          git checkout devel-slice
-
-      - name: Rebase branch
-        # Должна существовать только одна ветка dev-*
-        run: |
-          echo $(git branch --all)     
-          echo $(git branch --list | grep "dev-") 
-          echo $(git branch --all | grep "dev-")           
-          git branch -a | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
-
-      - name: Push changes
-        run: |
-          git push --force
+          type: now
+          from_branch: dev-0.2
+          target_branch: devel-slice
+          message: Auto merge
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   flatter:
     name: Flatter

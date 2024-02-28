@@ -23,7 +23,7 @@ jobs:
 
           rm -rf tmp/.git
 
-          yes | cp -Rf tmp/* ./
+          cp -Rf tmp/* ./
 
           rm -rf tmp
 

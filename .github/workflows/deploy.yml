@@ -23,11 +23,8 @@ jobs:
 
           git checkout devel-slice
 
-          rm -rf tmp/.git
-
-          mv -f tmp/* ./
-
-          rm -rf tmp
+          sudo apt-get install rsync -y
+          rsync -av --delete tmp/ ./
 
           git config user.name robot-debil
           git config user.email github-actions@github.com

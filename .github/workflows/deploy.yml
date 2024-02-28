@@ -19,8 +19,6 @@ jobs:
 
       - name: Ultra commit
         run: |
-          git clone -b dev-0.2
-
           git branch -a | grep "^dev-" | while read -r branch; do git clone -b "$branch" tmp; done
 
           rm -rf tmp/.git

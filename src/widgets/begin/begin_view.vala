@@ -19,7 +19,6 @@
 using Cassette.Client;
 using WebKit;
 
-
 namespace Cassette {
 
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/begin_view.ui")]

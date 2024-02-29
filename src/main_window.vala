@@ -217,10 +217,6 @@ namespace Cassette {
                 }
             });
 
-            show.connect (() => {
-                change (get_width (), get_height ());
-            });
-
             block_widget (search_button, BlockReason.NOT_IMPLEMENTED);
         }
 
@@ -390,29 +386,7 @@ namespace Cassette {
         protected override void size_allocate (int width, int height, int baseline) {
             base.size_allocate (width, height, baseline);
 
-            change (width, height);
-        }
-
-        void change (int width, int height) {
-            if (width > 950) {
-                if (switcher_title.policy == Adw.ViewSwitcherPolicy.NARROW) {
-                    switcher_title.policy = Adw.ViewSwitcherPolicy.WIDE;
-                }
-            } else {
-                if (switcher_title.policy == Adw.ViewSwitcherPolicy.WIDE) {
-                    switcher_title.policy = Adw.ViewSwitcherPolicy.NARROW;
-                }
-            }
-
-            if (width > 1055) {
-                if (sidebar.collapsed) {
-                    sidebar.collapsed = false;
-                }
-            } else {
-                if (!sidebar.collapsed) {
-                    sidebar.collapsed = true;
-                }
-            }
+            message (@"Width: $width, Height: $height");
         }
     }
 }

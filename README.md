@@ -59,7 +59,7 @@ __ВНИМАНИЕ!: эта версия нестабильна.__
 
 Установка приложения происходит из nightly репозитория, который также нужно подключить:
 ```
-flatpak remote-add -u --no-gpg-verify cassette-nightly https://rirusha.github.io/Cassette/index.flatpakrepo
+flatpak remote-add --if-not-exists cassette-nightly https://rirusha.github.io/Cassette/index.flatpakrepo
 flatpak install io.github.Rirusha.Cassette-Devel org.gnome.Platform//master
 ```
 

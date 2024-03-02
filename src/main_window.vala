@@ -379,14 +379,5 @@ namespace Cassette {
         public void hide_player_bar () {
             toolbar_view.reveal_bottom_bars = false;
         }
-
-        // Адаптивное окно, не используется Adw.Breakpoint, так как каждый
-        // триггер Breakpoint - вызов сигналов unmap и map, что
-        // подтормаживает приложение при прохождении breakpoint'а
-        protected override void size_allocate (int width, int height, int baseline) {
-            base.size_allocate (width, height, baseline);
-
-            message (@"Width: $width, Height: $height");
-        }
     }
 }

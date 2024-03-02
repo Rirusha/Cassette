@@ -15,5 +15,4 @@ my.*
 build-dir
 repo
 .flatpak
-
 _build

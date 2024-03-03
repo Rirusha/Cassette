@@ -16,11 +16,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Config git
-        run: |
-          git config --global user.name "robot-debil"
-          git config --global user.email "rirusha@noreply.github.com"
-
       - name: Checkout all
         run: |
           remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
@@ -29,11 +24,11 @@ jobs:
 
       - name: Rebase & Push
         # Должна существовать только одна ветка dev-*
-        run: |        
+        run: |
           git branch --list | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
     
       - name: Push
-        run: |        
+        run: |
           git push --force origin devel-slice
       
 
@@ -81,6 +76,13 @@ jobs:
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: true
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
+          upload-pages-includes: |
+            default.css
+            index.html
+
+      - name: Echo Tree (Debug)
+        run: |
+          tree ./
 
   deploy:
     name: Deploy

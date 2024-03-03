@@ -82,6 +82,7 @@ jobs:
 
       - name: Echo Tree (Debug)
         run: |
+          sudo apt-get install -y tree
           tree ./
 
   deploy:

@@ -79,10 +79,9 @@ jobs:
           upload-pages-includes: |
             default.css
             index.html
-
-      - name: Echo Tree (Debug)
-        run: |
-          ls -la ./
+            repo
+          flatpak-builder-args: |
+            --repo-url=https://Rirusha.github.io/Cassette/repo
 
   deploy:
     name: Deploy

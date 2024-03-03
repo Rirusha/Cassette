@@ -80,8 +80,6 @@ jobs:
             default.css
             index.html
             repo
-          flatpak-builder-args: |
-            --repo-url=https://Rirusha.github.io/Cassette/repo
 
   deploy:
     name: Deploy

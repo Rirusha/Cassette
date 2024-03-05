@@ -18,16 +18,35 @@
 using Gee;
 
 namespace Cassette.Client.YaMAPI {
+
+    /**
+     * Датакласс короткого преставления трека.
+     */
     public class TrackShort : YaMObject {
 
+        /**
+         * Id трека.
+         */
         public string id { get; set; }
-        public string album_id { get; set; }
-        public int play_count { get; set; }
-        public Chart? chart { get; set; }
+
+        /**
+         * Объект трека.
+         */
         public Track? track { get; set; }
 
-        public TrackShort () {
-            Object ();
-        }
+        /**
+         * TODO
+         */
+        public int original_index { get; set; }
+
+        /**
+         * TODO
+         */
+        public int original_shuffle_index { get; set; }
+
+        /**
+         * Временная метка.
+         */
+        public string timestamp { get; set; }
     }
 }

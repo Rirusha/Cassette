@@ -153,9 +153,23 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO: Placeholder
          */
-        public void playlist (
-            string playlist_uuid
-        ) throws ClientError, BadStatusCodeError { }
+        public Playlist playlist (
+            string playlist_uuid,
+            bool resume_stream,
+            bool rich_tracks
+        ) throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/playlist/$playlist_uuid",
+                {"default"},
+                {
+                    {"resumeStream", resume_stream.to_string ()},
+                    {"richTracks", rich_tracks.to_string ()}
+                }
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
+        }
 
         /**
          * TODO: Placeholder
@@ -246,21 +260,41 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO: Placeholder
          */
-        public void users_playlists_list (
+        public Gee.ArrayList<Playlist> users_playlists_list (
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            Bytes bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/list",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var playlist_array = new Gee.ArrayList<Playlist> ();
+            jsoner.deserialize_array (ref playlist_array);
+
+            return playlist_array;
         }
 
         /**
          * TODO: Placeholder
          */
-        public void users_playlists_playlist (
+        public Playlist users_playlists_playlist (
             string playlist_kind,
             bool rich_tracks,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/$playlist_kind",
+                {"default"},
+                {{"richTracks", rich_tracks.to_string ()}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
         }
 
         /**
@@ -294,10 +328,20 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO: Placeholder
          */
-        public void users_likes_playlists (
+        public Gee.ArrayList<LikedPlaylist> users_likes_playlists (
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            Bytes bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/playlists",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var playlist_array = new Gee.ArrayList<LikedPlaylist> ();
+            jsoner.deserialize_array (ref playlist_array);
+            return playlist_array;
         }
 
         /**
@@ -742,25 +786,7 @@ namespace Cassette.Client.YaMAPI {
             string promo_id
         ) throws ClientError, BadStatusCodeError { }
 
-        ////////////////////////////////////////////////////////////
-        // TODO: Методы ниже должны быть ззаменены на методы выше //
-        ////////////////////////////////////////////////////////////
-
-        [Version (deprecated = true)]
-        public Playlist get_playlist_info (owned string? uid = null, string kind = "3") throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind",
-                {"default"}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
-        }
-
-        [Version (deprecated = true)]
-        public Gee.ArrayList<Track> get_tracks (
+        public Gee.ArrayList<Track> tracks (
             string[] id_list,
             bool with_positions = false
         ) throws ClientError, BadStatusCodeError {
@@ -782,6 +808,69 @@ namespace Cassette.Client.YaMAPI {
             jsoner.deserialize_array (ref array_list);
             return array_list;
         }
+
+        public string? track_download_uri (
+            string track_id,
+            bool hq = true
+        ) throws ClientError, BadStatusCodeError {
+            var di_array = tracks_download_info (track_id);
+
+            int bitrate = hq? 0 : 500;
+            string dl_info_uri = "";
+            foreach (DownloadInfo download_info in di_array) {
+                if (hq == (bitrate < download_info.bitrate_in_kbps)) {
+                    bitrate = download_info.bitrate_in_kbps;
+                    dl_info_uri = download_info.download_info_url;
+                }
+            }
+
+            return form_download_uri (dl_info_uri);
+        }
+
+        public Gee.ArrayList<DownloadInfo> tracks_download_info (string track_id) throws ClientError, BadStatusCodeError {
+            Bytes bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/tracks/$track_id/download-info",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var di_array = new Gee.ArrayList<DownloadInfo> ();
+            jsoner.deserialize_array (ref di_array);
+
+            return di_array;
+        }
+
+        string? form_download_uri (string dl_info_uri) throws ClientError, BadStatusCodeError {
+            Bytes bytes = get_content_of (dl_info_uri);
+            string xml_string = (string) bytes.get_data ();
+
+            Xml.Parser.init ();
+            var doc = Xml.Parser.parse_memory (xml_string, xml_string.length);
+
+            var root = doc->get_root_element ();
+
+            var children = root->children;
+            var host = children->get_content ();
+
+            children = children->next;
+            var path = children->get_content ();
+
+            children = children->next;
+            var ts = children->get_content ();
+
+            children = children->next;
+            children = children->next;
+            var s = children->get_content ();
+
+            var str = "XGRlBW9FXlekgbPrRHuSiA" + path[1:] + s;
+            var sign = Checksum.compute_for_string (ChecksumType.MD5, str, str.length);
+
+            return @"https://$host/get-mp3/$sign/$ts/$path";
+        }
+
+        ////////////////////////////////////////////////////////////
+        // TODO: Методы ниже должны быть ззаменены на методы выше //
+        ////////////////////////////////////////////////////////////
 
         [Version (deprecated = true)]
         public Gee.ArrayList<ShortQueue> queues () throws ClientError, BadStatusCodeError {
@@ -893,55 +982,6 @@ namespace Cassette.Client.YaMAPI {
         }
 
         [Version (deprecated = true)]
-        public string? get_download_uri (string track_id, bool hq = true) throws ClientError, BadStatusCodeError {
-            Bytes bytes = soup_wrapper.get_sync (@"$(YAM_BASE_URL)/tracks/$track_id/download-info", {"default"});
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            var di_array = new Gee.ArrayList<DownloadInfo> ();
-            jsoner.deserialize_array (ref di_array);
-
-            int bitrate = hq? 0 : 500;
-            string dl_info_uri = "";
-            foreach (DownloadInfo download_info in di_array) {
-                if (hq == (bitrate < download_info.bitrate_in_kbps)) {
-                    bitrate = download_info.bitrate_in_kbps;
-                    dl_info_uri = download_info.download_info_url;
-                }
-            }
-
-            return form_download_uri (dl_info_uri);
-        }
-
-        [Version (deprecated = true)]
-        string? form_download_uri (string dl_info_uri) throws ClientError, BadStatusCodeError {
-            Bytes bytes = get_content_of (dl_info_uri);
-            string xml_string = (string) bytes.get_data ();
-
-            Xml.Parser.init ();
-            var doc = Xml.Parser.parse_memory (xml_string, xml_string.length);
-
-            var root = doc->get_root_element ();
-
-            var children = root->children;
-            var host = children->get_content ();
-
-            children = children->next;
-            var path = children->get_content ();
-
-            children = children->next;
-            var ts = children->get_content ();
-
-            children = children->next;
-            children = children->next;
-            var s = children->get_content ();
-
-            var str = "XGRlBW9FXlekgbPrRHuSiA" + path[1:] + s;
-            var sign = Checksum.compute_for_string (ChecksumType.MD5, str, str.length);
-
-            return @"https://$host/get-mp3/$sign/$ts/$path";
-        }
-
-        [Version (deprecated = true)]
         public bool like (string what, string id) throws ClientError, BadStatusCodeError {
             string? uid = null;
             check_uid (ref uid);
@@ -1035,39 +1075,6 @@ namespace Cassette.Client.YaMAPI {
                 return true;
             }
             return false;
-        }
-
-        [Version (deprecated = true)]
-        public Gee.ArrayList<Playlist> get_playlists_list (owned string? uid = null) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            Bytes bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/users/$uid/playlists/list",
-                {"default"}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            var playlist_array = new Gee.ArrayList<Playlist> ();
-            jsoner.deserialize_array (ref playlist_array);
-
-            return playlist_array;
-        }
-
-        [Version (deprecated = true)]
-        public Gee.ArrayList<LikedPlaylist> get_likes_playlists_list (
-            owned string? uid = null
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            Bytes bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/users/$uid/likes/playlists",
-                {"default"}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            var playlist_array = new Gee.ArrayList<LikedPlaylist> ();
-            jsoner.deserialize_array (ref playlist_array);
-            return playlist_array;
         }
 
         [Version (deprecated = true)]

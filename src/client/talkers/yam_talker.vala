@@ -110,7 +110,7 @@ namespace Cassette.Client {
             Playlist? playlist_info = null;
 
             net_run (() => {
-                playlist_info = client.get_playlist_info (uid, kind);
+                playlist_info = client.users_playlists_playlist (kind, true, uid);
 
                 if (is_my_liked (uid, kind)) {
                     likes_controller.update_liked_tracks (playlist_info.tracks);
@@ -123,7 +123,7 @@ namespace Cassette.Client {
                             tracks_ids[i] = playlist_info.tracks[i].id;
                         }
 
-                        var track_list = client.get_tracks (tracks_ids);
+                        var track_list = client.tracks (tracks_ids);
                         playlist_info.set_track_list (track_list);
                     }
                 }
@@ -147,7 +147,7 @@ namespace Cassette.Client {
             Gee.ArrayList<Track>? track_list = null;
 
             net_run_wout_code (() => {
-                track_list = client.get_tracks (ids, true);
+                track_list = client.tracks (ids, true);
             });
 
             return track_list;
@@ -188,7 +188,7 @@ namespace Cassette.Client {
                 for (int i = 0; i < track_ids.length; i++) {
                     track_ids[i] = queue.tracks[i].id;
                 }
-                queue.tracks = client.get_tracks (track_ids);
+                queue.tracks = client.tracks (track_ids);
             });
 
             return queue;
@@ -231,7 +231,7 @@ namespace Cassette.Client {
             string? track_uri = null;
 
             net_run_wout_code (() => {
-                track_uri = client.get_download_uri (track_id, is_hq);
+                track_uri = client.track_download_uri (track_id, is_hq);
             });
 
             return track_uri;
@@ -308,7 +308,7 @@ namespace Cassette.Client {
             Gee.ArrayList<Playlist>? playlist_list = null;
 
             net_run_wout_code (() => {
-                playlist_list = client.get_playlists_list (uid);
+                playlist_list = client.users_playlists_list (uid);
 
                 if (uid == null) {
                     string[] playlists_kinds = new string[playlist_list.size];
@@ -327,7 +327,7 @@ namespace Cassette.Client {
             Gee.ArrayList<LikedPlaylist>? playlist_list = null;
 
             net_run_wout_code (() => {
-                playlist_list = client.get_likes_playlists_list (uid);
+                playlist_list = client.users_likes_playlists (uid);
 
                 likes_controller.update_liked_playlists (playlist_list);
             });
@@ -520,7 +520,7 @@ namespace Cassette.Client {
                 for (int i = 0; i < track_ids.length; i++) {
                     track_ids[i] = trackshort_list[i].id;
                 }
-                var tracks = client.get_tracks (track_ids);
+                var tracks = client.tracks (track_ids);
                 track_list = new YaMAPI.TrackHeap ();
                 track_list.tracks = tracks;
             });

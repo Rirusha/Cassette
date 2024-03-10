@@ -196,7 +196,7 @@ namespace Cassette.Client {
                 if (array_of_arrays.size > 0) {
                     Type sub_element_type = ((ArrayList<ArrayList?>) array_list)[0].element_type;
                     foreach (var sub_array_list in (ArrayList<ArrayList?>) array_list) {
-                        serialize_array (builder, sub_array_list, sub_element_type);
+                        serialize_array (builder, sub_array_list, sub_element_type, names_case);
                     }
                 }
 
@@ -261,12 +261,11 @@ namespace Cassette.Client {
                 var prop_val = Value (property.value_type);
                 yam_obj.get_property (property.name, ref prop_val);
 
-
                 if (property.value_type == typeof (ArrayList)) {
                     var array_list = (ArrayList) prop_val.get_object ();
                     Type element_type = array_list.element_type;
 
-                    serialize_array (builder, array_list, element_type);
+                    serialize_array (builder, array_list, element_type, names_case);
 
                 } else if (property.value_type.parent () == typeof (YaMObject)) {
                     serialize_object (builder, (YaMObject) prop_val.get_object (), names_case);

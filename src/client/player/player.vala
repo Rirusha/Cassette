@@ -15,6 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+
 using Gee;
 
 namespace Cassette.Client.Player {
@@ -42,25 +43,161 @@ namespace Cassette.Client.Player {
         ON
     }
 
-    //  Интерфейс режима плеера
+    /**
+     * Abstract class of player mode.
+     * Player can work with flow (radio), track list, local track list.
+     * Every mode autoconnect to ``Player.queue_changed`` and
+     * ``Player.nead_changed`` signals.
+     */
     public abstract class PlayerMode: Object {
-        public signal void near_changed ();
 
-        public abstract async YaMAPI.Track? get_prev_track ();
-        public abstract YaMAPI.Track? get_current_track ();
-        public abstract async YaMAPI.Track? get_next_track ();
+        /**
+         * Queue changed.
+         * Triggers when track added/removed
+         *
+         * @param queue         queue with tracks
+         * @param content_type  type of played context. E.g. "radio"
+         * @param context_id    id ofplayed context. E.g. "666824:3" for
+         *                      "playlist" context type
+         */
+        public signal void queue_changed (
+            ArrayList<YaMAPI.Track> queue,
+            string context_type,
+            string context_id,
+            int current_index,
+            string context_description
+        );
 
-        // Учитывать повтор для след. трека нужно только если он листается сам по истечении прошлого трека
+        /**
+         * Tracks near current changed.
+         * Trigger when current/prev/next tracks changed.
+         *
+         * @param current_track_info    current track info
+         */
+        public signal void near_changed (
+            YaMAPI.Track current_track_info
+        );
+
+        /**
+         * Parent player object.
+         */
+        public Player player { get; construct; }
+
+        /**
+         * Queue with tracks.
+         */
+        public ArrayList<YaMAPI.Track> queue { get; construct; }
+
+        public int current_index { get; construct set; default = -1; }
+
+        /**
+         * Type of played context. E.g. "radio"
+         */
+        public string context_type { get; construct set; }
+
+        /**
+         * id ofplayed context. E.g. "666824:3" for "playlist" context type
+         */
+        public string? context_id { get; construct set; }
+
+        /**
+         * What playing now
+         */
+        public string? context_description { get; construct set; }
+
+        construct {
+            queue_changed.connect (() => {
+                player.queue_changed (
+                    queue,
+                    context_type,
+                    context_id,
+                    current_index,
+                    context_description
+                );
+            });
+
+            near_changed.connect (() => {
+                player.near_changed (
+                    get_current_track_info ()
+                );
+            });
+
+            Logger.debug ("Created track list player");
+            Logger.debug ("Queue size: %d".printf (queue.size));
+            Logger.debug ("Context type: %s".printf (context_type));
+            Logger.debug ("Context id: %s".printf (context_id));
+            Logger.debug ("Current index: %d".printf (current_index));
+            Logger.debug ("Context descriprion: %s".printf (context_description));
+        }
+
+        /**
+         * Asynchronous getting previous track info.
+         *
+         * @return  track information object
+         */
+        public abstract async YaMAPI.Track? get_prev_track_info_async ();
+
+        /**
+         * Getting current track info.
+         *
+         * @return  track information object
+         */
+        public abstract YaMAPI.Track? get_current_track_info ();
+
+        /**
+         * Asynchronous getting next track info.
+         *
+         * @return  track information object
+         */
+        public abstract async YaMAPI.Track? get_next_track_info_async ();
+
+        /**
+         * Form Play object foe play feedback.
+         *
+         * @return  ``Cassette.Client.YaMAPI.Play`` object
+         */
+        public abstract YaMAPI.Play form_play_obj ();
+
+        /**
+         * Change current track to next in queue or flow.
+         *
+         * @param consider_repeat_mode  if ``true``, ignore repeat mode and go to next
+         *                              else consider repeat
+         */
         public abstract void next (bool consider_repeat_mode);
+
+        /**
+         * Change current track to previous in queue.
+         */
         public abstract void prev ();
+
+        /**
+         * Try to find track and play it.
+         *
+         * @param track_info    track information
+         *
+         * @return              ``true`` if track found and ``false`` otherwise
+         */
+        public bool change_track (YaMAPI.Track track_info) {
+            for (int i = 0; i < queue.size; i++) {
+                if (queue[i].id == track_info.id) {
+                    current_index = i;
+                    near_changed (track_info);
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 
     public class Player : Object {
 
-        // Количество секунд, которое проходит между колбеками проигранного времени
-        const double PLAY_STEP = 0.2;
-
         PlayerState _player_state = PlayerState.NONE;
+        /**
+         * Player state.
+         */
         public PlayerState player_state {
             get {
                 return _player_state;
@@ -83,6 +220,9 @@ namespace Cassette.Client.Player {
         }
 
         RepeatMode _repeat_mode = RepeatMode.OFF;
+        /**
+         * Player repeat mode.
+         */
         public RepeatMode repeat_mode {
             get {
                 return _repeat_mode;
@@ -94,11 +234,14 @@ namespace Cassette.Client.Player {
                     return;
                 }
 
-                near_changed (get_current_track ());
+                near_changed (get_current_track_info ());
             }
         }
 
         ShuffleMode _shuffle_mode = ShuffleMode.OFF;
+        /**
+         * Player shuffle mode.
+         */
         public ShuffleMode shuffle_mode {
             get {
                 return _shuffle_mode;
@@ -125,12 +268,9 @@ namespace Cassette.Client.Player {
                     prepare_next_track.begin ();
                 }
 
-                near_changed (get_current_track ());
+                near_changed (get_current_track_info ());
             }
         }
-
-        public double volume { get; set; }
-        public bool mute { get; set; }
 
         public double playback_pos_sec {
             get {
@@ -140,6 +280,8 @@ namespace Cassette.Client.Player {
             }
         }
 
+        public double total_playback_sec { get; set; default = 0.0;}
+
         public int64 playback_pos_ms {
             get {
                 int64 cur;
@@ -148,72 +290,148 @@ namespace Cassette.Client.Player {
             }
         }
 
-        public PlayerModeType player_type { get; private set; }
+        /**
+         * Queue changed.
+         * Triggers when track added/removed
+         */
+        public signal void queue_changed (
+            ArrayList<YaMAPI.Track> queue,
+            string context_type,
+            string context_id,
+            int current_index,
+            string context_description
+        );
 
-        public signal void near_changed (YaMAPI.Track? new_current_track_info);
+        /**
+         * Tracks near current changed.
+         * Trigger when current/prev/next tracks changed.
+         */
+        public signal void near_changed (
+            YaMAPI.Track current_track_info
+        );
 
-        public signal void queue_changed (YaMAPI.Queue queue);
+        /**
+         * Player volume.
+         */
+        public double volume { get; set; }
 
+        /**
+         * Is player mute or not.
+         */
+        public bool mute { get; set; }
+
+        /**
+         * Can player go prev.
+         */
+        public bool can_go_prev { get; private set; }
+
+        /**
+         * Can player be seeked.
+         */
+        public bool can_seek { get; private set; }
+
+        /**
+         * Is current track loading.
+         */
+        public bool track_loading { get; private set; }
+
+        /**
+         * Feedback.
+         * Triggered when track paused.
+         *
+         * @param track_info    track that been paused
+         */
         public signal void paused (YaMAPI.Track track_info);
+
+        /**
+         * Feedback.
+         * Triggered when track start playing.
+         *
+         * @param track_info    track that start playing
+         */
         public signal void played (YaMAPI.Track track_info);
+
+        /**
+         * Feedback.
+         * Triggered when track stopped.
+         */
         public signal void stopped ();
 
+        /**
+         * Next track ready to show.
+         */
         public signal void next_done ();
+
+        /**
+         * Previous track ready to show.
+         */
         public signal void prev_done ();
 
-        public signal void mode_inited (PlayerModeType player_type);
-
-        // playback_callback поднимается, если время воспроизведения > 0
+        /**
+         * Callback of playback.
+         */
         public signal void playback_callback (double playback_pos_sec);
 
-        public bool is_loading { get; private set; }
-
-        // Начало загрузки текущего трека
+        /**
+         * Track loading started.
+         */
         public signal void current_track_start_loading ();
-        // Окончание загрузки текущего трека
+
+        /**
+         * Track loading finished.
+         */
         public signal void current_track_finish_loading ();
 
+        /**
+         * Player mode changed.
+         */
+        public signal void mode_changed (PlayerModeType new_player_type);
+
+        PlayerModeType _player_type = PlayerModeType.NONE;
+        /**
+         * Type of current player mode.
+         */
+        public PlayerModeType player_type {
+            get {
+                return _player_type;
+            }
+            set {
+                _player_type = value;
+
+                mode_changed (_player_type);
+            }
+        }
+
         PlayerMode? _player_mode = null;
-        PlayerMode? player_mode {
+        /**
+         * Current player mode.
+         * Has interface - player_type.
+         */
+        public PlayerMode? player_mode {
             get {
                 return _player_mode;
             }
             set {
                 _player_mode = value;
 
-                if (_player_mode != null) {
-                    player_mode.near_changed.connect (() => {
-                        near_changed (_player_mode.get_current_track ());
-                    });
+                if (_player_mode is PlayerTrackList) {
+                    player_type = PlayerModeType.TRACK_LIST;
 
-                    if (_player_mode is PlayerTrackList) {
-                        player_type = PlayerModeType.TRACK_LIST;
+                } else if (_player_mode is PlayerFlow) {
+                    player_type = PlayerModeType.FLOW;
 
-                        ((PlayerTrackList) _player_mode).queue_changed.connect ((queue) => {
-                            queue_changed (queue);
-                        });
-
-                    } else if (_player_mode is PlayerFlow) {
-                        player_type = PlayerModeType.FLOW;
-
-                    } else {
-                        assert_not_reached ();
-                    }
-                } else {
+                } else if (_player_mode == null) {
                     player_type = PlayerModeType.NONE;
+
+                } else {
+                    assert_not_reached ();
                 }
             }
         }
 
+        string play_id { get; set; }
+
         Gst.Element playbin;
-
-        //  Gst.Pipeline pipeline;
-        //  Gst.Element source;
-        //  Gst.Element _volume_el;
-
-        public Player () {
-            Object ();
-        }
 
         construct {
             init (null);
@@ -230,10 +448,10 @@ namespace Cassette.Client.Player {
             settings.bind ("shuffle-mode", this, "shuffle-mode", SettingsBindFlags.DEFAULT);
 
             current_track_start_loading.connect (() => {
-                is_loading = true;
+                track_loading = true;
             });
             current_track_finish_loading.connect (() => {
-                is_loading = false;
+                track_loading = false;
             });
 
             bind_property ("volume", playbin, "volume", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
@@ -242,13 +460,26 @@ namespace Cassette.Client.Player {
             bind_property ("mute", playbin, "mute", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
             settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
 
-            Timeout.add ((int) (PLAY_STEP * 1000), () => {
+            Timeout.add (200, () => {
                 if (playback_pos_sec > 0.0) {
                     playback_callback (playback_pos_sec);
                 }
 
                 return Source.CONTINUE;
             });
+
+            Timeout.add (100, () => {
+                if (player_state == PlayerState.PLAYING) {
+                    total_playback_sec += 0.1;
+                }
+
+                return Source.CONTINUE;
+            });
+        }
+
+        void reset_play () {
+            play_id = Uuid.string_random ();
+            total_playback_sec = 0.0;
         }
 
         void init (string[]? args) {
@@ -259,61 +490,74 @@ namespace Cassette.Client.Player {
             playbin.seek_simple (Gst.Format.TIME, Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, ms * Gst.MSECOND);
         }
 
-        public async YaMAPI.Track? get_prev_track () {
-            if (player_type != PlayerModeType.NONE) {
-                return yield player_mode.get_prev_track ();
+        public async YaMAPI.Track? get_prev_track_info_async () {
+            if (player_mode != null) {
+                return yield player_mode.get_prev_track_info_async ();
             } else {
                 return null;
             }
         }
 
-        public YaMAPI.Track? get_current_track () {
-            if (player_type != PlayerModeType.NONE) {
-                return player_mode.get_current_track ();
+        public YaMAPI.Track? get_current_track_info () {
+            return player_mode?.get_current_track_info ();
+        }
+
+        public async YaMAPI.Track? get_next_track_info_async () {
+            if (player_mode != null) {
+                return yield player_mode.get_next_track_info_async ();
             } else {
                 return null;
             }
         }
 
-        public async YaMAPI.Track? get_next_track () {
-            if (player_type != PlayerModeType.NONE) {
-                return yield player_mode.get_next_track ();
-            } else {
-                return null;
-            }
-        }
-
-        public void start_flow (YaMAPI.Queue queue) {
+        public void start_flow (
+            string station_id,
+            ArrayList<YaMAPI.Track>? queue = null
+        ) {
             stop ();
 
-            player_mode = new PlayerFlow (this, queue);
-
-            mode_inited (PlayerModeType.FLOW);
+            player_mode = new PlayerFlow (
+                this,
+                station_id,
+                queue
+            );
         }
 
-        void set_queue (YaMAPI.Queue queue) {
+        void set_track_list_queue (
+            ArrayList<YaMAPI.Track> queue,
+            string context_type,
+            string? context_id,
+            int current_index = 0,
+            string? context_description = ""
+        ) {
             stop ();
 
-            var playertl = new PlayerTrackList (this);
-            player_mode = playertl;
-            playertl.queue = queue;
-
-            mode_inited (PlayerModeType.TRACK_LIST);
+            player_mode = new PlayerTrackList (
+                this,
+                queue,
+                context_type,
+                context_id,
+                current_index,
+                context_description
+            );
         }
 
-        public void start_queue (YaMAPI.Queue queue) {
-            set_queue (queue);
+        public void start_track_list (
+            ArrayList<YaMAPI.Track> queue,
+            string context_type,
+            string? context_id,
+            int current_index,
+            string? context_description
+        ) {
+            set_track_list_queue (
+                queue,
+                context_type,
+                context_id,
+                current_index,
+                context_description
+            );
 
             start_current_track.begin ();
-        }
-
-        // Запустить очередь, но без старта трека
-        public void start_queue_init (YaMAPI.Queue queue) {
-            set_queue (queue);
-
-            start_current_track.begin (() => {
-                stop ();
-            });
         }
 
         public void play_pause () {
@@ -333,7 +577,7 @@ namespace Cassette.Client.Player {
         public void play () {
             player_state = PlayerState.PLAYING;
 
-            var current_track = get_current_track ();
+            var current_track = get_current_track_info ();
 
             if (current_track != null) {
                 played (current_track);
@@ -343,7 +587,7 @@ namespace Cassette.Client.Player {
         public void pause () {
             player_state = PlayerState.PAUSED;
 
-            var current_track = get_current_track ();
+            var current_track = get_current_track_info ();
 
             if (current_track != null) {
                 paused (current_track);
@@ -355,15 +599,17 @@ namespace Cassette.Client.Player {
 
             pause ();
 
-            var current_track = get_current_track ();
+            var current_track = get_current_track_info ();
 
             if (current_track != null) {
                 if (current_track.track_type != YaMAPI.TrackType.LOCAL) {
-                    send_play_audio.begin ((current_track as YaMAPI.Track), playback_pos_sec);
+                    send_play.begin ((current_track as YaMAPI.Track), playback_pos_sec, total_playback_sec);
                 }
             }
 
             player_state = PlayerState.NONE;
+            reset_play ();
+
             stopped ();
         }
 
@@ -404,10 +650,7 @@ namespace Cassette.Client.Player {
             */
             stop ();
 
-            assert (player_type == PlayerModeType.TRACK_LIST);
-
-            var playertl = player_mode as PlayerTrackList;
-            playertl.change_track (track_info);
+            player_mode.change_track (track_info);
 
             start_current_track.begin (() => {
                 next_done ();
@@ -415,7 +658,7 @@ namespace Cassette.Client.Player {
         }
 
         public async void start_current_track () {
-            var current_track = get_current_track ();
+            var current_track = get_current_track_info ();
 
             if (current_track == null) {
                 return;
@@ -424,7 +667,7 @@ namespace Cassette.Client.Player {
             current_track_start_loading ();
 
             if (current_track.track_type != YaMAPI.TrackType.LOCAL) {
-                send_play_audio.begin (((YaMAPI.Track) current_track), 0.0);
+                send_play.begin (((YaMAPI.Track) current_track), 0.0, 0.0);
 
                 string? track_uri = yield Cachier.get_track_uri (current_track.id);
                 if (track_uri == null) {
@@ -450,26 +693,26 @@ namespace Cassette.Client.Player {
             }
         }
 
-        async void send_play_audio (YaMAPI.Track track_info, double play_position_sec) {
-            threader.add_single (() => {
-                var playertl = player_mode as PlayerTrackList;
-                if (playertl != null) {
-                    string? playlist_id = playertl.queue.context.type_ == "playlist" ? playertl.queue.context.id : null;
-                    yam_talker.play_audio (track_info, playlist_id, play_position_sec);
-                } else {
-                    yam_talker.play_audio (track_info, null, play_position_sec);
-                }
+        async void send_play (YaMAPI.Track track_info, double end_position_seconds, double total_played_seconds) {
+            assert (player_mode != null);
 
-                Idle.add (send_play_audio.callback);
+            var play_obj = player_mode.form_play_obj ();
+
+            play_obj.play_id = play_id;
+
+            threader.add_single (() => {
+                yam_talker.send_play ({play_obj});
+
+                Idle.add (send_play.callback);
             });
 
             yield;
         }
 
         async void prepare_next_track () {
-            var next_track = (yield player_mode.get_next_track ()) as YaMAPI.Track;
+            var next_track = yield get_next_track_info_async ();
 
-            if (next_track != get_current_track () && next_track != null) {
+            if (next_track != get_current_track_info () && next_track != null) {
                 Cachier.save_track.begin (next_track);
             }
         }
@@ -477,7 +720,7 @@ namespace Cassette.Client.Player {
         public void add_track (YaMAPI.Track track_info, bool is_next) {
             assert (player_type == PlayerModeType.TRACK_LIST);
 
-            var player_tl = player_mode as PlayerTrackList;
+            var player_tl = (PlayerTrackList) player_mode;
             if (is_next) {
                 player_tl.add_track_next (track_info);
             } else {
@@ -492,23 +735,21 @@ namespace Cassette.Client.Player {
         public void add_many (ArrayList<YaMAPI.Track> track_list) {
             assert (player_type == PlayerModeType.TRACK_LIST);
 
-            var player_tl = player_mode as PlayerTrackList;
-            if (player_tl != null) {
-                player_tl.add_many_end (track_list);
+            var player_tl = (PlayerTrackList) player_mode;
+            player_tl.add_many_end (track_list);
 
-                if (settings.get_boolean ("can-cache")) {
-                    prepare_next_track.begin ();
-                }
+            if (settings.get_boolean ("can-cache")) {
+                prepare_next_track.begin ();
             }
         }
 
-        public void remove_track_by_pos (uint position) {
+        public void remove_track_by_pos (int position) {
             assert (player_type == PlayerModeType.TRACK_LIST);
 
-            var player_tl = player_mode as PlayerTrackList;
+            var player_tl = (PlayerTrackList) player_mode;
             player_tl.remove_track_by_pos (position);
 
-            if (player_tl.queue.tracks.size != 0 && settings.get_boolean ("can-cache")) {
+            if (player_tl.queue.size != 0 && settings.get_boolean ("can-cache")) {
                 prepare_next_track.begin ();
             }
         }
@@ -516,30 +757,19 @@ namespace Cassette.Client.Player {
         public void remove_track (YaMAPI.Track track_info) {
             assert (player_type == PlayerModeType.TRACK_LIST);
 
-            var player_tl = player_mode as PlayerTrackList;
-            if (player_tl != null) {
-                player_tl.remove_track (track_info);
+            var player_tl = (PlayerTrackList) player_mode;
+            player_tl.remove_track (track_info);
 
-                if (player_tl.queue.tracks.size != 0 && settings.get_boolean ("can-cache")) {
-                    prepare_next_track.begin ();
-                }
+            if (player_tl.queue.size != 0 && settings.get_boolean ("can-cache")) {
+                prepare_next_track.begin ();
             }
         }
 
         public void remove_all_tracks () {
             assert (player_type == PlayerModeType.TRACK_LIST);
 
-            var player_tl = player_mode as PlayerTrackList;
-            if (player_tl != null) {
-                player_tl.remove_all_tracks ();
-            }
-        }
-
-        public YaMAPI.Queue get_queue () {
-            assert (player_type == PlayerModeType.TRACK_LIST);
-
-            var player_tl = player_mode as PlayerTrackList;
-            return player_tl.queue;
+            var player_tl = (PlayerTrackList) player_mode;
+            player_tl.remove_all_tracks ();
         }
     }
 }

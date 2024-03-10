@@ -236,7 +236,7 @@ namespace Cassette {
                 loading_stack.visible_child_name = "done";
 
                 load_avatar.begin ();
-                player_bar.update_queue.begin ();
+                update ();
 
                 app_menu_button.sensitive = true;
                 button_refresh.sensitive = true;
@@ -248,10 +248,18 @@ namespace Cassette {
                         is_active &&
                         player.player_state != Player.PlayerState.PLAYING
                     ) {
-                        player_bar.update_queue.begin ();
+                        update ();
                     }
                 });
             }
+        }
+
+        /**
+         * Update data that may have been changed by other clients with queue
+         */
+        public void update () {
+            yam_talker.update_all ();
+            // TODO: Place for getting queue from last user play session
         }
 
         public void load_local_views () {
@@ -292,8 +300,6 @@ namespace Cassette {
                     return Source.REMOVE;
                 }
             });
-
-            player_bar.update_queue.begin ();
         }
 
         async void load_avatar () {

@@ -106,6 +106,13 @@ namespace Cassette.Client {
             }, false);
         }
 
+        /**
+         * Update data that may have been changed by other clients
+         */
+        public void update_all () {
+
+        }
+
         public Playlist? get_playlist_info (string? uid = null, string kind = "3") throws BadStatusCodeError {
             Playlist? playlist_info = null;
 
@@ -153,79 +160,66 @@ namespace Cassette.Client {
             return track_list;
         }
 
-        public void play_audio (YaMAPI.Track track_info, string? playlist_id, double play_position_sec) {
-            string album_id = "unknown";
-            if (track_info.albums.size != 0) {
-                album_id = track_info.albums[0].id;
-            }
-
+        public void send_play (YaMAPI.Play[] play_objs) {
             net_run_wout_code (() => {
-                client.play_audio (
-                    null,
-                    track_info.id,
-                    album_id,
-                    playlist_id,
-                    track_info.duration_ms / 1000,
-                    play_position_sec,
-                    play_position_sec
-                );
+                client.plays (play_objs);
             });
         }
 
-        public YaMAPI.Queue? get_queue () {
-            YaMAPI.Queue? queue = null;
+        //  public YaMAPI.Queue? get_queue () {
+        //      YaMAPI.Queue? queue = null;
 
-            net_run_wout_code (() => {
-                var queues = client.queues ();
+        //      net_run_wout_code (() => {
+        //          var queues = client.queues ();
 
-                if (queues.size == 0) {
-                    return;
-                }
+        //          if (queues.size == 0) {
+        //              return;
+        //          }
 
-                queue = client.queue (queues[0].id);
+        //          queue = client.queue (queues[0].id);
 
-                string[] track_ids = new string[queue.tracks.size];
-                for (int i = 0; i < track_ids.length; i++) {
-                    track_ids[i] = queue.tracks[i].id;
-                }
-                queue.tracks = client.tracks (track_ids);
-            });
+        //          string[] track_ids = new string[queue.tracks.size];
+        //          for (int i = 0; i < track_ids.length; i++) {
+        //              track_ids[i] = queue.tracks[i].id;
+        //          }
+        //          queue.tracks = client.tracks (track_ids);
+        //      });
 
-            return queue;
-        }
+        //      return queue;
+        //  }
 
-        public string? create_queue (YaMAPI.Queue queue) {
-            string? queue_id = null;
+        //  public string? create_queue (YaMAPI.Queue queue) {
+        //      string? queue_id = null;
 
-            net_run_wout_code (() => {
-                queue_id = client.create_queue (queue);
-            });
+        //      net_run_wout_code (() => {
+        //          queue_id = client.create_queue (queue);
+        //      });
 
-            return queue_id;
-        }
+        //      return queue_id;
+        //  }
 
-        public void update_position_queue (YaMAPI.Queue queue) {
-            try {
-                net_run (() => {
-                    //  На случай если пользователь после формирования очереди быстро сменит трек и id после создания не успеет придти
-                    if (queue.id == null) {
-                        queue.id = create_queue (queue);
-                    }
+        //  public void update_position_queue (YaMAPI.Queue queue) {
+        //      try {
+        //          net_run (() => {
+        //              //  На случай если пользователь после формирования очереди быстро сменит трек и id после создания не успеет придти
+        //              if (queue.id == null) {
+        //                  queue.id = create_queue (queue);
+        //              }
 
-                    if (queue.id == null) {
-                        return;
-                    }
+        //              if (queue.id == null) {
+        //                  return;
+        //              }
 
-                    client.update_position_queue (queue.id, queue.current_index);
-                });
-            } catch (Cassette.Client.BadStatusCodeError e) {
-                if (e is Cassette.Client.BadStatusCodeError.NOT_FOUND) {
-                    queue.id = null;
+        //              client.update_position_queue (queue.id, queue.current_index);
+        //          });
+        //      } catch (Cassette.Client.BadStatusCodeError e) {
+        //          if (e is Cassette.Client.BadStatusCodeError.NOT_FOUND) {
+        //              queue.id = null;
 
-                    update_position_queue (queue);
-                }
-            }
-        }
+        //              update_position_queue (queue);
+        //          }
+        //      }
+        //  }
 
         public string? get_download_uri (string track_id, bool is_hq) {
             string? track_uri = null;
@@ -339,7 +333,7 @@ namespace Cassette.Client {
             YaMAPI.SimilarTracks? similar_tracks = null;
 
             net_run_wout_code (() => {
-                similar_tracks = client.similar_tracks (track_id);
+                similar_tracks = client.tracks_similar (track_id);
             });
 
             return similar_tracks;
@@ -426,7 +420,7 @@ namespace Cassette.Client {
             );
 
             net_run_wout_code (() => {
-                new_playlist = client.change_playlist (null, playlist_info.kind, diff.to_json (), playlist_info.revision);
+                new_playlist = client.users_playlists_change (null, playlist_info.kind, diff.to_json (), playlist_info.revision);
                 playlist_changed (new_playlist);
             });
 
@@ -441,7 +435,7 @@ namespace Cassette.Client {
             diff.add_delete (position, position + 1);
 
             net_run_wout_code (() => {
-                new_playlist = client.change_playlist (null, kind, diff.to_json (), revision);
+                new_playlist = client.users_playlists_change (null, kind, diff.to_json (), revision);
                 playlist_changed (new_playlist);
             });
 
@@ -452,7 +446,7 @@ namespace Cassette.Client {
             Playlist? new_playlist = null;
 
             net_run_wout_code (() => {
-                new_playlist = client.change_playlist_visibility (null, kind, is_public ? "public" : "private");
+                new_playlist = client.users_playlists_visibility (null, kind, is_public ? "public" : "private");
                 playlist_changed (new_playlist);
             });
 
@@ -464,7 +458,7 @@ namespace Cassette.Client {
 
             net_run_wout_code (() => {
                 // Translators: name of new created playlist
-                new_playlist = client.create_playlist (null, _("New Playlist"));
+                new_playlist = client.users_playlists_create (null, _("New Playlist"));
                 playlists_updated ();
             });
 
@@ -476,7 +470,7 @@ namespace Cassette.Client {
 
             net_run_wout_code (() => {
                 playlist_start_delete (kind);
-                is_success = client.delete_playlist (null, kind);
+                is_success = client.users_playlists_delete (null, kind);
                 if (is_success) {
                     playlists_updated ();
                 } else {
@@ -491,7 +485,7 @@ namespace Cassette.Client {
             Playlist? new_playlist = null;
 
             net_run_wout_code (() => {
-                new_playlist = client.change_playlist_name (null, kind, new_name);
+                new_playlist = client.users_playlists_name (null, kind, new_name);
                 playlist_changed (new_playlist);
             });
 
@@ -502,7 +496,7 @@ namespace Cassette.Client {
             Gee.ArrayList<YaMAPI.TrackShort>? trackshort_list = null;
 
             net_run_wout_code (() => {
-                trackshort_list = client.get_disliked_tracks (null);
+                trackshort_list = client.users_dislikes_tracks (null);
 
                 likes_controller.update_disliked_tracks (trackshort_list);
             });

@@ -115,7 +115,7 @@ namespace Cassette {
             });
 
             player.near_changed.connect (on_player_current_track_changed);
-            player.mode_inited.connect (on_player_mode_inited);
+            player.mode_changed.connect (on_player_mode_changed);
             player.notify["player-type"].connect (on_player_player_type_notify);
 
             var playerbar_actions = new SimpleActionGroup ();
@@ -190,12 +190,12 @@ namespace Cassette {
             on_shuffle_mode_changed ();
 
             player.next_done.connect ((repeat) => {
-                info_panel_next.track_info = player.get_current_track ();
+                info_panel_next.track_info = player.get_current_track_info ();
                 carousel.scroll_to (info_panel_next, true);
             });
 
             player.prev_done.connect (() => {
-                info_panel_prev.track_info = player.get_current_track ();
+                info_panel_prev.track_info = player.get_current_track_info ();
                 carousel.scroll_to (info_panel_prev, true);
             });
 
@@ -251,8 +251,8 @@ namespace Cassette {
                 carousel.remove (info_panel_prev);
                 carousel.append (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
 
-                player.get_next_track.begin ((obj, res) => {
-                    info_panel_next.track_info = player.get_next_track.end (res);
+                player.get_next_track_info_async.begin ((obj, res) => {
+                    info_panel_next.track_info = player.get_next_track_info_async.end (res);
                 });
 
                 carousel.scroll_to (info_panel_center, false);
@@ -261,8 +261,8 @@ namespace Cassette {
                 carousel.remove (info_panel_next);
                 carousel.prepend (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
 
-                player.get_prev_track.begin ((obj, res) => {
-                    info_panel_prev.track_info = player.get_prev_track.end (res);
+                player.get_prev_track_info_async.begin ((obj, res) => {
+                    info_panel_prev.track_info = player.get_prev_track_info_async.end (res);
                 });
 
                 carousel.scroll_to (info_panel_center, false);
@@ -271,43 +271,43 @@ namespace Cassette {
             carousel.page_changed.connect (on_carousel_page_changed);
         }
 
-        public async void update_queue () {
-            /**
-                Загрузка и обновление очереди с сравнением с текущей очередью, чтобы 
-                избежать сброс играющего трека без фактического обновления очереди
-            */
+        //  public async void update_queue () {
+        //      /**
+        //          Загрузка и обновление очереди с сравнением с текущей очередью, чтобы 
+        //          избежать сброс играющего трека без фактического обновления очереди
+        //      */
 
-            YaMAPI.Queue? queue = null;
+        //      YaMAPI.Queue? queue = null;
 
-            threader.add_single (() => {
-                queue = yam_talker.get_queue ();
+        //      threader.add_single (() => {
+        //          queue = yam_talker.get_queue ();
 
-                Idle.add (update_queue.callback);
-            });
+        //          Idle.add (update_queue.callback);
+        //      });
 
-            yield;
+        //      yield;
 
-            if (queue == null) {
-                return;
-            }
+        //      if (queue == null) {
+        //          return;
+        //      }
 
-            if (player.player_state == Player.PlayerState.PLAYING) {
-                return;
-            }
+        //      if (player.player_state == Player.PlayerState.PLAYING) {
+        //          return;
+        //      }
 
-            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
-                if (player.get_queue ().compare (queue) == true) {
-                    return;
-                }
-            }
+        //      if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
+        //          if (player.get_queue ().compare (queue) == true) {
+        //              return;
+        //          }
+        //      }
 
-            if (queue.context.type_ == "radio") {
-                player.start_flow (queue);
+        //      if (queue.context.type_ == "radio") {
+        //          player.start_flow (queue);
 
-            } else {
-                player.start_queue_init (queue);
-            }
-        }
+        //      } else {
+        //          player.start_queue_init (queue);
+        //      }
+        //  }
 
         void on_player_player_type_notify () {
             switch (player.player_type) {
@@ -331,8 +331,8 @@ namespace Cassette {
             }
         }
 
-        void on_player_mode_inited (Player.PlayerModeType player_type) {
-            current_track_info = player.get_current_track ();
+        void on_player_mode_changed (Player.PlayerModeType player_type) {
+            current_track_info = player.get_current_track_info ();
 
             if (info_panel_center.track_info == null) {
                 info_panel_center.track_info = current_track_info;

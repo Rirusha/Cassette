@@ -35,21 +35,18 @@ namespace Cassette {
             on_player_state_changed ();
         }
 
-        bool object_playing_now () {
-            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
-                var queue = player.get_queue ();
+        bool context_playing_now () {
+            if (player.player_mode?.context_id == content_id && player.player_mode?.context_type == context_type) {
+                return true;
 
-                if (queue.context.id == content_id && queue.context.type_ == context_type) {
+            } else {
+                string uid = yam_talker.me.oid;
+                if (uid == null) {
+                    return false;
+                }
+
+                if ((content_id == @"$uid:3") && player.player_mode?.context_type == "my_music") {
                     return true;
-                } else {
-                    string uid = yam_talker.me.oid;
-                    if ( uid == null) {
-                        return false;
-                    }
-
-                    if ((content_id == @"$uid:3") && queue.context.type_ == "my_music") {
-                        return true;
-                    }
                 }
             }
 
@@ -57,7 +54,7 @@ namespace Cassette {
         }
 
         protected override bool on_clicked () {
-            if (object_playing_now ()) {
+            if (context_playing_now ()) {
                 player.play_pause ();
                 return false;
             }
@@ -66,7 +63,7 @@ namespace Cassette {
         }
 
         void on_player_state_changed () {
-            if (object_playing_now ()) {
+            if (context_playing_now ()) {
                 if (player.player_state == Player.PlayerState.PLAYING) {
                     set_playing ();
                     return;

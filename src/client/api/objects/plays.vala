@@ -16,6 +16,8 @@
  */
 
 
+using Gee;
+
 namespace Cassette.Client.YaMAPI {
 
     /**
@@ -31,7 +33,7 @@ namespace Cassette.Client.YaMAPI {
         /**
          * Временная метка запроса
          */
-        public string timestamp { get; set; }
+        public string timestamp { get; set; default = get_timestamp (); }
 
         /**
          * Общее количество прослушанного времени в секундах
@@ -61,7 +63,7 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO
          */
-        public string from { get; set; }
+        public string from { get; set; default = "illegal-client-own"; }
 
         /**
          * Контекст воспроизведения (То же что и ``Queue.context.type``)
@@ -76,22 +78,22 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO
          */
-        public string add_tracks_to_player_time { get; set; }
+        public string add_tracks_to_player_time { get; set; default = generate_add_tracks_to_player_time (); }
 
         /**
          * TODO
          */
-        public string audio_auto { get; set; }
+        public string audio_auto { get; set; default = "none"; }
 
         /**
          * TODO
          */
-        public string audio_output_name { get; set; }
+        public string audio_output_name { get; set; default = "Динамики"; }
 
         /**
          * TODO
          */
-        public string audio_output_type { get; set; }
+        public string audio_output_type { get; set; default = "Speaker"; }
 
         /**
          * Id сессии волны
@@ -104,5 +106,16 @@ namespace Cassette.Client.YaMAPI {
 
             return @"$random_part-$time_part";
         }
+    }
+
+    /**
+     * Датакласс с фидбеками
+     */
+    public class Plays : YaMObject {
+
+        /**
+         * Id сессии прослушивания
+         */
+        public ArrayList<Play> plays { get; set; default = new ArrayList<Play> (); }
     }
 }

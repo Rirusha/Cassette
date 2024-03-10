@@ -18,31 +18,38 @@
 using Gee;
 
 namespace Cassette.Client.Player {
+
     public class PlayerFlow : PlayerMode {
 
-        public Player player { get; construct; }
-        public YaMAPI.Queue queue { get; construct set; }
+        public string station_id { get; construct; }
 
-        public PlayerFlow (Player player, YaMAPI.Queue queue) {
-            Object (player: player, queue: queue);
+        public PlayerFlow (
+            Player player,
+            string station_id,
+            ArrayList<YaMAPI.Track> queue
+        ) {
+            Object (
+                player: player,
+                station_id: station_id,
+                queue: queue
+            );
         }
 
-        public async override YaMAPI.Track? get_prev_track () {
+        public async override YaMAPI.Track? get_prev_track_info_async () {
             assert_not_reached ();
         }
-
-        public override YaMAPI.Track? get_current_track () {
+        public override YaMAPI.Track? get_current_track_info () {
             assert_not_reached ();
         }
-
-        public async override YaMAPI.Track? get_next_track () {
+        public async override YaMAPI.Track? get_next_track_info_async () {
             assert_not_reached ();
         }
-
+        public override YaMAPI.Play form_play_obj () {
+            assert_not_reached ();
+        }
         public override void next (bool consider_repeat_mode) {
             assert_not_reached ();
         }
-
         public override void prev () {
             assert_not_reached ();
         }

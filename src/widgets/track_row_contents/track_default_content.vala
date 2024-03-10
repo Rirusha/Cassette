@@ -104,13 +104,13 @@ namespace Cassette {
                 track_info.id
             );
 
-            var queue = new YaMAPI.Queue () {
-                context = YaMAPI.Context.from_obj ((HasID) yam_object),
-                tracks = track_list,
-                current_index = track_list.index_of (track_info)
-            };
-
-            player.start_queue (queue);
+            player.start_track_list (
+                track_list,
+                get_context_type (yam_object),
+                yam_object.oid,
+                track_list.index_of (track_info),
+                get_context_description (yam_object)
+            );
         }
 
         void setup_options_button () {

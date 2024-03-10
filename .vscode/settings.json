@@ -16,5 +16,12 @@
 >>>>>>> a44b6c9 (Изменить таски и т.д.)
 =======
     "vala.languageServerPath": "${workspaceFolder}/.flatpak/vala-language-server.sh",
+<<<<<<< HEAD
 >>>>>>> 60916b5 (Изменить настроки среды)
+=======
+    "editor.tokenColorCustomizations": {
+        "comments": "",
+        "textMateRules": []
+    },
+>>>>>>> 21d203c (Удалить старый механизм работы с очередями. Добавить новые методы клиента. Перейти с play-audio на plays)
 }

@@ -72,6 +72,39 @@ namespace Cassette.Client {
         return language;
     }
 
+    public static string get_context_type (HasID yam_obj) {
+        if (yam_obj is YaMAPI.Playlist) {
+            return "playlist";
+
+        } else if (yam_obj is YaMAPI.Album) {
+            return "album";
+
+        } else if (yam_obj is YaMAPI.Artist) {
+            return "artist";
+
+        } else if (yam_obj is int) {
+            return "search";
+
+        } else {
+            return "various";
+        }
+    }
+
+    public static string? get_context_description (HasID yam_obj) {
+        if (yam_obj is YaMAPI.Playlist) {
+            return ((YaMAPI.Playlist) yam_obj).title;
+
+        } else if (yam_obj is YaMAPI.Album) {
+            return ((YaMAPI.Album) yam_obj).title;
+
+        } else if (yam_obj is YaMAPI.Artist) {
+            return ((YaMAPI.Artist) yam_obj).name;
+
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Функция удобства. Получение текущей временной метки.
      */

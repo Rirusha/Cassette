@@ -17,7 +17,7 @@
 
 
 using Cassette.Client;
-
+using Gee;
 
 namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/sidebar.ui")]
@@ -112,23 +112,35 @@ namespace Cassette {
                     margin_start = 12,
                     margin_end = 12
                 };
-                update_queue (player.get_queue ());
+                update_queue (
+                    player.player_mode.queue,
+                    player.player_mode.context_type,
+                    player.player_mode.context_id,
+                    player.player_mode.current_index,
+                    player.player_mode.context_description
+                );
             }
         }
 
-        void update_queue (YaMAPI.Queue queue) {
+        void update_queue (
+            ArrayList<YaMAPI.Track> queue,
+            string context_type,
+            string context_id,
+            int current_index,
+            string context_description
+        ) {
             if (track_list != null) {
-                track_list.set_tracks_as_queue (queue.tracks);
+                track_list.set_tracks_as_queue (queue);
                 Idle.add (() => {
-                    track_list.move_to (queue.current_index, queue.tracks.size);
+                    track_list.move_to (current_index, queue.size);
                     return Source.REMOVE;
                 });
 
                 track_list.title.visible = true;
-                switch (queue.context.type_) {
+                switch (context_type) {
                     case "playlist":
                         track_list.list_type_label.label = _("PLAYLIST");
-                        track_list.list_name_label.label = queue.context.description;
+                        track_list.list_name_label.label = context_description;
                         break;
                     case "my_music":
                         track_list.list_type_label.label = "PLAYLIST";
@@ -136,11 +148,11 @@ namespace Cassette {
                         break;
                     case "album":
                         track_list.list_type_label.label = _("ALBUM");
-                        track_list.list_name_label.label = queue.context.description;
+                        track_list.list_name_label.label = context_description;
                         break;
                     case "search":
                         track_list.list_type_label.label = _("SEARCH RESULTS");
-                        track_list.list_name_label.label = "\"%s\"".printf (queue.context.description);
+                        track_list.list_name_label.label = "\"%s\"".printf (context_description);
                         break;
                     default:
                         track_list.list_type_label.label = "";

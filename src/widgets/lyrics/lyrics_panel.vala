@@ -69,7 +69,7 @@ namespace Cassette {
             }
 
             player.playback_callback.connect (() => {
-                if (track_id != player.get_current_track ().id || player.player_state != Player.PlayerState.PLAYING) {
+                if (track_id != player.get_current_track_info ().id || player.player_state != Player.PlayerState.PLAYING) {
                     current_line = null;
                     show_as_text ();
 

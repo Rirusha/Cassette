@@ -41,9 +41,9 @@ namespace Cassette {
 
         public YaMAPI.Track track_info { get; construct set; }
 
-        public uint position { get; set; }
+        public int position { get; set; }
 
-        public TrackQueue (YaMAPI.Track track_info, uint position) {
+        public TrackQueue (YaMAPI.Track track_info, int position) {
             Object (track_info: track_info, position: position);
         }
 

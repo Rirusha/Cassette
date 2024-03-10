@@ -44,31 +44,31 @@ namespace Cassette.Client.Mpris {
 
         public bool can_control {
             get {
-                return !player.is_loading;
+                return !player.track_loading;
             }
         }
 
         public bool can_go_next {
             get {
-                return !player.is_loading;
+                return !player.track_loading;
             }
         }
 
         public bool can_go_previous {
             get {
-                return !player.is_loading && player.player_type == Player.PlayerModeType.TRACK_LIST;
+                return player.can_go_prev;
             }
         }
 
         public bool can_pause {
             get {
-                return !player.is_loading;
+                return !player.track_loading;
             }
         }
 
         public bool can_seek {
             get {
-                return !player.is_loading;
+                return !player.track_loading;
             }
         }
 
@@ -145,7 +145,7 @@ namespace Cassette.Client.Mpris {
         HashTable<string,Variant> _get_metadata () {
             HashTable<string,Variant> metadata = new HashTable<string, Variant> (null, null);
 
-            var current_track = player.get_current_track ();
+            var current_track = player.get_current_track_info ();
             if (current_track == null) {
                 metadata.insert ("mpris:trackid", new ObjectPath ("/com/github/Rirusha/Cassette/Track/0"));
             } else {

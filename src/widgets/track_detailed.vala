@@ -193,13 +193,13 @@ namespace Cassette {
             var track_list = new Gee.ArrayList<YaMAPI.Track> ();
             track_list.add (track_info);
 
-            var queue = new YaMAPI.Queue () {
-                context = new YaMAPI.Context.various (),
-                tracks = track_list,
-                current_index = 0
-            };
-
-            player.start_queue (queue);
+            player.start_track_list (
+                track_list,
+                "various",
+                null,
+                0,
+                null
+            );
         }
     }
 }

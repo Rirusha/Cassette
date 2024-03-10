@@ -79,7 +79,7 @@ namespace Cassette {
 
     protected class TrackQueueRow : TrackPositionRow {
 
-        public TrackQueueRow (YaMAPI.Track track_info, uint position) {
+        public TrackQueueRow (YaMAPI.Track track_info, int position) {
             Object (track_info: track_info, position: position);
         }
 
@@ -111,9 +111,9 @@ namespace Cassette {
 
     protected class TrackPositionRow : TrackRow {
 
-        public uint position { get; set; }
+        public int position { get; set; }
 
-        public TrackPositionRow (YaMAPI.Track track_info, uint position) {
+        public TrackPositionRow (YaMAPI.Track track_info, int position) {
             Object (track_info: track_info, position: position);
         }
 

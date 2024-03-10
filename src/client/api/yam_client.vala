@@ -307,6 +307,187 @@ namespace Cassette.Client.YaMAPI {
             check_uid (ref uid);
         }
 
+        public bool users_playlists_delete (
+            owned string? uid,
+            string kind
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/delete",
+                {"default"}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+            if (jsoner.root != null) {
+                return true;
+            }
+            return false;
+        }
+
+        public Playlist users_playlists_change (
+            owned string? uid,
+            string kind,
+            string diff,
+            int revision = 1
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            var datalist = Datalist<string> ();
+            datalist.set_data ("kind", kind);
+            datalist.set_data ("revision", revision.to_string ());
+            datalist.set_data ("diff", diff);
+
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
+            post_content.set_datalist (datalist);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$(uid)/playlists/$kind/change",
+                {"default"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
+        }
+
+        public Playlist users_playlists_create (
+            owned string? uid,
+            string title,
+            string visibility = "private"
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            var datalist = Datalist<string> ();
+            datalist.set_data ("title", title);
+            datalist.set_data ("visibility", visibility);
+
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
+            post_content.set_datalist (datalist);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/create",
+                {"default"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
+        }
+
+        public Playlist users_playlists_name (
+            owned string? uid,
+            string kind,
+            string new_name
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            var datalist = Datalist<string> ();
+            datalist.set_data ("value", new_name);
+
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
+            post_content.set_datalist (datalist);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/name",
+                {"default"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
+        }
+
+        public PlaylistRecommendations users_playlists_recommendations (
+            owned string? uid,
+            string kind
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/recommendations",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (PlaylistRecommendations) jsoner.deserialize_object (typeof (PlaylistRecommendations));
+        }
+
+        public Playlist users_playlists_visibility (
+            owned string? uid,
+            string kind,
+            string visibility
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            var datalist = Datalist<string> ();
+            datalist.set_data ("value", visibility);
+
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
+            post_content.set_datalist (datalist);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/visibility",
+                {"default"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
+        }
+
+        public Playlist users_palylists_cover_upload (
+            owned string? uid,
+            string kind,
+            uint[] new_cover,
+            string filename,
+            string content_type
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            var post_builder = new StringBuilder ();
+
+            post_builder.append (Uuid.string_random ());
+            post_builder.append_printf ("Content-Disposition: form-data; name=\"image\"; filename=\"%s\"\n", filename);
+            post_builder.append_printf ("Content-Type: %s\n", content_type);
+            post_builder.append_printf ("Content-Length: %d\n", new_cover.length);
+            post_builder.append ("\n");
+            post_builder.append ((string) new_cover);
+
+            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED, post_builder.free_and_steal ()};
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/cover/upload",
+                {"default"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
+        }
+
+        public Playlist users_palylists_cover_clear (
+            owned string? uid,
+            string kind,
+            uint[] new_cover
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/cover/clear",
+                {"default"}
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
+        }
+
         /**
          * TODO: Placeholder
          */
@@ -362,6 +543,25 @@ namespace Cassette.Client.YaMAPI {
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+        }
+
+        public Gee.ArrayList<TrackShort> users_dislikes_tracks (
+            owned string? uid,
+            int if_modified_since_revision = 0
+        ) throws ClientError, BadStatusCodeError {
+            check_uid (ref uid);
+
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks",
+                {"default"},
+                {{"if_modified_since_revision", if_modified_since_revision.to_string ()}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "library", "tracks"}, Case.CAMEL);
+
+            var our_array = new Gee.ArrayList<TrackShort> ();
+            jsoner.deserialize_array (ref our_array);
+
+            return our_array;
         }
 
         /**
@@ -677,38 +877,14 @@ namespace Cassette.Client.YaMAPI {
          * @return                      успех выполнения
          */
         public bool plays (
-            string play_id,
-            double total_played_seconds,
-            double end_position_seconds,
-            double track_length_seconds,
-            string track_id,
-            string? album_id,
-            string from,
-            string context,
-            string context_item,
-            string? radio_session_id = null
+            Play[] play_objs
         ) throws ClientError, BadStatusCodeError {
-            var play = new Play () {
-                play_id = play_id,
-                timestamp = get_timestamp (),
-                total_played_seconds = total_played_seconds,
-                end_position_seconds = end_position_seconds,
-                track_length_seconds = track_length_seconds,
-                track_id = track_id,
-                album_id = album_id,
-                from = from,
-                context = context,
-                context_item = context_item,
-                add_tracks_to_player_time = Play.generate_add_tracks_to_player_time (),
-                audio_auto = "none",
-                audio_output_name = "Динамики",
-                audio_output_type = "Speaker",
-                radio_session_id = radio_session_id
-            };
+            var plays_obj = new Plays ();
+            plays_obj.plays.add_all_array (play_objs);
 
             PostContent post_content = {
                 PostContentType.JSON,
-                Jsoner.serialize (play, Case.CAMEL)
+                Jsoner.serialize (plays_obj, Case.CAMEL)
             };
 
             Bytes bytes = soup_wrapper.post_sync (
@@ -868,73 +1044,145 @@ namespace Cassette.Client.YaMAPI {
             return @"https://$host/get-mp3/$sign/$ts/$path";
         }
 
-        ////////////////////////////////////////////////////////////
-        // TODO: Методы ниже должны быть ззаменены на методы выше //
-        ////////////////////////////////////////////////////////////
+        public Lyrics track_lyrics (string track_id, bool is_sync) throws ClientError, BadStatusCodeError {
+            string format = is_sync ? "LRC" : "TEXT";
+            string timestamp = new DateTime.now_utc ().to_unix ().to_string ();
+            string msg = @"$track_id$timestamp";
 
-        [Version (deprecated = true)]
-        public Gee.ArrayList<ShortQueue> queues () throws ClientError, BadStatusCodeError {
+            var hmac = new Hmac (ChecksumType.SHA256, "p93jhgh689SBReK6ghtw62".data);
+            hmac.update (msg.data);
+            uint8[] hmac_sign = new uint8[32];
+            size_t digest_length = 32;
+            hmac.get_digest (hmac_sign, ref digest_length);
+            string sign = Base64.encode (hmac_sign);
+
             Bytes bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/queues",
-                {"default", "device"}
+                @"$(YAM_BASE_URL)/tracks/$track_id/lyrics",
+                {"default"},
+                {
+                    {"format", format},
+                    {"timeStamp", timestamp},
+                    {"sign", sign}
+                }
             );
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "queues"}, Case.CAMEL);
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
-            var queue_list = new Gee.ArrayList<ShortQueue> ();
-            jsoner.deserialize_array (ref queue_list);
-            return queue_list;
+            var lyrics = (Lyrics) jsoner.deserialize_object (typeof (Lyrics));
+            lyrics.is_sync = is_sync;
+
+            return lyrics;
         }
 
-        [Version (deprecated = true)]
-        public Queue queue (string queue_id) throws ClientError, BadStatusCodeError {
+        public SimilarTracks tracks_similar (string track_id) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/queues/$queue_id",
+                @"$(YAM_BASE_URL)/tracks/$track_id/similar",
                 {"default"}
             );
             var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
 
-            Queue queue = (Queue) jsoner.deserialize_object (typeof (Queue));
-
-            return queue;
+            return (SimilarTracks) jsoner.deserialize_object (typeof (SimilarTracks));
         }
 
-        [Version (deprecated = true)]
-        public string? create_queue (Queue queue) throws ClientError, BadStatusCodeError {
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/queues",
-                {"default", "device"},
-                {PostContentType.JSON, queue.to_json ()}
-            );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "id"}, Case.CAMEL);
-            var val_id = jsoner.deserialize_value ();
 
-            if (val_id == null || !val_id.holds (Type.STRING)) {
-                return null;
-            } else {
-                return val_id.get_string ();
-            }
-        }
 
-        [Version (deprecated = true)]
-        public void update_position_queue (string queue_id, int position) throws ClientError, BadStatusCodeError {
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/queues/$queue_id/update-position",
-                {"default", "device"},
-                null,
-                {
-                    {"currentIndex", position.to_string ()},
-                    {"isInteractive", "True"}
-                }
-            );
 
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "status"}, Case.CAMEL);
-            string res = jsoner.deserialize_value ().get_string ();
 
-            if (res != "ok") {
-                throw new ClientError.ANSWER_ERROR ("Update queue position failed");
-            }
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////////
+        // TODO: Методы ниже должны быть ззаменены на методы выше //
+        ////////////////////////////////////////////////////////////
+
+        //  [Version (deprecated = true)]
+        //  public Gee.ArrayList<ShortQueue> queues () throws ClientError, BadStatusCodeError {
+        //      Bytes bytes = soup_wrapper.get_sync (
+        //          @"$(YAM_BASE_URL)/queues",
+        //          {"default", "device"}
+        //      );
+        //      var jsoner = Jsoner.from_bytes (bytes, {"result", "queues"}, Case.CAMEL);
+
+        //      var queue_list = new Gee.ArrayList<ShortQueue> ();
+        //      jsoner.deserialize_array (ref queue_list);
+        //      return queue_list;
+        //  }
+
+        //  [Version (deprecated = true)]
+        //  public Queue queue (string queue_id) throws ClientError, BadStatusCodeError {
+        //      Bytes bytes = soup_wrapper.get_sync (
+        //          @"$(YAM_BASE_URL)/queues/$queue_id",
+        //          {"default"}
+        //      );
+        //      var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+        //      Queue queue = (Queue) jsoner.deserialize_object (typeof (Queue));
+
+        //      return queue;
+        //  }
+
+        //  [Version (deprecated = true)]
+        //  public string? create_queue (Queue queue) throws ClientError, BadStatusCodeError {
+        //      Bytes bytes = soup_wrapper.post_sync (
+        //          @"$(YAM_BASE_URL)/queues",
+        //          {"default", "device"},
+        //          {PostContentType.JSON, queue.to_json ()}
+        //      );
+
+        //      var jsoner = Jsoner.from_bytes (bytes, {"result", "id"}, Case.CAMEL);
+        //      var val_id = jsoner.deserialize_value ();
+
+        //      if (val_id == null || !val_id.holds (Type.STRING)) {
+        //          return null;
+        //      } else {
+        //          return val_id.get_string ();
+        //      }
+        //  }
+
+        //  [Version (deprecated = true)]
+        //  public void update_position_queue (string queue_id, int position) throws ClientError, BadStatusCodeError {
+        //      Bytes bytes = soup_wrapper.post_sync (
+        //          @"$(YAM_BASE_URL)/queues/$queue_id/update-position",
+        //          {"default", "device"},
+        //          null,
+        //          {
+        //              {"currentIndex", position.to_string ()},
+        //              {"isInteractive", "True"}
+        //          }
+        //      );
+
+        //      var jsoner = Jsoner.from_bytes (bytes, {"result", "status"}, Case.CAMEL);
+        //      string res = jsoner.deserialize_value ().get_string ();
+
+        //      if (res != "ok") {
+        //          throw new ClientError.ANSWER_ERROR ("Update queue position failed");
+        //      }
+        //  }
 
         [Version (deprecated = true)]
         public void play_audio (
@@ -1075,206 +1323,6 @@ namespace Cassette.Client.YaMAPI {
                 return true;
             }
             return false;
-        }
-
-        [Version (deprecated = true)]
-        public SimilarTracks similar_tracks (string track_id) throws ClientError, BadStatusCodeError {
-            Bytes bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/tracks/$track_id/similar",
-                {"default"}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (SimilarTracks) jsoner.deserialize_object (typeof (SimilarTracks));
-        }
-
-        [Version (deprecated = true)]
-        public Lyrics track_lyrics (string track_id, bool is_sync) throws ClientError, BadStatusCodeError {
-            string format = is_sync ? "LRC" : "TEXT";
-            string timestamp = new DateTime.now_utc ().to_unix ().to_string ();
-            string msg = @"$track_id$timestamp";
-
-            var hmac = new Hmac (ChecksumType.SHA256, "p93jhgh689SBReK6ghtw62".data);
-            hmac.update (msg.data);
-            uint8[] hmac_sign = new uint8[32];
-            size_t digest_length = 32;
-            hmac.get_digest (hmac_sign, ref digest_length);
-            string sign = Base64.encode (hmac_sign);
-
-            Bytes bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/tracks/$track_id/lyrics",
-                {"default"},
-                {
-                    {"format", format},
-                    {"timeStamp", timestamp},
-                    {"sign", sign}
-                }
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            var lyrics = (Lyrics) jsoner.deserialize_object (typeof (Lyrics));
-            lyrics.is_sync = is_sync;
-
-            return lyrics;
-        }
-
-        [Version (deprecated = true)]
-        public Playlist change_playlist (
-            owned string? uid,
-            string kind,
-            string diff,
-            int revision = 1
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data ("kind", kind);
-            datalist.set_data ("revision", revision.to_string ());
-            datalist.set_data ("diff", diff);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$(uid)/playlists/$kind/change",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
-        }
-
-        [Version (deprecated = true)]
-        public Playlist change_playlist_visibility (
-            owned string? uid,
-            string kind,
-            string visibility
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data ("value", visibility);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/visibility",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
-        }
-
-        [Version (deprecated = true)]
-        public Playlist create_playlist (
-            owned string? uid,
-            string title,
-            string visibility = "private"
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data ("title", title);
-            datalist.set_data ("visibility", visibility);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/playlists/create",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
-        }
-
-        [Version (deprecated = true)]
-        public bool delete_playlist (
-            owned string? uid,
-            string kind
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/delete",
-                {"default"}
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
-        [Version (deprecated = true)]
-        public Playlist change_playlist_name (
-            owned string? uid,
-            string kind,
-            string new_name
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data ("value", new_name);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/name",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (Playlist) jsoner.deserialize_object (typeof (Playlist));
-        }
-
-        [Version (deprecated = true)]
-        public PlaylistRecommendations get_playlist_recommendations (
-            owned string? uid,
-            string kind
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/users/$uid/playlists/$kind/recommendations",
-                {"default"}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (PlaylistRecommendations) jsoner.deserialize_object (typeof (PlaylistRecommendations));
-        }
-
-        [Version (deprecated = true)]
-        public Gee.ArrayList<TrackShort> get_disliked_tracks (
-            owned string? uid,
-            int if_modified_since_revision = 0
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks",
-                {"default"},
-                {{"if_modified_since_revision", if_modified_since_revision.to_string ()}}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result", "library", "tracks"}, Case.CAMEL);
-
-            var our_array = new Gee.ArrayList<TrackShort> ();
-            jsoner.deserialize_array (ref our_array);
-
-            return our_array;
         }
 
         ///////////

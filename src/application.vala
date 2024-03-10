@@ -271,13 +271,13 @@ namespace Cassette {
         }
 
         void on_next () {
-            if (!player.is_loading) {
+            if (!player.track_loading) {
                 player.next ();
             }
         }
 
         void on_prev () {
-            if (!player.is_loading) {
+            if (player.can_go_prev) {
                 player.prev ();
             }
         }
@@ -289,7 +289,7 @@ namespace Cassette {
         }
 
         void on_share_current_track () {
-            var current_track = player.get_current_track ();
+            var current_track = player.get_current_track_info ();
 
             if (current_track?.is_ugc == false) {
                 track_share (current_track);

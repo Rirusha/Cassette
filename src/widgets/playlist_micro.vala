@@ -200,17 +200,13 @@ namespace Cassette {
                 Cassette.settings.get_boolean ("child-visible")
             );
 
-            var queue = new YaMAPI.Queue () {
-                current_index = 0,
-                context = YaMAPI.Context.from_obj (playlist_info),
-                tracks = track_list
-            };
-
-            if (player.shuffle_mode == Player.ShuffleMode.ON) {
-                queue.randomize_index ();
-            }
-
-            player.start_queue (queue);
+            player.start_track_list (
+                track_list,
+                get_context_type (playlist_info),
+                playlist_info.oid,
+                player.shuffle_mode == Player.ShuffleMode.ON ? Random.int_range (0, track_list.size) : 0,
+                get_context_description (playlist_info)
+            );
         }
 
         public YaMAPI.Playlist? get_playlist_info () {

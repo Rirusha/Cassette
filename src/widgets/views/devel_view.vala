@@ -57,6 +57,11 @@ namespace Cassette {
             //  message (lib.liked_tracks[0]);
             //  message (lib.playlists[0]);
 
+            Client.Logger.debug ("MARK I");
+            client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, false);
+            Client.Logger.debug ("MARK II");
+            client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, true);
+
             message ("Magic happaned, i swear…");
         }
 

@@ -107,6 +107,8 @@ namespace Cassette {
 
             player.playback_callback.connect (on_playback_callback);
 
+            player.bind_property ("can-go-prev", prev_track_button, "sensitive", BindingFlags.DEFAULT);
+
             player.current_track_start_loading.connect (() => {
                 sensitive = false;
             });

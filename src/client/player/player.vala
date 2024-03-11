@@ -323,7 +323,7 @@ namespace Cassette.Client.Player {
         /**
          * Can player go prev.
          */
-        public bool can_go_prev { get; private set; }
+        public bool can_go_prev { get; private set; default = true; }
 
         /**
          * Can player be seeked.
@@ -463,6 +463,12 @@ namespace Cassette.Client.Player {
             Timeout.add (200, () => {
                 if (playback_pos_sec > 0.0) {
                     playback_callback (playback_pos_sec);
+                }
+
+                if (player_mode?.current_index != 0 || repeat_mode != RepeatMode.OFF || playback_pos_sec > 3.0) {
+                    can_go_prev = true;
+                } else {
+                    can_go_prev = false;
                 }
 
                 return Source.CONTINUE;

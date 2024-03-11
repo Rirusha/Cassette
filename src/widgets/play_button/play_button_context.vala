@@ -36,7 +36,11 @@ namespace Cassette {
         }
 
         bool context_playing_now () {
-            if (player.player_mode?.context_id == content_id && player.player_mode?.context_type == context_type) {
+            if (player.player_mode == null) {
+                return false;
+            }
+
+            if (player.player_mode.context_id == content_id && player.player_mode.context_type == context_type) {
                 return true;
 
             } else {
@@ -45,7 +49,7 @@ namespace Cassette {
                     return false;
                 }
 
-                if ((content_id == @"$uid:3") && player.player_mode?.context_type == "my_music") {
+                if ((content_id == @"$uid:3") && player.player_mode.context_type == "my_music") {
                     return true;
                 }
             }

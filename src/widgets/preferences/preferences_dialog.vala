@@ -60,7 +60,6 @@ namespace Cassette {
 
             max_thread_number_spin.value = Cassette.Client.settings.get_int ("max-thread-number");
             can_cache_switch.active = Cassette.Client.settings.get_boolean ("can-cache");
-            debug_mode_switch.active = Cassette.Client.settings.get_boolean ("debug-mode");
 
             can_cache_switch.notify["active"].connect (() => {
                 if (!can_cache_switch.active) {

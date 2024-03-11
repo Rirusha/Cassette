@@ -84,8 +84,8 @@ namespace Cassette {
                 }
             });
 
-            this.bind_property ("is-shown", root_flap, "show-sidebar", GLib.BindingFlags.BIDIRECTIONAL);
-            this.bind_property ("collapsed", root_flap, "collapsed", GLib.BindingFlags.BIDIRECTIONAL);
+            this.bind_property ("is-shown", root_flap, "show-sidebar", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+            this.bind_property ("collapsed", root_flap, "collapsed", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
 
             player.queue_changed.connect (update_queue);
         }

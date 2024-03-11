@@ -24,9 +24,14 @@ namespace Cassette.Client.YaMAPI.Rotor {
     public class Station : YaMObject {
 
         /**
-         * Id станции
+         * Station id. Doesn't work with ``_dashboard`` and ``_list`` rotor methods
          */
         public string station_id { get; set; }
+
+        /**
+         * Station object. Using with ``_dashboard`` and ``_list`` rotor methods
+         */
+        public StationInfo station { get; set; }
 
         /**
          * Название станции

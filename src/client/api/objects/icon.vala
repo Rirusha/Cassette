@@ -33,16 +33,10 @@ namespace Cassette.Client.YaMAPI {
          */
         public string image_url { get; set; }
 
-        public string get_internal_icon_name () {
-            string ya_icon_name = image_url.split ("/")[3];
-
-            switch (ya_icon_name) {
-                case "rotor-personal-station-icon":
-                    return "adwaita-emblem-favorite-symbolic";
-                case "rotor-activity-wake-up-icon":
-                    return "cassette-wave-classes-wake";
+        public static string get_internal_icon_name (string station_id) {
+            switch (station_id) {
                 default:
-                    Logger.warning ("Unknown icon %s".printf (image_url));
+                    Logger.warning ("Unknown icon \"%s\" with url \"%s\"".printf (ya_icon_name, image_url));
 
                     return "io.github.Rirusha.Cassette-symbolic";
             }

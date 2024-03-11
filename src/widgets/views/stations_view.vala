@@ -39,7 +39,7 @@ namespace Cassette {
             foreach (var station in dashboard.stations) {
                 list_box.append (new Adw.ActionRow () {
                     title = station.station.name,
-                    icon_name = YaMAPI.Rotor.Icon.get_internal_icon_name ("")
+                    icon_name = station.station.icon.get_internal_icon_name ("")
                 });
 
                 Idle.add (set_values_async.callback);
@@ -49,7 +49,7 @@ namespace Cassette {
             foreach (var station in stations_list) {
                 list_box.append (new Adw.ActionRow () {
                     title = station.station.name,
-                    icon_name = YaMAPI.Rotor.Icon.get_internal_icon_name ("")
+                    icon_name = station.station.icon.get_internal_icon_name ("")
                 });
 
                 Idle.add (set_values_async.callback);
@@ -75,7 +75,7 @@ namespace Cassette {
             yield;
 
             if (dashboard != null && stations_list != null) {
-                set_values (dashboard, stations_list);
+                set_values_async.begin (dashboard, stations_list);
 
                 return -1;
             }

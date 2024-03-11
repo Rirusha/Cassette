@@ -48,7 +48,8 @@ blueprints = custom_target('blueprints',
     'ui/track_detailed.blp',
     'ui/track_default_content.blp',
     'ui/main_view.blp',
-    'ui/devel_view.blp'
+    'ui/devel_view.blp',
+    'ui/stations_view.blp'
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],

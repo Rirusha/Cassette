@@ -33,7 +33,7 @@ namespace Cassette.Client.YaMAPI.Rotor {
         /**
          * Список станций
          */
-        public ArrayList<StationInfo> stations { get; set; default = new ArrayList<StationInfo> (); }
+        public ArrayList<Station> stations { get; set; default = new ArrayList<Station> (); }
 
         /**
          * Хэллоуин (by Cosmo)

@@ -66,7 +66,7 @@ namespace Cassette {
      * @param reason    причина блокировки
      */
     public static void block_widget (Gtk.Widget widget, BlockReason reason) {
-        if (!application.is_devel) {
+        if (!get_debug_mode ()) {
             widget.sensitive = false;
         }
 

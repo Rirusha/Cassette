@@ -39,7 +39,7 @@ namespace Cassette {
             foreach (var station in dashboard.stations) {
                 list_box.append (new Adw.ActionRow () {
                     title = station.station.name,
-                    icon_name = station.station.icon.get_internal_icon_name ("")
+                    icon_name = station.station.icon.get_internal_icon_name (station.station.id.normal)
                 });
 
                 Idle.add (set_values_async.callback);
@@ -49,7 +49,7 @@ namespace Cassette {
             foreach (var station in stations_list) {
                 list_box.append (new Adw.ActionRow () {
                     title = station.station.name,
-                    icon_name = station.station.icon.get_internal_icon_name ("")
+                    icon_name = station.station.icon.get_internal_icon_name (station.station.id.normal)
                 });
 
                 Idle.add (set_values_async.callback);

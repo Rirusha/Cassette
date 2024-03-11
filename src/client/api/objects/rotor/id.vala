@@ -23,6 +23,12 @@ namespace Cassette.Client.YaMAPI.Rotor {
      */
     public class Id : YaMObject {
 
+        public string normal {
+            owned get {
+                return "%s:%s".printf (type_, tag);
+            }
+        }
+
         /**
          * Тип станции
          */

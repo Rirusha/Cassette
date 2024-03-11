@@ -61,6 +61,7 @@ cassette_gui_sources = files(
   'widgets/views/with_tracks_view.vala',
   'widgets/views/base_view.vala',
   'widgets/views/root_view.vala',
+  'widgets/views/stations_view.vala',
   'widgets/views/disliked_tracks_view.vala',
   'widgets/views/cachiable_view.vala',
   'widgets/views/playlist_view.vala',

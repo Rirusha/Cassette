@@ -850,6 +850,20 @@ namespace Cassette.Client.YaMAPI {
             return (Dashboard) jsoner.deserialize_object (typeof (Dashboard));
         }
 
+        public Gee.ArrayList<Station> rotor_stations_list () throws ClientError, BadStatusCodeError {
+            var bytes = soup_wrapper.get_sync (
+                @"$(YAM_BASE_URL)/rotor/stations/list",
+                {"default", "device"},
+                {{"language", get_language ()}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var sl_array = new Gee.ArrayList<Station> ();
+            jsoner.deserialize_array (ref sl_array);
+
+            return sl_array;
+        }
+
         /**
          * TODO: Placeholder
          */

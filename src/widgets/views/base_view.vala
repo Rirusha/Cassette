@@ -21,10 +21,12 @@ namespace Cassette {
         public abstract bool can_refresh { get; default = true; }
 
         public abstract signal void show_ready ();
+
         public async abstract int try_load_from_web ();
+
         public async abstract bool try_load_from_cache ();
 
-        public abstract PageRoot root_view { get; set; }
+        public PageRoot root_view { get; set; }
 
         public async virtual void first_show () {
             bool cache_is_success = yield try_load_from_cache ();

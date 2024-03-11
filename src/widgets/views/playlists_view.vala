@@ -35,8 +35,6 @@ namespace Cassette {
 
         PlaylistMicro liked_micro;
 
-        public override PageRoot root_view { get; set; }
-
         public string? uid { get; construct set; }
 
         PlaylistsView (string? uid) {

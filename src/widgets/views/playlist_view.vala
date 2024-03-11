@@ -61,8 +61,6 @@ namespace Cassette {
 
         public override bool can_refresh { get; default = true; }
 
-        public override PageRoot root_view { get; set; }
-
         public string? uid { get; construct set; }
         public string kind { get; construct set; }
 

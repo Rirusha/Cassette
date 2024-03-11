@@ -278,7 +278,7 @@ namespace Cassette.Client.Player {
             var current_track = get_current_track_info ();
 
             return new YaMAPI.Play () {
-                track_length_seconds = ((double) current_track.duration_ms) / 1000,
+                track_length_seconds = ((double) current_track.duration_ms) / 1000.0,
                 track_id = current_track.id,
                 album_id = current_track.albums.size > 0 ? current_track.albums[0].id : null,
                 context = context_type,

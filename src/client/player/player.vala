@@ -429,6 +429,8 @@ namespace Cassette.Client.Player {
             }
         }
 
+        const double PLAY_CALLBACK_STEP = 0.1;
+
         string play_id { get; set; }
 
         Gst.Element playbin;
@@ -460,8 +462,12 @@ namespace Cassette.Client.Player {
             bind_property ("mute", playbin, "mute", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
             settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
 
-            Timeout.add (200, () => {
-                if (playback_pos_sec > 0.0) {
+            playback_callback.connect (() => {
+                total_playback_sec += PLAY_CALLBACK_STEP;
+            });
+
+            Timeout.add ((int) (PLAY_CALLBACK_STEP * 1000.0), () => {
+                if (playback_pos_sec > 0.0 && player_state == PlayerState.PLAYING) {
                     playback_callback (playback_pos_sec);
                 }
 
@@ -469,14 +475,6 @@ namespace Cassette.Client.Player {
                     can_go_prev = true;
                 } else {
                     can_go_prev = false;
-                }
-
-                return Source.CONTINUE;
-            });
-
-            Timeout.add (100, () => {
-                if (player_state == PlayerState.PLAYING) {
-                    total_playback_sec += 0.1;
                 }
 
                 return Source.CONTINUE;
@@ -609,7 +607,7 @@ namespace Cassette.Client.Player {
 
             if (current_track != null) {
                 if (current_track.track_type != YaMAPI.TrackType.LOCAL) {
-                    send_play.begin ((current_track as YaMAPI.Track), playback_pos_sec, total_playback_sec);
+                    send_play_current_async.begin (playback_pos_sec, total_playback_sec);
                 }
             }
 
@@ -673,7 +671,7 @@ namespace Cassette.Client.Player {
             current_track_start_loading ();
 
             if (current_track.track_type != YaMAPI.TrackType.LOCAL) {
-                send_play.begin (((YaMAPI.Track) current_track), 0.0, 0.0);
+                send_play_current_async.begin ();
 
                 string? track_uri = yield Cachier.get_track_uri (current_track.id);
                 if (track_uri == null) {
@@ -699,17 +697,29 @@ namespace Cassette.Client.Player {
             }
         }
 
-        async void send_play (YaMAPI.Track track_info, double end_position_seconds, double total_played_seconds) {
+        async void send_play_current_async (
+            double end_position_seconds = 0.0,
+            double total_played_seconds = 0.0
+        ) {
             assert (player_mode != null);
 
             var play_obj = player_mode.form_play_obj ();
 
             play_obj.play_id = play_id;
+            play_obj.end_position_seconds = end_position_seconds;
+            play_obj.total_played_seconds = total_played_seconds;
+
+            Logger.debug ("Track id %s: end: %f; total: %f, dur: %f".printf (
+                play_obj.track_id,
+                play_obj.end_position_seconds,
+                play_obj.total_played_seconds,
+                play_obj.track_length_seconds
+            ));
 
             threader.add_single (() => {
                 yam_talker.send_play ({play_obj});
 
-                Idle.add (send_play.callback);
+                Idle.add (send_play_current_async.callback);
             });
 
             yield;

@@ -23,8 +23,6 @@ namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/main_window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         [GtkChild]
-        unowned Adw.ViewSwitcher switcher_title;
-        [GtkChild]
         unowned Gtk.Button button_backward;
         [GtkChild]
         unowned Gtk.Button button_refresh;
@@ -42,8 +40,6 @@ namespace Cassette {
         unowned Gtk.Stack loading_stack;
         [GtkChild]
         unowned Gtk.MenuButton app_menu_button;
-        [GtkChild]
-        unowned PlayerBar player_bar;
         [GtkChild]
         unowned Gtk.Revealer search_revealer;
         [GtkChild]
@@ -132,26 +128,6 @@ namespace Cassette {
             });
 
             info_banner.button_clicked.connect (try_reconnect);
-
-                //  try {
-                //      string cmd = "";
-
-                //      switch (Environment.get_variable ("XDG_CURRENT_DESKTOP")) {
-                //          case "GNOME":
-                //              cmd = "gnome-control-center network";
-                //              break;
-                //          default:
-                //              Logger.warning ("Unsupported DE '%s'. You can create issue on github: %s.".printf (
-                //                  Environment.get_variable ("XDG_CURRENT_DESKTOP"),
-                //                  "https://github.com/Rirusha/Cassette/issues/new/choose"
-                //              ));
-                //      }
-
-                //      Process.spawn_command_line_sync (cmd);
-                //  } catch (SpawnError e) {
-                //      Logger.warning ("Error while opening network settings. Error message: %s".printf (e.message));
-                //  }
-            //  });
 
             var show_disliked_tracks_action = new SimpleAction ("show-disliked-tracks", null);
             show_disliked_tracks_action.activate.connect (() => {

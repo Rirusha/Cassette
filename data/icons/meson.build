@@ -232,402 +232,402 @@ install_data(
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-concentration.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-concentration-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-date.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-date-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-driving.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-driving-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-for-lovers.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-for-lovers-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-party.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-party-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-road.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-road-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-run.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-run-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-sex.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-sex-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-sleep.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-sleep-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-wake.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-wake-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-work.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-work-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-classes-workout.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-classes-workout-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-collection.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-collection-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-1950s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-1950s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-1960s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-1960s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-1970s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-1970s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-1980s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-1980s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-1990s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-1990s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-2000s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-2000s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-2010s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-2010s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-2020s.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-2020s-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-childrens-new-year-songs.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-childrens-new-year-songs-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-circle-of-king-and-fool.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-circle-of-king-and-fool-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-eternal-hits.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-eternal-hits-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-for-exam.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-for-exam-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-forgotten.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-forgotten-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-forks.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-forks-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-lullaby.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-lullaby-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-new-years-tales.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-new-years-tales-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-popular.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-popular-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-tales.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-tales-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-tales-for-sleeping.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-tales-for-sleeping-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-unfamiliar.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-unfamiliar-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-era-white-noise.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-era-white-noise-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-alternative.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-alternative-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-authors-song.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-authors-song-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-bandstand.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-bandstand-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-blues.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-blues-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-chanson.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-chanson-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-childrens-music.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-childrens-music-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-childrens-music-of-world.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-childrens-music-of-world-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-classic.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-classic-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-country.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-country-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-dance-music.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-dance-music-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-electronics.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-electronics-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-folk.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-folk-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-indie.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-indie-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-jazz.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-jazz-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-light-music.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-light-music-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-metal.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-metal-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-music-of-world.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-music-of-world-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-pop.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-pop-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-punk.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-punk-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-rap-and-hip-hop.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-rap-and-hip-hop-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-reggae.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-reggae-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-rnb.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-rnb-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-rock.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-rock-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-ska.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-ska-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-sounds-of-nature-and-noise-of-city.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-sounds-of-nature-and-noise-of-city-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-soundtracks.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-soundtracks-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-genre-soviet-music.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-genre-soviet-music-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-aggression.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-aggression-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-autumn.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-autumn-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-beauty.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-beauty-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-calmness.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-calmness-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-cool.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-cool-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-dream.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-dream-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-energetic.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-energetic-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-epic.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-epic-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-gloomy.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-gloomy-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-joy.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-joy-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-mystic.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-mystic-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-new-year.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-new-year-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-relax.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-relax-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-sadness.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-sadness-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-sentimental.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-sentimental-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-spring.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-spring-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-summer.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-summer-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-mood-winter.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-mood-winter-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
 install_data(
-  join_paths(symbolic_dir, 'cassette-wave-my-wave.svg'),
+  join_paths(symbolic_dir, 'cassette-wave-my-wave-symbolic.svg'),
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 

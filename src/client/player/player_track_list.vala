@@ -81,7 +81,6 @@ namespace Cassette.Client.Player {
 
             var new_index = shuffled_queue.index_of (current_track);
 
-            
             queue.add_all (shuffled_queue[new_index:shuffled_queue.size]);
             queue.add_all (shuffled_queue[0:new_index]);
 

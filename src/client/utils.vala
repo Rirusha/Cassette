@@ -112,6 +112,10 @@ namespace Cassette.Client {
         return new DateTime.now_utc ().format_iso8601 ();
     }
 
+    public bool get_debug_mode () {
+        return settings.get_boolean ("debug-mode");
+    }
+
     /**
      * Инициализация клиента. Создание синглтонов.
      */

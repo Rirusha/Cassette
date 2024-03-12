@@ -35,6 +35,16 @@ namespace Cassette.Client.YaMAPI {
 
         public string get_internal_icon_name (string station_id) {
             switch (station_id) {
+                case "user:onyourwave":
+                    return "cassette-wave-my-wave-symbolic";
+                case "personal:collection":
+                    return "adwaita-emblem-favorite-symbolic";
+                case "genre:indie":
+                    return "cassette-wave-genre-indie-symbolic";
+                case "genre:allrock":
+                    return "cassette-wave-genre-rock-symbolic";
+                case "genre:pop":
+                    return "cassette-wave-genre-pop-symbolic";
                 default:
                     Logger.warning ("Unknown icon with url \"%s\" for station id \"%s\"".printf (image_url, station_id));
 

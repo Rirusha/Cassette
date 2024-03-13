@@ -48,7 +48,7 @@ sudo apt-get install cassette
 ### … или используя flatpak
 Вы можете скачать по [ссылке](https://flathub.org/apps/details/io.github.Rirusha.Cassette) или используя терминал
 ```
-flatpak install flathub io.github.Rirusha.Cassette
+flatpak install io.github.Rirusha.Cassette
 ```
 
 ### Nightly версия
@@ -56,15 +56,15 @@ flatpak install flathub io.github.Rirusha.Cassette
 
 __ВНИМАНИЕ!: эта версия нестабильна.__
 
-Для работы требуется установить org.gnome.Platform//master из gnome-nightly репозитория. Подключение репозитория описано в разделе [Для разработчиков](https://github.com/Rirusha/Cassette?tab=readme-ov-file#для-разработчиков).
+Для работы требуется установить org.gnome.Platform//master из gnome-nightly репозитория. Подключение репозитория и установка пакета, необходимого для запуска devel версии описаны в разделе [Для разработчиков](https://github.com/Rirusha/Cassette?tab=readme-ov-file#для-разработчиков).
 
 Установка приложения происходит из nightly репозитория, который также нужно подключить:
 ```
 flatpak remote-add --if-not-exists cassette-nightly https://rirusha.github.io/Cassette/index.flatpakrepo
-flatpak install io.github.Rirusha.Cassette-Devel org.gnome.Platform//master
+flatpak install io.github.Rirusha.Cassette-Devel
 ```
 
-Для удаления репозитория нужно выполнить выполнить:
+Для удаления репозитория нужно выполнить:
 ```
 flatpak remote-delete cassette-nightly
 ```
@@ -119,12 +119,16 @@ flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome
 ```
 
 И установить:
-* org.gnome.Sdk//master
 * org.gnome.Platform//master
-* org.freedesktop.Sdk.Extension.vala-nightly//23.08beta
-* org.gnome.Builder//stable
 ```
-flatpak install org.gnome.Sdk//master org.gnome.Platform//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta org.gnome.Builder//stable
+flatpak install org.gnome.Platform//master 
+```
+
+Для сборки devel версии нужно установить:
+* org.gnome.Sdk//master
+* org.freedesktop.Sdk.Extension.vala-nightly//23.08beta
+```
+flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta
 ```
 
 Для удаления репозитория нужно выполнить выполнить:

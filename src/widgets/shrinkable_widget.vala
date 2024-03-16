@@ -1,0 +1,55 @@
+/* Copyright 2023-2024 Rirusha
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+
+
+/*
+ * Not using ``Adw.Breakpoint`` because
+ * every breakpoint pass triggers map/unmap
+ * that break some logic and laggy interface
+ */
+public class Cassette.ShrinkableWidget : Adw.Bin {
+
+    /**
+     * Width value, that triggers ``is-shrinked`` changes
+     */
+    public int shrink_edge_width { get; set; default = -1; }
+
+    /**
+     * Is widget should shrinked or not
+     */
+    public bool is_shrinked { get; set; default = false; }
+
+    bool is_start = true;
+
+    protected override void size_allocate (int width, int height, int baseline) {
+        base.size_allocate (width, height, baseline);
+
+        if (shrink_edge_width != -1) {
+            if (width >= shrink_edge_width) {
+                if (is_shrinked | is_start) {
+                    is_shrinked = false;
+                }
+            } else {
+                if (!is_shrinked | is_start) {
+                    is_shrinked = true;
+                }
+            }
+
+            is_start = false;
+        }
+    }
+}

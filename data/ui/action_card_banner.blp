@@ -1,0 +1,22 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteActionCardBanner : $CassetteActionCardCustom {
+  content: Box content_box {
+    orientation: vertical;
+    spacing: 8;
+
+    Image content_image {
+      icon-size: large;
+    }
+
+    Label content_label {
+      styles [
+        "title-2"
+      ]
+
+      ellipsize: end;
+      wrap: true;
+    }
+  };
+}

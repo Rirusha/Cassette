@@ -1,0 +1,21 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteActionCardCustom : Adw.Bin {
+  Button real_button {
+    styles [
+      "card"
+    ]
+
+    Adw.Bin content_bin {
+      margin-bottom: 8;
+      margin-top: 8;
+      margin-start: 8;
+      margin-end: 8;
+      valign: center;
+      halign: center;
+      hexpand: true;
+      vexpand: true;
+    }
+  }
+}

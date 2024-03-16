@@ -25,6 +25,8 @@ cassette_gui_sources = files(
   'widgets/playlist_row.vala',
   'widgets/shrinkable_widget.vala',
   'widgets/info_marks.vala',
+  'widgets/action_cards/custom.vala',
+  'widgets/action_cards/banner.vala',
   'widgets/account_info_dialog.vala',
   'widgets/lyrics/lyrics_line.vala',
   'widgets/lyrics/lyrics_panel.vala',

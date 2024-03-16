@@ -23,6 +23,7 @@ cassette_gui_sources = files(
   'widgets/like_button.vala',
   'widgets/dislike_button.vala',
   'widgets/playlist_row.vala',
+  'widgets/shrinkable_widget.vala',
   'widgets/info_marks.vala',
   'widgets/account_info_dialog.vala',
   'widgets/lyrics/lyrics_line.vala',

@@ -88,6 +88,12 @@ namespace Cassette {
         }
     }
 
+    public void clear_flow_box (Gtk.FlowBox flow_box) {
+        while (flow_box.get_last_child () != null) {
+            flow_box.remove (flow_box.get_last_child ());
+        }
+    }
+
     /**
      * Открыть окно для добавления трека в плейлист
      *

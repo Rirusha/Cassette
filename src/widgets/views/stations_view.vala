@@ -38,7 +38,7 @@ namespace Cassette {
 
         public override bool can_refresh {
             get {
-                return false;
+                return true;
             }
         }
 
@@ -46,11 +46,15 @@ namespace Cassette {
             YaMAPI.Rotor.Dashboard dashboard,
             Gee.ArrayList<YaMAPI.Rotor.Station> stations_list
         ) {
+            clear_flow_box (dashboard_flow_box);
+            clear_flow_box (genre_flow_box);
+            clear_flow_box (mood_flow_box);
+            clear_flow_box (activity_flow_box);
+            clear_flow_box (epoch_flow_box);
+            clear_flow_box (other_flow_box);
+
             foreach (var station in dashboard.stations) {
-                dashboard_flow_box.append (new ActionCardBanner.with_data (
-                    station.station.name,
-                    station.station.icon.get_internal_icon_name (station.station.id.normal)
-                ));
+                dashboard_flow_box.append (new ActionCardStation (station.station));
 
                 Idle.add (set_values_async.callback);
                 yield;
@@ -77,13 +81,11 @@ namespace Cassette {
                         break;
                 }
 
-                target_flow_box.append (new ActionCardBanner.with_data (
-                    station.station.name,
-                    station.station.icon.get_internal_icon_name (station.station.id.normal)
-                ) {
-                    //  orientation = Gtk.Orientation.HORIZONTAL,
-                    //  icon_size = Gtk.IconSize.NORMAL
-                });
+                var action_card = new ActionCardStation (station.station);
+
+                application.main_window.bind_property ("is-shrinked", action_card, "is-shrinked", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+
+                target_flow_box.append (action_card);
 
                 Idle.add (set_values_async.callback);
                 yield;

@@ -16,11 +16,11 @@
  */
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/action_card_banner.ui")]
+[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/action_card_station.ui")]
 /**
     * A class for convenient work with clickable cards.
     */
-public class Cassette.ActionCardBanner : ActionCardCustom, Gtk.Orientable {
+public class Cassette.ActionCardStation : ActionCardCustom {
 
     [GtkChild]
     unowned Gtk.Box content_box;
@@ -29,7 +29,7 @@ public class Cassette.ActionCardBanner : ActionCardCustom, Gtk.Orientable {
     [GtkChild]
     unowned Gtk.Label content_label;
 
-    public Gtk.Orientation orientation {
+    Gtk.Orientation orientation {
         get {
             return content_box.orientation;
         }
@@ -38,7 +38,7 @@ public class Cassette.ActionCardBanner : ActionCardCustom, Gtk.Orientable {
         }
     }
 
-    public Gtk.IconSize icon_size {
+    Gtk.IconSize icon_size {
         get {
             return content_image.icon_size;
         }
@@ -47,31 +47,41 @@ public class Cassette.ActionCardBanner : ActionCardCustom, Gtk.Orientable {
         }
     }
 
-    public string? icon_name {
-        owned get {
-            return content_image.icon_name;
-        }
-        set {
-            content_image.icon_name = value;
-        }
-    }
-
-    public string label {
+    bool _is_shrinked = false;
+    public bool is_shrinked {
         get {
-            return content_label.label;
+            return _is_shrinked;
         }
         set {
-            content_label.label = value;
+            _is_shrinked = value;
+
+            icon_size = value ? Gtk.IconSize.NORMAL : Gtk.IconSize.LARGE;
+            orientation = value ? Gtk.Orientation.HORIZONTAL : Gtk.Orientation.VERTICAL;
+
+            if (value) {
+                if (content_label.has_css_class ("title-2")) {
+                    content_label.remove_css_class ("title-2");
+                }
+            } else {
+                if (!content_label.has_css_class ("title-2")) {
+                    content_label.add_css_class ("title-2");
+                }
+            }
         }
     }
 
-    public ActionCardBanner.with_data (
-        string label,
-        string? icon_name
+    public Client.YaMAPI.Rotor.StationInfo station_info { get; construct; }
+
+    public ActionCardStation (
+        Client.YaMAPI.Rotor.StationInfo station_info
     ) {
         Object (
-            label: label,
-            icon_name: icon_name
+            station_info: station_info
         );
+    }
+
+    construct {
+        content_label.label = station_info.name;
+        content_image.icon_name = station_info.icon.get_internal_icon_name (station_info.id.normal);
     }
 }

@@ -1,0 +1,29 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteHeaderedScrolledWindow : Adw.Bin {
+  Box {
+    orientation: vertical;
+
+    Adw.Bin header_bin {
+      styles [
+        "light-background"
+      ]
+    }
+
+    Gtk.Separator {
+      styles [
+        "border-separator"
+      ]
+    }
+
+    ScrolledWindow real_scrolled_window {
+      hscrollbar-policy: never;
+      propagate-natural-height: true;
+
+      vadjustment: Gtk.Adjustment {
+        value: 0;
+      };
+    }
+  }
+}

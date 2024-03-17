@@ -21,7 +21,7 @@ using Cassette.Client;
 
 namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/main_window.ui")]
-    public class MainWindow : Adw.ApplicationWindow {
+    public class MainWindow : ApplicationWindow {
         [GtkChild]
         unowned Gtk.Button button_backward;
         [GtkChild]

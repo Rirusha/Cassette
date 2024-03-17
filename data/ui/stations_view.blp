@@ -2,12 +2,9 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteStationsView : $CassetteBaseView {
-  ScrolledWindow {
-    hscrollbar-policy: never;
-    propagate-natural-height: true;
-
-    Adw.Clamp {
-      maximum-size: 860;
+  $CassetteHeaderedScrolledWindow {
+    header-widget: Adw.Clamp {
+      maximum-size: 1720;
       margin-start: 12;
       margin-end: 12;
       margin-top: 12;
@@ -30,7 +27,21 @@ template $CassetteStationsView : $CassetteBaseView {
           max-children-per-line: 2;
           min-children-per-line: 1;
           selection-mode: none;
+          column-spacing: 8;
         }
+      }
+    };
+
+    body-widget: Adw.Clamp {
+      maximum-size: 1720;
+      margin-start: 12;
+      margin-end: 12;
+      margin-top: 12;
+      margin-bottom: 12;
+
+      Box {
+        orientation: vertical;
+        spacing: 8;
 
         Label {
           styles [
@@ -46,6 +57,7 @@ template $CassetteStationsView : $CassetteBaseView {
           max-children-per-line: 4;
           min-children-per-line: 1;
           selection-mode: none;
+          column-spacing: 8;
         }
 
         Label {
@@ -62,6 +74,7 @@ template $CassetteStationsView : $CassetteBaseView {
           max-children-per-line: 4;
           min-children-per-line: 1;
           selection-mode: none;
+          column-spacing: 8;
         }
 
         Label {
@@ -78,6 +91,7 @@ template $CassetteStationsView : $CassetteBaseView {
           max-children-per-line: 4;
           min-children-per-line: 1;
           selection-mode: none;
+          column-spacing: 8;
         }
 
         Label {
@@ -94,6 +108,7 @@ template $CassetteStationsView : $CassetteBaseView {
           max-children-per-line: 4;
           min-children-per-line: 1;
           selection-mode: none;
+          column-spacing: 8;
         }
 
         Label {
@@ -110,8 +125,9 @@ template $CassetteStationsView : $CassetteBaseView {
           max-children-per-line: 4;
           min-children-per-line: 1;
           selection-mode: none;
+          column-spacing: 8;
         }
       }
-    }
+    };
   }
 }

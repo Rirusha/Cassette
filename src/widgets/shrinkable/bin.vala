@@ -21,7 +21,7 @@
  * every breakpoint pass triggers map/unmap
  * that break some logic and laggy interface
  */
-public class Cassette.ShrinkableWidget : Adw.Bin {
+public class Cassette.ShrinkableBin : Adw.Bin {
 
     /**
      * Width value, that triggers ``is-shrinked`` changes
@@ -31,7 +31,7 @@ public class Cassette.ShrinkableWidget : Adw.Bin {
     /**
      * Is widget should shrinked or not
      */
-    public bool is_shrinked { get; set; default = false; }
+    public bool is_shrinked { get; private set; default = false; }
 
     bool is_start = true;
 

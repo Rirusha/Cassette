@@ -1,11 +1,12 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteMainWindow : Adw.ApplicationWindow {
+template $CassetteMainWindow : $CassetteApplicationWindow {
   default-width: 600;
   default-height: 500;
   // width-request: 731;
   height-request: 300;
+  shrink-edge-width: 450;
 
   // Adw.Breakpoint {
   //   condition ("max-width: 1035px")

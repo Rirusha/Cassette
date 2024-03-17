@@ -8,6 +8,14 @@
     background-color: alpha(@window_fg_color, 0.08);
 }
 
+.border-separator {
+    color: @sidebar_border_color;
+}
+
+.light-background {
+    background-color: @sidebar_bg_color;
+}
+
 listview {
     background-color: rgba(0, 0, 0, 0);
 }

@@ -17,7 +17,7 @@ cassette_gui_sources = files(
   'widgets/clickable_label.vala',
   'widgets/label_button.vala',
   'widgets/loading_widget.vala',
-  'widgets/custom_button.vala',
+  'widgets/abstract_custom_button.vala',
   'widgets/volume_button.vala',
   'widgets/track_info_panel.vala',
   'widgets/like_button.vala',

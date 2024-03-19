@@ -93,8 +93,6 @@ namespace Cassette {
                 volume_button.visible = false;
             }
 
-            prev_track_button.bind_property ("visible", flow_settings_button, "visible", BindingFlags.INVERT_BOOLEAN | BindingFlags.SYNC_CREATE);
-
             carousel.page_changed.connect (on_carousel_page_changed);
 
             Cassette.Client.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
@@ -263,9 +261,7 @@ namespace Cassette {
                 carousel.remove (info_panel_next);
                 carousel.prepend (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
 
-                player.get_prev_track_info_async.begin ((obj, res) => {
-                    info_panel_prev.track_info = player.get_prev_track_info_async.end (res);
-                });
+                info_panel_prev.track_info = player.get_prev_track_info ();
 
                 carousel.scroll_to (info_panel_center, false);
             }
@@ -273,58 +269,20 @@ namespace Cassette {
             carousel.page_changed.connect (on_carousel_page_changed);
         }
 
-        //  public async void update_queue () {
-        //      /**
-        //          Загрузка и обновление очереди с сравнением с текущей очередью, чтобы 
-        //          избежать сброс играющего трека без фактического обновления очереди
-        //      */
-
-        //      YaMAPI.Queue? queue = null;
-
-        //      threader.add_single (() => {
-        //          queue = yam_talker.get_queue ();
-
-        //          Idle.add (update_queue.callback);
-        //      });
-
-        //      yield;
-
-        //      if (queue == null) {
-        //          return;
-        //      }
-
-        //      if (player.player_state == Player.PlayerState.PLAYING) {
-        //          return;
-        //      }
-
-        //      if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
-        //          if (player.get_queue ().compare (queue) == true) {
-        //              return;
-        //          }
-        //      }
-
-        //      if (queue.context.type_ == "radio") {
-        //          player.start_flow (queue);
-
-        //      } else {
-        //          player.start_queue_init (queue);
-        //      }
-        //  }
-
         void on_player_player_type_notify () {
             switch (player.player_type) {
                 case Player.PlayerModeType.TRACK_LIST:
                     shuffle_button.visible = true;
                     repeat_button.visible = true;
                     queue_show_button.visible = true;
-                    prev_track_button.visible = true;
+                    flow_settings_button.visible = false;
                     break;
 
                 case Player.PlayerModeType.FLOW:
                     shuffle_button.visible = false;
                     repeat_button.visible = false;
                     queue_show_button.visible = false;
-                    prev_track_button.visible = false;
+                    flow_settings_button.visible = true;
                     break;
 
                 case Player.PlayerModeType.NONE:
@@ -359,6 +317,7 @@ namespace Cassette {
         }
 
         void on_player_current_track_changed (YaMAPI.Track? new_track) {
+            message ((new_track == null).to_string ());
             if (new_track == null) {
                 clear ();
                 return;
@@ -397,14 +356,14 @@ namespace Cassette {
         void to_flow () {
             repeat_button.visible = false;
             shuffle_button.visible = false;
-            prev_track_button.visible = false;
+            flow_settings_button.visible = true;
             queue_show_button.visible = false;
         }
 
         void to_track_list () {
             repeat_button.visible = true;
             shuffle_button.visible = true;
-            prev_track_button.visible = true;
+            flow_settings_button.visible = false;
             queue_show_button.visible = true;
         }
 

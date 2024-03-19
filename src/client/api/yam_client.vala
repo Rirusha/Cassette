@@ -771,8 +771,23 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO: Placeholder
          */
-        public void rotor_session_new () throws ClientError, BadStatusCodeError {
-            
+        public StationTracks rotor_session_new (
+            SessionNew session_new
+        ) throws ClientError, BadStatusCodeError {
+            PostContent post_content = {
+                PostContentType.JSON,
+                Jsoner.serialize (session_new, Case.CAMEL)
+            };
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/rotor/session/new",
+                {"default"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (StationTracks) jsoner.deserialize_object (typeof (StationTracks));
         }
 
         /**

@@ -521,5 +521,20 @@ namespace Cassette.Client {
 
             return track_list;
         }
+
+        public Rotor.StationTracks? start_new_session (
+            string station_id
+        ) {
+            Rotor.StationTracks? station_tracks = null;
+
+            net_run_wout_code (() => {
+                var ses_new = new Rotor.SessionNew ();
+                ses_new.seeds.add (station_id);
+
+                station_tracks = client.rotor_session_new (ses_new);
+            });
+
+            return station_tracks;
+        }
     }
 }

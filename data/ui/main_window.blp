@@ -8,191 +8,85 @@ template $CassetteMainWindow : $CassetteApplicationWindow {
   height-request: 294;
   shrink-edge-width: 450;
 
-  // Adw.Breakpoint {
-  //   condition ("max-width: 1035px")
-  //   setters {
-  //     sidebar.collapsed: true;
-  //     switcher_title.policy: narrow;
-  //   }
-  // }
+  content: Adw.ToolbarView switcher_toolbar {
+    bottom-bar-style: flat;
+    reveal-bottom-bars: false;
 
-  content: Adw.NavigationView root_navigation_view {
-    Adw.NavigationPage {
-      title: "main";
-      child: Adw.ToolbarView toolbar_view {
-        bottom-bar-style: raised;
-        top-bar-style: raised;
-        reveal-bottom-bars: false;
+    content: Adw.ToolbarView player_bar_toolbar {
+      bottom-bar-style: raised;
+      reveal-bottom-bars: false;
 
-        [top]
-        Adw.HeaderBar header_bar {
-          title-widget: Adw.ViewSwitcher switcher_title {
-            stack: main_stack;
-            policy: wide;
-          };
+      content: $CassetteSideBar sidebar {
+        collapsed: true;
 
-          [start]
-          Button button_backward {
-            icon-name: "adwaita-go-previous-symbolic";
-            sensitive: false;
-            tooltip-text: "Go back";
-          }
+        content: Adw.ToastOverlay toast_overlay {
+          vexpand: true;
 
-          [start]
-          Button button_refresh {
-            icon-name: "adwaita-view-refresh-symbolic";
-            sensitive: false;
-            tooltip-text: "Refresh";
-          }
+          child: Adw.ToolbarView {
+            top-bar-style: raised;
 
-          [start]
-          Revealer search_button_revealer {
-            reveal-child: true;
-            transition-type: slide_up;
-
-            Button search_button {
-              action-name: "win.search";
-              icon-name: "adwaita-edit-find-symbolic";
-              tooltip-text: "Yandex.Muisc search";
+            [top]
+            $CassetteHeaderBar header_bar {
+              sensitive: false;
+              title-stack: main_stack;
             }
-          }
 
-          [start]
-          $CassetteCacheIndicator {}
+            content: Adw.ToolbarView search_toolbar {
+              top-bar-style: flat;
+              reveal-top-bars: false;
 
-          [end]
-          MenuButton app_menu_button {
-            icon-name: "adwaita-open-menu-symbolic";
-            menu-model: primary_menu;
-            sensitive: false;
-            tooltip-text: "Main menu";
-          }
-
-          [end]
-          MenuButton avatar_button {
-            styles [
-              "flat"
-            ]
-
-            sensitive: false;
-            menu-model: avatar_menu;
-            tooltip-text: "Account menu";
-
-            Adw.Avatar avatar {}
-          }
-
-          [end]
-          Revealer sidebar_toggle_revealer {
-            reveal-child: false;
-            transition-type: crossfade;
-
-            ToggleButton sidebar_toggle_button {
-              styles [
-                "flat"
-              ]
-
-              icon-name: "adwaita-sidebar-show-right-symbolic";
-            }
-          }
-        }
-
-        [top]
-        Revealer search_revealer {
-          reveal-child: false;
-          transition-type: slide_down;
-
-          Box {
-            orientation: vertical;
-            spacing: 3;
-
-            Separator {}
-
-            Adw.Clamp {
-              maximum-size: 600;
-
-              Box {
-                spacing: 4;
-                hexpand: true;
+              [top]
+              Adw.Clamp {
+                maximum-size: 500;
 
                 SearchEntry search_entry {
                   hexpand: true;
                   search-delay: 1500;
                 }
-
-                Button search_close_button {
-                  styles [
-                    "flat"
-                  ]
-
-                  icon-name: "adwaita-window-close-symbolic";
-                }
               }
-            }
-          }
-        }
 
-        content: Box {
-          orientation: vertical;
+              content: Box {
+                orientation: vertical;
 
-          Adw.Banner info_banner {
-            button-label: _("Reconnect");
-            title: _("Connection problems");
-            revealed: false;
-          }
-
-          $CassetteSideBar sidebar {
-            collapsed: false;
-
-            content: Adw.ToastOverlay toast_overlay {
-              vexpand: true;
-
-              child: Stack loading_stack {
-
-                StackPage {
-                  name: "loading";
-                  child: $CassetteLoadingWidget {
-                    size: 24;
-                  };
+                Adw.Banner info_banner {
+                  button-label: _("Reconnect");
+                  title: _("Connection problems");
+                  revealed: false;
                 }
 
-                StackPage {
-                  name: "done";
-                  child: Adw.ViewStack main_stack {
-                    vhomogeneous: false;
-                    hhomogeneous: false;
-                  };
+                Stack loading_stack {
+
+                  StackPage {
+                    name: "loading";
+                    child: $CassetteLoadingWidget {
+                      size: 24;
+                    };
+                  }
+
+                  StackPage {
+                    name: "done";
+                    child: Adw.ViewStack main_stack {
+                      vhomogeneous: false;
+                      hhomogeneous: false;
+                    };
+                  }
                 }
               };
             };
-          }
+          };
         };
-
-        [bottom]
-        $CassettePlayerBar player_bar {
-          window: template;
-        }
       };
+
+      // [bottom]
+      // $CassettePlayerBar player_bar {
+      //   window: template;
+      // }
+    };
+
+    [bottom]
+    Adw.ViewSwitcherBar switcher_bar {
+      stack: main_stack;
+      reveal: true;
     }
   };
-}
-
-menu primary_menu {
-  section {
-    item (_("Disliked tracks"), "`how-disliked-tracks")
-    item (_("Parse URL from clipboard"), "win.parse-url")
-  }
-  section {
-    item (_("Preferences"), "app.preferences")
-    item (_("Keyboard Shortcuts"), "win.show-help-overlay")
-    item (_("About Cassette"), "app.about")
-  }
-}
-menu avatar_menu {
-  section {
-    item (_("Open in browser"), "win.open-in-browser")
-    item (_("Account info"), "win.accoint-info")
-  }
-  section {
-    item (_("Log out"), "app.log-out")
-  }
 }

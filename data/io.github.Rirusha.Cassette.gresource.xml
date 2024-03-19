@@ -44,5 +44,7 @@
     <file preprocess="xml-stripblanks">ui/action_card_custom.ui</file>
     <file preprocess="xml-stripblanks">ui/action_card_station.ui</file>
     <file preprocess="xml-stripblanks">ui/headered_scrolled_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/primary_menu_button.ui</file>
+    <file preprocess="xml-stripblanks">ui/header_bar.ui</file>
   </gresource>
 </gresources>

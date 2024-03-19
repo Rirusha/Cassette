@@ -109,7 +109,7 @@ namespace Cassette.Client {
         /**
          * Update data that may have been changed by other clients
          */
-        public void update_all () {
+        public async void update_all () {
 
         }
 

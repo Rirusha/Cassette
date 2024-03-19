@@ -172,17 +172,17 @@ namespace Cassette {
 
             track_detailed_button.clicked.connect (() => {
                 if (track_detailed_button.has_css_class ("flat")) {
-                    window.sidebar.show_track_info (current_track_info);
+                    window.window_sidebar.show_track_info (current_track_info);
                 } else {
-                    window.sidebar.close ();
+                    window.window_sidebar.close ();
                 }
             });
 
             queue_show_button.clicked.connect (() => {
                 if (queue_show_button.has_css_class ("flat")) {
-                    window.sidebar.show_queue ();
+                    window.window_sidebar.show_queue ();
                 } else {
-                    window.sidebar.close ();
+                    window.window_sidebar.close ();
                 }
             });
 
@@ -202,9 +202,9 @@ namespace Cassette {
             });
 
             Idle.add_once (() => {
-                window.sidebar.notify["track-detailed"].connect (() => {
-                    if (window.sidebar.track_detailed != null && current_track_info != null) {
-                        if (window.sidebar.track_detailed.track_info.id == current_track_info.id) {
+                window.window_sidebar.notify["track-detailed"].connect (() => {
+                    if (window.window_sidebar.track_detailed != null && current_track_info != null) {
+                        if (window.window_sidebar.track_detailed.track_info.id == current_track_info.id) {
                             track_detailed_button.remove_css_class ("flat");
                             return;
                         }
@@ -213,15 +213,15 @@ namespace Cassette {
                     track_detailed_button.add_css_class ("flat");
                 });
 
-                window.sidebar.notify["is-shown"].connect (() => {
-                    if (window.sidebar.is_shown == false) {
+                window.window_sidebar.notify["is-shown"].connect (() => {
+                    if (window.window_sidebar.is_shown == false) {
                         queue_show_button.add_css_class ("flat");
                         track_detailed_button.add_css_class ("flat");
                     }
                 });
 
-                window.sidebar.notify["track-list"].connect (() => {
-                    if (window.sidebar.track_list == null) {
+                window.window_sidebar.notify["track-list"].connect (() => {
+                    if (window.window_sidebar.track_list == null) {
                         queue_show_button.add_css_class ("flat");
                     } else {
                         queue_show_button.remove_css_class ("flat");
@@ -366,8 +366,8 @@ namespace Cassette {
 
             current_track_info = new_track;
 
-            if (window.sidebar.track_detailed != null) {
-                if (current_track_info.id == window.sidebar.track_detailed.track_info.id) {
+            if (window.window_sidebar.track_detailed != null) {
+                if (current_track_info.id == window.window_sidebar.track_detailed.track_info.id) {
                     track_detailed_button.remove_css_class ("flat");
                 } else {
                     track_detailed_button.add_css_class ("flat");

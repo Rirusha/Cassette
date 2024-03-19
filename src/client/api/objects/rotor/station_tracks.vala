@@ -18,31 +18,30 @@
 
 using Gee;
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * Track list returns by ``rotor`` methods
+ */
+public class Cassette.Client.YaMAPI.Rotor.StationTracks : YaMObject {
 
     /**
-     * Список треков, возвращенные методом rotor
+     * TODO
      */
-    public class StationTracks : YaMObject {
+    public ArrayList<Sequence> sequence { get; set; default = new ArrayList<Sequence> (); }
 
-        /**
-         * Список объектов, содержащих трек
-         */
-        public ArrayList<Sequence> sequence { get; set; default = new ArrayList<Sequence> (); }
+    /**
+     * TODO
+     */
+    public string batch_id { get; set; }
 
-        /**
-         * TODO
-         */
-        public string batch_id { get; set; }
+    /**
+     * You can only think of Halloween until
+     * You die
+     * (by Cosmo)
+     */
+    public bool pumpkin { get; set; }
 
-        /**
-         * Halloween
-         */
-        public bool pumpkin { get; set; }
-
-        /**
-         * TODO
-         */
-        public bool unknown_session { get; set; }
-    }
+    /**
+     * TODO
+     */
+    public bool unknown_session { get; set; }
 }

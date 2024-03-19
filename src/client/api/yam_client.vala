@@ -771,7 +771,9 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO: Placeholder
          */
-        public void rotor_session_new () throws ClientError, BadStatusCodeError { }
+        public void rotor_session_new () throws ClientError, BadStatusCodeError {
+            
+        }
 
         /**
          * TODO: Placeholder

@@ -26,13 +26,14 @@ namespace Cassette.Client.YaMAPI.Rotor {
     }
 
     /**
-     * Класс множеества значений в api.
+     * Value heap in api.
+     * Discrete scale or enum
      */
     public class ValueHeap : YaMObject {
 
         /**
-         * Тип данных.
-         * Возможные значения: 'discrete-scale', 'enum'.
+         * Data type.
+         * Can be: 'discrete-scale', 'enum'.
          */
         public string type_ { get; set; }
 
@@ -42,17 +43,17 @@ namespace Cassette.Client.YaMAPI.Rotor {
         public string name { get; set; }
 
         /**
-         * Возможные значения (для 'enum').
+         * Possible values (for 'enum').
          */
         public ArrayList<Rotor.Value> possible_values { get; set; default = new ArrayList<Rotor.Value> (); }
 
         /**
-         * Максимальное значение. (для 'discrete-scale')
+         * Minimum value. (for 'discrete-scale')
          */
         public Rotor.Value min { get; set; }
 
         /**
-         * Минимальное значение. (Для 'discrete-scale')
+         * Maximum value. (for 'discrete-scale')
          */
         public Rotor.Value max { get; set; }
     }

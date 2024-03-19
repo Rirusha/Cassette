@@ -16,27 +16,28 @@
  */
 
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * Класс Id станции
+ */
+public class Cassette.Client.YaMAPI.Rotor.Id : YaMObject {
 
     /**
-     * Класс Id станции
+     * Normalozation of station id.
+     * type:tag
      */
-    public class Id : YaMObject {
-
-        public string normal {
-            owned get {
-                return "%s:%s".printf (type_, tag);
-            }
+    public string normal {
+        owned get {
+            return "%s:%s".printf (type_, tag);
         }
-
-        /**
-         * Тип станции
-         */
-        public string type_ { get; set; }
-
-        /**
-         * Тэг станции
-         */
-        public string tag { get; set; }
     }
+
+    /**
+     * Тип станции
+     */
+    public string type_ { get; set; }
+
+    /**
+     * Тэг станции
+     */
+    public string tag { get; set; }
 }

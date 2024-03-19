@@ -16,37 +16,33 @@
  */
 
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * Wave parameters
+ */
+public class Cassette.Client.YaMAPI.Rotor.Restrictions : YaMObject {
 
     /**
-     * Класс с параметрами волны
+     * Wave language
      */
-    public class Restrictions : YaMObject {
+    public ValueHeap language { get; set; }
 
-        /**
-         * Язык волны
-         */
-        public ValueHeap language { get; set; }
-        /**
-         * Предаочтение волны
-         */
-        public ValueHeap diversity { get; set; }
+    /**
+     * Wave diversity
+     */
+    public ValueHeap diversity { get; set; }
 
-        /**
-         * Настроение волны
-         */
-        [Version (deprecated = true)]
-        public ValueHeap mood { get; set; }
+    /**
+     * Wave mood
+     */
+    public ValueHeap mood { get; set; }
 
-        /**
-         * Энергия волны
-         */
-        [Version (deprecated = true)]
-        public ValueHeap energy { get; set; }
+    /**
+     * Wave energy
+     */
+    public ValueHeap energy { get; set; }
 
-        /**
-         * Настроение и энергия волны
-         */
-        public ValueHeap mood_energy { get; set; }
-    }
+    /**
+     * Wave mood and energy
+     */
+    public ValueHeap mood_energy { get; set; }
 }

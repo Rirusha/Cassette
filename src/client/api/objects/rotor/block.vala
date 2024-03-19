@@ -18,21 +18,18 @@
 
 using Gee;
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * TODO
+ */
+public class Cassette.Client.YaMAPI.Rotor.Block : YaMObject {
 
     /**
      * TODO
      */
-    public class Block : YaMObject {
+    public string type_ { get; set; }
 
-        /**
-         * TODO
-         */
-        public string type_ { get; set; }
-
-        /**
-         * TODO
-         */
-        public ArrayList<StationInfo> items { get; set; default = new ArrayList<StationInfo> (); }
-    }
+    /**
+     * TODO
+     */
+    public ArrayList<StationInfo> items { get; set; default = new ArrayList<StationInfo> (); }
 }

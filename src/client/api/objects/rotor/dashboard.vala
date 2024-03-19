@@ -18,26 +18,25 @@
 
 using Gee;
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * Dashboard with user stations
+ */
+public class Cassette.Client.YaMAPI.Rotor.Dashboard : YaMObject {
 
     /**
-     * Список всех радиостанций
+     * Dashboard id
      */
-    public class Dashboard : YaMObject {
+    public string dashboard_id { get; set; }
 
-        /**
-         * Id списка
-         */
-        public string dashboard_id { get; set; }
+    /**
+     * Station list
+     */
+    public ArrayList<Station> stations { get; set; default = new ArrayList<Station> (); }
 
-        /**
-         * Список станций
-         */
-        public ArrayList<Station> stations { get; set; default = new ArrayList<Station> (); }
-
-        /**
-         * Хэллоуин (by Cosmo)
-         */
-        public bool pumpkin { get; set; }
-    }
+    /**
+     * You can only think of Halloween until
+     * You die
+     * (by Cosmo)
+     */
+    public bool pumpkin { get; set; }
 }

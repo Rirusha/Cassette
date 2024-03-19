@@ -16,21 +16,18 @@
  */
 
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * Value object in api.
+ */
+public class Cassette.Client.YaMAPI.Rotor.Value : YaMObject {
 
     /**
-     * Класс значения в api яндекс музыки
+     * Value in string format
      */
-    public class Value : YaMObject {
+    public string value { get; set; }
 
-        /**
-         * Само значение в формате строки
-         */
-        public string value { get; set; }
-
-        /**
-         * Имя значения
-         */
-        public string name { get; set; }
-    }
+    /**
+     * Value name
+     */
+    public string name { get; set; }
 }

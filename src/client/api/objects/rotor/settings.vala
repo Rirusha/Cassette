@@ -21,7 +21,7 @@ using Gee;
 namespace Cassette.Client.YaMAPI.Rotor {
 
     /**
-     * Настройки волны, связанные с языком
+     * Wave language enum.
      */
     namespace StationLanguage {
         public const string NOT_RUSSIAN = "not-russian";
@@ -30,7 +30,7 @@ namespace Cassette.Client.YaMAPI.Rotor {
     }
 
     /**
-     * Настройки волны, связанные с настроением
+     * Wave mood and energy enum.
      */
     namespace MoodEnergy {
         public const string FUN = "fun";
@@ -41,7 +41,7 @@ namespace Cassette.Client.YaMAPI.Rotor {
     }
 
     /**
-     * Настройки волны, связанные с предпочтениями
+     * Wave diversity enum.
      */
     namespace Diversity {
         public const string FAVORITE = "favorite";
@@ -51,7 +51,7 @@ namespace Cassette.Client.YaMAPI.Rotor {
     }
 
     /**
-     * Класс настроек волны
+     * Wave settings.
      */
     public class Settings : YaMObject {
 

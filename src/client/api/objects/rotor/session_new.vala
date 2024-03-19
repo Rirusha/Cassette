@@ -16,43 +16,22 @@
  */
 
 
-/**
- * TODO
- */
-public class Cassette.Client.YaMAPI.Rotor.StationInfo : YaMObject {
+using Gee;
+
+public class Cassette.Client.YaMAPI.Rotor.SessionNew : YaMObject {
 
     /**
      * TODO
      */
-    public Id id { get; set; }
+    public ArrayList<string> seeds { get; set; default = new ArrayList<string> (); }
 
     /**
      * TODO
      */
-    public string name { get; set; }
+    public bool include_tracks_in_response { get; set; }
 
     /**
      * TODO
      */
-    public Icon icon { get; set; }
-
-    /**
-     * TODO
-     */
-    public string full_image_url { get; set; }
-
-    /**
-     * TODO
-     */
-    public Restrictions restrictions { get; set; }
-
-    /**
-     * TODO
-     */
-    public Restrictions restrictions2 { get; set; }
-
-    /**
-     * TODO
-     */
-    public bool special_context { get; set; }
+    public bool include_wave_model { get; set; }
 }

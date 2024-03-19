@@ -16,36 +16,33 @@
  */
 
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * TODO
+ */
+public class Cassette.Client.YaMAPI.Rotor.Station : YaMObject {
 
     /**
-     * Информация о станции
+     * Station id. Doesn't work with ``_dashboard`` and ``_list`` rotor methods
      */
-    public class Station : YaMObject {
+    public string station_id { get; set; }
 
-        /**
-         * Station id. Doesn't work with ``_dashboard`` and ``_list`` rotor methods
-         */
-        public string station_id { get; set; }
+    /**
+     * Station object. Using with ``_dashboard`` and ``_list`` rotor methods
+     */
+    public StationInfo station { get; set; }
 
-        /**
-         * Station object. Using with ``_dashboard`` and ``_list`` rotor methods
-         */
-        public StationInfo station { get; set; }
+    /**
+     * Station title
+     */
+    public string title { get; set; }
 
-        /**
-         * Название станции
-         */
-        public string title { get; set; }
+    /**
+     * TODO
+     */
+    public string rup_title { get; set; }
 
-        /**
-         * TODO
-         */
-        public string rup_title { get; set; }
-
-        /**
-         * TODO
-         */
-        public string rup_description { get; set; }
-    }
+    /**
+     * TODO
+     */
+    public string rup_description { get; set; }
 }

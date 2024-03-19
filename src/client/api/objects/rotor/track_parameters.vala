@@ -16,26 +16,23 @@
  */
 
 
-namespace Cassette.Client.YaMAPI.Rotor {
+/**
+ * Track parameters object
+ */
+public class Cassette.Client.YaMAPI.Rotor.TrackParameters : YaMObject {
 
     /**
-     * Датакласс с параметрами трека
+     * Bits per minutes.
      */
-    public class TrackParameters : YaMObject {
+    public int bpm { get; set; }
 
-        /**
-         * Удары в секунду
-         */
-        public int bpm { get; set; }
+    /**
+     * Track color in hue.
+     */
+    public int hue { get; set; }
 
-        /**
-         * TODO
-         */
-        public int hue { get; set; }
-
-        /**
-         * TODO
-         */
-        public double energy { get; set; }
-    }
+    /**
+     * Intensivity of track energy.
+     */
+    public double energy { get; set; }
 }

@@ -19,49 +19,22 @@
 using Gee;
 
 /**
- * Track list returns by ``rotor`` methods
+ * TODO
  */
-public class Cassette.Client.YaMAPI.Rotor.StationTracks : YaMObject {
+public class Cassette.Client.YaMAPI.Rotor.Seed : YaMObject {
 
     /**
      * TODO
      */
-    public string radio_session_id { get; set; }
+    public string value { get; set; }
 
     /**
      * TODO
      */
-    public ArrayList<Sequence> sequence { get; set; default = new ArrayList<Sequence> (); }
+    public string tag { get; set; }
 
     /**
      * TODO
      */
-    public string batch_id { get; set; }
-
-    /**
-     * You can only think of Halloween until
-     * You die
-     * (by Cosmo)
-     */
-    public bool pumpkin { get; set; }
-
-    /**
-     * TODO
-     */
-    public Seed description_seed { get; set; }
-
-    /**
-     * TODO
-     */
-    public ArrayList<Seed> accepted_seed { get; set; default = new ArrayList<Seed> (); }
-
-    /**
-     * TODO
-     */
-    public Wave wave { get; set; }
-
-    /**
-     * TODO
-     */
-    public bool unknown_session { get; set; }
+    public string type_ { get; set; }
 }

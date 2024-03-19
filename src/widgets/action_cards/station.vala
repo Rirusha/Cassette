@@ -83,5 +83,9 @@ public class Cassette.ActionCardStation : ActionCardCustom {
     construct {
         content_label.label = station_info.name;
         content_image.icon_name = station_info.icon.get_internal_icon_name (station_info.id.normal);
+
+        clicked.connect (() => {
+            player.start_flow (station_info.id.normal);
+        });
     }
 }

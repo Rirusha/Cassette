@@ -56,17 +56,6 @@ namespace Cassette.Client.Player {
             queue_post_action ();
         }
 
-        void queue_post_action () {
-            queue_changed (
-                queue,
-                context_type,
-                context_id,
-                current_index,
-                context_description
-            );
-            near_changed (get_current_track_info ());
-        }
-
         public void shuffle () {
             var type_utils = new TypeUtils<Track> ();
 
@@ -182,30 +171,12 @@ namespace Cassette.Client.Player {
             queue_post_action ();
         }
 
-        public override async override YaMAPI.Track? get_prev_track_info_async () {
-            if (queue.size > get_prev_index ()) {
-                return queue[get_prev_index ()];
-            } else {
-                return null;
-            }
-        }
-
-        public override YaMAPI.Track? get_current_track_info () {
-            if (current_index != -1) {
-                if (current_index >= queue.size) {
-                    current_index = 0;
-                    Logger.warning (_("Problems with queue"));
-                }
-
-                return queue[current_index];
-            } else {
-                return null;
-            }
-        }
-
         public override async override YaMAPI.Track? get_next_track_info_async () {
-            if (queue.size > get_next_index (true)) {
-                return queue[get_next_index (true)];
+            var index = get_next_index (true);
+
+            if (queue.size > index) {
+                return queue[index];
+
             } else {
                 return null;
             }
@@ -251,19 +222,11 @@ namespace Cassette.Client.Player {
             return index;
         }
 
-        public override void prev () {
-            current_index = get_prev_index ();
-
-            queue_post_action ();
-        }
-
-        public int get_prev_index () {
+        public override int get_prev_index () {
             int index = current_index;
 
             if (index - 1 == -1) {
-                if (player.repeat_mode == RepeatMode.REPEAT_ONE || player.repeat_mode == RepeatMode.OFF) {
-                    player.seek (0);
-                } else {
+                if (player.repeat_mode == RepeatMode.REPEAT_ALL) {
                     index = queue.size - 1;
                 }
 

@@ -130,19 +130,53 @@ namespace Cassette.Client.Player {
             Logger.debug ("Context descriprion: %s".printf (context_description));
         }
 
+        protected void queue_post_action () {
+            queue_changed (
+                queue,
+                context_type,
+                context_id,
+                current_index,
+                context_description
+            );
+
+            near_changed (get_current_track_info ());
+        }
+
+        public abstract int get_prev_index ();
+
         /**
          * Asynchronous getting previous track info.
          *
          * @return  track information object
          */
-        public abstract async YaMAPI.Track? get_prev_track_info_async ();
+        public YaMAPI.Track? get_prev_track_info () {
+            var index = get_prev_index ();
+
+            if (queue.size > index) {
+                return queue[index];
+
+            } else {
+                return null;
+            }
+        }
 
         /**
          * Getting current track info.
          *
          * @return  track information object
          */
-        public abstract YaMAPI.Track? get_current_track_info ();
+        public YaMAPI.Track? get_current_track_info () {
+            if (current_index != -1) {
+                if (current_index >= queue.size) {
+                    current_index = 0;
+                    Logger.warning (_("Problems with queue"));
+                }
+
+                return queue[current_index];
+            } else {
+                return null;
+            }
+        }
 
         /**
          * Asynchronous getting next track info.
@@ -169,7 +203,11 @@ namespace Cassette.Client.Player {
         /**
          * Change current track to previous in queue.
          */
-        public abstract void prev ();
+        public void prev () {
+            current_index = get_prev_index ();
+
+            queue_post_action ();
+        }
 
         /**
          * Try to find track and play it.
@@ -494,9 +532,9 @@ namespace Cassette.Client.Player {
             playbin.seek_simple (Gst.Format.TIME, Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, ms * Gst.MSECOND);
         }
 
-        public async YaMAPI.Track? get_prev_track_info_async () {
+        public YaMAPI.Track? get_prev_track_info () {
             if (player_mode != null) {
-                return yield player_mode.get_prev_track_info_async ();
+                return player_mode.get_prev_track_info ();
             } else {
                 return null;
             }
@@ -516,15 +554,25 @@ namespace Cassette.Client.Player {
 
         public void start_flow (
             string station_id,
-            ArrayList<YaMAPI.Track>? queue = null
+            ArrayList<YaMAPI.Track> queue = new ArrayList<YaMAPI.Track> ()
         ) {
             stop ();
 
-            player_mode = new PlayerFlow (
+            var player_flow = new PlayerFlow (
                 this,
                 station_id,
                 queue
             );
+
+            player_mode = player_flow;
+
+            current_track_start_loading ();
+
+            player_flow.init_async.begin ((obj, res) => {
+                if (player_flow.init_async.end (res)) {
+                    start_current_track.begin ();
+                }
+            });
         }
 
         void set_track_list_queue (
@@ -638,13 +686,22 @@ namespace Cassette.Client.Player {
         public void prev () {
             if (playback_pos_sec > 3.0) {
                 seek (0);
+
             } else {
                 stop ();
 
+                var index = player_mode.current_index;
+
                 player_mode.prev ();
-                start_current_track.begin (() => {
-                    prev_done ();
-                });
+
+                if (index == player_mode.current_index) {
+                    seek (0);
+
+                } else {
+                    start_current_track.begin (() => {
+                        prev_done ();
+                    });
+                }
             }
         }
 

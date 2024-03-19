@@ -16,12 +16,15 @@
  */
 
 using Gee;
+using Cassette.Client.YaMAPI;
 
 namespace Cassette.Client.Player {
 
     public class PlayerFlow : PlayerMode {
 
         public string station_id { get; construct; }
+
+        string radio_session_id;
 
         public PlayerFlow (
             Player player,
@@ -35,23 +38,62 @@ namespace Cassette.Client.Player {
             );
         }
 
-        public async override YaMAPI.Track? get_prev_track_info_async () {
-            assert_not_reached ();
+        public async bool init_async () {
+            Rotor.StationTracks? station_tracks = null;
+
+            threader.add (() => {
+                station_tracks = yam_talker.start_new_session (station_id);
+
+                Idle.add (init_async.callback);
+            });
+
+            yield;
+
+            if (station_tracks != null) {
+                radio_session_id = station_tracks.radio_session_id;
+
+                queue.add (station_tracks.sequence[0].track);
+
+                current_index = 0;
+
+                queue_post_action ();
+
+                return true;
+
+            } else {
+                return false;
+            }
         }
-        public override YaMAPI.Track? get_current_track_info () {
-            assert_not_reached ();
-        }
+
         public async override YaMAPI.Track? get_next_track_info_async () {
-            assert_not_reached ();
+            return null;
         }
+
         public override YaMAPI.Play form_play_obj () {
-            assert_not_reached ();
+            var current_track = get_current_track_info ();
+
+            return new YaMAPI.Play () {
+                track_length_seconds = ((double) current_track.duration_ms) / 1000.0,
+                track_id = current_track.id,
+                album_id = current_track.albums.size > 0 ? current_track.albums[0].id : null,
+                context = context_type,
+                context_item = context_id,
+                radio_session_id = radio_session_id
+            };
         }
+
         public override void next (bool consider_repeat_mode) {
-            assert_not_reached ();
+            return;
         }
-        public override void prev () {
-            assert_not_reached ();
+
+        public override int get_prev_index () {
+            int index = current_index;
+
+            if (index - 1 != -1) {
+                index--;
+            }
+
+            return index;
         }
     }
 }

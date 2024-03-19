@@ -196,7 +196,7 @@ namespace Cassette {
         }
 
         public void add_custom_page (PageInfo page_info) {
-            if (_custom_pages.size == 6) {
+            if (_custom_pages.size == 3) {
                 window.show_toast (_("Reached max page count"));
                 return;
             }

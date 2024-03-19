@@ -53,6 +53,7 @@ cassette_client_sources = files(
   'api/objects/additional_info/lyrics_major.vala',
   'api/objects/rotor/wave.vala',
   'api/objects/rotor/session_new.vala',
+  'api/objects/rotor/seed.vala',
   'api/objects/rotor/block.vala',
   'api/objects/rotor/station_tracks.vala',
   'api/objects/rotor/settings.vala',

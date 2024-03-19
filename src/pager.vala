@@ -340,6 +340,7 @@ namespace Cassette {
 
             _custom_pages.clear ();
 
+            clear_static_page ("devel");
             clear_static_page ("main");
             clear_static_page ("liked");
             clear_static_page ("playlists");

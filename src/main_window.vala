@@ -89,16 +89,6 @@ public class Cassette.MainWindow : ApplicationWindow {
     }
 
     construct {
-        //  var gs = new Gtk.GestureClick ();
-        //  gs.pressed.connect (() => {
-        //      set_focus (null);
-        //  });
-        //  header_bar.add_controller (gs);
-
-        //  main_stack.notify["visible-child"].connect (() => {
-        //      Adw.ViewStackPage current_page = main_stack.get_page (main_stack.get_visible_child ());
-        //  });
-
         info_banner.button_clicked.connect (try_reconnect);
 
         var show_disliked_tracks_action = new SimpleAction ("show-disliked-tracks", null);

@@ -2,11 +2,15 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteDevelView : $CassetteBaseView {
-  ScrolledWindow {
-    Box {
-      Button ultra_button {
-        label: "Do some magic ;)";
-      }
+  Adw.Clamp {
+    margin-top: 24;
+    margin-bottom: 24;
+    margin-start: 12;
+    margin-end: 12;
+    maximum-size: 860;
+
+    Button ultra_button {
+      label: "Do some magic ;)";
     }
   }
 }

@@ -1,0 +1,54 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteHeaderBar : $CassetteShrinkableBin {
+
+  Adw.HeaderBar {
+    [start]
+    Button backward_button {
+      icon-name: "adwaita-go-previous-symbolic";
+      visible: false;
+      tooltip-text: _("Go back");
+    }
+
+    [start]
+    Button refresh_button {
+      icon-name: "adwaita-view-refresh-symbolic";
+      visible: false;
+      tooltip-text: _("Refresh");
+    }
+
+    [start]
+    ToggleButton search_button {
+      icon-name: "adwaita-edit-find-symbolic";
+      visible: false;
+      tooltip-text: _("Yandex.Music search");
+    }
+
+    title-widget: Adw.ViewSwitcher switcher_title {
+      policy: wide;
+      hexpand: false;
+    };
+
+    [end]
+    $CassetteCacheIndicator {
+      visible: false;
+    }
+
+    [end]
+    $CassettePrimaryMenuButton menu_button { }
+
+  // [end]
+  // MenuButton avatar_button {
+  //   styles [
+  //     "flat"
+  //   ]
+
+  //   sensitive: false;
+  //   menu-model: avatar_menu;
+  //   tooltip-text: "Account menu";
+
+  //   Adw.Avatar avatar {}
+  // }
+  }
+}

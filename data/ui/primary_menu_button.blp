@@ -1,0 +1,36 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassettePrimaryMenuButton : Adw.Bin {
+  styles [
+    "flat"
+  ]
+
+  MenuButton app_menu_button {
+    icon-name: "adwaita-open-menu-symbolic";
+    menu-model: primary_menu;
+    tooltip-text: _("Primary menu");
+  }
+}
+
+menu primary_menu {
+  section {
+    item (_("Disliked tracks"), "show-disliked-tracks")
+    item (_("Parse URL from clipboard"), "win.parse-url")
+  }
+  section {
+    item (_("Preferences"), "app.preferences")
+    item (_("Keyboard Shortcuts"), "win.show-help-overlay")
+    item (_("About Cassette"), "app.about")
+  }
+}
+
+menu avatar_menu {
+  section {
+    item (_("Open in browser"), "win.open-in-browser")
+    item (_("Account info"), "win.accoint-info")
+  }
+  section {
+    item (_("Log out"), "app.log-out")
+  }
+}

@@ -24,6 +24,14 @@
 public class Cassette.ApplicationWindow : Adw.ApplicationWindow {
 
     /**
+     * Size changed.
+     *
+     * @param width     new width of window
+     * @param height    new height of window
+     */
+    public signal void resized (int width, int height);
+
+    /**
      * Width value, that triggers ``is-shrinked`` changes
      */
     public int shrink_edge_width { get; set; default = -1; }
@@ -33,23 +41,27 @@ public class Cassette.ApplicationWindow : Adw.ApplicationWindow {
      */
     public bool is_shrinked { get; set; default = false; }
 
-    bool is_start = true;
+    bool first_resize = true;
 
     protected override void size_allocate (int width, int height, int baseline) {
         base.size_allocate (width, height, baseline);
 
         if (shrink_edge_width != -1) {
             if (width >= shrink_edge_width) {
-                if (is_shrinked | is_start) {
+                if (is_shrinked | first_resize) {
                     is_shrinked = false;
                 }
+
             } else {
-                if (!is_shrinked | is_start) {
+                if (!is_shrinked | first_resize) {
                     is_shrinked = true;
                 }
             }
 
-            is_start = false;
+            first_resize = false;
         }
+
+        resized (width, height);
+        message ("Win: " + width.to_string ());
     }
 }

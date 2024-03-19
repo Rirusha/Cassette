@@ -180,7 +180,7 @@ namespace Cassette {
             var track_infos = yam_talker.get_tracks_info ({track_id});
 
             if (track_infos != null) {
-                application.main_window.sidebar.show_track_info (track_infos[0]);
+                application.main_window.window_sidebar.show_track_info (track_infos[0]);
             }
 
             Idle.add (show_track_by_id.callback);

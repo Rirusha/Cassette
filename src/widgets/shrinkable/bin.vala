@@ -17,11 +17,18 @@
 
 
 /*
- * Not using ``Adw.Breakpoint`` because
- * every breakpoint pass triggers map/unmap
- * that break some logic and laggy interface
+ * Connection for ``Cassette.ApplicationWindow`` resize
+ * for different shrink edge width
  */
-public class Cassette.ShrinkableBin : Adw.Bin {
+public abstract class Cassette.ShrinkableBin : Adw.Bin {
+
+    /**
+     * Size changed.
+     *
+     * @param width     new width of window
+     * @param height    new height of window
+     */
+    public signal void resized (int width, int height);
 
     /**
      * Width value, that triggers ``is-shrinked`` changes
@@ -33,23 +40,34 @@ public class Cassette.ShrinkableBin : Adw.Bin {
      */
     public bool is_shrinked { get; private set; default = false; }
 
-    bool is_start = true;
+    bool first_resize = true;
 
-    protected override void size_allocate (int width, int height, int baseline) {
-        base.size_allocate (width, height, baseline);
+    construct {
+        map.connect (on_map);
+    }
 
+    void on_map () {
+        var window = (ApplicationWindow) get_root ();
+        window.resized.connect (on_resized);
+
+        map.disconnect (on_map);
+    }
+
+    void on_resized (int width, int height) {
         if (shrink_edge_width != -1) {
             if (width >= shrink_edge_width) {
-                if (is_shrinked | is_start) {
+                if (is_shrinked | first_resize) {
                     is_shrinked = false;
                 }
             } else {
-                if (!is_shrinked | is_start) {
+                if (!is_shrinked | first_resize) {
                     is_shrinked = true;
                 }
             }
 
-            is_start = false;
+            first_resize = false;
         }
+
+        resized (width, height);
     }
 }

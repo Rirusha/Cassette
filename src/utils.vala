@@ -66,23 +66,28 @@ namespace Cassette {
      * @param reason    причина блокировки
      */
     public static void block_widget (Gtk.Widget widget, BlockReason reason) {
-        if (!get_debug_mode ()) {
-            widget.sensitive = false;
-        }
+        widget.sensitive = false;
 
         switch (reason) {
             case BlockReason.NOT_IMPLEMENTED:
                 widget.tooltip_text = _("Not implemented yet");
+                if (get_debug_mode ()) {
+                    widget.sensitive = true;
+                }
                 break;
+
             case BlockReason.NEED_AUTH:
                 widget.tooltip_text = _("Need authorization");
                 break;
+
             case BlockReason.NEED_PLUS:
                 widget.tooltip_text = _("Need Plus subscription");
                 break;
+
             case BlockReason.NEED_BOOKMATE:
                 widget.tooltip_text = _("Need Bookmate subscription");
                 break;
+
             default:
                 assert_not_reached ();
         }

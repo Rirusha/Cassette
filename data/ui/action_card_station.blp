@@ -5,6 +5,7 @@ template $CassetteActionCardStation : $CassetteActionCardCustom {
   content: Box content_box {
     orientation: vertical;
     spacing: 8;
+    // hexpand: true;
 
     Image content_image {
       icon-size: large;
@@ -16,7 +17,6 @@ template $CassetteActionCardStation : $CassetteActionCardCustom {
       ]
 
       ellipsize: end;
-      wrap: true;
     }
   };
 }

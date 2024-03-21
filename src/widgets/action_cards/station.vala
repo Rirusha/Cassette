@@ -38,15 +38,6 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         }
     }
 
-    Gtk.IconSize icon_size {
-        get {
-            return content_image.icon_size;
-        }
-        set {
-            content_image.icon_size = value;
-        }
-    }
-
     bool _is_shrinked = false;
     public bool is_shrinked {
         get {
@@ -55,16 +46,18 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         set {
             _is_shrinked = value;
 
-            icon_size = value ? Gtk.IconSize.NORMAL : Gtk.IconSize.LARGE;
             orientation = value ? Gtk.Orientation.HORIZONTAL : Gtk.Orientation.VERTICAL;
+            content_box.halign = value? Gtk.Align.START : Gtk.Align.CENTER;
 
             if (value) {
                 if (content_label.has_css_class ("title-2")) {
                     content_label.remove_css_class ("title-2");
+                    content_label.add_css_class ("title-4");
                 }
             } else {
                 if (!content_label.has_css_class ("title-2")) {
                     content_label.add_css_class ("title-2");
+                    content_label.remove_css_class ("title-4");
                 }
             }
         }

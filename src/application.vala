@@ -65,7 +65,7 @@ namespace Cassette {
         public bool is_mobile { get; private set; default = false; }
 
         const string APP_NAME = "Cassette";
-        const string RIRUSHA = "Rirusha <anerin.sidiver@yandex.ru>";
+        const string RIRUSHA = "Rirusha https://github.com/Rirusha";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
         const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
         const string ISSUE_LINK = "https://github.com/Rirusha/Cassette/issues/new";

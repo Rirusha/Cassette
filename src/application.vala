@@ -216,7 +216,9 @@ namespace Cassette {
             };
 
             string[] documenters = {
-
+                RIRUSHA,
+                "Armatik https://github.com/Armatik",
+                "Fiersik https://github.com/fiersik"
             };
 
             var about = new Adw.AboutDialog () {

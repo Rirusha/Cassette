@@ -20,7 +20,7 @@ namespace Cassette {
 
         public abstract bool can_refresh { get; default = true; }
 
-        public abstract signal void show_ready ();
+        public signal void show_ready ();
 
         public async abstract int try_load_from_web ();
 

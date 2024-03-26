@@ -53,7 +53,8 @@
 
 ### ALT Sisyphus
 ```
-sudo apt-get install cassette
+su -
+apt-get install cassette
 ```
 
 
@@ -130,6 +131,14 @@ sudo ninja -C builddir install
 sudo ninja -C builddir uninstall
 ```
 
+
+## Решение проблем
+
+Решение известных проблем описано на странице Cassette на [ALT Gnome Wiki](https://alt-gnome.wiki/cassette.html#решение-проблем).
+
+Также загляните во вкладку [issues](https://github.com/Rirusha/Cassette/issues), если вашей проблемы нет и там, расскажите о ней, заведя новый [issue](https://github.com/Rirusha/Cassette/issues/new).
+
+
 ## Для разработчиков
 
 > [!NOTE]
@@ -161,8 +170,8 @@ flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala-nightly
 
 ## Поддержка
 Вы можете поддержать несколькими способами:
-- Создать ишью с проблемой или предложением по улучшению;
-- Отправить pull request с фиксом или добавлением функционала;
+- Создать ишью с проблемой или предложением по улучшению
+- Отправить pull request с фиксом или добавлением функционала
 - Поддержать рублём (Просьба указывать в "Сообщении получателю" свой никнейм при отправлении через Тинькофф):
 
   <p>
@@ -176,7 +185,9 @@ flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala-nightly
     </a>
   </p>
 
+
 ## Благодарность
 Спасибо [MarshalX](https://github.com/MarshalX). Библиотека [yandex-music-api](https://github.com/MarshalX/yandex-music-api) была использована в качестве документации к api.
 
-#### Cassette - неофициальный клиент, не связан с компанией Яндекс и не одобрен ей
+> [!NOTE]
+Cassette - неофициальный клиент, не связан с компанией Яндекс и не одобрен ей.

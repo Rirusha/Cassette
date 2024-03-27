@@ -65,7 +65,8 @@ namespace Cassette {
      * @param widget    блокируемый виджет
      * @param reason    причина блокировки
      */
-    public static void block_widget (Gtk.Widget widget, BlockReason reason) {
+    public static void block_widget (Gtk.Widget widget, BlockReason reason, bool hide = false) {
+        widget.visible = !hide;
         widget.sensitive = false;
 
         switch (reason) {

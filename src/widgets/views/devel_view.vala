@@ -15,74 +15,74 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/devel_view.ui")]
-    public class DevelView : BaseView {
-        [GtkChild]
-        unowned Gtk.Button ultra_button;
 
-        public override bool can_refresh { get; default = false; }
+[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/devel_view.ui")]
+public class Cassette.DevelView : BaseView {
 
-        construct {
-            ultra_button.clicked.connect (on_ultra_button_clicked);
-        }
+    [GtkChild]
+    unowned Gtk.Button ultra_button;
 
-        void on_ultra_button_clicked () {
-            var client = yam_talker.client;
+    public override bool can_refresh { get; default = false; }
 
-            //  var a = client.get_rotor_info (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
-            //  client.rotor_feedback_started (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
-            //  var tra = client.get_station_tracks (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
+    construct {
+        ultra_button.clicked.connect (on_ultra_button_clicked);
+    }
 
-            //  var n = client.get_rotor_dashboard ();
-            //  foreach (var m in n.stations) {
-            //      message (m.station.name);
-            //  }
+    void on_ultra_button_clicked () {
+        //  var client = yam_talker.client;
 
-            //  var c =client.get_station_list ();
-            //  foreach (var k in c) {
-            //      message (k.station.name);
-            //  }
+        //  var a = client.get_rotor_info (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
+        //  client.rotor_feedback_started (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
+        //  var tra = client.get_station_tracks (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
 
-            //  var tra = client.get_tracks ({"102553949", "111654151", "54261186"});
+        //  var n = client.get_rotor_dashboard ();
+        //  foreach (var m in n.stations) {
+        //      message (m.station.name);
+        //  }
 
-            //  foreach (var seq in tra) {
-            //      message (seq.title);
-            //  }
+        //  var c =client.get_station_list ();
+        //  foreach (var k in c) {
+        //      message (k.station.name);
+        //  }
 
-            //  var lib = client.library_all_ids ();
+        //  var tra = client.get_tracks ({"102553949", "111654151", "54261186"});
 
-            //  message (lib.liked_tracks[0]);
-            //  message (lib.playlists[0]);
+        //  foreach (var seq in tra) {
+        //      message (seq.title);
+        //  }
 
-            //  Client.Logger.debug ("MARK I");
-            //  client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, false);
-            //  Client.Logger.debug ("MARK II");
-            //  client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, true);
+        //  var lib = client.library_all_ids ();
 
-            root_view.add_view (new StationsView ());
+        //  message (lib.liked_tracks[0]);
+        //  message (lib.playlists[0]);
 
-            message ("Magic happaned, i swear…");
-        }
+        //  Client.Logger.debug ("MARK I");
+        //  client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, false);
+        //  Client.Logger.debug ("MARK II");
+        //  client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, true);
 
-        void set_values () {
-            show_ready ();
-        }
+        root_view.add_view (new StationsView ());
 
-        public async override void first_show () {
-            set_values ();
-        }
+        message ("Magic happaned, i swear…");
+    }
 
-        public async override bool try_load_from_cache () {
-            return true;
-        }
+    void set_values () {
+        show_ready ();
+    }
 
-        public async override int try_load_from_web () {
-            return -1;
-        }
+    public async override void first_show () {
+        set_values ();
+    }
 
-        public async override void refresh () {
+    public async override bool try_load_from_cache () {
+        return true;
+    }
 
-        }
+    public async override int try_load_from_web () {
+        return -1;
+    }
+
+    public async override void refresh () {
+
     }
 }

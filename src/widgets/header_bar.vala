@@ -94,11 +94,7 @@ public class Cassette.HeaderBar : ShrinkableBin {
         resized.connect ((width, height) => {
             if (title_stack != null) {
                 shrink_edge_width = 200 + 100 * (int) title_stack.pages.get_n_items ();
-
-                message ("New: " + shrink_edge_width.to_string ());
             }
-
-            message ("HB: " + width.to_string ());
         });
 
         block_widget (search_button, BlockReason.NOT_IMPLEMENTED);

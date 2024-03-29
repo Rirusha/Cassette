@@ -30,28 +30,15 @@ namespace Cassette {
         }
 
         protected override void post_init () {
-            player.notify["player-state"].connect (on_player_state_changed);
+            player.notify["state"].connect (on_player_state_changed);
 
             on_player_state_changed ();
         }
 
         bool context_playing_now () {
-            if (player.player_mode == null) {
-                return false;
-            }
-
-            if (player.player_mode.context_id == content_id && player.player_mode.context_type == context_type) {
+            if (player.mode.context_id == content_id && player.mode.context_type == context_type) {
                 return true;
 
-            } else {
-                string uid = yam_talker.me.oid;
-                if (uid == null) {
-                    return false;
-                }
-
-                if ((content_id == @"$uid:3") && player.player_mode.context_type == "my_music") {
-                    return true;
-                }
             }
 
             return false;
@@ -68,7 +55,7 @@ namespace Cassette {
 
         void on_player_state_changed () {
             if (context_playing_now ()) {
-                if (player.player_state == Player.PlayerState.PLAYING) {
+                if (player.state == Player.State.PLAYING) {
                     set_playing ();
                     return;
                 }

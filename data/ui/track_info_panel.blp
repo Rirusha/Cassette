@@ -4,13 +4,14 @@ using Adw 1;
 template $CassetteTrackInfoPanel : Adw.Bin {
   Box main_box {
     spacing: 12;
+    orientation: horizontal;
 
     Stack cover_stack {}
 
     CenterBox title_and_marks_box {
       shrink-center-last: false;
 
-      start-widget: Box {
+      start-widget: Box title_box {
         orientation: vertical;
         spacing: 6;
         valign: center;

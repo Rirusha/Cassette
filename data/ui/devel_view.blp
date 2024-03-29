@@ -9,8 +9,22 @@ template $CassetteDevelView : $CassetteBaseView {
     margin-end: 12;
     maximum-size: 860;
 
-    Button ultra_button {
-      label: "Do some magic ;)";
+    Box main_box {
+      orientation: vertical;
+      spacing: 4;
+
+      Button ultra_button {
+        label: "Stations view";
+      }
+
+      $CassetteTrackCarousel {
+        interactive: true;
+        spacing: 4;
+        halign: center;
+        hexpand: true;
+        orientation: vertical;
+        has-cover-placeholder: true;
+      }
     }
   }
 }

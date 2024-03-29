@@ -171,7 +171,7 @@ public class Cassette.MainWindow : ApplicationWindow {
             notify["is-active"].connect (() => {
                 if (
                     is_active &&
-                    player.player_state != Player.PlayerState.PLAYING
+                    player.state != Player.State.PLAYING
                 ) {
                     yam_talker.update_all.begin ();
                 }

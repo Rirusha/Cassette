@@ -254,19 +254,25 @@ namespace Cassette.Client {
                     track_likes_end_change (content_id, true);
                     if (content_type == LikableType.TRACK) {
                         likes_controller.remove_disliked (content_id);
+                        // TODO: Mode to like controller
+                        player.rotor_feedback (Rotor.FeedbackType.LIKE, content_id);
+
                         track_dislikes_end_change (content_id, false);
                     }
                 }
             });
         }
 
-        public void remove_like (LikableType content_type, string content_id) {
+        public void unlike (LikableType content_type, string content_id) {
             net_run_wout_code (() => {
                 track_likes_start_change (content_id);
 
                 bool is_ok = client.remove_like (get_likable_type (content_type), content_id);
                 if (is_ok) {
                     likes_controller.remove_liked (content_type, content_id);
+                    // TODO: Mode to like controller
+                    player.rotor_feedback (Rotor.FeedbackType.UNLIKE, content_id);
+
                     track_likes_end_change (content_id, false);
                 }
             });
@@ -279,6 +285,9 @@ namespace Cassette.Client {
                 bool is_ok = client.dislike (track_id);
                 if (is_ok) {
                     likes_controller.add_disliked (track_id);
+                    // TODO: Mode to like controller
+                    player.rotor_feedback (Rotor.FeedbackType.DISLIKE, track_id);
+
                     track_dislikes_end_change (track_id, true);
                     likes_controller.remove_liked (LikableType.TRACK, track_id);
                     track_likes_end_change (track_id, false);
@@ -286,13 +295,16 @@ namespace Cassette.Client {
             });
         }
 
-        public void remove_dislike (string track_id) {
+        public void undislike (string track_id) {
             net_run_wout_code (() => {
                 track_dislikes_start_change (track_id);
 
                 bool is_ok = client.remove_dislike (track_id);
                 if (is_ok) {
                     likes_controller.remove_disliked (track_id);
+                    // TODO: Mode to like controller
+                    player.rotor_feedback (Rotor.FeedbackType.UNDISLIKE, track_id);
+
                     track_dislikes_end_change (track_id, false);
                 }
             });

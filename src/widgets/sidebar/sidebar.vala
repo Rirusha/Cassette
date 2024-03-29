@@ -38,8 +38,8 @@ namespace Cassette {
             }
         }
 
-        TrackDetailed? _track_detailed = null;
-        public TrackDetailed? track_detailed {
+        TrackInfo? _track_detailed = null;
+        public TrackInfo? track_detailed {
             get {
                 return _track_detailed;
             }
@@ -98,7 +98,7 @@ namespace Cassette {
             clear ();
 
             if (track_info.available) {
-                track_detailed = new TrackDetailed (track_info);
+                track_detailed = new TrackInfo (track_info);
             }
         }
 

@@ -230,7 +230,7 @@ public class Cassette.Client.Player.Player : Object {
         });
 
         next_track_loaded.connect (() => {
-            can_go_next = true;
+            update_can_go ();
         });
 
         Timeout.add ((int) (PLAY_CALLBACK_STEP * 1000.0), () => {

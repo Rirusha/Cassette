@@ -147,6 +147,14 @@ public class MprisPlayer : Object {
         player.current_track_start_loading.connect (send_can_properties);
         player.current_track_finish_loading.connect (send_can_properties);
 
+        player.notify["can-go-prev"].connect (() => {
+            send_property_change ("CanGoPrevious", can_go_previous);
+        });
+
+        player.notify["can-go-next"].connect (() => {
+            send_property_change ("CanGoNext", can_go_next);
+        });
+
         settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
 
         player.playback_callback.connect ((position) => {
@@ -160,8 +168,6 @@ public class MprisPlayer : Object {
     }
 
     void send_can_properties () {
-        send_property_change ("CanGoNext", can_go_next);
-        send_property_change ("CanGoPrevious", can_go_previous);
         send_property_change ("CanControl", can_control);
         send_property_change ("CanPause", can_pause);
         send_property_change ("CanSeek", can_seek);

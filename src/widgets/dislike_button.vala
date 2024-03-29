@@ -120,10 +120,8 @@ namespace Cassette {
                 this.is_disliked = is_disliked;
                 real_button.sensitive = true;
 
-                var current_track = player.mode.get_current_track_info ();
-
-                if (is_disliked && current_track.id == track_id) {
-                    player.remove_track (current_track);
+                if (is_disliked && player.mode.get_current_track_info ().id == track_id) {
+                    player.next ();
                 }
             }
         }

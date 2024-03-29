@@ -21,8 +21,8 @@ using Gee;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_detailed.ui")]
-    public class TrackDetailed : Adw.Bin {
+    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_info.ui")]
+    public class TrackInfo : Adw.Bin {
         [GtkChild]
         unowned Gtk.Label track_type_label;
         [GtkChild]
@@ -50,7 +50,7 @@ namespace Cassette {
 
         public YaMAPI.Track track_info { get; construct set; }
 
-        public TrackDetailed (YaMAPI.Track track_info) {
+        public TrackInfo (YaMAPI.Track track_info) {
             Object (track_info: track_info);
         }
 

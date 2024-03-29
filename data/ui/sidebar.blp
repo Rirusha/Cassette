@@ -12,9 +12,26 @@ template $CassetteSideBar : Adw.Bin {
     max-sidebar-width: 450;
 
     [sidebar]
-    Gtk.ScrolledWindow sidebar_content {
-      hscrollbar-policy: never;
-      hexpand: false;
+    Adw.ToolbarView {
+      top-bar-style: flat;
+
+      [top]
+      Adw.HeaderBar headerbar {
+        show-title: false;
+
+        [end]
+        $CassetteCacheIndicator {
+          visible: false;
+        }
+
+        [end]
+        $CassettePrimaryMenuButton menu_button { }
+      }
+
+      content: Gtk.ScrolledWindow sidebar_content {
+        hscrollbar-policy: never;
+        hexpand: false;
+      };
     }
   }
 }

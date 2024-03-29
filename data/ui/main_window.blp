@@ -16,13 +16,13 @@ template $CassetteMainWindow : $CassetteApplicationWindow {
       bottom-bar-style: raised;
       reveal-bottom-bars: false;
 
-      content: $CassetteSideBar sidebar {
-        collapsed: true;
+      content: Adw.ToastOverlay toast_overlay {
+        vexpand: true;
 
-        content: Adw.ToastOverlay toast_overlay {
-          vexpand: true;
+        child: $CassetteSideBar sidebar {
+          collapsed: true;
 
-          child: Adw.ToolbarView {
+          content: Adw.ToolbarView {
             top-bar-style: raised;
 
             [top]

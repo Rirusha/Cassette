@@ -33,6 +33,8 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Button prev_track_button;
         [GtkChild]
+        unowned Gtk.Button next_track_button;
+        [GtkChild]
         unowned Gtk.Button track_detailed_button;
         [GtkChild]
         unowned DislikeButton dislike_button;
@@ -49,35 +51,11 @@ namespace Cassette {
         [GtkChild]
         unowned VolumeButton volume_button;
         [GtkChild]
-        unowned Adw.Carousel carousel;
-        //  [GtkChild]
-        //  unowned Gtk.Button fullscreen_button;
+        unowned Gtk.Button fullscreen_button;
 
         public MainWindow window { get; construct set; }
 
-        bool centerized = false;
-
-        TrackInfoPanel info_panel_prev {
-            get {
-                return (TrackInfoPanel) carousel.get_nth_page (0);
-            }
-        }
-
-        TrackInfoPanel info_panel_center {
-            get {
-                return (TrackInfoPanel) carousel.get_nth_page (1);
-            }
-        }
-
-        TrackInfoPanel info_panel_next {
-            get {
-                return (TrackInfoPanel) carousel.get_nth_page (2);
-            }
-        }
-
-        //  public YaMAPI.Track? prev_track_info { get; private set; default = null; }
         public YaMAPI.Track? current_track_info { get; private set; default = null; }
-        //  public YaMAPI.Track? next_track_info { get; private set; default = null; }
 
         public PlayerBar (MainWindow window) {
             Object (window: window);
@@ -93,7 +71,13 @@ namespace Cassette {
                 volume_button.visible = false;
             }
 
-            carousel.page_changed.connect (on_carousel_page_changed);
+            player.ready_play_next.connect ((repeat) => {
+                update_current_track_controls (player.mode.get_current_track_info ());
+            });
+
+            player.ready_play_prev.connect (() => {
+                update_current_track_controls (player.mode.get_current_track_info ());
+            });
 
             Cassette.Client.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
             Cassette.Client.settings.bind ("mute", volume_button, "mute", SettingsBindFlags.DEFAULT);
@@ -106,6 +90,7 @@ namespace Cassette {
             player.playback_callback.connect (on_playback_callback);
 
             player.bind_property ("can-go-prev", prev_track_button, "sensitive", BindingFlags.DEFAULT);
+            player.bind_property ("can-go-next", next_track_button, "sensitive", BindingFlags.DEFAULT);
 
             player.current_track_start_loading.connect (() => {
                 sensitive = false;
@@ -114,9 +99,7 @@ namespace Cassette {
                 sensitive = true;
             });
 
-            player.near_changed.connect (on_player_current_track_changed);
-            player.mode_changed.connect (on_player_mode_changed);
-            player.notify["player-type"].connect (on_player_player_type_notify);
+            player.mode_inited.connect (on_player_mode_inited);
 
             var playerbar_actions = new SimpleActionGroup ();
 
@@ -189,16 +172,6 @@ namespace Cassette {
             player.notify["shuffle-mode"].connect (on_shuffle_mode_changed);
             on_shuffle_mode_changed ();
 
-            player.next_done.connect ((repeat) => {
-                info_panel_next.track_info = player.get_current_track_info ();
-                carousel.scroll_to (info_panel_next, true);
-            });
-
-            player.prev_done.connect (() => {
-                info_panel_prev.track_info = player.get_current_track_info ();
-                carousel.scroll_to (info_panel_prev, true);
-            });
-
             Idle.add_once (() => {
                 window.window_sidebar.notify["track-detailed"].connect (() => {
                     if (window.window_sidebar.track_detailed != null && current_track_info != null) {
@@ -227,7 +200,7 @@ namespace Cassette {
                 });
             });
 
-            //  block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED);
+            block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED, true);
         }
 
         void on_playback_callback (double pos) {
@@ -235,89 +208,23 @@ namespace Cassette {
             slider.set_value (pos);
         }
 
-        void on_carousel_page_changed (uint index) {
-            if (index == 1) {
-                centerized = true;
-            }
+        void on_player_mode_inited () {
+            current_track_info = player.mode.get_current_track_info ();
 
-            if (!centerized) {
-                carousel.scroll_to (info_panel_center, false);
-                return;
-            }
+            update_current_track_controls (current_track_info);
 
-            carousel.page_changed.disconnect (on_carousel_page_changed);
+            if (player.mode is Player.Flow) {
+                to_flow ();
 
-            if (index == 2) {
-                carousel.remove (info_panel_prev);
-                carousel.append (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
+            } else if (player.mode is Player.TrackList) {
+                to_track_list ();
 
-                player.get_next_track_info_async.begin ((obj, res) => {
-                    info_panel_next.track_info = player.get_next_track_info_async.end (res);
-                });
-
-                carousel.scroll_to (info_panel_center, false);
-
-            } else if (index == 0) {
-                carousel.remove (info_panel_next);
-                carousel.prepend (new TrackInfoPanel.without_placeholder (Gtk.Orientation.HORIZONTAL));
-
-                info_panel_prev.track_info = player.get_prev_track_info ();
-
-                carousel.scroll_to (info_panel_center, false);
-            }
-
-            carousel.page_changed.connect (on_carousel_page_changed);
-        }
-
-        void on_player_player_type_notify () {
-            switch (player.player_type) {
-                case Player.PlayerModeType.TRACK_LIST:
-                    shuffle_button.visible = true;
-                    repeat_button.visible = true;
-                    queue_show_button.visible = true;
-                    flow_settings_button.visible = false;
-                    break;
-
-                case Player.PlayerModeType.FLOW:
-                    shuffle_button.visible = false;
-                    repeat_button.visible = false;
-                    queue_show_button.visible = false;
-                    flow_settings_button.visible = true;
-                    break;
-
-                case Player.PlayerModeType.NONE:
-                    window.hide_player_bar ();
-                    break;
+            } else {
+                clear ();
             }
         }
 
-        void on_player_mode_changed (Player.PlayerModeType player_type) {
-            current_track_info = player.get_current_track_info ();
-
-            if (info_panel_center.track_info == null) {
-                info_panel_center.track_info = current_track_info;
-            }
-
-            info_panel_next.track_info = current_track_info;
-            carousel.scroll_to (info_panel_next, true);
-
-            switch (player_type) {
-                case Player.PlayerModeType.FLOW:
-                    to_flow ();
-                    break;
-
-                case Player.PlayerModeType.TRACK_LIST:
-                    to_track_list ();
-                    break;
-
-                default:
-                    window.hide_player_bar ();
-                    break;
-            }
-        }
-
-        void on_player_current_track_changed (YaMAPI.Track? new_track) {
-            message ((new_track == null).to_string ());
+        void update_current_track_controls (YaMAPI.Track? new_track) {
             if (new_track == null) {
                 clear ();
                 return;

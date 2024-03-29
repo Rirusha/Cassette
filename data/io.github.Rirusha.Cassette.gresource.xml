@@ -46,5 +46,6 @@
     <file preprocess="xml-stripblanks">ui/headered_scrolled_window.ui</file>
     <file preprocess="xml-stripblanks">ui/primary_menu_button.ui</file>
     <file preprocess="xml-stripblanks">ui/header_bar.ui</file>
+    <file preprocess="xml-stripblanks">ui/track_carousel.ui</file>
   </gresource>
 </gresources>

@@ -21,25 +21,12 @@ template $CassettePlayerBar : Adw.Bin {
       hexpand: true;
       tooltip-text: _("Show track info");
 
-      Adw.Carousel carousel {
+      $CassetteTrackCarousel {
         interactive: false;
-        spacing: 5;
+        spacing: 4;
         halign: start;
-
-        $CassetteTrackInfoPanel {
-          orientation: horizontal;
-          has-cover-placeholder: false;
-        }
-
-        $CassetteTrackInfoPanel {
-          orientation: horizontal;
-          has-cover-placeholder: false;
-        }
-
-        $CassetteTrackInfoPanel {
-          orientation: horizontal;
-          has-cover-placeholder: false;
-        }
+        orientation: horizontal;
+        has-cover-placeholder: false;
       }
 
       layout {
@@ -111,7 +98,7 @@ template $CassettePlayerBar : Adw.Bin {
             hexpand: true;
             spacing: 4;
 
-            Button {
+            Button next_track_button {
               styles [
                 "circular",
                 "flat"
@@ -168,16 +155,6 @@ template $CassettePlayerBar : Adw.Bin {
               page-increment: 5.0;
             };
           }
-
-          // Scale slider {
-          //   hexpand: true;
-          //   orientation: horizontal;
-
-          //   adjustment: Adjustment {
-          //     value: 0.0;
-          //     lower: 0.0;
-          //   };
-          // }
 
           Label total_time_mark {
             styles [
@@ -238,15 +215,15 @@ template $CassettePlayerBar : Adw.Bin {
         tooltip-text: _("Change volume");
       }
 
-      // Button fullscreen_button {
-      //   styles [
-      //     "flat"
-      //   ]
+      Button fullscreen_button {
+        styles [
+          "flat"
+        ]
 
-      //   valign: center;
-      //   visible: false;
-      //   icon-name: "adwaita-view-fullscreen-symbolic";
-      // }
+        valign: center;
+        visible: false;
+        icon-name: "adwaita-view-fullscreen-symbolic";
+      }
 
       layout {
         column: 5;

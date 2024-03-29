@@ -8,11 +8,13 @@ template $CassetteSideBar : Adw.Bin {
     collapsed: true;
     pin-sidebar: true;
     enable-show-gesture: false;
+    min-sidebar-width: 360;
+    max-sidebar-width: 450;
 
     [sidebar]
     Gtk.ScrolledWindow sidebar_content {
       hscrollbar-policy: never;
       hexpand: false;
-      width-request: 360;
     }
+  }
 }

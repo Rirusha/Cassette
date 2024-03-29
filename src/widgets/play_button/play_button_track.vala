@@ -48,7 +48,7 @@ namespace Cassette {
         }
 
         protected override bool on_clicked () {
-            var current_track = player.get_current_track_info ();
+            var current_track = player.mode.get_current_track_info ();
 
             if (current_track != null) {
                 if (current_track.id == content_id) {
@@ -62,14 +62,14 @@ namespace Cassette {
         }
 
         void check_track_play_state () {
-            var current_track = player.get_current_track_info ();
+            var current_track = player.mode.get_current_track_info ();
 
             if (current_track == null) {
                 return;
             }
 
             if (current_track.id == content_id) {
-                if (player.player_state == Player.PlayerState.PLAYING) {
+                if (player.state == Player.State.PLAYING) {
                     set_playing ();
                     return;
                 }

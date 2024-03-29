@@ -15,20 +15,29 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using Cassette.Client.YaMAPI;
+
 using Gee;
 
-namespace Cassette.Client {
-    public class TrackLocal : Track {
+/**
+ * WIP
+ */
+public class Cassette.Client.Player.Local : Mode {
 
-        construct {
-            type_ = "local";
-        }
-
-        public override ArrayList<string> get_cover_items_by_size (int size) {
-            var array = new ArrayList<string> ();
-            array.add ("https://es-static.z-dn.net/files/d6a/87164361f7d08a28bd93261b5ebacd8a.png");
-            return array;
-        }
+    public override int get_prev_index () {
+        return -1;
     }
+
+    public override int get_next_index (bool consider_repeat_mode) {
+        return -1;
+    }
+
+    protected override YaMAPI.Play form_play_obj () {
+        assert_not_reached ();
+    }
+
+    public override async void send_play_async (
+        string play_id,
+        double end_position_seconds = 0.0,
+        double total_played_seconds = 0.0
+    ) { }
 }

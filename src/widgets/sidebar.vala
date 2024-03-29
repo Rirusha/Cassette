@@ -105,7 +105,7 @@ namespace Cassette {
         public void show_queue () {
             clear ();
 
-            if (player.player_type == Player.PlayerModeType.TRACK_LIST) {
+            if (player.mode is Player.TrackList) {
                 track_list = new TrackList (sidebar_content.vadjustment) {
                     margin_top = 12,
                     margin_bottom = 12,
@@ -113,11 +113,11 @@ namespace Cassette {
                     margin_end = 12
                 };
                 update_queue (
-                    player.player_mode.queue,
-                    player.player_mode.context_type,
-                    player.player_mode.context_id,
-                    player.player_mode.current_index,
-                    player.player_mode.context_description
+                    player.mode.queue,
+                    player.mode.context_type,
+                    player.mode.context_id,
+                    player.mode.current_index,
+                    player.mode.context_description
                 );
             }
         }
@@ -125,12 +125,13 @@ namespace Cassette {
         void update_queue (
             ArrayList<YaMAPI.Track> queue,
             string context_type,
-            string context_id,
+            string? context_id,
             int current_index,
-            string context_description
+            string? context_description
         ) {
             if (track_list != null) {
                 track_list.set_tracks_as_queue (queue);
+                // TODO: Replace with .scroll_to
                 Idle.add (() => {
                     track_list.move_to (current_index, queue.size);
                     return Source.REMOVE;
@@ -141,10 +142,6 @@ namespace Cassette {
                     case "playlist":
                         track_list.list_type_label.label = _("PLAYLIST");
                         track_list.list_name_label.label = context_description;
-                        break;
-                    case "my_music":
-                        track_list.list_type_label.label = "PLAYLIST";
-                        track_list.list_name_label.label = _("Liked");
                         break;
                     case "album":
                         track_list.list_type_label.label = _("ALBUM");

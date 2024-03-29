@@ -69,7 +69,7 @@ namespace Cassette {
         construct {
             equalaizer_button.bind_property ("active", revealer, "reveal-child", BindingFlags.DEFAULT);
 
-            block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED);
+            block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED, true);
 
             volume_level_scale.change_value.connect ((range, type, new_val) => {
                 var val = new_val * MUL;

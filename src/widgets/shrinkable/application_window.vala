@@ -62,6 +62,5 @@ public class Cassette.ApplicationWindow : Adw.ApplicationWindow {
         }
 
         resized (width, height);
-        message ("Win: " + width.to_string ());
     }
 }

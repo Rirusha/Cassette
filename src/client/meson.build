@@ -69,5 +69,8 @@ cassette_client_sources = files(
   'api/objects/rotor/restrictions.vala',
   'api/objects/rotor/dashboard.vala',
   'api/objects/rotor/station_info.vala',
-  'api/objects/rotor/station.vala'
+  'api/objects/rotor/station.vala',
+  'api/objects/rotor/event.vala',
+  'api/objects/rotor/feedback.vala',
+  'api/objects/rotor/queue.vala',
 )

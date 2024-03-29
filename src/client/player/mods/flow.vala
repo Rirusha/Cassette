@@ -22,6 +22,8 @@ public class Cassette.Client.Player.Flow : Mode {
 
     public string station_id { get; construct; }
 
+    public YaMAPI.Rotor.StationTracks last_station_tracks { get; private set; default = new YaMAPI.Rotor.StationTracks (); }
+
     string radio_session_id;
 
     public Flow (
@@ -48,17 +50,67 @@ public class Cassette.Client.Player.Flow : Mode {
         yield;
 
         if (station_tracks != null) {
+            last_station_tracks = station_tracks;
             radio_session_id = station_tracks.radio_session_id;
 
             queue.add (station_tracks.sequence[0].track);
+            queue.add (station_tracks.sequence[1].track);
 
             current_index = 0;
+
+            send_feedback.begin (YaMAPI.Rotor.FeedbackType.RADIO_STARTED);
 
             return true;
 
         } else {
             return false;
         }
+    }
+
+    public async void send_feedback (
+        string feedback_type,
+        string? track_id = null,
+        double total_played_seconds = 0.0
+    ) {
+        threader.add_single (() => {
+            yam_talker.send_rotor_feedback (
+                radio_session_id,
+                last_station_tracks.batch_id,
+                feedback_type,
+                track_id,
+                total_played_seconds
+            );
+
+            Idle.add (send_feedback.callback);
+        });
+
+        yield;
+    }
+
+    async YaMAPI.Rotor.StationTracks? load_next_station_tracks () {
+        YaMAPI.Rotor.StationTracks? station_tracks = null;
+
+        threader.add (() => {
+            ArrayList<string> track_ids = new ArrayList<string> ();
+
+            foreach (var track_info in queue) {
+                track_ids.add (track_info.id);
+            }
+
+            station_tracks = yam_talker.get_session_tracks (radio_session_id, track_ids);
+
+            queue.add (station_tracks.sequence[0].track);
+
+            Idle.add (load_next_station_tracks.callback);
+        });
+
+        yield;
+
+        if (station_tracks != null) {
+            last_station_tracks = station_tracks;
+        }
+
+        return station_tracks;
     }
 
     public override int get_prev_index () {
@@ -79,7 +131,28 @@ public class Cassette.Client.Player.Flow : Mode {
     }
 
     public override int get_next_index (bool consider_repeat_mode) {
-        return -1;
+        var index = current_index;
+
+        if (index + 1 == queue.size) {
+            index = -1;
+
+        } else {
+            index++;
+        }
+
+        return index;
+    }
+
+    public override void next (bool consider_repeat_mode) {
+        var new_index = get_next_index (consider_repeat_mode);
+
+        if (new_index != -1) {
+            current_index = new_index;
+        }
+
+        if (new_index == queue.size - 1) {
+            load_next_station_tracks.begin ();
+        }
     }
 
     public override YaMAPI.Play form_play_obj () {

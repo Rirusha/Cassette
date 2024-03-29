@@ -93,7 +93,7 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
                 current_index--;
             }
         } else {
-            player.stop ();
+            player.stop (true);
         }
     }
 
@@ -113,7 +113,7 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
 
         if (should_change_track_state) {
             player.start_current_track.begin (() => {
-                player.stop ();
+                player.stop (true);
             });
         }
     }
@@ -126,7 +126,7 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
 
         if (should_change_track_state) {
             player.start_current_track.begin (() => {
-                player.stop ();
+                player.stop (true);
             });
         }
     }

@@ -135,7 +135,7 @@ namespace Cassette {
 
             threader.add (() => {
                 if (is_disliked) {
-                    yam_talker.remove_dislike (content_id);
+                    yam_talker.undislike (content_id);
                 } else {
                     yam_talker.dislike (content_id);
                 }

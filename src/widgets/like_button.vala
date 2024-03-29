@@ -164,7 +164,7 @@ namespace Cassette {
 
             threader.add (() => {
                 if (is_liked) {
-                    yam_talker.remove_like (object_content_type, content_id);
+                    yam_talker.unlike (object_content_type, content_id);
                 } else {
                     yam_talker.like (object_content_type, content_id);
                 }

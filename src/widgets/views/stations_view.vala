@@ -64,6 +64,7 @@ namespace Cassette {
                 Gtk.FlowBox target_flow_box;
 
                 switch (station.station.id.type_) {
+                    case "micro-genre":
                     case "genre":
                         target_flow_box = genre_flow_box;
                         break;

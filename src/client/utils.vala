@@ -32,6 +32,10 @@ namespace Cassette.Client {
             public const string SKIP = "skip";
             public const string TRACK_FINISHED = "trackFinished";
             public const string RADIO_FINISHED = "radioFinished";
+            public const string LIKE = "like";
+            public const string UNLIKE = "unlike";
+            public const string DISLIKE = "dislike";
+            public const string UNDISLIKE = "undislike";
         }
 
         namespace StationType {

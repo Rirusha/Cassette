@@ -97,7 +97,7 @@ public class Cassette.Client.Player.Player : Object {
         }
     }
 
-    public double total_playback_sec { get; set; default = 0.0;}
+    public double total_played_seconds { get; set; default = 0.0;}
 
     public int64 playback_pos_ms {
         get {
@@ -223,12 +223,6 @@ public class Cassette.Client.Player.Player : Object {
         bind_property ("mute", playbin, "mute", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
 
-        playback_callback.connect (() => {
-            total_playback_sec += PLAY_CALLBACK_STEP;
-
-            update_can_go ();
-        });
-
         next_track_loaded.connect (() => {
             update_can_go ();
         });
@@ -237,6 +231,10 @@ public class Cassette.Client.Player.Player : Object {
             if (playback_pos_sec > 0.0 && state == State.PLAYING) {
                 playback_callback (playback_pos_sec);
             }
+
+            total_played_seconds += PLAY_CALLBACK_STEP;
+
+            update_can_go ();
 
             return Source.CONTINUE;
         });
@@ -249,7 +247,7 @@ public class Cassette.Client.Player.Player : Object {
 
     void reset_play () {
         play_id = Uuid.string_random ();
-        total_playback_sec = 0.0;
+        total_played_seconds = 0.0;
     }
 
     void init (string[]? args) {
@@ -351,14 +349,14 @@ public class Cassette.Client.Player.Player : Object {
         mode.send_play_async.begin (
             play_id,
             natural ? ms2sec (mode.get_current_track_info ().duration_ms) : playback_pos_sec,
-            total_playback_sec
+            total_played_seconds
         );
 
         if (mode is Flow) {
             ((Flow) mode).send_feedback.begin (
                 natural ? YaMAPI.Rotor.FeedbackType.TRACK_FINISHED : YaMAPI.Rotor.FeedbackType.SKIP,
                 current_track.id,
-                total_playback_sec
+                total_played_seconds
             );
         }
 
@@ -525,5 +523,15 @@ public class Cassette.Client.Player.Player : Object {
         mode = new Empty ();
 
         mode_inited ();
+    }
+
+    public void rotor_feedback (string feedback_type, string track_id) {
+        if (mode is Flow && mode.get_current_track_info ().id == track_id) {
+            ((Flow) mode).send_feedback.begin (
+                feedback_type,
+                track_id,
+                total_played_seconds
+            );
+        }
     }
 }

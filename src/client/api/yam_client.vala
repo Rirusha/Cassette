@@ -793,16 +793,44 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO: Placeholder
          */
-        public void rotor_session_tracks (
-            string radio_session_id
-        ) throws ClientError, BadStatusCodeError { }
+        public StationTracks rotor_session_tracks (
+            string radio_session_id,
+            Rotor.Queue queue
+        ) throws ClientError, BadStatusCodeError {
+            PostContent post_content = {
+                PostContentType.JSON,
+                Jsoner.serialize (queue, Case.CAMEL)
+            };
+
+            Bytes bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/rotor/session/$radio_session_id/tracks",
+                {"default"},
+                post_content
+            );
+
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            return (StationTracks) jsoner.deserialize_object (typeof (StationTracks));
+        }
 
         /**
          * TODO: Placeholder
          */
         public void rotor_session_feedback (
-            string radio_session_id
-        ) throws ClientError, BadStatusCodeError { }
+            string radio_session_id,
+            Rotor.Feedback feedback
+        ) throws ClientError, BadStatusCodeError {
+            PostContent post_content = {
+                PostContentType.JSON,
+                Jsoner.serialize (feedback, Case.CAMEL)
+            };
+
+            soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/rotor/session/$radio_session_id/feedback",
+                {"default"},
+                post_content
+            );
+        }
 
         /**
          * Метод для получения всех возможных настроек волны
@@ -1400,7 +1428,7 @@ namespace Cassette.Client.YaMAPI {
             string station_type
         ) throws ClientError, BadStatusCodeError {
             var datalist = Datalist<string> ();
-            datalist.set_data ("type", FeedbackType.STARTED);
+            datalist.set_data ("type", FeedbackType.RADIO_STARTED);
             datalist.set_data ("timestamp", new DateTime.now_utc ().format_iso8601 ());
             datalist.set_data ("from", @"mobile-radio-$station_type");
 

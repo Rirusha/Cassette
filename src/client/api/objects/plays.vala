@@ -63,7 +63,7 @@ namespace Cassette.Client.YaMAPI {
         /**
          * TODO
          */
-        public string from { get; set; default = "illegal-client-own"; }
+        public string from { get; set; default = API_FROM; }
 
         /**
          * Контекст воспроизведения (То же что и ``Queue.context.type``)

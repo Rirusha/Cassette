@@ -125,7 +125,6 @@ namespace Cassette {
                 });
 
                 play_button.clicked_not_playing.connect (() => {
-                    player.stop ();
                     play.begin ();
                 });
 

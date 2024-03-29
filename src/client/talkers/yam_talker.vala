@@ -536,5 +536,46 @@ namespace Cassette.Client {
 
             return station_tracks;
         }
+
+        public void send_rotor_feedback (
+            string radio_session_id,
+            string batch_id,
+            string feedback_type,
+            string? track_id = null,
+            double total_played_seconds = 0.0
+        ) {
+            net_run_wout_code (() => {
+                var feedback_obj = new Rotor.Feedback () {
+                    event = new Rotor.Event () {
+                        type_ = feedback_type,
+                        track_id = track_id,
+                        total_played_seconds = total_played_seconds
+                    },
+                    batch_id = batch_id
+                };
+
+                client.rotor_session_feedback (
+                    radio_session_id,
+                    feedback_obj
+                );
+            });
+        }
+
+        public Rotor.StationTracks? get_session_tracks (
+            string radio_session_id,
+            Gee.ArrayList<string> queue
+        ) {
+            Rotor.StationTracks? station_tracks = null;
+
+            net_run_wout_code (() => {
+                var ses_queue = new Rotor.Queue () {
+                    queue = queue
+                };
+
+                station_tracks = client.rotor_session_tracks (radio_session_id, ses_queue);
+            });
+
+            return station_tracks;
+        }
     }
 }

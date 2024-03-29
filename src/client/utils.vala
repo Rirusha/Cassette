@@ -21,13 +21,17 @@ using Gee;
 
 namespace Cassette.Client {
 
+    namespace YaMAPI {
+        public const string API_FROM = "unofficial-client-own";
+    }
+
     namespace YaMAPI.Rotor {
         namespace FeedbackType {
-            public const string STARTED = "radioStarted";
+            public const string RADIO_STARTED = "radioStarted";
             public const string TRACK_STARTED = "trackStarted";
             public const string SKIP = "skip";
             public const string TRACK_FINISHED = "trackFinished";
-            public const string FINISHED = "trackFinished";
+            public const string RADIO_FINISHED = "radioFinished";
         }
 
         namespace StationType {
@@ -70,6 +74,17 @@ namespace Cassette.Client {
         }
 
         return language;
+    }
+
+    /**
+     * Функция удобства для преобразования миллисекунд в секунды.
+     *
+     * @param ms    миллисекунды
+     *
+     * @return      секунды
+     */
+    public static int ms2sec (int ms) {
+        return ms / 1000;
     }
 
     public static string get_context_type (HasID yam_obj) {

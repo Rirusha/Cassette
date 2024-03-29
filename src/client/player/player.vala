@@ -204,7 +204,7 @@ public class Cassette.Client.Player.Player : Object {
 
         bus.add_signal_watch ();
         bus.message["eos"].connect ((bus, message) => {
-            next_repeat ();
+            next_natural ();
         });
 
         settings.bind ("repeat-mode", this, "repeat-mode", SettingsBindFlags.DEFAULT);
@@ -341,16 +341,26 @@ public class Cassette.Client.Player.Player : Object {
         }
     }
 
-    public void stop () {
+    public void stop (bool natural = false) {
+        var current_track = mode.get_current_track_info ();
+
         playbin.set_property ("uri", Value (Type.STRING));
 
         pause ();
 
         mode.send_play_async.begin (
             play_id,
-            playback_pos_sec,
+            natural ? ms2sec (mode.get_current_track_info ().duration_ms) : playback_pos_sec,
             total_playback_sec
         );
+
+        if (mode is Flow) {
+            ((Flow) mode).send_feedback.begin (
+                natural ? YaMAPI.Rotor.FeedbackType.TRACK_FINISHED : YaMAPI.Rotor.FeedbackType.SKIP,
+                current_track.id,
+                total_playback_sec
+            );
+        }
 
         state = State.NONE;
         reset_play ();
@@ -358,8 +368,8 @@ public class Cassette.Client.Player.Player : Object {
         stopped ();
     }
 
-    void next_repeat () {
-        stop ();
+    void next_natural () {
+        stop (true);
 
         mode.next (true);
         start_current_track.begin (() => {
@@ -414,6 +424,12 @@ public class Cassette.Client.Player.Player : Object {
         current_track_start_loading ();
 
         mode.send_play_async.begin (play_id);
+        if (mode is Flow) {
+            ((Flow) mode).send_feedback.begin (
+                YaMAPI.Rotor.FeedbackType.TRACK_STARTED,
+                current_track.id
+            );
+        }
 
         string? track_uri = yield Cachier.get_track_uri (current_track.id);
 

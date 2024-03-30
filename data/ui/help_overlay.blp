@@ -1,0 +1,67 @@
+using Gtk 4.0;
+
+
+ShortcutsWindow help_overlay {
+  modal: true;
+
+  ShortcutsSection {
+    section-name: "shortcuts";
+    max-height: 10;
+
+    ShortcutsGroup {
+      title: _("Main Actions");
+
+      ShortcutsShortcut {
+        title: _("Show Shortcuts");
+        action-name: "win.show-help-overlay";
+      }
+
+      ShortcutsShortcut {
+        title: _("Quit");
+        action-name: "app.quit";
+      }
+    }
+
+    ShortcutsGroup {
+      title: _("Media Control");
+
+      ShortcutsShortcut {
+        title: _("Play/Pause playback");
+        action-name: "app.play-pause";
+      }
+
+      ShortcutsShortcut {
+        title: _("Play previous track");
+        action-name: "app.prev";
+      }
+
+      ShortcutsShortcut {
+        title: _("Play next track");
+        action-name: "app.next";
+      }
+    }
+
+    ShortcutsGroup {
+      title: _("Queue control");
+
+      ShortcutsShortcut {
+        title: _("Change shuffle mode");
+        action-name: "app.change-shuffle";
+      }
+
+      ShortcutsShortcut {
+        title: _("Change repeat mode");
+        action-name: "app.change-repeat";
+      }
+    }
+
+    ShortcutsGroup {
+      title: _("Other");
+
+      ShortcutsShortcut {
+        title: _("Share current track");
+        action-name: "app.share-current-track";
+      }
+    }
+  }
+}

@@ -31,7 +31,7 @@ namespace Cassette {
 
             child = nav_view;
 
-            nav_view.animate_transitions = application.is_mobile;
+            nav_view.animate_transitions = false;
         }
 
         public void start_loading () {
@@ -49,7 +49,7 @@ namespace Cassette {
             assert (nav_view != null);
 
             nav_view.pop ();
-            nav_view.animate_transitions = application.is_mobile;
+            nav_view.animate_transitions = false;
 
             is_loading = false;
         }

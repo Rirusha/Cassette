@@ -66,11 +66,6 @@ namespace Cassette {
                 slider.set_value (0.0d);
             });
 
-            if (application.is_mobile) {
-                player.volume = 1.0d;
-                volume_button.visible = false;
-            }
-
             player.ready_play_next.connect ((repeat) => {
                 update_current_track_controls (player.mode.get_current_track_info ());
             });

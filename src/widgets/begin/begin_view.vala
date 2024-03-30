@@ -44,7 +44,7 @@ namespace Cassette {
         }
 
         construct {
-            if (application.is_mobile) {
+            if (application.main_window?.is_shrinked) {
                 main_box.valign = Gtk.Align.FILL;
 
             } else {

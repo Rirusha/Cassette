@@ -182,7 +182,7 @@ public class Cassette.Client.Player.Player : Object {
      * Current track started loaded.
      * Inteface can be released from block.
      */
-    public signal void current_track_finish_loading ();
+    public signal void current_track_finish_loading (YaMAPI.Track track_info);
 
     public signal void playback_callback (double playback_pos_sec);
 
@@ -440,7 +440,7 @@ public class Cassette.Client.Player.Player : Object {
             storager.clear_temp_track ();
         }
 
-        current_track_finish_loading ();
+        current_track_finish_loading (current_track);
 
         if (settings.get_boolean ("can-cache")) {
             prepare_next_track ();

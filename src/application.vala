@@ -120,6 +120,8 @@ namespace Cassette {
                 application_state = ApplicationState.OFFLINE;
             });
 
+            player.current_track_finish_loading.connect (show_now_playing_notif);
+
             _application_state = (ApplicationState) settings.get_enum ("application-state");
 
             settings.bind ("application-state", this, "application-state", SettingsBindFlags.DEFAULT);
@@ -187,6 +189,9 @@ namespace Cassette {
             }
         }
 
+        /**
+         * @param title works only with notification
+         */
         public void show_message (string message) {
             if (main_window != null) {
                 if (main_window.is_active) {
@@ -198,6 +203,31 @@ namespace Cassette {
             var ntf = new Notification (APP_NAME);
             ntf.set_body (message);
             send_notification (null, ntf);
+        }
+
+        public void show_now_playing_notif (YaMAPI.Track track_info) {
+            if (main_window != null) {
+                if (main_window.is_active) {
+                    return;
+                }
+            }
+
+            var ntf = new Notification (APP_NAME);
+
+            ntf.set_body ("%s%s - %s".printf (
+                track_info.title,
+                track_info.version != null ? @" $(track_info.version)" : "",
+                track_info.get_artists_names ()
+            ));
+
+            ntf.set_title (_("Now playing"));
+
+            ntf.add_button (_("Prev"), "app.prev");
+            ntf.add_button (_("Next"), "app.next");
+
+            ntf.set_icon (new ThemedIcon ("io.github.Rirusha.Cassette-symbolic"));
+
+            send_notification ("now-playing", ntf);
         }
 
         void on_about_action () {

@@ -70,11 +70,7 @@ namespace Cassette {
 
         public signal void application_state_changed (ApplicationState new_state);
 
-        public MainWindow? main_window {
-            get {
-                return (MainWindow?) active_window;
-            }
-        }
+        public MainWindow? main_window { get; private set; default = null; }
 
         public bool is_devel {
             get {
@@ -165,19 +161,24 @@ namespace Cassette {
             base.activate ();
 
             if (main_window == null) {
-                var win = new MainWindow (this);
+                main_window = new MainWindow (this);
 
-                authenticator.success.connect (win.load_default_views);
-                authenticator.local.connect (win.load_local_views);
+                authenticator.success.connect (main_window.load_default_views);
+                authenticator.local.connect (main_window.load_local_views);
 
                 if (_application_state == ApplicationState.OFFLINE) {
                     _application_state = ApplicationState.ONLINE;
                 }
 
-                win.present ();
+                main_window.close_request.connect (() => {
+                    main_window = null;
+                    return false;
+                });
+
+                main_window.present ();
 
                 if (_application_state == ApplicationState.LOCAL) {
-                    win.load_local_views ();
+                    main_window.load_local_views ();
                 } else {
                     authenticator.log_in ();
                 }
@@ -187,9 +188,6 @@ namespace Cassette {
             }
         }
 
-        /**
-         * @param title works only with notification
-         */
         public void show_message (string message) {
             if (main_window != null) {
                 if (main_window.is_active) {

@@ -18,7 +18,10 @@
 
 /*
  * Connection for ``Cassette.ApplicationWindow`` resize
- * for different shrink edge width
+ * for different shrink edge width. Allow connect secure connect
+ * with `Cassette.ApplicationWindow::is-shrinked` with
+ * `Cassete.ShrinkableBin::root-window-is-shrinked`
+ * Used for all adaptive things.
  */
 public abstract class Cassette.ShrinkableBin : Adw.Bin {
 
@@ -35,6 +38,8 @@ public abstract class Cassette.ShrinkableBin : Adw.Bin {
      */
     public int shrink_edge_width { get; set; default = -1; }
 
+    public bool root_window_is_shrinked { get; private set; default = false; }
+
     /**
      * Is widget should shrinked or not
      */
@@ -43,14 +48,28 @@ public abstract class Cassette.ShrinkableBin : Adw.Bin {
     bool first_resize = true;
 
     construct {
-        map.connect (on_map);
+        if (application.main_window != null) {
+            connect_to_main_window ();
+        } else {
+            application.notify["main-window"].connect (on_application_window_notify);
+        }
     }
 
-    void on_map () {
-        var window = (ApplicationWindow) get_root ();
-        window.resized.connect (on_resized);
+    void on_application_window_notify () {
+        if (application.main_window != null) {
+            connect_to_main_window ();
+            application.notify["main-window"].disconnect (on_application_window_notify);
+        }
+    }
 
-        map.disconnect (on_map);
+    void connect_to_main_window () {
+        application.main_window.resized.connect (on_resized);
+        application.main_window.bind_property (
+            "is-shrinked",
+            this,
+            "root-window-is-shrinked",
+            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+        );
     }
 
     void on_resized (int width, int height) {

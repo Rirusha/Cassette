@@ -384,8 +384,8 @@ public class Cassette.Client.Player.Player : Object {
         });
     }
 
-    public void prev () {
-        if (playback_pos_sec > 3.0) {
+    public void prev (bool ignore_progress = false) {
+        if (playback_pos_sec > 3.0 && !ignore_progress) {
             seek (0);
 
         } else {

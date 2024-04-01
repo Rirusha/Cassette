@@ -148,7 +148,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
         } else if (index == 0) {
             if (info_panel_prev.track_info != player.mode.get_current_track_info ()) {
-                player.prev ();
+                player.prev (true);
             }
 
             carousel.remove (info_panel_next);

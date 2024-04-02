@@ -218,7 +218,7 @@ namespace Cassette {
 
             ntf.set_title (_("Now playing"));
 
-            ntf.add_button (_("Prev"), "app.prev");
+            ntf.add_button (_("Previous"), "app.prev");
             ntf.add_button (_("Next"), "app.next");
 
             ntf.set_icon (new ThemedIcon ("io.github.Rirusha.Cassette-symbolic"));

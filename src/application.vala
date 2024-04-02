@@ -244,7 +244,8 @@ namespace Cassette {
             string[] documenters = {
                 RIRUSHA,
                 "Armatik https://github.com/Armatik",
-                "Fiersik https://github.com/fiersik"
+                "Fiersik https://github.com/fiersik",
+                "undefined",
             };
 
             var about = new Adw.AboutDialog () {

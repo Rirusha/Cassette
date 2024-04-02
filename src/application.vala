@@ -245,7 +245,7 @@ namespace Cassette {
                 RIRUSHA,
                 "Armatik https://github.com/Armatik",
                 "Fiersik https://github.com/fiersik",
-                "undefined",
+                "Mikazil https://github.com/Mikazil",
             };
 
             var about = new Adw.AboutDialog () {

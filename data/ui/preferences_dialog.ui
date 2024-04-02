@@ -31,7 +31,7 @@
             <child>
               <object class="AdwSwitchRow" id="is_hq_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference dialog">Download high quality tracks</property>
+                <property name="title" translatable="true" context="preference dialog">Enable high quality audio</property>
                 <!-- Translators: tooltip of preference -->
                 <property name="tooltip-text" translatable="true" context="preference dialog">Attention! If the track was downloaded in low quality, and after the download is enabled in high quality, the audio will not be reloaded</property>
               </object>

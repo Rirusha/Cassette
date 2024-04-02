@@ -89,6 +89,11 @@ flatpak remote-delete cassette-nightly
 ```
 
 
+## Установка в Windows
+
+Способы установки приложения в Windows описаны [здесь](INSTALLATION_ON_WINDOWS.md).
+
+
 ## Сборка из исходного кода
 
 #### Зависимости:

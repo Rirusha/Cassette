@@ -301,7 +301,7 @@ namespace Cassette {
         }
 
         void on_next () {
-            if (!player.current_track_loading) {
+            if (player.can_go_next) {
                 player.next ();
             }
         }
@@ -309,6 +309,12 @@ namespace Cassette {
         void on_prev () {
             if (player.can_go_prev) {
                 player.prev ();
+            }
+        }
+
+        void on_prev_force () {
+            if (player.can_go_prev) {
+                player.prev (true);
             }
         }
 

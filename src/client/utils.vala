@@ -102,8 +102,8 @@ namespace Cassette.Client {
      *
      * @return      секунды
      */
-    public static int ms2sec (int ms) {
-        return ms / 1000;
+    public static int ms2sec (int64 ms) {
+        return (int) (ms / 1000);
     }
 
     public static string get_context_type (HasID yam_obj) {

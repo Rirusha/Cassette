@@ -97,8 +97,10 @@
                             <property name="spacing">3</property>
                             <child>
                               <object class="CassetteLikeButton" id="like_button">
-                                <property name="is-osd">true</property>
-                                <property name="is-circular">true</property>
+                                <style>
+                                  <class name="circular"/>
+                                  <class name="osd"/>
+                                </style>
                                 <property name="width-request">42</property>
                                 <property name="height-request">42</property>
                                 <property name="valign">center</property>
@@ -128,9 +130,11 @@
                 </child>
                 <child>
                   <object class="CassettePlayButtonContext" id="play_button">
-                    <property name="is-suggested-action">true</property>
-                    <property name="is-circular">true</property>
-                    <property name="is-osd">true</property>
+                    <style>
+                      <class name="circular"/>
+                      <class name="osd"/>
+                      <class name="suggested-action"/>
+                    </style>
                     <property name="context-type">playlist</property>
                     <property name="size">62</property>
                     <property name="halign">center</property>

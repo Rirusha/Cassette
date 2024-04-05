@@ -95,7 +95,7 @@ namespace Cassette {
             if (yam_talker.is_me (uid) && kind != "3") {
                 visibility_switch.visible = true;
 
-                playlist_options_button.add_delete_playlist_action ();
+                //  playlist_options_button.add_delete_playlist_action ();
 
                 var delete_playlist_action = new SimpleAction ("delete-playlist", null);
                 delete_playlist_action.activate.connect (() => {

@@ -50,6 +50,8 @@ Popover popover {
           value: 100.0;
           upper: 100.0;
           step-increment: 5.0;
+          page-increment: 5.0;
+          page-size: 1.0;
         };
       }
 
@@ -64,7 +66,7 @@ Popover popover {
   }
 }
 
-template $CassetteVolumeButton : Adw.Bin {
+template $CassetteVolumeButton : $CassetteCustomMenuButton {
   MenuButton real_menu_button {
     styles [
       "flat"

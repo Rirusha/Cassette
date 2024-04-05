@@ -191,7 +191,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
         }
 
         if (has_play_button) {
-            cover_stack.add_named (new PlayButtonTrack () { is_flat = true }, "play-button");
+            cover_stack.add_named (new PlayButtonTrack () {css_classes = {"flat"}}, "play-button");
         }
     }
 

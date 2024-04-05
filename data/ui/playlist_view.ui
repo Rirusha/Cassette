@@ -137,17 +137,21 @@
                             <property name="valign">end</property>
                             <child>
                               <object class="CassettePlayButtonContext" id="play_button">
-                                <property name="is-suggested-action">true</property>
+                                <style>
+                                  <class name="suggested-action"/>
+                                  <class name="pill"/>
+                                </style>
                                 <property name="context-type">playlist</property>
                                 <property name="vexpand">false</property>
                                 <property name="valign">center</property>
-                                <property name="is-pill">true</property>
                                 <property name="with-label">true</property>
                               </object>
                             </child>
                             <child>
                               <object class="CassetteLikeButton" id="like_button">
-                                <property name="is-flat">true</property>
+                                <style>
+                                  <class name="is-flat"/>
+                                </style>
                                 <property name="object-content-type">playlist</property>
                               </object>
                             </child>
@@ -163,8 +167,10 @@
                             </child>
                             <child>
                               <object class="CassettePlaylistOptionsButton" id="playlist_options_button">
-                                <property name="is-flat">true</property>
-                                <property name="is-circular">true</property>
+                                <style>
+                                  <class name="is-flat"/>
+                                  <class name="is-circular"/>
+                                </style>
                                 <property name="valign">center</property>
                                 <property name="halign">start</property>
                                 <property name="hexpand">false</property>

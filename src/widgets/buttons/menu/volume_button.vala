@@ -18,9 +18,8 @@
 
 namespace Cassette {
     [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/volume_button.ui")]
-    public class VolumeButton : Adw.Bin {
-        [GtkChild]
-        unowned Gtk.MenuButton real_menu_button;
+    public class VolumeButton : CustomMenuButton {
+
         [GtkChild]
         unowned Gtk.ToggleButton equalaizer_button;
         [GtkChild]
@@ -69,7 +68,7 @@ namespace Cassette {
         construct {
             equalaizer_button.bind_property ("active", revealer, "reveal-child", BindingFlags.DEFAULT);
 
-            block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED, true);
+            block_widget (equalaizer_button, BlockReason.NOT_IMPLEMENTED);
 
             volume_level_scale.change_value.connect ((range, type, new_val) => {
                 var val = new_val * MUL;
@@ -107,14 +106,18 @@ namespace Cassette {
 
         void check_icon () {
             if (volume == volume_lower || mute) {
-                real_menu_button.icon_name = "adwaita-audio-volume-muted-symbolic";
+                real_button.icon_name = "adwaita-audio-volume-muted-symbolic";
             } else if (volume < 0.025) {
-                real_menu_button.icon_name = "adwaita-audio-volume-low-symbolic";
+                real_button.icon_name = "adwaita-audio-volume-low-symbolic";
             } else if (volume < 0.35) {
-                real_menu_button.icon_name = "adwaita-audio-volume-medium-symbolic";
+                real_button.icon_name = "adwaita-audio-volume-medium-symbolic";
             } else {
-                real_menu_button.icon_name = "adwaita-audio-volume-high-symbolic";
+                real_button.icon_name = "adwaita-audio-volume-high-symbolic";
             }
+        }
+
+        protected override Gtk.Widget[] get_menu_items () {
+            return {};
         }
     }
 }

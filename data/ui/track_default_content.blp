@@ -21,14 +21,20 @@ template $CassetteTrackDefault : $CassetteYATrackRowContent {
     }
 
     $CassetteDislikeButton dislike_button {
-      is-flat: true;
+      styles [
+        "is-flat"
+      ]
+
       visible: false;
       halign: end;
       valign: center;
     }
 
     $CassetteLikeButton like_button {
-      is-flat: true;
+      styles [
+        "is-flat"
+      ]
+
       object-content-type: track;
       halign: end;
       valign: center;
@@ -48,7 +54,10 @@ template $CassetteTrackDefault : $CassetteYATrackRowContent {
     }
 
     $CassetteTrackOptionsButton track_options_button {
-      is-flat: true;
+      styles [
+        "is-flat"
+      ]
+
       halign: end;
       valign: center;
     }

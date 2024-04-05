@@ -238,7 +238,7 @@ namespace Cassette {
      *
      * @return          строка представления
      */
-    public static string ms2str (int ms, bool is_short) {
+    public static string ms2str (int64 ms, bool is_short) {
         int seconds = ms2sec (ms);
         return sec2str (seconds, is_short);
     }

@@ -241,7 +241,7 @@ public class Cassette.Client.Player.Player : Object {
     }
 
     void update_can_go () {
-        can_go_next = mode.get_next_index (false) != -1;
+        can_go_next = mode.get_next_index (true) != -1;
         can_go_prev = mode.get_prev_index () != -1 || playback_pos_sec > 3.0;
     }
 

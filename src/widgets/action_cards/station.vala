@@ -77,6 +77,14 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         content_label.label = station_info.name;
         content_image.icon_name = station_info.icon.get_internal_icon_name (station_info.id.normal);
 
+        if (yam_talker.me != null) {
+            if (!yam_talker.me.has_plus) {
+                block_widget (this, BlockReason.NEED_PLUS);
+            }
+        } else {
+            block_widget (this, BlockReason.NEED_AUTH);
+        }
+
         clicked.connect (() => {
             player.start_flow (station_info.id.normal);
         });

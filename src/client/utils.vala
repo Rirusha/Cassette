@@ -83,7 +83,7 @@ namespace Cassette.Client {
         }
 
         if ("_" in locale) {
-            locale = locale.split ("_")[1];
+            locale = locale.split ("_")[0];
         }
 
         locale = locale.down ();

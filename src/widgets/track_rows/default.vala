@@ -119,7 +119,7 @@ namespace Cassette {
             var playlist_info = yam_object as YaMAPI.Playlist;
             if (playlist_info != null) {
                 if (playlist_info.kind != "3") {
-                    track_options_button.add_remove_from_playlist_action ();
+                    //  track_options_button.add_remove_from_playlist_action ();
 
                     SimpleAction remove_from_playlist_action = new SimpleAction ("remove-from-playlist", null);
                     remove_from_playlist_action.activate.connect (() => {
@@ -155,7 +155,7 @@ namespace Cassette {
             });
             actions.add_action (add_end_action);
 
-            track_options_button.add_save_action ();
+            //  track_options_button.add_save_action ();
             SimpleAction save_action = new SimpleAction ("save", null);
             save_action.activate.connect (() => {
                 Cachier.save_track.begin (track_info);

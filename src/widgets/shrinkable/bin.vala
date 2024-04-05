@@ -64,12 +64,10 @@ public abstract class Cassette.ShrinkableBin : Adw.Bin {
 
     void connect_to_main_window () {
         application.main_window.resized.connect (on_resized);
-        application.main_window.bind_property (
-            "is-shrinked",
-            this,
-            "root-window-is-shrinked",
-            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
-        );
+
+        application.main_window.notify["is-shrinked"].connect (() => {
+            root_window_is_shrinked = application.main_window.is_shrinked;
+        });
     }
 
     void on_resized (int width, int height) {

@@ -84,13 +84,11 @@ namespace Cassette.Client {
          * @param names_case    нейм кейс имён элементов в json строке
          */
         public static Jsoner from_bytes (Bytes bytes, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
-            var json_string = bytes.get_data ();
-
-            if (json_string == null) {
+            if (bytes.length < 1) {
                 throw new ClientError.PARSE_ERROR ("Json string is empty");
             }
 
-            return new Jsoner ((string) json_string, sub_members, names_case);
+            return from_data (bytes.get_data (), sub_members, names_case);
         }
 
         /**

@@ -195,7 +195,7 @@ namespace Cassette {
                 });
             });
 
-            block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED, true);
+            block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED);
         }
 
         void on_playback_callback (double pos) {

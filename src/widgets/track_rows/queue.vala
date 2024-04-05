@@ -80,7 +80,7 @@ namespace Cassette {
             });
             actions.add_action (add_end_action);
 
-            track_options_button.add_remove_from_queue_action ();
+            //  track_options_button.add_remove_from_queue_action ();
 
             SimpleAction remove_from_queue_action = new SimpleAction ("remove-from-queue", null);
             remove_from_queue_action.activate.connect (() => {

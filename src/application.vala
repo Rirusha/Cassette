@@ -143,6 +143,7 @@ namespace Cassette {
                 { "play-pause", on_play_pause },
                 { "next", on_next },
                 { "prev", on_prev },
+                { "prev-force", on_prev_force },
                 { "change-shuffle", on_shuffle },
                 { "change-repeat", on_repeat },
                 { "share-current-track", on_share_current_track}
@@ -218,7 +219,7 @@ namespace Cassette {
 
             ntf.set_title (_("Now playing"));
 
-            ntf.add_button (_("Previous"), "app.prev");
+            ntf.add_button (_("Previous"), "app.prev-force");
             ntf.add_button (_("Next"), "app.next");
 
             ntf.set_icon (new ThemedIcon ("io.github.Rirusha.Cassette-symbolic"));

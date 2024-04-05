@@ -15,21 +15,20 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace Cassette {
-    public class PlaylistOptionsButton : OptionsButton {
 
-        public PlaylistOptionsButton () {
-            Object ();
-        }
+public class Cassette.PlaylistOptionsButton : CustomMenuButton {
 
-        protected override void set_menu () {
-            global_menu.append (_("My wave on playlist"), "playlist.my-wave");
-            global_menu.append (_("Add to queue"), "playlist.add-to-queue");
-            other_menu.append (_("Share"), "playlist.share");
-        }
-
-        public void add_delete_playlist_action () {
-            global_menu.append (_("Delete playlist"), "playlist.delete-playlist");
-        }
+    protected override Gtk.Widget[] get_menu_items () {
+            assert_not_reached ();
     }
+
+    //  protected override void set_menu () {
+    //      global_menu.append (_("My wave on playlist"), "playlist.my-wave");
+    //      global_menu.append (_("Add to queue"), "playlist.add-to-queue");
+    //      other_menu.append (_("Share"), "playlist.share");
+    //  }
+
+    //  public void add_delete_playlist_action () {
+    //      global_menu.append (_("Delete playlist"), "playlist.delete-playlist");
+    //  }
 }

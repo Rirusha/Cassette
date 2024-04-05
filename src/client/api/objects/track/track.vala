@@ -88,7 +88,7 @@ namespace Cassette.Client.YaMAPI {
         public bool lyrics_available { get; set; }
         public string? cover_uri { get; set; }
         public Label major { get; set; }
-        public int duration_ms { get; set; }
+        public int64 duration_ms { get; set; }
         public Track? substituted { get; set; }
         public MetaData? meta_data { get; set; }
         public string? type_ { get; set; }

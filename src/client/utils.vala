@@ -71,13 +71,28 @@ namespace Cassette.Client {
      */
     public static string get_language () {
         string? locale = Environment.get_variable ("LANG");
-        string language = "en";
 
-        if (locale != null) {
-            language = locale.split ("_")[0];
+        if (locale == null) {
+            return "en";
         }
 
-        return language;
+        if ("." in locale) {
+            locale = locale.split (".")[0];
+        } else if ("@" in locale) {
+            locale = locale.split ("@")[0];
+        }
+
+        if ("_" in locale) {
+            locale = locale.split ("_")[1];
+        }
+
+        locale = locale.down ();
+
+        if (locale == "c") {
+            return "en";
+        }
+
+        return locale;
     }
 
     /**

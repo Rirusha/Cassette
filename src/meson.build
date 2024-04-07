@@ -18,6 +18,7 @@ cassette_gui_sources = files(
   'widgets/buttons/just/like_button.vala',
   'widgets/buttons/just/dislike_button.vala',
   'widgets/buttons/menu/abstract_menu_button.vala',
+  'widgets/buttons/menu/menu_dialog.vala',
   'widgets/buttons/menu/primary_menu_button.vala',
   'widgets/buttons/menu/playlist_options_button.vala',
   'widgets/buttons/menu/track_options_button.vala',

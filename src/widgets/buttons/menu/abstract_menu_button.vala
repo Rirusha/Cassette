@@ -20,22 +20,17 @@
 public abstract class Cassette.CustomMenuButton : ShrinkableBin {
 
     [GtkChild]
-    unowned Gtk.Popover menu_popover;
+    unowned Gtk.Popover popover_menu;
     [GtkChild]
-    protected Gtk.MenuButton real_button;
+    protected unowned Gtk.MenuButton real_button;
 
-    Adw.Dialog? dialog;
+    public Gtk.Orientation dialog_orientation { get; construct; default = Gtk.Orientation.VERTICAL; }
 
-    Gtk.ListBox? menu_box;
+    public Gtk.Orientation popover_orientation { get; construct; default = Gtk.Orientation.VERTICAL; }
 
-    public new string[] css_classes {
-        owned get {
-            return real_button.css_classes;
-        }
-        set {
-            real_button.css_classes = value;
-        }
-    }
+    public bool should_close_on_click { get; construct; default = true; }
+
+    MenuDialog? dialog = null;
 
     public int size {
         construct {
@@ -45,68 +40,75 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
     }
 
     construct {
-        menu_popover.notify["child"].connect (() => {
-            menu_popover.visible = child != null;
+        bind_property ("css-classes", real_button, "css-classes", BindingFlags.DEFAULT);
+
+        popover_menu.closed.connect (() => {
+            popover_menu.child = null;
         });
 
         real_button.notify["active"].connect (() => {
             if (real_button.active) {
-                menu_box = build_menu_box ();
-                notify["root-window-is-shrinked"].connect (adapt_menu);
-                adapt_menu ();
+                if (root_window_is_shrinked) {
+                    set_bottom_sheet_menu ();
 
-            } else {
-                notify["root-window-is-shrinked"].disconnect (adapt_menu);
-                menu_box = null;
+                } else {
+                    set_popover_menu ();
+                }
             }
         });
     }
 
-    public new void add_css_class (string class_name) {
-        real_button.add_css_class (class_name);
-    }
+    protected abstract Gtk.Widget[] get_popover_menu_items ();
 
-    protected abstract Gtk.Widget[] get_menu_items ();
+    Gtk.Box build_popover_menu_box () {
+        var box = new Gtk.Box (popover_orientation, 2) {
+            css_classes = {"flat"}
+        };
 
-    Gtk.ListBox build_menu_box () {
-        var t_menu_box = new Gtk.ListBox () { css_classes = {"menu"} };
+        foreach (var widget in get_popover_menu_items ()) {
+            box.append (widget);
 
-        foreach (var widget in get_menu_items ()) {
-            t_menu_box.append (widget);
-        }
-
-        return t_menu_box;
-    }
-
-    void adapt_menu () {
-        if (root_window_is_shrinked) {
-            set_bottom_sheet_menu ();
-
-        } else {
-            set_popover_menu.begin ();
-        }
-    }
-
-    async void set_popover_menu () {
-        if (dialog != null) {
-            dialog.closed.connect (() => {
-                Idle.add (set_popover_menu.callback);
+            var gs = new Gtk.GestureClick ();
+            gs.end.connect (() => {
+                real_button.popdown ();
             });
-            dialog.close ();
-
-            yield;
+            widget.add_controller (gs);
         }
 
-        menu_popover.child = menu_box;
+        return box;
+    }
+
+    void set_popover_menu () {
+        popover_menu.child = build_popover_menu_box ();
+    }
+
+    protected abstract string get_menu_title ();
+
+    protected abstract Gtk.Widget[] get_dialog_menu_items ();
+
+    Gtk.Box build_dialog_menu_box () {
+        var box = new Gtk.Box (dialog_orientation, 8) {
+            css_classes = {"flat"}
+        };
+
+        foreach (var widget in get_dialog_menu_items ()) {
+            box.append (widget);
+
+            var gs = new Gtk.GestureClick ();
+            gs.end.connect (() => {
+                dialog.close ();
+            });
+            widget.add_controller (gs);
+        }
+
+        return box;
     }
 
     void set_bottom_sheet_menu () {
-        menu_popover.child = null;
+        popover_menu.popdown ();
 
-        dialog = new Adw.Dialog () {
-            presentation_mode = Adw.DialogPresentationMode.BOTTOM_SHEET,
-            child = menu_box
-        };
+        dialog = new MenuDialog ();
+        dialog.set_menu_widget (get_menu_title (), build_dialog_menu_box ());
 
         dialog.closed.connect (() => {
             dialog = null;

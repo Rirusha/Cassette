@@ -1,9 +1,11 @@
 using Gtk 4.0;
 using Adw 1;
 
+Popover popover_menu { }
+
 template $CassetteCustomMenuButton : $CassetteShrinkableBin {
   Gtk.MenuButton real_button {
     icon-name: "view-more-symbolic";
-    popover: Popover menu_popover { };
+    popover: popover_menu;
   }
 }

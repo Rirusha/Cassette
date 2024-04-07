@@ -26,6 +26,7 @@
     <file preprocess="xml-stripblanks">ui/lyrics_panel.ui</file>
     <file preprocess="xml-stripblanks">ui/main_view.ui</file>
     <file preprocess="xml-stripblanks">ui/main_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/menu_dialog.ui</file>
     <file preprocess="xml-stripblanks">ui/player_bar.ui</file>
     <file preprocess="xml-stripblanks">ui/playlist_choose_dialog.ui</file>
     <file preprocess="xml-stripblanks">ui/playlist_create_button.ui</file>

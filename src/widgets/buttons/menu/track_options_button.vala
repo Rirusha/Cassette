@@ -18,8 +18,33 @@
 
 public class Cassette.TrackOptionsButton : CustomMenuButton {
 
-    protected override Gtk.Widget[] get_menu_items () {
-        return {};
+    protected override Gtk.Widget[] get_popover_menu_items () {
+        return {
+            new Gtk.Button.with_label ("My Vibe") {css_classes = {"flat"}},
+            new Gtk.Label ("Hello!"),
+            new Gtk.Button.with_label ("Button") {css_classes = {"flat"}}
+        };
+    }
+
+    protected override Gtk.Widget[] get_dialog_menu_items () {
+        return {
+            new ActionCardStation (new Client.YaMAPI.Rotor.StationInfo () {
+                id = new Client.YaMAPI.Rotor.Id () {
+                    type_ = "track",
+                    tag = "38634621"
+                },
+                name = "My Vibe by track",
+                icon = new Client.YaMAPI.Icon ()
+            }) {
+                is_shrinked = true
+            },
+            new Gtk.Label ("Hello!"),
+            new Gtk.Button.with_label ("Button")
+        };
+    }
+
+    protected override string get_menu_title () {
+        return _("Track options menu");
     }
 
     //  protected override void set_menu () {

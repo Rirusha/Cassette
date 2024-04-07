@@ -21,11 +21,11 @@
   </a>
   <br>
   <a href="https://t.me/CassetteGNOME_Devlog">
-    <img alt="tg" src="https://img.shields.io/badge/Telegtam-Channel-blue?style=flat&logo=telegram&label=%20&labelColor=blue">
+    <img alt="tg" src="https://img.shields.io/badge/Telegram-Channel-blue?style=flat&logo=telegram&label=%20&labelColor=blue">
   </a>
   <br>
   <a href="https://t.me/CassetteGNOME_Discussion">
-    <img alt="tg" src="https://img.shields.io/badge/Telegtam-Chat-blue?style=flat&logo=telegram&label=%20&labelColor=blue">
+    <img alt="tg" src="https://img.shields.io/badge/Telegram-Chat-blue?style=flat&logo=telegram&label=%20&labelColor=blue">
   </a>
 </p>
 

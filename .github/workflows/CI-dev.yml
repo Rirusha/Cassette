@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - 'dev-*'  # Запускать workflow только для веток разработки
+      - 'dev-**'  # Запускать workflow только для веток разработки
 
 jobs:
   lint:

@@ -93,6 +93,9 @@ namespace Cassette {
         }
     }
 
+    /**
+     * Функция удобства для очистки ``Gtk.FlowBox``.
+     */
     public void clear_flow_box (Gtk.FlowBox flow_box) {
         while (flow_box.get_last_child () != null) {
             flow_box.remove (flow_box.get_last_child ());

@@ -9,9 +9,13 @@ on:
     branches:
       - 'master'  # Запускать workflow только для веток разработки
 <<<<<<< HEAD
+<<<<<<< HEAD
   pull_request:
 =======
 >>>>>>> 1685256 (Изменить файлы workflow)
+=======
+  pull_request:
+>>>>>>> 304603d (Обновить CI)
 
 jobs:
   lint:

@@ -25,6 +25,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Lint
 <<<<<<< HEAD
+<<<<<<< HEAD
       run: io.elementary.vala-lint -d . 
 =======
       run: io.elementary.vala-lint -d .
@@ -50,15 +51,22 @@ jobs:
         # run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}    
 >>>>>>> 1685256 (Изменить файлы workflow)
+=======
+      run: io.elementary.vala-lint -d . 
+>>>>>>> 7e5777d (Удалить ненужный build)
   
   flatter:
     name: Flatter
     runs-on: ubuntu-latest
 <<<<<<< HEAD
+<<<<<<< HEAD
     needs: lint
 =======
     needs: test-build
 >>>>>>> 1685256 (Изменить файлы workflow)
+=======
+    needs: lint
+>>>>>>> 7e5777d (Удалить ненужный build)
 
     container:
       image: ghcr.io/andyholmes/flatter/gnome:master
@@ -98,12 +106,16 @@ jobs:
           upload-bundles: true
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           # run-tests: true
 =======
           run-tests: true
 >>>>>>> 1685256 (Изменить файлы workflow)
 =======
 >>>>>>> a2844d5 (Исправить CI)
+=======
+          # run-tests: true
+>>>>>>> 7e5777d (Удалить ненужный build)
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
 
   deploy:

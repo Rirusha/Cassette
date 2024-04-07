@@ -18,7 +18,7 @@
 
 namespace Cassette {
 
-    public class LoadingWidget : Adw.Bin {
+    public class LoadingSpinner : Adw.Bin {
         /**
             Виджет для избавления от повторяющегося кода и автоматизации
             начала и завершении анимации загрузки
@@ -36,7 +36,7 @@ namespace Cassette {
 
         private Gtk.Spinner spinner = new Gtk.Spinner ();
 
-        public LoadingWidget () {
+        public LoadingSpinner () {
             Object ();
         }
 

@@ -124,7 +124,7 @@ namespace Cassette {
                 content = box
             };
 
-            box.append (new LoadingWidget ());
+            box.append (new LoadingSpinner ());
 
             var label = new Gtk.Label (is_tmp? _("Deleting…") : _("Moving…"));
             label.add_css_class ("title-1");

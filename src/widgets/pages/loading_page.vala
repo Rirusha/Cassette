@@ -20,8 +20,8 @@ namespace Cassette {
 
     public class LoadingPage : Adw.NavigationPage {
 
-        private LoadingWidget _loading_widget = new LoadingWidget () { size = 32 };
-        public LoadingWidget loading_widget {
+        private LoadingSpinner _loading_widget = new LoadingSpinner () { size = 32 };
+        public LoadingSpinner loading_widget {
             get {
                 return _loading_widget;
             }

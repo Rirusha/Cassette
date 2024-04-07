@@ -18,23 +18,6 @@ jobs:
     - name: Lint
       run: io.elementary.vala-lint -d .
 
-<<<<<<< HEAD:.github/workflows/deploy.yml
-      - name: Checkout all
-        run: |
-          remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
-          for branch in $remote_branches; do git checkout -B $branch origin/$branch; done
-          git checkout devel-slice
-
-      - name: Rebase & Push
-        # Должна существовать только одна ветка dev-*
-        run: |
-          git branch --list | grep "dev-" | while read -r branch; do git rebase --reapply-cherry-picks --strategy=ours "$branch"; done
-    
-      - name: Push
-        run: |
-          git push --force origin devel-slice
-      
-=======
   test-build:
     name: Build
     runs-on: ubuntu-latest
@@ -47,7 +30,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
->>>>>>> 1926849 (Изменить workflow):.github/workflows/CI-dev.yaml
 
     - name: Run tests and lint
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6
@@ -100,10 +82,6 @@ jobs:
           upload-bundles: true
           run-tests: true
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
-          upload-pages-includes: |
-            default.css
-            index.html
-            repo
 
   deploy:
     name: Deploy

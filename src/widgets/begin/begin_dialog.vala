@@ -17,8 +17,6 @@
 
 
 using Cassette.Client;
-using WebKit;
-
 
 namespace Cassette {
 

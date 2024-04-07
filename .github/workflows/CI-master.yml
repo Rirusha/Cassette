@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 name: CI Light
 =======
 name: CI
 >>>>>>> 1685256 (Изменить файлы workflow)
+=======
+name: CI Light
+>>>>>>> c45a078 (Изменить имя у workflow)
 
 on:
   push:

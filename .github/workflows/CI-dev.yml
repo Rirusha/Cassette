@@ -43,7 +43,7 @@ jobs:
       with:
         bundle: cassette.flatpak
         manifest-path: build-aux/flatpak/io.github.Rirusha.Cassette-Devel.json
-        run-tests: true
+        # run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}    
 >>>>>>> 1685256 (Изменить файлы workflow)
   

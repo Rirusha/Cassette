@@ -268,7 +268,8 @@ namespace Cassette {
             };
 
             about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
-            about.add_link (_("Financial support"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
+            about.add_link (_("Financial support (Tinkoff)"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
+            about.add_link (_("Financial support (Boosty)"), "https://boosty.to/rirusha/donate");
 
             about.add_acknowledgement_section ("Donaters", {
                 "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium", "Fiersik", "belovmv",

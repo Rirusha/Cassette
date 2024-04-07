@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 name: CI Light
+=======
+name: CI
+>>>>>>> 1685256 (Изменить файлы workflow)
 
 on:
   push:
     branches:
       - 'master'  # Запускать workflow только для веток разработки
+<<<<<<< HEAD
   pull_request:
+=======
+>>>>>>> 1685256 (Изменить файлы workflow)
 
 jobs:
   lint:

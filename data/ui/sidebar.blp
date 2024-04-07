@@ -20,12 +20,10 @@ template $CassetteSideBar : Adw.Bin {
         show-title: false;
 
         [end]
-        $CassetteCacheIndicator {
-          visible: false;
-        }
+        $CassettePrimaryMenuButton menu_button { }
 
         [end]
-        $CassettePrimaryMenuButton menu_button { }
+        $CassetteCacheIndicator { }
       }
 
       content: Gtk.ScrolledWindow sidebar_content {

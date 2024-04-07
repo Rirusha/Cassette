@@ -22,7 +22,7 @@
   </object>
   <template class="CassetteCacheIndicator" parent="AdwBin">
     <property name="child">
-      <object class="GtkRevealer" id="jobs_revealer">
+      <object class="GtkRevealer" id="indicator_revealer">
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="transition_type">crossfade</property>

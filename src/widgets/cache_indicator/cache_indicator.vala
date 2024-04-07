@@ -26,7 +26,7 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Box jobs_box;
         [GtkChild]
-        unowned Gtk.Revealer jobs_revealer;
+        unowned Gtk.Revealer indicator_revealer;
         [GtkChild]
         unowned Gtk.DrawingArea jobs_icon;
 
@@ -47,12 +47,21 @@ namespace Cassette {
                 }
             });
 
+            indicator_revealer.notify.connect (() => {
+                if (indicator_revealer.reveal_child) {
+                    visible = true;
+                }
+                if (!indicator_revealer.child_revealed) {
+                    visible = false;
+                }
+            });
+
             jobs_icon.set_draw_func (update_jobs_icon);
 
             cachier.job_added.connect ((job) => {
                 job.track_saving_ended.connect (jobs_icon.queue_draw);
 
-                jobs_revealer.reveal_child = true;
+                indicator_revealer.reveal_child = true;
             });
 
             cachier.job_removed.connect (() => {
@@ -70,7 +79,7 @@ namespace Cassette {
                                 return Source.REMOVE;
                             }
 
-                            jobs_revealer.reveal_child = false;
+                            indicator_revealer.reveal_child = false;
 
                             timeout_id = 0;
                             return Source.REMOVE;
@@ -79,7 +88,7 @@ namespace Cassette {
 
                 } else {
                     if (cachier.job_list.size == 0) {
-                        jobs_revealer.reveal_child = false;
+                        indicator_revealer.reveal_child = false;
                     }
                 }
             });

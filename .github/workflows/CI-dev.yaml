@@ -1,21 +1,24 @@
-name: Deploy
+name: CI
 
 on:
-  schedule:
-    - cron: 0 0 * * *
-  workflow_dispatch:
+  push:
+    branches:
+      - 'dev-*'  # Запускать workflow только для веток разработки
 
 jobs:
-  sync-branches:
-    name: Rebase devel-slice on dev-*
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    container:
+      image: valalang/lint
 
+    steps:
+    - uses: actions/checkout@v4
+    - name: Lint
+      run: io.elementary.vala-lint -d .
+
+<<<<<<< HEAD:.github/workflows/deploy.yml
       - name: Checkout all
         run: |
           remote_branches=$(git branch -r | grep -v '\->' | awk -F'/' '{print $2}')
@@ -31,11 +34,33 @@ jobs:
         run: |
           git push --force origin devel-slice
       
+=======
+  test-build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: lint
 
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
+      options: --privileged
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+>>>>>>> 1926849 (Изменить workflow):.github/workflows/CI-dev.yaml
+
+    - name: Run tests and lint
+      uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: cassette.flatpak
+        manifest-path: build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
+        run-tests: true
+        cache-key: flatpak-builder-${{ github.sha }}    
+  
   flatter:
     name: Flatter
     runs-on: ubuntu-latest
-    needs: sync-branches
+    needs: test-build
 
     container:
       image: ghcr.io/andyholmes/flatter/gnome:master
@@ -50,8 +75,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: devel-slice
 
       - name: Setup QEMU
         if: ${{ matrix.arch == 'aarch64' }}
@@ -75,6 +98,7 @@ jobs:
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: true
+          run-tests: true
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
           upload-pages-includes: |
             default.css
@@ -85,6 +109,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     needs: flatter
+
     permissions:
       pages: write
       id-token: write

@@ -72,6 +72,8 @@ namespace Cassette {
 
         public MainWindow? main_window { get; private set; default = null; }
 
+        uint now_playing_t = 0;
+
         public bool is_devel {
             get {
                 return Config.PROFILE == "Devel";
@@ -224,7 +226,16 @@ namespace Cassette {
 
             ntf.set_icon (new ThemedIcon ("io.github.Rirusha.Cassette-symbolic"));
 
+            if (now_playing_t != 0) {
+                Source.remove (now_playing_t);
+            }
+
             send_notification ("now-playing", ntf);
+
+            now_playing_t = Timeout.add_seconds_once (10, () => {
+                withdraw_notification ("now-playing");
+                now_playing_t = 0;
+            });
         }
 
         void on_about_action () {

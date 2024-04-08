@@ -1,0 +1,45 @@
+using Gtk 4.0;
+using Adw 1;
+
+Popover jobs_popover {
+  width-request: 360;
+
+  ScrolledWindow {
+    hscrollbar-policy: never;
+    max-content-height: 400;
+    propagate-natural-height: true;
+
+    Box jobs_box {
+      margin-start: 12;
+      margin-end: 12;
+      margin-top: 12;
+      margin-bottom: 12;
+      spacing: 12;
+      orientation: vertical;
+    }
+  }
+}
+
+template $CassetteCacheIndicator : Adw.Bin {
+  Revealer indicator_revealer {
+    halign: center;
+    valign: center;
+    transition-type: crossfade;
+
+    MenuButton jobs_button {
+      styles [
+        "flat"
+      ]
+
+      tooltip-text: _("Show all cache jobs");
+      popover: jobs_popover;
+
+      DrawingArea jobs_icon {
+        width-request: 16;
+        height-request: 16;
+        halign: center;
+        valign: center;
+      }
+    }
+  }
+}

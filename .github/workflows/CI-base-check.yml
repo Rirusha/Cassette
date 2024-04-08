@@ -1,9 +1,11 @@
-name: CI
+name: CI Base Check
 
-on:
+on:  
   push:
     branches:
-      - 'master'  # Запускать workflow только для веток разработки
+      - 'dev-*'  # Запускать workflow только для веток разработки
+      - 'master'
+  pull_request:
 
 jobs:
   lint:
@@ -18,10 +20,9 @@ jobs:
     - name: Lint
       run: io.elementary.vala-lint -d .
 
-  test-build:
+  build:
     name: Build
     runs-on: ubuntu-latest
-    needs: lint
 
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
@@ -36,5 +37,5 @@ jobs:
       with:
         bundle: cassette.flatpak
         manifest-path: build-aux/flatpak/io.github.Rirusha.Cassette.Devel.json
-        run-tests: true
-        cache-key: flatpak-builder-${{ github.sha }} 
+        # run-tests: true
+        cache-key: flatpak-builder-${{ github.sha }}

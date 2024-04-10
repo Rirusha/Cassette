@@ -50,10 +50,6 @@ namespace Cassette {
          */
         NEED_AUTH,
         /**
-         * Для работы функционала требуется активная подписка Я.Плюс
-         */
-        NEED_PLUS,
-        /**
          * Для работы функционала требуется активная подписка Букмейт
          */
         NEED_BOOKMATE
@@ -78,10 +74,6 @@ namespace Cassette {
 
             case BlockReason.NEED_AUTH:
                 widget.tooltip_text = _("Need authorization");
-                break;
-
-            case BlockReason.NEED_PLUS:
-                widget.tooltip_text = _("Need Plus subscription");
                 break;
 
             case BlockReason.NEED_BOOKMATE:

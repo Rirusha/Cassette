@@ -41,6 +41,8 @@ public class Cassette.MainWindow : ApplicationWindow {
     unowned Adw.ViewStack main_stack;
     [GtkChild]
     unowned Adw.ToolbarView switcher_toolbar;
+    [GtkChild]
+    unowned Adw.ViewSwitcherBar switcher_bar;
 
     int reconnect_timer = Cassette.Client.TIMEOUT;
 

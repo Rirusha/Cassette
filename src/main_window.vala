@@ -91,6 +91,12 @@ public class Cassette.MainWindow : ApplicationWindow {
     construct {
         info_banner.button_clicked.connect (try_reconnect);
 
+        var gs = new Gtk.GestureClick ();
+        gs.end.connect (() => {
+            sidebar.close ();
+        });
+        switcher_bar.add_controller (gs);
+
         var show_disliked_tracks_action = new SimpleAction ("show-disliked-tracks", null);
         show_disliked_tracks_action.activate.connect (() => {
             current_view.add_view (new DislikedTracksView ());

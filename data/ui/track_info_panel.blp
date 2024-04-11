@@ -6,7 +6,10 @@ template $CassetteTrackInfoPanel : Adw.Bin {
     spacing: 12;
     orientation: horizontal;
 
-    Stack cover_stack {}
+    Stack cover_stack {
+      transition-type: crossfade;
+      transition-duration: 75;
+    }
 
     CenterBox title_and_marks_box {
       shrink-center-last: false;

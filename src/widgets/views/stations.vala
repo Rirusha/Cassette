@@ -26,6 +26,8 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.FlowBox dashboard_flow_box;
         [GtkChild]
+        unowned Gtk.Stack stack;
+        [GtkChild]
         unowned Gtk.FlowBox genre_flow_box;
         [GtkChild]
         unowned Gtk.FlowBox mood_flow_box;
@@ -35,6 +37,10 @@ namespace Cassette {
         unowned Gtk.FlowBox epoch_flow_box;
         [GtkChild]
         unowned Gtk.FlowBox other_flow_box;
+        [GtkChild]
+        unowned Gtk.SearchEntry search_entry;
+        [GtkChild]
+        unowned Gtk.FlowBox search_flow_box;
 
         public override bool can_refresh {
             get {
@@ -42,16 +48,86 @@ namespace Cassette {
             }
         }
 
-        async void set_values_async (
-            YaMAPI.Rotor.Dashboard dashboard,
-            Gee.ArrayList<YaMAPI.Rotor.Station> stations_list
-        ) {
-            clear_flow_box (dashboard_flow_box);
+        YaMAPI.Rotor.Dashboard? dashboard = null;
+        Gee.ArrayList<YaMAPI.Rotor.Station>? stations_list = null;
+
+        construct {
+            search_entry.search_changed.connect (update_boxes_by_search_async);
+
+            search_flow_box.set_filter_func ((item) => {
+                var action_card = (ActionCardStation) item.child;
+
+                if (search_entry.text.down () in action_card.station_info.name.down ()) {
+                    return true;
+                }
+
+                return false;
+            });
+        }
+
+        async void update_boxes_by_search_async () {
+            search_flow_box.invalidate_filter ();
+
+            if (search_entry.text == "" && stack.visible_child_name != "default") {
+                stack.visible_child_name = "default";
+
+                clear_all_boxes ();
+
+                foreach (var station in stations_list) {
+                    Gtk.FlowBox target_flow_box;
+
+                    switch (station.station.id.type_) {
+                        case "micro-genre":
+                        case "genre":
+                            target_flow_box = genre_flow_box;
+                            break;
+                        case "mood":
+                            target_flow_box = mood_flow_box;
+                            break;
+                        case "activity":
+                            target_flow_box = activity_flow_box;
+                            break;
+                        case "epoch":
+                            target_flow_box = epoch_flow_box;
+                            break;
+                        default:
+                            target_flow_box = other_flow_box;
+                            break;
+                    }
+
+                    var action_card = new ActionCardStation.shrinked (station.station);
+
+                    target_flow_box.append (action_card);
+
+                    Idle.add (update_boxes_by_search_async.callback);
+                    yield;
+                }
+
+            } else if (stack.visible_child_name != "search") {
+                stack.visible_child_name = "search";
+
+                clear_all_boxes ();
+
+                foreach (var station in stations_list) {
+                    search_flow_box.append (new ActionCardStation.shrinked (station.station));
+
+                    Idle.add (update_boxes_by_search_async.callback);
+                    yield;
+                }
+            }
+        }
+
+        void clear_all_boxes () {
             clear_flow_box (genre_flow_box);
             clear_flow_box (mood_flow_box);
             clear_flow_box (activity_flow_box);
             clear_flow_box (epoch_flow_box);
             clear_flow_box (other_flow_box);
+            clear_flow_box (search_flow_box);
+        }
+
+        async void set_values_async () {
+            clear_flow_box (dashboard_flow_box);
 
             foreach (var station in dashboard.stations) {
                 dashboard_flow_box.append (new ActionCardStation (station.station));
@@ -60,44 +136,14 @@ namespace Cassette {
                 yield;
             }
 
-            foreach (var station in stations_list) {
-                Gtk.FlowBox target_flow_box;
-
-                switch (station.station.id.type_) {
-                    case "micro-genre":
-                    case "genre":
-                        target_flow_box = genre_flow_box;
-                        break;
-                    case "mood":
-                        target_flow_box = mood_flow_box;
-                        break;
-                    case "activity":
-                        target_flow_box = activity_flow_box;
-                        break;
-                    case "epoch":
-                        target_flow_box = epoch_flow_box;
-                        break;
-                    default:
-                        target_flow_box = other_flow_box;
-                        break;
-                }
-
-                var action_card = new ActionCardStation (station.station);
-
-                application.main_window.bind_property ("is-shrinked", action_card, "is-shrinked", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
-
-                target_flow_box.append (action_card);
-
-                Idle.add (set_values_async.callback);
-                yield;
-            }
+            yield update_boxes_by_search_async ();
 
             show_ready ();
         }
 
         public async override int try_load_from_web () {
-            YaMAPI.Rotor.Dashboard? dashboard = null;
-            Gee.ArrayList<YaMAPI.Rotor.Station>? stations_list = null;
+            dashboard = null;
+            stations_list = null;
 
             threader.add (() => {
                 dashboard = yam_talker.client.rotor_stations_dashboard ();
@@ -109,7 +155,7 @@ namespace Cassette {
             yield;
 
             if (dashboard != null && stations_list != null) {
-                set_values_async.begin (dashboard, stations_list);
+                yield set_values_async ();
 
                 return -1;
             }

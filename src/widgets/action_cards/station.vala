@@ -73,6 +73,15 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         );
     }
 
+    public ActionCardStation.shrinked (
+        Client.YaMAPI.Rotor.StationInfo station_info
+    ) {
+        Object (
+            station_info: station_info,
+            is_shrinked: true
+        );
+    }
+
     construct {
         hexpand = false;
         vexpand = false;

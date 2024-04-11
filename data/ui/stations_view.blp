@@ -24,7 +24,7 @@ template $CassetteStationsView : $CassetteBaseView {
 
         FlowBox dashboard_flow_box {
           homogeneous: true;
-          max-children-per-line: 2;
+          max-children-per-line: 4;
           min-children-per-line: 1;
           selection-mode: none;
           column-spacing: 8;
@@ -43,89 +43,124 @@ template $CassetteStationsView : $CassetteBaseView {
         orientation: vertical;
         spacing: 8;
 
-        Label {
-          styles [
-            "title-1"
-          ]
-
-          label: _("Genre stations");
+        Adw.Clamp {
+          maximum-size: 500;
           margin-top: 4;
+          margin-bottom: 4;
+
+          SearchEntry search_entry {
+            hexpand: true;
+            placeholder-text: _("Searching for station…");
+          }
         }
 
-        FlowBox genre_flow_box {
-          homogeneous: true;
-          max-children-per-line: 4;
-          min-children-per-line: 1;
-          selection-mode: none;
-          column-spacing: 8;
-        }
+        Stack stack {
+          StackPage {
+            name: "search";
 
-        Label {
-          styles [
-            "title-1"
-          ]
+            child: FlowBox search_flow_box {
+              homogeneous: true;
+              max-children-per-line: 4;
+              min-children-per-line: 1;
+              selection-mode: none;
+              column-spacing: 8;
+              valign: start;
+            };
+          }
 
-          label: _("Mood stations");
-          margin-top: 4;
-        }
+          StackPage {
+            name: "default";
 
-        FlowBox mood_flow_box {
-          homogeneous: true;
-          max-children-per-line: 4;
-          min-children-per-line: 1;
-          selection-mode: none;
-          column-spacing: 8;
-        }
+            child: Box {
+              orientation: vertical;
+              spacing: 8;
 
-        Label {
-          styles [
-            "title-1"
-          ]
+              Label {
+                styles [
+                  "title-1"
+                ]
 
-          label: _("Activity stations");
-          margin-top: 4;
-        }
+                label: _("By genre…");
+                margin-top: 4;
+              }
 
-        FlowBox activity_flow_box {
-          homogeneous: true;
-          max-children-per-line: 4;
-          min-children-per-line: 1;
-          selection-mode: none;
-          column-spacing: 8;
-        }
+              FlowBox genre_flow_box {
+                homogeneous: true;
+                max-children-per-line: 4;
+                min-children-per-line: 1;
+                selection-mode: none;
+                column-spacing: 8;
+              }
 
-        Label {
-          styles [
-            "title-1"
-          ]
+              Label {
+                styles [
+                  "title-1"
+                ]
 
-          label: _("Epoch stations");
-          margin-top: 4;
-        }
+                label: _("By mood…");
+                margin-top: 4;
+              }
 
-        FlowBox epoch_flow_box {
-          homogeneous: true;
-          max-children-per-line: 4;
-          min-children-per-line: 1;
-          selection-mode: none;
-          column-spacing: 8;
-        }
+              FlowBox mood_flow_box {
+                homogeneous: true;
+                max-children-per-line: 4;
+                min-children-per-line: 1;
+                selection-mode: none;
+                column-spacing: 8;
+              }
 
-        Label {
-          styles [
-            "title-1"
-          ]
+              Label {
+                styles [
+                  "title-1"
+                ]
 
-          label: _("Other stations");
-          margin-top: 4;
-        }
+                label: _("By activity…");
+                margin-top: 4;
+              }
 
-        FlowBox other_flow_box {
-          homogeneous: true;
-          max-children-per-line: 4;
-          min-children-per-line: 1;
-          selection-mode: none;
-          column-spacing: 8;
+              FlowBox activity_flow_box {
+                homogeneous: true;
+                max-children-per-line: 4;
+                min-children-per-line: 1;
+                selection-mode: none;
+                column-spacing: 8;
+              }
+
+              Label {
+                styles [
+                  "title-1"
+                ]
+
+                label: _("By epoch…");
+                margin-top: 4;
+              }
+
+              FlowBox epoch_flow_box {
+                homogeneous: true;
+                max-children-per-line: 4;
+                min-children-per-line: 1;
+                selection-mode: none;
+                column-spacing: 8;
+              }
+
+              Label {
+                styles [
+                  "title-1"
+                ]
+
+                label: _("Other…");
+                margin-top: 4;
+              }
+
+              FlowBox other_flow_box {
+                homogeneous: true;
+                max-children-per-line: 4;
+                min-children-per-line: 1;
+                selection-mode: none;
+                column-spacing: 8;
+              }
+            };
+          }
         }
       }
     };

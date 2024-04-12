@@ -61,6 +61,11 @@ jobs:
           upload-bundles: true
           run-tests: true
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
+          upload-pages-includes: |
+            default.css
+            index.html
+            repo
+
 
   deploy:
     name: Deploy
@@ -70,6 +75,7 @@ jobs:
     permissions:
       pages: write
       id-token: write
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

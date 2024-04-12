@@ -101,7 +101,7 @@ flatpak remote-delete cassette-nightly
 ## Сборка из исходного кода
 
 #### Зависимости:
-* ```gtk4```, version >= 4.15
+* ```gtk4```, version >= 4.14
 * ```libadwaita-1```, version >= 1.5
 * ```libsoup-3.0```
 * ```gdk-pixbuf-2.0```

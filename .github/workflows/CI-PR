@@ -1,6 +1,8 @@
 name: CI Pull Request
 
-on: [ pull_request ]
+on:
+  pull_request:
+    types: [ opened, synchronize ]
 
 permissions:
   contents: read

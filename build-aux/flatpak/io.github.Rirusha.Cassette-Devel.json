@@ -1,7 +1,7 @@
 {
     "id" : "io.github.Rirusha.Cassette-Devel",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "46",
     "sdk" : "org.gnome.Sdk",
     "command" : "cassette",
     "finish-args" : [

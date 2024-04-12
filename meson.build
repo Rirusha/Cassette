@@ -9,7 +9,7 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-gtk = dependency('gtk4', version: '>= 4.13')
+gtk = dependency('gtk4', version: '>= 4.15')
 libadwaita = dependency('libadwaita-1', version: '>= 1.5')
 threads = dependency('threads')
 libsoup = dependency('libsoup-3.0')

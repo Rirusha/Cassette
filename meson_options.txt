@@ -5,6 +5,7 @@ option(
     'default',
     'development',
   ],
+
   value: 'default',
   description: 'The build profile for Clock. One of "default" or "development".'
 )

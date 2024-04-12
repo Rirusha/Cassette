@@ -169,10 +169,10 @@ flatpak install org.gnome.Platform//46
 ```
 
 #### Для сборки
-`org.gnome.Sdk//master` \
-`org.freedesktop.Sdk.Extension.vala-nightly//23.08beta`
+`org.gnome.Sdk//46` \
+`org.freedesktop.Sdk.Extension.vala//23.08`
 ```
-flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala-nightly//23.08beta
+flatpak install org.gnome.Sdk//46 org.freedesktop.Sdk.Extension.vala//23.08
 ```
 
 

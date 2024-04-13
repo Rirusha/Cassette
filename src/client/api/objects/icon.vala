@@ -279,7 +279,7 @@ public class Cassette.Client.YaMAPI.Icon : YaMObject {
             case "editorial:station-17":
                 return "cassette-wave-era-lullaby-symbolic";
             default:
-                Logger.warning ("Unknown icon with url \"https://%s\" for station id \"%s\"".printf (
+                Logger.devel ("Unknown icon with url \"https://%s\" for station id \"%s\"".printf (
                     image_url.replace ("%%", "orig"),
                     station_id
                 ));

@@ -30,7 +30,7 @@ jobs:
 
     strategy:
       matrix:
-        arch: [x86_64]
+        arch: [aarch64, x86_64]
       fail-fast: false
       max-parallel: 1
 
@@ -61,7 +61,7 @@ jobs:
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: true
           run-tests: true
-          upload-pages-artifact: true
+          upload-pages-artifact: ${{ matrix.arch == 'x86_64' }}
           upload-pages-includes: |
             default.css
             index.html

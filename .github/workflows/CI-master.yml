@@ -61,12 +61,11 @@ jobs:
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: true
           run-tests: true
-          upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
+          upload-pages-artifact: true
           upload-pages-includes: |
             default.css
             index.html
             repo
-
 
   deploy:
     name: Deploy

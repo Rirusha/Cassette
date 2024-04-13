@@ -88,7 +88,7 @@ namespace Cassette {
                 line_small_label.add_css_class ("dim-label");
 
                 gesture_click = new Gtk.GestureClick ();
-                gesture_click.pressed.connect ((n_press, x, y) => {
+                gesture_click.released.connect ((n_press, x, y) => {
                     player.seek (time_ms);
                 });
                 line_small.add_controller (gesture_click);

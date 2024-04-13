@@ -147,8 +147,11 @@ public class MprisPlayer : Object {
         player.current_track_start_loading.connect (send_can_properties);
         player.current_track_finish_loading.connect (() => {
             send_can_properties ();
-            send_property_change ("PlaybackStatus", playback_status);
             send_property_change ("Metadata", _get_metadata ());
+        });
+
+        player.notify["state"].connect (() => {
+            send_property_change ("PlaybackStatus", playback_status);
         });
 
         player.notify["can-go-prev"].connect (() => {

@@ -20,6 +20,8 @@
 public class Cassette.HeaderedScrolledWindow : Adw.Bin {
 
     [GtkChild]
+    unowned Gtk.Revealer header_revealer;
+    [GtkChild]
     unowned Adw.Bin header_bin;
     [GtkChild]
     unowned Gtk.ScrolledWindow real_scrolled_window;
@@ -42,7 +44,9 @@ public class Cassette.HeaderedScrolledWindow : Adw.Bin {
         }
     }
 
-    public bool on_top { get; private set; }
+    public bool on_top { get; private set; default = true; }
+
+    public bool reveal_header { get; set; default = true; }
 
     construct {
         real_scrolled_window.vadjustment.value_changed.connect (() => {
@@ -57,5 +61,7 @@ public class Cassette.HeaderedScrolledWindow : Adw.Bin {
                 }
             }
         });
+
+        bind_property ("reveal-header", header_revealer, "reveal-child", BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL);
     }
 }

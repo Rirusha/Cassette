@@ -5,16 +5,25 @@ template $CassetteHeaderedScrolledWindow : Adw.Bin {
   Box {
     orientation: vertical;
 
-    Adw.Bin header_bin {
-      styles [
-        "light-background"
-      ]
-    }
+    Revealer header_revealer {
+      transition-type: slide_down;
+      transition-duration: 150;
 
-    Gtk.Separator {
-      styles [
-        "border-separator"
-      ]
+      Box {
+        orientation: vertical;
+
+        Adw.Bin header_bin {
+          styles [
+            "light-background"
+          ]
+        }
+
+        Gtk.Separator {
+          styles [
+            "border-separator"
+          ]
+        }
+      }
     }
 
     ScrolledWindow real_scrolled_window {

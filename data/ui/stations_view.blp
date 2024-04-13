@@ -2,7 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteStationsView : $CassetteBaseView {
-  $CassetteHeaderedScrolledWindow {
+
+  $CassetteHeaderedScrolledWindow scrolled_window {
     header-widget: Adw.Clamp {
       maximum-size: 1720;
       margin-start: 12;
@@ -55,18 +56,7 @@ template $CassetteStationsView : $CassetteBaseView {
         }
 
         Stack stack {
-          StackPage {
-            name: "search";
-
-            child: FlowBox search_flow_box {
-              homogeneous: true;
-              max-children-per-line: 4;
-              min-children-per-line: 1;
-              selection-mode: none;
-              column-spacing: 8;
-              valign: start;
-            };
-          }
+          vhomogeneous: false;
 
           StackPage {
             name: "default";
@@ -159,6 +149,19 @@ template $CassetteStationsView : $CassetteBaseView {
                 selection-mode: none;
                 column-spacing: 8;
               }
+            };
+          }
+
+          StackPage {
+            name: "search";
+
+            child: FlowBox search_flow_box {
+              homogeneous: true;
+              max-children-per-line: 4;
+              min-children-per-line: 1;
+              selection-mode: none;
+              column-spacing: 8;
+              valign: start;
             };
           }
         }

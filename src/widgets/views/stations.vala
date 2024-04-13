@@ -18,153 +18,144 @@
 
 using Cassette.Client;
 
-namespace Cassette {
+[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/stations_view.ui")]
+public class Cassette.StationsView : BaseView {
 
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/stations_view.ui")]
-    public class StationsView : BaseView {
+    [GtkChild]
+    unowned HeaderedScrolledWindow scrolled_window;
+    [GtkChild]
+    unowned Gtk.FlowBox dashboard_flow_box;
+    [GtkChild]
+    unowned Gtk.Stack stack;
+    [GtkChild]
+    unowned Gtk.FlowBox genre_flow_box;
+    [GtkChild]
+    unowned Gtk.FlowBox mood_flow_box;
+    [GtkChild]
+    unowned Gtk.FlowBox activity_flow_box;
+    [GtkChild]
+    unowned Gtk.FlowBox epoch_flow_box;
+    [GtkChild]
+    unowned Gtk.FlowBox other_flow_box;
+    [GtkChild]
+    unowned Gtk.SearchEntry search_entry;
+    [GtkChild]
+    unowned Gtk.FlowBox search_flow_box;
 
-        [GtkChild]
-        unowned Gtk.FlowBox dashboard_flow_box;
-        [GtkChild]
-        unowned Gtk.Stack stack;
-        [GtkChild]
-        unowned Gtk.FlowBox genre_flow_box;
-        [GtkChild]
-        unowned Gtk.FlowBox mood_flow_box;
-        [GtkChild]
-        unowned Gtk.FlowBox activity_flow_box;
-        [GtkChild]
-        unowned Gtk.FlowBox epoch_flow_box;
-        [GtkChild]
-        unowned Gtk.FlowBox other_flow_box;
-        [GtkChild]
-        unowned Gtk.SearchEntry search_entry;
-        [GtkChild]
-        unowned Gtk.FlowBox search_flow_box;
+    public override bool can_refresh {
+        get {
+            return true;
+        }
+    }
 
-        public override bool can_refresh {
-            get {
+    YaMAPI.Rotor.Dashboard? dashboard = null;
+    Gee.ArrayList<YaMAPI.Rotor.Station>? stations_list = null;
+
+    construct {
+        search_entry.search_changed.connect (search_entry_search_changed_async);
+
+        search_flow_box.set_filter_func ((item) => {
+            var action_card = (ActionCardStation) item.child;
+
+            if (search_entry.text.down () in action_card.station_info.name.down ()) {
                 return true;
             }
+
+            return false;
+        });
+
+        search_entry.changed.connect (() => {
+            scrolled_window.reveal_header = search_entry.text == "";
+        });
+    }
+
+    async void search_entry_search_changed_async () {
+        search_flow_box.invalidate_filter ();
+
+        stack.visible_child_name = search_entry.text == "" ? "default" : "search";
+    }
+
+    void clear_all_boxes () {
+        clear_flow_box (genre_flow_box);
+        clear_flow_box (mood_flow_box);
+        clear_flow_box (activity_flow_box);
+        clear_flow_box (epoch_flow_box);
+        clear_flow_box (other_flow_box);
+        clear_flow_box (search_flow_box);
+        clear_flow_box (dashboard_flow_box);
+    }
+
+    async void set_values_async () {
+        clear_all_boxes ();
+
+        foreach (var station in dashboard.stations) {
+            dashboard_flow_box.append (new ActionCardStation (station.station));
+
+            Idle.add (set_values_async.callback);
+            yield;
         }
 
-        YaMAPI.Rotor.Dashboard? dashboard = null;
-        Gee.ArrayList<YaMAPI.Rotor.Station>? stations_list = null;
+        foreach (var station in stations_list) {
+            Gtk.FlowBox target_flow_box;
 
-        construct {
-            search_entry.search_changed.connect (update_boxes_by_search_async);
-
-            search_flow_box.set_filter_func ((item) => {
-                var action_card = (ActionCardStation) item.child;
-
-                if (search_entry.text.down () in action_card.station_info.name.down ()) {
-                    return true;
-                }
-
-                return false;
-            });
-        }
-
-        async void update_boxes_by_search_async () {
-            search_flow_box.invalidate_filter ();
-
-            if (search_entry.text == "" && stack.visible_child_name != "default") {
-                stack.visible_child_name = "default";
-
-                clear_all_boxes ();
-
-                foreach (var station in stations_list) {
-                    Gtk.FlowBox target_flow_box;
-
-                    switch (station.station.id.type_) {
-                        case "micro-genre":
-                        case "genre":
-                            target_flow_box = genre_flow_box;
-                            break;
-                        case "mood":
-                            target_flow_box = mood_flow_box;
-                            break;
-                        case "activity":
-                            target_flow_box = activity_flow_box;
-                            break;
-                        case "epoch":
-                            target_flow_box = epoch_flow_box;
-                            break;
-                        default:
-                            target_flow_box = other_flow_box;
-                            break;
-                    }
-
-                    var action_card = new ActionCardStation.shrinked (station.station);
-
-                    target_flow_box.append (action_card);
-
-                    Idle.add (update_boxes_by_search_async.callback);
-                    yield;
-                }
-
-            } else if (stack.visible_child_name != "search") {
-                stack.visible_child_name = "search";
-
-                clear_all_boxes ();
-
-                foreach (var station in stations_list) {
-                    search_flow_box.append (new ActionCardStation.shrinked (station.station));
-
-                    Idle.add (update_boxes_by_search_async.callback);
-                    yield;
-                }
-            }
-        }
-
-        void clear_all_boxes () {
-            clear_flow_box (genre_flow_box);
-            clear_flow_box (mood_flow_box);
-            clear_flow_box (activity_flow_box);
-            clear_flow_box (epoch_flow_box);
-            clear_flow_box (other_flow_box);
-            clear_flow_box (search_flow_box);
-        }
-
-        async void set_values_async () {
-            clear_flow_box (dashboard_flow_box);
-
-            foreach (var station in dashboard.stations) {
-                dashboard_flow_box.append (new ActionCardStation (station.station));
-
-                Idle.add (set_values_async.callback);
-                yield;
+            switch (station.station.id.type_) {
+                case "micro-genre":
+                case "genre":
+                    target_flow_box = genre_flow_box;
+                    break;
+                case "mood":
+                    target_flow_box = mood_flow_box;
+                    break;
+                case "activity":
+                    target_flow_box = activity_flow_box;
+                    break;
+                case "epoch":
+                    target_flow_box = epoch_flow_box;
+                    break;
+                default:
+                    target_flow_box = other_flow_box;
+                    break;
             }
 
-            yield update_boxes_by_search_async ();
+            var action_card = new ActionCardStation.shrinked (station.station);
 
-            show_ready ();
-        }
+            target_flow_box.append (action_card);
 
-        public async override int try_load_from_web () {
-            dashboard = null;
-            stations_list = null;
-
-            threader.add (() => {
-                dashboard = yam_talker.client.rotor_stations_dashboard ();
-                stations_list = yam_talker.client.rotor_stations_list ();
-
-                Idle.add (try_load_from_web.callback);
-            });
-
+            Idle.add (set_values_async.callback);
             yield;
 
-            if (dashboard != null && stations_list != null) {
-                yield set_values_async ();
+            search_flow_box.append (new ActionCardStation.shrinked (station.station));
 
-                return -1;
-            }
-
-            return 0;
+            Idle.add (set_values_async.callback);
+            yield;
         }
 
-        public async override bool try_load_from_cache () {
-            return false;
+        show_ready ();
+    }
+
+    public async override int try_load_from_web () {
+        dashboard = null;
+        stations_list = null;
+
+        threader.add (() => {
+            dashboard = yam_talker.client.rotor_stations_dashboard ();
+            stations_list = yam_talker.client.rotor_stations_list ();
+
+            Idle.add (try_load_from_web.callback);
+        });
+
+        yield;
+
+        if (dashboard != null && stations_list != null) {
+            yield set_values_async ();
+
+            return -1;
         }
+
+        return 0;
+    }
+
+    public async override bool try_load_from_cache () {
+        return false;
     }
 }

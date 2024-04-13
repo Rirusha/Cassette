@@ -38,6 +38,7 @@ namespace Cassette.Client {
         const string BODY_OUT_PREFIX = "*BODY* >";
         const string OUT_PREFIX = "*OUT*  >";
         const string DEBUG_PREFIX = "*DEBUG*  ";
+        const string DEVEL_PREFIX = "*DEVEL*  ";
         const string INFO_PREFIX = "*INFO*   ";
         const string WARNING_PREFIX = "*WARNING*";
         const string ERROR_PREFIX = "*ERROR*  ";
@@ -104,7 +105,11 @@ namespace Cassette.Client {
 
                 string final_message;
                 if (message != null) {
-                    final_message = log_level_str + " : " + current_time + " : " + message + "\n";
+                    final_message = "%s : %s : %s\n".printf (
+                        log_level_str,
+                        current_time,
+                        message
+                    );
                 } else {
                     final_message = "\n";
                 }
@@ -123,7 +128,10 @@ namespace Cassette.Client {
 
             try {
                 FileOutputStream os = log_file.append_to (FileCreateFlags.NONE);
-                string final_message = direction + " : " + data + "\n";
+                string final_message = "%s : %s\n".printf (
+                    direction,
+                    data
+                );
                 os.write (final_message.data);
             } catch (Error e) {
                 GLib.warning ("Can't write to log file. Error message: %s".printf (e.message));
@@ -153,12 +161,27 @@ namespace Cassette.Client {
         public static void debug (string message) {
             if (log_level <= LogLevel.DEBUG) {
                 write_to_file (DEBUG_PREFIX, message);
+                GLib.debug (message);
+            }
+        }
+
+        public static void devel (string message) {
+            if (log_level <= LogLevel.DEVEL) {
+                write_to_file (DEVEL_PREFIX, message);
+
+                string current_time = new DateTime.now ().format ("%T.%f");
+                stdout.printf ("%s : %s : %s\n".printf (
+                    DEVEL_PREFIX,
+                    current_time,
+                    message
+                ));
             }
         }
 
         public static void info (string message) {
             if (log_level <= LogLevel.USER) {
                 write_to_file (INFO_PREFIX, message);
+                GLib.info (message);
             }
         }
 

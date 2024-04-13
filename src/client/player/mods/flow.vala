@@ -87,8 +87,11 @@ public class Cassette.Client.Player.Flow : Mode {
         yield;
     }
 
-    async YaMAPI.Rotor.StationTracks? load_next_station_tracks () {
-        YaMAPI.Rotor.StationTracks? station_tracks = null;
+    /**
+     * @return  next track object
+     */
+    async YaMAPI.Track? get_next_track_async () {
+        YaMAPI.Track? next_track = null;
 
         threader.add (() => {
             ArrayList<string> track_ids = new ArrayList<string> ();
@@ -97,20 +100,15 @@ public class Cassette.Client.Player.Flow : Mode {
                 track_ids.add (track_info.id);
             }
 
-            station_tracks = yam_talker.get_session_tracks (radio_session_id, track_ids);
+            last_station_tracks = yam_talker.get_session_tracks (radio_session_id, track_ids);
+            next_track = last_station_tracks.sequence[0].track;
 
-            queue.add (station_tracks.sequence[0].track);
-
-            Idle.add (load_next_station_tracks.callback);
+            Idle.add (get_next_track_async.callback);
         });
 
         yield;
-
-        if (station_tracks != null) {
-            last_station_tracks = station_tracks;
-        }
-
-        return station_tracks;
+        
+        return next_track;
     }
 
     public override int get_prev_index () {
@@ -149,10 +147,17 @@ public class Cassette.Client.Player.Flow : Mode {
         if (new_index != -1) {
             current_index = new_index;
         }
+    }
 
-        if (new_index == queue.size - 1) {
-            load_next_station_tracks.begin ();
-        }
+    public void prepare_next_track () {
+        get_next_track_async.begin ((obj, res) => {
+            YaMAPI.Track? next_track = get_next_track_async.end (res);
+
+            if (next_track != null) {
+                queue.add (next_track);
+                player.next_track_loaded (next_track);
+            }
+        });
     }
 
     public override YaMAPI.Play form_play_obj () {

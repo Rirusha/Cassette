@@ -83,7 +83,7 @@ public class Cassette.Client.Player.Player : Object {
                 }
 
                 if (settings.get_boolean ("can-cache")) {
-                    prepare_next_track ();
+                    cache_next_track ();
                 }
             }
         }
@@ -449,13 +449,17 @@ public class Cassette.Client.Player.Player : Object {
         current_track_finish_loading (current_track);
 
         if (settings.get_boolean ("can-cache")) {
-            prepare_next_track ();
+            cache_next_track ();
+        }
+
+        if (mode.get_next_index (false) == -1) {
+            (mode as Flow)?.prepare_next_track ();
         }
 
         update_can_go ();
     }
 
-    void prepare_next_track () {
+    void cache_next_track () {
         var next_track = mode.get_next_track_info (false);
 
         if (next_track != mode.get_current_track_info () && next_track != null) {
@@ -477,7 +481,7 @@ public class Cassette.Client.Player.Player : Object {
         }
 
         if (settings.get_boolean ("can-cache")) {
-            prepare_next_track ();
+            cache_next_track ();
         }
     }
 
@@ -491,7 +495,7 @@ public class Cassette.Client.Player.Player : Object {
         sh_mode.add_many_end (track_list);
 
         if (settings.get_boolean ("can-cache")) {
-            prepare_next_track ();
+            cache_next_track ();
         }
     }
 
@@ -505,7 +509,7 @@ public class Cassette.Client.Player.Player : Object {
         sh_mode.remove_track_by_pos (position);
 
         if (sh_mode.queue.size != 0 && settings.get_boolean ("can-cache")) {
-            prepare_next_track ();
+            cache_next_track ();
         }
     }
 
@@ -519,7 +523,7 @@ public class Cassette.Client.Player.Player : Object {
         sh_mode.remove_track (track_info);
 
         if (sh_mode.queue.size != 0 && settings.get_boolean ("can-cache")) {
-            prepare_next_track ();
+            cache_next_track ();
         }
     }
 

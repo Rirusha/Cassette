@@ -95,7 +95,7 @@ public class Cassette.MainWindow : ApplicationWindow {
 
         var gs = new Gtk.GestureClick ();
         gs.end.connect (() => {
-            sidebar.close ();
+            activate_action ("close-sidebar", null);
         });
         switcher_bar.add_controller (gs);
 
@@ -108,6 +108,10 @@ public class Cassette.MainWindow : ApplicationWindow {
         var parse_uri_action = new SimpleAction ("parse-url", null);
         parse_uri_action.activate.connect (parse_url_from_clipboard);
         add_action (parse_uri_action);
+
+        var close_sidebar_action = new SimpleAction ("close-sidebar", null);
+        close_sidebar_action.activate.connect (sidebar.close);
+        add_action (close_sidebar_action);
 
         var open_account_in_browser_action = new SimpleAction ("open-in-browser", null);
         open_account_in_browser_action.activate.connect (() => {

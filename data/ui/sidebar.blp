@@ -19,6 +19,12 @@ template $CassetteSideBar : Adw.Bin {
       Adw.HeaderBar headerbar {
         show-title: false;
 
+        [start]
+        Button close_button {
+          icon-name: "adwaita-go-next-symbolic";
+          action-name: "win.close-sidebar";
+        }
+
         [end]
         $CassettePrimaryMenuButton menu_button { }
 

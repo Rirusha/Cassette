@@ -115,6 +115,12 @@ public class Cassette.Client.Player.Player : Object {
         string? context_description
     );
 
+    public bool can_go_force_prev {
+        get {
+            return mode.get_prev_index () != -1 && !current_track_loading;
+        }
+    }
+
     public double volume { get; set; }
 
     public bool mute { get; set; }

@@ -41,8 +41,6 @@ public class Cassette.MainWindow : ApplicationWindow {
     unowned Adw.ViewStack main_stack;
     [GtkChild]
     unowned Adw.ToolbarView switcher_toolbar;
-    [GtkChild]
-    unowned Adw.ViewSwitcherBar switcher_bar;
 
     int reconnect_timer = Cassette.Client.TIMEOUT;
 
@@ -93,11 +91,9 @@ public class Cassette.MainWindow : ApplicationWindow {
     construct {
         info_banner.button_clicked.connect (try_reconnect);
 
-        var gs = new Gtk.GestureClick ();
-        gs.end.connect (() => {
+        main_stack.notify["visible-child-name"].connect (() => {
             activate_action ("close-sidebar", null);
         });
-        switcher_bar.add_controller (gs);
 
         var show_disliked_tracks_action = new SimpleAction ("show-disliked-tracks", null);
         show_disliked_tracks_action.activate.connect (() => {

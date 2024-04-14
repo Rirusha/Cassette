@@ -107,7 +107,7 @@ public class Cassette.Client.Player.Flow : Mode {
         });
 
         yield;
-        
+
         return next_track;
     }
 

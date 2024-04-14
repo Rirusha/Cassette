@@ -62,10 +62,6 @@ jobs:
           upload-bundles: true
           run-tests: true
           upload-pages-artifact: ${{ matrix.arch == 'x86_64' }}
-          upload-pages-includes: |
-            default.css
-            index.html
-            repo
 
   deploy:
     name: Deploy

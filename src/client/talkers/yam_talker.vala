@@ -107,10 +107,15 @@ namespace Cassette.Client {
         }
 
         /**
-         * Update data that may have been changed by other clients
+         * Update data that may have been changed by other clients.
+         * Just internet check for now.
          */
         public async void update_all () {
-
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    client.get_content_of ("https://ya.ru/");
+                });
+            });
         }
 
         public Playlist? get_playlist_info (string? uid = null, string kind = "3") throws BadStatusCodeError {

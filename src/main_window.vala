@@ -216,6 +216,8 @@ public class Cassette.MainWindow : ApplicationWindow {
         info_banner.sensitive = false;
         info_banner.button_label = reconnect_timer.to_string ();
 
+        yam_talker.update_all.begin ();
+
         Timeout.add_seconds (1, () => {
             if (reconnect_timer > 1) {
                 reconnect_timer--;

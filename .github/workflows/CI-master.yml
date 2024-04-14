@@ -53,7 +53,7 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Build 
-        uses: andyholmes/flatter@46906c4aa098d9ec1e7a9dfe340ee7326f27e613
+        uses: andyholmes/flatter@450d2e1fef7f78fb4378589314ddf462ea44056b
         with:
           files: |
             build-aux/flatpak/io.github.Rirusha.Cassette-Devel.json

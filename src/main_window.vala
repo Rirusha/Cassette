@@ -116,7 +116,6 @@ public class Cassette.MainWindow : ApplicationWindow {
             } catch (SpawnError e) {
                 Logger.warning (_("Error while opening uri: %s").printf (e.message));
             }
-
         });
         add_action (open_account_in_browser_action);
 

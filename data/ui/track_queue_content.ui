@@ -10,7 +10,7 @@
         <child>
           <object class="CassettePlayButtonTrack" id="play_button">
             <styles>
-              <class name="is-flat"/>
+              <class name="flat"/>
             </styles>
             <property name="size">52</property>
             <property name="valign">center</property>
@@ -82,7 +82,7 @@
             <child>
               <object class="CassetteLikeButton" id="like_button">
                 <styles>
-                  <class name="is-flat"/>
+                  <class name="flat"/>
                 </styles>
                 <property name="object-content-type">track</property>
               </object>
@@ -100,7 +100,7 @@
             <child>
               <object class="CassetteTrackOptionsButton" id="track_options_button">
                 <styles>
-                  <class name="is-flat"/>
+                  <class name="flat"/>
                 </styles>
                 <property name="size">42</property>
                 <property name="halign">center</property>

@@ -150,7 +150,7 @@
                             <child>
                               <object class="CassetteLikeButton" id="like_button">
                                 <style>
-                                  <class name="is-flat"/>
+                                  <class name="flat"/>
                                 </style>
                                 <property name="object-content-type">playlist</property>
                               </object>
@@ -168,8 +168,8 @@
                             <child>
                               <object class="CassettePlaylistOptionsButton" id="playlist_options_button">
                                 <style>
-                                  <class name="is-flat"/>
-                                  <class name="is-circular"/>
+                                  <class name="flat"/>
+                                  <class name="circular"/>
                                 </style>
                                 <property name="valign">center</property>
                                 <property name="halign">start</property>

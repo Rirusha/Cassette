@@ -42,15 +42,9 @@ public abstract class Cassette.CustomButton : Adw.Bin {
         }
     }
 
-    public new string[] css_classes {
-        owned get {
-            return real_button.css_classes;
-        }
-        set {
-            real_button.css_classes = value;
-        }
-    }
-
+    /**
+     * Easy way to set both width and height of the button.
+     */
     public int size {
         construct {
             width_request = value;
@@ -58,7 +52,7 @@ public abstract class Cassette.CustomButton : Adw.Bin {
         }
     }
 
-    public new void add_css_class (string class_name) {
-        real_button.add_css_class (class_name);
+    construct {
+        bind_property ("css-classes", real_button, "css-classes", BindingFlags.DEFAULT);
     }
 }

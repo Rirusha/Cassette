@@ -16,11 +16,9 @@
  */
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_carousel.ui")]
 public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
-    [GtkChild]
-    unowned Adw.Carousel carousel;
+    Adw.Carousel carousel = new Adw.Carousel ();
 
     public bool interactive { get; set; default = false; }
 
@@ -74,6 +72,8 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     }
 
     construct {
+        child = carousel;
+
         bind_property ("interactive", carousel, "interactive", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         bind_property ("spacing", carousel, "spacing", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
 

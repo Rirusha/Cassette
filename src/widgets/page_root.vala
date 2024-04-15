@@ -87,16 +87,6 @@ public class Cassette.PageRoot : AbstractLoadablePage {
 
     public void backward () {
         nav_view.pop ();
-
-        //  BaseView view = additional_views.pop_tail ();
-        //  if (additional_views.length != 0) {
-        //      main_stack.set_visible_child (additional_views.peek_tail ());
-        //  } else {
-        //      main_stack.set_visible_child (main_view);
-        //      can_back = false;
-        //  }
-
-        //  main_stack.remove (view);
     }
 
     void load_view (BaseView view) {
@@ -121,16 +111,8 @@ public class Cassette.PageRoot : AbstractLoadablePage {
             can_back = true;
         }
 
-        //  else if (nav_view.find_page (string tag)) {
-        //      additional_views.push_tail (view);
-        //      can_back = true;
-        //  }
-
         stop_loading ();
         view.show_ready.disconnect (show_view);
-
-        //  main_stack.set_visible_child (view);
-        //  spinner_loading.stop ();
 
         can_refresh = view.can_refresh;
     }

@@ -81,7 +81,7 @@ public class Cassette.PageRoot : AbstractLoadablePage {
         var error_view = current_widget as CantShowView;
         if (error_view != null) {
             nav_view.pop ();
-            refresh_view (error_view.base_view);
+            add_view (error_view.base_view);
         }
     }
 
@@ -104,33 +104,36 @@ public class Cassette.PageRoot : AbstractLoadablePage {
     }
 
     void show_view (BaseView view) {
+        stop_loading ();
+        view.show_ready.disconnect (show_view);
+
+        can_refresh = view.can_refresh;
+
         if (view == main_view) {
             main_view_is_loaded = true;
 
         } else {
             can_back = true;
         }
-
-        stop_loading ();
-        view.show_ready.disconnect (show_view);
-
-        can_refresh = view.can_refresh;
     }
 
     public void show_error (BaseView base_view, int code) {
+        stop_loading ();
+        base_view.show_ready.disconnect (show_view);
+        nav_view.pop ();
+
+        nav_view.push (new Adw.NavigationPage (
+            new CantShowView (base_view, code),
+            "title"
+        ));
+
+        can_refresh = true;
+
         if (base_view == main_view) {
             can_back = false;
 
         } else {
             can_back = true;
         }
-
-        stop_loading ();
-        base_view.show_ready.disconnect (show_view);
-
-        var error_view = new CantShowView (base_view, code);
-
-        nav_view.pop ();
-        nav_view.push (new Adw.NavigationPage (error_view, "title"));
     }
 }

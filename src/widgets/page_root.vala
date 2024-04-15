@@ -39,17 +39,21 @@ public class Cassette.PageRoot : AbstractLoadablePage {
     construct {
         nav_view.add (new Adw.NavigationPage.with_tag (main_view, "title", "main-view"));
         main_view.root_view = this;
-        load_view (main_view);
+
+        nav_view.notify["visible-page"].connect (() => {
+            if (current_widget == main_view) {
+                can_back = false;
+            }
+        });
 
         notify["is-loading"].connect (() => {
             can_back = !is_loading && can_back;
         });
 
         map.connect (() => {
-            //  if (main_view_is_loaded) {
-            //      nav_view.push_by_tag ("main-view");
-            //      can_back = false;
-            //  }
+            if (!main_view_is_loaded) {
+                load_view (main_view);
+            }
 
             window.current_view = this;
         });
@@ -83,10 +87,6 @@ public class Cassette.PageRoot : AbstractLoadablePage {
 
     public void backward () {
         nav_view.pop ();
-
-        if (current_widget == main_view) {
-            can_back = false;
-        }
 
         //  BaseView view = additional_views.pop_tail ();
         //  if (additional_views.length != 0) {

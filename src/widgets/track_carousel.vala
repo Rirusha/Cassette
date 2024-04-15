@@ -61,7 +61,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     }
 
     bool centerized = false;
-    bool enabled = false;
+    //  bool enabled = false;
 
     public TrackCarousel (
         Gtk.Orientation orientation,
@@ -107,21 +107,21 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             }
         });
 
-        map.connect (() => {
-            enabled = true;
+        //  map.connect (() => {
+        //      enabled = true;
 
-            on_player_mode_inited ();
-        });
+        //      on_player_mode_inited ();
+        //  });
 
-        unmap.connect (() => {
-            enabled = false;
-        });
+        //  unmap.connect (() => {
+        //      enabled = false;
+        //  });
     }
 
     void on_carousel_page_changed (uint index) {
-        if (!enabled) {
-            return;
-        }
+        //  if (!enabled) {
+        //      return;
+        //  }
 
         if (index == 1) {
             centerized = true;

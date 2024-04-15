@@ -115,7 +115,11 @@ namespace Cassette.Client {
                 net_run_wout_code (() => {
                     client.get_content_of ("https://ya.ru/");
                 });
+
+                Idle.add (update_all.callback);
             });
+
+            yield;
         }
 
         public Playlist? get_playlist_info (string? uid = null, string kind = "3") throws BadStatusCodeError {

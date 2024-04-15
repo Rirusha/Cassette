@@ -123,9 +123,5 @@ namespace Cassette {
         protected override Gtk.Widget[] get_dialog_menu_items () {
             assert_not_reached ();
         }
-
-        protected override string get_menu_title () {
-            return _("Volume settings menu");
-        }
     }
 }

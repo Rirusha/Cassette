@@ -82,8 +82,6 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         popover_menu.child = build_popover_menu_box ();
     }
 
-    protected abstract string get_menu_title ();
-
     protected abstract Gtk.Widget[] get_dialog_menu_items ();
 
     Gtk.Box build_dialog_menu_box () {
@@ -108,7 +106,7 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         popover_menu.popdown ();
 
         dialog = new MenuDialog ();
-        dialog.set_menu_widget (get_menu_title (), build_dialog_menu_box ());
+        dialog.set_menu_widget (build_dialog_menu_box ());
 
         dialog.closed.connect (() => {
             dialog = null;

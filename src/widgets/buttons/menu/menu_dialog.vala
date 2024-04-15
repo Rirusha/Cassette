@@ -21,11 +21,8 @@ public class Cassette.MenuDialog : Adw.Dialog {
 
     [GtkChild]
     unowned Adw.Clamp clamp;
-    [GtkChild]
-    unowned Adw.WindowTitle window_title;
 
-    public void set_menu_widget (string title, Gtk.Widget widget) {
+    public void set_menu_widget (Gtk.Widget widget) {
         clamp.child = widget;
-        window_title.title = title;
     }
 }

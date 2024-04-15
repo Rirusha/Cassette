@@ -43,10 +43,6 @@ public class Cassette.TrackOptionsButton : CustomMenuButton {
         };
     }
 
-    protected override string get_menu_title () {
-        return _("Track options menu");
-    }
-
     //  protected override void set_menu () {
     //      queue_menu.append (_("Play next"), "track.add-next");
     //      queue_menu.append (_("Add to queue"), "track.add-end");

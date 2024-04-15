@@ -135,9 +135,9 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
         carousel.page_changed.disconnect (on_carousel_page_changed);
 
         if (index == 2) {
-            if (info_panel_next.track_info != player.mode.get_current_track_info ()) {
-                player.next ();
-            }
+            //  if (info_panel_next.track_info != player.mode.get_current_track_info ()) {
+            //      player.next ();
+            //  }
 
             carousel.remove (info_panel_prev);
             carousel.append (new TrackInfoPanel (orientation, has_cover_placeholder));
@@ -147,9 +147,9 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             carousel.scroll_to (info_panel_center, false);
 
         } else if (index == 0) {
-            if (info_panel_prev.track_info != player.mode.get_current_track_info ()) {
-                player.prev (true);
-            }
+            //  if (info_panel_prev.track_info != player.mode.get_current_track_info ()) {
+            //      player.prev (true);
+            //  }
 
             carousel.remove (info_panel_next);
             carousel.prepend (new TrackInfoPanel (orientation, has_cover_placeholder));

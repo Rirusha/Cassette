@@ -209,9 +209,7 @@ public class MprisPlayer : Object {
             metadata.insert ("mpris:length", current_track.duration_ms);
             metadata.insert ("mpris:artUrl", cover_uri);
             metadata.insert ("xesam:title", current_track.title);
-            metadata.insert ("xesam:album",
-                current_track.albums.size != 0 ? current_track.albums[0].title : "Unknown Album"
-            );
+            metadata.insert ("xesam:album", current_track.get_album_title ());
             metadata.insert ("xesam:albumArtist", artists);
             metadata.insert ("xesam:artist", artists);
         }

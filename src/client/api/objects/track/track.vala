@@ -117,6 +117,18 @@ namespace Cassette.Client.YaMAPI {
             return string.joinv (", ", artists_names);
         }
 
+        public string get_album_title () {
+            string album_title;
+
+            if (!albums.is_empty) {
+                album_title = albums[0].title;
+            } else {
+                album_title = meta_data?.album;
+            }
+
+            return album_title != null ? album_title : "Unknown Album";
+        }
+
         public string form_debug_info () {
             /**
                 Сформировать debug информацию о треке            

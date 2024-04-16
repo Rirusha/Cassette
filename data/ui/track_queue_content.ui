@@ -3,15 +3,15 @@
   <template class="CassetteTrackQueue" parent="GtkFrame">
     <child>
       <object class="GtkBox">
-        <property name="margin-top">3</property>
-        <property name="margin-bottom">3</property>
-        <property name="margin-start">3</property>
-        <property name="margin-end">3</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
         <child>
           <object class="CassettePlayButtonTrack" id="play_button">
-            <styles>
+            <style>
               <class name="flat"/>
-            </styles>
+            </style>
             <property name="size">52</property>
             <property name="valign">center</property>
             <property name="halign">center</property>
@@ -81,9 +81,9 @@
             </child>
             <child>
               <object class="CassetteLikeButton" id="like_button">
-                <styles>
+                <style>
                   <class name="flat"/>
-                </styles>
+                </style>
                 <property name="object-content-type">track</property>
               </object>
             </child>
@@ -99,9 +99,9 @@
             </child>
             <child>
               <object class="CassetteTrackOptionsButton" id="track_options_button">
-                <styles>
+                <style>
                   <class name="flat"/>
-                </styles>
+                </style>
                 <property name="size">42</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>

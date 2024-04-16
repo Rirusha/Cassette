@@ -30,6 +30,8 @@
                     <property name="orientation">horizontal</property>
                     <child>
                       <object class="CassetteCoverImage" id="cover_image">
+                        <property name="cover-size">big</property>
+                        <property name="size">200</property>
                         <property name="hexpand">false</property>
                         <property name="vexpand">false</property>
                         <property name="valign">start</property>

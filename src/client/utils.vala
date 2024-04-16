@@ -45,12 +45,11 @@ namespace Cassette.Client {
     }
 
     /**
-     * Перечисление со значениями предопределенных размеров для виджетов
+     * Enum with cover sizes
      */
-    public enum ArtSize {
-        TRACK = 75,
-        BIG_ART = 400,
-        BIG_SMALL = 200
+    public enum CoverSize {
+        SMALL = 75,
+        BIG = 400
     }
 
     /**

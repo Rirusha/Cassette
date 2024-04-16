@@ -198,7 +198,7 @@ public class MprisPlayer : Object {
                 artists[i] = current_track.artists[i].name;
             }
 
-            var cover_items = current_track.get_cover_items_by_size (ArtSize.BIG_ART);
+            var cover_items = current_track.get_cover_items_by_size ((int) CoverSize.BIG);
 
             string cover_uri = "";
             if (cover_items.size != 0) {

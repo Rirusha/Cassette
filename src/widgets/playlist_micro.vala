@@ -175,7 +175,7 @@ namespace Cassette {
 
             play_button.init_content (short_playlist_info.oid);
 
-            cover_image.init_content (short_playlist_info, ArtSize.BIG_ART);
+            cover_image.init_content (short_playlist_info);
             cover_image.load_image.begin ();
     }
 

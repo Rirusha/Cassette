@@ -48,7 +48,7 @@ namespace Cassette {
                 add_button_clicked_async.begin ();
             });
 
-            cover_image.init_content (playlist_info, ArtSize.BIG_SMALL);
+            cover_image.init_content (playlist_info);
             cover_image.load_image.begin ();
         }
 

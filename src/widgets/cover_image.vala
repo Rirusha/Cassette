@@ -19,60 +19,63 @@
 using Cassette.Client;
 using Gee;
 
+[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cover_image.ui")]
+public sealed class Cassette.CoverImage : Gtk.Frame {
 
-namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cover_image.ui")]
-    public class CoverImage : Adw.Bin {
-        [GtkChild]
-        unowned Gtk.Frame cover_frame;
-        [GtkChild]
-        unowned Gtk.Image real_image;
+    [GtkChild]
+    unowned Gtk.Image real_image;
 
-        HasCover yam_object;
-        int cover_size;
+    public CoverSize cover_size { get; set; default = CoverSize.BIG; }
 
-        public CoverImage () {
-            Object ();
+    public HasCover yam_object { get; private set; }
+
+    /**
+     * Easy way to set both width and height of the image.
+     */
+    public int size {
+        set {
+            width_request = value;
+            height_request = value;
         }
+    }
 
-        public void init_content (HasCover yam_object, ArtSize size) {
-            this.yam_object = yam_object;
+    construct {
+        notify["cover-size"].connect (() => {
+            switch (cover_size) {
+                case CoverSize.SMALL:
+                    real_image.icon_size = Gtk.IconSize.NORMAL;
+                    add_css_class ("small-border-radius");
+                    break;
 
-            int widget_size;
-            if (size == ArtSize.BIG_ART) {
-                cover_frame.add_css_class ("big-art");
-                real_image.icon_size = Gtk.IconSize.LARGE;
-                widget_size = 200;
+                case CoverSize.BIG:
+                    real_image.icon_size = Gtk.IconSize.LARGE;
+                    remove_css_class ("small-border-radius");
+                    break;
 
-            } else if (size == ArtSize.TRACK || size == ArtSize.BIG_SMALL) {
-                cover_frame.add_css_class ("small-art");
-                widget_size = 60;
-
-            } else {
-                assert_not_reached ();
+                default:
+                    assert_not_reached ();
             }
+        });
+    }
 
-            width_request = widget_size;
-            real_image.width_request = widget_size;
-            height_request = widget_size;
-            real_image.height_request = widget_size;
-            cover_size = (int) size;
-        }
+    public void init_content (HasCover yam_object) {
+        this.yam_object = yam_object;
+    }
 
-        public void clear () {
-            real_image.icon_name = "adwaita-audio-x-generic-symbolic";
-        }
+    public void clear () {
+        real_image.icon_name = "adwaita-audio-x-generic-symbolic";
+        yam_object = null;
+    }
 
-        public async void load_image () {
-            Gdk.Pixbuf? pixbuf_buffer = null;
+    public async void load_image () {
+        assert (yam_object != null);
 
-            pixbuf_buffer = yield Cachier.get_image (yam_object, cover_size);
+        Gdk.Pixbuf? pixbuf_buffer = null;
 
-            if (pixbuf_buffer != null) {
-                real_image.set_from_paintable (Gdk.Texture.for_pixbuf (pixbuf_buffer));
-            } else {
-                cover_frame.add_css_class ("gray-background");
-            }
+        pixbuf_buffer = yield Cachier.get_image (yam_object, (int) cover_size);
+
+        if (pixbuf_buffer != null) {
+            real_image.set_from_paintable (Gdk.Texture.for_pixbuf (pixbuf_buffer));
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Cassette {
         }
 
         construct {
-            play_button = info_panel.play_button;
+            play_button = info_panel.get_play_button_track ();
 
             if (show_dislike_button) {
                 assert (!track_info.is_ugc);

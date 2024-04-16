@@ -207,7 +207,7 @@ namespace Cassette.Client.Cachier {
                     yield storager.audio_cache_location (track_info.id).move_to_temp_async ();
                 }
 
-                var cover_items = track_info.get_cover_items_by_size (ArtSize.TRACK);
+                var cover_items = track_info.get_cover_items_by_size (CoverSize.SMALL);
 
                 if (cover_items.size != 0) {
                     string image_uri = cover_items[0];
@@ -227,7 +227,7 @@ namespace Cassette.Client.Cachier {
             threader.add_image (() => {
                 var has_cover_yam_obj = yam_object as HasCover;
                 if (has_cover_yam_obj != null) {
-                    foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (ArtSize.BIG_ART)) {
+                    foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (CoverSize.BIG)) {
                         var image_location = storager.image_cache_location (cover_uri);
                         if (image_location.file != null) {
                             image_location.move_to_perm ();
@@ -287,7 +287,7 @@ namespace Cassette.Client.Cachier {
 
             var has_cover_yam_obj = yam_object as HasCover;
             if (has_cover_yam_obj != null) {
-                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (ArtSize.BIG_ART)) {
+                foreach (var cover_uri in has_cover_yam_obj.get_cover_items_by_size (CoverSize.BIG)) {
                     storager.db.remove_content_ref (cover_uri, object_id);
 
                     if (storager.db.get_content_ref_count (cover_uri) == 0) {
@@ -308,7 +308,7 @@ namespace Cassette.Client.Cachier {
             var track_list = yam_object.get_filtered_track_list (true, true);
 
             foreach (var track_info in track_list) {
-                var cover_items = track_info.get_cover_items_by_size (ArtSize.TRACK);
+                var cover_items = track_info.get_cover_items_by_size (CoverSize.SMALL);
 
                 if (cover_items.size != 0) {
                     string image_cover_uri = cover_items[0];
@@ -421,7 +421,7 @@ namespace Cassette.Client.Cachier {
                     track_info.form_debug_info ()
                 ));
 
-                var cover_items = track_info.get_cover_items_by_size (ArtSize.TRACK);
+                var cover_items = track_info.get_cover_items_by_size (CoverSize.SMALL);
 
                 if (cover_items.size != 0) {
                     string image_cover_uri = cover_items[0];

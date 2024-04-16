@@ -19,8 +19,14 @@ using Cassette.Client;
 
 
 [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_info_panel.ui")]
-public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
+public class Cassette.TrackInfoPanel : Adw.Bin {
 
+    [GtkChild]
+    unowned CoverImage cover_image;
+    [GtkChild]
+    unowned Gtk.Label position_label;
+    [GtkChild]
+    unowned PlayButtonTrack play_button;
     [GtkChild]
     unowned Gtk.Box main_box;
     [GtkChild]
@@ -37,16 +43,6 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
     unowned Gtk.Label track_authors_label;
     [GtkChild]
     unowned InfoMarks info_marks;
-
-    public string track_id {
-        owned get {
-            if (_track_info == null) {
-                return "";
-            } else {
-                return _track_info.id;
-            }
-        }
-    }
 
     YaMAPI.Track? _track_info = null;
     public YaMAPI.Track? track_info {
@@ -65,10 +61,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                 info_marks.is_child = false;
                 info_marks.replaced_by = null;
 
-                if (has_cover) {
-                    cover_image.clear ();
-                    cover_image.visible = has_cover_placeholder;
-                }
+                cover_image.clear ();
 
             } else {
                 track_name_label.label = _track_info.title;
@@ -79,52 +72,24 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                 info_marks.is_child = track_info.is_suitable_for_children;
                 info_marks.replaced_by = track_info.substituted;
 
-                if (has_cover) {
-                    cover_image.init_content (
-                        track_info,
-                        orientation == Gtk.Orientation.HORIZONTAL? ArtSize.TRACK : ArtSize.BIG_ART
-                    );
-                    cover_image.load_image.begin ();
-                    cover_image.visible = true;
-                }
+                cover_image.init_content (track_info);
+                cover_image.load_image.begin ();
+                cover_image.visible = true;
 
-                if (has_play_button) {
-                    play_button.init_content (_track_info.id);
-                }
+                play_button.init_content (_track_info.id);
             }
         }
     }
 
-    public PlayButtonTrack play_button {
-        get {
-            assert (cover_stack.get_child_by_name ("play-button") != null);
-
-            return (PlayButtonTrack) cover_stack.get_child_by_name ("play-button");
-        }
-    }
-
-    CoverImage cover_image {
-        get {
-            assert (cover_stack.get_child_by_name ("cover") != null);
-
-            return (CoverImage) cover_stack.get_child_by_name ("cover");
-        }
-    }
-
-    public bool has_cover { get; construct; default = true; }
-    public bool has_play_button { get; construct; default = false; }
-    public bool has_cover_placeholder { get; construct set; default = true; }
+    public int position { get; set; }
 
     Gtk.Orientation _orientation = Gtk.Orientation.HORIZONTAL;
     public Gtk.Orientation orientation {
         get {
             return _orientation;
         }
-        set {
+        construct {
             _orientation = value;
-
-            title_box.ref ();
-            info_marks.ref ();
 
             title_and_marks_box.start_widget = null;
             title_and_marks_box.center_widget = null;
@@ -161,19 +126,14 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                     title_and_marks_box.end_widget = info_marks;
                     break;
             }
-
-            title_box.unref ();
-            info_marks.unref ();
         }
     }
 
     public TrackInfoPanel (
-        Gtk.Orientation orientation,
-        bool has_cover_placeholder
+        Gtk.Orientation orientation
     ) {
         Object (
-            orientation: orientation,
-            has_cover_placeholder: has_cover_placeholder
+            orientation: orientation
         );
     }
 
@@ -186,24 +146,27 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
             track_authors_label.visible = track_authors_label.label != "";
         });
 
-        if (has_cover) {
-            cover_stack.add_named (new CoverImage (), "cover");
-        }
+        notify["position"].connect (() => {
+            position_label.label = position.to_string ();
+        });
 
-        if (has_play_button) {
-            cover_stack.add_named (new PlayButtonTrack () {css_classes = {"flat"}}, "play-button");
-        }
+        cover_image.cover_size = orientation == Gtk.Orientation.HORIZONTAL? CoverSize.SMALL : CoverSize.BIG;
+        cover_image.size = orientation == Gtk.Orientation.HORIZONTAL? 60 : 200;
+    }
+
+    public PlayButtonTrack get_play_button_track () {
+        return play_button;
     }
 
     public void show_play_button () {
-        assert (cover_stack.get_child_by_name ("play-button") != null);
-
         cover_stack.visible_child_name = "play-button";
     }
 
     public void show_cover () {
-        assert (cover_stack.get_child_by_name ("cover") != null);
+        cover_stack.visible_child_name = "cover";
+    }
 
+    public void show_position () {
         cover_stack.visible_child_name = "cover";
     }
 }

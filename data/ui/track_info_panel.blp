@@ -9,6 +9,33 @@ template $CassetteTrackInfoPanel : Adw.Bin {
     Stack cover_stack {
       transition-type: crossfade;
       transition-duration: 75;
+
+      StackPage {
+        name: "cover";
+        child: $CassetteCoverImage cover_image { };
+      }
+
+      StackPage {
+        name: "position";
+        child: Gtk.Label position_label {
+          styles [
+            "title-5",
+            "dim-label"
+          ]
+
+          halign: center;
+          valign: center;
+        };
+      }
+
+      StackPage {
+        name: "play-button";
+        child: $CassettePlayButtonTrack play_button {
+          styles [
+            "flat"
+          ]
+        };
+      }
     }
 
     CenterBox title_and_marks_box {

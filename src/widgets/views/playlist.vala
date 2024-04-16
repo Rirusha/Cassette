@@ -333,7 +333,7 @@ namespace Cassette {
             if (object_info != null) {
                 set_values ();
 
-                cover_image.init_content ((HasCover) this.object_info, ArtSize.BIG_ART);
+                cover_image.init_content ((HasCover) this.object_info);
                 cover_image.load_image.begin ();
                 return -1;
             }
@@ -361,7 +361,7 @@ namespace Cassette {
             if (object_info != null) {
                 set_values ();
 
-                cover_image.init_content ((HasCover) this.object_info, ArtSize.BIG_ART);
+                cover_image.init_content ((HasCover) this.object_info);
                 cover_image.load_image.begin ();
                 return true;
             }

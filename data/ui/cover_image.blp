@@ -1,13 +1,16 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteCoverImage : Adw.Bin {
-  Frame cover_frame {
-    valign: center;
-    halign: center;
+template $CassetteCoverImage : Frame {
+  styles [
+    "card"
+  ]
 
-    Image real_image {
-      icon-name: "adwaita-audio-x-generic-symbolic";
-    }
+  halign: center;
+  valign: center;
+
+  Image real_image {
+    icon-name: "adwaita-audio-x-generic-symbolic";
+    icon-size: large;
   }
 }

@@ -9,7 +9,10 @@
         <property name="margin-end">6</property>
         <property name="spacing">3</property>
         <child>
-          <object class="CassetteCoverImage" id="cover_image"/>
+          <object class="CassetteCoverImage" id="cover_image">
+            <property name="cover-size">big</property>
+            <property name="size">60</property>
+          </object>
         </child>
         <child>
           <object class="GtkSeparator">

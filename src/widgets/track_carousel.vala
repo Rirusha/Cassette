@@ -16,7 +16,7 @@
  */
 
 
-public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
+public class Cassette.TrackCarousel : Adw.Bin {
 
     Adw.Carousel carousel = new Adw.Carousel ();
 
@@ -24,21 +24,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
     public int spacing { get; set; default = 0; }
 
-    Gtk.Orientation _orientation = Gtk.Orientation.HORIZONTAL;
-    public Gtk.Orientation orientation {
-        get {
-            return _orientation;
-        }
-        set {
-            _orientation = value;
-
-            info_panel_prev.orientation = _orientation;
-            info_panel_center.orientation = _orientation;
-            info_panel_next.orientation = _orientation;
-        }
-    }
-
-    public bool has_cover_placeholder { get; construct set; default = false; }
+    public Gtk.Orientation orientation { get; construct; default = Gtk.Orientation.HORIZONTAL; }
 
     TrackInfoPanel info_panel_prev {
         get {
@@ -62,11 +48,9 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     bool enabled = false;
 
     public TrackCarousel (
-        Gtk.Orientation orientation,
-        bool has_cover_placeholder
+        Gtk.Orientation orientation
     ) {
         Object (
-            has_cover_placeholder: has_cover_placeholder,
             orientation: orientation
         );
     }
@@ -77,9 +61,9 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
         bind_property ("interactive", carousel, "interactive", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         bind_property ("spacing", carousel, "spacing", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
 
-        carousel.append (new TrackInfoPanel (orientation, has_cover_placeholder));
-        carousel.append (new TrackInfoPanel (orientation, has_cover_placeholder));
-        carousel.append (new TrackInfoPanel (orientation, has_cover_placeholder));
+        carousel.append (new TrackInfoPanel (orientation));
+        carousel.append (new TrackInfoPanel (orientation));
+        carousel.append (new TrackInfoPanel (orientation));
 
         player.mode_inited.connect (on_player_mode_inited);
 
@@ -140,7 +124,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             //  }
 
             carousel.remove (info_panel_prev);
-            carousel.append (new TrackInfoPanel (orientation, has_cover_placeholder));
+            carousel.append (new TrackInfoPanel (orientation));
 
             info_panel_next.track_info = player.mode.get_next_track_info (false);
 
@@ -152,7 +136,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             //  }
 
             carousel.remove (info_panel_next);
-            carousel.prepend (new TrackInfoPanel (orientation, has_cover_placeholder));
+            carousel.prepend (new TrackInfoPanel (orientation));
 
             info_panel_prev.track_info = player.mode.get_prev_track_info ();
 

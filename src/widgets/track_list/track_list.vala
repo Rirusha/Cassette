@@ -45,15 +45,6 @@ namespace Cassette {
             can_focus = false;
             vexpand = false;
 
-            var motion_controller = new Gtk.EventControllerMotion ();
-            motion_controller.enter.connect (() => {
-                add_css_class ("gray-background");
-            });
-            motion_controller.leave.connect (() => {
-                remove_css_class ("gray-background");
-            });
-            add_controller (motion_controller);
-
             child = new TrackPlaceholder ();
         }
 

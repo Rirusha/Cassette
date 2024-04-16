@@ -1,13 +1,6 @@
 /* @define-color accent_color #ffdb4d;
 @define-color accent_bg_color #ffdb4d; */
 
-.big-art {
-    border-style: none;
-    border-radius: 12px;
-    box-shadow: 0px 0px 5px -2px rgb(0, 0, 0);
-    background-color: alpha(@window_fg_color, 0.08);
-}
-
 .border-separator {
     color: @sidebar_border_color;
 }
@@ -24,19 +17,15 @@ listview row {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.gray-background {
-    background-color: alpha(@window_fg_color, 0.08);
+flowbox flowboxchild {
+    padding: 0px;
 }
 
-.small-art {
-    border-style: none;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px -2px rgb(0, 0, 0);
-    background-color: alpha(@window_fg_color, 0.08);
+.small-border-radius {
+    border-radius: 6px;
 }
 
 frame {
-    border-radius: 4px;
     border-style: none;
 }
 
@@ -44,16 +33,27 @@ frame {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.track-row-playing {
-    background-color: alpha(@accent_bg_color, 0.5);
-}
-
-.disliked {
-    color: #ff1f2a;
-}
-
 .plus-background {
     border-radius: 16px;
     color: white;
     background-image: linear-gradient(90deg,#ff5c4d,#eb469f 30%,#8341ef 75%,#3f68f9);
+}
+
+.track-row {
+    transition: 200ms;
+}
+
+.track-row:hover {
+    background-color: alpha(@window_fg_color, 0.08);
+}
+
+.track-row-playing {
+    background-color: alpha(@accent_bg_color, 0.5);
+    /* border-style: solid;
+    border-width: 3px;
+    border-color: alpha(@accent_bg_color, 0.5); */
+}
+
+.track-row-playing:hover {
+    background-color: alpha(@accent_bg_color, 0.58);
 }

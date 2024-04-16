@@ -108,7 +108,7 @@
             <property name="selection-mode">none</property>
             <property name="max-children-per-line">1</property>
             <property name="vexpand">true</property>
-            <property name="row-spacing">3</property>
+            <property name="row-spacing">4</property>
           </object>
         </child>
         <child>

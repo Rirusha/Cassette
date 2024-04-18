@@ -68,11 +68,11 @@ frame {
     box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
                 0   1px 3px 1px rgba(0, 0, 0, .07),
                 0   2px 6px 2px rgba(0, 0, 0, .03);
-    background-color: alpha(currentColor, 0.08);
+    background-color: alpha(@window_fg_color, 0.1);
 }
 
 .track-row:active {
-    background-color: alpha(currentColor, 0.12);
+    background-color: alpha(@window_fg_color, 0.3);
 }
 
 /**
@@ -84,15 +84,15 @@ frame {
                 0   1px 3px 1px rgba(0, 0, 0, .07),
                 0   2px 6px 2px rgba(0, 0, 0, .03);
     color: @accent_fg_color;
-    background-color: alpha(@accent_bg_color, 0.60);
+    background-color: @accent_bg_color;
 }
 
 .track-row-playing:hover {
-    background-color: alpha(@accent_bg_color, 0.68);
+    background-color: alpha(@accent_bg_color, 0.85);
 }
 
 .track-row-playing:active {
-    background-color: alpha(@accent_bg_color, 0.72);
+    background-color: alpha(@accent_bg_color, 0.69);
 }
 
 /**

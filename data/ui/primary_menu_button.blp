@@ -16,9 +16,10 @@ template $CassettePrimaryMenuButton : Adw.Bin {
 
 menu primary_menu {
   section {
-    item (_("Disliked tracks"), "show-disliked-tracks")
-    item (_("Parse URL from clipboard"), "win.parse-url")
+    item (_("Disliked tracks"), "win.show-disliked-tracks")
+    item (_("Parse URL from clipboard"), "app.parse-url")
   }
+
   section {
     item (_("Preferences"), "app.preferences")
     item (_("Keyboard Shortcuts"), "win.show-help-overlay")
@@ -31,6 +32,7 @@ menu avatar_menu {
     item (_("Open in browser"), "win.open-in-browser")
     item (_("Account info"), "win.accoint-info")
   }
+
   section {
     item (_("Log out"), "app.log-out")
   }

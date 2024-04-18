@@ -101,10 +101,6 @@ public class Cassette.MainWindow : ApplicationWindow {
         });
         add_action (show_disliked_tracks_action);
 
-        var parse_uri_action = new SimpleAction ("parse-url", null);
-        parse_uri_action.activate.connect (parse_url_from_clipboard);
-        add_action (parse_uri_action);
-
         var close_sidebar_action = new SimpleAction ("close-sidebar", null);
         close_sidebar_action.activate.connect (sidebar.close);
         add_action (close_sidebar_action);
@@ -238,71 +234,6 @@ public class Cassette.MainWindow : ApplicationWindow {
 
     //      avatar_button.sensitive = true;
     //  }
-
-    void parse_url_from_clipboard () {
-        Gdk.Display? display = Gdk.Display.get_default ();
-        Gdk.Clipboard clipboard = display.get_clipboard ();
-
-        clipboard.read_text_async.begin (null, (obj, res) => {
-            try {
-                string url = clipboard.read_text_async.end (res);
-
-                if (!url.has_prefix ("https://music.yandex.ru/")) {
-                    show_toast (_("Can't parse clipboard content"));
-                    return;
-                }
-
-                string[] parts = url.split ("/");
-
-                // Cut https://music.yandex.ru
-                parts = parts [3:parts.length];
-
-                // users 737063213
-                if (parts[0] == "users") {
-                    string user_id = parts[1];
-
-                    // playlists ~
-                    if (parts[2] == "playlists") {
-                        if (parts.length == 3) {
-                            show_toast (_("Users view not implemented yet"));
-                            return;
-
-                        // playlists 3
-                        } else {
-                            string kind = parts[3];
-
-                            current_view.add_view (new PlaylistView (user_id, kind));
-                        }
-                    }
-
-                // album 4545465
-                } else if (parts[0] == "album") {
-                    // string album_id = parts[1];
-
-                    if (parts.length == 2) {
-                        show_toast (_("Albums view not implemented yet"));
-
-                    // album 87894564 track 54654
-                    } else {
-                        string track_id;
-
-                        if ("?" in parts[3]) {
-                            track_id = parts[3].split ("?")[0];
-                        } else {
-                            track_id = parts[3];
-                        }
-
-                        show_track_by_id.begin (track_id);
-
-                        show_toast (_("Albums view not implemented yet"));
-                    }
-                }
-
-            } catch (Error e) {
-                show_toast (_("Can't parse clipboard content"));
-            }
-        });
-    }
 
     public void show_player_bar () {
         player_bar_toolbar.reveal_bottom_bars = true;

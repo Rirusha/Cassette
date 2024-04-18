@@ -148,7 +148,8 @@ namespace Cassette {
                 { "prev-force", on_prev_force },
                 { "change-shuffle", on_shuffle },
                 { "change-repeat", on_repeat },
-                { "share-current-track", on_share_current_track}
+                { "share-current-track", on_share_current_track},
+                { "parse-url", on_paste_url }
             };
             add_action_entries (action_entries, this);
             set_accels_for_action ("app.quit", { "<primary>q" });
@@ -158,6 +159,7 @@ namespace Cassette {
             set_accels_for_action ("app.change-shuffle", { "<Ctrl>s" });
             set_accels_for_action ("app.change-repeat", { "<Ctrl>r" });
             set_accels_for_action ("app.share-current-track", { "<Ctrl><Shift>c" });
+            set_accels_for_action ("app.parse-url", { "<Ctrl><Shift>v" });
         }
 
         public override void activate () {
@@ -347,6 +349,71 @@ namespace Cassette {
             if (current_track?.is_ugc == false) {
                 track_share (current_track);
             }
+        }
+
+        void on_paste_url () {
+            Gdk.Display? display = Gdk.Display.get_default ();
+            Gdk.Clipboard clipboard = display.get_clipboard ();
+
+            clipboard.read_text_async.begin (null, (obj, res) => {
+                try {
+                    string url = clipboard.read_text_async.end (res);
+
+                    if (!url.has_prefix ("https://music.yandex.ru/")) {
+                        show_message (_("Can't parse clipboard content"));
+                        return;
+                    }
+
+                    string[] parts = url.split ("/");
+
+                    // Cut https://music.yandex.ru
+                    parts = parts [3:parts.length];
+
+                    // users 737063213
+                    if (parts[0] == "users") {
+                        string user_id = parts[1];
+
+                        // playlists ~
+                        if (parts[2] == "playlists") {
+                            if (parts.length == 3) {
+                                show_message (_("Users view not implemented yet"));
+                                return;
+
+                            // playlists 3
+                            } else {
+                                string kind = parts[3];
+
+                                main_window?.current_view.add_view (new PlaylistView (user_id, kind));
+                            }
+                        }
+
+                    // album 4545465
+                    } else if (parts[0] == "album") {
+                        // string album_id = parts[1];
+
+                        if (parts.length == 2) {
+                            show_message (_("Albums view not implemented yet"));
+
+                        // album 87894564 track 54654
+                        } else {
+                            string track_id;
+
+                            if ("?" in parts[3]) {
+                                track_id = parts[3].split ("?")[0];
+                            } else {
+                                track_id = parts[3];
+                            }
+
+                            show_track_by_id.begin (track_id);
+
+                            show_message (_("Albums view not implemented yet"));
+                        }
+                    }
+
+                } catch (Error e) {
+                    show_message (_("Can't parse clipboard content"));
+                }
+            });
         }
     }
 }

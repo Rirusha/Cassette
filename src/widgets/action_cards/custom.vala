@@ -22,33 +22,19 @@
     */
 public class Cassette.ActionCardCustom : Gtk.Frame {
 
-    [GtkChild]
-    unowned Gtk.Button real_button;
-    [GtkChild]
-    unowned Adw.Bin content_bin;
-
-    public Gtk.Widget content {
-        get {
-            return content_bin.child;
-        }
-        set {
-            content_bin.child = value;
-        }
-    }
-
     public signal void clicked ();
 
-    public ActionCardCustom.with_content (
-        Gtk.Widget content
-    ) {
-        Object (
-            content: content
-        );
+    public ActionCardCustom.with_content () {
+        Object ();
     }
 
     construct {
-        real_button.clicked.connect (() => {
-            clicked ();
+        var gs = new Gtk.GestureClick ();
+        gs.released.connect ((n, x, y) => {
+            if (contains (x, y)) {
+                clicked ();
+            }
         });
+        add_controller (gs);
     }
 }

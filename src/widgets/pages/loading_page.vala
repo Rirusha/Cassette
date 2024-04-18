@@ -35,6 +35,7 @@ namespace Cassette {
 
         construct {
             title = _("Loading…");
+            can_pop = false;
 
             if (with_header_bar) {
                 var header_bar = new Adw.HeaderBar () {

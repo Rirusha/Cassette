@@ -14,7 +14,8 @@ template $CassettePlayerBar : Adw.Bin {
 
     Button track_detailed_button {
       styles [
-        "flat"
+        "flat",
+        "button-standart-padding"
       ]
 
       halign: fill;
@@ -87,15 +88,18 @@ template $CassettePlayerBar : Adw.Bin {
             }
           };
 
-          center-widget: $CassettePlayButtonAction play_button {
+          center-widget: Button play_button {
             styles [
-                "flat",
-                "circular"
-              ]
+              "flat",
+              "circular"
+            ]
 
+            action-name: "app.play-pause";
             valign: center;
             margin-start: 4;
             margin-end: 4;
+
+            $CassettePlayMarkGlobal { }
           };
 
           end-widget: Box {

@@ -19,12 +19,8 @@ template $CassetteActionCardStation : $CassetteActionCardCustom {
       }
 
       StackPage {
-        name: "play-button";
-        child: $CassettePlayButtonContext play_button {
-          styles [
-            "flat"
-          ]
-
+        name: "play-mark";
+        child: $CassettePlayMarkContext play_mark_context {
           context-type: "radio";
         };
       }

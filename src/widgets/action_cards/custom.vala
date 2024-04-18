@@ -20,7 +20,7 @@
 /**
     * A class for convenient work with clickable cards.
     */
-public class Cassette.ActionCardCustom : Adw.Bin {
+public class Cassette.ActionCardCustom : Gtk.Frame {
 
     [GtkChild]
     unowned Gtk.Button real_button;

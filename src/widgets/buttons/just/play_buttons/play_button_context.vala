@@ -23,22 +23,34 @@ namespace Cassette {
 
     public class PlayButtonContext : PlayButtonDefault {
 
-        public string? context_type { get; construct; default = "playlist"; }
+        public string context_type { get; construct set; default = "playlist"; }
 
         public PlayButtonContext () {
             Object ();
         }
 
         protected override void post_init () {
-            player.notify["state"].connect (on_player_state_changed);
+            player.played.connect ((track_info) => {
 
-            on_player_state_changed ();
+                if (player.mode.context_id == content_id && player.mode.context_type == context_type) {
+                    set_playing ();
+                }
+            });
+
+            player.paused.connect ((track_info) => {
+                if (player.mode.context_id == content_id && player.mode.context_type == context_type) {
+                    set_paused ();
+                }
+            });
+
+            player.stopped.connect (() => {
+                set_stopped ();
+            });
         }
 
         bool context_playing_now () {
             if (player.mode.context_id == content_id && player.mode.context_type == context_type) {
                 return true;
-
             }
 
             return false;
@@ -51,19 +63,6 @@ namespace Cassette {
             }
 
             return true;
-        }
-
-        void on_player_state_changed () {
-            if (context_playing_now ()) {
-                if (player.state == Player.State.PLAYING) {
-                    set_playing ();
-                    return;
-                }
-                set_paused ();
-                return;
-            } else {
-                set_stopped ();
-            }
         }
     }
 }

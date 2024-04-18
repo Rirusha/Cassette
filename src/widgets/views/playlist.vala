@@ -39,7 +39,9 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Label playlist_status;
         [GtkChild]
-        unowned PlayButtonContext play_button;
+        unowned Gtk.Button play_button;
+        [GtkChild]
+        unowned PlayMarkContext play_mark_context;
         [GtkChild]
         unowned LikeButton like_button;
         [GtkChild]
@@ -156,7 +158,9 @@ namespace Cassette {
                 uncache_playlist (true);
             });
 
-            play_button.clicked_not_playing.connect (start_playing);
+            play_button.clicked.connect (play_mark_context.trigger);
+
+            play_mark_context.triggered_not_playing.connect (start_playing);
 
             if (kind != "3" || (uid != null && uid != yam_talker.me.oid)) {
                 add_page_button.visible = true;
@@ -273,7 +277,7 @@ namespace Cassette {
 
             like_button.init_content (playlist_info.oid);
             save_stack.init_content (playlist_info.oid);
-            play_button.init_content (playlist_info.oid);
+            play_mark_context.init_content (playlist_info.oid);
 
             show_ready ();
         }

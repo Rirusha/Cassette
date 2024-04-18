@@ -138,15 +138,22 @@
                             <property name="vexpand">true</property>
                             <property name="valign">end</property>
                             <child>
-                              <object class="CassettePlayButtonContext" id="play_button">
+                              <object class="GtkButton" id="play_button">
                                 <style>
                                   <class name="suggested-action"/>
                                   <class name="pill"/>
                                 </style>
-                                <property name="context-type">playlist</property>
                                 <property name="vexpand">false</property>
                                 <property name="valign">center</property>
-                                <property name="with-label">true</property>
+                                <child>
+                                  <object class="CassettePlayMarkContext" id="play_mark_context">
+                                    <style>
+                                      <class name="suggested-action"/>
+                                      <class name="pill"/>
+                                    </style>
+                                    <property name="context-type">playlist</property>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                             <child>

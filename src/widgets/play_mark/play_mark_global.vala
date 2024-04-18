@@ -16,19 +16,17 @@
  */
 
 
-using Cassette.Client;
+public sealed class Cassette.PlayMarkGlobal : PlayMark {
 
-
-
-namespace Cassette {
-    public abstract class TrackRowContent : Gtk.Frame {
-
-        public YaMAPI.Track track_info { get; construct; }
-
-        protected abstract PlayMarkTrack play_mark_track { owned get; }
-
-        public void trigger () {
-            play_mark_track.trigger ();
-        }
+    construct {
+        player.played.connect (() => {
+            set_playing ();
+        });
+        player.paused.connect (() => {
+            set_paused ();
+        });
+        player.stopped.connect (() => {
+            set_stopped ();
+        });
     }
 }

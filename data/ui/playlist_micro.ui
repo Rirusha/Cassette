@@ -9,9 +9,9 @@
       <object class="AdwClamp">
         <property name="maximum_size">220</property>
         <child>
-          <object class="GtkOverlay">
+          <!-- <object class="GtkOverlay">
             <property name="vexpand">true</property>
-            <child>
+            <child> -->
               <object class="GtkButton" id="self">
                 <property name="has-frame">false</property>
                 <child>
@@ -72,8 +72,8 @@
                   </object>
                 </child>
               </object>
-            </child>
-            <child type="overlay">
+            <!-- </child> -->
+            <!-- <child type="overlay">
               <object class="GtkBox" id="buttons_box">
                 <property name="visible">false</property>
                 <property name="halign">center</property>
@@ -111,12 +111,6 @@
                                 <property name="show-label">false</property>
                               </object>
                             </child>
-                            <!-- <child>
-                              <object class="GtkLabel" id="likes_count_label">
-                                <property name="label">123 423</property>
-                                <property name="valign">end</property>
-                              </object>
-                            </child> -->
                           </object>
                         </property>
                       </object>
@@ -164,8 +158,8 @@
                   </object>
                 </child>
               </object>
-            </child>
-          </object>
+            </child> -->
+          <!-- </object> -->
         </child>
       </object>
     </child>

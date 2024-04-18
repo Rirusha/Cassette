@@ -26,7 +26,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
     [GtkChild]
     unowned Gtk.Label position_label;
     [GtkChild]
-    unowned PlayButtonTrack play_button;
+    unowned PlayMarkTrack play_mark_track;
     [GtkChild]
     unowned Gtk.Box main_box;
     [GtkChild]
@@ -76,7 +76,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
                 cover_image.load_image.begin ();
                 cover_image.visible = true;
 
-                play_button.init_content (_track_info.id);
+                play_mark_track.init_content (_track_info.id);
             }
         }
     }
@@ -154,12 +154,12 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
         cover_image.size = orientation == Gtk.Orientation.HORIZONTAL? 60 : 200;
     }
 
-    public PlayButtonTrack get_play_button_track () {
-        return play_button;
+    public PlayMarkTrack get_play_mark_track () {
+        return play_mark_track;
     }
 
     public void show_play_button () {
-        cover_stack.visible_child_name = "play-button";
+        cover_stack.visible_child_name = "play-mark";
     }
 
     public void show_cover () {
@@ -167,6 +167,6 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
     }
 
     public void show_position () {
-        cover_stack.visible_child_name = "cover";
+        cover_stack.visible_child_name = "position";
     }
 }

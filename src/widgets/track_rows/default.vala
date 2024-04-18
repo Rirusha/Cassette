@@ -38,7 +38,11 @@ namespace Cassette {
 
         public bool show_dislike_button { get; construct; default = false; }
 
-        protected override PlayButtonTrack play_button { public get; public set; }
+        protected override PlayMarkTrack play_mark_track {
+            owned get {
+                return info_panel.get_play_mark_track ();
+            }
+        }
 
         public TrackDefault (YaMAPI.Track track_info, HasTrackList yam_object) {
             Object (track_info: track_info, yam_object: yam_object);
@@ -50,14 +54,22 @@ namespace Cassette {
         }
 
         construct {
-            play_button = info_panel.get_play_button_track ();
-
             if (show_dislike_button) {
                 assert (!track_info.is_ugc);
                 dislike_button.visible = true;
             }
 
-            play_button.clicked_not_playing.connect (form_queue);
+            play_mark_track.triggered_not_playing.connect (form_queue);
+
+            play_mark_track.notify["is-current-playing"].connect (() => {
+                if (play_mark_track.is_current_playing) {
+                    info_panel.show_play_button ();
+                    add_css_class ("track-row-playing");
+                } else {
+                    info_panel.show_cover ();
+                    remove_css_class ("track-row-playing");
+                }
+            });
 
             setup_options_button ();
             set_values ();
@@ -75,7 +87,7 @@ namespace Cassette {
                     info_panel.show_play_button ();
                 });
                 motion_controller.leave.connect ((mc) => {
-                    if (!play_button.is_current_playing) {
+                    if (!play_mark_track.is_current_playing) {
                         info_panel.show_cover ();
                     }
                 });
@@ -92,7 +104,7 @@ namespace Cassette {
 
             like_button.init_content (track_info.id);
             dislike_button.init_content (track_info.id);
-            play_button.init_content (track_info.id);
+            play_mark_track.init_content (track_info.id);
 
             save_stack.init_content (track_info.id);
         }
@@ -161,16 +173,6 @@ namespace Cassette {
                 Cachier.save_track.begin (track_info);
             });
             actions.add_action (save_action);
-
-            play_button.notify["is-current-playing"].connect (() => {
-                if (play_button.is_current_playing) {
-                    info_panel.show_play_button ();
-                    add_css_class ("track-row-playing");
-                } else {
-                    info_panel.show_cover ();
-                    remove_css_class ("track-row-playing");
-                }
-            });
 
             insert_action_group ("track", actions);
         }

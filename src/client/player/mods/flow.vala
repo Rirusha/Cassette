@@ -34,7 +34,9 @@ public class Cassette.Client.Player.Flow : Mode {
         Object (
             player: player,
             station_id: station_id,
-            queue: queue
+            queue: queue,
+            context_id: station_id,
+            context_type: "radio"
         );
     }
 

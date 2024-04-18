@@ -25,6 +25,10 @@ public class Cassette.ActionCardStation : ActionCardCustom {
     [GtkChild]
     unowned Gtk.Box content_box;
     [GtkChild]
+    unowned Gtk.Stack image_stack;
+    [GtkChild]
+    unowned PlayMarkContext play_mark_context;
+    [GtkChild]
     unowned Gtk.Image content_image;
     [GtkChild]
     unowned Gtk.Label content_label;
@@ -89,12 +93,36 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         content_label.label = station_info.name;
         content_image.icon_name = station_info.icon.get_internal_icon_name (station_info.id.normal);
 
+        var gs = new Gtk.EventControllerMotion ();
+        gs.enter.connect (() => {
+            image_stack.visible_child_name = "play-mark";
+        });
+        gs.leave.connect (() => {
+            if (!play_mark_context.is_current_playing) {
+                image_stack.visible_child_name = "image";
+            }
+        });
+        add_controller (gs);
+
         if (yam_talker.me == null) {
             block_widget (this, BlockReason.NEED_AUTH);
         }
 
-        clicked.connect (() => {
+        play_mark_context.triggered_not_playing.connect (() => {
             player.start_flow (station_info.id.normal);
         });
+
+        play_mark_context.notify["is-current-playing"].connect (() => {
+            if (play_mark_context.is_current_playing) {
+                image_stack.visible_child_name = "play-mark";
+                add_css_class ("station-card-playing");
+            } else {
+                image_stack.visible_child_name = "image";
+                remove_css_class ("station-card-playing");
+            }
+        });
+
+        clicked.connect (play_mark_context.trigger);
+        play_mark_context.init_content (station_info.id.normal);
     }
 }

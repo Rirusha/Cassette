@@ -1,17 +1,17 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteActionCardCustom : Adw.Bin {
-  Button real_button {
-    styles [
-      "card"
-    ]
+template $CassetteActionCardCustom : Gtk.Frame {
+  styles [
+    "station-card"
+  ]
 
+  Button real_button {
     Adw.Bin content_bin {
-      margin-bottom: 8;
-      margin-top: 8;
-      margin-start: 8;
-      margin-end: 8;
+      margin-bottom: 3;
+      margin-top: 3;
+      margin-start: 3;
+      margin-end: 3;
       hexpand: true;
       vexpand: true;
     }

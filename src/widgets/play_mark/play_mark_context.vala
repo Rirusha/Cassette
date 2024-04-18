@@ -16,19 +16,13 @@
  */
 
 
-using Cassette.Client;
+public sealed class Cassette.PlayMarkContext : PlayMarkDefault {
 
+    public string context_type { get; construct set; }
 
+    protected override bool is_playing_now () {
+        assert (context_type != null);
 
-namespace Cassette {
-    public abstract class TrackRowContent : Gtk.Frame {
-
-        public YaMAPI.Track track_info { get; construct; }
-
-        protected abstract PlayMarkTrack play_mark_track { owned get; }
-
-        public void trigger () {
-            play_mark_track.trigger ();
-        }
+        return player.mode.context_id == content_id && player.mode.context_type == context_type;
     }
 }

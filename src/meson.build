@@ -35,6 +35,12 @@ cassette_gui_sources = files(
   'widgets/pages/abstract_loadable_page.vala',
   'widgets/pages/loading_page.vala',
 
+  'widgets/play_mark/abstract_play_mark_default.vala',
+  'widgets/play_mark/abstract_play_mark.vala',
+  'widgets/play_mark/play_mark_context.vala',
+  'widgets/play_mark/play_mark_global.vala',
+  'widgets/play_mark/play_mark_track.vala',
+
   'widgets/preferences/cache_deletion_preferences.vala',
   'widgets/preferences/custom_page_preferences.vala',
   'widgets/preferences/custom_pages_preferences.vala',

@@ -32,7 +32,7 @@ template $CassetteTrackInfo : Adw.Bin {
           margin-end: 4;
         };
 
-        center-widget: $CassettePlayButtonTrack play_button {
+        center-widget: Button play_button {
           styles [
             "suggested-action",
             "pill"
@@ -40,6 +40,8 @@ template $CassetteTrackInfo : Adw.Bin {
 
           vexpand: true;
           valign: center;
+
+          $CassettePlayMarkTrack play_mark_track { }
         };
 
         end-widget: $CassetteLikeButton like_button {

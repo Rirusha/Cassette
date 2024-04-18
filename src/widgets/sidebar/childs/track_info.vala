@@ -38,7 +38,9 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Box similar_box;
         [GtkChild]
-        unowned PlayButtonTrack play_button;
+        unowned Gtk.Button play_button;
+        [GtkChild]
+        unowned PlayMarkTrack play_mark_track;
         [GtkChild]
         unowned SaveStack save_stack;
         [GtkChild]
@@ -57,7 +59,8 @@ namespace Cassette {
         construct {
             info_panel.track_info = track_info;
 
-            play_button.clicked_not_playing.connect (play_pause);
+            play_button.clicked.connect (play_mark_track.trigger);
+            play_mark_track.triggered_not_playing.connect (play_pause);
 
             var actions = new SimpleActionGroup ();
 
@@ -130,7 +133,7 @@ namespace Cassette {
 
             lyrics_panel.track_id = track_info.id;
 
-            play_button.init_content (track_info.id);
+            play_mark_track.init_content (track_info.id);
             dislike_button.init_content (track_info.id);
             like_button.init_content (track_info.id);
             save_stack.init_content (track_info.id);

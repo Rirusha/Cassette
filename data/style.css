@@ -1,6 +1,10 @@
 /* @define-color accent_color #ffdb4d;
 @define-color accent_bg_color #ffdb4d; */
 
+/**
+ * Headered Scrollled Window
+ */
+
 .border-separator {
     color: @sidebar_border_color;
 }
@@ -8,6 +12,10 @@
 .light-background {
     background-color: @sidebar_bg_color;
 }
+
+/**
+ * Rework of default
+ */
 
 listview {
     background-color: rgba(0, 0, 0, 0);
@@ -21,12 +29,16 @@ flowbox flowboxchild {
     padding: 0px;
 }
 
-.small-border-radius {
-    border-radius: 6px;
-}
-
 frame {
     border-style: none;
+}
+
+/**
+ * Other
+ */
+
+.small-border-radius {
+    border-radius: 6px;
 }
 
 .transparent-background {
@@ -38,6 +50,15 @@ frame {
     color: white;
     background-image: linear-gradient(90deg,#ff5c4d,#eb469f 30%,#8341ef 75%,#3f68f9);
 }
+
+.button-standart-padding {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/**
+ * Track row
+ */
 
 .track-row {
     transition: 200ms;
@@ -52,24 +73,45 @@ frame {
 
 .track-row:active {
     background-color: alpha(currentColor, 0.12);
-}   
+}
+
+/**
+ * Track row playing
+ */
 
 .track-row-playing {
     box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
                 0   1px 3px 1px rgba(0, 0, 0, .07),
                 0   2px 6px 2px rgba(0, 0, 0, .03);
-    background-color: alpha(@accent_bg_color, 0.5);
+    color: @accent_fg_color;
+    background-color: alpha(@accent_bg_color, 0.60);
 }
 
 .track-row-playing:hover {
-    background-color: alpha(@accent_bg_color, 0.58);
+    background-color: alpha(@accent_bg_color, 0.68);
 }
 
 .track-row-playing:active {
-    background-color: alpha(@accent_bg_color, 0.62);
+    background-color: alpha(@accent_bg_color, 0.72);
 }
 
-.button-standart-padding {
-    padding-left: 5px;
-    padding-right: 5px;
+/**
+ * Station card
+ */
+
+.station-card {
+    transition: 200ms;
+    box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
+                0   1px 3px 1px rgba(0, 0, 0, .07),
+                0   2px 6px 2px rgba(0, 0, 0, .03);
+    background-color: alpha(@window_bg_color, 0.21);
+}
+
+/**
+ * Station card playing
+ */
+
+.station-card-playing {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
 }

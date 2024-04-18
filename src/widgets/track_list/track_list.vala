@@ -237,8 +237,8 @@ namespace Cassette {
             }
 
             track_box.child_activated.connect ((row) => {
-                //  ((TrackDefault) ((TrackRow) row).child).play_pause ();
-                application.main_window.window_sidebar.show_track_info (((TrackRow) row).track_info);
+                ((TrackDefault) ((TrackRow) row).child).trigger ();
+                //  application.main_window.window_sidebar.show_track_info (((TrackRow) row).track_info);
             });
         }
 

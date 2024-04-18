@@ -44,6 +44,14 @@
                 <property name="tooltip-text" translatable="true" context="preference dialog">Will the track be added to the playlist as the first or as the last</property>
               </object>
             </child>
+            <child>
+              <object class="AdwSwitchRow" id="show_playing_track_notif_switch">
+                <!-- Translators: title of preference -->
+                <property name="title" translatable="true" context="preference dialog">Show playing now notification</property>
+                <!-- Translators: tooltip of preference -->
+                <property name="tooltip-text" translatable="true" context="preference dialog">Show a notification when switching a track with the option to turn on the next or previous track</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>

@@ -7,8 +7,27 @@ template $CassetteActionCardStation : $CassetteActionCardCustom {
     spacing: 8;
     // hexpand: true;
 
-    Image content_image {
-      icon-size: large;
+    Stack image_stack {
+      transition-type: crossfade;
+      transition-duration: 75;
+
+      StackPage {
+        name: "image";
+        child: Image content_image {
+          icon-size: large;
+        };
+      }
+
+      StackPage {
+        name: "play-button";
+        child: $CassettePlayButtonContext play_button {
+          styles [
+            "flat"
+          ]
+
+          context-type: "radio";
+        };
+      }
     }
 
     Label content_label {

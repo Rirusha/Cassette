@@ -205,6 +205,10 @@ namespace Cassette {
         }
 
         public void show_now_playing_notif (YaMAPI.Track track_info) {
+            if (!settings.get_boolean ("show-playing-track-notif")) {
+                return;
+            }
+
             if (main_window != null) {
                 if (main_window.is_active) {
                     return;

@@ -39,6 +39,8 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.SwitchRow add_tracks_to_start_switch;
         [GtkChild]
+        unowned Adw.SwitchRow show_playing_track_notif_switch;
+        [GtkChild]
         unowned Adw.SwitchRow show_main_switch;
         [GtkChild]
         unowned Adw.SwitchRow show_liked_switch;
@@ -71,6 +73,7 @@ namespace Cassette {
 
             Cassette.Client.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("show-playing-track-notif", show_playing_track_notif_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("child-visible", child_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("explicit-visible", explicit_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("show-replaced-mark", show_replaced_mark_switch, "active", GLib.SettingsBindFlags.DEFAULT);

@@ -60,6 +60,9 @@
 		<key name="show-playlists" type="b">
 			<default>true</default>
 		</key>
+		<key name="show-playing-track-notif" type="b">
+			<default>false</default>
+		</key>
 	</schema>
 
     <!-- Client -->

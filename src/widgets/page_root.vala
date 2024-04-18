@@ -48,6 +48,7 @@ public class Cassette.PageRoot : AbstractLoadablePage {
 
         notify["is-loading"].connect (() => {
             can_back = !is_loading && can_back;
+            can_refresh = !is_loading && can_refresh;
         });
 
         map.connect (() => {

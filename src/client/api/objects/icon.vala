@@ -20,7 +20,7 @@ public class Cassette.Client.YaMAPI.Icon : YaMObject {
 
     public string background_color { get; set; }
 
-    public string image_url { get; set; }
+    public string image_url { get; set; default = ""; }
 
     public string get_internal_icon_name (string station_id) {
         switch (station_id) {

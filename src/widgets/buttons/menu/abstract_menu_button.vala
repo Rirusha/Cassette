@@ -20,13 +20,7 @@
 public abstract class Cassette.CustomMenuButton : ShrinkableBin {
 
     [GtkChild]
-    unowned Gtk.Popover popover_menu;
-    [GtkChild]
     protected unowned Gtk.MenuButton real_button;
-
-    public Gtk.Orientation dialog_orientation { get; construct; default = Gtk.Orientation.VERTICAL; }
-
-    public Gtk.Orientation popover_orientation { get; construct; default = Gtk.Orientation.VERTICAL; }
 
     public bool should_close_on_click { get; construct; default = true; }
 
@@ -42,71 +36,67 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
     construct {
         bind_property ("css-classes", real_button, "css-classes", BindingFlags.DEFAULT);
 
-        popover_menu.closed.connect (() => {
-            popover_menu.child = null;
-        });
+        real_button.set_create_popup_func ((menu_buttton) => {
+            if (root_window_is_shrinked || settings.get_boolean ("use-only-dialogs")) {
+                show_dialog_menu ();
 
-        real_button.notify["active"].connect (() => {
-            if (real_button.active) {
-                if (root_window_is_shrinked) {
-                    set_bottom_sheet_menu ();
-
-                } else {
-                    set_popover_menu ();
-                }
+            } else {
+                menu_buttton.set_popover (build_popover ());
             }
         });
     }
 
     protected abstract Gtk.Widget[] get_popover_menu_items ();
 
-    Gtk.Box build_popover_menu_box () {
-        var box = new Gtk.Box (popover_orientation, 2) {
+    Gtk.Popover build_popover () {
+        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 2) {
             css_classes = {"flat"}
         };
 
         foreach (var widget in get_popover_menu_items ()) {
             box.append (widget);
 
-            var gs = new Gtk.GestureClick ();
-            gs.end.connect (() => {
-                real_button.popdown ();
-            });
-            widget.add_controller (gs);
+            if (widget is Gtk.Actionable && should_close_on_click) {
+                var gs = new Gtk.GestureClick ();
+                gs.end.connect (() => {
+                    real_button.popdown ();
+                });
+                widget.add_controller (gs);
+            }
         }
 
-        return box;
-    }
-
-    void set_popover_menu () {
-        popover_menu.child = build_popover_menu_box ();
+        return new Gtk.Popover () {
+            child = box
+        };
     }
 
     protected abstract Gtk.Widget[] get_dialog_menu_items ();
 
     Gtk.Box build_dialog_menu_box () {
-        var box = new Gtk.Box (dialog_orientation, 8) {
+        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8) {
             css_classes = {"flat"}
         };
 
         foreach (var widget in get_dialog_menu_items ()) {
             box.append (widget);
 
-            var gs = new Gtk.GestureClick ();
-            gs.end.connect (() => {
-                dialog.close ();
-            });
-            widget.add_controller (gs);
+            if (widget is Gtk.Actionable && should_close_on_click) {
+                var gs = new Gtk.GestureClick ();
+                gs.end.connect (() => {
+                    dialog.close ();
+                });
+                widget.add_controller (gs);
+            }
         }
 
         return box;
     }
 
-    void set_bottom_sheet_menu () {
-        popover_menu.popdown ();
-
+    void show_dialog_menu () {
         dialog = new MenuDialog ();
         dialog.set_menu_widget (build_dialog_menu_box ());
+
+        real_button.active = false;
 
         dialog.closed.connect (() => {
             dialog = null;

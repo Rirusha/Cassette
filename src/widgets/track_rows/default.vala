@@ -62,12 +62,13 @@ namespace Cassette {
             play_mark_track.triggered_not_playing.connect (form_queue);
 
             play_mark_track.notify["is-current-playing"].connect (() => {
+                is_current_playing = play_mark_track.is_current_playing;
+
                 if (play_mark_track.is_current_playing) {
                     info_panel.show_play_button ();
-                    add_css_class ("track-row-playing");
+
                 } else {
                     info_panel.show_cover ();
-                    remove_css_class ("track-row-playing");
                 }
             });
 

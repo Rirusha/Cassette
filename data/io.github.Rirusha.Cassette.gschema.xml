@@ -63,6 +63,9 @@
 		<key name="show-playing-track-notif" type="b">
 			<default>false</default>
 		</key>
+		<key name="use-only-dialogs" type="b">
+			<default>false</default>
+		</key>
 	</schema>
 
     <!-- Client -->

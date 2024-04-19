@@ -16,33 +16,43 @@
  */
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/action_card_custom.ui")]
-/**
-    * A class for convenient work with clickable cards.
-    */
-public class Cassette.ActionCardCustom : Reactable {
+public abstract class Cassette.TrackRow : Reactable {
 
-    public signal void clicked ();
+    public Client.YaMAPI.Track track_info { get; construct; }
+
+    protected abstract PlayMarkTrack play_mark_track { owned get; }
 
     protected override string css_class_name_hover {
         owned get {
-            return "action-card-hover";
+            return "track-row-hover";
         }
     }
 
     protected override string css_class_name_active {
         owned get {
-            return "action-card-active";
+            return "track-row-active";
         }
     }
 
-    construct {
-        var gs = new Gtk.GestureClick ();
-        gs.released.connect ((n, x, y) => {
-            if (contains (x, y)) {
-                clicked ();
-            }
-        });
-        add_controller (gs);
+    protected override string css_class_name_playing_default {
+        owned get {
+            return "track-row-playing";
+        }
+    }
+
+    protected override string css_class_name_playing_hover {
+        owned get {
+            return "track-row-playing-hover";
+        }
+    }
+
+    protected override string css_class_name_playing_active {
+        owned get {
+            return "track-row-playing-active";
+        }
+    }
+
+    public void trigger () {
+        play_mark_track.trigger ();
     }
 }

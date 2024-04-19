@@ -32,12 +32,12 @@ namespace Cassette {
         DESCENDING
     }
 
-    protected class TrackRow : Gtk.FlowBoxChild {
+    protected class TrackRowW : Gtk.FlowBoxChild {
 
         public YaMAPI.Track track_info { get; construct; }
         public HasTrackList yam_object { get; construct; }
 
-        public TrackRow (YaMAPI.Track track_info, HasTrackList yam_object) {
+        public TrackRowW (YaMAPI.Track track_info, HasTrackList yam_object) {
             Object (track_info: track_info, yam_object: yam_object);
         }
 
@@ -57,7 +57,7 @@ namespace Cassette {
         }
     }
 
-    protected class TrackRowDis : TrackRow {
+    protected class TrackRowDis : TrackRowW {
 
         public TrackRowDis (YaMAPI.Track track_info, HasTrackList yam_object) {
             Object (track_info: track_info, yam_object: yam_object);
@@ -100,7 +100,7 @@ namespace Cassette {
         }
     }
 
-    protected class TrackPositionRow : TrackRow {
+    protected class TrackPositionRow : TrackRowW {
 
         public int position { get; set; }
 
@@ -140,9 +140,9 @@ namespace Cassette {
             }
         }
 
-        ArrayList<TrackRow> original_track_rows = new ArrayList<TrackRow> ();
-        ArrayList<TrackRow> sorted_rows = new ArrayList<TrackRow> ();
-        ArrayList<TrackRow> filtered_rows = new ArrayList<TrackRow> ();
+        ArrayList<TrackRowW> original_track_rows = new ArrayList<TrackRowW> ();
+        ArrayList<TrackRowW> sorted_rows = new ArrayList<TrackRowW> ();
+        ArrayList<TrackRowW> filtered_rows = new ArrayList<TrackRowW> ();
         HashSet<int> loaded_rows = new HashSet<int> ();
 
         private YaMAPI.TrackType track_type = YaMAPI.TrackType.MUSIC;
@@ -237,7 +237,7 @@ namespace Cassette {
             }
 
             track_box.child_activated.connect ((row) => {
-                ((TrackDefault) ((TrackRow) row).child).trigger ();
+                ((TrackDefault) ((TrackRowW) row).child).trigger ();
                 //  application.main_window.window_sidebar.show_track_info (((TrackRow) row).track_info);
             });
         }
@@ -505,7 +505,7 @@ namespace Cassette {
             }
         }
 
-        void add_row (TrackRow track_row) {
+        void add_row (TrackRowW track_row) {
             original_track_rows.add (track_row);
             track_box.append (track_row);
         }
@@ -513,7 +513,7 @@ namespace Cassette {
         public void set_tracks_default (ArrayList<YaMAPI.Track> track_list, HasTrackList yam_object) {
             preset_actions ();
             foreach (var track_info in track_list) {
-                add_row (new TrackRow (track_info, yam_object));
+                add_row (new TrackRowW (track_info, yam_object));
             }
             postset_actions ();
         }

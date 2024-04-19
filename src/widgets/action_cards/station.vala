@@ -33,6 +33,24 @@ public class Cassette.ActionCardStation : ActionCardCustom {
     [GtkChild]
     unowned Gtk.Label content_label;
 
+    protected override string css_class_name_playing_default {
+        owned get {
+            return "station-card-playing";
+        }
+    }
+
+    protected override string css_class_name_playing_hover {
+        owned get {
+            return "station-card-playing-hover";
+        }
+    }
+
+    protected override string css_class_name_playing_active {
+        owned get {
+            return "station-card-playing-active";
+        }
+    }
+
     Gtk.Orientation orientation {
         get {
             return content_box.orientation;
@@ -113,12 +131,13 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         });
 
         play_mark_context.notify["is-current-playing"].connect (() => {
+            is_current_playing = play_mark_context.is_current_playing;
+
             if (play_mark_context.is_current_playing) {
                 image_stack.visible_child_name = "play-mark";
-                add_css_class ("station-card-playing");
+
             } else {
                 image_stack.visible_child_name = "image";
-                remove_css_class ("station-card-playing");
             }
         });
 

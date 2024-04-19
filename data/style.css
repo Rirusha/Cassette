@@ -64,14 +64,14 @@ frame {
     transition: 200ms;
 }
 
-.track-row:hover {
+.track-row-hover {
     box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
                 0   1px 3px 1px rgba(0, 0, 0, .07),
                 0   2px 6px 2px rgba(0, 0, 0, .03);
     background-color: alpha(@window_fg_color, 0.1);
 }
 
-.track-row:active {
+.track-row-active {
     background-color: alpha(@window_fg_color, 0.3);
 }
 
@@ -87,11 +87,11 @@ frame {
     background-color: alpha(@accent_bg_color, 0.85);
 }
 
-.track-row-playing:hover {
+.track-row-playing-hover {
     background-color: alpha(@accent_bg_color, 0.70);
 }
 
-.track-row-playing:active {
+.track-row-playing-active {
     background-color: alpha(@accent_bg_color, 0.54);
 }
 
@@ -108,11 +108,11 @@ frame {
     padding: 8px;
 }
 
-.action-card:hover {
+.action-card-hover {
     background-color: alpha(@window_fg_color, 0.18);
 }
 
-.action-card:active {
+.action-card-active {
     background-color: alpha(@window_fg_color, 0.3);
 }
 
@@ -125,10 +125,10 @@ frame {
     color: @accent_fg_color;
 }
 
-.station-card-playing:hover {
+.station-card-playing-hover {
     background-color: alpha(@accent_bg_color, 0.70);
 }
 
-.station-card-playing:active {
+.station-card-playing-active {
     background-color: alpha(@accent_bg_color, 0.54);
 }

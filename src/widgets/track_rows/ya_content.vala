@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    public abstract class YATrackRowContent : TrackRowContent {
+    public abstract class YATrackRowContent : TrackRow {
 
         public HasTrackList yam_object { get; construct; }
 

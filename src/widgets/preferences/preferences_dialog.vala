@@ -54,6 +54,8 @@ namespace Cassette {
         unowned CacheDeletionPreferences deletion_preferences;
         [GtkChild]
         unowned Adw.SwitchRow debug_mode_switch;
+        [GtkChild]
+        unowned Adw.SwitchRow use_only_dialogs_switch;
 
         construct {
             //  deletion_preferences.pref_win = this;
@@ -81,6 +83,7 @@ namespace Cassette {
             Cassette.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.Client.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.Client.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind ("use-only-dialogs", use_only_dialogs_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
             Cassette.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);
             Cassette.settings.bind ("show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT);

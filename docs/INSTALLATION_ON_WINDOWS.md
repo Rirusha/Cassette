@@ -8,7 +8,7 @@
 Перед установкой приложения необходимо поставить подсистему Ubuntu.
 
 #### В PowerShell:
-```
+```shell
 wsl --install Ubuntu
 ```
 
@@ -17,7 +17,7 @@ wsl --install Ubuntu
 Далее обновляем систему и устанавливаем менеджер приложений Flatpak.
 
 #### В терминале Ubuntu:
-```
+```shell
 sudo apt update
 sudo apt upgrade
 sudo apt install flatpak
@@ -26,7 +26,7 @@ sudo apt install flatpak
 Перезапускаем WSL:
 
 #### В PowerShell:
-```
+```shell
 wsl -t Ubuntu
 ```
 
@@ -40,21 +40,21 @@ wsl -t Ubuntu
 Подключаем репозиторий `flathub` и устанавливаем приложение:
 
 #### В терминале Ubuntu:
-```
+```shell
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install io.github.Rirusha.Cassette
 ```
 
 > [!NOTE]
 > После перезагрузки Windows в меню «Пуск» появиться ярлык приложения Cassette, но его также можно запустить из терминала Ubuntu так:
-> ```
+> ```shell
 > flatpak run io.github.Rirusha.Cassette
 > ```
 
 ### nightly версия
 
 > [!WARNING]
-> Данная версия каждые сутки собирается и обновляется из dev ветки приложения, поэтому может оказаться нестабильной.
+> Данная версия собирается и обновляется при каждом изменение в коде, поэтому может оказаться нестабильной.
 
 Подключаем репозитории и устанавливаем приложение:
 
@@ -62,26 +62,26 @@ sudo flatpak install io.github.Rirusha.Cassette
 
 <!-- Подключаем репоизторий `gnome-nightly`:
 
-```
+```shell
 sudo flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 ``` -->
 
 Подключаем репозиторий `cassette-nightly`:
 
-```
+```shell
 sudo flatpak remote-add --if-not-exists cassette-nightly https://rirusha.github.io/Cassette/index.flatpakrepo
 ```
 
 Устанавливаем зависимости и приложение:
 
-```
+```shell
 sudo flatpak install org.gnome.Platform//46
 sudo flatpak install cassette-nightly io.github.Rirusha.Cassette-Devel
 ```
 
 > [!NOTE]
 > После перезагрузки Windows в меню «Пуск» появиться ярлык приложения Cassette-Devel, но его также можно запустить из терминала Ubuntu так:
-> ```
+> ```shell
 > flatpak run io.github.Rirusha.Cassette-Devel
 > ```
 

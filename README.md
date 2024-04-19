@@ -35,15 +35,11 @@
 
 
 ## План основных версий
-[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/2?style=flat&label=0.2%20-%20%D0%9C%D0%BE%D1%8F%20%D0%B2%D0%BE%D0%BB%D0%BD%D0%B0&link=https%3A%2F%2Fgithub.com%2FRirusha%2FCassette%2Fmilestone%2F2)](https://github.com/Rirusha/Cassette/milestone/2)
-
-[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/5?style=flat&label=0.2.1%20-%20%D0%A3%D0%BB%D1%83%D1%87%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B1%D1%8D%D0%BA%D0%B5%D0%BD%D0%B4%D0%B0%20%D0%B8%20%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F&link=https%3A%2F%2Fgithub.com%2FRirusha%2FCassette%2Fmilestone%2F5)](https://github.com/Rirusha/Cassette/milestone/5)
-
-[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/4?style=flat&label=0.2.2%20-%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D0%BD%D0%B0%D0%B4%20%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D1%8E&link=https%3A%2F%2Fgithub.com%2FRirusha%2FCassette%2Fmilestone%2F4)](https://github.com/Rirusha/Cassette/milestone/4)
-
-[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/6?style=flat&label=0.3%20-%20%D0%94%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%D0%B8%D0%B4%D0%B6%D0%B5%D1%82%D0%BE%D0%B2%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%20%D0%B0%D0%BB%D1%8C%D0%B1%D0%BE%D0%BC%D0%BE%D0%B2%20%D0%B8%20%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%B9&link=https%3A%2F%2Fgithub.com%2FRirusha%2FCassette%2Fmilestone%2F6)](https://github.com/Rirusha/Cassette/milestone/6)
-
-[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/7?style=flat&label=0.4%20-%20%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0%20%D0%BF%D0%BE%20%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%83&link=https%3A%2F%2Fgithub.com%2FRirusha%2FCassette%2Fmilestone%2F7)](https://github.com/Rirusha/Cassette/milestone/7)
+[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/2?label=0.2.0%20-%20%D0%9C%D0%BE%D1%8F%20%D0%B2%D0%BE%D0%BB%D0%BD%D0%B0)](https://github.com/Rirusha/Cassette/milestone/2) \
+[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/5?label=0.2.1%20-%20%D0%A3%D0%BB%D1%83%D1%87%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B1%D1%8D%D0%BA%D0%B5%D0%BD%D0%B4%D0%B0%20%D0%B8%20%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F)](https://github.com/Rirusha/Cassette/milestone/5) \
+[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/4?label=0.2.2%20-%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D0%BD%D0%B0%D0%B4%20%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D1%8E)](https://github.com/Rirusha/Cassette/milestone/4) \
+[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/6?label=0.3.0%20-%20%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%20%D0%B0%D0%BB%D1%8C%D0%B1%D0%BE%D0%BC%D0%BE%D0%B2%20%D0%B8%20%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%B9)](https://github.com/Rirusha/Cassette/milestone/6) \
+[![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/7?label=0.4.0%20-%20%D0%A0%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0%20%D0%BF%D0%BE%20%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%83)](https://github.com/Rirusha/Cassette/milestone/7)
 
 Все запланированные фичи можете [посмотреть в бэклоге](https://github.com/users/Rirusha/projects/2)
 
@@ -106,7 +102,7 @@ flatpak remote-delete cassette-nightly
 ### Arch Linux
 
 > [!NOTE]
-> При необходимости, в arch-подобных системах можно установить Nightly версию с репозитория AUR. 
+> При необходимости, в arch-подобных системах можно установить Nightly версию из репозитория AUR. 
 > По возможности рекомендуется использовать Flatpak версию.
 
 #### yay
@@ -126,27 +122,27 @@ ame ins cassette-dev
 ## Сборка из исходного кода
 
 #### Зависимости:
-* ```gtk4```, version >= 4.14
-* ```libadwaita-1```, version >= 1.5
-* ```libsoup-3.0```
-* ```gdk-pixbuf-2.0```
-* ```json-glib-1.0```
-* ```sqlite3```
-* ```gee-0.8```
-* ```libxml-2.0```
-* ```gstreamer-1.0```
-* ```webkitgtk-6.0```
-* ```gio-2.0```, version: '>= 2.72'
+* `gtk4`, version >= 4.14
+* `libadwaita-1`, version >= 1.5
+* `libsoup-3.0`
+* `gdk-pixbuf-2.0`
+* `json-glib-1.0`
+* `sqlite3`
+* `gee-0.8`
+* `libxml-2.0`
+* `gstreamer-1.0`
+* `webkitgtk-6.0`
+* `gio-2.0`, version: '>= 2.72'
 
 #### Утилиты для сборки:
-* ```meson```
-* ```ninja```
-* ```cmake```
-* ```blueprint-compiler```
-* ```gcc```
-* ```valac```
-* ```pkg```
-* ```appstream-utils```
+* `meson`
+* `ninja`
+* `cmake`
+* `blueprint-compiler`
+* `gcc`
+* `valac`
+* `pkg`
+* `appstream-utils`
 
 ### Сборка:
 ```shell

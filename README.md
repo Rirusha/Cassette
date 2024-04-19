@@ -55,17 +55,27 @@
 [![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
 
 ### ALT Sisyphus
-```
+```shell
 su -
 apt-get install cassette
 ```
 
+### Arch Linux
+
+#### yay
+```shell
+yay -S cassette
+```
+#### ame
+```shell
+ame ins cassette
+```
 
 ## Установка c помощью Flatpak
 
 Вы можете скачать по [ссылке](https://flathub.org/apps/details/io.github.Rirusha.Cassette) или используя терминал
 
-```
+```shell
 flatpak install io.github.Rirusha.Cassette
 ```
 
@@ -73,8 +83,9 @@ flatpak install io.github.Rirusha.Cassette
 ## Nightly версия
 
 > [!WARNING]
-> Данная версия каждые сутки собирается и обновляется из dev ветки приложения, поэтому может оказаться нестабильной
+> Данная версия собирается и обновляется при каждом изменение в коде, поэтому может оказаться нестабильной.
 
+### Flatpak
 <!-- #### Подключаем репозиторий `gnome-nightly` и устанавливаем GNOME Platform:
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
@@ -88,10 +99,24 @@ flatpak install cassette-nightly io.github.Rirusha.Cassette-Devel
 ```
 
 #### Для удаления репозитория нужно выполнить:
-```
+```shell
 flatpak remote-delete cassette-nightly
 ```
 
+### Arch Linux
+
+> [!NOTE]
+> При необходимости, в arch-подобных системах можно установить Nightly версию с репозитория AUR. 
+> По возможности рекомендуется использовать Flatpak версию.
+
+#### yay
+```shell
+yay -S cassette-dev
+```
+#### ame
+```shell
+ame ins cassette-dev
+```
 
 ## Установка в Windows
 
@@ -124,18 +149,18 @@ flatpak remote-delete cassette-nightly
 * ```appstream-utils```
 
 ### Сборка:
-```
+```shell
 meson setup builddir
 ninja -C builddir test
 ```
 
 ### Установка:
-```
+```shell
 sudo ninja -C builddir install
 ```
 
 ### Удаление:
-```
+```shell
 sudo ninja -C builddir uninstall
 ```
 
@@ -149,29 +174,26 @@ sudo ninja -C builddir uninstall
 
 ## Для разработчиков
 
-> [!NOTE]
-> Все изменения необходимо вносить в `dev-*` ветки. Коммиты в `master` и `devel-slice` будут отклонены.
-
 ### Использование Visual Studio Code
 Репозиторий имеет рекомендуемые расширения для проверки и запуска приложения с gdb.
 
 ### Зависимости
 
 <!-- #### репозиторий [gnome-nightly](https://wiki.gnome.org/Apps/Nightly):
-```
+```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 ``` -->
 
 #### Для запуска
 `org.gnome.Platform//46`
-```
+```shell
 flatpak install org.gnome.Platform//46 
 ```
 
 #### Для сборки
 `org.gnome.Sdk//46` \
 `org.freedesktop.Sdk.Extension.vala//23.08`
-```
+```shell
 flatpak install org.gnome.Sdk//46 org.freedesktop.Sdk.Extension.vala//23.08
 ```
 

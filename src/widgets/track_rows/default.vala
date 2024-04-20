@@ -72,7 +72,8 @@ namespace Cassette {
                 }
             });
 
-            setup_options_button ();
+            track_options_button.track_info = track_info;
+            //  setup_options_button ();
             set_values ();
         }
 

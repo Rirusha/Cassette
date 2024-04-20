@@ -18,28 +18,70 @@
 
 public class Cassette.TrackOptionsButton : CustomMenuButton {
 
-    protected override Gtk.Widget[] get_popover_menu_items () {
+    public Client.YaMAPI.Track track_info { get; set; }
+
+    construct {
+        SimpleAction share_action = new SimpleAction ("share", null);
+        share_action.activate.connect (() => {
+            track_share (track_info);
+        });
+        actions.add_action (share_action);
+
+        SimpleAction vibe_action = new SimpleAction ("my-vibe", null);
+        vibe_action.activate.connect (() => {
+            player.start_flow ("track:%s".printf (track_info.id));
+        });
+        actions.add_action (vibe_action);
+
+        SimpleAction add_next_action = new SimpleAction ("add-next", null);
+        add_next_action.activate.connect (() => {
+            player.add_track (track_info, true);
+        });
+        actions.add_action (add_next_action);
+
+        SimpleAction add_end_action = new SimpleAction ("add-end", null);
+        add_end_action.activate.connect (() => {
+            player.add_track (track_info, false);
+        });
+        actions.add_action (add_end_action);
+    }
+
+    protected override MenuItem[] get_popover_menu_items () {
         return {
-            new Gtk.Button.with_label ("My Vibe") {css_classes = {"flat"}},
-            new Gtk.Label ("Hello!"),
-            new Gtk.Button.with_label ("Button") {css_classes = {"flat"}}
+            {_("My Vibe by track"), "track.my-vibe", 0},
+            {_("Play next"), "track.add-next", 0},
+            {_("Add to queue"), "track.add-end", 0},
+            {_("Add to playlist"), "track.add-to-playlist", 1},
+            {_("Save"), "track.save", 2},
+            {_("Share"), "track.share", 3}
         };
     }
 
-    protected override Gtk.Widget[] get_dialog_menu_items () {
+    protected override Gtk.Widget[] get_dialog_menu_widgets () {
         return {
+            new TrackInfoPanel (Gtk.Orientation.HORIZONTAL) {
+                track_info = track_info
+            },
             new ActionCardStation (new Client.YaMAPI.Rotor.StationInfo () {
                 id = new Client.YaMAPI.Rotor.Id () {
                     type_ = "track",
-                    tag = "38634621"
+                    tag = track_info.id
                 },
-                name = "My Vibe by track",
+                name = _("My Vibe by track"),
                 icon = new Client.YaMAPI.Icon ()
             }) {
                 is_shrinked = true
-            },
-            new Gtk.Label ("Hello!"),
-            new Gtk.Button.with_label ("Button")
+            }
+        };
+    }
+
+    protected override MenuItem[] get_dialog_menu_items () {
+        return {
+            {_("Play next"), "track.add-next", 0},
+            {_("Add to queue"), "track.add-end", 0},
+            {_("Add to playlist"), "track.add-to-playlist", 1},
+            {_("Save"), "track.save", 2},
+            {_("Share"), "track.share", 3}
         };
     }
 

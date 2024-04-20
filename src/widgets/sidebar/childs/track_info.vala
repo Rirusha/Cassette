@@ -49,6 +49,8 @@ namespace Cassette {
         unowned DislikeButton dislike_button;
         [GtkChild]
         unowned TrackInfoPanel info_panel;
+        [GtkChild]
+        unowned TrackOptionsButton track_options_button;
 
         public YaMAPI.Track track_info { get; construct set; }
 
@@ -58,6 +60,7 @@ namespace Cassette {
 
         construct {
             info_panel.track_info = track_info;
+            track_options_button.track_info = track_info;
 
             play_button.clicked.connect (play_mark_track.trigger);
             play_mark_track.triggered_not_playing.connect (play_pause);

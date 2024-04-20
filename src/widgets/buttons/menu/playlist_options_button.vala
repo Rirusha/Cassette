@@ -18,14 +18,6 @@
 
 public class Cassette.PlaylistOptionsButton : CustomMenuButton {
 
-    protected override Gtk.Widget[] get_popover_menu_items () {
-        assert_not_reached ();
-    }
-
-    protected override Gtk.Widget[] get_dialog_menu_items () {
-        assert_not_reached ();
-    }
-
     //  protected override void set_menu () {
     //      global_menu.append (_("My wave on playlist"), "playlist.my-wave");
     //      global_menu.append (_("Add to queue"), "playlist.add-to-queue");

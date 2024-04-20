@@ -16,6 +16,8 @@
  */
 
 
+// Why this exist?
+// Look: https://t.me/CassetteGNOME_Discussion/10666
 public abstract class Cassette.Reactable : Gtk.Frame {
 
     protected virtual string css_class_name_hover {
@@ -81,7 +83,7 @@ public abstract class Cassette.Reactable : Gtk.Frame {
         gs_active.pressed.connect (() => {
             add_css_class (css_class_name_active);
         });
-        gs_active.end.connect (() => {
+        gs_active.stopped.connect (() => {
             remove_css_class (css_class_name_active);
         });
         add_controller (gs_active);
@@ -105,7 +107,7 @@ public abstract class Cassette.Reactable : Gtk.Frame {
                 add_css_class (css_class_name_playing_active);
             }
         });
-        gs_playing_active.end.connect (() => {
+        gs_playing_active.stopped.connect (() => {
             if (is_current_playing) {
                 remove_css_class (css_class_name_playing_active);
             }

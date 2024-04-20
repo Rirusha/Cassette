@@ -19,6 +19,12 @@
 [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/custom_menu_button.ui")]
 public abstract class Cassette.CustomMenuButton : ShrinkableBin {
 
+    public struct MenuItem {
+        public string label;
+        public string action_name;
+        public int section_num;
+    }
+
     [GtkChild]
     protected unowned Gtk.MenuButton real_button;
 
@@ -33,36 +39,99 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         }
     }
 
+    public bool primary {
+        get {
+            return real_button.primary;
+        }
+        set {
+            real_button.primary = value;
+        }
+    }
+
+    public string icon_name {
+        get {
+            return real_button.icon_name;
+        }
+        set {
+            real_button.icon_name = value;
+        }
+    }
+
+    public string title { get; set; }
+
+    protected SimpleActionGroup actions { get; private set; }
+
     construct {
         bind_property ("css-classes", real_button, "css-classes", BindingFlags.DEFAULT);
 
-        real_button.set_create_popup_func ((menu_buttton) => {
+        actions = new SimpleActionGroup ();
+        insert_action_group ("track", actions);
+
+        real_button.set_create_popup_func ((menu_button) => {
             if (root_window_is_shrinked || settings.get_boolean ("use-only-dialogs")) {
+                menu_button.active = false;
                 show_dialog_menu ();
 
             } else {
-                menu_buttton.set_popover (build_popover ());
+                menu_button.set_popover (build_popover ());
             }
         });
     }
 
-    protected abstract Gtk.Widget[] get_popover_menu_items ();
+    Gtk.Separator build_separator () {
+        return new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+            margin_top = 6,
+            margin_bottom = 6
+        };
+    }
+
+    protected virtual Gtk.Widget[] get_popover_menu_widgets () {
+        return {};
+    }
+
+    protected virtual MenuItem[] get_popover_menu_items () {
+        return {};
+    }
 
     Gtk.Popover build_popover () {
-        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 2) {
-            css_classes = {"flat"}
+        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+            css_classes = { "flat" }
         };
 
-        foreach (var widget in get_popover_menu_items ()) {
-            box.append (widget);
+        var menu_widgets = get_popover_menu_widgets ();
+        var menu_items = get_popover_menu_items ();
 
-            if (widget is Gtk.Actionable && should_close_on_click) {
-                var gs = new Gtk.GestureClick ();
-                gs.end.connect (() => {
-                    real_button.popdown ();
-                });
-                widget.add_controller (gs);
+        for (int i = 0; i < menu_widgets.length; i++) {
+            box.append (menu_widgets[i]);
+
+            if (i < menu_widgets.length - 1 || (i == menu_widgets.length - 1 && menu_items.length != 0)) {
+                box.append (build_separator ());
             }
+        }
+
+        int current_section = -1;
+
+        foreach (var item in menu_items) {
+            if (current_section > -1 && item.section_num > -1 && current_section != item.section_num) {
+                box.append (build_separator ());
+            }
+
+            current_section = item.section_num;
+
+            var button = new Gtk.Button () {
+                child = new Gtk.Label (item.label) {
+                    halign = Gtk.Align.START,
+                    ellipsize = Pango.EllipsizeMode.END
+                },
+                css_classes = { "flat", "menu-button" },
+                action_name = item.action_name
+            };
+
+            button.clicked.connect (() => {
+                real_button.popdown ();
+            });
+
+            box.append (button);
         }
 
         return new Gtk.Popover () {
@@ -70,23 +139,67 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         };
     }
 
-    protected abstract Gtk.Widget[] get_dialog_menu_items ();
+    protected virtual Gtk.Widget[] get_dialog_menu_widgets () {
+        return {};
+    }
+
+    protected virtual MenuItem[] get_dialog_menu_items () {
+        return {};
+    }
 
     Gtk.Box build_dialog_menu_box () {
-        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 8) {
-            css_classes = {"flat"}
+        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
+            css_classes = { "flat" }
         };
 
-        foreach (var widget in get_dialog_menu_items ()) {
-            box.append (widget);
+        if (title != null) {
+            box.append (new Gtk.Label (title) {
+                css_classes = { "title-2" }
+            });
+        }
 
-            if (widget is Gtk.Actionable && should_close_on_click) {
-                var gs = new Gtk.GestureClick ();
-                gs.end.connect (() => {
+        var menu_widgets = get_dialog_menu_widgets ();
+        var menu_items = get_dialog_menu_items ();
+
+        foreach (var widget in menu_widgets) {
+            box.append (widget);
+        }
+
+        var list_box = new Gtk.ListBox () {
+            css_classes = { "boxed-list" },
+            selection_mode = Gtk.SelectionMode.NONE,
+            activate_on_single_click = true
+        };
+
+        if (menu_items.length != 0) {
+            box.append (list_box);
+        }
+
+        foreach (var item in menu_items) {
+            var row = new Gtk.ListBoxRow () {
+                child = new Gtk.Label (item.label) {
+                    halign = Gtk.Align.START,
+                    ellipsize = Pango.EllipsizeMode.END,
+                    margin_top = 12,
+                    margin_bottom = 12,
+                    margin_start = 12,
+                    margin_end = 12,
+                },
+                action_name = item.action_name
+            };
+
+            dialog.insert_action_group ("track", actions);
+
+            // ListBox.row_activated doesn't work, idk why
+            var gs = new Gtk.GestureClick ();
+            gs.released.connect ((n, x, y) => {
+                if (row.contains (x, y)) {
                     dialog.close ();
-                });
-                widget.add_controller (gs);
-            }
+                }
+            });
+            row.add_controller (gs);
+
+            list_box.append (row);
         }
 
         return box;

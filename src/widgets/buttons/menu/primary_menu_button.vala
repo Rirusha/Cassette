@@ -16,7 +16,25 @@
  */
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/primary_menu_button.ui")]
-public class Cassette.PrimaryMenuButton : Adw.Bin {
+public class Cassette.PrimaryMenuButton : CustomMenuButton {
 
+    construct {
+        primary = true;
+        title = _("Primary menu");
+        icon_name = "adwaita-open-menu-symbolic";
+    }
+
+    protected override MenuItem[] get_popover_menu_items () {
+        return {
+            {_("Disliked tracks"), "win.show-disliked-tracks", 0},
+            {_("Parse URL from clipboard"), "app.parse-url", 0},
+            {_("Preferences"), "app.preferences", 1},
+            {_("Keyboard Shortcuts"), "win.show-help-overlay", 1},
+            {_("About Cassette"), "app.about", 1}
+        };
+    }
+
+    protected override MenuItem[] get_dialog_menu_items () {
+        return get_popover_menu_items ();
+    }
 }

@@ -52,6 +52,8 @@ namespace Cassette {
         unowned VolumeButton volume_button;
         [GtkChild]
         unowned Gtk.Button fullscreen_button;
+        [GtkChild]
+        unowned TrackOptionsButton track_options_button;
 
         public MainWindow window { get; construct set; }
 
@@ -73,6 +75,8 @@ namespace Cassette {
             player.ready_play_prev.connect (() => {
                 update_current_track_controls (player.mode.get_current_track_info ());
             });
+
+            bind_property ("current-track-info", track_options_button, "track-info", BindingFlags.DEFAULT);
 
             Cassette.Client.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
             Cassette.Client.settings.bind ("mute", volume_button, "mute", SettingsBindFlags.DEFAULT);

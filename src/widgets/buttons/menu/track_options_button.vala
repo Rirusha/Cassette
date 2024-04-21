@@ -39,24 +39,41 @@ public class Cassette.TrackOptionsButton : CustomMenuButton {
         });
         actions.add_action (add_next_action);
 
+        SimpleAction show_info_action = new SimpleAction ("show-info", null);
+        show_info_action.activate.connect (() => {
+            application.main_window.window_sidebar.show_track_info (track_info);
+        });
+        actions.add_action (show_info_action);
+
         SimpleAction add_end_action = new SimpleAction ("add-end", null);
         add_end_action.activate.connect (() => {
             player.add_track (track_info, false);
         });
         actions.add_action (add_end_action);
 
-        title_widget = new TrackInfoPanel (Gtk.Orientation.HORIZONTAL);
+        var info_panel = new TrackInfoPanel (Gtk.Orientation.HORIZONTAL);
 
-        bind_property ("track-info", title_widget, "track-info", BindingFlags.DEFAULT);
+        var button = new Gtk.Button () {
+            child = info_panel
+        };
+
+        title_widget = button;
+
+        button.clicked.connect (() => {
+            activate_action ("track.show-info", null);
+        });
+
+        bind_property ("track-info", info_panel, "track-info", BindingFlags.DEFAULT);
     }
 
     protected override MenuItem[] get_popover_menu_items () {
         return {
             {_("My Vibe by track"), "track.my-vibe", 0},
-            {_("Play next"), "track.add-next", 0},
-            {_("Add to queue"), "track.add-end", 0},
-            {_("Add to playlist"), "track.add-to-playlist", 1},
-            {_("Save"), "track.save", 2},
+            {_("Show info"), "track.show-info", 0},
+            {_("Play next"), "track.add-next", 1},
+            {_("Add to queue"), "track.add-end", 1},
+            {_("Add to playlist"), "track.add-to-playlist", 2},
+            {_("Save"), "track.save", 3},
             {_("Share"), "track.share", 3}
         };
     }
@@ -78,10 +95,10 @@ public class Cassette.TrackOptionsButton : CustomMenuButton {
 
     protected override MenuItem[] get_dialog_menu_items () {
         return {
-            {_("Play next"), "track.add-next", 0},
-            {_("Add to queue"), "track.add-end", 0},
-            {_("Add to playlist"), "track.add-to-playlist", 1},
-            {_("Save"), "track.save", 2},
+            {_("Play next"), "track.add-next", 1},
+            {_("Add to queue"), "track.add-end", 1},
+            {_("Add to playlist"), "track.add-to-playlist", 2},
+            {_("Save"), "track.save", 3},
             {_("Share"), "track.share", 3}
         };
     }

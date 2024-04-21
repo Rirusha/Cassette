@@ -7,14 +7,12 @@ template $CassetteMenuDialog : Adw.Dialog {
   $CassetteShrinkableBin shrinkable_bin {
     Box {
       orientation: vertical;
-      spacing: 12;
+      spacing: 7;
 
-      Adw.Clamp {
-        margin-end: 12;
-        margin-start: 12;
-        margin-top: 24;
-
-        Adw.Bin title_bin { }
+      Adw.Clamp title_clamp {
+        margin-end: 7;
+        margin-start: 7;
+        margin-top: 19;
       }
 
       ScrolledWindow scrolled_window {
@@ -22,17 +20,10 @@ template $CassetteMenuDialog : Adw.Dialog {
         vscrollbar-policy: automatic;
         propagate-natural-height: true;
 
-        Adw.Clamp clamp {
+        Adw.Clamp menu_clamp {
           margin-end: 12;
           margin-start: 12;
           margin-bottom: 12;
-
-          Box {
-            orientation: vertical;
-            spacing: 12;
-
-            Adw.Bin menu_bin { }
-          }
         }
       }
     }

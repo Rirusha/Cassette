@@ -20,11 +20,9 @@
 public class Cassette.MenuDialog : Adw.Dialog {
 
     [GtkChild]
-    unowned Adw.Clamp clamp;
+    unowned Adw.Clamp menu_clamp;
     [GtkChild]
-    unowned Adw.Bin menu_bin;
-    [GtkChild]
-    unowned Adw.Bin title_bin;
+    unowned Adw.Clamp title_clamp;
     [GtkChild]
     unowned ShrinkableBin shrinkable_bin;
     [GtkChild]
@@ -32,19 +30,33 @@ public class Cassette.MenuDialog : Adw.Dialog {
 
     public Gtk.Widget? menu_widget {
         get {
-            return menu_bin.child;
+            return menu_clamp.child;
         }
         set {
-            menu_bin.child = value;
+            menu_clamp.child = value;
         }
     }
 
     public Gtk.Widget? title_widget {
         get {
-            return title_bin.child;
+            return title_clamp.child;
         }
         set {
-            title_bin.child = value;
+            if (value is Gtk.Button) {
+                value.add_css_class ("button-standart-padding");
+                value.add_css_class ("flat");
+                ((Gtk.Button) value).clicked.connect (() => {
+                    close ();
+                });
+
+            } else {
+                value.margin_bottom = 5;
+                value.margin_top = 5;
+                value.margin_start = 5;
+                value.margin_end = 5;
+            }
+
+            title_clamp.child = value;
         }
     }
 

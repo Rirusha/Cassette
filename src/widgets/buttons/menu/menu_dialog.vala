@@ -21,8 +21,46 @@ public class Cassette.MenuDialog : Adw.Dialog {
 
     [GtkChild]
     unowned Adw.Clamp clamp;
+    [GtkChild]
+    unowned Adw.Bin menu_bin;
+    [GtkChild]
+    unowned Adw.Bin title_bin;
+    [GtkChild]
+    unowned ShrinkableBin shrinkable_bin;
+    [GtkChild]
+    unowned Gtk.ScrolledWindow scrolled_window;
 
-    public void set_menu_widget (Gtk.Widget widget) {
-        clamp.child = widget;
+    public Gtk.Widget? menu_widget {
+        get {
+            return menu_bin.child;
+        }
+        set {
+            menu_bin.child = value;
+        }
+    }
+
+    public Gtk.Widget? title_widget {
+        get {
+            return title_bin.child;
+        }
+        set {
+            title_bin.child = value;
+        }
+    }
+
+    construct {
+        shrinkable_bin.notify["root-window-is-shrinked"].connect (update_scrolled);
+        update_scrolled ();
+    }
+
+    void update_scrolled () {
+        if (shrinkable_bin.root_window_is_shrinked) {
+            scrolled_window.vscrollbar_policy = Gtk.PolicyType.NEVER;
+            follows_content_size = false;
+
+        } else {
+            scrolled_window.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
+            follows_content_size = true;
+        }
     }
 }

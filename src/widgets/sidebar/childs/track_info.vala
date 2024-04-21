@@ -65,36 +65,6 @@ namespace Cassette {
             play_button.clicked.connect (play_mark_track.trigger);
             play_mark_track.triggered_not_playing.connect (play_pause);
 
-            var actions = new SimpleActionGroup ();
-
-            if (track_info.is_ugc == false) {
-                SimpleAction share_action = new SimpleAction ("share", null);
-                share_action.activate.connect (() => {
-                    track_share (track_info);
-                });
-                actions.add_action (share_action);
-            }
-
-            SimpleAction add_next_action = new SimpleAction ("add-next", null);
-            add_next_action.activate.connect (() => {
-                player.add_track (track_info, true);
-            });
-            actions.add_action (add_next_action);
-
-            SimpleAction add_end_action = new SimpleAction ("add-end", null);
-            add_end_action.activate.connect (() => {
-                player.add_track (track_info, false);
-            });
-            actions.add_action (add_end_action);
-
-            SimpleAction add_to_playlist_action = new SimpleAction ("add-to-playlist", null);
-            add_to_playlist_action.activate.connect (() => {
-                add_track_to_playlist (track_info);
-            });
-            actions.add_action (add_to_playlist_action);
-
-            insert_action_group ("track", actions);
-
             LabelButton sbutton;
             if (track_info.is_ugc) {
                 track_type_label.label = _("Your music track");

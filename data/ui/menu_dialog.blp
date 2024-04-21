@@ -4,10 +4,37 @@ using Adw 1;
 template $CassetteMenuDialog : Adw.Dialog {
   presentation-mode: bottom_sheet;
 
-  Adw.Clamp clamp {
-    margin-bottom: 12;
-    margin-end: 12;
-    margin-start: 12;
-    margin-top: 24;
+  $CassetteShrinkableBin shrinkable_bin {
+    Box {
+      orientation: vertical;
+      spacing: 12;
+
+      Adw.Clamp {
+        margin-end: 12;
+        margin-start: 12;
+        margin-top: 24;
+
+        Adw.Bin title_bin { }
+      }
+
+      ScrolledWindow scrolled_window {
+        hscrollbar-policy: never;
+        vscrollbar-policy: automatic;
+        propagate-natural-height: true;
+
+        Adw.Clamp clamp {
+          margin-end: 12;
+          margin-start: 12;
+          margin-bottom: 12;
+
+          Box {
+            orientation: vertical;
+            spacing: 12;
+
+            Adw.Bin menu_bin { }
+          }
+        }
+      }
+    }
   }
 }

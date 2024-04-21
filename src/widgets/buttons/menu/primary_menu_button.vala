@@ -20,7 +20,7 @@ public class Cassette.PrimaryMenuButton : CustomMenuButton {
 
     construct {
         primary = true;
-        title = _("Primary menu");
+        title_label = _("Primary menu");
         icon_name = "adwaita-open-menu-symbolic";
     }
 

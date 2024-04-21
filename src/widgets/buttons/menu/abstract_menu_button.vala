@@ -57,7 +57,9 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         }
     }
 
-    public string title { get; set; }
+    protected Gtk.Widget title_widget { get; protected set; }
+
+    protected string title_label { get; protected set; }
 
     protected SimpleActionGroup actions { get; private set; }
 
@@ -152,12 +154,6 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
             css_classes = { "flat" }
         };
 
-        if (title != null) {
-            box.append (new Gtk.Label (title) {
-                css_classes = { "title-2" }
-            });
-        }
-
         var menu_widgets = get_dialog_menu_widgets ();
         var menu_items = get_dialog_menu_items ();
 
@@ -188,8 +184,6 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
                 action_name = item.action_name
             };
 
-            dialog.insert_action_group ("track", actions);
-
             // ListBox.row_activated doesn't work, idk why
             var gs = new Gtk.GestureClick ();
             gs.released.connect ((n, x, y) => {
@@ -209,10 +203,16 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         real_button.set_popover (null);
 
         dialog = new MenuDialog () {
+            menu_widget = build_dialog_menu_box (),
+            title_widget = title_widget != null ? title_widget : new Gtk.Label (title_label) {
+                css_classes = { "title-2" }
+            },
             width_request = 360,
-            content_width = 360
+            content_width = 360,
+            content_height = 294
         };
-        dialog.set_menu_widget (build_dialog_menu_box ());
+
+        dialog.insert_action_group ("track", actions);
 
         real_button.active = false;
 

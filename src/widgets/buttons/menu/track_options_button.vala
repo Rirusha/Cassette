@@ -44,6 +44,10 @@ public class Cassette.TrackOptionsButton : CustomMenuButton {
             player.add_track (track_info, false);
         });
         actions.add_action (add_end_action);
+
+        title_widget = new TrackInfoPanel (Gtk.Orientation.HORIZONTAL);
+
+        bind_property ("track-info", title_widget, "track-info", BindingFlags.DEFAULT);
     }
 
     protected override MenuItem[] get_popover_menu_items () {
@@ -59,9 +63,6 @@ public class Cassette.TrackOptionsButton : CustomMenuButton {
 
     protected override Gtk.Widget[] get_dialog_menu_widgets () {
         return {
-            new TrackInfoPanel (Gtk.Orientation.HORIZONTAL) {
-                track_info = track_info
-            },
             new ActionCardStation (new Client.YaMAPI.Rotor.StationInfo () {
                 id = new Client.YaMAPI.Rotor.Id () {
                     type_ = "track",

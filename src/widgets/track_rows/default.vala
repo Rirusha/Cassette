@@ -126,57 +126,5 @@ namespace Cassette {
                 get_context_description (yam_object)
             );
         }
-
-        void setup_options_button () {
-            var actions = new SimpleActionGroup ();
-
-            var playlist_info = yam_object as YaMAPI.Playlist;
-            if (playlist_info != null) {
-                if (playlist_info.kind != "3") {
-                    //  track_options_button.add_remove_from_playlist_action ();
-
-                    SimpleAction remove_from_playlist_action = new SimpleAction ("remove-from-playlist", null);
-                    remove_from_playlist_action.activate.connect (() => {
-                        remove_from_playlist_async.begin ();
-                    });
-                    actions.add_action (remove_from_playlist_action);
-                }
-            }
-
-            if (track_info.is_ugc == false) {
-                SimpleAction share_action = new SimpleAction ("share", null);
-                share_action.activate.connect (() => {
-                    track_share (track_info);
-                });
-                actions.add_action (share_action);
-            }
-
-            SimpleAction add_to_playlist_action = new SimpleAction ("add-to-playlist", null);
-            add_to_playlist_action.activate.connect (() => {
-                add_track_to_playlist (track_info);
-            });
-            actions.add_action (add_to_playlist_action);
-
-            SimpleAction add_next_action = new SimpleAction ("add-next", null);
-            add_next_action.activate.connect (() => {
-                player.add_track (track_info, true);
-            });
-            actions.add_action (add_next_action);
-
-            SimpleAction add_end_action = new SimpleAction ("add-end", null);
-            add_end_action.activate.connect (() => {
-                player.add_track (track_info, false);
-            });
-            actions.add_action (add_end_action);
-
-            //  track_options_button.add_save_action ();
-            SimpleAction save_action = new SimpleAction ("save", null);
-            save_action.activate.connect (() => {
-                Cachier.save_track.begin (track_info);
-            });
-            actions.add_action (save_action);
-
-            insert_action_group ("track", actions);
-        }
     }
 }

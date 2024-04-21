@@ -116,40 +116,6 @@ namespace Cassette {
 
             insert_action_group ("playerbar", playerbar_actions);
 
-            var track_actions = new SimpleActionGroup ();
-
-            SimpleAction share_action = new SimpleAction ("share", null);
-            share_action.activate.connect (() => {
-                activate_action ("app.share-current-track", null);
-            });
-            track_actions.add_action (share_action);
-
-            SimpleAction add_next_action = new SimpleAction ("add-next", null);
-            add_next_action.activate.connect (() => {
-                if (current_track_info != null) {
-                    player.add_track (current_track_info, true);
-                }
-            });
-            track_actions.add_action (add_next_action);
-
-            SimpleAction add_end_action = new SimpleAction ("add-end", null);
-            add_end_action.activate.connect (() => {
-                if (current_track_info != null) {
-                    player.add_track (current_track_info, false);
-                }
-            });
-            track_actions.add_action (add_end_action);
-
-            SimpleAction add_to_playlist_action = new SimpleAction ("add-to-playlist", null);
-            add_to_playlist_action.activate.connect (() => {
-                if (current_track_info != null) {
-                    add_track_to_playlist (current_track_info);
-                }
-            });
-            track_actions.add_action (add_to_playlist_action);
-
-            insert_action_group ("track", track_actions);
-
             track_detailed_button.clicked.connect (() => {
                 if (track_detailed_button.has_css_class ("flat")) {
                     window.window_sidebar.show_track_info (current_track_info);

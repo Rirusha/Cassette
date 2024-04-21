@@ -23,7 +23,7 @@
  * `Cassete.ShrinkableBin::root-window-is-shrinked`
  * Used for all adaptive things.
  */
-public abstract class Cassette.ShrinkableBin : Adw.Bin {
+public class Cassette.ShrinkableBin : Adw.Bin {
 
     /**
      * Size changed.

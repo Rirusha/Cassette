@@ -106,6 +106,14 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
                     track_version_label.halign = Gtk.Align.START;
                     track_authors_label.halign = Gtk.Align.START;
 
+                    track_name_label.wrap = false;
+                    track_version_label.wrap = false;
+                    track_authors_label.wrap = false;
+
+                    track_name_label.ellipsize = Pango.EllipsizeMode.END;
+                    track_version_label.ellipsize = Pango.EllipsizeMode.END;
+                    track_authors_label.ellipsize = Pango.EllipsizeMode.END;
+
                     title_and_marks_box.halign = Gtk.Align.START;
 
                     title_and_marks_box.start_widget = title_box;
@@ -119,6 +127,14 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
                     track_name_label.halign = Gtk.Align.CENTER;
                     track_version_label.halign = Gtk.Align.CENTER;
                     track_authors_label.halign = Gtk.Align.CENTER;
+
+                    track_name_label.wrap = true;
+                    track_version_label.wrap = true;
+                    track_authors_label.wrap = true;
+
+                    track_name_label.ellipsize = Pango.EllipsizeMode.NONE;
+                    track_version_label.ellipsize = Pango.EllipsizeMode.NONE;
+                    track_authors_label.ellipsize = Pango.EllipsizeMode.NONE;
 
                     title_and_marks_box.halign = Gtk.Align.CENTER;
 

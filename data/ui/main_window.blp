@@ -31,11 +31,10 @@ template $CassetteMainWindow : $CassetteApplicationWindow {
               title-stack: main_stack;
             }
 
-            content: Adw.ToolbarView search_toolbar {
-              top-bar-style: flat;
-              reveal-top-bars: false;
+            [top]
+            Gtk.Revealer search_revealer {
+              reveal-child: bind header_bar.search_active;
 
-              [top]
               Adw.Clamp {
                 maximum-size: 500;
                 margin-top: 4;
@@ -48,34 +47,34 @@ template $CassetteMainWindow : $CassetteApplicationWindow {
                   search-delay: 1500;
                 }
               }
+            }
 
-              content: Box {
-                orientation: vertical;
+            content: Box {
+              orientation: vertical;
 
-                Adw.Banner info_banner {
-                  button-label: _("Reconnect");
-                  title: _("Connection problems");
-                  revealed: false;
+              Adw.Banner info_banner {
+                button-label: _("Reconnect");
+                title: _("Connection problems");
+                revealed: false;
+              }
+
+              Stack loading_stack {
+
+                StackPage {
+                  name: "loading";
+                  child: $CassetteLoadingSpinner {
+                    size: 24;
+                  };
                 }
 
-                Stack loading_stack {
-
-                  StackPage {
-                    name: "loading";
-                    child: $CassetteLoadingSpinner {
-                      size: 24;
-                    };
-                  }
-
-                  StackPage {
-                    name: "done";
-                    child: Adw.ViewStack main_stack {
-                      vhomogeneous: false;
-                      hhomogeneous: false;
-                    };
-                  }
+                StackPage {
+                  name: "done";
+                  child: Adw.ViewStack main_stack {
+                    vhomogeneous: false;
+                    hhomogeneous: false;
+                  };
                 }
-              };
+              }
             };
           };
         };

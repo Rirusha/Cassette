@@ -68,11 +68,11 @@ public class Cassette.HeaderBar : ShrinkableBin {
         }
     }
 
+    public bool search_active { get; set; }
+
     public signal void backward_clicked ();
 
     public signal void refresh_clicked ();
-
-    public signal void search_toggled (bool search_active);
 
     construct {
         notify["is-shrinked"].connect (() => {
@@ -87,9 +87,7 @@ public class Cassette.HeaderBar : ShrinkableBin {
             refresh_clicked ();
         });
 
-        search_button.toggled.connect (() => {
-            search_toggled (search_button.active);
-        });
+        search_button.bind_property ("active", this, "search-active", BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT);
 
         resized.connect ((width, height) => {
             if (title_stack != null) {

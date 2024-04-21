@@ -30,8 +30,6 @@ public class Cassette.MainWindow : ApplicationWindow {
     [GtkChild]
     unowned HeaderBar header_bar;
     [GtkChild]
-    unowned Adw.ToolbarView search_toolbar;
-    [GtkChild]
     unowned Gtk.SearchEntry search_entry;
     [GtkChild]
     unowned Adw.Banner info_banner;
@@ -139,10 +137,6 @@ public class Cassette.MainWindow : ApplicationWindow {
         if (Cassette.application.is_devel) {
             add_css_class ("devel");
         }
-
-        header_bar.search_toggled.connect ((active) => {
-            search_toolbar.reveal_top_bars = active;
-        });
 
         notify["is-shrinked"].connect (() => {
             header_bar.switcher_visible = !is_shrinked;

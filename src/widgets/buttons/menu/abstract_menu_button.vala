@@ -208,7 +208,10 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
     void show_dialog_menu () {
         real_button.set_popover (null);
 
-        dialog = new MenuDialog ();
+        dialog = new MenuDialog () {
+            width_request = 360,
+            content_width = 360
+        };
         dialog.set_menu_widget (build_dialog_menu_box ());
 
         real_button.active = false;

@@ -10,7 +10,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * SPDX-License-Identifier: GPL-3.0-only
  */
@@ -277,7 +277,7 @@ namespace Cassette {
                 documenters = documenters,
                 //  Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
                 translator_credits = _("translator-credits"),
-                license_type = Gtk.License.GPL_3_0,
+                license_type = Gtk.License.GPL_3_0_ONLY,
                 copyright = "© 2023-2024 Rirusha",
                 support_url = TELEGRAM_CHAT,
                 issue_url = ISSUE_LINK,

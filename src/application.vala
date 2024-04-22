@@ -83,7 +83,7 @@ namespace Cassette {
         public Application () {
             Object (
                 application_id: Config.APP_ID_DYN,
-                resource_base_path: "/com/github/Rirusha/Cassette/"
+                resource_base_path: "/io/github/Rirusha/Cassette/"
             );
         }
 

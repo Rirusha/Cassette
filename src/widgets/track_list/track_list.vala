@@ -113,7 +113,7 @@ namespace Cassette {
         }
     }
 
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_list.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track_list.ui")]
     public class TrackList : Adw.Bin {
         [GtkChild]
         public unowned Gtk.Box title;

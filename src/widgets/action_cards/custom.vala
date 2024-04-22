@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/action_card_custom.ui")]
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/action_card_custom.ui")]
 /**
     * A class for convenient work with clickable cards.
     */

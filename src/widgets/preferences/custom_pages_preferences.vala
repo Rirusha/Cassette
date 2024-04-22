@@ -21,7 +21,7 @@ using Gee;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/custom_pages_preferences.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/custom_pages_preferences.ui")]
     public class CustomPagesPreferences : Adw.PreferencesGroup {
 
         ArrayList<CustomPagePreferences> rows = new ArrayList<CustomPagePreferences> ();

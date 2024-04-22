@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/Rirusha/Cassette">
+  <gresource prefix="/io/github/Rirusha/Cassette">
     <file alias="gtk/help-overlay.ui" preprocess="xml-stripblanks">ui/help_overlay.ui</file>
     <file>style.css</file>
     <file preprocess="xml-stripblanks">ui/account_info_dialog.ui</file>

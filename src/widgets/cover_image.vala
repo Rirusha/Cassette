@@ -19,7 +19,7 @@
 using Cassette.Client;
 using Gee;
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cover_image.ui")]
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/cover_image.ui")]
 public sealed class Cassette.CoverImage : Gtk.Frame {
 
     [GtkChild]

@@ -19,7 +19,7 @@
 using Cassette.Client;
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/job_info_badge.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/job_info_badge.ui")]
     public class JobInfoBadge : Gtk.Grid {
         [GtkChild]
         unowned Gtk.Label title_label;

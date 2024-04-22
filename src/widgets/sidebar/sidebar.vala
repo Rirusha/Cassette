@@ -20,7 +20,7 @@ using Cassette.Client;
 using Gee;
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/sidebar.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/sidebar.ui")]
     public class SideBar : Adw.Bin {
         [GtkChild]
         unowned Adw.OverlaySplitView root_flap;

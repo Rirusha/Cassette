@@ -16,7 +16,7 @@
  */
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/main_view.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/main_view.ui")]
     public class MainView : BaseView {
         [GtkChild]
         unowned Adw.StatusPage status_page;

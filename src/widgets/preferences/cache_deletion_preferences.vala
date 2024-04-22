@@ -22,7 +22,7 @@ using Gee;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cache_deletion_preferences.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/cache_deletion_preferences.ui")]
     public class CacheDeletionPreferences : Adw.PreferencesRow {
         [GtkChild]
         unowned Gtk.Stack temp_stack;

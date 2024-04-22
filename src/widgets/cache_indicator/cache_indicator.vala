@@ -19,7 +19,7 @@
 using Cassette.Client;
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/cache_indicator.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/cache_indicator.ui")]
     public class CacheIndicator : Adw.Bin {
         [GtkChild]
         unowned Gtk.Popover jobs_popover;

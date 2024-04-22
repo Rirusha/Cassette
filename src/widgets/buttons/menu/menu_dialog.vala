@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/menu_dialog.ui")]
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/menu_dialog.ui")]
 public class Cassette.MenuDialog : Adw.Dialog {
 
     [GtkChild]

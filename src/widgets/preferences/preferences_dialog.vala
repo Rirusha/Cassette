@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/preferences_dialog.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/preferences_dialog.ui")]
     public class PreferencesDialog : Adw.PreferencesDialog {
         [GtkChild]
         unowned Adw.SwitchRow show_save_stack_switch;

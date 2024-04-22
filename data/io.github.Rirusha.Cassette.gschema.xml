@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="cassette">
 
-    <schema id="io.github.Rirusha.Cassette" path="/com/github/Rirusha/Cassette/">
+    <schema id="io.github.Rirusha.Cassette" path="/io/github/Rirusha/Cassette/">
         <child schema="io.github.Rirusha.Cassette.application" name="application"/>
         <child schema="io.github.Rirusha.Cassette.client" name="client"/>
     </schema>
@@ -15,7 +15,7 @@
 		<value nick="offline" value="3"/>
 	</enum>
 
-	<schema id="io.github.Rirusha.Cassette.application" path="/com/github/Rirusha/Cassette/application/">
+	<schema id="io.github.Rirusha.Cassette.application" path="/io/github/Rirusha/Cassette/application/">
 		
 		<key name="application-state" enum="io.github.Rirusha.Cassette.application.application-state">
 			<default>"begin"</default>
@@ -80,7 +80,7 @@
 		<value nick="on" value="1"/>
 	</enum>
 
-	<schema id="io.github.Rirusha.Cassette.client" path="/com/github/Rirusha/Cassette/client/">
+	<schema id="io.github.Rirusha.Cassette.client" path="/io/github/Rirusha/Cassette/client/">
 
 		<key name="repeat-mode" enum="io.github.Rirusha.Cassette.client.repeat-mode">
 			<default>"off"</default>

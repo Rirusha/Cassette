@@ -17,7 +17,7 @@
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/volume_button.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/volume_button.ui")]
     public class VolumeButton : CustomMenuButton {
 
         [GtkChild]

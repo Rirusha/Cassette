@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/custom_menu_button.ui")]
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/custom_menu_button.ui")]
 public abstract class Cassette.CustomMenuButton : ShrinkableBin {
 
     public struct MenuItem {

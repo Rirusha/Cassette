@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_micro.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/playlist_micro.ui")]
     public class PlaylistMicro : Adw.Bin {
         [GtkChild]
         unowned CoverImage cover_image;

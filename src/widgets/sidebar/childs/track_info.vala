@@ -21,7 +21,7 @@ using Gee;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_info.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track_info.ui")]
     public class TrackInfo : Adw.Bin {
         [GtkChild]
         unowned Gtk.Label track_type_label;

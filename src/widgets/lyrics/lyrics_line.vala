@@ -18,7 +18,7 @@
 using Gee;
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/lyrics_line.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/lyrics_line.ui")]
     public class LyricsLine : Adw.Bin {
         [GtkChild]
         unowned Gtk.Revealer line_small;

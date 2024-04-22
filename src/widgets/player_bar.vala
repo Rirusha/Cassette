@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/player_bar.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/player_bar.ui")]
     public class PlayerBar : Adw.Bin {
         [GtkChild]
         unowned Gtk.Label current_time_mark;

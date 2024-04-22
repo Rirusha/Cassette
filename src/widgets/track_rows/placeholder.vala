@@ -16,7 +16,7 @@
  */
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_placeholder.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track_placeholder.ui")]
     public class TrackPlaceholder : Gtk.Frame {
 
         public TrackPlaceholder () {

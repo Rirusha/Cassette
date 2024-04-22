@@ -19,7 +19,7 @@ using Gee;
 
 namespace Cassette {
     // Может принимать вид кнопки, так и простого текста
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/label_button.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/label_button.ui")]
     public class LabelButton : Adw.Bin {
 
         [GtkChild]

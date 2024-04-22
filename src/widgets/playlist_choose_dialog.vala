@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/playlist_choose_dialog.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/playlist_choose_dialog.ui")]
     public class PlaylistChooseDialog : Adw.Dialog {
         [GtkChild]
         unowned Gtk.Box main_box;

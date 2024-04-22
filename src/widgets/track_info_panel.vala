@@ -18,7 +18,7 @@
 using Cassette.Client;
 
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/track_info_panel.ui")]
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track_info_panel.ui")]
 public class Cassette.TrackInfoPanel : Adw.Bin {
 
     [GtkChild]

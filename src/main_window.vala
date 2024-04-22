@@ -18,7 +18,7 @@
 
 using Cassette.Client;
 
-[GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/main_window.ui")]
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/main_window.ui")]
 public class Cassette.MainWindow : ApplicationWindow {
 
     [GtkChild]

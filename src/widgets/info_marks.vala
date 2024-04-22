@@ -22,7 +22,7 @@ using Gee;
 
 namespace Cassette {
     // Может принимать вид кнопки, так и простого текста
-    [GtkTemplate (ui = "/com/github/Rirusha/Cassette/ui/info_marks.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/info_marks.ui")]
     public class InfoMarks : Adw.Bin {
 
         [GtkChild]

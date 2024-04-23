@@ -5,8 +5,8 @@ cassette_test_sources = [
 ]
 
 test('Test Jsoner',
-  executable('jsoner_test',
-    sources: ['jsoner_test.vala'] + cassette_test_sources,
+  executable('jsoner-test',
+    sources: ['jsoner-test.vala'] + cassette_test_sources,
     dependencies: cassette_dependencies,
     include_directories: config_h_dir,
     c_args: cassette_c_args,
@@ -14,8 +14,8 @@ test('Test Jsoner',
 )
 
 test('Test Client Utils',
-  executable('client_utils_test',
-    sources: ['client_utils_test.vala'] + cassette_test_sources,
+  executable('client-utils-test',
+    sources: ['client-utils-test.vala'] + cassette_test_sources,
     dependencies: cassette_dependencies,
     include_directories: config_h_dir,
     c_args: cassette_c_args,
@@ -23,8 +23,8 @@ test('Test Client Utils',
 )
 
 test('Test Info Database',
-  executable('info_db_test',
-    sources: ['info_db_test.vala'] + cassette_test_sources,
+  executable('info-db-test',
+    sources: ['info-db-test.vala'] + cassette_test_sources,
     dependencies: cassette_dependencies,
     include_directories: config_h_dir,
     c_args: cassette_c_args,
@@ -32,8 +32,8 @@ test('Test Info Database',
 )
 
 test('Test Storager',
-  executable('storager_test',
-    sources: ['storager_test.vala'] + cassette_test_sources,
+  executable('storager-test',
+    sources: ['storager-test.vala'] + cassette_test_sources,
     dependencies: cassette_dependencies,
     include_directories: config_h_dir,
     c_args: cassette_c_args,

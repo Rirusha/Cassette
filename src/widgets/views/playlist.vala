@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/playlist_view.ui")]
+    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/playlist-view.ui")]
     public class PlaylistView : CachiableView {
         [GtkChild]
         unowned SaveStack save_stack;

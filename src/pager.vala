@@ -80,7 +80,7 @@ namespace Cassette {
     // Класс менеджера станиц, нужен для добавления кастомных страниц (а ля мой плейлист со всеми каверами казённого унитаза)
     public class Pager : Object {
 
-        public MainWindow window { get; construct set; }
+        public Window window { get; construct set; }
         public Adw.ViewStack stack { get; construct set; }
 
         Gee.ArrayList<PageInfo?> _custom_pages = new Gee.ArrayList<PageInfo?> ();
@@ -97,7 +97,7 @@ namespace Cassette {
 
         File pages_file;
 
-        public Pager (MainWindow window, Adw.ViewStack stack) {
+        public Pager (Window window, Adw.ViewStack stack) {
             Object (window: window, stack: stack);
         }
 

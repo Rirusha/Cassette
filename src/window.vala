@@ -18,8 +18,8 @@
 
 using Cassette.Client;
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/main_window.ui")]
-public class Cassette.MainWindow : ApplicationWindow {
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/window.ui")]
+public class Cassette.Window : ApplicationWindow {
 
     [GtkChild]
     unowned Adw.ToolbarView player_bar_toolbar;
@@ -82,7 +82,7 @@ public class Cassette.MainWindow : ApplicationWindow {
         }
     }
 
-    public MainWindow (Cassette.Application app) {
+    public Window (Cassette.Application app) {
         Object (application: app);
     }
 

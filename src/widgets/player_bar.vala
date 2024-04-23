@@ -55,11 +55,11 @@ namespace Cassette {
         [GtkChild]
         unowned TrackOptionsButton track_options_button;
 
-        public MainWindow window { get; construct set; }
+        public Window window { get; construct set; }
 
         public YaMAPI.Track? current_track_info { get; private set; default = null; }
 
-        public PlayerBar (MainWindow window) {
+        public PlayerBar (Window window) {
             Object (window: window);
         }
 

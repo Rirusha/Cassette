@@ -70,7 +70,7 @@ namespace Cassette {
 
         public signal void application_state_changed (ApplicationState new_state);
 
-        public MainWindow? main_window { get; private set; default = null; }
+        public Window? main_window { get; private set; default = null; }
 
         uint now_playing_t = 0;
 
@@ -166,7 +166,7 @@ namespace Cassette {
             base.activate ();
 
             if (main_window == null) {
-                main_window = new MainWindow (this);
+                main_window = new Window (this);
 
                 authenticator.success.connect (main_window.load_default_views);
                 authenticator.local.connect (main_window.load_local_views);

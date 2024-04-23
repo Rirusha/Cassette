@@ -97,7 +97,7 @@ cassette_gui_sources = files(
   'widgets/track_info_panel.vala',
   'application.vala',
   'authenticator.vala',
-  'main_window.vala',
+  'window.vala',
   'main.vala',
   'pager.vala',
   'utils.vala',

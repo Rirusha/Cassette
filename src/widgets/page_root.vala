@@ -23,7 +23,7 @@ public class Cassette.PageRoot : AbstractLoadablePage {
 
     bool main_view_is_loaded = false;
 
-    public MainWindow window { get; construct; }
+    public Window window { get; construct; }
     public BaseView main_view { get; construct; }
 
     public Gtk.Widget current_widget {
@@ -32,7 +32,7 @@ public class Cassette.PageRoot : AbstractLoadablePage {
         }
     }
 
-    public PageRoot (MainWindow window, BaseView main_view) {
+    public PageRoot (Window window, BaseView main_view) {
         Object (window: window, main_view: main_view, with_header_bar: false);
     }
 

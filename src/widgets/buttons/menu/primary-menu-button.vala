@@ -21,7 +21,7 @@ public class Cassette.PrimaryMenuButton : CustomMenuButton {
     construct {
         primary = true;
         title_label = _("Primary menu");
-        icon_name = "adwaita-open-menu-symbolic";
+        icon_name = "open-menu-symbolic";
     }
 
     protected override MenuItem[] get_popover_menu_items () {

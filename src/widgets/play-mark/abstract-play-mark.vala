@@ -49,10 +49,10 @@ public abstract class Cassette.PlayMark : Adw.Bin {
 
     void on_is_playing_notify () {
         if (is_playing) {
-            real_image.icon_name = "adwaita-media-playback-pause-symbolic";
+            real_image.icon_name = "media-playback-pause-symbolic";
 
         } else {
-            real_image.icon_name = "adwaita-media-playback-start-symbolic";
+            real_image.icon_name = "media-playback-start-symbolic";
         }
     }
 

@@ -63,7 +63,7 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
     }
 
     public void clear () {
-        real_image.icon_name = "adwaita-audio-x-generic-symbolic";
+        real_image.icon_name = "audio-x-generic-symbolic";
         yam_object = null;
     }
 

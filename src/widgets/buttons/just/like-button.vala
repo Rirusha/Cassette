@@ -29,7 +29,7 @@ namespace Cassette {
 
         bool is_liked {
             get {
-                return icon_name == "adwaita-emblem-favorite-symbolic";
+                return icon_name == "emblem-favorite-symbolic";
             }
             set {
                 if (value) {
@@ -37,14 +37,14 @@ namespace Cassette {
                         likes_count++;
                     }
 
-                    icon_name = "adwaita-emblem-favorite-symbolic";
+                    icon_name = "emblem-favorite-symbolic";
                     real_button.tooltip_text = _("Remove like");
                 } else {
                     if (is_liked && should_change_likes_count && likes_count != -1) {
                         likes_count--;
                     }
 
-                    icon_name = "cassette-not-like-symbolic";
+                    icon_name = "not-like-symbolic";
                     real_button.tooltip_text = _("Set like");
                 }
 

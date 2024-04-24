@@ -10,7 +10,7 @@
           <object class="GtkImage" id="track_replaced_mark">
             <property name="width-request">38</property>
             <property name="height-request">38</property>
-            <property name="icon-name">adwaita-replaced-symbolic</property>
+            <property name="icon-name">replaced-symbolic</property>
             <property name="visible">false</property>
           </object>
         </child>
@@ -19,7 +19,7 @@
             <property name="width-request">38</property>
             <property name="height-request">38</property>
             <property name="visible">false</property>
-            <property name="icon-name">cassette-explicit-symbolic</property>
+            <property name="icon-name">explicit-symbolic</property>
             <property name="tooltip-text" translatable="true">Explicit content</property>
           </object>
         </child>
@@ -28,7 +28,7 @@
             <property name="width-request">38</property>
             <property name="height-request">38</property>
             <property name="visible">false</property>
-            <property name="icon-name">cassette-child-symbolic</property>
+            <property name="icon-name">child-symbolic</property>
             <property name="tooltip-text" translatable="true">Child content</property>
           </object>
         </child>

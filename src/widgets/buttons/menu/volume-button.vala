@@ -106,13 +106,13 @@ namespace Cassette {
 
         void check_icon () {
             if (volume == volume_lower || mute) {
-                real_button.icon_name = "adwaita-audio-volume-muted-symbolic";
+                real_button.icon_name = "audio-volume-muted-symbolic";
             } else if (volume < 0.025) {
-                real_button.icon_name = "adwaita-audio-volume-low-symbolic";
+                real_button.icon_name = "audio-volume-low-symbolic";
             } else if (volume < 0.35) {
-                real_button.icon_name = "adwaita-audio-volume-medium-symbolic";
+                real_button.icon_name = "audio-volume-medium-symbolic";
             } else {
-                real_button.icon_name = "adwaita-audio-volume-high-symbolic";
+                real_button.icon_name = "audio-volume-high-symbolic";
             }
         }
 

@@ -116,7 +116,7 @@
                                 </style>
                                 <property name="halign">end</property>
                                 <property name="valign">start</property>
-                                <property name="icon-name">adwaita-document-edit-symbolic</property>
+                                <property name="icon-name">document-edit-symbolic</property>
                                 <property name="visible">false</property>
                               </object>
                             </child>
@@ -192,7 +192,7 @@
                                   <class name="circular"/>
                                 </style>
                                 <property name="visible">false</property>
-                                <property name="icon-name">adwaita-bookmark-new-symbolic</property>
+                                <property name="icon-name">bookmark-new-symbolic</property>
                                 <property name="valign">center</property>
                                 <property name="halign">start</property>
                                 <property name="tooltip-text" translatable="true">Add page to header</property>
@@ -220,7 +220,7 @@
                                         <property name="tooltip-text" translatable="true">Save</property>
                                         <child>
                                           <object class="AdwButtonContent">
-                                            <property name="icon-name">adwaita-cache-perm-symbolic</property>
+                                            <property name="icon-name">cache-perm-symbolic</property>
                                             <property name="label" translatable="true">Save</property>
                                           </object>
                                         </child>
@@ -243,7 +243,7 @@
                                         <property name="tooltip-text" translatable="true">Delete</property>
                                         <child>
                                           <object class="AdwButtonContent">
-                                            <property name="icon-name">adwaita-edit-delete-symbolic</property>
+                                            <property name="icon-name">edit-delete-symbolic</property>
                                             <property name="label" translatable="true">Delete</property>
                                           </object>
                                         </child>
@@ -263,7 +263,7 @@
                                         <property name="tooltip-text" translatable="true">Abort</property>
                                         <child>
                                           <object class="AdwButtonContent">
-                                            <property name="icon-name">adwaita-edit-delete-symbolic</property>
+                                            <property name="icon-name">edit-delete-symbolic</property>
                                             <property name="label" translatable="true">Stop</property>
                                           </object>
                                         </child>

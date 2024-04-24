@@ -87,7 +87,7 @@
                       <class name="flat"/>
                     </style>
                     <!-- <property name="visible">false</property> -->
-                    <property name="icon-name">adwaita-view-sort-ascending-symbolic</property>
+                    <property name="icon-name">view-sort-ascending-symbolic</property>
                   </object>
                 </child>
                 <child>
@@ -96,7 +96,7 @@
                       <class name="flat"/>
                     </style>
                     <property name="visible">false</property>
-                    <property name="icon-name">adwaita-window-close-symbolic</property>
+                    <property name="icon-name">window-close-symbolic</property>
                   </object>
                 </child>
               </object>
@@ -114,7 +114,7 @@
         <child>
           <object class="AdwStatusPage" id="status_page">
             <property name="title" translatable="true">No tracks to display</property>
-            <property name="icon-name">adwaita-face-sad-symbolic</property>
+            <property name="icon-name">face-sad-symbolic</property>
             <property name="visible">false</property>
           </object>
         </child>

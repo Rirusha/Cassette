@@ -86,7 +86,7 @@ namespace Cassette {
         }
 
         public void success () {
-            add_button.icon_name = "adwaita-emblem-ok-symbolic";
+            add_button.icon_name = "emblem-ok-symbolic";
 
             set_track_count ();
         }

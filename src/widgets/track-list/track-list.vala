@@ -220,11 +220,11 @@ namespace Cassette {
                     switch (sort_direction) {
                         case SortDirection.ASCENDING:
                             sort_direction = SortDirection.DESCENDING;
-                            sort_direction_button.icon_name = "adwaita-view-sort-descending-symbolic";
+                            sort_direction_button.icon_name = "view-sort-descending-symbolic";
                             break;
                         case SortDirection.DESCENDING:
                             sort_direction = SortDirection.ASCENDING;
-                            sort_direction_button.icon_name = "adwaita-view-sort-ascending-symbolic";
+                            sort_direction_button.icon_name = "view-sort-ascending-symbolic";
                             break;
                     }
                     sort ();

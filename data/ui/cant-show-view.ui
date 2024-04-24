@@ -5,7 +5,7 @@
   <template class="CassetteCantShowView" parent="AdwBin">
     <child>
       <object class="AdwStatusPage" id="status_page">
-        <property name="icon-name">adwaita-network-offline-symbolic</property>
+        <property name="icon-name">network-offline-symbolic</property>
       </object>
     </child>
   </template>

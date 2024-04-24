@@ -45,7 +45,7 @@
         <style>
           <class name="circular"/>
         </style>
-        <property name="icon-name">adwaita-edit-delete-symbolic</property>
+        <property name="icon-name">edit-delete-symbolic</property>
         <property name="vexpand">false</property>
         <property name="hexpand">false</property>
         <property name="valign">center</property>

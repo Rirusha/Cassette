@@ -68,7 +68,7 @@
         </child>
         <child>
           <object class="GtkButton" id="page_save_button">
-            <property name="icon-name">adwaita-cache-perm-symbolic</property>
+            <property name="icon-name">cache-perm-symbolic</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="hexpand">false</property>
@@ -85,7 +85,7 @@
             <style>
               <class name="destructive-action"/>
             </style>
-            <property name="icon-name">adwaita-user-trash-symbolic</property>
+            <property name="icon-name">user-trash-symbolic</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="hexpand">false</property>

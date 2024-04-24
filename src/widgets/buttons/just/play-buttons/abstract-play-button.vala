@@ -35,14 +35,14 @@ namespace Cassette {
         void on_is_playing_notify () {
             if (is_playing) {
                 tooltip_text = _("Pause");
-                icon_name = "adwaita-media-playback-pause-symbolic";
+                icon_name = "media-playback-pause-symbolic";
                 if (with_label) {
                     label = _("Pause");
                 }
 
             } else {
                 tooltip_text = _("Play");
-                icon_name = "adwaita-media-playback-start-symbolic";
+                icon_name = "media-playback-start-symbolic";
                 if (with_label) {
                     label = _("Play");
                 }

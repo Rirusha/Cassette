@@ -80,7 +80,7 @@
                       <object class="GtkButton" id="temp_delete_button">
                         <child>
                           <object class="AdwButtonContent">
-                            <property name="icon-name">adwaita-user-trash-symbolic</property>
+                            <property name="icon-name">user-trash-symbolic</property>
                             <property name="label" translatable="true">Clear cache</property>
                           </object>
                         </child>
@@ -151,7 +151,7 @@
                       <object class="GtkButton" id="perm_delete_button">
                         <child>
                           <object class="AdwButtonContent">
-                            <property name="icon-name">adwaita-user-trash-symbolic</property>
+                            <property name="icon-name">user-trash-symbolic</property>
                             <property name="label" translatable="true">Move saved</property>
                           </object>
                         </child>

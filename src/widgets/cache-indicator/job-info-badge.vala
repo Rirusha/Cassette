@@ -67,7 +67,7 @@ namespace Cassette {
             job.job_done.connect (() => {
                 sensitive = false;
                 abort_button.sensitive = false;
-                abort_button.icon_name = "adwaita-emblem-default-symbolic";
+                abort_button.icon_name = "emblem-default-symbolic";
             });
         }
 

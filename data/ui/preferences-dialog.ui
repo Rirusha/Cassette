@@ -6,7 +6,7 @@
     <child>
       <object class="AdwPreferencesPage">
         <property name="title" translatable="true" context="preference dialog">Main</property>
-        <property name="icon-name">adwaita-user-home-symbolic</property>
+        <property name="icon-name">user-home-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
@@ -137,7 +137,7 @@
     <child>
       <object class="AdwPreferencesPage">
         <property name="title" translatable="true" context="preference dialog">Pages</property>
-        <property name="icon-name">adwaita-view-paged-symbolic</property>
+        <property name="icon-name">view-paged-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->
@@ -173,7 +173,7 @@
       <object class="AdwPreferencesPage">
         <!-- Translators: Cache preference -->
         <property name="title" translatable="true" context="preference dialog">Cache</property>
-        <property name="icon-name">adwaita-user-trash-symbolic</property>
+        <property name="icon-name">user-trash-symbolic</property>
         <child>
           <object class="AdwPreferencesGroup">
             <!-- Translators: title of preference group -->

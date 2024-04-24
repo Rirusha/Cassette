@@ -55,7 +55,7 @@ namespace Cassette {
 
             is_disliked = false;
 
-            real_button.icon_name = "adwaita-disliked-symbolic";
+            real_button.icon_name = "disliked-symbolic";
             real_button.add_css_class ("dim-label");
             real_button.clicked.connect (like_dislike);
 

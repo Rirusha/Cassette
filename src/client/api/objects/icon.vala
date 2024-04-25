@@ -284,7 +284,7 @@ public class Cassette.Client.YaMAPI.Icon : YaMObject {
                     station_id
                 ));
 
-                return "io.github.Rirusha.Cassette-symbolic";
+                return "music-note-symbolic";
         }
     }
 }

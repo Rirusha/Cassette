@@ -28,9 +28,7 @@ namespace Cassette {
         }
 
         construct {
-            if (Cassette.application.is_devel) {
-                status_page.icon_name = "io.github.Rirusha.Cassette-symbolic";
-            }
+            status_page.icon_name = "%s-symbolic".printf (Config.APP_ID_DYN);
         }
 
         void set_values () {

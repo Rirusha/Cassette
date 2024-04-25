@@ -31,6 +31,7 @@
     <file alias="media-playlist-shuffle-symbolic.svg">assets/icons/media-playlist-shuffle-symbolic.svg</file>
     <file alias="media-skip-backward-symbolic.svg">assets/icons/media-skip-backward-symbolic.svg</file>
     <file alias="media-skip-forward-symbolic.svg">assets/icons/media-skip-forward-symbolic.svg</file>
+    <file alias="music-note-symbolic.svg">assets/icons/music-note-symbolic.svg</file>
     <file alias="music-queue-symbolic.svg">assets/icons/music-queue-symbolic.svg</file>
     <file alias="network-offline-symbolic.svg">assets/icons/network-offline-symbolic.svg</file>
     <file alias="not-like-symbolic.svg">assets/icons/not-like-symbolic.svg</file>

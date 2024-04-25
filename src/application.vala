@@ -230,7 +230,7 @@ namespace Cassette {
             ntf.add_button (_("Previous"), "app.prev-force");
             ntf.add_button (_("Next"), "app.next");
 
-            ntf.set_icon (new ThemedIcon ("io.github.Rirusha.Cassette-symbolic"));
+            ntf.set_icon (new ThemedIcon ("%s-symbolic".printf (Config.APP_ID_DYN)));
 
             if (now_playing_t != 0) {
                 Source.remove (now_playing_t);

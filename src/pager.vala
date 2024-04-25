@@ -257,7 +257,7 @@ namespace Cassette {
                 add_page ({
                     "devel",
                     "Devel",
-                    "face-cool-symbolic",
+                    "wave-mood-epic-symbolic",
                     typeof (DevelView).name ()
                 });
             }

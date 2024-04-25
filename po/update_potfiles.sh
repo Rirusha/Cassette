@@ -1,0 +1,16 @@
+#!/bin/bash
+# Should run from project root dir
+
+touch ./po/unsort-POTFILES.in
+
+find ./data/ui -iname "*.ui" -type f -exec grep -l "translatable" {} + | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
+find ./data/ui -iname "*.blp" -type f -exec grep -lrE '_\(|C_|ngettext' {} + | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
+find ./src -iname "*.vala" -type f -exec grep -lrE '_\(|C_|ngettext' {} + | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
+find ./data/ -iname "*.desktop.in" | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
+find ./data/ -iname "*.appdata.xml.in" | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
+
+cat ./po/unsort-POTFILES.in | sort | uniq > ./po/POTFILES.in
+
+rm ./po/unsort-POTFILES.in
+
+# To add translation, please use Damned Lies service https://l10n.gnome.org/

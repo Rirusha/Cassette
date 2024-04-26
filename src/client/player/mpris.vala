@@ -120,16 +120,63 @@ public class MprisPlayer : Object {
 
     public int64 position {
         get {
-            return player.playback_pos_ms;
+            return player.playback_pos_ms * 1000;
         }
     }
 
     public double volume {
         get {
-            return settings.get_double ("volume");
+            return player.volume;
         }
         set {
-            send_property_change ("Volume", value);
+            player.volume = value;
+        }
+    }
+
+    public bool shuffle {
+        get {
+            return player.shuffle_mode == Player.ShuffleMode.ON;
+        }
+        set {
+            if (value) {
+                player.shuffle_mode = Player.ShuffleMode.ON;
+
+            } else {
+                player.shuffle_mode = Player.ShuffleMode.OFF;
+            }
+        }
+    }
+
+    public string loop_status {
+        get {
+            switch (player.repeat_mode) {
+                case Player.RepeatMode.OFF:
+                    return "None";
+
+                case Player.RepeatMode.REPEAT_ONE:
+                    return "Track";
+
+                case Player.RepeatMode.REPEAT_ALL:
+                    return "Playlist";
+                
+                default:
+                    assert_not_reached ();
+            }
+        }
+        set {
+            switch (value) {
+                case "None":
+                    player.repeat_mode = Player.RepeatMode.OFF;
+                    break;
+
+                case "Track":
+                    player.repeat_mode = Player.RepeatMode.REPEAT_ONE;
+                    break;
+
+                case "Playlist":
+                    player.repeat_mode = Player.RepeatMode.REPEAT_ALL;
+                    break;
+            }
         }
     }
 
@@ -148,6 +195,18 @@ public class MprisPlayer : Object {
         player.current_track_finish_loading.connect (() => {
             send_can_properties ();
             send_property_change ("Metadata", _get_metadata ());
+        });
+
+        player.notify["volume"].connect (() => {
+            send_property_change ("Volume", volume);
+        });
+
+        player.notify["shuffle-mode"].connect (() => {
+            send_property_change ("Shuffle", shuffle);
+        });
+
+        player.notify["repeat-mode"].connect (() => {
+            send_property_change ("LoopStatus", loop_status);
         });
 
         player.notify["state"].connect (() => {
@@ -206,7 +265,7 @@ public class MprisPlayer : Object {
             }
 
             metadata.insert ("mpris:trackid", obj_path);
-            metadata.insert ("mpris:length", current_track.duration_ms);
+            metadata.insert ("mpris:length", new Variant ("i", current_track.duration_ms * 1000));
             metadata.insert ("mpris:artUrl", cover_uri);
             metadata.insert ("xesam:title", current_track.title);
             metadata.insert ("xesam:album", current_track.get_album_title ());
@@ -277,9 +336,15 @@ public class MprisPlayer : Object {
         }
     }
 
-    public void seek (int64 position, BusName sender) throws Error {
+    public void seek (int64 offset, BusName sender) throws Error {
         if (can_seek) {
-            player.seek (position);
+            player.seek ((position + offset) / 1000);
+        }
+    }
+
+    public void set_position (ObjectPath track_id, int64 position, BusName sender) throws Error {
+        if (can_seek) {
+            player.seek ((position) / 1000);
         }
     }
 }

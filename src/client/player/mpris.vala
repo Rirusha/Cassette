@@ -153,10 +153,10 @@ public class MprisPlayer : Object {
                 case Player.RepeatMode.OFF:
                     return "None";
 
-                case Player.RepeatMode.REPEAT_ONE:
+                case Player.RepeatMode.ONE:
                     return "Track";
 
-                case Player.RepeatMode.REPEAT_ALL:
+                case Player.RepeatMode.QUEUE:
                     return "Playlist";
 
                 default:
@@ -170,11 +170,11 @@ public class MprisPlayer : Object {
                     break;
 
                 case "Track":
-                    player.repeat_mode = Player.RepeatMode.REPEAT_ONE;
+                    player.repeat_mode = Player.RepeatMode.ONE;
                     break;
 
                 case "Playlist":
-                    player.repeat_mode = Player.RepeatMode.REPEAT_ALL;
+                    player.repeat_mode = Player.RepeatMode.QUEUE;
                     break;
             }
         }

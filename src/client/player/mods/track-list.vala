@@ -51,7 +51,7 @@ public class Cassette.Client.Player.TrackList : Shufflable {
                 }
                 break;
 
-            case RepeatMode.REPEAT_ONE:
+            case RepeatMode.ONE:
                 if (!consider_repeat_one) {
                     if (index + 1 == queue.size) {
                         index = -1;
@@ -62,7 +62,7 @@ public class Cassette.Client.Player.TrackList : Shufflable {
                 }
                 break;
 
-            case RepeatMode.REPEAT_ALL:
+            case RepeatMode.QUEUE:
                 if (index + 1 == queue.size) {
                     index = 0;
 
@@ -84,7 +84,7 @@ public class Cassette.Client.Player.TrackList : Shufflable {
                 break;
 
             case 0:
-                if (player.repeat_mode == RepeatMode.REPEAT_ALL) {
+                if (player.repeat_mode == RepeatMode.QUEUE) {
                     index = queue.size - 1;
                 } else {
                     index = -1;

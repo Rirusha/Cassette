@@ -26,8 +26,8 @@ public enum Cassette.Client.Player.State {
 
 public enum Cassette.Client.Player.RepeatMode {
     OFF,
-    REPEAT_ONE,
-    REPEAT_ALL
+    ONE,
+    QUEUE
 }
 
 public enum Cassette.Client.Player.ShuffleMode {

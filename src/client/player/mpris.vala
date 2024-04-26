@@ -158,7 +158,7 @@ public class MprisPlayer : Object {
 
                 case Player.RepeatMode.REPEAT_ALL:
                     return "Playlist";
-                
+
                 default:
                     assert_not_reached ();
             }

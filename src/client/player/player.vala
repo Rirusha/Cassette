@@ -261,6 +261,11 @@ public class Cassette.Client.Player.Player : Object {
     }
 
     public void seek (int64 ms) {
+        if (ms < 0) {
+            Logger.warning ("Trying to seek with negative value");
+            return;
+        }
+
         playbin.seek_simple (Gst.Format.TIME, Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, ms * Gst.MSECOND);
     }
 
@@ -345,7 +350,7 @@ public class Cassette.Client.Player.Player : Object {
         }
     }
 
-    public void stop (bool natural = false) {
+    public void stop (bool natural = false, bool full = false) {
         var current_track = mode.get_current_track_info ();
 
         playbin.set_property ("uri", Value (Type.STRING));
@@ -367,6 +372,12 @@ public class Cassette.Client.Player.Player : Object {
         }
 
         state = State.NONE;
+
+        if (full) {
+            mode = new Empty ();
+            mode_inited ();
+        }
+
         reset_play ();
 
         stopped ();

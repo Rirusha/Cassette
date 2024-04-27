@@ -61,7 +61,7 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
     }
 
     public void add_track_next (YaMAPI.Track track_info) {
-        if (queue.size == 0) {
+        if (queue.is_empty) {
             add_track_end (track_info);
             return;
         }
@@ -85,7 +85,7 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
         queue.remove_at (track_pos);
         original_queue.remove (track_info);
 
-        if (queue.size != 0) {
+        if (!queue.is_empty) {
             if (track_pos == current_index) {
                 player.change_track (get_current_track_info ());
 
@@ -93,7 +93,7 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
                 current_index--;
             }
         } else {
-            player.stop (true);
+            player.stop ();
         }
     }
 
@@ -106,27 +106,23 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
     }
 
     public void add_track_end (YaMAPI.Track track_info) {
-        bool should_change_track_state = queue.size == 0;
-
         queue.add (track_info);
         original_queue.add (track_info);
 
-        if (should_change_track_state) {
+        if (queue.is_empty) {
             player.start_current_track.begin (() => {
-                player.stop (true);
+                player.stop ();
             });
         }
     }
 
     public void add_many_end (ArrayList<YaMAPI.Track> track_list) {
-        bool should_change_track_state = queue.size == 0;
-
         queue.add_all (track_list);
         original_queue.add_all (track_list);
 
-        if (should_change_track_state) {
+        if (queue.is_empty) {
             player.start_current_track.begin (() => {
-                player.stop (true);
+                player.stop ();
             });
         }
     }

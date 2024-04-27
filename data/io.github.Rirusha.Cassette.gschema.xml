@@ -72,8 +72,8 @@
 
     <enum id="io.github.Rirusha.Cassette.client.repeat-mode">
 		<value nick="off" value="0"/>
-		<value nick="repeat-one" value="1"/>
-		<value nick="repeat-all" value="2"/>
+		<value nick="one" value="1"/>
+		<value nick="queue" value="2"/>
 	</enum>
 	<enum id="io.github.Rirusha.Cassette.client.shuffle-mode">
 		<value nick="off" value="0"/>

@@ -26,13 +26,6 @@ using Gee;
  */
 public abstract class Cassette.Client.Player.Mode : Object {
 
-    public enum Type {
-        NONE,
-        TRACK_LIST,
-        FLOW,
-        LOCAL
-    }
-
     /**
      * Parent player object.
      */

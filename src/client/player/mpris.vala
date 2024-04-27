@@ -26,7 +26,7 @@ public static void init () {
 
     Bus.own_name (
         BusType.SESSION,
-        "org.mpris.MediaPlayer2.cassette",
+        "org.mpris.MediaPlayer2.%s".printf (Config.APP_ID_DYN),
         BusNameOwnerFlags.ALLOW_REPLACEMENT,
         on_bus_aquired
     );
@@ -47,7 +47,7 @@ static void on_bus_aquired (DBusConnection con, string name) {
 public class Mpris : Object {
     public bool can_quit { get; set; default = true; }
     public bool can_raise { get; set; default = true; }
-    public string desktop_entry { get; set; default = "cassette"; }
+    public string desktop_entry { get; set; default = Config.APP_ID_DYN; }
     public string identity { get; set; default = "Cassette"; }
 
     public signal void quit_triggered ();
@@ -87,19 +87,19 @@ public class MprisPlayer : Object {
 
     public bool can_pause {
         get {
-            return !player.current_track_loading;
+            return can_control;
         }
     }
 
     public bool can_seek {
         get {
-            return !player.current_track_loading;
+            return can_control;
         }
     }
 
     public bool can_play {
         get {
-            return true;
+            return !(player.mode is Player.Empty);
         }
     }
 
@@ -197,6 +197,10 @@ public class MprisPlayer : Object {
             send_property_change ("Metadata", _get_metadata ());
         });
 
+        player.notify["mode"].connect (() => {
+            send_can_properties ();
+        });
+
         player.notify["volume"].connect (() => {
             send_property_change ("Volume", volume);
         });
@@ -234,6 +238,7 @@ public class MprisPlayer : Object {
 
     void send_can_properties () {
         send_property_change ("CanControl", can_control);
+        send_property_change ("CanPlay", can_play);
         send_property_change ("CanPause", can_pause);
         send_property_change ("CanSeek", can_seek);
     }

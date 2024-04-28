@@ -22,9 +22,11 @@ public sealed class Cassette.PlayMarkGlobal : PlayMark {
         player.played.connect (() => {
             set_playing ();
         });
+
         player.paused.connect (() => {
             set_paused ();
         });
+
         player.stopped.connect (() => {
             set_stopped ();
         });

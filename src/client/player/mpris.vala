@@ -69,7 +69,7 @@ public class MprisPlayer : Object {
 
     public bool can_control {
         get {
-            return !player.current_track_loading;
+            return true;
         }
     }
 
@@ -87,13 +87,13 @@ public class MprisPlayer : Object {
 
     public bool can_pause {
         get {
-            return can_control;
+            return !player.current_track_loading;
         }
     }
 
     public bool can_seek {
         get {
-            return can_control;
+            return !player.current_track_loading;
         }
     }
 

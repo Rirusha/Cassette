@@ -129,8 +129,6 @@ public class Cassette.Client.Player.Player : Object {
 
     public bool can_go_next { get; private set; default = true; }
 
-    public bool can_seek { get; private set; }
-
     /**
      * Is current track loading.
      */

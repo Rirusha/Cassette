@@ -41,6 +41,19 @@ namespace Cassette {
     // Класс приложения
     public class Application : Adw.Application {
 
+        const ActionEntry[] ACTION_ENTRIES = {
+            { "quit", quit },
+            { "log-out", on_log_out },
+            { "play-pause", on_play_pause },
+            { "next", on_next },
+            { "prev", on_prev },
+            { "prev-force", on_prev_force },
+            { "change-shuffle", on_shuffle },
+            { "change-repeat", on_repeat },
+            { "share-current-track", on_share_current_track},
+            { "parse-url", on_paste_url }
+        };
+
         ApplicationState _application_state;
         public ApplicationState application_state {
             get {
@@ -61,12 +74,6 @@ namespace Cassette {
                 }
             }
         }
-
-        const string APP_NAME = "Cassette";
-        const string RIRUSHA = "Rirusha https://github.com/Rirusha";
-        const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
-        const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
-        const string ISSUE_LINK = "https://github.com/Rirusha/Cassette/issues/new";
 
         public signal void application_state_changed (ApplicationState new_state);
 
@@ -137,21 +144,7 @@ namespace Cassette {
                 }
             });
 
-            ActionEntry[] action_entries = {
-                { "about", on_about_action },
-                { "preferences", on_preferences_action },
-                { "quit", quit },
-                { "log-out", on_log_out },
-                { "play-pause", on_play_pause },
-                { "next", on_next },
-                { "prev", on_prev },
-                { "prev-force", on_prev_force },
-                { "change-shuffle", on_shuffle },
-                { "change-repeat", on_repeat },
-                { "share-current-track", on_share_current_track},
-                { "parse-url", on_paste_url }
-            };
-            add_action_entries (action_entries, this);
+            add_action_entries (ACTION_ENTRIES, this);
             set_accels_for_action ("app.quit", { "<primary>q" });
             set_accels_for_action ("app.play-pause", { "space" });
             set_accels_for_action ("app.prev", { "<Ctrl>a" });
@@ -201,7 +194,7 @@ namespace Cassette {
                 }
             }
 
-            var ntf = new Notification (APP_NAME);
+            var ntf = new Notification (Config.APP_NAME);
             ntf.set_body (message);
             send_notification (null, ntf);
         }
@@ -217,7 +210,7 @@ namespace Cassette {
                 }
             }
 
-            var ntf = new Notification (APP_NAME);
+            var ntf = new Notification (Config.APP_NAME);
 
             ntf.set_body ("%s%s - %s".printf (
                 track_info.title,
@@ -242,59 +235,6 @@ namespace Cassette {
                 withdraw_notification ("now-playing");
                 now_playing_t = 0;
             });
-        }
-
-        void on_about_action () {
-            string[] developers = {
-                RIRUSHA
-            };
-
-            string[] designers = {
-                RIRUSHA
-            };
-
-            string[] artists = {
-                RIRUSHA,
-                "Arseniy Nechkin <krisgeniusnos@gmail.com>",
-                "NaumovSN"
-            };
-
-            string[] documenters = {
-                RIRUSHA,
-                "Armatik https://github.com/Armatik",
-                "Fiersik https://github.com/fiersik",
-                "Mikazil https://github.com/Mikazil",
-            };
-
-            var about = new Adw.AboutDialog () {
-                application_name = APP_NAME,
-                application_icon = Config.APP_ID_DYN,
-                developer_name = "Rirusha",
-                version = Config.VERSION,
-                developers = developers,
-                designers = designers,
-                artists = artists,
-                documenters = documenters,
-                //  Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-                translator_credits = _("translator-credits"),
-                license_type = Gtk.License.GPL_3_0_ONLY,
-                copyright = "© 2023-2024 Rirusha",
-                support_url = TELEGRAM_CHAT,
-                issue_url = ISSUE_LINK,
-                release_notes_version = Config.VERSION
-            };
-
-            about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
-            about.add_link (_("Financial support (Tinkoff)"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
-            about.add_link (_("Financial support (Boosty)"), "https://boosty.to/rirusha/donate");
-
-            about.add_acknowledgement_section ("Donaters", {
-                "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium", "Fiersik", "belovmv",
-                "krylov_alexandr", "Spp595", "Mikazil", "Sergey P.", "khaustovdn", "dant4ick", "Nikolai M.",
-                "Toxblh", "Roman Aysin", "IQQator", "𝙰𝚖𝚙𝚎𝚛 𝚂𝚑𝚒𝚣"
-            });
-
-            about.present (main_window);
         }
 
         void on_log_out () {
@@ -337,12 +277,6 @@ namespace Cassette {
             }
         }
 
-        void on_preferences_action () {
-            var pref_win = new PreferencesDialog ();
-
-            pref_win.present (main_window);
-        }
-
         void on_share_current_track () {
             var current_track = player.mode.get_current_track_info ();
 
@@ -352,6 +286,8 @@ namespace Cassette {
         }
 
         void on_paste_url () {
+            activate ();
+
             Gdk.Display? display = Gdk.Display.get_default ();
             Gdk.Clipboard clipboard = display.get_clipboard ();
 

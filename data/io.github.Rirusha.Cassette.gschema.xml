@@ -21,6 +21,9 @@
 			<default>"begin"</default>
 		</key>
 
+		<key name="last-version" type="s">
+			<default>"0.0.0"</default>
+		</key>
 		<key name="window-width" type="i">
 			<default>600</default>
 		</key>

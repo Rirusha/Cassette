@@ -28,9 +28,9 @@ public class Cassette.PrimaryMenuButton : CustomMenuButton {
         return {
             {_("Disliked tracks"), "win.show-disliked-tracks", 0},
             {_("Parse URL from clipboard"), "app.parse-url", 0},
-            {_("Preferences"), "app.preferences", 1},
+            {_("Preferences"), "win.preferences", 1},
             {_("Keyboard Shortcuts"), "win.show-help-overlay", 1},
-            {_("About Cassette"), "app.about", 1}
+            {_("About Cassette"), "win.about", 1}
         };
     }
 

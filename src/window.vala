@@ -21,6 +21,16 @@ using Cassette.Client;
 [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/window.ui")]
 public class Cassette.Window : ApplicationWindow {
 
+    const ActionEntry[] ACTION_ENTRIES = {
+        { "welcome", on_welcome_activate },
+        { "close-sidebar", on_close_sidebar_activate },
+        { "show-disliked-tracks", on_show_disliked_tracks_activate },
+        { "open-in-browser", on_open_in_browser_activate },
+        { "accoint-info", on_account_info_activate },
+        { "preferences", on_preferences_activate },
+        { "about", on_about_activate },
+    };
+
     [GtkChild]
     unowned Adw.ToolbarView player_bar_toolbar;
     [GtkChild]
@@ -93,34 +103,9 @@ public class Cassette.Window : ApplicationWindow {
             activate_action ("close-sidebar", null);
         });
 
-        var show_disliked_tracks_action = new SimpleAction ("show-disliked-tracks", null);
-        show_disliked_tracks_action.activate.connect (() => {
-            current_view.add_view (new DislikedTracksView ());
-        });
-        add_action (show_disliked_tracks_action);
-
-        var close_sidebar_action = new SimpleAction ("close-sidebar", null);
-        close_sidebar_action.activate.connect (sidebar.close);
-        add_action (close_sidebar_action);
-
-        var open_account_in_browser_action = new SimpleAction ("open-in-browser", null);
-        open_account_in_browser_action.activate.connect (() => {
-            try {
-                Process.spawn_command_line_async ("xdg-open https://id.yandex.ru/");
-            } catch (SpawnError e) {
-                Logger.warning (_("Error while opening uri: %s").printf (e.message));
-            }
-        });
-        add_action (open_account_in_browser_action);
-
-        var account_info_action = new SimpleAction ("accoint-info", null);
-        account_info_action.activate.connect (() => {
-            var dilaog = new AccountInfoDialog (yam_talker.me);
-            dilaog.present (this);
-        });
-        add_action (account_info_action);
-
         pager = new Pager (this, main_stack);
+
+        add_action_entries (ACTION_ENTRIES, this);
 
         Cassette.settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
         Cassette.settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
@@ -134,14 +119,122 @@ public class Cassette.Window : ApplicationWindow {
             current_view.refresh ();
         });
 
-        if (Cassette.application.is_devel) {
-            add_css_class ("devel");
-        }
-
         notify["is-shrinked"].connect (() => {
             header_bar.switcher_visible = !is_shrinked;
             switcher_toolbar.reveal_bottom_bars = is_shrinked;
         });
+
+        loading_stack.notify["visible-child"].connect (() => {
+            if (loading_stack.visible_child_name == "done") {
+                on_welcome_activate ();
+            }
+        });
+
+        if (Cassette.application.is_devel) {
+            add_css_class ("devel");
+        }
+    }
+
+    void on_preferences_activate () {
+        var pref_win = new PreferencesDialog ();
+
+        pref_win.present (this);
+    }
+
+    void on_about_activate () {
+        const string RIRUSHA = "Rirusha https://github.com/Rirusha";
+        const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
+        const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
+        const string ISSUE_LINK = "https://github.com/Rirusha/Cassette/issues/new";
+
+        string[] developers = {
+            RIRUSHA
+        };
+
+        string[] designers = {
+            RIRUSHA
+        };
+
+        string[] artists = {
+            RIRUSHA,
+            "Arseniy Nechkin <krisgeniusnos@gmail.com>",
+            "NaumovSN",
+        };
+
+        string[] documenters = {
+            RIRUSHA,
+            "Armatik https://github.com/Armatik",
+            "Fiersik https://github.com/fiersik",
+            "Mikazil https://github.com/Mikazil",
+        };
+
+        var about = new Adw.AboutDialog () {
+            application_name = Config.APP_NAME,
+            application_icon = Config.APP_ID_DYN,
+            developer_name = "Rirusha",
+            version = Config.VERSION,
+            developers = developers,
+            designers = designers,
+            artists = artists,
+            documenters = documenters,
+            //  Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+            translator_credits = _("translator-credits"),
+            license_type = Gtk.License.GPL_3_0_ONLY,
+            copyright = "© 2023-2024 Rirusha",
+            support_url = TELEGRAM_CHAT,
+            issue_url = ISSUE_LINK,
+            release_notes_version = Config.VERSION
+        };
+
+        about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
+        about.add_link (_("Financial support (Tinkoff)"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
+        about.add_link (_("Financial support (Boosty)"), "https://boosty.to/rirusha/donate");
+
+        about.add_acknowledgement_section ("Donaters", {
+            "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium", "Fiersik", "belovmv",
+            "krylov_alexandr", "Spp595", "Mikazil", "Sergey P.", "khaustovdn", "dant4ick", "Nikolai M.",
+            "Toxblh", "Roman Aysin", "IQQator", "𝙰𝚖𝚙𝚎𝚛 𝚂𝚑𝚒𝚣"
+        });
+
+        about.present (this);
+    }
+
+    void on_account_info_activate () {
+        var dilaog = new AccountInfoDialog (yam_talker.me);
+        dilaog.present (this);
+    }
+
+    void on_open_in_browser_activate () {
+        try {
+            Process.spawn_command_line_async ("xdg-open https://id.yandex.ru/");
+
+        } catch (SpawnError e) {
+            Logger.warning (_("Error while opening uri: %s").printf (e.message));
+        }
+    }
+
+    void on_show_disliked_tracks_activate () {
+        current_view.add_view (new DislikedTracksView ());
+    }
+
+    void on_close_sidebar_activate () {
+        sidebar.close ();
+    }
+
+    void on_welcome_activate () {
+        switch (settings.get_string ("last-version")) {
+            case Config.VERSION:
+                break;
+            
+            case "0.0.0":
+                break;
+
+            default:
+                
+                break;
+        }
+
+        settings.set_string ("last-version", Config.VERSION);
     }
 
     public void set_online () {

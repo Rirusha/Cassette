@@ -39,6 +39,7 @@ endif
 
 conf = configuration_data()
 conf.set_quoted('APP_ID', app_id)
+conf.set_quoted('APP_NAME', 'Cassette@0@'.format (name_postfix))
 conf.set_quoted('APP_ID_DYN', app_id_dyn)
 conf.set_quoted('G_LOG_DOMAIN', app_id)
 conf.set_quoted('PROFILE', profile)

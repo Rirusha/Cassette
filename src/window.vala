@@ -225,12 +225,12 @@ public class Cassette.Window : ApplicationWindow {
         switch (settings.get_string ("last-version")) {
             case Config.VERSION:
                 break;
-            
+
             case "0.0.0":
                 break;
 
             default:
-                
+
                 break;
         }
 

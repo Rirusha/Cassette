@@ -192,8 +192,8 @@ public class MprisPlayer : Object {
         this.con = con;
 
         player.current_track_start_loading.connect (send_can_properties);
-        player.current_track_finish_loading.connect (() => {
-            send_can_properties ();
+        player.current_track_finish_loading.connect (send_can_properties);
+        player.played.connect (() => {
             send_property_change ("Metadata", _get_metadata ());
         });
 

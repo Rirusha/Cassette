@@ -93,7 +93,7 @@
 		</key>
 
 		<key name="volume" type="d">
-			<default>1.0</default>
+			<default>0.2</default>
 		</key>
 		<key name="mute" type="b">
 			<default>false</default>

@@ -93,37 +93,17 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
                 current_index--;
             }
         } else {
-            player.stop ();
+            player.clear_mode ();
         }
-    }
-
-    public void remove_all_tracks () {
-        queue.clear ();
-        original_queue.clear ();
-        current_index = -1;
-
-        context_type = "various";
     }
 
     public void add_track_end (YaMAPI.Track track_info) {
         queue.add (track_info);
         original_queue.add (track_info);
-
-        if (queue.is_empty) {
-            player.start_current_track.begin (() => {
-                player.stop ();
-            });
-        }
     }
 
     public void add_many_end (ArrayList<YaMAPI.Track> track_list) {
         queue.add_all (track_list);
         original_queue.add_all (track_list);
-
-        if (queue.is_empty) {
-            player.start_current_track.begin (() => {
-                player.stop ();
-            });
-        }
     }
 }

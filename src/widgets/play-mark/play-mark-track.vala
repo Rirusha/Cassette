@@ -18,6 +18,10 @@
 
 public sealed class Cassette.PlayMarkTrack : PlayMarkDefault {
 
+    construct {
+        react_as_track = true;
+    }
+
     protected override bool is_playing_now () {
         var current_track = player.mode.get_current_track_info ();
 

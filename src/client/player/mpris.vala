@@ -337,7 +337,7 @@ public class MprisPlayer : Object {
 
     public void stop (BusName sender) throws Error {
         if (can_control) {
-            player.stop (false, true);
+            player.clear_mode ();
         }
     }
 

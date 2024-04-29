@@ -42,7 +42,7 @@ public class Cassette.Client.Player.Player : Object {
         get {
             return _state;
         }
-        set {
+        private set {
             _state = value;
 
             switch (_state) {
@@ -157,6 +157,12 @@ public class Cassette.Client.Player.Player : Object {
     public signal void stopped ();
 
     /**
+     * Feedback.
+     * Triggered when track stopped.
+     */
+     public signal void track_stopped ();
+
+    /**
      * Next track loaded and ready to play.
      * For situations where there was a switch to
      * the next track so that the interface could react correctly.
@@ -260,8 +266,7 @@ public class Cassette.Client.Player.Player : Object {
 
     public void seek (int64 ms) {
         if (ms < 0) {
-            Logger.warning ("Trying to seek with negative value");
-            return;
+            ms = 0;
         }
 
         playbin.seek_simple (Gst.Format.TIME, Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, ms * Gst.MSECOND);
@@ -314,6 +319,13 @@ public class Cassette.Client.Player.Player : Object {
         start_current_track.begin ();
     }
 
+    public void clear_mode () {
+        stop ();
+
+        mode = new Empty ();
+        mode_inited ();
+    }
+
     public void play_pause () {
         switch (state) {
             case State.PLAYING:
@@ -348,12 +360,12 @@ public class Cassette.Client.Player.Player : Object {
         }
     }
 
-    public void stop (bool natural = false, bool full = false) {
-        var current_track = mode.get_current_track_info ();
-
+    void track_stop (bool natural) {
         playbin.set_property ("uri", Value (Type.STRING));
 
-        pause ();
+        state = State.NONE;
+
+        var current_track = mode.get_current_track_info ();
 
         mode.send_play_async.begin (
             play_id,
@@ -369,31 +381,32 @@ public class Cassette.Client.Player.Player : Object {
             );
         }
 
-        state = State.NONE;
-
-        if (full) {
-            mode = new Empty ();
-            mode_inited ();
-        }
-
         reset_play ();
+
+        track_stopped ();
+    }
+
+    public void stop () {
+        track_stop (false);
 
         stopped ();
     }
 
     void next_natural () {
-        stop (true);
+        track_stop (true);
 
         mode.next (true);
+
         start_current_track.begin (() => {
             ready_play_next ();
         });
     }
 
     public void next () {
-        stop ();
+        track_stop (false);
 
         mode.next (false);
+
         start_current_track.begin (() => {
             ready_play_next ();
         });
@@ -404,7 +417,7 @@ public class Cassette.Client.Player.Player : Object {
             seek (0);
 
         } else {
-            stop ();
+            track_stop (false);
 
             mode.prev ();
 
@@ -418,7 +431,7 @@ public class Cassette.Client.Player.Player : Object {
         /**
             Находит трек в очереди и воспроизводит его
         */
-        stop ();
+        track_stop (false);
 
         mode.change_track (track_info);
 
@@ -477,6 +490,14 @@ public class Cassette.Client.Player.Player : Object {
     }
 
     public void add_track (YaMAPI.Track track_info, bool is_next) {
+        if (mode is Empty) {
+            var track_list = new ArrayList<YaMAPI.Track> ();
+            track_list.add (track_info);
+
+            add_many (track_list);
+            return;
+        }
+
         var sh_mode = mode as Shufflable;
 
         if (sh_mode == null) {
@@ -495,6 +516,17 @@ public class Cassette.Client.Player.Player : Object {
     }
 
     public void add_many (ArrayList<YaMAPI.Track> track_list) {
+        if (mode is Empty) {
+            start_track_list (
+                track_list,
+                "various",
+                null,
+                0,
+                null
+            );
+            return;
+        }
+        
         var sh_mode = mode as Shufflable;
 
         if (sh_mode == null) {
@@ -534,14 +566,6 @@ public class Cassette.Client.Player.Player : Object {
         if (sh_mode.queue.size != 0 && settings.get_boolean ("can-cache")) {
             cache_next_track ();
         }
-    }
-
-    public void remove_all_tracks () {
-        stop ();
-
-        mode = new Empty ();
-
-        mode_inited ();
     }
 
     public void rotor_feedback (string feedback_type, string track_id) {

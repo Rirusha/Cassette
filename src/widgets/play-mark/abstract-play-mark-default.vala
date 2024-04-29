@@ -22,16 +22,17 @@ public abstract class Cassette.PlayMarkDefault : PlayMark, Initable {
 
     protected string content_id { get; set; }
 
-    protected abstract bool is_playing_now ();
+    protected bool react_as_track { get; set; default = false; }
 
     bool connected = false;
+
+    protected abstract bool is_playing_now ();
 
     public void init_content (string content_id) {
         this.content_id = content_id;
 
         if (connected) {
             disconnect_all ();
-
         }
 
         connect_all ();
@@ -44,20 +45,18 @@ public abstract class Cassette.PlayMarkDefault : PlayMark, Initable {
             case Client.Player.State.PAUSED:
                 on_player_paused ();
                 break;
-
-            case Client.Player.State.NONE:
-                on_player_stopped ();
-                break;
-
-            default:
-                assert_not_reached ();
         }
     }
 
     void connect_all () {
         player.played.connect (on_player_played);
         player.paused.connect (on_player_paused);
-        player.stopped.connect (on_player_stopped);
+       
+        if (react_as_track) {
+            player.track_stopped.connect (on_player_stopped);
+        } else {
+            player.stopped.connect (on_player_stopped);
+        }
 
         connected = true;
     }
@@ -65,7 +64,12 @@ public abstract class Cassette.PlayMarkDefault : PlayMark, Initable {
     void disconnect_all () {
         player.played.disconnect (on_player_played);
         player.paused.disconnect (on_player_paused);
-        player.stopped.disconnect (on_player_stopped);
+
+        if (react_as_track) {
+            player.track_stopped.disconnect (on_player_stopped);
+        } else {
+            player.stopped.disconnect (on_player_stopped);
+        }
 
         connected = false;
     }

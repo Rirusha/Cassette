@@ -27,7 +27,7 @@ public sealed class Cassette.PlayMarkGlobal : PlayMark {
             set_paused ();
         });
 
-        player.stopped.connect (() => {
+        player.track_stopped.connect (() => {
             set_stopped ();
         });
     }

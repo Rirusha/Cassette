@@ -51,7 +51,7 @@ public abstract class Cassette.PlayMarkDefault : PlayMark, Initable {
     void connect_all () {
         player.played.connect (on_player_played);
         player.paused.connect (on_player_paused);
-       
+
         if (react_as_track) {
             player.track_stopped.connect (on_player_stopped);
         } else {

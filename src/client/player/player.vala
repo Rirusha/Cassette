@@ -526,7 +526,7 @@ public class Cassette.Client.Player.Player : Object {
             );
             return;
         }
-        
+
         var sh_mode = mode as Shufflable;
 
         if (sh_mode == null) {

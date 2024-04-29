@@ -48,7 +48,7 @@
             <property name="height-request">42</property>
             <property name="valign">center</property>
             <property name="halign">center</property>
-            <property name="icon-name">list-add-symbolic</property>
+            <property name="icon-name">plus-symbolic</property>
           </object>
         </child>
       </object>

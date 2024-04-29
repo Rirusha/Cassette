@@ -153,7 +153,7 @@
                     <property name="vexpand">false</property>
                     <property name="width-request">42</property>
                     <property name="height-request">42</property>
-                    <property name="icon-name">list-add-symbolic</property>
+                    <property name="icon-name">plus-symbolic</property>
                     <property name="tooltip-text" translatable="true">Add playlist to queue</property>
                   </object>
                 </child>

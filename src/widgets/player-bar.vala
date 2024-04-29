@@ -49,8 +49,6 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Button repeat_button;
         [GtkChild]
-        unowned VolumeButton volume_button;
-        [GtkChild]
         unowned Gtk.Button fullscreen_button;
         [GtkChild]
         unowned TrackOptionsButton track_options_button;
@@ -77,9 +75,6 @@ namespace Cassette {
             });
 
             bind_property ("current-track-info", track_options_button, "track-info", BindingFlags.DEFAULT);
-
-            Cassette.Client.settings.bind ("volume", volume_button, "volume", SettingsBindFlags.DEFAULT);
-            Cassette.Client.settings.bind ("mute", volume_button, "mute", SettingsBindFlags.DEFAULT);
 
             slider.change_value.connect ((scroll_type, new_value) => {
                 player.seek ((int) (new_value * 1000));

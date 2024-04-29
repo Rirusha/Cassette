@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-Popover popover {
+Adw.Bin volcon {
   height-request: 230;
 
   Box {
@@ -37,7 +37,7 @@ Popover popover {
           "flat"
         ]
 
-        icon-name: "list-add-symbolic";
+        icon-name: "plus-symbolic";
       }
 
       Scale volume_level_scale {
@@ -60,20 +60,16 @@ Popover popover {
           "flat"
         ]
 
-        icon-name: "list-remove-symbolic";
+        icon-name: "minus-symbolic";
       }
     }
   }
 }
 
 template $CassetteVolumeButton : $CassetteCustomMenuButton {
-  MenuButton real_menu_button {
-    styles [
-      "flat"
-    ]
+  styles [
+    "flat"
+  ]
 
-    popover: popover;
-    direction: up;
-    icon-name: "audio-volume-high-symbolic";
-  }
+  icon-name: "audio-volume-high-symbolic";
 }

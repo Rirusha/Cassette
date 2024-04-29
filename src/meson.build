@@ -81,6 +81,7 @@ cassette_gui_sources = files(
   
   'widgets/abstract-reactable.vala',
   'widgets/account-info-dialog.vala',
+  'widgets/equalaizer.vala',
   'widgets/cover-image.vala',
   'widgets/header-bar.vala',
   'widgets/headered-scrolled-window.vala',

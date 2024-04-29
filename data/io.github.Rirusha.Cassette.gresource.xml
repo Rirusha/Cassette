@@ -22,8 +22,6 @@
     <file alias="go-next-symbolic.svg">assets/icons/go-next-symbolic.svg</file>
     <file alias="go-previous-symbolic.svg">assets/icons/go-previous-symbolic.svg</file>
     <file alias="isound-wave-alt-symbolic.svg">assets/icons/isound-wave-alt-symbolic.svg</file>
-    <file alias="list-add-symbolic.svg">assets/icons/list-add-symbolic.svg</file>
-    <file alias="list-remove-symbolic.svg">assets/icons/list-remove-symbolic.svg</file>
     <file alias="media-playback-pause-symbolic.svg">assets/icons/media-playback-pause-symbolic.svg</file>
     <file alias="media-playback-start-symbolic.svg">assets/icons/media-playback-start-symbolic.svg</file>
     <file alias="media-playlist-repeat-song-symbolic.svg">assets/icons/media-playlist-repeat-song-symbolic.svg</file>
@@ -31,11 +29,13 @@
     <file alias="media-playlist-shuffle-symbolic.svg">assets/icons/media-playlist-shuffle-symbolic.svg</file>
     <file alias="media-skip-backward-symbolic.svg">assets/icons/media-skip-backward-symbolic.svg</file>
     <file alias="media-skip-forward-symbolic.svg">assets/icons/media-skip-forward-symbolic.svg</file>
+    <file alias="minus-symbolic.svg">assets/icons/minus-symbolic.svg</file>
     <file alias="music-note-symbolic.svg">assets/icons/music-note-symbolic.svg</file>
     <file alias="music-queue-symbolic.svg">assets/icons/music-queue-symbolic.svg</file>
     <file alias="network-offline-symbolic.svg">assets/icons/network-offline-symbolic.svg</file>
     <file alias="not-like-symbolic.svg">assets/icons/not-like-symbolic.svg</file>
     <file alias="open-menu-symbolic.svg">assets/icons/open-menu-symbolic.svg</file>
+    <file alias="plus-symbolic.svg">assets/icons/plus-symbolic.svg</file>
     <file alias="replaced-symbolic.svg">assets/icons/replaced-symbolic.svg</file>
     <file alias="sidebar-show-right-symbolic.svg">assets/icons/sidebar-show-right-symbolic.svg</file>
     <file alias="sound-wave-alt-symbolic.svg">assets/icons/sound-wave-alt-symbolic.svg</file>
@@ -145,6 +145,7 @@
     <file preprocess="xml-stripblanks">ui/custom-pages-preferences.ui</file>
     <file preprocess="xml-stripblanks">ui/devel-view.ui</file>
     <file preprocess="xml-stripblanks">ui/disliked-tracks-view.ui</file>
+    <file preprocess="xml-stripblanks">ui/equalaizer.ui</file>
     <file preprocess="xml-stripblanks">ui/header-bar.ui</file>
     <file preprocess="xml-stripblanks">ui/headered-scrolled-window.ui</file>
     <file preprocess="xml-stripblanks">ui/info-marks.ui</file>

@@ -37,6 +37,10 @@ frame {
  * Other
  */
 
+.equalaizer-scale {
+    padding: 10px;
+}
+
 .small-border-radius {
     border-radius: 6px;
 }

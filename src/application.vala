@@ -43,14 +43,14 @@ namespace Cassette {
         const ActionEntry[] ACTION_ENTRIES = {
             { "quit", quit },
             { "log-out", on_log_out },
-            { "play-pause", on_play_pause },
-            { "next", on_next },
-            { "prev", on_prev },
-            { "prev-force", on_prev_force },
-            { "change-shuffle", on_shuffle },
-            { "change-repeat", on_repeat },
-            { "share-current-track", on_share_current_track},
-            { "parse-url", on_paste_url }
+            { "play-pause", on_play_pause_action },
+            { "next", on_next_action },
+            { "prev", on_prev_action },
+            { "prev-force", on_prev_force_action },
+            { "change-shuffle", on_change_shuffle_action },
+            { "change-repeat", on_change_repeat_action },
+            { "share-current-track", on_share_current_track_action},
+            { "parse-url", on_parse_url_action }
         };
 
         ApplicationState _application_state;
@@ -240,7 +240,7 @@ namespace Cassette {
             authenticator.log_out ();
         }
 
-        void on_play_pause () {
+        void on_play_pause_action () {
             var text_entry = main_window.focus_widget as Gtk.Text;
             if (text_entry != null) {
                 // Исправление ситуации, когда пробел нельзя вписать, так как клавиша забрана play-pause
@@ -250,33 +250,33 @@ namespace Cassette {
             }
         }
 
-        void on_shuffle () {
+        void on_change_shuffle_action () {
             roll_shuffle_mode ();
         }
 
-        void on_repeat () {
+        void on_change_repeat_action () {
             roll_repeat_mode ();
         }
 
-        void on_next () {
+        void on_next_action () {
             if (player.can_go_next) {
                 player.next ();
             }
         }
 
-        void on_prev () {
+        void on_prev_action () {
             if (player.can_go_prev) {
                 player.prev ();
             }
         }
 
-        void on_prev_force () {
+        void on_prev_force_action () {
             if (player.can_go_prev) {
                 player.prev (true);
             }
         }
 
-        void on_share_current_track () {
+        void on_share_current_track_action () {
             var current_track = player.mode.get_current_track_info ();
 
             if (current_track?.is_ugc == false) {
@@ -284,7 +284,7 @@ namespace Cassette {
             }
         }
 
-        void on_paste_url () {
+        void on_parse_url_action () {
             activate ();
 
             Gdk.Display? display = Gdk.Display.get_default ();

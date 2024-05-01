@@ -22,13 +22,13 @@ using Cassette.Client;
 public class Cassette.Window : ApplicationWindow {
 
     const ActionEntry[] ACTION_ENTRIES = {
-        { "welcome", on_welcome_activate },
-        { "close-sidebar", on_close_sidebar_activate },
-        { "show-disliked-tracks", on_show_disliked_tracks_activate },
-        { "open-in-browser", on_open_in_browser_activate },
-        { "accoint-info", on_account_info_activate },
-        { "preferences", on_preferences_activate },
-        { "about", on_about_activate },
+        { "welcome", on_welcome_action },
+        { "close-sidebar", on_close_sidebar_action },
+        { "show-disliked-tracks", on_show_disliked_tracks_action },
+        { "open-in-browser", on_open_in_browser_action },
+        { "accoint-info", on_account_info_action },
+        { "preferences", on_preferences_action },
+        { "about", on_about_action },
     };
 
     [GtkChild]
@@ -126,7 +126,7 @@ public class Cassette.Window : ApplicationWindow {
 
         loading_stack.notify["visible-child"].connect (() => {
             if (loading_stack.visible_child_name == "done") {
-                on_welcome_activate ();
+                on_welcome_action ();
             }
         });
 
@@ -135,13 +135,13 @@ public class Cassette.Window : ApplicationWindow {
         }
     }
 
-    void on_preferences_activate () {
+    void on_preferences_action () {
         var pref_win = new PreferencesDialog ();
 
         pref_win.present (this);
     }
 
-    void on_about_activate () {
+    void on_about_action () {
         const string RIRUSHA = "Rirusha https://github.com/Rirusha";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
         const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
@@ -199,12 +199,12 @@ public class Cassette.Window : ApplicationWindow {
         about.present (this);
     }
 
-    void on_account_info_activate () {
+    void on_account_info_action () {
         var dilaog = new AccountInfoDialog (yam_talker.me);
         dilaog.present (this);
     }
 
-    void on_open_in_browser_activate () {
+    void on_open_in_browser_action () {
         try {
             Process.spawn_command_line_async ("xdg-open https://id.yandex.ru/");
 
@@ -213,15 +213,15 @@ public class Cassette.Window : ApplicationWindow {
         }
     }
 
-    void on_show_disliked_tracks_activate () {
+    void on_show_disliked_tracks_action () {
         current_view.add_view (new DislikedTracksView ());
     }
 
-    void on_close_sidebar_activate () {
+    void on_close_sidebar_action () {
         sidebar.close ();
     }
 
-    void on_welcome_activate () {
+    void on_welcome_action () {
         switch (settings.get_string ("last-version")) {
             case Config.VERSION:
                 break;

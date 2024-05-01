@@ -38,7 +38,6 @@ namespace Cassette {
         OFFLINE
     }
 
-    // Класс приложения
     public class Application : Adw.Application {
 
         const ActionEntry[] ACTION_ENTRIES = {

@@ -57,10 +57,6 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         }
     }
 
-    protected Gtk.Widget title_widget { get; protected set; }
-
-    protected string title_label { get; protected set; }
-
     protected SimpleActionGroup actions { get; private set; }
 
     construct {
@@ -202,9 +198,11 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
     void show_dialog_menu () {
         real_button.set_popover (null);
 
+        var title_widget = get_title_widget ();
+
         dialog = new MenuDialog () {
             menu_widget = build_dialog_menu_box (),
-            title_widget = title_widget != null ? title_widget : new Gtk.Label (title_label) {
+            title_widget = title_widget != null ? title_widget : new Gtk.Label (get_title_label ()) {
                 css_classes = { "title-2" }
             },
             width_request = 360,
@@ -221,5 +219,13 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         });
 
         dialog.present (this);
+    }
+
+    protected virtual Gtk.Widget? get_title_widget () {
+        return null;
+    }
+
+    protected virtual string get_title_label () {
+        return "ASSERT_SEEN";
     }
 }

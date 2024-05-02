@@ -20,8 +20,11 @@ public class Cassette.PrimaryMenuButton : CustomMenuButton {
 
     construct {
         primary = true;
-        title_label = _("Primary menu");
         icon_name = "open-menu-symbolic";
+    }
+
+    protected override string get_title_label () {
+        return _("Primary menu");
     }
 
     protected override MenuItem[] get_popover_menu_items () {

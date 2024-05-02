@@ -63,14 +63,16 @@ public class Cassette.VolumeButton : CustomMenuButton {
         add_css_class ("flat");
         icon_name = "audio-volume-high-symbolic";
 
-        title_label = _("Volume control");
-
         volume_upper = adjustment.upper * MUL;
         volume_lower = adjustment.lower * MUL;
         volume_step = adjustment.step_increment * MUL;
 
         Cassette.Client.settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
         Cassette.Client.settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
+    }
+
+    protected override string get_title_label () {
+        return _("Volume control");
     }
 
     void increase_volume () {

@@ -50,20 +50,15 @@ public class Cassette.TrackOptionsButton : CustomMenuButton {
             player.add_track (track_info, false);
         });
         actions.add_action (add_end_action);
+    }
 
-        var info_panel = new TrackInfoPanel (Gtk.Orientation.HORIZONTAL);
-
-        var button = new Gtk.Button () {
-            child = info_panel
+    protected override Gtk.Widget? get_title_widget () {
+        return new Gtk.Button () {
+            child = new TrackInfoPanel (Gtk.Orientation.HORIZONTAL) {
+                track_info = track_info
+            },
+            action_name = "track.show-info"
         };
-
-        title_widget = button;
-
-        button.clicked.connect (() => {
-            activate_action ("track.show-info", null);
-        });
-
-        bind_property ("track-info", info_panel, "track-info", BindingFlags.DEFAULT);
     }
 
     protected override MenuItem[] get_popover_menu_items () {

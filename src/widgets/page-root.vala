@@ -44,6 +44,10 @@ public class Cassette.PageRoot : AbstractLoadablePage {
             if (current_widget == main_view) {
                 can_back = false;
             }
+
+            if (current_widget is BaseView) {
+                can_refresh = ((BaseView) current_widget).can_refresh;
+            }
         });
 
         notify["is-loading"].connect (() => {

@@ -4,7 +4,7 @@ Name=Cassette (Devel)
 Comment=Unofficial Yandex.Music client for GNOME (Development)
 # Translators: keep number of ';'
 Keywords=yandex;yandex music;yam;music;
-Exec=cassette
+Exec=cassette %U
 Icon=io.github.Rirusha.Cassette-Devel
 Terminal=false
 Type=Application

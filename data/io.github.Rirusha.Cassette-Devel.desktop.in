@@ -10,4 +10,5 @@ Terminal=false
 Type=Application
 Categories=Audio;Player
 StartupNotify=true
+MimeType=x-scheme-handler/yandexmusic;
 X-GNOME-UsesNotifications=true

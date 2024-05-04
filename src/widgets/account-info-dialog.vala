@@ -24,10 +24,10 @@ namespace Cassette {
     public class AccountInfoDialog : Adw.Dialog {
         [GtkChild]
         unowned Adw.Avatar avatar;
-        [GtkChild]
-        unowned Gtk.Label login_label;
-        [GtkChild]
-        unowned Gtk.Label plus_label;
+        //  [GtkChild]
+        //  unowned Gtk.Label login_label;
+        //  [GtkChild]
+        //  unowned Gtk.Label plus_label;
         [GtkChild]
         unowned Gtk.Label public_name_label;
 
@@ -41,19 +41,28 @@ namespace Cassette {
             load_avatar.begin ();
 
             public_name_label.label = account_info.public_name;
-            login_label.label = account_info.login;
+            //  login_label.label = account_info.login;
 
-            if (account_info.has_plus) {
-                // Translators: Plus meen "Plus Subscription"
-                plus_label.label = "   %s   ".printf (_("Plus"));
-                plus_label.add_css_class ("plus-background");
+            //  if (account_info.has_plus) {
+            //      // Translators: Plus meen "Plus Subscription"
+            //      plus_label.label = "   %s   ".printf (_("Plus"));
+            //      plus_label.add_css_class ("plus-background");
 
-            } else {
-                plus_label.label = _("No Plus");
-            }
+            //  } else {
+            //      plus_label.label = _("No Plus");
+            //  }
 
             if (Cassette.application.is_devel) {
                 add_css_class ("devel");
+            }
+        }
+
+        void on_open_in_browser_action () {
+            try {
+                Process.spawn_command_line_async ("xdg-open https://id.yandex.ru/");
+
+            } catch (SpawnError e) {
+                Logger.warning (_("Error while opening uri: %s").printf (e.message));
             }
         }
 

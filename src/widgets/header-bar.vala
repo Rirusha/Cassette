@@ -31,6 +31,10 @@ public class Cassette.HeaderBar : ShrinkableBin {
     unowned Adw.ViewSwitcher switcher_title;
     [GtkChild]
     unowned PrimaryMenuButton menu_button;
+    [GtkChild]
+    unowned Gtk.Button avatar_button;
+    [GtkChild]
+    unowned Adw.Avatar avatar;
 
     public bool can_backward {
         set {
@@ -75,6 +79,8 @@ public class Cassette.HeaderBar : ShrinkableBin {
     public signal void refresh_clicked ();
 
     construct {
+        avatar_button.clicked.connect (on_avatar_button_clicked);
+
         notify["is-shrinked"].connect (() => {
             switcher_title.policy = is_shrinked ? Adw.ViewSwitcherPolicy.NARROW : Adw.ViewSwitcherPolicy.WIDE;
         });
@@ -96,5 +102,21 @@ public class Cassette.HeaderBar : ShrinkableBin {
         });
 
         block_widget (search_button, BlockReason.NOT_IMPLEMENTED);
+    }
+
+    public void on_avatar_button_clicked () {
+        var dilaog = new AccountInfoDialog (yam_talker.me);
+        dilaog.present (this);
+    }
+
+    public async void load_avatar () {
+        avatar.text = yam_talker.me.public_name;
+
+        var pixbuf = yield Client.Cachier.get_image (yam_talker.me, 28);
+        if (pixbuf != null) {
+            avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
+        }
+
+        avatar_button.visible = true;
     }
 }

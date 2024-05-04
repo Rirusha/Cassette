@@ -50,7 +50,6 @@ frame {
 }
 
 .plus-background {
-    border-radius: 16px;
     color: white;
     background-image: linear-gradient(90deg,#ff5c4d,#eb469f 30%,#8341ef 75%,#3f68f9);
 }

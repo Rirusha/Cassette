@@ -50,7 +50,9 @@ namespace Cassette {
             { "change-shuffle", on_change_shuffle_action },
             { "change-repeat", on_change_repeat_action },
             { "share-current-track", on_share_current_track_action},
-            { "parse-url", on_parse_url_action }
+            { "parse-url", on_parse_url_action },
+            { "open-account", on_open_account_action },
+            { "open-plus", on_open_plus_action },
         };
 
         const OptionEntry[] OPTION_ENTRIES = {
@@ -320,6 +322,10 @@ namespace Cassette {
 
             } else if (uri.has_prefix ("yandexmusic://")) {
                 clear_uri = uri.replace ("yandexmusic://", "");
+
+            } else {
+                Logger.warning (_("Can't parse clipboard content"));
+                return;
             }
 
             string[] parts = clear_uri.split ("/");
@@ -385,6 +391,24 @@ namespace Cassette {
                     show_message (_("Can't parse clipboard content"));
                 }
             });
+        }
+
+        void on_open_account_action () {
+            try {
+                Process.spawn_command_line_async ("xdg-open https://id.yandex.ru/");
+
+            } catch (SpawnError e) {
+                Logger.warning (_("Error while opening uri: %s").printf (e.message));
+            }
+        }
+
+        void on_open_plus_action () {
+            try {
+                Process.spawn_command_line_async ("xdg-open https://plus.yandex.ru/");
+
+            } catch (SpawnError e) {
+                Logger.warning (_("Error while opening uri: %s").printf (e.message));
+            }
         }
     }
 }

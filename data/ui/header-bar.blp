@@ -34,19 +34,19 @@ template $CassetteHeaderBar : $CassetteShrinkableBin {
     $CassettePrimaryMenuButton menu_button { }
 
     [end]
+    Button avatar_button {
+      styles [
+        "flat"
+      ]
+
+      visible: false;
+
+      Adw.Avatar avatar {
+        size: 22;
+      }
+    }
+
+    [end]
     $CassetteCacheIndicator { }
-
-  // [end]
-  // MenuButton avatar_button {
-  //   styles [
-  //     "flat"
-  //   ]
-
-  //   sensitive: false;
-  //   menu-model: avatar_menu;
-  //   tooltip-text: "Account menu";
-
-  //   Adw.Avatar avatar {}
-  // }
   }
 }

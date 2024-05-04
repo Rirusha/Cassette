@@ -3,30 +3,31 @@ using Adw 1;
 
 template $CassetteAccountInfoDialog : Adw.Dialog {
   title: _("Account information");
-  content-width: 300;
+  width-request: 360;
+  content-width: 360;
   content-height: 420;
+  follows-content-size: true;
 
   Adw.ToolbarView {
     [top]
     Adw.HeaderBar { }
 
-    content: Adw.Clamp {
-      margin-top: 16;
-      margin-bottom: 16;
-      margin-start: 16;
-      margin-end: 16;
-      maximum-size: 900;
+    content: ScrolledWindow {
+      hscrollbar-policy: never;
+      propagate-natural-height: true;
 
-      Box {
-        spacing: 32;
-        orientation: vertical;
-
-        Adw.Avatar avatar { }
+      Adw.Clamp {
+        margin-top: 24;
+        margin-bottom: 12;
+        margin-start: 12;
+        margin-end: 12;
+        maximum-size: 450;
 
         Box {
-          valign: center;
+          spacing: 24;
           orientation: vertical;
-          spacing: 8;
+
+          Adw.Avatar avatar { }
 
           Label public_name_label {
             styles [
@@ -38,24 +39,46 @@ template $CassetteAccountInfoDialog : Adw.Dialog {
             wrap: true;
           }
 
-          Label login_label {
-            styles [
-              "title-2",
-            ]
-
+          Box {
+            orientation: vertical;
             halign: center;
-            hexpand: true;
-            wrap: true;
-          }
+            spacing: 8;
 
-          Label plus_label {
-            styles [
-              "title-4"
-            ]
+            Button user_button {
+              styles [
+                "pill"
+              ]
 
-            halign: center;
-            hexpand: true;
-            wrap: true;
+              action-name: "app.open-account";
+              label: _("Open in browser");
+              hexpand: true;
+              can-shrink: true;
+            }
+
+            Button plus_button {
+              styles [
+                "pill",
+                "plus-background"
+              ]
+
+              action-name: "app.open-plus";
+              label: _("Plus");
+              hexpand: true;
+              can-shrink: true;
+            }
+
+            Button logout_button {
+              styles [
+                "pill",
+                "destructive-action"
+              ]
+
+              margin-top: 24;
+              action-name: "app.log-out";
+              label: _("Log out");
+              hexpand: true;
+              can-shrink: true;
+            }
           }
         }
       }

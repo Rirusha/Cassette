@@ -25,8 +25,6 @@ public class Cassette.Window : ApplicationWindow {
         { "welcome", on_welcome_action },
         { "close-sidebar", on_close_sidebar_action },
         { "show-disliked-tracks", on_show_disliked_tracks_action },
-        { "open-in-browser", on_open_in_browser_action },
-        { "accoint-info", on_account_info_action },
         { "preferences", on_preferences_action },
         { "about", on_about_action },
     };
@@ -199,20 +197,6 @@ public class Cassette.Window : ApplicationWindow {
         about.present (this);
     }
 
-    void on_account_info_action () {
-        var dilaog = new AccountInfoDialog (yam_talker.me);
-        dilaog.present (this);
-    }
-
-    void on_open_in_browser_action () {
-        try {
-            Process.spawn_command_line_async ("xdg-open https://id.yandex.ru/");
-
-        } catch (SpawnError e) {
-            Logger.warning (_("Error while opening uri: %s").printf (e.message));
-        }
-    }
-
     void on_show_disliked_tracks_action () {
         current_view.add_view (new DislikedTracksView ());
     }
@@ -250,7 +234,7 @@ public class Cassette.Window : ApplicationWindow {
             pager.load_pages (PagesType.ONLINE);
             loading_stack.visible_child_name = "done";
 
-            //  load_avatar.begin ();
+            header_bar.load_avatar.begin ();
             yam_talker.update_all.begin ();
             header_bar.can_search = true;
 
@@ -273,13 +257,6 @@ public class Cassette.Window : ApplicationWindow {
         if (loading_stack.visible_child_name == "loading") {
             pager.load_pages (PagesType.LOCAL);
             loading_stack.visible_child_name = "done";
-
-            //  avatar_button.visible = false;
-            //  action_set_enabled ("win.show-disliked-tracks", false);
-            //  action_set_enabled ("win.parse-url", false);
-
-            //  app_menu_button.sensitive = true;
-            //  button_refresh.sensitive = true;
         }
     }
 
@@ -310,17 +287,6 @@ public class Cassette.Window : ApplicationWindow {
             }
         });
     }
-
-    //  async void load_avatar () {
-    //      avatar.text = yam_talker.me.public_name;
-    //      avatar.size = 22;
-    //      var pixbuf = yield Cachier.get_image (yam_talker.me, 28);
-    //      if (pixbuf != null) {
-    //          avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
-    //      }
-
-    //      avatar_button.sensitive = true;
-    //  }
 
     public void show_player_bar () {
         player_bar_toolbar.reveal_bottom_bars = true;

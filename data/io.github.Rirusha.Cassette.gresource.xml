@@ -164,7 +164,6 @@
     <file preprocess="xml-stripblanks">ui/playlist-view.ui</file>
     <file preprocess="xml-stripblanks">ui/playlists-view.ui</file>
     <file preprocess="xml-stripblanks">ui/preferences-dialog.ui</file>
-    <file preprocess="xml-stripblanks">ui/primary-menu-button.ui</file>
     <file preprocess="xml-stripblanks">ui/root-view.ui</file>
     <file preprocess="xml-stripblanks">ui/save-stack.ui</file>
     <file preprocess="xml-stripblanks">ui/sidebar.ui</file>

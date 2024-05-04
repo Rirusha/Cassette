@@ -57,6 +57,15 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         }
     }
 
+    public Gtk.Widget button_child {
+        get {
+            return real_button.child;
+        }
+        set {
+            real_button.child = value;
+        }
+    }
+
     protected SimpleActionGroup actions { get; private set; }
 
     construct {

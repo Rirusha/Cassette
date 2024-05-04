@@ -53,6 +53,11 @@ namespace Cassette {
             { "parse-url", on_parse_url_action }
         };
 
+        const OptionEntry[] OPTION_ENTRIES = {
+            { "version", 'v', 0, OptionArg.NONE, null, N_("Print version information and exit"), null },
+            { null }
+        };
+
         ApplicationState _application_state;
         public ApplicationState application_state {
             get {
@@ -89,7 +94,8 @@ namespace Cassette {
         public Application () {
             Object (
                 application_id: Config.APP_ID_DYN,
-                resource_base_path: "/io/github/Rirusha/Cassette/"
+                resource_base_path: "/io/github/Rirusha/Cassette/",
+                flags: ApplicationFlags.DEFAULT_FLAGS | ApplicationFlags.HANDLES_OPEN
             );
         }
 
@@ -143,6 +149,9 @@ namespace Cassette {
                 }
             });
 
+            add_main_option_entries (OPTION_ENTRIES);
+            set_option_context_parameter_string ("[YANDEX-MUSIC-URL]");
+
             add_action_entries (ACTION_ENTRIES, this);
             set_accels_for_action ("app.quit", { "<primary>q" });
             set_accels_for_action ("app.play-pause", { "space" });
@@ -152,6 +161,27 @@ namespace Cassette {
             set_accels_for_action ("app.change-repeat", { "<Ctrl>r" });
             set_accels_for_action ("app.share-current-track", { "<Ctrl><Shift>c" });
             set_accels_for_action ("app.parse-url", { "<Ctrl><Shift>v" });
+        }
+
+        protected override int handle_local_options (VariantDict options) {
+            if (options.contains ("version")) {
+                print ("%s %s\n", Config.APP_NAME, Config.VERSION);
+                return 0;
+            }
+
+            return -1;
+        }
+
+        protected override void open (File[] files, string hint) {
+            activate ();
+
+            if (application_state != ApplicationState.BEGIN) {
+                var uri = files[0].get_uri ();
+
+                if (uri.has_prefix ("yandexmusic://") || uri.has_prefix ("https://music.yandex.ru/")) {
+                    parse_uri (uri);
+                }
+            }
         }
 
         public override void activate () {
@@ -284,6 +314,69 @@ namespace Cassette {
             }
         }
 
+        void parse_uri (string uri) {
+            string clear_uri = "";
+
+            if (uri.has_prefix ("https://music.yandex.ru/")) {
+                clear_uri = uri.replace ("https://music.yandex.ru/", "");
+
+            } else if (uri.has_prefix ("yandexmusic://")) {
+                clear_uri = uri.replace ("yandexmusic://", "");
+
+            } else {
+                Logger.warning (_("Can't parse clipboard content"));
+                return;
+            }
+
+            string[] parts = clear_uri.split ("/");
+
+            if (parts.length < 2) {
+                Logger.warning (_("Can't parse clipboard content"));
+                return;
+            }
+
+            // users 737063213
+            if (parts[0] == "users") {
+                string user_id = parts[1];
+
+                // playlists ~
+                if (parts[2] == "playlists") {
+                    if (parts.length == 3) {
+                        show_message (_("Users view not implemented yet"));
+                        return;
+
+                    // playlists 3
+                    } else {
+                        string kind = parts[3];
+
+                        main_window?.current_view.add_view (new PlaylistView (user_id, kind));
+                    }
+                }
+
+            // album 4545465
+            } else if (parts[0] == "album") {
+                // string album_id = parts[1];
+
+                if (parts.length == 2) {
+                    show_message (_("Albums view not implemented yet"));
+
+                // album 87894564 track 54654
+                } else {
+                    string track_id;
+
+                    if ("?" in parts[3]) {
+                        track_id = parts[3].split ("?")[0];
+                    } else {
+                        track_id = parts[3];
+                    }
+
+                    show_track_by_id.begin (track_id);
+
+                    show_message (_("Albums view not implemented yet"));
+                }
+            }
+        }
+
         void on_parse_url_action () {
             activate ();
 
@@ -292,58 +385,7 @@ namespace Cassette {
 
             clipboard.read_text_async.begin (null, (obj, res) => {
                 try {
-                    string url = clipboard.read_text_async.end (res);
-
-                    if (!url.has_prefix ("https://music.yandex.ru/")) {
-                        show_message (_("Can't parse clipboard content"));
-                        return;
-                    }
-
-                    string[] parts = url.split ("/");
-
-                    // Cut https://music.yandex.ru
-                    parts = parts [3:parts.length];
-
-                    // users 737063213
-                    if (parts[0] == "users") {
-                        string user_id = parts[1];
-
-                        // playlists ~
-                        if (parts[2] == "playlists") {
-                            if (parts.length == 3) {
-                                show_message (_("Users view not implemented yet"));
-                                return;
-
-                            // playlists 3
-                            } else {
-                                string kind = parts[3];
-
-                                main_window?.current_view.add_view (new PlaylistView (user_id, kind));
-                            }
-                        }
-
-                    // album 4545465
-                    } else if (parts[0] == "album") {
-                        // string album_id = parts[1];
-
-                        if (parts.length == 2) {
-                            show_message (_("Albums view not implemented yet"));
-
-                        // album 87894564 track 54654
-                        } else {
-                            string track_id;
-
-                            if ("?" in parts[3]) {
-                                track_id = parts[3].split ("?")[0];
-                            } else {
-                                track_id = parts[3];
-                            }
-
-                            show_track_by_id.begin (track_id);
-
-                            show_message (_("Albums view not implemented yet"));
-                        }
-                    }
+                    parse_uri (clipboard.read_text_async.end (res));
 
                 } catch (Error e) {
                     show_message (_("Can't parse clipboard content"));

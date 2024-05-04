@@ -26,11 +26,6 @@ int main (string[] args) {
 
     Environment.set_application_name (_("Cassette"));
 
-    if ("--version" in args) {
-        stdout.printf ("%s, %s\n", Config.APP_NAME, Config.VERSION);
-        return 0;
-    }
-
     var app = new Cassette.Application ();
     return app.run (args);
 }

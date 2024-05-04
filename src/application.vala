@@ -53,6 +53,7 @@ namespace Cassette {
             { "parse-url", on_parse_url_action },
             { "open-account", on_open_account_action },
             { "open-plus", on_open_plus_action },
+            { "mute", on_mute },
         };
 
         const OptionEntry[] OPTION_ENTRIES = {
@@ -163,6 +164,7 @@ namespace Cassette {
             set_accels_for_action ("app.change-repeat", { "<Ctrl>r" });
             set_accels_for_action ("app.share-current-track", { "<Ctrl><Shift>c" });
             set_accels_for_action ("app.parse-url", { "<Ctrl><Shift>v" });
+            set_accels_for_action ("app.mute", { "<Ctrl>m" });
         }
 
         protected override int handle_local_options (VariantDict options) {
@@ -409,6 +411,10 @@ namespace Cassette {
             } catch (SpawnError e) {
                 Logger.warning (_("Error while opening uri: %s").printf (e.message));
             }
+        }
+
+        void on_mute () {
+            player.mute = !player.mute;
         }
     }
 }

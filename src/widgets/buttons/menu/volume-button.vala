@@ -28,8 +28,6 @@ public class Cassette.VolumeButton : CustomMenuButton {
         set {
             _volume = value;
 
-            mute = false;
-
             adjustment.value = Math.pow (_volume, 1.0 / 3.0) / MUL;
 
             can_increase = volume < volume_upper;
@@ -166,6 +164,8 @@ public class Cassette.VolumeButton : CustomMenuButton {
             var val = new_val * MUL;
 
             volume = Math.pow (val, 3.0);
+
+            mute = false;
 
             if (val < volume_lower || val > volume_upper) {
                 return false;

@@ -178,9 +178,7 @@ namespace Cassette {
             if (application_state != ApplicationState.BEGIN) {
                 var uri = files[0].get_uri ();
 
-                if (uri.has_prefix ("yandexmusic://") || uri.has_prefix ("https://music.yandex.ru/")) {
-                    parse_uri (uri);
-                }
+                parse_uri (uri);
             }
         }
 
@@ -322,10 +320,6 @@ namespace Cassette {
 
             } else if (uri.has_prefix ("yandexmusic://")) {
                 clear_uri = uri.replace ("yandexmusic://", "");
-
-            } else {
-                Logger.warning (_("Can't parse clipboard content"));
-                return;
             }
 
             string[] parts = clear_uri.split ("/");

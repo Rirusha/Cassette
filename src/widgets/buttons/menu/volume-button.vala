@@ -167,6 +167,10 @@ public class Cassette.VolumeButton : CustomMenuButton {
 
             volume = Math.pow (val, 3.0);
 
+            if (val < volume_lower || val > volume_upper) {
+                return false;
+            }
+
             return true;
         });
 

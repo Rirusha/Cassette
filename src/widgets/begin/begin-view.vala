@@ -72,7 +72,7 @@ namespace Cassette {
             insert_action_group ("auth", action_group);
 
             webview.load_changed.connect ((event) => {
-                if (!("https://passport.yandex.ru/" in webview.uri) && event != LoadEvent.STARTED) {
+                if (("https://music.yandex.ru/" in webview.uri) && event != LoadEvent.STARTED) {
                     online_complete ();
                 }
 
@@ -108,7 +108,7 @@ namespace Cassette {
             start_loading ();
 
             webview.load_uri (
-                "https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d"
+                "https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d&https://music.yandex.ru"
             );
         }
 

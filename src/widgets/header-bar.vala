@@ -91,7 +91,7 @@ public class Cassette.HeaderBar : ShrinkableBin {
 
         resized.connect ((width, height) => {
             if (title_stack != null) {
-                shrink_edge_width = 200 + 100 * (int) title_stack.pages.get_n_items ();
+                shrink_edge_width = 200 + 90 * (int) title_stack.pages.get_n_items ();
             }
         });
 

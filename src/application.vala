@@ -179,11 +179,25 @@ namespace Cassette {
         protected override void open (File[] files, string hint) {
             activate ();
 
-            if (application_state != ApplicationState.BEGIN) {
-                var uri = files[0].get_uri ();
-
-                parse_uri (uri);
+            if (application_state != ApplicationState.BEGIN && application_state != ApplicationState.LOCAL) {
+                parse_on_window_loaded.begin (files[0].get_uri ());
             }
+        }
+
+        async void parse_on_window_loaded (string uri) {
+            ulong con_id;
+
+            if (!main_window.is_ready) {
+                con_id = main_window.notify["is-ready"].connect (() => {
+                    Idle.add (parse_on_window_loaded.callback);
+                });
+
+                yield;
+
+                SignalHandler.disconnect (main_window, con_id);
+            }
+
+            parse_uri (uri);
         }
 
         public override void activate () {

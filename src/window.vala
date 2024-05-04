@@ -90,6 +90,8 @@ public class Cassette.Window : ApplicationWindow {
         }
     }
 
+    public bool is_ready { get; private set; default = false; }
+
     public Window (Cassette.Application app) {
         Object (application: app);
     }
@@ -125,6 +127,8 @@ public class Cassette.Window : ApplicationWindow {
         loading_stack.notify["visible-child"].connect (() => {
             if (loading_stack.visible_child_name == "done") {
                 on_welcome_action ();
+
+                is_ready = true;
             }
         });
 

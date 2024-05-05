@@ -1,11 +1,13 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteSideBar : Adw.Bin {
+template $CassetteSideBar : $CassetteShrinkableBin {
+  shrink-edge-width: 720;
+
   Adw.OverlaySplitView root_flap {
     show-sidebar: false;
     sidebar-position: end;
-    collapsed: true;
+    collapsed: false;
     pin-sidebar: true;
     enable-show-gesture: false;
     min-sidebar-width: 360;

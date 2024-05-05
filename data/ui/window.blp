@@ -20,8 +20,6 @@ template $CassetteWindow : $CassetteApplicationWindow {
         vexpand: true;
 
         child: $CassetteSideBar sidebar {
-          collapsed: true;
-
           content: Adw.ToolbarView {
             top-bar-style: raised;
 
@@ -29,6 +27,7 @@ template $CassetteWindow : $CassetteApplicationWindow {
             $CassetteHeaderBar header_bar {
               sensitive: false;
               title-stack: main_stack;
+              sidebar-shown: bind sidebar.is-shown;
             }
 
             [top]

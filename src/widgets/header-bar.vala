@@ -36,6 +36,8 @@ public class Cassette.HeaderBar : ShrinkableBin {
     [GtkChild]
     unowned Adw.Avatar avatar;
 
+    public bool sidebar_shown { get; set; }
+
     public bool can_backward {
         set {
             backward_button.visible = value;
@@ -97,7 +99,7 @@ public class Cassette.HeaderBar : ShrinkableBin {
 
         resized.connect ((width, height) => {
             if (title_stack != null) {
-                shrink_edge_width = 200 + 90 * (int) title_stack.pages.get_n_items ();
+                shrink_edge_width = (sidebar_shown ? 360 : 0) + 200 + 90 * (int) title_stack.pages.get_n_items ();
             }
         });
 

@@ -21,7 +21,7 @@ using Gee;
 
 namespace Cassette {
     [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/sidebar.ui")]
-    public class SideBar : Adw.Bin {
+    public class SideBar : ShrinkableBin {
         [GtkChild]
         unowned Adw.OverlaySplitView root_flap;
         [GtkChild]
@@ -71,7 +71,6 @@ namespace Cassette {
                 }
             }
         }
-        public bool collapsed { get; set; }
 
         public SideBar () {
             Object ();
@@ -84,8 +83,11 @@ namespace Cassette {
                 }
             });
 
+            notify["is-shrinked"].connect (() => {
+                root_flap.collapsed = is_shrinked;
+            });
+
             this.bind_property ("is-shown", root_flap, "show-sidebar", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-            this.bind_property ("collapsed", root_flap, "collapsed", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
 
             player.queue_changed.connect (update_queue);
         }

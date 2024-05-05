@@ -95,8 +95,6 @@ public class Cassette.HeaderBar : ShrinkableBin {
             refresh_clicked ();
         });
 
-        search_button.bind_property ("active", this, "search-active", BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT);
-
         resized.connect ((width, height) => {
             if (title_stack != null) {
                 shrink_edge_width = (sidebar_shown ? 360 : 0) + 200 + 90 * (int) title_stack.pages.get_n_items ();

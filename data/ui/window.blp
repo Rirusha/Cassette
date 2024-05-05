@@ -28,11 +28,12 @@ template $CassetteWindow : $CassetteApplicationWindow {
               sensitive: false;
               title-stack: main_stack;
               sidebar-shown: bind sidebar.is-shown;
+              switcher-visible: bind switcher_toolbar.reveal-bottom-bars inverted;
             }
 
             [top]
             Gtk.Revealer search_revealer {
-              reveal-child: bind header_bar.search_active;
+              reveal-child: bind header_bar.search-active;
 
               Adw.Clamp {
                 maximum-size: 500;

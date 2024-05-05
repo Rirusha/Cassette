@@ -2,6 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteHeaderBar : $CassetteShrinkableBin {
+  search-active: bind search_button.active;
 
   Adw.HeaderBar {
     [start]
@@ -31,7 +32,9 @@ template $CassetteHeaderBar : $CassetteShrinkableBin {
     };
 
     [end]
-    $CassettePrimaryMenuButton menu_button { }
+    $CassettePrimaryMenuButton menu_button {
+      visible: bind template.sidebar-shown inverted;
+    }
 
     [end]
     Button avatar_button {
@@ -47,6 +50,8 @@ template $CassetteHeaderBar : $CassetteShrinkableBin {
     }
 
     [end]
-    $CassetteCacheIndicator { }
+    $CassetteCacheIndicator {
+      visible: bind template.sidebar-shown inverted;
+    }
   }
 }

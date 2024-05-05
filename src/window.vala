@@ -100,7 +100,9 @@ public class Cassette.Window : ApplicationWindow {
         info_banner.button_clicked.connect (try_reconnect);
 
         main_stack.notify["visible-child-name"].connect (() => {
-            activate_action ("close-sidebar", null);
+            if (sidebar.collapsed) {
+                activate_action ("close-sidebar", null);
+            }
         });
 
         pager = new Pager (this, main_stack);
@@ -119,10 +121,9 @@ public class Cassette.Window : ApplicationWindow {
             current_view.refresh ();
         });
 
-        notify["is-shrinked"].connect (() => {
-            header_bar.switcher_visible = !is_shrinked;
-            switcher_toolbar.reveal_bottom_bars = is_shrinked;
-        });
+        sidebar.notify["collapsed"].connect (check_bar_visible);
+        sidebar.notify["is-shown"].connect (check_bar_visible);
+        notify["is-shrinked"].connect (check_bar_visible);
 
         loading_stack.notify["visible-child"].connect (() => {
             if (loading_stack.visible_child_name == "done") {
@@ -135,6 +136,10 @@ public class Cassette.Window : ApplicationWindow {
         if (Cassette.application.is_devel) {
             add_css_class ("devel");
         }
+    }
+
+    void check_bar_visible () {
+        switcher_toolbar.reveal_bottom_bars = (sidebar.collapsed && sidebar.is_shown) || is_shrinked;
     }
 
     void on_preferences_action () {

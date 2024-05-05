@@ -49,10 +49,10 @@ namespace Cassette {
 
             indicator_revealer.notify.connect (() => {
                 if (indicator_revealer.reveal_child) {
-                    visible = true;
+                    indicator_revealer.visible = true;
                 }
                 if (!indicator_revealer.child_revealed) {
-                    visible = false;
+                    indicator_revealer.visible = false;
                 }
             });
 

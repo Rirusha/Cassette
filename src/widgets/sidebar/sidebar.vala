@@ -72,6 +72,8 @@ namespace Cassette {
             }
         }
 
+        public bool collapsed { get; set; }
+
         public SideBar () {
             Object ();
         }

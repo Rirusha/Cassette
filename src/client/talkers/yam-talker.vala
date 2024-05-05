@@ -598,5 +598,40 @@ namespace Cassette.Client {
 
             return station_tracks;
         }
+
+
+
+
+        public async YaMAPI.Rotor.Dashboard? get_stations_dashboard () {
+            YaMAPI.Rotor.Dashboard? dashboard = null;
+
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    dashboard = client.rotor_stations_dashboard ();
+                });
+
+                Idle.add (get_stations_dashboard.callback);
+            });
+
+            yield;
+
+            return dashboard;
+        }
+
+        public async Gee.ArrayList<YaMAPI.Rotor.Station>? get_all_stations () {
+            Gee.ArrayList<YaMAPI.Rotor.Station>? stations_list = null;
+
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    stations_list = client.rotor_stations_list ();
+                });
+
+                Idle.add (get_all_stations.callback);
+            });
+
+            yield;
+
+            return stations_list;
+        }
     }
 }

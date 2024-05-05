@@ -48,9 +48,6 @@ public class Cassette.StationsView : BaseView {
         }
     }
 
-    YaMAPI.Rotor.Dashboard? dashboard = null;
-    Gee.ArrayList<YaMAPI.Rotor.Station>? stations_list = null;
-
     construct {
         search_entry.search_changed.connect (search_entry_search_changed_async);
 
@@ -85,7 +82,10 @@ public class Cassette.StationsView : BaseView {
         clear_flow_box (dashboard_flow_box);
     }
 
-    async void set_values_async () {
+    async void set_values_async (
+        YaMAPI.Rotor.Dashboard dashboard,
+        Gee.ArrayList<YaMAPI.Rotor.Station> stations_list
+    ) {
         clear_all_boxes ();
 
         foreach (var station in dashboard.stations) {
@@ -134,20 +134,11 @@ public class Cassette.StationsView : BaseView {
     }
 
     public async override int try_load_from_web () {
-        dashboard = null;
-        stations_list = null;
-
-        threader.add (() => {
-            dashboard = yam_talker.client.rotor_stations_dashboard ();
-            stations_list = yam_talker.client.rotor_stations_list ();
-
-            Idle.add (try_load_from_web.callback);
-        });
-
-        yield;
+        var dashboard = yield yam_talker.get_stations_dashboard ();
+        var stations_list = yield yam_talker.get_all_stations ();
 
         if (dashboard != null && stations_list != null) {
-            yield set_values_async ();
+            yield set_values_async (dashboard, stations_list);
 
             return -1;
         }

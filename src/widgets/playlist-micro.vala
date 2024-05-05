@@ -62,7 +62,9 @@ namespace Cassette {
                 //          like_button.notify["likes-count"].connect (() => {
                 //              if (like_button.likes_count > 0) {
                 //                  likes_count_label.visible = true;
-                //                  likes_count_label.label = ngettext ("%s like", "%s likes", like_button.likes_count).printf (prettify_num (like_button.likes_count));
+                //                  likes_count_label.label = ngettext ("%s like", "%s likes", like_button.likes_count).printf (
+                //                      prettify_num (like_button.likes_count)
+                //                  );
                 //              } else {
                 //                  likes_count_label.visible = false;
                 //              }
@@ -209,7 +211,10 @@ namespace Cassette {
         //  }
 
         //  public YaMAPI.Playlist? get_playlist_info () {
-        //      var playlist_info = (YaMAPI.Playlist) storager.load_object (typeof (YaMAPI.Playlist), this.short_playlist_info.oid);
+        //      var playlist_info = (YaMAPI.Playlist) storager.load_object (
+        //          typeof (YaMAPI.Playlist),
+        //          this.short_playlist_info.oid
+        //      );
         //      int soup_code = -1;
 
         //      if (playlist_info == null) {

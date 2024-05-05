@@ -61,7 +61,7 @@ namespace Cassette.Client.YaMAPI {
         public string? album_id { get; set; }
 
         /**
-         * TODO
+         *
          */
         public string from { get; set; default = API_FROM; }
 
@@ -76,22 +76,22 @@ namespace Cassette.Client.YaMAPI {
         public string context_item { get; set; }
 
         /**
-         * TODO
+         *
          */
         public string add_tracks_to_player_time { get; set; default = generate_add_tracks_to_player_time (); }
 
         /**
-         * TODO
+         *
          */
         public string audio_auto { get; set; default = "none"; }
 
         /**
-         * TODO
+         *
          */
         public string audio_output_name { get; set; default = "Динамики"; }
 
         /**
-         * TODO
+         *
          */
         public string audio_output_type { get; set; default = "Speaker"; }
 

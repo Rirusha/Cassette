@@ -17,42 +17,42 @@
 
 
 /**
- * TODO
+ *
  */
 public class Cassette.Client.YaMAPI.Rotor.StationInfo : YaMObject {
 
     /**
-     * TODO
+     *
      */
     public Id id { get; set; }
 
     /**
-     * TODO
+     *
      */
     public string name { get; set; }
 
     /**
-     * TODO
+     *
      */
     public Icon icon { get; set; }
 
     /**
-     * TODO
+     *
      */
     public string full_image_url { get; set; }
 
     /**
-     * TODO
+     *
      */
     public Restrictions restrictions { get; set; }
 
     /**
-     * TODO
+     *
      */
     public Restrictions restrictions2 { get; set; }
 
     /**
-     * TODO
+     *
      */
     public bool special_context { get; set; }
 }

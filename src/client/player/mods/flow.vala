@@ -22,7 +22,9 @@ public class Cassette.Client.Player.Flow : Mode {
 
     public string station_id { get; construct; }
 
-    public YaMAPI.Rotor.StationTracks last_station_tracks { get; private set; default = new YaMAPI.Rotor.StationTracks (); }
+    public YaMAPI.Rotor.StationTracks last_station_tracks {
+        get; private set; default = new YaMAPI.Rotor.StationTracks ();
+    }
 
     string radio_session_id;
 

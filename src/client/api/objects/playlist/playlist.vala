@@ -66,7 +66,7 @@ namespace Cassette.Client.YaMAPI {
         public string? uid { get; set; default = null; }
         public string kind { get; set; default = "3"; }
         public string? playlist_uuid { get; set; }
-        public int track_count { get; set; default = -1; }  // Для срабатывания условия несоответствия размера списка треков
+        public int track_count { get; set; default = 0; }
         public int revision { get; set; }
         public int snapshot { get; set; }
         public string? visibility { get; set; }
@@ -113,11 +113,22 @@ namespace Cassette.Client.YaMAPI {
             tracks = new_track_list;
         }
 
-        public ArrayList<Track> get_filtered_track_list (bool show_explicit, bool show_child, string? exception_track_id = null) {
+        public ArrayList<Track> get_filtered_track_list (
+            bool show_explicit,
+            bool show_child,
+            string? exception_track_id = null
+        ) {
             var out_track_list = new ArrayList<Track> ();
 
             foreach (TrackShort track_short in tracks) {
-                if ((track_short.track.available && ((!track_short.track.is_explicit | show_explicit) && (!track_short.track.is_suitable_for_children | show_child))) | track_short.id == exception_track_id) {
+                if (
+                    (track_short.track.available &&
+                        (
+                            (!track_short.track.is_explicit || show_explicit) &&
+                            (!track_short.track.is_suitable_for_children || show_child)
+                        )
+                    ) || track_short.id == exception_track_id
+                ) {
                     out_track_list.add (track_short.track);
                 }
             }

@@ -53,7 +53,7 @@ namespace Cassette.Client.YaMAPI.Library {
         public ArrayList<string> playlists { get; set; default = new ArrayList<string> (); }
 
         /**
-         * TODO
+         *
          */
         public ArrayList<string> users { get; set; default = new ArrayList<string> (); }
 

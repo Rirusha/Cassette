@@ -42,8 +42,8 @@ namespace Cassette.Client.YaMAPI {
                 "device",
                 {{
                     "X-Yandex-Music-Device",
-                    "os=%s; os_version=%s; manufacturer=Rirusha; model=Yandex Music API; clid=; device_id=random; uuid=random".printf (
-                        os, version
+                    "os=%s; os_version=%s; manufacturer=%s; model=%s; clid=; device_id=random; uuid=random".printf (
+                        os, version, "Rirusha", "Yandex Music API"
                     )
                 }}
             );
@@ -114,17 +114,17 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void account_experiments () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void account_experiments_details () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void account_settings () throws ClientError, BadStatusCodeError { }
 
@@ -143,7 +143,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void albums_with_tracks (
             string album_id,
@@ -151,7 +151,7 @@ namespace Cassette.Client.YaMAPI {
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public Playlist playlist (
             string playlist_uuid,
@@ -172,75 +172,75 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void playlists () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_tracks (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_track_ids (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_safe_direct_albums (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_brief_info (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_similar (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_discography_albums (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_direct_albums (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_also_albums (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void artists_concerts (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_playlists_list_kinds (
             owned string? uid = null
@@ -249,7 +249,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_playlists (
             owned string? uid = null
@@ -258,7 +258,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public Gee.ArrayList<Playlist> users_playlists_list (
             owned string? uid = null
@@ -278,7 +278,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public Playlist users_playlists_playlist (
             string playlist_kind,
@@ -298,7 +298,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_playlists_playlist_change_relative (
             string playlist_kind,
@@ -489,7 +489,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_albums (
             owned string? uid = null
@@ -498,7 +498,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_artists (
             owned string? uid = null
@@ -507,7 +507,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public Gee.ArrayList<LikedPlaylist> users_likes_playlists (
             owned string? uid = null
@@ -526,7 +526,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_tracks_add (
             string track_id,
@@ -536,7 +536,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_tracks_remove (
             string track_id,
@@ -565,7 +565,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_dislikes_tracks_add (
             string track_id,
@@ -575,7 +575,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_dislikes_tracks_remove (
             string track_id,
@@ -585,7 +585,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_artists_add (
             string artist_id,
@@ -595,7 +595,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_artists_remove (
             string artist_id,
@@ -605,7 +605,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_dislikes_artists_add (
             string artist_id,
@@ -615,7 +615,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_dislikes_artists_remove (
             string artist_id,
@@ -625,7 +625,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_albums_add (
             string album_id,
@@ -635,7 +635,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_albums_remove (
             string album_id,
@@ -645,7 +645,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_playlists_add (
             string playlist_uid,
@@ -656,7 +656,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_likes_playlists_remove (
             string playlist_uid,
@@ -667,7 +667,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_presaves_add (
             owned string? uid = null
@@ -676,7 +676,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_presaves_remove (
             owned string? uid = null
@@ -685,7 +685,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_search_history (
             owned string? uid = null
@@ -694,7 +694,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void users_search_history_clear (
             owned string? uid = null
@@ -717,59 +717,59 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void landing3_metatags () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void metatags_metatag (
             string metatag
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void metatags_albums (
             string metatag
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void metatags_artists (
             string metatag
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void metatags_playlists (
             string metatag
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void top_category (
             string category
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void rotor_station_info (
             string station_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void rotor_station_stream () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public StationTracks rotor_session_new (
             SessionNew session_new
@@ -791,7 +791,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public StationTracks rotor_session_tracks (
             string radio_session_id,
@@ -814,7 +814,7 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void rotor_session_feedback (
             string radio_session_id,
@@ -910,12 +910,12 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void search_feedback () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void search_instant_mixed () throws ClientError, BadStatusCodeError { }
 
@@ -963,59 +963,59 @@ namespace Cassette.Client.YaMAPI {
         }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void rewind_slides_user () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void rewind_slides_artist (
             string artist_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void pins () throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void pins_albums (
             bool pin
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void pins_playlist (
             bool pin
         ) throws ClientError, BadStatusCodeError { }
 
          /**
-         * TODO: Placeholder
+         *
          */
         public void pins_artist (
             bool pin
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void pins_wave (
             bool pin
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void tags_playlist_ids (
             string tag_id
         ) throws ClientError, BadStatusCodeError { }
 
         /**
-         * TODO: Placeholder
+         *
          */
         public void feed_promotions_promo (
             string promo_id
@@ -1062,7 +1062,9 @@ namespace Cassette.Client.YaMAPI {
             return form_download_uri (dl_info_uri);
         }
 
-        public Gee.ArrayList<DownloadInfo> tracks_download_info (string track_id) throws ClientError, BadStatusCodeError {
+        public Gee.ArrayList<DownloadInfo> tracks_download_info (
+            string track_id
+        ) throws ClientError, BadStatusCodeError {
             Bytes bytes = soup_wrapper.get_sync (
                 @"$(YAM_BASE_URL)/tracks/$track_id/download-info",
                 {"default"}
@@ -1175,9 +1177,9 @@ namespace Cassette.Client.YaMAPI {
 
 
 
-        ////////////////////////////////////////////////////////////
-        // TODO: Методы ниже должны быть ззаменены на методы выше //
-        ////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
+        // Методы ниже должны быть ззаменены на методы выше //
+        //////////////////////////////////////////////////////
 
         //  [Version (deprecated = true)]
         //  public Gee.ArrayList<ShortQueue> queues () throws ClientError, BadStatusCodeError {

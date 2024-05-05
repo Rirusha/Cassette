@@ -19,17 +19,17 @@
 using Gee;
 
 /**
- * TODO
+ *
  */
 public class Cassette.Client.YaMAPI.Rotor.Block : YaMObject {
 
     /**
-     * TODO
+     *
      */
     public string type_ { get; set; }
 
     /**
-     * TODO
+     *
      */
     public ArrayList<StationInfo> items { get; set; default = new ArrayList<StationInfo> (); }
 }

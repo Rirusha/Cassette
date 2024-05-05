@@ -33,11 +33,20 @@ namespace Cassette.Client.YaMAPI {
             Object ();
         }
 
-        public ArrayList<Track> get_filtered_track_list (bool show_explicit, bool show_child, string? exception_track_id = null) {
+        public ArrayList<Track> get_filtered_track_list (
+            bool show_explicit,
+            bool show_child,
+            string? exception_track_id = null
+        ) {
             var out_track_list = new ArrayList<Track> ();
 
             foreach (var similar_track in similar_tracks) {
-                if ((similar_track.available && ((!similar_track.is_explicit | show_explicit) && (!similar_track.is_suitable_for_children | show_child))) | similar_track.id == exception_track_id) {
+                if (
+                    (similar_track.available && (
+                        (!similar_track.is_explicit || show_explicit) &&
+                        (!similar_track.is_suitable_for_children || show_child)
+                    )) || similar_track.id == exception_track_id
+                ) {
                     out_track_list.add (similar_track);
                 }
             }

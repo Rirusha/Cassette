@@ -108,7 +108,7 @@ namespace Cassette {
             start_loading ();
 
             webview.load_uri (
-                "https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d&https://music.yandex.ru"
+                "https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d&https://music.yandex.ru" // vala-lint=line-length
             );
         }
 

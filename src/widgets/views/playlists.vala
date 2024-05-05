@@ -60,7 +60,10 @@ namespace Cassette {
         //      }
         //  }
 
-        void set_values (Gee.ArrayList<YaMAPI.Playlist?>? playlists_info, Gee.ArrayList<YaMAPI.LikedPlaylist?>? likes_playlists_info) {
+        void set_values (
+            Gee.ArrayList<YaMAPI.Playlist?>? playlists_info,
+            Gee.ArrayList<YaMAPI.LikedPlaylist?>? likes_playlists_info
+        ) {
             while (flow_box.get_last_child () != null) {
                 flow_box.remove (flow_box.get_last_child ());
             }

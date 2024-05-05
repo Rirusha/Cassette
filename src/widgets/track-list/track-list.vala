@@ -256,14 +256,20 @@ namespace Cassette {
                     bool show_explicit = Cassette.settings.get_boolean ("explicit-visible");
                     bool show_child = Cassette.settings.get_boolean ("child-visible");
                     bool is_available = Cassette.settings.get_boolean ("available-visible");
-                    bool track_can_show = track_row.track_info.track_type == track_type && (track_row.track_info.available | is_available) && (!track_row.track_info.is_explicit | show_explicit) && (!track_row.track_info.is_suitable_for_children | show_child);
-                    if (track_can_show | track_row is TrackQueueRow) {
+                    bool track_can_show = track_row.track_info.track_type == track_type &&
+                        (track_row.track_info.available || is_available) &&
+                        (!track_row.track_info.is_explicit || show_explicit) &&
+                        (!track_row.track_info.is_suitable_for_children || show_child);
+                    if (track_can_show || track_row is TrackQueueRow) {
                         filtered_rows.add (track_row);
                         track_row.visible = true;
                     } else {
                         track_row.visible = false;
                     }
-                } else if ((search_entry.text.down () in track_row.track_info.title.down ()) | (search_entry.text.down () in track_row.track_info.get_artists_names ().down ())) {
+                } else if (
+                    (search_entry.text.down () in track_row.track_info.title.down ()) ||
+                    (search_entry.text.down () in track_row.track_info.get_artists_names ().down ())
+                ) {
                     filtered_rows.add (track_row);
                     track_row.visible = true;
                 } else {

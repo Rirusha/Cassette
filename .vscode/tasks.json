@@ -16,7 +16,7 @@
         {
             "label": "Lint check",
             "type": "shell",
-            "command": "io.elementary.vala-lint ${workspaceFolder}/src ${workspaceFolder}/tests",
+            "command": "io.elementary.vala-lint -d . -c vala-lint.conf",
             "problemMatcher": []
         },
         {

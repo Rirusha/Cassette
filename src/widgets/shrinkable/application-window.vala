@@ -48,12 +48,12 @@ public class Cassette.ApplicationWindow : Adw.ApplicationWindow {
 
         if (shrink_edge_width != -1) {
             if (width >= shrink_edge_width) {
-                if (is_shrinked | first_resize) {
+                if (is_shrinked || first_resize) {
                     is_shrinked = false;
                 }
 
             } else {
-                if (!is_shrinked | first_resize) {
+                if (!is_shrinked || first_resize) {
                     is_shrinked = true;
                 }
             }

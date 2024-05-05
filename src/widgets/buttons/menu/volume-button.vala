@@ -120,7 +120,8 @@ public class Cassette.VolumeButton : CustomMenuButton {
 
         var equalaizer_revealer = new Gtk.Revealer () {
             reveal_child = orientation == Gtk.Orientation.HORIZONTAL,
-            transition_type = orientation == Gtk.Orientation.HORIZONTAL ? Gtk.RevealerTransitionType.SLIDE_DOWN : Gtk.RevealerTransitionType.SLIDE_RIGHT
+            transition_type = orientation == Gtk.Orientation.HORIZONTAL ?
+                Gtk.RevealerTransitionType.SLIDE_DOWN : Gtk.RevealerTransitionType.SLIDE_RIGHT
         };
         box.append (equalaizer_revealer);
 

@@ -17,7 +17,7 @@
 
 
 /**
- * TODO
+ *
  */
 public class Cassette.Client.YaMAPI.Rotor.Sequence : YaMObject {
 
@@ -32,7 +32,7 @@ public class Cassette.Client.YaMAPI.Rotor.Sequence : YaMObject {
     public Track track { get; set; }
 
     /**
-     * TODO
+     *
      */
     public bool liked { get; set; }
 

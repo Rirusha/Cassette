@@ -24,17 +24,17 @@ using Gee;
 public class Cassette.Client.YaMAPI.Rotor.StationTracks : YaMObject {
 
     /**
-     * TODO
+     *
      */
     public string radio_session_id { get; set; }
 
     /**
-     * TODO
+     *
      */
     public ArrayList<Sequence> sequence { get; set; default = new ArrayList<Sequence> (); }
 
     /**
-     * TODO
+     *
      */
     public string batch_id { get; set; }
 
@@ -46,22 +46,22 @@ public class Cassette.Client.YaMAPI.Rotor.StationTracks : YaMObject {
     public bool pumpkin { get; set; }
 
     /**
-     * TODO
+     *
      */
     public Seed description_seed { get; set; }
 
     /**
-     * TODO
+     *
      */
     public ArrayList<Seed> accepted_seed { get; set; default = new ArrayList<Seed> (); }
 
     /**
-     * TODO
+     *
      */
     public Wave wave { get; set; }
 
     /**
-     * TODO
+     *
      */
     public bool unknown_session { get; set; }
 }

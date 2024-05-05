@@ -17,7 +17,7 @@
 
 
 /**
- * TODO
+ *
  */
 public class Cassette.Client.YaMAPI.Rotor.Station : YaMObject {
 
@@ -37,12 +37,12 @@ public class Cassette.Client.YaMAPI.Rotor.Station : YaMObject {
     public string title { get; set; }
 
     /**
-     * TODO
+     *
      */
     public string rup_title { get; set; }
 
     /**
-     * TODO
+     *
      */
     public string rup_description { get; set; }
 }

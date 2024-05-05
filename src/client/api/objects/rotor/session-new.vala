@@ -19,22 +19,22 @@
 using Gee;
 
 /**
- * TODO
+ *
  */
 public class Cassette.Client.YaMAPI.Rotor.SessionNew : YaMObject {
 
     /**
-     * TODO
+     *
      */
     public ArrayList<string> seeds { get; set; default = new ArrayList<string> (); }
 
     /**
-     * TODO
+     *
      */
     public bool include_tracks_in_response { get; set; default = true; }
 
     /**
-     * TODO
+     *
      */
     public bool include_wave_model { get; set; default = true; }
 }

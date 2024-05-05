@@ -63,7 +63,7 @@ namespace Cassette.Client.YaMAPI.Account {
         public string? avatar_id { get; set; }
 
         /**
-         * TODO
+         *
          */
         public string public_id { get; set; }
 

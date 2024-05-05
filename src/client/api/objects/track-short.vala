@@ -35,12 +35,12 @@ namespace Cassette.Client.YaMAPI {
         public Track? track { get; set; }
 
         /**
-         * TODO
+         *
          */
         public int original_index { get; set; }
 
         /**
-         * TODO
+         *
          */
         public int original_shuffle_index { get; set; }
 

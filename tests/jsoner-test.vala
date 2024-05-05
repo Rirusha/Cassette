@@ -1,3 +1,5 @@
+// vala-lint=skip-file
+
 using Cassette.Client;
 using Cassette.Client.YaMAPI;
 

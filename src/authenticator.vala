@@ -95,7 +95,7 @@ namespace Cassette {
             loading_win.present ();
             spinner.start ();
 
-            // TODO: Let user choose save content ot not
+            // TODO: let user choose save content ot not
             storager.clear_user.begin (true, application.quit);
         }
 

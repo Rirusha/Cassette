@@ -55,7 +55,11 @@ namespace Cassette.Client {
          * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
          * @param names_case    нейм кейс имён элементов в json строке
          */
-        public Jsoner (string json_string, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
+        public Jsoner (
+            string json_string,
+            string[]? sub_members = null,
+            Case names_case = Case.KEBAB
+        ) throws ClientError {
             Json.Node? node;
             try {
                 node = Json.from_string (json_string);
@@ -83,7 +87,11 @@ namespace Cassette.Client {
          * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
          * @param names_case    нейм кейс имён элементов в json строке
          */
-        public static Jsoner from_bytes (Bytes bytes, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
+        public static Jsoner from_bytes (
+            Bytes bytes,
+            string[]? sub_members = null,
+            Case names_case = Case.KEBAB
+        ) throws ClientError {
             if (bytes.length < 1) {
                 throw new ClientError.PARSE_ERROR ("Json string is empty");
             }
@@ -100,7 +108,11 @@ namespace Cassette.Client {
          * @param sub_members   массив имён элементов json, по которым нужно пройти до целевой ноды
          * @param names_case    нейм кейс имён элементов в json строке
          */
-        public static Jsoner from_data (uint8[] data, string[]? sub_members = null, Case names_case = Case.KEBAB) throws ClientError {
+        public static Jsoner from_data (
+            uint8[] data,
+            string[]? sub_members = null,
+            Case names_case = Case.KEBAB
+        ) throws ClientError {
             return new Jsoner ((string) data, sub_members, names_case);
         }
 
@@ -187,7 +199,12 @@ namespace Cassette.Client {
          * @param element_type  тип элементов в array_list
          * @param names_case    нейм кейс имён элементов в json строке
          */
-        static void serialize_array (Json.Builder builder, ArrayList array_list, Type element_type, Case names_case = Case.KEBAB) {
+        static void serialize_array (
+            Json.Builder builder,
+            ArrayList array_list,
+            Type element_type,
+            Case names_case = Case.KEBAB
+        ) {
             builder.begin_array ();
 
             if (element_type.parent () == typeof (YaMObject)) {
@@ -338,7 +355,9 @@ namespace Cassette.Client {
             var node = root;
 
             if (node.get_node_type () != Json.NodeType.OBJECT) {
-                Logger.warning (_("Wrong type: expected %s, got %s").printf (Json.NodeType.OBJECT.to_string (), node.get_node_type ().to_string ()));
+                Logger.warning (_("Wrong type: expected %s, got %s").printf (
+                    Json.NodeType.OBJECT.to_string (), node.get_node_type ().to_string ()
+                ));
                 throw new ClientError.PARSE_ERROR ("Node isn't object");
             }
 
@@ -397,7 +416,9 @@ namespace Cassette.Client {
             }
 
             if (node.get_node_type () != Json.NodeType.OBJECT) {
-                Logger.warning (_("Wrong type: expected %s, got %s").printf (Json.NodeType.OBJECT.to_string (), node.get_node_type ().to_string ()));
+                Logger.warning (_("Wrong type: expected %s, got %s").printf (
+                    Json.NodeType.OBJECT.to_string (), node.get_node_type ().to_string ()
+                ));
                 throw new ClientError.PARSE_ERROR ("Node isn't object");
             }
 
@@ -502,7 +523,9 @@ namespace Cassette.Client {
             }
 
             if (node.get_node_type () != Json.NodeType.VALUE) {
-                Logger.warning (_("Wrong type: expected %s, got %s").printf (Json.NodeType.VALUE.to_string (), node.get_node_type ().to_string ()));
+                Logger.warning (_("Wrong type: expected %s, got %s").printf (
+                    Json.NodeType.VALUE.to_string (), node.get_node_type ().to_string ()
+                ));
                 throw new ClientError.PARSE_ERROR ("Node isn't value");
             }
 
@@ -524,7 +547,9 @@ namespace Cassette.Client {
             }
 
             if (node.get_node_type () != Json.NodeType.ARRAY) {
-                Logger.warning (_("Wrong type: expected %s, got %s").printf (Json.NodeType.ARRAY.to_string (), node.get_node_type ().to_string ()));
+                Logger.warning (_("Wrong type: expected %s, got %s").printf (
+                    Json.NodeType.ARRAY.to_string (), node.get_node_type ().to_string ()
+                ));
                 throw new ClientError.PARSE_ERROR ("Node isn't array");
             }
 
@@ -600,7 +625,9 @@ namespace Cassette.Client {
                         break;
 
                     default:
-                        Logger.warning ("Unknown type of element of array - %s".printf (array_list.element_type.name ()));
+                        Logger.warning ("Unknown type of element of array - %s".printf (
+                            array_list.element_type.name ()
+                        ));
                         break;
                 }
             }

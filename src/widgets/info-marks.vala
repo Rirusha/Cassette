@@ -37,8 +37,10 @@ namespace Cassette {
             set {
                 _replaced_by = value;
 
-                if (_replaced_by != null) {
-                    track_replaced_mark.tooltip_text = _("Track was replaced. Original version: %s, %s").printf (_replaced_by.title_with_version, _replaced_by.get_artists_names ());
+                if (value != null) {
+                    track_replaced_mark.tooltip_text = _("Track was replaced. Original version: %s, %s").printf (
+                        value.title_with_version, value.get_artists_names ()
+                    );
                 } else {
                     track_replaced_mark.tooltip_text = "";
                 }

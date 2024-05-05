@@ -17,7 +17,7 @@
 
 
 /**
- * TODO
+ *
  */
 public class Cassette.Client.YaMAPI.Rotor.Event : YaMObject {
 

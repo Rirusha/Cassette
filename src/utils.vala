@@ -148,7 +148,9 @@ namespace Cassette {
      * @param track_info    объект трека, ссылка на который будет скопирована в буфер обмена
      */
     public static void track_share (Cassette.Client.YaMAPI.Track track_info) {
-        string url = @"https://music.yandex.ru/album/$(track_info.albums[0].id)/track/$(track_info.id)?utm_medium=copy_link";
+        string url = "https://music.yandex.ru/album/%s/track/%s?utm_medium=copy_link".printf (
+            track_info.albums[0].id, track_info.id
+        );
 
         Gdk.Display? display = Gdk.Display.get_default ();
         Gdk.Clipboard clipboard = display.get_clipboard ();
@@ -162,7 +164,9 @@ namespace Cassette {
      * @param playlist_info объект плейлиста, ссылка на который будет скопирована в буфер обмена
      */
     public static void playlist_share (Cassette.Client.YaMAPI.Playlist playlist_info) {
-        string url = @"https://music.yandex.ru/users/$(playlist_info.owner.login)/playlists/$(playlist_info.kind)?utm_medium=copy_link";
+        string url = "https://music.yandex.ru/users/%s/playlists/%s?utm_medium=copy_link".printf (
+            playlist_info.owner.login, playlist_info.kind
+        );
 
         Gdk.Display? display = Gdk.Display.get_default ();
         Gdk.Clipboard clipboard = display.get_clipboard ();

@@ -73,21 +73,49 @@ namespace Cassette {
                 }
             });
 
-            Cassette.Client.settings.bind ("add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("show-playing-track-notif", show_playing_track_notif_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("child-visible", child_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("explicit-visible", explicit_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("show-replaced-mark", show_replaced_mark_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("show-save-stack", show_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.Client.settings.bind ("is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.Client.settings.bind ("debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("use-only-dialogs", use_only_dialogs_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.Client.settings.bind (
+                "add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "show-playing-track-notif", show_playing_track_notif_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "child-visible", child_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "explicit-visible", explicit_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "show-replaced-mark", show_replaced_mark_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "show-save-stack", show_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.Client.settings.bind (
+                "is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.Client.settings.bind (
+                "debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "use-only-dialogs", use_only_dialogs_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
 
-            Cassette.settings.bind ("show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT);
-            Cassette.settings.bind ("show-playlists", show_playlists_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+            Cassette.settings.bind (
+                "show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
+            Cassette.settings.bind (
+                "show-playlists", show_playlists_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            );
 
             max_thread_number_spin.notify["value"].connect (() => {
                 Cassette.Client.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);

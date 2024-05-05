@@ -119,7 +119,9 @@ namespace Cassette {
                         if (response == "delete") {
                             playlist_delete_async.begin ((obj, res) => {
                                 if (playlist_delete_async.end (res)) {
-                                    application.show_message (_("Playlist '%s' was deleted").printf (((YaMAPI.Playlist) object_info).title));
+                                    application.show_message (_("Playlist '%s' was deleted").printf (
+                                        ((YaMAPI.Playlist) object_info).title
+                                    ));
                                 }
                             });
                         }
@@ -143,7 +145,9 @@ namespace Cassette {
             //      playlist_name_entry_activate_async.begin ((obj, res) => {
             //          var new_playlist_info = playlist_name_entry_activate_async.end (res);
 
-            //          application.show_message (_("Playlist '%s' was renamed to '%s'").printf (old_playlist_title, new_playlist_info.title));
+            //          application.show_message (_("Playlist '%s' was renamed to '%s'").printf (
+            //              old_playlist_title, new_playlist_info.title
+            //          ));
             //      });
             //  });
 
@@ -260,7 +264,11 @@ namespace Cassette {
                 }
             } else {
                 // Translators: 0 - female, 1 - male (different gender endings)
-                string format_string = ngettext ("%s updated playlist %s", "%s updated playlist %s", playlist_info.owner.sex == "female"? 0 : 1);
+                string format_string = ngettext (
+                    "%s updated playlist %s",
+                    "%s updated playlist %s",
+                    playlist_info.owner.sex == "female"? 0 : 1
+                );
                 playlist_status.label = format_string.printf (playlist_info.owner.name, get_when (playlist_info.modified));
             }
 

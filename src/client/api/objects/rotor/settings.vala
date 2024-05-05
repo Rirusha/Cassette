@@ -56,17 +56,17 @@ namespace Cassette.Client.YaMAPI.Rotor {
     public class Settings : YaMObject {
 
         /**
-         * TODO
+         *
          */
         public Station default_station { get; set; }
 
         /**
-         * TODO
+         *
          */
         public ArrayList<Block> blocks { get; set; default = new ArrayList<Block> (); }
 
         /**
-         * TODO
+         *
          */
         public Restrictions settings_restrictions { get; set; }
     }

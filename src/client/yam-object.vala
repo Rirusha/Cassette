@@ -62,7 +62,11 @@ namespace Cassette.Client {
          *
          * @return                      отфильтрованный список треков
          */
-        public abstract Gee.ArrayList<YaMAPI.Track> get_filtered_track_list (bool show_explicit, bool show_child, string? exception_track_id = null);
+        public abstract Gee.ArrayList<YaMAPI.Track> get_filtered_track_list (
+            bool show_explicit,
+            bool show_child,
+            string? exception_track_id = null
+        );
     }
 
     /**

@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Lint
-      run: io.elementary.vala-lint -d .
+      run: io.elementary.vala-lint -d . -c vala-lint.conf
 
   test-build:
     name: Test Build

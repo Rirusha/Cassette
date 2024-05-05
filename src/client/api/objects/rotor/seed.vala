@@ -19,22 +19,22 @@
 using Gee;
 
 /**
- * TODO
+ *
  */
 public class Cassette.Client.YaMAPI.Rotor.Seed : YaMObject {
 
     /**
-     * TODO
+     *
      */
     public string value { get; set; }
 
     /**
-     * TODO
+     *
      */
     public string tag { get; set; }
 
     /**
-     * TODO
+     *
      */
     public string type_ { get; set; }
 }

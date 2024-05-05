@@ -39,7 +39,7 @@
                 <style>
                   <class name="dim-label"/>
                 </style>
-                <property name="tooltip-text" translatable="true">Content saved to temp folder</property>
+                <property name="tooltip-text" translatable="true">Content cached</property>
                 <property name="icon-name">cache-temp-symbolic</property>
               </object>
             </property>

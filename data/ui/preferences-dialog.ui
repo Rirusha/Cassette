@@ -69,9 +69,9 @@
             <child>
               <object class="AdwSwitchRow" id="show_temp_save_stack_switch">
                 <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference dialog">Show temp save mark</property>
+                <property name="title" translatable="true" context="preference dialog">Show cache mark</property>
                 <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference dialog">Show a mark indicating that the track has been saved to temporary storage</property>
+                <property name="tooltip-text" translatable="true" context="preference dialog">Show a mark indicating that the track has been saved to cache</property>
               </object>
             </child>
             <child>
@@ -179,7 +179,7 @@
             <!-- Translators: title of preference group -->
             <property name="title" translatable="true" context="preference dialog">Cache managing</property>
             <!-- Translators: description of preference group -->
-            <property name="description" translatable="true" context="preference dialog">Here you can see application memory usage, delete all cache from temp folder and control downloading cache to disk</property>
+            <property name="description" translatable="true" context="preference dialog">Here you can see application memory usage, delete all cache from cache folder and control downloading cache to disk</property>
             <child>
               <object class="AdwSwitchRow" id="can_cache_switch">
                 <!-- Translators: title of preference -->

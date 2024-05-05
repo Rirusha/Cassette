@@ -108,8 +108,8 @@ namespace Cassette {
 
         void ask_about_deletion () {
             var dialog = new Adw.AlertDialog (
-                _("Delete temporary files?"),
-                _("All temporary cache will be deleted. This doesn't affect on saved playlists or albums")
+                _("Delete cache files?"),
+                _("All cache will be deleted. This doesn't affect on saved playlists or albums")
             );
 
             // Translators: cancel of deleting playlist

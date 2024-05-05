@@ -71,7 +71,7 @@ namespace Cassette {
             });
 
             save_spin.tooltip_text = _("%s saving…").printf (get_content_name ());
-            temp_mark_image.tooltip_text = _("%s saved to temp folder").printf (get_content_name ());
+            temp_mark_image.tooltip_text = _("%s cached").printf (get_content_name ());
             perm_mark_image.tooltip_text = _("%s saved").printf (get_content_name ());
 
             if (hide_when_none == true) {

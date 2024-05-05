@@ -852,7 +852,7 @@ namespace Cassette.Client.Cachier {
                     }
 
                 } catch (Error e) {
-                    Logger.warning (_("Error while getting temporary dir size. Message %s").printf (e.message));
+                    Logger.warning (_("Error while getting cache directory size. Message %s").printf (e.message));
                 }
 
                 Idle.add (get_temp_size.callback);
@@ -887,7 +887,7 @@ namespace Cassette.Client.Cachier {
                     }
 
                 } catch (Error e) {
-                    Logger.warning (_("Error while getting permanent dir size. Message %s").printf (e.message));
+                    Logger.warning (_("Error while getting permanent directory size. Message %s").printf (e.message));
                 }
 
                 Idle.add (get_perm_size.callback);

@@ -1,3 +1,4 @@
+// ind-check=skip-file
 // vala-lint=skip-file
 
 using Cassette.Client;

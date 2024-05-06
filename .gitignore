@@ -16,3 +16,6 @@ build-dir
 repo
 .flatpak
 _build
+
+# gh
+settings.json

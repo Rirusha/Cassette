@@ -19,7 +19,7 @@ using Cassette.Client;
 
 
 [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-info-panel.ui")]
-public class Cassette.TrackInfoPanel : Adw.Bin {
+public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
 
     [GtkChild]
     unowned CoverImage cover_image;
@@ -88,7 +88,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
         get {
             return _orientation;
         }
-        construct {
+        set {
             _orientation = value;
 
             title_and_marks_box.start_widget = null;
@@ -118,6 +118,9 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
 
                     title_and_marks_box.start_widget = title_box;
                     title_and_marks_box.center_widget = info_marks;
+
+                    cover_image.cover_size = CoverSize.SMALL;
+                    cover_image.size = 60;
                     break;
 
                 case Gtk.Orientation.VERTICAL:
@@ -140,6 +143,9 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
 
                     title_and_marks_box.center_widget = title_box;
                     title_and_marks_box.end_widget = info_marks;
+
+                    cover_image.cover_size = CoverSize.BIG;
+                    cover_image.size = 200;
                     break;
             }
         }
@@ -165,9 +171,6 @@ public class Cassette.TrackInfoPanel : Adw.Bin {
         notify["position"].connect (() => {
             position_label.label = position.to_string ();
         });
-
-        cover_image.cover_size = orientation == Gtk.Orientation.HORIZONTAL? CoverSize.SMALL : CoverSize.BIG;
-        cover_image.size = orientation == Gtk.Orientation.HORIZONTAL? 60 : 200;
     }
 
     public PlayMarkTrack get_play_mark_track () {

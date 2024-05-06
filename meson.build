@@ -25,7 +25,7 @@ gio = dependency('gio-2.0', version: '>= 2.72')
 app_id = 'io.github.Rirusha.Cassette'
 
 if get_option('profile') == 'development'
-  name_postfix = ' (Dev ver.)'
+  name_postfix = ' (Devel)'
   app_id_dyn = '@0@-Devel'.format(app_id)
   profile = 'Devel'
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()

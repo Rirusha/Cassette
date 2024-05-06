@@ -237,6 +237,8 @@ public class Cassette.Client.Player.Player : Object {
             update_can_go ();
         });
 
+        mode_inited.connect (update_can_go);
+
         Timeout.add ((int) (PLAY_CALLBACK_STEP * 1000.0), () => {
             if (playback_pos_sec > 0.0 && state == State.PLAYING) {
                 playback_callback (playback_pos_sec);

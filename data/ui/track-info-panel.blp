@@ -12,7 +12,10 @@ template $CassetteTrackInfoPanel : Adw.Bin {
 
       StackPage {
         name: "cover";
-        child: $CassetteCoverImage cover_image { };
+        child: $CassetteCoverImage cover_image {
+          size: 60;
+          cover-size: 75;
+        };
       }
 
       StackPage {
@@ -35,6 +38,7 @@ template $CassetteTrackInfoPanel : Adw.Bin {
     }
 
     CenterBox title_and_marks_box {
+      halign: start;
       shrink-center-last: false;
 
       start-widget: Box title_box {
@@ -51,7 +55,8 @@ template $CassetteTrackInfoPanel : Adw.Bin {
               "heading"
             ]
 
-            justify: center;
+            halign: start;
+            ellipsize: end;
           }
 
           Label track_version_label {
@@ -59,7 +64,8 @@ template $CassetteTrackInfoPanel : Adw.Bin {
               "dim-label"
             ]
 
-            justify: center;
+            halign: start;
+            ellipsize: end;
           }
         }
 
@@ -68,7 +74,8 @@ template $CassetteTrackInfoPanel : Adw.Bin {
             "caption"
           ]
 
-          justify: center;
+          halign: start;
+          ellipsize: end;
         }
       };
 

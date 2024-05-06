@@ -72,17 +72,16 @@ namespace Cassette {
                 }
 
                 var old_state = _application_state;
-
                 _application_state = value;
 
-                // Don't write "Connection restored" after auth
-                if (old_state != ApplicationState.BEGIN) {
-                    application_state_changed (_application_state);
-                }
+                application_state_changed (_application_state, old_state);
             }
         }
 
-        public signal void application_state_changed (ApplicationState new_state);
+        public signal void application_state_changed (
+            ApplicationState new_state,
+            ApplicationState old_state
+        );
 
         public Window? main_window { get; private set; default = null; }
 
@@ -137,16 +136,20 @@ namespace Cassette {
 
             settings.bind ("application-state", this, "application-state", SettingsBindFlags.DEFAULT);
 
-            application.application_state_changed.connect ((new_state) => {
+            application.application_state_changed.connect ((new_state, old_state) => {
                 switch (new_state) {
                     case ApplicationState.ONLINE:
-                        show_message (_("Connection restored"));
+                        if (old_state == ApplicationState.OFFLINE) {
+                            show_message (_("Connection restored"));
+                        }
                         main_window?.set_online ();
                         break;
+
                     case ApplicationState.OFFLINE:
                         show_message (_("Connection problems"));
                         main_window?.set_offline ();
                         break;
+
                     default:
                         break;
                 }

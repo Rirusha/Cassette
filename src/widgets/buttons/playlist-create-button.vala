@@ -32,7 +32,7 @@ namespace Cassette {
         construct {
             real_button.clicked.connect (create_playlist_button_clicked_async);
             application.application_state_changed.connect (application_state_changed);
-            application_state_changed (application.application_state);
+            application_state_changed (application.application_state, application.application_state);
         }
 
         async void create_playlist_button_clicked_async () {
@@ -47,14 +47,16 @@ namespace Cassette {
             yield;
         }
 
-        void application_state_changed (ApplicationState new_state) {
+        void application_state_changed (ApplicationState new_state, ApplicationState old_state) {
             switch (new_state) {
                 case ApplicationState.ONLINE:
                     real_button.sensitive = true;
                     break;
+
                 case ApplicationState.OFFLINE:
                     real_button.sensitive = false;
                     break;
+
                 default:
                     break;
             }

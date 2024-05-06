@@ -79,7 +79,7 @@ namespace Cassette {
             this.content_id = content_id;
             check_disliked ();
 
-            application_state_changed (application.application_state);
+            application_state_changed (application.application_state, application.application_state);
         }
 
         void check_disliked () {
@@ -88,15 +88,17 @@ namespace Cassette {
             }
         }
 
-        void application_state_changed (ApplicationState new_state) {
+        void application_state_changed (ApplicationState new_state, ApplicationState old_state) {
             switch (new_state) {
                 case ApplicationState.ONLINE:
                     real_button.sensitive = true;
                     check_disliked ();
                     break;
+
                 case ApplicationState.OFFLINE:
                     real_button.sensitive = false;
                     break;
+
                 default:
                     break;
             }

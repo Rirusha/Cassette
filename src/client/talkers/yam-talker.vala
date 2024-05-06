@@ -248,75 +248,179 @@ namespace Cassette.Client {
             switch (content_type) {
                 case LikableType.TRACK:
                     return "track";
+
                 case LikableType.PLAYLIST:
                     return "playlist";
+
                 case LikableType.ALBUM:
                     return "album";
+
                 default:
                     assert_not_reached ();
             }
         }
 
-        public void like (LikableType content_type, string content_id) {
-            net_run_wout_code (() => {
-                track_likes_start_change (content_id);
+        public async void like (
+            LikableType content_type,
+            string content_id,
+            string? playlist_owner = null,
+            string? playlist_kind = null
+        ) {
+            track_likes_start_change (content_id);
+            bool is_ok = false;
 
-                bool is_ok = client.like (get_likable_type (content_type), content_id);
-                if (is_ok) {
-                    likes_controller.add_liked (content_type, content_id);
-                    track_likes_end_change (content_id, true);
-                    if (content_type == LikableType.TRACK) {
-                        likes_controller.remove_disliked (content_id);
-                        player.rotor_feedback (Rotor.FeedbackType.LIKE, content_id);
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    switch (content_type) {
+                        case LikableType.TRACK:
+                            is_ok = client.users_likes_tracks_add (content_id) != 0;
+                            break;
 
-                        track_dislikes_end_change (content_id, false);
+                        case LikableType.PLAYLIST:
+                            is_ok = client.users_likes_playlists_add (content_id, playlist_owner, playlist_kind);
+                            break;
+
+                        case LikableType.ALBUM:
+                            is_ok = client.users_likes_albums_add (content_id);
+                            break;
+
+                        case LikableType.ARTIST:
+                            is_ok = client.users_likes_artists_add (content_id);
+                            break;
+
+                        default:
+                            assert_not_reached ();
                     }
-                }
+                });
+
+                Idle.add (like.callback);
             });
+
+            yield;
+
+            if (is_ok) {
+                // Add artists support
+                likes_controller.add_liked (content_type, content_id);
+                track_likes_end_change (content_id, true);
+                if (content_type == LikableType.TRACK) {
+                    likes_controller.remove_disliked (content_id);
+                    player.rotor_feedback (Rotor.FeedbackType.LIKE, content_id);
+
+                    track_dislikes_end_change (content_id, false);
+                }
+            }
         }
 
-        public void unlike (LikableType content_type, string content_id) {
-            net_run_wout_code (() => {
-                track_likes_start_change (content_id);
+        public async void unlike (LikableType content_type, string content_id) {
+            track_likes_start_change (content_id);
+            bool is_ok = false;
 
-                bool is_ok = client.remove_like (get_likable_type (content_type), content_id);
-                if (is_ok) {
-                    likes_controller.remove_liked (content_type, content_id);
-                    player.rotor_feedback (Rotor.FeedbackType.UNLIKE, content_id);
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    switch (content_type) {
+                        case LikableType.TRACK:
+                            is_ok = client.users_likes_tracks_remove (content_id) != 0;
+                            break;
 
-                    track_likes_end_change (content_id, false);
-                }
+                        case LikableType.PLAYLIST:
+                            is_ok = client.users_likes_playlists_remove (content_id);
+                            break;
+
+                        case LikableType.ALBUM:
+                            is_ok = client.users_likes_albums_remove (content_id);
+                            break;
+
+                        case LikableType.ARTIST:
+                            is_ok = client.users_likes_artists_remove (content_id);
+                            break;
+
+                        default:
+                            assert_not_reached ();
+                    }
+                });
+
+                Idle.add (unlike.callback);
             });
+
+            yield;
+
+            if (is_ok) {
+                // Add artists support
+                likes_controller.remove_liked (content_type, content_id);
+                player.rotor_feedback (Rotor.FeedbackType.UNLIKE, content_id);
+
+                track_likes_end_change (content_id, false);
+            }
         }
 
-        public void dislike (string track_id) {
-            net_run_wout_code (() => {
-                track_dislikes_start_change (track_id);
+        public async void dislike (DislikableType content_type, string content_id) {
+            track_dislikes_start_change (content_id);
+            bool is_ok = false;
 
-                bool is_ok = client.dislike (track_id);
-                if (is_ok) {
-                    likes_controller.add_disliked (track_id);
-                    player.rotor_feedback (Rotor.FeedbackType.DISLIKE, track_id);
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    switch (content_type) {
+                        case DislikableType.TRACK:
+                            is_ok = client.users_dislikes_tracks_add (content_id) != 0;
+                            break;
 
-                    track_dislikes_end_change (track_id, true);
-                    likes_controller.remove_liked (LikableType.TRACK, track_id);
-                    track_likes_end_change (track_id, false);
-                }
+                        case DislikableType.ARTIST:
+                            is_ok = client.users_dislikes_artists_add (content_id);
+                            break;
+
+                        default:
+                            assert_not_reached ();
+                    }
+                });
+
+                Idle.add (dislike.callback);
             });
+
+            yield;
+
+            if (is_ok) {
+                // Add artists support
+                likes_controller.add_disliked (content_id);
+                player.rotor_feedback (Rotor.FeedbackType.DISLIKE, content_id);
+
+                track_dislikes_end_change (content_id, true);
+                likes_controller.remove_liked (LikableType.TRACK, content_id);
+                track_likes_end_change (content_id, false);
+            }
         }
 
-        public void undislike (string track_id) {
-            net_run_wout_code (() => {
-                track_dislikes_start_change (track_id);
+        public async void undislike (DislikableType content_type, string content_id) {
+            track_dislikes_start_change (content_id);
+            bool is_ok = false;
 
-                bool is_ok = client.remove_dislike (track_id);
-                if (is_ok) {
-                    likes_controller.remove_disliked (track_id);
-                    player.rotor_feedback (Rotor.FeedbackType.UNDISLIKE, track_id);
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    switch (content_type) {
+                        case DislikableType.TRACK:
+                            is_ok = client.users_dislikes_tracks_remove (content_id) != 0;
+                            break;
 
-                    track_dislikes_end_change (track_id, false);
-                }
+                        case DislikableType.ARTIST:
+                            is_ok = client.users_dislikes_artists_remove (content_id);
+                            break;
+
+                        default:
+                            assert_not_reached ();
+                    }
+                });
+
+                Idle.add (undislike.callback);
             });
+
+            yield;
+
+            if (is_ok) {
+                // Add artists support
+                likes_controller.remove_disliked (content_id);
+                player.rotor_feedback (Rotor.FeedbackType.UNDISLIKE, content_id);
+
+                track_dislikes_end_change (content_id, false);
+            }
         }
 
         public Gee.ArrayList<Playlist>? get_playlist_list (string? uid = null) {

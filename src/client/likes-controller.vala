@@ -26,6 +26,11 @@ namespace Cassette.Client {
         ARTIST
     }
 
+    public enum DislikableType {
+        TRACK,
+        ARTIST
+    }
+
     // Контроллер лайков различного контента. Хранит в себе все лайки пользователя.
     public class LikesController : Object {
 

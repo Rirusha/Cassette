@@ -528,21 +528,49 @@ namespace Cassette.Client.YaMAPI {
         /**
          *
          */
-        public void users_likes_tracks_add (
+        public int64 users_likes_tracks_add (
             string track_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/tracks/add",
+                {"default"},
+                null,
+                {{"track-id", track_id}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "revision"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.INT64) {
+                return value.get_int64 ();
+            }
+            return 0;
         }
 
         /**
          *
          */
-        public void users_likes_tracks_remove (
+        public int64 users_likes_tracks_remove (
             string track_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/tracks/$track_id/remove",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "revision"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.INT64) {
+                return value.get_int64 ();
+            }
+            return 0;
         }
 
         public Gee.ArrayList<TrackShort> users_dislikes_tracks (
@@ -567,103 +595,247 @@ namespace Cassette.Client.YaMAPI {
         /**
          *
          */
-        public void users_dislikes_tracks_add (
+        public int64 users_dislikes_tracks_add (
             string track_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks/add",
+                {"default"},
+                null,
+                {{"track-id", track_id}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "revision"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.INT64) {
+                return value.get_int64 ();
+            }
+            return 0;
         }
 
         /**
          *
          */
-        public void users_dislikes_tracks_remove (
+        public int64 users_dislikes_tracks_remove (
             string track_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks/$track_id/remove",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result", "revision"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.INT64) {
+                return value.get_int64 ();
+            }
+            return 0;
         }
 
         /**
          *
          */
-        public void users_likes_artists_add (
+        public bool users_likes_artists_add (
             string artist_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/artists/add",
+                {"default"},
+                null,
+                {{"artist-id", artist_id}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
          *
          */
-        public void users_likes_artists_remove (
+        public bool users_likes_artists_remove (
             string artist_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/artists/$artist_id/remove",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
          *
          */
-        public void users_dislikes_artists_add (
+        public bool users_dislikes_artists_add (
             string artist_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/dislikes/artists/add",
+                {"default"},
+                null,
+                {{"artist-id", artist_id}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
          *
          */
-        public void users_dislikes_artists_remove (
+        public bool users_dislikes_artists_remove (
             string artist_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/dislikes/artists/$artist_id/remove",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
          *
          */
-        public void users_likes_albums_add (
+        public bool users_likes_albums_add (
             string album_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/albums/add",
+                {"default"},
+                null,
+                {{"album-id", album_id}}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
          *
          */
-        public void users_likes_albums_remove (
+        public bool users_likes_albums_remove (
             string album_id,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/albums/$album_id/remove",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
          *
          */
-        public void users_likes_playlists_add (
+        public bool users_likes_playlists_add (
             string playlist_uid,
+            string owner_uid,
             string playlist_kind,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/playlists/add",
+                {"default"},
+                null,
+                {
+                    {"playlist-uuid", playlist_uid},
+                    {"owner-uid", owner_uid},
+                    {"kind", playlist_kind}
+                }
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
          *
          */
-        public void users_likes_playlists_remove (
+        public bool users_likes_playlists_remove (
             string playlist_uid,
-            string playlist_kind,
             owned string? uid = null
         ) throws ClientError, BadStatusCodeError {
             check_uid (ref uid);
+
+            var bytes = soup_wrapper.post_sync (
+                @"$(YAM_BASE_URL)/users/$uid/likes/playlists/$playlist_uid/remove",
+                {"default"}
+            );
+            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
+
+            var value = jsoner.deserialize_value ();
+
+            if (value.type () == Type.STRING) {
+                return value.get_string () == "ok";
+            }
+            return false;
         }
 
         /**
@@ -1245,281 +1417,8 @@ namespace Cassette.Client.YaMAPI {
         //      }
         //  }
 
-        [Version (deprecated = true)]
-        public void play_audio (
-            owned string? uid,
-            string track_id,
-            string album_id,
-            string? playlist_id,
-            double track_length_seconds,
-            double total_played_seconds,
-            double end_position_seconds
-        ) throws ClientError, BadStatusCodeError {
-            check_uid (ref uid);
-
-            var time = new DateTime.now_utc ().format_iso8601 ();
-
-            var datalist = Datalist<string> ();
-            datalist.set_data ("track-id", track_id);
-            datalist.set_data ("from-cache", "False");
-            datalist.set_data ("from", "Cassette");
-            datalist.set_data ("play-id", "");
-            datalist.set_data ("uid", uid);
-            datalist.set_data ("timestamp", time);
-            datalist.set_data ("track-length-seconds", track_length_seconds.to_string ());
-            datalist.set_data ("total-played-seconds", total_played_seconds.to_string ());
-            datalist.set_data ("end-position-seconds", end_position_seconds.to_string ());
-            datalist.set_data ("album-id", album_id);
-            datalist.set_data ("playlist-id", playlist_id);
-            datalist.set_data ("client-now", time);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/play-audio",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            string res = jsoner.deserialize_value ().get_string ();
-
-            if (res != "ok") {
-                throw new ClientError.ANSWER_ERROR ("Send play-audio failed");
-            }
-        }
-
-        [Version (deprecated = true)]
-        public bool like (string what, string id) throws ClientError, BadStatusCodeError {
-            string? uid = null;
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data (@"$what-ids", id);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/likes/$(what)s/add-multiple",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
-        [Version (deprecated = true)]
-        public bool remove_like (string what, string id) throws ClientError, BadStatusCodeError {
-            string? uid = null;
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data (@"$what-ids", id);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/likes/$(what)s/remove",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
-        [Version (deprecated = true)]
-        public bool dislike (string id) throws ClientError, BadStatusCodeError {
-            string? uid = null;
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data ("track-ids", id);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks/add-multiple",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
-        [Version (deprecated = true)]
-        public bool remove_dislike (string id) throws ClientError, BadStatusCodeError {
-            string? uid = null;
-            check_uid (ref uid);
-
-            var datalist = Datalist<string> ();
-            datalist.set_data ("track-ids", id);
-
-            PostContent post_content = {PostContentType.X_WWW_FORM_URLENCODED};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/users/$uid/dislikes/tracks/remove",
-                {"default"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
         ///////////
         // Radio //
         ///////////
-
-        [Version (deprecated = true)]
-        public Gee.ArrayList<StationInfo> get_station_list () throws ClientError, BadStatusCodeError {
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/rotor/stations/list",
-                {"default", "device"},
-                {{"language", get_language ()}}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            var our_array = new Gee.ArrayList<StationInfo> ();
-            jsoner.deserialize_array (ref our_array);
-
-            return our_array;
-        }
-
-        [Version (deprecated = true)]
-        public StationInfo get_rotor_info (
-            string station_type
-        ) throws ClientError, BadStatusCodeError {
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/rotor/station/$station_type/info",
-                {"default", "device"}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            var our_array = new Gee.ArrayList<StationInfo> ();
-            jsoner.deserialize_array (ref our_array);
-
-            if (our_array.size == 0) {
-                throw new ClientError.SOUP_ERROR ("Wrong station name: %s".printf (station_type));
-            }
-
-            return our_array[0];
-        }
-
-        [Version (deprecated = true)]
-        public bool rotor_feedback_started (
-            string station_type
-        ) throws ClientError, BadStatusCodeError {
-            var datalist = Datalist<string> ();
-            datalist.set_data ("type", FeedbackType.RADIO_STARTED);
-            datalist.set_data ("timestamp", new DateTime.now_utc ().format_iso8601 ());
-            datalist.set_data ("from", @"mobile-radio-$station_type");
-
-            PostContent post_content = {PostContentType.JSON};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
-                {"default", "device"},
-                post_content
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
-        [Version (deprecated = true)]
-        public bool rotor_feedback_track_started (
-            string station_type,
-            string batch_id,
-            string track_id
-        ) throws ClientError, BadStatusCodeError {
-            var datalist = Datalist<string> ();
-            datalist.set_data ("type", FeedbackType.TRACK_STARTED);
-            datalist.set_data ("timestamp", new DateTime.now_utc ().format_iso8601 ());
-            datalist.set_data ("trackId", track_id);
-
-            PostContent post_content = {PostContentType.JSON};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
-                {"default", "device"},
-                post_content,
-                {{"batch-id", batch_id}}
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
-        [Version (deprecated = true)]
-        public bool rotor_feedback_track_finished (
-            string station_type,
-            string batch_id,
-            string track_id,
-            double total_played_seconds
-        ) throws ClientError, BadStatusCodeError {
-            var datalist = Datalist<string> ();
-            datalist.set_data ("type", FeedbackType.TRACK_FINISHED);
-            datalist.set_data ("timestamp", new DateTime.now_utc ().format_iso8601 ());
-            datalist.set_data ("trackId", track_id);
-            datalist.set_data ("totalPlayedSeconds", total_played_seconds.to_string ());
-
-            PostContent post_content = {PostContentType.JSON};
-            post_content.set_datalist (datalist);
-
-            Bytes bytes = soup_wrapper.post_sync (
-                @"$(YAM_BASE_URL)/rotor/station/$station_type/feedback",
-                {"default", "device"},
-                post_content,
-                {{"batch-id", batch_id}}
-            );
-
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-            if (jsoner.root != null) {
-                return true;
-            }
-            return false;
-        }
-
-        [Version (deprecated = true)]
-        public StationTracks get_station_tracks (
-            string station_type
-        ) throws ClientError, BadStatusCodeError {
-            var bytes = soup_wrapper.get_sync (
-                @"$(YAM_BASE_URL)/rotor/station/$station_type/tracks",
-                {"default", "device"},
-                {{"settings2", "true"}}
-            );
-            var jsoner = Jsoner.from_bytes (bytes, {"result"}, Case.CAMEL);
-
-            return (StationTracks) jsoner.deserialize_object (typeof (StationTracks));
-        }
     }
 }

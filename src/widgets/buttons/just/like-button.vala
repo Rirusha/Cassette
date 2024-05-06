@@ -164,17 +164,12 @@ namespace Cassette {
 
             real_button.sensitive = false;
 
-            threader.add (() => {
-                if (is_liked) {
-                    yam_talker.unlike (object_content_type, content_id);
-                } else {
-                    yam_talker.like (object_content_type, content_id);
-                }
+            if (is_liked) {
+                yield yam_talker.unlike (object_content_type, content_id);
 
-                Idle.add (like_dislike.callback);
-            });
-
-            yield;
+            } else {
+                yield yam_talker.like (object_content_type, content_id);
+            }
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Cassette {
     public class DislikeButton : CustomButton, Initable {
 
         protected string content_id { get; set; }
+        public DislikableType object_content_type { get; construct; }
 
         public bool is_disliked {
             get {
@@ -133,17 +134,12 @@ namespace Cassette {
 
             real_button.sensitive = false;
 
-            threader.add (() => {
-                if (is_disliked) {
-                    yam_talker.undislike (content_id);
-                } else {
-                    yam_talker.dislike (content_id);
-                }
+            if (is_disliked) {
+                yield yam_talker.undislike (object_content_type, content_id);
 
-                Idle.add (like_dislike.callback);
-            });
-
-            yield;
+            } else {
+                yield yam_talker.dislike (object_content_type, content_id);
+            }
         }
     }
 }

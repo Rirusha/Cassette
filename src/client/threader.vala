@@ -18,9 +18,8 @@
 namespace Cassette.Client {
 
     public delegate void ThreadFunc ();
-    //  public delegate void SourceFunc ();
 
-  class ThreadInfo {
+    class ThreadInfo {
 
         public weak ThreadFunc func;
         public Cancellable? cancellable;
@@ -41,7 +40,7 @@ namespace Cassette.Client {
         }
     }
 
-  class WorkManager : Object {
+    class WorkManager : Object {
 
         AsyncQueue<ThreadInfo> thread_datas = new AsyncQueue<ThreadInfo> ();
 
@@ -115,23 +114,38 @@ namespace Cassette.Client {
             single_pool = new WorkManager (1);
         }
 
-        public void add (ThreadFunc func, Cancellable? cancellable = null) {
+        public void add (
+            ThreadFunc func,
+            Cancellable? cancellable = null
+        ) {
             default_pool.add (func, cancellable);
         }
 
-        public void add_image (ThreadFunc func, Cancellable? cancellable = null) {
+        public void add_image (
+            ThreadFunc func,
+            Cancellable? cancellable = null
+        ) {
             image_pool.add (func, cancellable);
         }
 
-        public void add_audio (ThreadFunc func, Cancellable? cancellable = null) {
+        public void add_audio (
+            ThreadFunc func,
+            Cancellable? cancellable = null
+        ) {
             audio_pool.add (func, cancellable);
         }
 
-        public void add_cache (ThreadFunc func, Cancellable? cancellable = null) {
+        public void add_cache (
+            ThreadFunc func,
+            Cancellable? cancellable = null
+        ) {
             cache_pool.add (func, cancellable);
         }
 
-        public void add_single (ThreadFunc func, Cancellable? cancellable = null) {
+        public void add_single (
+            ThreadFunc func,
+            Cancellable? cancellable = null
+        ) {
             single_pool.add (func, cancellable);
         }
     }

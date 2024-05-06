@@ -269,8 +269,13 @@ namespace Cassette.Client {
 
             try {
                 bytes = session.send_and_read (msg);
+
             } catch (Error e) {
-                throw new ClientError.SOUP_ERROR (e.message);
+                throw new ClientError.SOUP_ERROR ("%s %s: %s".printf (
+                    msg.method,
+                    msg.uri.to_string (),
+                    e.message
+                ));
             }
 
             check_status_code (msg, bytes);
@@ -286,8 +291,13 @@ namespace Cassette.Client {
 
             try {
                 bytes = yield session.send_and_read_async (msg, priority, null);
+
             } catch (Error e) {
-                throw new ClientError.SOUP_ERROR (e.message);
+                throw new ClientError.SOUP_ERROR ("%s %s: %s".printf (
+                    msg.method,
+                    msg.uri.to_string (),
+                    e.message
+                ));
             }
 
             check_status_code (msg, bytes);

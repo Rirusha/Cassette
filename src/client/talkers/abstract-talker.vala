@@ -56,12 +56,18 @@ namespace Cassette.Client {
                 connection_established ();
 
             } catch (ClientError e) {
-                Logger.warning (e.message);
+                Logger.warning ("%s: %s".printf (
+                    e.domain.to_string (),
+                    e.message
+                ));
 
                 connection_lost ();
 
             } catch (BadStatusCodeError e) {
-                Logger.warning (e.message);
+                Logger.warning ("%s: %s".printf (
+                    e.domain.to_string (),
+                    e.message
+                ));
 
                 throw e;
             }

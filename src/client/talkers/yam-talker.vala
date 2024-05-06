@@ -244,22 +244,6 @@ namespace Cassette.Client {
             return track_uri;
         }
 
-        string get_likable_type (LikableType content_type) {
-            switch (content_type) {
-                case LikableType.TRACK:
-                    return "track";
-
-                case LikableType.PLAYLIST:
-                    return "playlist";
-
-                case LikableType.ALBUM:
-                    return "album";
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-
         public async void like (
             LikableType content_type,
             string content_id,

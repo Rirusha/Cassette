@@ -330,6 +330,8 @@ namespace Cassette {
 
             if (current_track?.is_ugc == false) {
                 track_share (current_track);
+            } else {
+                show_message (_("Current track can not be copied to the clipboard"));
             }
         }
 

@@ -106,8 +106,7 @@ namespace Cassette {
         construct {
             pages_file = File.new_build_filename (storager.cache_dir_file.peek_path (), "cassette.pages");
 
-            // Регистрация типов, так как имя типа преобразуется в сам тип до их регистрации
-            // в другом месте кода
+            // Type register
             typeof (PlaylistView).ensure ();
             typeof (PlaylistsView).ensure ();
             typeof (MainView).ensure ();

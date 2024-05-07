@@ -108,12 +108,10 @@ namespace Cassette {
 
             // Регистрация типов, так как имя типа преобразуется в сам тип до их регистрации
             // в другом месте кода
-            Type register;
-            register = typeof (PlaylistView);
-            register = typeof (PlaylistsView);
-            register = typeof (MainView);
-            register = typeof (DevelView);
-            register = Type.NONE;
+            typeof (PlaylistView).ensure ();
+            typeof (PlaylistsView).ensure ();
+            typeof (MainView).ensure ();
+            typeof (DevelView).ensure ();
 
             Cassette.settings.changed.connect ((key) => {
                 if (

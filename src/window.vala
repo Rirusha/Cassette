@@ -241,7 +241,6 @@ public class Cassette.Window : ApplicationWindow {
     public void load_default_views () {
         if (loading_stack.visible_child_name == "loading") {
             pager.load_pages (PagesType.ONLINE);
-            loading_stack.visible_child_name = "done";
 
             header_bar.load_avatar.begin ();
             yam_talker.update_all.begin ();
@@ -259,6 +258,8 @@ public class Cassette.Window : ApplicationWindow {
                     yam_talker.update_all.begin ();
                 }
             });
+
+            loading_stack.visible_child_name = "done";
         }
     }
 

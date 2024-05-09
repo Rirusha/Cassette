@@ -58,14 +58,19 @@ apt-get install cassette
 
 ### Arch Linux
 
+> [!NOTE]
+> Большинство AUR Helper'ов поддерживает Pacman-style флаги, например, yay.
+
 #### yay
 ```shell
 yay -S cassette
 ```
-#### ame
+
+#### pamac
 ```shell
-ame ins cassette
+pamac install cassette
 ```
+
 
 ## Установка c помощью Flatpak
 
@@ -104,14 +109,17 @@ flatpak remote-delete cassette-nightly
 > [!NOTE]
 > При необходимости, в arch-подобных системах можно установить Nightly версию из репозитория AUR. 
 > По возможности рекомендуется использовать Flatpak версию.
+>
+> Большинство AUR Helper'ов поддерживает Pacman-style флаги, например, yay.
 
 #### yay
 ```shell
 yay -S cassette-dev
 ```
-#### ame
+
+#### pamac
 ```shell
-ame ins cassette-dev
+pamac install cassette-dev
 ```
 
 ## Установка в Windows

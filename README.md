@@ -153,8 +153,24 @@ pamac install cassette-dev
 * `appstream-utils`
 
 ### Сборка:
+
+#### latest
+> [!NOTE]
+> В данной версии будут недоступны нестабильные функции, находящиеся в разработке.
 ```shell
 meson setup builddir
+```
+
+#### devel
+> [!WARNING]
+> В данной версии будут доступны все devel функции, приложение может работать нестабильно.
+```shell
+meson setup builddir
+meson configure -Dprofile=development builddir
+```
+
+### Тестирование
+```shell
 ninja -C builddir test
 ```
 

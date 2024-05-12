@@ -328,7 +328,6 @@ namespace Cassette {
         }
 
         public async override int try_load_from_web () {
-            object_info = null;
             int code = 0;
 
             threader.add (() => {
@@ -360,8 +359,6 @@ namespace Cassette {
                 }
                 uid = yam_talker.me.oid;
             }
-
-            object_info = null;
 
             threader.add (() => {
                 object_info = (YaMAPI.Playlist) storager.load_object (typeof (YaMAPI.Playlist), @"$uid:$kind");

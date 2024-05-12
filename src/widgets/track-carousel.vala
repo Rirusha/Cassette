@@ -16,36 +16,38 @@
  */
 
 
-public class Cassette.TrackCarousel : Adw.Bin {
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-carousel.ui")]
+public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
-    Adw.Carousel carousel = new Adw.Carousel ();
+    [GtkChild]
+    unowned Adw.Carousel carousel;
+    [GtkChild]
+    unowned TrackInfoPanel track_info_panel_left;
+    [GtkChild]
+    unowned TrackInfoPanel track_info_panel_center;
+    [GtkChild]
+    unowned TrackInfoPanel track_info_panel_right;
 
     public bool interactive { get; set; default = false; }
 
     public int spacing { get; set; default = 0; }
 
-    public Gtk.Orientation orientation { get; construct; default = Gtk.Orientation.HORIZONTAL; }
-
-    TrackInfoPanel info_panel_prev {
+    Gtk.Orientation _orientation = Gtk.Orientation.HORIZONTAL;
+    public Gtk.Orientation orientation {
         get {
-            return (TrackInfoPanel) carousel.get_nth_page (0);
+            return _orientation;
+        }
+        set {
+            _orientation = value;
+
+            track_info_panel_left.set_orientation (value);
+            track_info_panel_center.set_orientation (value);
+            track_info_panel_right.set_orientation (value);
         }
     }
 
-    TrackInfoPanel info_panel_center {
-        get {
-            return (TrackInfoPanel) carousel.get_nth_page (1);
-        }
-    }
-
-    TrackInfoPanel info_panel_next {
-        get {
-            return (TrackInfoPanel) carousel.get_nth_page (2);
-        }
-    }
-
-    bool centerized = false;
-    bool enabled = false;
+    uint check_situation_timeout = 0;
+    bool moving = false;
 
     public TrackCarousel (
         Gtk.Orientation orientation
@@ -56,111 +58,202 @@ public class Cassette.TrackCarousel : Adw.Bin {
     }
 
     construct {
-        child = carousel;
-
         bind_property ("interactive", carousel, "interactive", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         bind_property ("spacing", carousel, "spacing", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
 
-        carousel.append (new TrackInfoPanel (orientation));
-        carousel.append (new TrackInfoPanel (orientation));
-        carousel.append (new TrackInfoPanel (orientation));
+        //  track_info_panel_left.notify["track-info"].connect (() => {
+        //      track_info_panel_left.visible = track_info_panel_left.track_info != null;
+        //  });
+        //  track_info_panel_right.notify["track-info"].connect (() => {
+        //      track_info_panel_right.visible = track_info_panel_right.track_info != null;
+        //  });
 
         player.mode_inited.connect (on_player_mode_inited);
 
         carousel.page_changed.connect (on_carousel_page_changed);
 
-        player.next_track_loaded.connect ((track_info) => {
-            info_panel_next.track_info = track_info;
+        carousel.notify["position"].connect (() => {
+            moving = true;
         });
 
-        player.ready_play_next.connect ((repeat) => {
-            var track_info = player.mode.get_current_track_info ();
+        //  player.next_track_loaded.connect ((track_info) => {
+        //      info_panel_next.track_info = track_info;
+        //  });
 
-            if (track_info != info_panel_center.track_info) {
-                info_panel_next.track_info = player.mode.get_current_track_info ();
-                carousel.scroll_to (info_panel_next, true);
-            }
-        });
+        //  player.ready_play_next.connect ((repeat) => {
+        //      var track_info = player.mode.get_current_track_info ();
 
-        player.ready_play_prev.connect (() => {
-            var track_info = player.mode.get_current_track_info ();
+        //      if (track_info != info_panel_center.track_info) {
+        //          info_panel_next.track_info = player.mode.get_current_track_info ();
+        //          carousel.scroll_to (info_panel_next, true);
+        //      }
+        //  });
 
-            if (track_info != info_panel_center.track_info) {
-                info_panel_prev.track_info = player.mode.get_current_track_info ();
-                carousel.scroll_to (info_panel_prev, true);
-            }
-        });
+        //  player.ready_play_prev.connect (() => {
+        //      var track_info = player.mode.get_current_track_info ();
 
-        map.connect (() => {
-            enabled = true;
+        //      if (track_info != info_panel_center.track_info) {
+        //          info_panel_prev.track_info = player.mode.get_current_track_info ();
+        //          carousel.scroll_to (info_panel_prev, true);
+        //      }
+        //  });
 
-            on_player_mode_inited ();
-        });
-
-        unmap.connect (() => {
-            enabled = false;
-        });
+        start_check_situation ();
     }
 
-    void on_carousel_page_changed (uint index) {
-        if (!enabled) {
+    void start_check_situation () {
+        if (check_situation_timeout != 0) {
+            end_check_situation ();
+        }
+
+        check_situation_timeout = Timeout.add_seconds (1, () => {
+            check_situation ();
+
+            return true;
+        }, Priority.LOW);
+        check_situation ();
+    }
+
+    void end_check_situation () {
+        if (check_situation_timeout == 0) {
             return;
         }
 
-        if (index == 1) {
-            centerized = true;
-        }
+        Source.remove (check_situation_timeout);
+        check_situation_timeout = 0;
+    }
 
-        if (!centerized) {
-            carousel.scroll_to (info_panel_center, false);
+    /**
+     * Check num of track panels, current position, track infos 
+     */
+    void check_situation () {
+        if (!get_mapped () || moving) {
             return;
         }
 
-        carousel.page_changed.disconnect (on_carousel_page_changed);
+        update_track_info_panel_center ();
+        update_track_info_panel_right ();
+        update_track_info_panel_left ();
 
-        if (index == 2) {
-            //  if (info_panel_next.track_info != player.mode.get_current_track_info ()) {
-            //      player.next ();
-            //  }
-
-            carousel.remove (info_panel_prev);
-            carousel.append (new TrackInfoPanel (orientation));
-
-            info_panel_next.track_info = player.mode.get_next_track_info (false);
-
-            carousel.scroll_to (info_panel_center, false);
-
-        } else if (index == 0) {
-            //  if (info_panel_prev.track_info != player.mode.get_current_track_info ()) {
-            //      player.prev (true);
-            //  }
-
-            carousel.remove (info_panel_next);
-            carousel.prepend (new TrackInfoPanel (orientation));
-
-            info_panel_prev.track_info = player.mode.get_prev_track_info ();
-
-            carousel.scroll_to (info_panel_center, false);
+        if (carousel.position != 1.0) {
+            carousel.scroll_to (carousel.get_nth_page (1), false);
         }
+    }
 
-        carousel.page_changed.connect (on_carousel_page_changed);
+    void update_track_info_panel_left () {
+        track_info_panel_left.track_info = player.mode.get_prev_track_info ();
+    }
 
-        update_prev_and_next_track ();
+    void update_track_info_panel_center () {
+        var current_track = player.mode.get_current_track_info ();
+
+        if (track_info_panel_center.track_info != current_track) {
+            track_info_panel_center.track_info = player.mode.get_current_track_info ();
+        }
+    }
+
+    void update_track_info_panel_right () {
+        track_info_panel_right.track_info = player.mode.get_next_track_info (false);
     }
 
     void on_player_mode_inited () {
-        var current_track_info = player.mode.get_current_track_info ();
+        check_situation ();
 
-        if (info_panel_center.track_info == null) {
-            info_panel_center.track_info = current_track_info;
-        }
+        //  var current_track_info = player.mode.get_current_track_info ();
 
-        info_panel_next.track_info = current_track_info;
-        carousel.scroll_to (info_panel_next, true);
+        //  if (info_panel_center.track_info == null) {
+        //      info_panel_center.track_info = current_track_info;
+        //  }
+
+        //  info_panel_next.track_info = current_track_info;
+        //  carousel.scroll_to (info_panel_next, true);
     }
 
-    void update_prev_and_next_track () {
-        info_panel_prev.track_info = player.mode.get_prev_track_info ();
-        info_panel_next.track_info = player.mode.get_next_track_info (false);
+    void on_carousel_page_changed () {
+        moving = false;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //  void on_carousel_page_changed (uint index) {
+    //      if (!enabled) {
+    //          return;
+    //      }
+
+    //      if (index == 1) {
+    //          centerized = true;
+    //      }
+
+    //      if (!centerized) {
+    //          carousel.scroll_to (info_panel_center, false);
+    //          return;
+    //      }
+
+    //      carousel.page_changed.disconnect (on_carousel_page_changed);
+
+    //      if (index == 2) {
+    //          //  if (info_panel_next.track_info != player.mode.get_current_track_info ()) {
+    //          //      player.next ();
+    //          //  }
+
+    //          carousel.remove (info_panel_prev);
+    //          carousel.append (new TrackInfoPanel (orientation));
+
+    //          info_panel_next.track_info = player.mode.get_next_track_info (false);
+
+    //          carousel.scroll_to (info_panel_center, false);
+
+    //      } else if (index == 0) {
+    //          //  if (info_panel_prev.track_info != player.mode.get_current_track_info ()) {
+    //          //      player.prev (true);
+    //          //  }
+
+    //          carousel.remove (info_panel_next);
+    //          carousel.prepend (new TrackInfoPanel (orientation));
+
+    //          info_panel_prev.track_info = player.mode.get_prev_track_info ();
+
+    //          carousel.scroll_to (info_panel_center, false);
+    //      }
+
+    //      carousel.page_changed.connect (on_carousel_page_changed);
+
+    //      update_prev_and_next_track ();
+    //  }
+
+    //  void on_player_mode_inited () {
+    //      var current_track_info = player.mode.get_current_track_info ();
+
+    //      if (info_panel_center.track_info == null) {
+    //          info_panel_center.track_info = current_track_info;
+    //      }
+
+    //      info_panel_next.track_info = current_track_info;
+    //      carousel.scroll_to (info_panel_next, true);
+    //  }
+
+    //  void update_prev_and_next_track () {
+    //      info_panel_prev.track_info = player.mode.get_prev_track_info ();
+    //      info_panel_next.track_info = player.mode.get_next_track_info (false);
+    //  }
 }

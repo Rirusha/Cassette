@@ -1,0 +1,12 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteTrackCarousel : Adw.Bin {
+  Adw.Carousel carousel {
+    $CassetteTrackInfoPanel track_info_panel_left { }
+
+    $CassetteTrackInfoPanel track_info_panel_center { }
+
+    $CassetteTrackInfoPanel track_info_panel_right { }
+  }
+}

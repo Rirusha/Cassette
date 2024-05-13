@@ -42,10 +42,28 @@ jobs:
       - name: Lint Blueprint
         run: blueprint-compiler format -s 2 data/ui/*.blp
 
+  checkers:
+    name: Run checkers
+    runs-on: ubuntu-latest
+    needs: lint-blp
+
+    container:
+      image: ubuntu:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # - name: Run indentation checker
+      #   run: python3 .checkers/indentation_checker.py 
+
+      # - name: Run empty lines checker
+      #   run: python3 .checkers/empty_lines_checker.py 
+
   flatter:
     name: Build Repo
     runs-on: ubuntu-latest
-    needs: lint-blp
+    needs: checkers
 
     container:
       image: ghcr.io/andyholmes/flatter/gnome:46

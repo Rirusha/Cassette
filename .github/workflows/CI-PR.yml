@@ -22,7 +22,7 @@ jobs:
         run: io.elementary.vala-lint -d . -c vala-lint.conf
 
       - name: Install blueprint-compiler Blueptint
-        run: sudo apt install blueprint-compiler
+        run: apt install blueprint-compiler
         
       - name: Lint Blueprint
         run: blueprint-compiler format -s 2 data/ui/*.blp

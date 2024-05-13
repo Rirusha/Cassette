@@ -15,11 +15,17 @@ jobs:
       image: valalang/lint
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Lint
-      run: io.elementary.vala-lint -d . -c vala-lint.conf
+      - name: Lint Vala
+        run: io.elementary.vala-lint -d . -c vala-lint.conf
+
+      - name: Install blueprint-compiler Blueptint
+        run: sudo apt install blueprint-compiler
+        
+      - name: Lint Blueprint
+        run: blueprint-compiler format -s 2 data/ui/*.blp
 
   test-build:
     name: Test Build

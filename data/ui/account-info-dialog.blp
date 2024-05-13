@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteAccountInfoDialog : Adw.Dialog {
+template $CassetteAccountInfoDialog: Adw.Dialog {
   title: _("Account information");
   width-request: 360;
   content-width: 360;
@@ -10,7 +10,7 @@ template $CassetteAccountInfoDialog : Adw.Dialog {
 
   Adw.ToolbarView {
     [top]
-    Adw.HeaderBar { }
+    Adw.HeaderBar {}
 
     content: ScrolledWindow {
       hscrollbar-policy: never;
@@ -27,7 +27,7 @@ template $CassetteAccountInfoDialog : Adw.Dialog {
           spacing: 24;
           orientation: vertical;
 
-          Adw.Avatar avatar { }
+          Adw.Avatar avatar {}
 
           Label public_name_label {
             styles [

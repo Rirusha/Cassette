@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteTrackInfoPanel : Adw.Bin {
+template $CassetteTrackInfoPanel: Adw.Bin {
   Box main_box {
     spacing: 12;
     orientation: horizontal;
@@ -12,6 +12,7 @@ template $CassetteTrackInfoPanel : Adw.Bin {
 
       StackPage {
         name: "cover";
+
         child: $CassetteCoverImage cover_image {
           size: 60;
           cover-size: 75;
@@ -20,6 +21,7 @@ template $CassetteTrackInfoPanel : Adw.Bin {
 
       StackPage {
         name: "position";
+
         child: Gtk.Label position_label {
           styles [
             "title-5",
@@ -33,7 +35,8 @@ template $CassetteTrackInfoPanel : Adw.Bin {
 
       StackPage {
         name: "play-mark";
-        child: $CassettePlayMarkTrack play_mark_track { };
+
+        child: $CassettePlayMarkTrack play_mark_track {};
       }
     }
 

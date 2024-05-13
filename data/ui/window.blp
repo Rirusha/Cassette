@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteWindow : $CassetteApplicationWindow {
+template $CassetteWindow: $CassetteApplicationWindow {
   default-width: 600;
   default-height: 500;
   width-request: 360;
@@ -59,9 +59,9 @@ template $CassetteWindow : $CassetteApplicationWindow {
               }
 
               Stack loading_stack {
-
                 StackPage {
                   name: "loading";
+
                   child: $CassetteLoadingSpinner {
                     size: 24;
                   };
@@ -69,6 +69,7 @@ template $CassetteWindow : $CassetteApplicationWindow {
 
                 StackPage {
                   name: "done";
+
                   child: Adw.ViewStack main_stack {
                     vhomogeneous: false;
                     hhomogeneous: false;

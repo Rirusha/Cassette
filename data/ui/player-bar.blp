@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassettePlayerBar : Adw.Bin {
+template $CassettePlayerBar: Adw.Bin {
   sensitive: false;
 
   Grid {
@@ -11,7 +11,6 @@ template $CassettePlayerBar : Adw.Bin {
     margin-start: 6;
     margin-end: 12;
     // column-spacing: 8;
-
     Button track_detailed_button {
       styles [
         "flat",
@@ -100,7 +99,7 @@ template $CassettePlayerBar : Adw.Bin {
             margin-start: 4;
             margin-end: 4;
 
-            $CassettePlayMarkGlobal { }
+            $CassettePlayMarkGlobal {}
           };
 
           end-widget: Box {
@@ -137,7 +136,6 @@ template $CassettePlayerBar : Adw.Bin {
               ]
 
               valign: center;
-              
               action-name: "app.change-shuffle";
               icon-name: "media-playlist-shuffle-symbolic";
               tooltip-text: _("Change shuffle mode");
@@ -192,7 +190,7 @@ template $CassettePlayerBar : Adw.Bin {
     Box {
       spacing: 4;
       halign: end;
-      
+
       $CassetteSaveStack save_stack {
         halign: "end";
         content-type: "track";
@@ -217,7 +215,7 @@ template $CassettePlayerBar : Adw.Bin {
         icon-name: "music-queue-symbolic";
         tooltip-text: _("Show playback queue");
       }
-      
+
       $CassetteTrackOptionsButton track_options_button {
         styles [
           "flat",

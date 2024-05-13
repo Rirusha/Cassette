@@ -113,7 +113,8 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
         //      }
         //  });
 
-        start_check_situation ();
+        map.connect (start_check_situation);
+        unmap.connect (end_check_situation);
     }
 
     void start_check_situation () {

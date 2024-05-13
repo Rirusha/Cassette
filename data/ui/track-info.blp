@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteTrackInfo : Adw.Bin {
+template $CassetteTrackInfo: Adw.Bin {
   Box {
     margin-top: 12;
     margin-bottom: 12;
@@ -42,7 +42,7 @@ template $CassetteTrackInfo : Adw.Bin {
           vexpand: true;
           valign: center;
 
-          $CassettePlayMarkTrack play_mark_track { }
+          $CassettePlayMarkTrack play_mark_track {}
         };
 
         end-widget: $CassetteLikeButton like_button {
@@ -80,6 +80,7 @@ template $CassetteTrackInfo : Adw.Bin {
     Stack loading_stack {
       StackPage {
         name: "loading";
+
         child: $CassetteLoadingSpinner {
           size: 24;
         };
@@ -87,6 +88,7 @@ template $CassetteTrackInfo : Adw.Bin {
 
       StackPage {
         name: "loaded";
+
         child: Box {
           orientation: vertical;
 

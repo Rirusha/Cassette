@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteSideBar : $CassetteShrinkableBin {
+template $CassetteSideBar: $CassetteShrinkableBin {
   shrink-edge-width: 720;
   collapsed: bind root_flap.collapsed;
 
@@ -29,10 +29,10 @@ template $CassetteSideBar : $CassetteShrinkableBin {
         }
 
         [end]
-        $CassettePrimaryMenuButton menu_button { }
+        $CassettePrimaryMenuButton menu_button {}
 
         [end]
-        $CassetteCacheIndicator { }
+        $CassetteCacheIndicator {}
       }
 
       content: Gtk.ScrolledWindow sidebar_content {

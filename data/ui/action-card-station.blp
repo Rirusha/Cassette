@@ -1,19 +1,18 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteActionCardStation : $CassetteActionCardCustom {
-
+template $CassetteActionCardStation: $CassetteActionCardCustom {
   Box content_box {
     orientation: vertical;
     spacing: 8;
     // hexpand: true;
-
     Stack image_stack {
       transition-type: crossfade;
       transition-duration: 75;
 
       StackPage {
         name: "image";
+
         child: Image content_image {
           icon-size: large;
         };
@@ -21,6 +20,7 @@ template $CassetteActionCardStation : $CassetteActionCardCustom {
 
       StackPage {
         name: "play-mark";
+
         child: $CassettePlayMarkContext play_mark_context {
           context-type: "radio";
         };

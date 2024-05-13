@@ -27,7 +27,7 @@ jobs:
     needs: lint-vala
 
     container:
-      image: alt:sisyphus
+      image: ubuntu:latest
 
     steps:
       - name: Checkout repository

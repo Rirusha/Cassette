@@ -27,20 +27,17 @@ jobs:
     needs: lint-vala
 
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-46
+      image: ubuntu:latest
 
     steps:
-      - name: Clone blueprint repo
-        run: git clone https://gitlab.gnome.org/hub/blueprint-compiler.git && cd blueprint-compiler
-
-      - name: Build blueprin-compiler
-        run: meson setup builddir
-
-      - name: Install blueprint-compiler
-        run: ninja -C builddir install
-
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Update apt cache
+        run: apt-get update
+
+      - name: Install blueprint-compiler Blueptint
+        run: apt-get install -y blueprint-compiler
         
       - name: Lint Blueprint
         run: blueprint-compiler format -s 2 data/ui/*.blp

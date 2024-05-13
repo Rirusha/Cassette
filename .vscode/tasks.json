@@ -6,7 +6,25 @@
         {
             "label": "Lint check",
             "type": "shell",
-            "command": "io.elementary.vala-lint -d . -c vala-lint.conf",
+            "command": "io.elementary.vala-lint -d . -c vala-lint.conf && python3 ${workspaceFolder}/checkers/empty_lines_checker.py . && python3 ${workspaceFolder}/checkers/indentation_checker.py .",
+            "problemMatcher": []
+        },
+        {
+            "label": "Empty lines check",
+            "type": "shell",
+            "command": "python3 ${workspaceFolder}/checkers/empty_lines_checker.py .",
+            "problemMatcher": []
+        },
+        {
+            "label": "Indentation check",
+            "type": "shell",
+            "command": "python3 ${workspaceFolder}/checkers/indentation_checker.py .",
+            "problemMatcher": []
+        },
+        {
+            "label": "Full check",
+            "type": "shell",
+            "command": "io.elementary.vala-lint -d . -c vala-lint.conf && python3 ${workspaceFolder}/checkers/empty_lines_checker.py . && python3 ${workspaceFolder}/checkers/indentation_checker.py .",
             "problemMatcher": []
         },
         {

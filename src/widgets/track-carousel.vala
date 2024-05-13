@@ -21,12 +21,6 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
     [GtkChild]
     unowned Adw.Carousel carousel;
-    [GtkChild]
-    unowned TrackInfoPanel track_info_panel_left;
-    [GtkChild]
-    unowned TrackInfoPanel track_info_panel_center;
-    [GtkChild]
-    unowned TrackInfoPanel track_info_panel_right;
 
     public bool interactive { get; set; default = false; }
 
@@ -46,8 +40,26 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
         }
     }
 
+    TrackInfoPanel track_info_panel_left {
+        get {
+            return (TrackInfoPanel) carousel.get_nth_page (0);
+        }
+    }
+
+    TrackInfoPanel track_info_panel_center {
+        get {
+            return (TrackInfoPanel) carousel.get_nth_page (1);
+        }
+    }
+
+    TrackInfoPanel track_info_panel_right {
+        get {
+            return (TrackInfoPanel) carousel.get_nth_page (2);
+        }
+    }
+
     uint check_situation_timeout = 0;
-    bool moving = false;
+    bool is_scrolling_now = false;
 
     public TrackCarousel (
         Gtk.Orientation orientation
@@ -61,24 +73,27 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
         bind_property ("interactive", carousel, "interactive", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         bind_property ("spacing", carousel, "spacing", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
 
-        //  track_info_panel_left.notify["track-info"].connect (() => {
-        //      track_info_panel_left.visible = track_info_panel_left.track_info != null;
-        //  });
-        //  track_info_panel_right.notify["track-info"].connect (() => {
-        //      track_info_panel_right.visible = track_info_panel_right.track_info != null;
-        //  });
-
         player.mode_inited.connect (on_player_mode_inited);
 
         carousel.page_changed.connect (on_carousel_page_changed);
 
-        carousel.notify["position"].connect (() => {
-            moving = true;
+        if (interactive) {
+            carousel.notify["position"].connect (() => {
+                is_scrolling_now = true;
+            });
+        }
+
+        player.next_track_loaded.connect ((track_info) => {
+            check_situation ();
         });
 
-        //  player.next_track_loaded.connect ((track_info) => {
-        //      info_panel_next.track_info = track_info;
-        //  });
+        player.ready_play_next.connect (() => {
+            check_situation ();
+        });
+
+        player.ready_play_prev.connect (() => {
+            check_situation ();
+        });
 
         //  player.ready_play_next.connect ((repeat) => {
         //      var track_info = player.mode.get_current_track_info ();
@@ -106,7 +121,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             end_check_situation ();
         }
 
-        check_situation_timeout = Timeout.add_seconds (1, () => {
+        check_situation_timeout = Timeout.add_seconds (3, () => {
             check_situation ();
 
             return true;
@@ -127,33 +142,56 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
      * Check num of track panels, current position, track infos 
      */
     void check_situation () {
-        if (!get_mapped () || moving) {
+        if (!get_mapped () || is_scrolling_now) {
             return;
+        }
+
+        carousel.page_changed.disconnect (on_carousel_page_changed);
+
+        is_scrolling_now = true;
+
+        if (carousel.position == 0.0) {
+            carousel.remove (track_info_panel_right);
+            carousel.insert (new TrackInfoPanel (orientation), 0);
+
+        } else if (carousel.position == 2.0) {
+            carousel.remove (track_info_panel_left);
+            carousel.insert (new TrackInfoPanel (orientation), -1);
+            carousel.scroll_to (track_info_panel_center, false);
         }
 
         update_track_info_panel_center ();
         update_track_info_panel_right ();
         update_track_info_panel_left ();
 
-        if (carousel.position != 1.0) {
-            carousel.scroll_to (carousel.get_nth_page (1), false);
-        }
+        Idle.add_once (() => {
+            carousel.page_changed.connect (on_carousel_page_changed);
+            is_scrolling_now = false;
+        });
     }
 
     void update_track_info_panel_left () {
-        track_info_panel_left.track_info = player.mode.get_prev_track_info ();
+        var prev_track_info = player.mode.get_prev_track_info ();
+
+        if (prev_track_info != track_info_panel_left.track_info) {
+            track_info_panel_left.track_info = prev_track_info;
+        }
     }
 
     void update_track_info_panel_center () {
         var current_track = player.mode.get_current_track_info ();
 
-        if (track_info_panel_center.track_info != current_track) {
+        if (current_track != track_info_panel_center.track_info) {
             track_info_panel_center.track_info = player.mode.get_current_track_info ();
         }
     }
 
     void update_track_info_panel_right () {
-        track_info_panel_right.track_info = player.mode.get_next_track_info (false);
+        var next_track_info = player.mode.get_next_track_info (false);
+
+        if (next_track_info != track_info_panel_right.track_info) {
+            track_info_panel_right.track_info = next_track_info;
+        }
     }
 
     void on_player_mode_inited () {
@@ -169,8 +207,19 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
         //  carousel.scroll_to (info_panel_next, true);
     }
 
-    void on_carousel_page_changed () {
-        moving = false;
+    void on_carousel_page_changed (uint position) {
+        if (position == 2) {
+            player.next ();
+
+        } else if (position == 0) {
+            player.prev (true);
+        }
+
+        if (!is_scrolling_now) {
+            check_situation ();
+        }
+
+        is_scrolling_now = false;
     }
 
 

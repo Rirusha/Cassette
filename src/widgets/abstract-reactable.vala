@@ -86,6 +86,9 @@ public abstract class Cassette.Reactable : Gtk.Frame {
         gs_active.stopped.connect (() => {
             remove_css_class (css_class_name_active);
         });
+        gs_active.released.connect (() => {
+            remove_css_class (css_class_name_active);
+        });
         add_controller (gs_active);
 
         var gs_playing_hover = new Gtk.EventControllerMotion ();
@@ -108,6 +111,11 @@ public abstract class Cassette.Reactable : Gtk.Frame {
             }
         });
         gs_playing_active.stopped.connect (() => {
+            if (is_current_playing) {
+                remove_css_class (css_class_name_playing_active);
+            }
+        });
+        gs_playing_active.released.connect (() => {
             if (is_current_playing) {
                 remove_css_class (css_class_name_playing_active);
             }

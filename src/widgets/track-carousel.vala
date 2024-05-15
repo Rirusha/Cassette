@@ -22,12 +22,31 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     [GtkChild]
     unowned Adw.Carousel carousel;
 
+    bool interactive_connected = false;
+    bool _interactive = false;
     public bool interactive {
         get {
-            return carousel.interactive;
+            return _interactive;
         }
         set {
-            carousel.interactive = value;
+            _interactive = value;
+
+            if (_interactive && !interactive_connected) {
+                var gs = new Gtk.GestureClick ();
+                gs.pressed.connect (() => {
+                    is_scrolling_now = true;
+                });
+                carousel.add_controller (gs);
+
+                player.bind_property (
+                    "current-track-loading",
+                    this,
+                    "interactive",
+                    BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN
+                );
+
+                interactive_connected = true;
+            }
         }
     }
 
@@ -108,9 +127,14 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             width_request = panels_width
         });
 
-        player.mode_inited.connect (on_player_mode_inited);
+        bind_property (
+            "interactive",
+            carousel,
+            "interactive",
+            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+        );
 
-        carousel.page_changed.connect (on_carousel_page_changed);
+        player.mode_inited.connect (on_player_mode_inited);
 
         player.next_track_loaded.connect ((track_info) => {
             update_track_info_panel_right ();
@@ -120,21 +144,6 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
         player.notify["shuffle-mode"].connect (check_situation);
         player.notify["repeat-mode"].connect (check_situation);
-
-        if (interactive) {
-            var gs = new Gtk.GestureClick ();
-            gs.pressed.connect (() => {
-                is_scrolling_now = true;
-            });
-            carousel.add_controller (gs);
-
-            player.bind_property (
-                "current-track-loading",
-                this,
-                "interactive",
-                BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN
-            );
-        }
 
         player.ready_play_next.connect ((repeat) => {
             is_scrolling_now = false;
@@ -146,8 +155,14 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             carousel.scroll_to (track_info_panel_left, true);
         });
 
-        start_check_situation ();
-        map.connect (check_situation);
+        map.connect (() => {
+            carousel.page_changed.connect (on_carousel_page_changed);
+            start_check_situation ();
+        });
+        unmap.connect (() => {
+            carousel.page_changed.disconnect (on_carousel_page_changed);
+            end_check_situation ();
+        });
     }
 
     void start_check_situation () {
@@ -255,6 +270,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
                     return;
                 }
             }
+
         } else {
             check_situation ();
         }

@@ -42,7 +42,7 @@ namespace Cassette {
 
         const ActionEntry[] ACTION_ENTRIES = {
             { "quit", quit },
-            { "log-out", on_log_out },
+            { "log-out", on_log_out_action },
             { "play-pause", on_play_pause_action },
             { "next", on_next_action },
             { "prev", on_prev_action },
@@ -53,7 +53,7 @@ namespace Cassette {
             { "parse-url", on_parse_url_action },
             { "open-account", on_open_account_action },
             { "open-plus", on_open_plus_action },
-            { "mute", on_mute },
+            { "mute", on_mute_action },
         };
 
         const OptionEntry[] OPTION_ENTRIES = {
@@ -285,7 +285,7 @@ namespace Cassette {
             });
         }
 
-        void on_log_out () {
+        void on_log_out_action () {
             authenticator.log_out ();
         }
 
@@ -432,7 +432,7 @@ namespace Cassette {
             }
         }
 
-        void on_mute () {
+        void on_mute_action () {
             player.mute = !player.mute;
         }
     }

@@ -43,6 +43,7 @@ namespace Cassette {
         const ActionEntry[] ACTION_ENTRIES = {
             { "quit", quit },
             { "log-out", on_log_out_action },
+            { "force-log-out", on_force_log_out_action },
             { "play-pause", on_play_pause_action },
             { "next", on_next_action },
             { "prev", on_prev_action },
@@ -287,6 +288,10 @@ namespace Cassette {
 
         void on_log_out_action () {
             authenticator.log_out ();
+        }
+
+        void on_force_log_out_action () {
+            authenticator.force_log_out ();
         }
 
         void on_play_pause_action () {

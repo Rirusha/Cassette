@@ -87,6 +87,7 @@ cassette_gui_sources = files(
   'widgets/headered-scrolled-window.vala',
   'widgets/info-marks.vala',
   'widgets/loading-spinner.vala',
+  'widgets/no-plus-dialog.vala',
   'widgets/page-root.vala',
   'widgets/player-bar.vala',
   'widgets/playlist-choose-dialog.vala',

@@ -156,6 +156,7 @@
     <file preprocess="xml-stripblanks">ui/main-view.ui</file>
     <file preprocess="xml-stripblanks">ui/window.ui</file>
     <file preprocess="xml-stripblanks">ui/menu-dialog.ui</file>
+    <file preprocess="xml-stripblanks">ui/no-plus-dialog.ui</file>
     <file preprocess="xml-stripblanks">ui/player-bar.ui</file>
     <file preprocess="xml-stripblanks">ui/playlist-choose-dialog.ui</file>
     <file preprocess="xml-stripblanks">ui/playlist-create-button.ui</file>

@@ -132,7 +132,7 @@ public class Cassette.Client.Player.Player : Object {
     /**
      * Is current track loading.
      */
-    public bool current_track_loading { get; private set; }
+    public bool current_track_loading { get; private set; default = false; }
 
     /**
      * Feedback.

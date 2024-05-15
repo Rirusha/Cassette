@@ -128,7 +128,12 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             });
             carousel.add_controller (gs);
 
-            player.bind_property ("current-track-loading", this, "interactive", BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN);
+            player.bind_property (
+                "current-track-loading",
+                this,
+                "interactive",
+                BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN
+            );
         }
 
         player.ready_play_next.connect ((repeat) => {
@@ -236,7 +241,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             if (position == 2) {
                 if (can_swipe_right) {
                     player.next ();
-    
+
                 } else {
                     carousel.scroll_to (track_info_panel_center, true);
                     return;
@@ -244,7 +249,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             } else if (position == 0) {
                 if (can_swipe_left) {
                     player.prev ();
-    
+
                 } else {
                     carousel.scroll_to (track_info_panel_center, true);
                     return;

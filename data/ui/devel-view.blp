@@ -2,46 +2,57 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteDevelView: $CassetteBaseView {
-  Adw.Clamp {
-    margin-top: 24;
-    margin-bottom: 24;
-    margin-start: 12;
-    margin-end: 12;
-    maximum-size: 860;
+  ScrolledWindow {
+    hscrollbar-policy: never;
+    propagate-natural-height: true;
 
-    Box main_box {
+    Box {
+      margin-top: 24;
       orientation: vertical;
-      spacing: 4;
 
-      Button ultra_button {
-        label: "Stations view";
+      ScrolledWindow scrolled_window {
+        styles [
+          "sp-sw"
+        ]
+
+        propagate-natural-height: true;
+        hscrollbar-policy: never;
+        vexpand: true;
+        vscrollbar-policy: external;
+
+        $CassetteTrackCarousel {
+          interactive: true;
+          spacing: 4;
+          panels-width: 240;
+          vexpand: true;
+          hexpand: true;
+          orientation: vertical;
+          height-request: 500;
+        }
       }
 
-      $CassetteTrackCarousel {
-        interactive: true;
-        spacing: 4;
-        // halign: fill;
-        hexpand: true;
-        orientation: vertical;
-      }
+      Separator {}
 
-      $CassetteTrackOptionsButton {}
+      Adw.Clamp {
+        margin-top: 24;
+        margin-bottom: 24;
+        margin-start: 12;
+        margin-end: 12;
+        maximum-size: 860;
 
-      MenuButton {
-        popover: popover_m;
+        Box main_box {
+          orientation: vertical;
+          spacing: 4;
+
+          ToggleButton hide_player_bar_button {
+            label: "Hide playerbar";
+          }
+
+          Button stations_view_button {
+            label: "Stations view";
+          }
+        }
       }
     }
-  }
-}
-
-Popover popover_m {
-  Box {
-    orientation: vertical;
-
-    Button {}
-
-    Button {}
-
-    Button {}
   }
 }

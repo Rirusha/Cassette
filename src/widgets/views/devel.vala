@@ -20,50 +20,27 @@
 public class Cassette.DevelView : BaseView {
 
     [GtkChild]
-    unowned Gtk.Button ultra_button;
-
-    public override bool can_refresh { get; default = false; }
+    unowned Gtk.ToggleButton hide_player_bar_button;
+    [GtkChild]
+    unowned Gtk.Button stations_view_button;
+    [GtkChild]
+    unowned Gtk.ScrolledWindow scrolled_window;
 
     construct {
-        ultra_button.clicked.connect (on_ultra_button_clicked);
-    }
+        stations_view_button.clicked.connect (() => {
+            root_view.add_view (new StationsView ());
+        });
 
-    void on_ultra_button_clicked () {
-        //  var client = yam_talker.client;
+        hide_player_bar_button.bind_property (
+            "active",
+            application.main_window,
+            "player-bar-is-visible",
+            BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN | BindingFlags.SYNC_CREATE
+        );
 
-        //  var a = client.get_rotor_info (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
-        //  client.rotor_feedback_started (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
-        //  var tra = client.get_station_tracks (Cassette.Client.YaMAPI.Rotor.StationType.ON_YOUR_WAVE);
-
-        //  var n = client.get_rotor_dashboard ();
-        //  foreach (var m in n.stations) {
-        //      message (m.station.name);
-        //  }
-
-        //  var c =client.get_station_list ();
-        //  foreach (var k in c) {
-        //      message (k.station.name);
-        //  }
-
-        //  var tra = client.get_tracks ({"102553949", "111654151", "54261186"});
-
-        //  foreach (var seq in tra) {
-        //      message (seq.title);
-        //  }
-
-        //  var lib = client.library_all_ids ();
-
-        //  message (lib.liked_tracks[0]);
-        //  message (lib.playlists[0]);
-
-        //  Client.Logger.debug ("MARK I");
-        //  client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, false);
-        //  Client.Logger.debug ("MARK II");
-        //  client.playlist ("ps.ee2906f8-9350-46a3-88ce-3f98fd09514d", false, true);
-
-        root_view.add_view (new StationsView ());
-
-        message ("Magic happaned, i swear…");
+        scrolled_window.vadjustment.value_changed.connect (() => {
+            scrolled_window.vadjustment.value = 0.0;
+        });
     }
 
     void set_values () {

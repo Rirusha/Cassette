@@ -10,6 +10,7 @@ template $CassetteHeaderBar: $CassetteShrinkableBin {
       icon-name: "go-previous-symbolic";
       visible: false;
       tooltip-text: _("Go back");
+      sensitive: bind template.interactive;
     }
 
     [start]
@@ -17,6 +18,7 @@ template $CassetteHeaderBar: $CassetteShrinkableBin {
       icon-name: "view-refresh-symbolic";
       visible: false;
       tooltip-text: _("Refresh");
+      sensitive: bind template.interactive;
     }
 
     [start]
@@ -24,16 +26,19 @@ template $CassetteHeaderBar: $CassetteShrinkableBin {
       icon-name: "edit-find-symbolic";
       visible: false;
       tooltip-text: _("Yandex.Music search");
+      sensitive: bind template.interactive;
     }
 
     title-widget: Adw.ViewSwitcher switcher_title {
       policy: wide;
       hexpand: false;
+      sensitive: bind template.interactive;
     };
 
     [end]
     $CassettePrimaryMenuButton menu_button {
       visible: bind template.sidebar-shown inverted;
+      sensitive: bind template.interactive;
     }
 
     [end]
@@ -43,6 +48,7 @@ template $CassetteHeaderBar: $CassetteShrinkableBin {
       ]
 
       visible: false;
+      sensitive: bind template.interactive;
 
       Adw.Avatar avatar {
         size: 22;
@@ -52,6 +58,7 @@ template $CassetteHeaderBar: $CassetteShrinkableBin {
     [end]
     $CassetteCacheIndicator {
       visible: bind template.sidebar-shown inverted;
+      sensitive: bind template.interactive;
     }
   }
 }

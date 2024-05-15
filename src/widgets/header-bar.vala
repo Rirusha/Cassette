@@ -38,6 +38,8 @@ public class Cassette.HeaderBar : ShrinkableBin {
 
     public bool sidebar_shown { get; set; }
 
+    public bool interactive { get; set; }
+
     public bool can_backward {
         set {
             backward_button.visible = value;

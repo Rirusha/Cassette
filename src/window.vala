@@ -242,6 +242,11 @@ public class Cassette.Window : ApplicationWindow {
     }
 
     public void load_default_views () {
+        if (!yam_talker.me.has_plus) {
+            show_no_plus_dialog ();
+            return;
+        }
+
         if (loading_stack.visible_child_name == "loading") {
             pager.load_pages (PagesType.ONLINE);
 
@@ -249,7 +254,7 @@ public class Cassette.Window : ApplicationWindow {
             yam_talker.update_all.begin ();
             header_bar.can_search = true;
 
-            header_bar.sensitive = true;
+            header_bar.interactive = true;
 
             cachier.check_all_cache.begin ();
 
@@ -262,11 +267,7 @@ public class Cassette.Window : ApplicationWindow {
                 }
             });
 
-            if (yam_talker.me.has_plus) {
-                loading_stack.visible_child_name = "done";
-            } else {
-                show_no_plus_dialog ();
-            }
+            loading_stack.visible_child_name = "done";
         }
     }
 

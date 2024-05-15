@@ -22,9 +22,37 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     [GtkChild]
     unowned Adw.Carousel carousel;
 
-    public bool interactive { get; set; default = false; }
+    public bool interactive {
+        get {
+            return carousel.interactive;
+        }
+        set {
+            carousel.interactive = value;
+        }
+    }
 
-    public int spacing { get; set; default = 0; }
+    public uint spacing {
+        get {
+            return carousel.spacing;
+        }
+        set {
+            carousel.spacing = value;
+        }
+    }
+
+    public int panels_width { get; construct set; default = -1; }
+
+    public bool can_swipe_left {
+        get {
+            return player.mode.get_prev_index () != -1;
+        }
+    }
+
+    public bool can_swipe_right {
+        get {
+            return player.mode.get_next_index (false) != -1;
+        }
+    }
 
     Gtk.Orientation _orientation = Gtk.Orientation.HORIZONTAL;
     public Gtk.Orientation orientation {
@@ -70,51 +98,51 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     }
 
     construct {
-        bind_property ("interactive", carousel, "interactive", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
-        bind_property ("spacing", carousel, "spacing", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        carousel.append (new TrackInfoPanel (orientation) {
+            width_request = panels_width
+        });
+        carousel.append (new TrackInfoPanel (orientation) {
+            width_request = panels_width
+        });
+        carousel.append (new TrackInfoPanel (orientation) {
+            width_request = panels_width
+        });
 
         player.mode_inited.connect (on_player_mode_inited);
 
         carousel.page_changed.connect (on_carousel_page_changed);
 
+        player.next_track_loaded.connect ((track_info) => {
+            update_track_info_panel_right ();
+        });
+
+        player.next_track_loaded.connect (check_situation);
+
+        player.notify["shuffle-mode"].connect (check_situation);
+        player.notify["repeat-mode"].connect (check_situation);
+
         if (interactive) {
-            carousel.notify["position"].connect (() => {
+            var gs = new Gtk.GestureClick ();
+            gs.pressed.connect (() => {
                 is_scrolling_now = true;
             });
+            carousel.add_controller (gs);
+
+            player.bind_property ("current-track-loading", this, "interactive", BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN);
         }
 
-        player.next_track_loaded.connect ((track_info) => {
-            check_situation ();
+        player.ready_play_next.connect ((repeat) => {
+            is_scrolling_now = false;
+            carousel.scroll_to (track_info_panel_right, true);
         });
 
-        player.ready_play_next.connect (() => {
-            check_situation ();
+        player.ready_play_prev.connect ((repeat) => {
+            is_scrolling_now = false;
+            carousel.scroll_to (track_info_panel_left, true);
         });
 
-        player.ready_play_prev.connect (() => {
-            check_situation ();
-        });
-
-        //  player.ready_play_next.connect ((repeat) => {
-        //      var track_info = player.mode.get_current_track_info ();
-
-        //      if (track_info != info_panel_center.track_info) {
-        //          info_panel_next.track_info = player.mode.get_current_track_info ();
-        //          carousel.scroll_to (info_panel_next, true);
-        //      }
-        //  });
-
-        //  player.ready_play_prev.connect (() => {
-        //      var track_info = player.mode.get_current_track_info ();
-
-        //      if (track_info != info_panel_center.track_info) {
-        //          info_panel_prev.track_info = player.mode.get_current_track_info ();
-        //          carousel.scroll_to (info_panel_prev, true);
-        //      }
-        //  });
-
-        map.connect (start_check_situation);
-        unmap.connect (end_check_situation);
+        start_check_situation ();
+        map.connect (check_situation);
     }
 
     void start_check_situation () {
@@ -143,7 +171,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
      * Check num of track panels, current position, track infos 
      */
     void check_situation () {
-        if (!get_mapped () || is_scrolling_now) {
+        if (!get_mapped () || is_scrolling_now || player.current_track_loading) {
             return;
         }
 
@@ -153,11 +181,15 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
         if (carousel.position == 0.0) {
             carousel.remove (track_info_panel_right);
-            carousel.insert (new TrackInfoPanel (orientation), 0);
+            carousel.insert (new TrackInfoPanel (orientation) {
+                width_request = panels_width
+            }, 0);
 
         } else if (carousel.position == 2.0) {
             carousel.remove (track_info_panel_left);
-            carousel.insert (new TrackInfoPanel (orientation), -1);
+            carousel.insert (new TrackInfoPanel (orientation) {
+                width_request = panels_width
+            }, -1);
             carousel.scroll_to (track_info_panel_center, false);
         }
 
@@ -197,113 +229,31 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
     void on_player_mode_inited () {
         check_situation ();
-
-        //  var current_track_info = player.mode.get_current_track_info ();
-
-        //  if (info_panel_center.track_info == null) {
-        //      info_panel_center.track_info = current_track_info;
-        //  }
-
-        //  info_panel_next.track_info = current_track_info;
-        //  carousel.scroll_to (info_panel_next, true);
     }
 
     void on_carousel_page_changed (uint position) {
-        if (position == 2) {
-            player.next ();
-
-        } else if (position == 0) {
-            player.prev (true);
-        }
-
-        if (!is_scrolling_now) {
+        if (is_scrolling_now) {
+            if (position == 2) {
+                if (can_swipe_right) {
+                    player.next ();
+    
+                } else {
+                    carousel.scroll_to (track_info_panel_center, true);
+                    return;
+                }
+            } else if (position == 0) {
+                if (can_swipe_left) {
+                    player.prev ();
+    
+                } else {
+                    carousel.scroll_to (track_info_panel_center, true);
+                    return;
+                }
+            }
+        } else {
             check_situation ();
         }
 
         is_scrolling_now = false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //  void on_carousel_page_changed (uint index) {
-    //      if (!enabled) {
-    //          return;
-    //      }
-
-    //      if (index == 1) {
-    //          centerized = true;
-    //      }
-
-    //      if (!centerized) {
-    //          carousel.scroll_to (info_panel_center, false);
-    //          return;
-    //      }
-
-    //      carousel.page_changed.disconnect (on_carousel_page_changed);
-
-    //      if (index == 2) {
-    //          //  if (info_panel_next.track_info != player.mode.get_current_track_info ()) {
-    //          //      player.next ();
-    //          //  }
-
-    //          carousel.remove (info_panel_prev);
-    //          carousel.append (new TrackInfoPanel (orientation));
-
-    //          info_panel_next.track_info = player.mode.get_next_track_info (false);
-
-    //          carousel.scroll_to (info_panel_center, false);
-
-    //      } else if (index == 0) {
-    //          //  if (info_panel_prev.track_info != player.mode.get_current_track_info ()) {
-    //          //      player.prev (true);
-    //          //  }
-
-    //          carousel.remove (info_panel_next);
-    //          carousel.prepend (new TrackInfoPanel (orientation));
-
-    //          info_panel_prev.track_info = player.mode.get_prev_track_info ();
-
-    //          carousel.scroll_to (info_panel_center, false);
-    //      }
-
-    //      carousel.page_changed.connect (on_carousel_page_changed);
-
-    //      update_prev_and_next_track ();
-    //  }
-
-    //  void on_player_mode_inited () {
-    //      var current_track_info = player.mode.get_current_track_info ();
-
-    //      if (info_panel_center.track_info == null) {
-    //          info_panel_center.track_info = current_track_info;
-    //      }
-
-    //      info_panel_next.track_info = current_track_info;
-    //      carousel.scroll_to (info_panel_next, true);
-    //  }
-
-    //  void update_prev_and_next_track () {
-    //      info_panel_prev.track_info = player.mode.get_prev_track_info ();
-    //      info_panel_next.track_info = player.mode.get_next_track_info (false);
-    //  }
 }

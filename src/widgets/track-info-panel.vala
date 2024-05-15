@@ -100,7 +100,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
             switch (_orientation) {
                 case Gtk.Orientation.HORIZONTAL:
                     track_name_label.add_css_class ("heading");
-                    track_name_label.remove_css_class ("title-2");
+                    track_name_label.remove_css_class ("title-3");
 
                     track_name_label.halign = Gtk.Align.START;
                     track_version_label.halign = Gtk.Align.START;
@@ -114,6 +114,10 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                     track_version_label.ellipsize = Pango.EllipsizeMode.END;
                     track_authors_label.ellipsize = Pango.EllipsizeMode.END;
 
+                    track_name_label.justify = Gtk.Justification.LEFT;
+                    track_version_label.justify = Gtk.Justification.LEFT;
+                    track_authors_label.justify = Gtk.Justification.LEFT;
+
                     title_and_marks_box.halign = Gtk.Align.START;
 
                     title_and_marks_box.start_widget = title_box;
@@ -125,7 +129,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
 
                 case Gtk.Orientation.VERTICAL:
                     track_name_label.remove_css_class ("heading");
-                    track_name_label.add_css_class ("title-2");
+                    track_name_label.add_css_class ("title-3");
 
                     track_name_label.halign = Gtk.Align.CENTER;
                     track_version_label.halign = Gtk.Align.CENTER;
@@ -138,6 +142,10 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                     track_name_label.ellipsize = Pango.EllipsizeMode.NONE;
                     track_version_label.ellipsize = Pango.EllipsizeMode.NONE;
                     track_authors_label.ellipsize = Pango.EllipsizeMode.NONE;
+
+                    track_name_label.justify = Gtk.Justification.CENTER;
+                    track_version_label.justify = Gtk.Justification.CENTER;
+                    track_authors_label.justify = Gtk.Justification.CENTER;
 
                     title_and_marks_box.halign = Gtk.Align.CENTER;
 

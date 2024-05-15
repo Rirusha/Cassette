@@ -242,11 +242,6 @@ public class Cassette.Window : ApplicationWindow {
     }
 
     public void load_default_views () {
-        if (!yam_talker.me.has_plus) {
-            show_no_plus_dialog ();
-            return;
-        }
-
         if (loading_stack.visible_child_name == "loading") {
             pager.load_pages (PagesType.ONLINE);
 
@@ -276,16 +271,6 @@ public class Cassette.Window : ApplicationWindow {
             pager.load_pages (PagesType.LOCAL);
             loading_stack.visible_child_name = "done";
         }
-    }
-
-    public void show_no_plus_dialog () {
-        var dialog = new NoPlusDialog ();
-
-        dialog.closed.connect (() => {
-            application.activate_action ("force-log-out", null);
-        });
-
-        dialog.present (this);
     }
 
     public void show_toast (string message) {

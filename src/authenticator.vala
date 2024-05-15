@@ -57,8 +57,7 @@ namespace Cassette {
 
             dialog.response.connect ((dialog, response) => {
                 if (response == "logout") {
-                    move_user_cache ();
-                    application.application_state = ApplicationState.BEGIN;
+                    force_log_out ();
                 }
             });
 
@@ -66,11 +65,13 @@ namespace Cassette {
         }
 
         public void force_log_out () {
-            move_user_cache ();
-            application.application_state = ApplicationState.BEGIN;
+            move_user_cache.begin (() => {
+                application.application_state = ApplicationState.BEGIN;
+                application.quit ();
+            });
         }
 
-        void move_user_cache () {
+        async void move_user_cache () {
             var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 16) {
                 margin_top = 16,
                 margin_bottom = 16,
@@ -101,7 +102,7 @@ namespace Cassette {
             spinner.start ();
 
             // TODO: let user choose save content ot not
-            storager.clear_user.begin (true, application.quit);
+            yield storager.clear_user (true);
         }
 
         public void log_in () {
@@ -114,14 +115,21 @@ namespace Cassette {
 
         public async void init_client_async () {
             bool should_auth = false;
+            bool cant_use = false;
 
             threader.add (() => {
                 try {
                     yam_talker.init_if_not ();
+
                 } catch (BadStatusCodeError e) {
                     Logger.warning ("Bad status code while trying init client. Error message: %s".printf (e.message));
 
                     should_auth = true;
+
+                } catch (CantUseError e) {
+                    Logger.warning ("User hasn't Plus Subscription. Error message: %s".printf (e.message));
+
+                    cant_use = true;
                 }
 
                 Idle.add (init_client_async.callback);
@@ -129,8 +137,14 @@ namespace Cassette {
 
             yield;
 
+            if (cant_use) {
+                application.show_no_plus_dialog ();
+                return;
+            }
+
             if (should_auth) {
                 start_auth ();
+
             } else {
                 success ();
             }

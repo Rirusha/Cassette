@@ -330,6 +330,23 @@ namespace Cassette {
             }
         }
 
+        public void show_no_plus_dialog () {
+            var dialog = new NoPlusDialog () {
+                log_out_button_visible = application_state != ApplicationState.BEGIN
+            };
+
+            dialog.closed.connect (() => {
+                if (application_state == ApplicationState.BEGIN) {
+                    application.activate_action ("force-log-out", null);
+
+                } else {
+                    application.activate_action ("quit", null);
+                }
+            });
+
+            dialog.present (main_window);
+        }
+
         void on_share_current_track_action () {
             var current_track = player.mode.get_current_track_info ();
 

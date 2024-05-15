@@ -19,6 +19,20 @@ template $CassetteNoPlusDialog: Adw.Dialog {
       icon-name: "dialog-warning-symbolic";
       title: _("No Plus Subscription");
       description: _("To avoid problems with Yandex, the online functions of the application are not available without a Yandex.Plus subscription. Thanks for understanding.");
+
+      Button logout_button {
+        styles [
+          "pill",
+          "destructive-action"
+        ]
+
+        visible: bind template.log-out-button-visible;
+        margin-top: 24;
+        action-name: "app.log-out";
+        label: _("Log out");
+        hexpand: true;
+        can-shrink: true;
+      }
     };
   }
 }

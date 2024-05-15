@@ -202,6 +202,16 @@ namespace Cassette.Client {
     }
 
     /**
+     * Errors containing reasons why using the client is not possible
+     */
+     public errordomain CantUseError {
+        /**
+         * User hasn't Plus Subscription
+         */
+        NO_PLUS
+    }
+
+    /**
      * Утилиты, зависимые от типа.
      */
     public class TypeUtils<T> {

@@ -68,7 +68,7 @@ namespace Cassette.Client {
             }
         }
 
-        public override void init_if_not () throws BadStatusCodeError {
+        public override void init_if_not () throws BadStatusCodeError, CantUseError {
             bool is_need_init = false;
 
             if (client == null) {
@@ -79,6 +79,12 @@ namespace Cassette.Client {
 
             if (is_need_init) {
                 init ();
+            }
+
+            if (me != null) {
+                if (!me.has_plus) {
+                    throw new CantUseError.NO_PLUS ("No Plus Subscription");
+                }
             }
         }
 

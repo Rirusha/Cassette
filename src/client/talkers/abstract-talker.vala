@@ -28,7 +28,7 @@ namespace Cassette.Client {
         public signal void connection_established ();
         public signal void connection_lost ();
 
-        public abstract void init_if_not () throws BadStatusCodeError;
+        public abstract void init_if_not () throws BadStatusCodeError, CantUseError;
 
         protected static SoupWrapper create_soup_wrapper (bool with_user_agent) {
             return new SoupWrapper (
@@ -47,7 +47,15 @@ namespace Cassette.Client {
 
         protected void net_run (NetFunc net_func, bool should_init = true) throws BadStatusCodeError {
             if (should_init) {
-                init_if_not ();
+                try {
+                    init_if_not ();
+
+                } catch (CantUseError e) {
+                    Logger.warning ("Can't use error: %s".printf (
+                        e.message
+                    ));
+                    return;
+                }
             }
 
             try {

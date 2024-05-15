@@ -6,7 +6,7 @@
         {
             "label": "Lint check",
             "type": "shell",
-            "command": "io.elementary.vala-lint -d . -c vala-lint.conf && python3 ${workspaceFolder}/checkers/empty_lines_checker.py . && python3 ${workspaceFolder}/checkers/indentation_checker.py .",
+            "command": "io.elementary.vala-lint -d . -c vala-lint.conf",
             "problemMatcher": []
         },
         {

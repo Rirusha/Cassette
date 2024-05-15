@@ -495,14 +495,13 @@ namespace Cassette.Client.Cachier {
             yield;
         }
 
+        /**
+         * Simple encoding to protect DRM content from direct access.
+         * Please do not publish an uncoded version on the Internet and do
+         * not distribute a workaround (albeit a simple one).
+         * This may cause the developer to have problems with Yandex.
+         */
         void simple_dencode (ref uint8[] data) {
-            /**
-                Простое кодирование для защиты DRM контента от прямого доступа.
-                Просьба не публиковать в интернете версию без кодирования и 
-                не распространять способ обхода (пусть и простой).
-                Это может вызвать у разработчика проблемы с Яндексом
-            */
-
             for (int i = 0; i < data.length; i++) {
                 data[i] = data[i] ^ 0xFF;
             }

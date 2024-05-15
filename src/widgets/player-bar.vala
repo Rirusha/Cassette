@@ -86,12 +86,7 @@ namespace Cassette {
             player.bind_property ("can-go-prev", prev_track_button, "sensitive", BindingFlags.DEFAULT);
             player.bind_property ("can-go-next", next_track_button, "sensitive", BindingFlags.DEFAULT);
 
-            player.current_track_start_loading.connect (() => {
-                sensitive = false;
-            });
-            player.current_track_finish_loading.connect (() => {
-                sensitive = true;
-            });
+            player.bind_property ("current-track-loading", this, "sensitive", BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN);
 
             player.mode_inited.connect (on_player_mode_inited);
 

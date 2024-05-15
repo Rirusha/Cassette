@@ -7,6 +7,7 @@ template $CassetteWindow: $CassetteApplicationWindow {
   width-request: 360;
   height-request: 294;
   shrink-edge-width: 450;
+  player-bar-is-visible: bind player_bar.visible bidirectional;
 
   content: Adw.ToolbarView switcher_toolbar {
     bottom-bar-style: flat;

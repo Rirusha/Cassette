@@ -90,6 +90,9 @@ public class Cassette.Window : ApplicationWindow {
         }
     }
 
+    // TODO: Remove this
+    public bool player_bar_is_visible { get; set; }
+
     public bool is_ready { get; private set; default = false; }
 
     public Window (Cassette.Application app) {

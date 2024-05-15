@@ -57,7 +57,7 @@ namespace Cassette {
 
             dialog.response.connect ((dialog, response) => {
                 if (response == "logout") {
-                    move_cache ();
+                    move_user_cache ();
                     application.application_state = ApplicationState.BEGIN;
                 }
             });
@@ -65,7 +65,12 @@ namespace Cassette {
             dialog.present (application.main_window);
         }
 
-        void move_cache () {
+        public void force_log_out () {
+            move_user_cache ();
+            application.application_state = ApplicationState.BEGIN;
+        }
+
+        void move_user_cache () {
             var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 16) {
                 margin_top = 16,
                 margin_bottom = 16,

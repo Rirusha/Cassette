@@ -33,6 +33,14 @@ frame {
     border-style: none;
 }
 
+.sp-sw overshoot.top {
+    background-image: none;
+}
+
+.sp-sw overshoot.bottom {
+    background-image: none;
+}
+
 /**
  * Other
  */

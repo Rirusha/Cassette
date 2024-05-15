@@ -18,7 +18,7 @@
 namespace Cassette {
     public abstract class BaseView : Adw.Bin {
 
-        public abstract bool can_refresh { get; default = true; }
+        public virtual bool can_refresh { get; default = false; }
 
         public signal void show_ready ();
 

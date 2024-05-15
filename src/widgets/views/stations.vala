@@ -42,11 +42,7 @@ public class Cassette.StationsView : BaseView {
     [GtkChild]
     unowned Gtk.FlowBox search_flow_box;
 
-    public override bool can_refresh {
-        get {
-            return true;
-        }
-    }
+    public override bool can_refresh { get; default = true; }
 
     construct {
         search_entry.search_changed.connect (search_entry_search_changed_async);

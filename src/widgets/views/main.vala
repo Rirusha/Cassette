@@ -21,8 +21,6 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.StatusPage status_page;
 
-        public override bool can_refresh { get; default = false; }
-
         public MainView () {
             Object ();
         }

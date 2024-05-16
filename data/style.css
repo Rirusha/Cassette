@@ -71,6 +71,7 @@ frame {
     font-weight: normal;
     padding-top: 3px;
     padding-bottom: 3px;
+    transition: none;
 }
 
 popover contents {

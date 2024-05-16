@@ -42,6 +42,14 @@ public class Cassette.VolumeButton : CustomMenuButton {
         set {
             _mute = value;
 
+            if (mute) {
+                adjustment.value = 0;
+
+            } else {
+                adjustment.value = Math.pow (volume, 1.0 / 3.0) / MUL;
+            }
+            
+
             check_icon ();
         }
     }
@@ -63,6 +71,8 @@ public class Cassette.VolumeButton : CustomMenuButton {
         volume_upper = adjustment.upper * MUL;
         volume_lower = adjustment.lower * MUL;
         volume_step = adjustment.step_increment * MUL;
+
+        real_button.direction = Gtk.ArrowType.UP;
 
         Cassette.Client.settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
         Cassette.Client.settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
@@ -113,7 +123,7 @@ public class Cassette.VolumeButton : CustomMenuButton {
             mirror_orientation (orientation),
             0
         ) {
-            height_request = orientation == Gtk.Orientation.HORIZONTAL ? -1 : 230,
+            height_request = orientation == Gtk.Orientation.HORIZONTAL ? -1 : 270,
             valign = orientation == Gtk.Orientation.HORIZONTAL ? Gtk.Align.END : Gtk.Align.FILL
         };
 
@@ -163,9 +173,9 @@ public class Cassette.VolumeButton : CustomMenuButton {
         volume_level_scale.change_value.connect ((range, type, new_val) => {
             var val = new_val * MUL;
 
-            volume = Math.pow (val, 3.0);
-
             mute = false;
+
+            volume = Math.pow (val, 3.0);
 
             if (val < volume_lower || val > volume_upper) {
                 return false;
@@ -178,6 +188,18 @@ public class Cassette.VolumeButton : CustomMenuButton {
             css_classes = { "flat" }
         };
         volume_box.append (volume_second_button);
+
+        var mute_button = new Gtk.Button () {
+            css_classes = { "flat" },
+            icon_name = mute ? "audio-volume-high-symbolic" : "audio-volume-muted-symbolic",
+            tooltip_text = mute ? _("Unmute") : _("Mute")
+        };
+        mute_button.clicked.connect ((button) => {
+            mute = !mute;
+            button.icon_name = mute ? "audio-volume-high-symbolic" : "audio-volume-muted-symbolic";
+            button.tooltip_text = mute ? _("Unmute") : _("Mute");
+        });
+        volume_box.append (mute_button);
 
         if (orientation == Gtk.Orientation.HORIZONTAL) {
             volume_first_button.icon_name = "minus-symbolic";

@@ -22,7 +22,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     [GtkChild]
     unowned Adw.Carousel carousel;
 
-    public bool interactive { get; construct set; } 
+    public bool interactive { get; construct set; }
 
     public uint spacing {
         get {

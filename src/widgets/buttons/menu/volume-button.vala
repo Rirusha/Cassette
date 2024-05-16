@@ -48,7 +48,6 @@ public class Cassette.VolumeButton : CustomMenuButton {
             } else {
                 adjustment.value = Math.pow (volume, 1.0 / 3.0) / MUL;
             }
-            
 
             check_icon ();
         }

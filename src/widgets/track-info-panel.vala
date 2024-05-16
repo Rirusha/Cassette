@@ -74,9 +74,28 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
 
                 cover_image.init_content (track_info);
                 cover_image.load_image.begin ();
-                cover_image.visible = true;
 
                 play_mark_track.init_content (_track_info.id);
+            }
+        }
+    }
+
+
+    public int image_size {
+        get {
+            return cover_image.size;
+        }
+        set {
+            if (value == -1) {
+                if (orientation == Gtk.Orientation.HORIZONTAL) {
+                    cover_image.size = 60;
+
+                } else {
+                    cover_image.size = 200;
+                }
+
+            } else {
+                cover_image.size = value;
             }
         }
     }
@@ -124,7 +143,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                     title_and_marks_box.center_widget = info_marks;
 
                     cover_image.cover_size = CoverSize.SMALL;
-                    cover_image.size = 60;
+                    cover_image.size = image_size == -1 ? 60 : image_size;
                     break;
 
                 case Gtk.Orientation.VERTICAL:
@@ -153,7 +172,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                     title_and_marks_box.end_widget = info_marks;
 
                     cover_image.cover_size = CoverSize.BIG;
-                    cover_image.size = 200;
+                    cover_image.size = image_size == -1 ? 200 : image_size;
                     break;
             }
         }

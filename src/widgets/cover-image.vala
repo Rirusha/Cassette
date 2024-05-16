@@ -33,9 +33,12 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
      * Easy way to set both width and height of the image.
      */
     public int size {
+        get {
+            return real_image.width_request == real_image.height_request ? real_image.height_request : -1;
+        }
         set {
-            width_request = value;
-            height_request = value;
+            real_image.width_request = value;
+            real_image.height_request = value;
         }
     }
 
@@ -59,12 +62,15 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
     }
 
     public void init_content (HasCover yam_object) {
+        real_image.icon_name = "audio-x-generic-symbolic";
         this.yam_object = yam_object;
+        add_css_class ("card");
     }
 
     public void clear () {
-        real_image.icon_name = "audio-x-generic-symbolic";
+        real_image.icon_name = null;
         yam_object = null;
+        remove_css_class ("card");
     }
 
     public async void load_image () {

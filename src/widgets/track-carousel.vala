@@ -82,6 +82,8 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
     uint check_situation_timeout = 0;
     bool is_scrolling_now = false;
 
+    ulong connect_id = 0;
+
     public TrackCarousel (
         Gtk.Orientation orientation
     ) {
@@ -119,7 +121,11 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             );
 
         } else {
-            player.current_track_finish_loading.connect_after (check_situation);
+            connect_id = player.current_track_finish_loading.connect_after (() => {
+                check_situation ();
+                SignalHandler.disconnect (player, connect_id);
+                connect_id = 0;
+            });
         }
 
         bind_property (

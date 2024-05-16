@@ -152,59 +152,7 @@ public class Cassette.Window : ApplicationWindow {
     }
 
     void on_about_action () {
-        const string RIRUSHA = "Rirusha https://github.com/Rirusha";
-        const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
-        const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
-        const string ISSUE_LINK = "https://github.com/Rirusha/Cassette/issues/new";
-
-        string[] developers = {
-            RIRUSHA
-        };
-
-        string[] designers = {
-            RIRUSHA
-        };
-
-        string[] artists = {
-            RIRUSHA,
-            "Arseniy Nechkin <krisgeniusnos@gmail.com>",
-            "NaumovSN",
-        };
-
-        string[] documenters = {
-            RIRUSHA,
-            "Armatik https://github.com/Armatik",
-            "Fiersik https://github.com/fiersik",
-            "Mikazil https://github.com/Mikazil",
-        };
-
-        var about = new Adw.AboutDialog () {
-            application_name = Config.APP_NAME,
-            application_icon = Config.APP_ID_DYN,
-            developer_name = "Rirusha",
-            version = Config.VERSION,
-            developers = developers,
-            designers = designers,
-            artists = artists,
-            documenters = documenters,
-            //  Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-            translator_credits = _("translator-credits"),
-            license_type = Gtk.License.GPL_3_0_ONLY,
-            copyright = "© 2023-2024 Rirusha",
-            support_url = TELEGRAM_CHAT,
-            issue_url = ISSUE_LINK,
-            release_notes_version = Config.VERSION
-        };
-
-        about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
-        about.add_link (_("Financial support (Tinkoff)"), "https://www.tinkoff.ru/cf/21GCxLuFuE9");
-        about.add_link (_("Financial support (Boosty)"), "https://boosty.to/rirusha/donate");
-
-        about.add_acknowledgement_section ("Donaters", {
-            "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium", "Fiersik", "belovmv",
-            "krylov_alexandr", "Spp595", "Mikazil", "Sergey P.", "khaustovdn", "dant4ick", "Nikolai M.",
-            "Toxblh", "Roman Aysin", "IQQator", "𝙰𝚖𝚙𝚎𝚛 𝚂𝚑𝚒𝚣", "kvadrozorro", "Mikhail Postnikov", "eugene_t"
-        });
+        var about = build_about_dialog ();
 
         about.present (this);
     }

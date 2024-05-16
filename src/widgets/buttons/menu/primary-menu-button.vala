@@ -30,7 +30,8 @@ public class Cassette.PrimaryMenuButton : CustomMenuButton {
     protected override MenuItem[] get_popover_menu_items () {
         return {
             {_("Disliked tracks"), "win.show-disliked-tracks", 0},
-            {_("Parse URL from clipboard"), "app.parse-url", 0},
+            {_("Copy current track URL to clipboard"), "app.share-current-track", 2},
+            {_("Parse URL from clipboard"), "app.parse-url", 2},
             {_("Preferences"), "win.preferences", 1},
             {_("Keyboard Shortcuts"), "win.show-help-overlay", 1},
             {_("About Cassette"), "win.about", 1}

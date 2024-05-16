@@ -73,6 +73,17 @@ public class Cassette.VolumeButton : CustomMenuButton {
 
         real_button.direction = Gtk.ArrowType.UP;
 
+        var se = new Gtk.EventControllerScroll (Gtk.EventControllerScrollFlags.VERTICAL);
+        se.scroll.connect ((dx, dy) => {
+            if (dy < 0) {
+                increase_volume ();
+
+            } else {
+                decrease_volume ();
+            }
+        });
+        add_controller (se);
+
         Cassette.Client.settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
         Cassette.Client.settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
     }

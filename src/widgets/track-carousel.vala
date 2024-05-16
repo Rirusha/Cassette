@@ -136,11 +136,9 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
         player.mode_inited.connect (on_player_mode_inited);
 
-        player.next_track_loaded.connect ((track_info) => {
-            update_track_info_panel_right ();
-        });
-
         player.next_track_loaded.connect (check_situation);
+
+        player.current_track_finish_loading.connect (check_situation);
 
         player.notify["shuffle-mode"].connect (check_situation);
         player.notify["repeat-mode"].connect (check_situation);

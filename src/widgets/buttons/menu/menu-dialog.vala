@@ -15,7 +15,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-
 [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/menu-dialog.ui")]
 public class Cassette.MenuDialog : Adw.Dialog {
 

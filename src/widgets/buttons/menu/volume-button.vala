@@ -15,7 +15,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-
 public class Cassette.VolumeButton : CustomMenuButton {
 
     Gtk.Adjustment adjustment = new Gtk.Adjustment (50.0, 0.0, 100.0, 5.0, 5.0, 1.0);

@@ -15,7 +15,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-
 public class Cassette.TrackOptionsButton : CustomMenuButton {
 
     public Client.YaMAPI.Track track_info { get; set; }

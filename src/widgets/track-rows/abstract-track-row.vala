@@ -53,6 +53,8 @@ public abstract class Cassette.TrackRow : Reactable {
     }
 
     public void trigger () {
-        play_mark_track.trigger ();
+        if (track_info.available) {
+            play_mark_track.trigger ();
+        }
     }
 }

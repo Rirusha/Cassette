@@ -262,7 +262,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
                 }
             } else if (position == 0) {
                 if (can_swipe_left) {
-                    player.prev ();
+                    player.prev (true);
 
                 } else {
                     carousel.scroll_to (track_info_panel_center, true);

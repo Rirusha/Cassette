@@ -26,7 +26,8 @@ namespace Cassette {
         const string BOOSTY_SUPPORT_LINK = "https://boosty.to/rirusha/donate";
 
         string[] developers = {
-            RIRUSHA
+            RIRUSHA,
+            "KseBooka https://github.com/KseBooka"
         };
 
         string[] designers = {

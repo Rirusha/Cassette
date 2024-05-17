@@ -21,7 +21,7 @@
                     <child>
                       <object class="CassetteCoverImage" id="cover_image">
                         <property name="cover-size">big</property>
-                        <property name="size">200</property>
+                        <property name="image-widget-size">200</property>
                       </object>
                     </child>
                     <child>

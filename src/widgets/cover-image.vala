@@ -30,9 +30,9 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
     public HasCover yam_object { get; private set; }
 
     /**
-     * Easy way to set both width and height of the image.
+     * Easy way to set both width and height of the cover widget.
      */
-    public int size {
+    public int image_widget_size {
         get {
             return real_image.width_request == real_image.height_request ? real_image.height_request : -1;
         }

@@ -94,16 +94,16 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
     construct {
         carousel.append (new TrackInfoPanel (orientation) {
-            width_request = panels_width,
-            image_size = panels_width
+            image_size_allocate = panels_width,
+            image_actual_size = panels_width
         });
         carousel.append (new TrackInfoPanel (orientation) {
-            width_request = panels_width,
-            image_size = panels_width
+            image_size_allocate = panels_width,
+            image_actual_size = panels_width
         });
         carousel.append (new TrackInfoPanel (orientation) {
-            width_request = panels_width,
-            image_size = panels_width
+            image_size_allocate = panels_width,
+            image_actual_size = panels_width
         });
 
         if (interactive) {
@@ -119,6 +119,47 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
                 "interactive",
                 BindingFlags.DEFAULT | BindingFlags.INVERT_BOOLEAN
             );
+
+            carousel.notify["position"].connect (() => {
+                double size_m_left = 0.9;
+                double size_m_center = 0.9;
+                double size_m_right = 0.9;
+    
+                double mod = carousel.position - (int) carousel.position;
+
+                // near left panel
+                if (carousel.position < 0.5) {
+                    size_m_left = 1.0 - (mod * 0.1);
+                    size_m_center = 0.9 + (mod * 0.1);
+
+                // near center, moving to left
+                } else if (carousel.position < 1.0) {
+                    if (mod > 0.5) {
+                        mod = 1.0 - mod;
+                    }
+
+                    size_m_center = 1.0 - (mod * 0.1);
+                    size_m_left = 0.9 + (mod * 0.1);
+
+                // near center, moving to right
+                } else if (carousel.position < 1.5) {
+                    size_m_center = 1.0 - (mod * 0.1);
+                    size_m_right = 0.9 + (mod * 0.1);
+                    
+                // near right
+                } else {
+                    if (mod > 0.5) {
+                        mod = 1.0 - mod;
+                    }
+
+                    size_m_right = 1.0 - (mod * 0.1);
+                    size_m_center = 0.9 + (mod * 0.1);
+                }
+    
+                track_info_panel_left.image_actual_size = (int) ((double) panels_width * size_m_left);
+                track_info_panel_center.image_actual_size = (int) ((double) panels_width * size_m_center);
+                track_info_panel_right.image_actual_size = (int) ((double) panels_width * size_m_right);
+            });
 
         } else {
             connect_id = player.current_track_finish_loading.connect_after (() => {
@@ -199,15 +240,15 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
         if (carousel.position == 0.0) {
             carousel.remove (track_info_panel_right);
             carousel.insert (new TrackInfoPanel (orientation) {
-                width_request = panels_width,
-                image_size = panels_width
+                image_size_allocate = panels_width,
+                image_actual_size = panels_width
             }, 0);
 
         } else if (carousel.position == 2.0) {
             carousel.remove (track_info_panel_left);
             carousel.insert (new TrackInfoPanel (orientation) {
-                width_request = panels_width,
-                image_size = panels_width
+                image_size_allocate = panels_width,
+                image_actual_size = panels_width
             }, -1);
             carousel.scroll_to (track_info_panel_center, false);
         }

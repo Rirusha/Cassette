@@ -13,9 +13,14 @@ template $CassetteTrackInfoPanel: Adw.Bin {
       StackPage {
         name: "cover";
 
-        child: $CassetteCoverImage cover_image {
-          size: 60;
-          cover-size: 75;
+        child: Adw.Bin cover_bin {
+          halign: center;
+          valign: center;
+
+          $CassetteCoverImage cover_image {
+            image-widget-size: 60;
+            cover-size: 75;
+          }
         };
       }
 

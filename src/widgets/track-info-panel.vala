@@ -34,6 +34,8 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
     [GtkChild]
     unowned Gtk.Box title_box;
     [GtkChild]
+    unowned Adw.Bin cover_bin;
+    [GtkChild]
     unowned Gtk.CenterBox title_and_marks_box;
     [GtkChild]
     unowned Gtk.Label track_name_label;
@@ -80,22 +82,31 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
         }
     }
 
-
-    public int image_size {
+    public int image_size_allocate {
         get {
-            return cover_image.size;
+            return cover_bin.width_request;
+        }
+        construct set {
+            cover_bin.width_request = value;
+            cover_bin.height_request = value;
+        }
+    }
+
+    public int image_actual_size {
+        get {
+            return cover_image.image_widget_size;
         }
         set {
             if (value == -1) {
                 if (orientation == Gtk.Orientation.HORIZONTAL) {
-                    cover_image.size = 60;
+                    cover_image.image_widget_size = 60;
 
                 } else {
-                    cover_image.size = 200;
+                    cover_image.image_widget_size = 200;
                 }
 
             } else {
-                cover_image.size = value;
+                cover_image.image_widget_size = value;
             }
         }
     }
@@ -143,7 +154,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                     title_and_marks_box.center_widget = info_marks;
 
                     cover_image.cover_size = CoverSize.SMALL;
-                    cover_image.size = image_size == -1 ? 60 : image_size;
+                    cover_image.image_widget_size = image_actual_size == -1 ? 60 : image_actual_size;
                     break;
 
                 case Gtk.Orientation.VERTICAL:
@@ -172,7 +183,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                     title_and_marks_box.end_widget = info_marks;
 
                     cover_image.cover_size = CoverSize.BIG;
-                    cover_image.size = image_size == -1 ? 200 : image_size;
+                    cover_image.image_widget_size = image_actual_size == -1 ? 200 : image_actual_size;
                     break;
             }
         }

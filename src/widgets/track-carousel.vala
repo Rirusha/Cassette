@@ -124,7 +124,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
                 double size_m_left = 0.9;
                 double size_m_center = 0.9;
                 double size_m_right = 0.9;
-    
+
                 double mod = carousel.position - (int) carousel.position;
 
                 // near left panel
@@ -145,7 +145,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
                 } else if (carousel.position < 1.5) {
                     size_m_center = 1.0 - (mod * 0.1);
                     size_m_right = 0.9 + (mod * 0.1);
-                    
+
                 // near right
                 } else {
                     if (mod > 0.5) {
@@ -155,7 +155,7 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
                     size_m_right = 1.0 - (mod * 0.1);
                     size_m_center = 0.9 + (mod * 0.1);
                 }
-    
+
                 track_info_panel_left.image_actual_size = (int) ((double) panels_width * size_m_left);
                 track_info_panel_center.image_actual_size = (int) ((double) panels_width * size_m_center);
                 track_info_panel_right.image_actual_size = (int) ((double) panels_width * size_m_right);

@@ -30,8 +30,6 @@ public class Cassette.HeaderBar : ShrinkableBin {
     [GtkChild]
     unowned Adw.ViewSwitcher switcher_title;
     [GtkChild]
-    unowned PrimaryMenuButton menu_button;
-    [GtkChild]
     unowned Gtk.Button avatar_button;
     [GtkChild]
     unowned Adw.Avatar avatar;

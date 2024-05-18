@@ -45,6 +45,9 @@ public abstract class Cassette.PlayMarkDefault : PlayMark, Initable {
             case Client.Player.State.PAUSED:
                 on_player_paused ();
                 break;
+
+            default:
+                break;
         }
     }
 

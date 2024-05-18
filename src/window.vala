@@ -37,8 +37,8 @@ public class Cassette.Window : ApplicationWindow {
     unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
     unowned HeaderBar header_bar;
-    [GtkChild]
-    unowned Gtk.SearchEntry search_entry;
+    //  [GtkChild]
+    //  unowned Gtk.SearchEntry search_entry;
     [GtkChild]
     unowned Adw.Banner info_banner;
     [GtkChild]

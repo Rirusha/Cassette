@@ -26,8 +26,8 @@ namespace Cassette {
         unowned CoverImage cover_image;
         [GtkChild]
         unowned Gtk.Label playlist_title;
-        [GtkChild]
-        unowned Gtk.Label likes_count_label;
+        //  [GtkChild]
+        //  unowned Gtk.Label likes_count_label;
         [GtkChild]
         unowned Gtk.Button self;
         //  [GtkChild]

@@ -42,6 +42,8 @@ public class Cassette.StationsView : BaseView {
     [GtkChild]
     unowned Gtk.FlowBox search_flow_box;
 
+    uint visible_search_childs_n = 0;
+
     public override bool can_refresh { get; default = true; }
 
     construct {
@@ -51,6 +53,7 @@ public class Cassette.StationsView : BaseView {
             var action_card = (ActionCardStation) item.child;
 
             if (search_entry.text.down () in action_card.station_info.name.down ()) {
+                visible_search_childs_n += 1;
                 return true;
             }
 
@@ -63,9 +66,19 @@ public class Cassette.StationsView : BaseView {
     }
 
     async void search_entry_search_changed_async () {
+        visible_search_childs_n = 0;
+
         search_flow_box.invalidate_filter ();
 
-        stack.visible_child_name = search_entry.text == "" ? "default" : "search";
+        if (search_entry.text == "") {
+            stack.visible_child_name = "default";
+
+        } else if (visible_search_childs_n != 0) {
+            stack.visible_child_name = "search";
+        
+        } else {
+            stack.visible_child_name = "no-results";
+        }
     }
 
     void clear_all_boxes () {

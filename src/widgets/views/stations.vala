@@ -75,7 +75,7 @@ public class Cassette.StationsView : BaseView {
 
         } else if (visible_search_childs_n != 0) {
             stack.visible_child_name = "search";
-        
+
         } else {
             stack.visible_child_name = "no-results";
         }

@@ -162,8 +162,8 @@ namespace Cassette {
             add_action_entries (ACTION_ENTRIES, this);
             set_accels_for_action ("app.quit", { "<primary>q" });
             set_accels_for_action ("app.play-pause", { "space" });
-            set_accels_for_action ("app.prev", { "<Ctrl>a" });
-            set_accels_for_action ("app.next", { "<Ctrl>d" });
+            set_accels_for_action ("app.prev", { "<Alt>Left" });
+            set_accels_for_action ("app.next", { "<Alt>Right" });
             set_accels_for_action ("app.change-shuffle", { "<Ctrl>s" });
             set_accels_for_action ("app.change-repeat", { "<Ctrl>r" });
             set_accels_for_action ("app.share-current-track", { "<Ctrl><Shift>c" });

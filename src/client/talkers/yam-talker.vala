@@ -105,7 +105,8 @@ namespace Cassette.Client {
                 storager.db.set_additional_data ("me", me.oid);
                 storager.save_object (me, false);
 
-                get_playlist_info (null, "3");
+                // TODO: replace with lib func
+                get_playlist_info_old (null, "3");
                 get_likes_playlist_list (null);
                 get_disliked_tracks_short ();
 
@@ -131,13 +132,51 @@ namespace Cassette.Client {
             yield;
         }
 
-        public Playlist? get_playlist_info (string? uid = null, string kind = "3") throws BadStatusCodeError {
+        // TODO: remove this
+        public Playlist? get_playlist_info_old (string? uid = null, string kind = "3") throws BadStatusCodeError {
             Playlist? playlist_info = null;
 
             net_run (() => {
                 playlist_info = client.users_playlists_playlist (kind, true, uid);
 
                 if (is_my_liked (uid, kind)) {
+                    likes_controller.update_liked_tracks (playlist_info.tracks);
+                }
+
+                if (playlist_info.tracks.size != 0) {
+                    if (playlist_info.tracks[0].track == null) {
+                        string[] tracks_ids = new string[playlist_info.tracks.size];
+                        for (int i = 0; i < tracks_ids.length; i++) {
+                            tracks_ids[i] = playlist_info.tracks[i].id;
+                        }
+
+                        var track_list = client.tracks (tracks_ids);
+                        playlist_info.set_track_list (track_list);
+                    }
+                }
+
+                // Сохраняет объект, если он не сохранен в data
+                // Постоянными объектами занимается уже Cachier.Job
+                var object_location = storager.object_cache_location (playlist_info.get_type (), playlist_info.oid);
+                if (object_location.is_tmp && settings.get_boolean ("can-cache")) {
+                    storager.save_object (playlist_info, true);
+                    cachier.controller.change_state (
+                        Cachier.ContentType.PLAYLIST,
+                        playlist_info.oid,
+                        Cachier.CacheingState.TEMP);
+                }
+            });
+
+            return playlist_info;
+        }
+
+        public Playlist? get_playlist_info (string playlist_uuid) throws BadStatusCodeError {
+            Playlist? playlist_info = null;
+
+            net_run (() => {
+                playlist_info = client.playlist (playlist_uuid, false, true);
+
+                if (is_my_liked (playlist_info.uid, playlist_info.kind)) {
                     likes_controller.update_liked_tracks (playlist_info.tracks);
                 }
 

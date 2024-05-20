@@ -332,7 +332,7 @@ namespace Cassette {
 
             threader.add (() => {
                 try {
-                    object_info = yam_talker.get_playlist_info (uid, kind);
+                    object_info = yam_talker.get_playlist_info_old (uid, kind);
                 } catch (BadStatusCodeError e) {
                     code = e.code;
                 }

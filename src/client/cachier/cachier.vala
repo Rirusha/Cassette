@@ -92,7 +92,7 @@ namespace Cassette.Client.Cachier {
                         var pl_obj = (YaMAPI.Playlist) obj;
 
                         try {
-                            new_obj = yam_talker.get_playlist_info (pl_obj.uid, pl_obj.kind);
+                            new_obj = yam_talker.get_playlist_info (pl_obj.playlist_uuid);
                         } catch (BadStatusCodeError e) { }
 
                     } else {

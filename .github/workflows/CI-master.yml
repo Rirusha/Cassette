@@ -97,7 +97,7 @@ jobs:
         uses: andyholmes/flatter@main
         with:
           files: |
-            build-aux/flatpak/io.github.Rirusha.Cassette-Devel.json
+            build-aux/flatpak/nightly/io.github.Rirusha.Cassette-Devel.json
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
           upload-bundles: true

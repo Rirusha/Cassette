@@ -79,16 +79,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Flatpak
-        run: |
-          dnf update -y
-          dnf install -y flatpak
-          flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-          flatpak update -y
+      # - name: Set up Flatpak
+      #   run: |
+      #     dnf update -y
+      #     dnf install -y flatpak
+      #     flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+      #     flatpak update -y
 
-      - name: Install org.freedesktop.Sdk.Extension.vala-nightly
-        run: |
-          flatpak install -y org.freedesktop.Sdk.Extension.vala-nightly//23.08
+      # - name: Install org.freedesktop.Sdk.Extension.vala-nightly
+      #   run: |
+      #     flatpak install -y org.freedesktop.Sdk.Extension.vala-nightly//23.08
 
 
       - name: Setup QEMU

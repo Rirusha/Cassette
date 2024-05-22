@@ -3,8 +3,8 @@
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
-    "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.vala"
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.vala-nightly"
     ],
     "command" : "cassette",
     "tags": ["nightly"],
@@ -22,7 +22,11 @@
     ],
     "build-options": {
         "prepend-path" : "/usr/lib/sdk/vala/bin/",
-        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
+        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib",
+        "env": {
+            "FLATPAK_BUILD_SDK_VERSION": "master",
+            "FLATPAK_BUILD_EXTENSION_SDK_VERSION": "23.08"
+        }
     },
     "cleanup" : [
         "/include",

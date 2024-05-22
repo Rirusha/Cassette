@@ -34,6 +34,8 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Stack loading_stack;
         [GtkChild]
+        unowned LoadingSpinner loading_spinner;
+        [GtkChild]
         unowned Gtk.Box lyrics_box;
         [GtkChild]
         unowned Gtk.Box similar_box;

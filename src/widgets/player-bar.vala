@@ -22,6 +22,9 @@ using Cassette.Client;
 namespace Cassette {
     [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/player-bar.ui")]
     public class PlayerBar : Adw.Bin {
+
+        [GtkChild]
+        unowned TrackCarousel track_carousel;
         [GtkChild]
         unowned Gtk.Label current_time_mark;
         [GtkChild]
@@ -32,6 +35,8 @@ namespace Cassette {
         unowned Gtk.Button flow_settings_button;
         [GtkChild]
         unowned Gtk.Button prev_track_button;
+        [GtkChild]
+        unowned PlayMarkGlobal play_mark_global;
         [GtkChild]
         unowned Gtk.Button next_track_button;
         [GtkChild]
@@ -52,6 +57,8 @@ namespace Cassette {
         unowned Gtk.Button fullscreen_button;
         [GtkChild]
         unowned TrackOptionsButton track_options_button;
+        [GtkChild]
+        unowned VolumeButton volume_button;
 
         public Window window { get; construct set; }
 

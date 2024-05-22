@@ -36,8 +36,8 @@ namespace Cassette {
         unowned LikeButton like_button;
         [GtkChild]
         unowned Gtk.Label duration_label;
-        //  [GtkChild]
-        //  unowned TrackOptionsButton track_options_button;
+        [GtkChild]
+        unowned TrackOptionsButton track_options_button;
 
         public YaMAPI.Track track_info { get; construct set; }
 

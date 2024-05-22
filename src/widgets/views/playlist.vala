@@ -54,8 +54,8 @@ namespace Cassette {
         unowned Gtk.Button add_page_button;
         [GtkChild]
         unowned Gtk.Box main_box;
-        //  [GtkChild]
-        //  unowned PlaylistOptionsButton playlist_options_button;
+        [GtkChild]
+        unowned PlaylistOptionsButton playlist_options_button;
         [GtkChild]
         unowned Gtk.Switch visibility_switch;
         [GtkChild]

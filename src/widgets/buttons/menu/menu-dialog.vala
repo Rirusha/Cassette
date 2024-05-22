@@ -19,13 +19,13 @@
 public class Cassette.MenuDialog : Adw.Dialog {
 
     [GtkChild]
-    unowned Adw.Clamp menu_clamp;
+    unowned ShrinkableBin shrinkable_bin;
     [GtkChild]
     unowned Adw.Clamp title_clamp;
     [GtkChild]
-    unowned ShrinkableBin shrinkable_bin;
-    [GtkChild]
     unowned Gtk.ScrolledWindow scrolled_window;
+    [GtkChild]
+    unowned Adw.Clamp menu_clamp;
 
     public Gtk.Widget? menu_widget {
         get {

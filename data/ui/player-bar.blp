@@ -21,7 +21,7 @@ template $CassettePlayerBar: Adw.Bin {
       hexpand: true;
       tooltip-text: _("Show track info");
 
-      $CassetteTrackCarousel {
+      $CassetteTrackCarousel track_carousel {
         interactive: false;
         spacing: 4;
         halign: start;
@@ -99,7 +99,7 @@ template $CassettePlayerBar: Adw.Bin {
             margin-start: 4;
             margin-end: 4;
 
-            $CassettePlayMarkGlobal {}
+            $CassettePlayMarkGlobal play_mark_global {}
           };
 
           end-widget: Box {

@@ -165,7 +165,7 @@
           </object>
         </child>
         <child>
-          <object class="CassetteCustomPagesPreferences"/>
+          <object class="CassetteCustomPagesPreferences" id="custom_pages_preferences"/>
         </child>
       </object>
     </child>

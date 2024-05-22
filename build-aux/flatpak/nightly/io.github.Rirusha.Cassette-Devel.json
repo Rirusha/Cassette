@@ -1,9 +1,13 @@
 {
     "id" : "io.github.Rirusha.Cassette-Devel",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "46",
+    "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.vala-nightly"
+    ],
     "command" : "cassette",
+    "tags": ["nightly"],
     "finish-args" : [
         "--share=network",
         "--share=ipc",
@@ -16,9 +20,9 @@
         "--talk-name=org.mpris.MediaPlayer2.Player",
         "--own-name=org.mpris.MediaPlayer2.cassette"
     ],
-    "build-options" : {
-        "append-path" : "/usr/lib/sdk/vala/bin",
-        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
+    "build-options": {
+        "prepend-path": "/usr/lib/sdk/vala-nightly/bin/",
+        "prepend-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
     },
     "cleanup" : [
         "/include",

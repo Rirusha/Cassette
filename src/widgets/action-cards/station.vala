@@ -18,8 +18,8 @@
 
 [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/action-card-station.ui")]
 /**
-    * A class for convenient work with clickable cards.
-    */
+ * A class for convenient work with clickable cards.
+ */
 public class Cassette.ActionCardStation : ActionCardCustom {
 
     [GtkChild]

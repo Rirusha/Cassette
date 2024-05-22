@@ -28,9 +28,9 @@ namespace Cassette {
         [GtkChild]
         unowned SaveStack save_stack;
         [GtkChild]
-        unowned LikeButton like_button;
-        [GtkChild]
         unowned DislikeButton dislike_button;
+        [GtkChild]
+        unowned LikeButton like_button;
         [GtkChild]
         unowned Gtk.Label duration_label;
         [GtkChild]

@@ -47,6 +47,8 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.SwitchRow show_playlists_switch;
         [GtkChild]
+        unowned CustomPagesPreferences custom_pages_preferences;
+        [GtkChild]
         unowned Adw.SwitchRow can_cache_switch;
         [GtkChild]
         unowned Adw.SpinRow max_thread_number_spin;

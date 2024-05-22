@@ -25,6 +25,8 @@ public class Cassette.DevelView : BaseView {
     unowned Gtk.Button stations_view_button;
     [GtkChild]
     unowned Gtk.ScrolledWindow scrolled_window;
+    [GtkChild]
+    unowned TrackCarousel track_carousel;
 
     construct {
         stations_view_button.clicked.connect (() => {

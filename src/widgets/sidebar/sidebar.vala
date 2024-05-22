@@ -22,8 +22,13 @@ using Gee;
 namespace Cassette {
     [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/sidebar.ui")]
     public class SideBar : ShrinkableBin {
+
         [GtkChild]
         unowned Adw.OverlaySplitView root_flap;
+        [GtkChild]
+        unowned PrimaryMenuButton menu_button;
+        [GtkChild]
+        unowned CacheIndicator cache_indicator;
         [GtkChild]
         public unowned Gtk.ScrolledWindow sidebar_content;
 

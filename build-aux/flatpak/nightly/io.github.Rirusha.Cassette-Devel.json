@@ -4,7 +4,7 @@
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.vala-nightly//23.08"
+        "org.freedesktop.Sdk.Extension.vala"
     ],
     "command" : "cassette",
     "tags": ["nightly"],
@@ -21,8 +21,8 @@
         "--own-name=org.mpris.MediaPlayer2.cassette"
     ],
     "build-options": {
-        "prepend-path": "/usr/lib/sdk/vala-nightly/bin/",
-        "prepend-ld-library-path": "/usr/lib/sdk/vala-nightly/lib"
+        "prepend-path" : "/usr/lib/sdk/vala/bin/",
+        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
     },
     "cleanup" : [
         "/include",

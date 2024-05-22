@@ -66,7 +66,7 @@ jobs:
     needs: checkers
 
     container:
-      image: ghcr.io/andyholmes/flatter/gnome:46
+      image: ghcr.io/andyholmes/flatter/gnome:master
       options: --privileged
 
     strategy:

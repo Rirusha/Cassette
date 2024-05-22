@@ -74,7 +74,7 @@ jobs:
     needs: checkers
 
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-46
+      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
       options: --privileged
 
     steps:

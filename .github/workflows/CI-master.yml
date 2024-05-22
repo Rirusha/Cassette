@@ -81,14 +81,14 @@ jobs:
 
       - name: Set up Flatpak
         run: |
-          sudo apt-get update
-          sudo apt-get install -y flatpak
-          sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          sudo flatpak update
+          dnf update -y
+          dnf install -y flatpak
+          flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+          flatpak update
 
       - name: Install org.freedesktop.Sdk.Extension.vala-nightly
         run: |
-          flatpak install -y org.freedesktop.Sdk.Extension.vala-nightly
+          flatpak install -y org.freedesktop.Sdk.Extension.vala-nightly//23.08
 
 
       - name: Setup QEMU

@@ -4,7 +4,6 @@
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "cassette",
-    "tags": ["nightly"],
     "finish-args" : [
         "--share=network",
         "--share=ipc",
@@ -17,13 +16,9 @@
         "--talk-name=org.mpris.MediaPlayer2.Player",
         "--own-name=org.mpris.MediaPlayer2.cassette"
     ],
-    "build-options": {
-        "prepend-path" : "/usr/lib/sdk/vala/bin/",
-        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib",
-        "env": {
-            "FLATPAK_BUILD_SDK_VERSION": "master",
-            "FLATPAK_BUILD_EXTENSION_SDK_VERSION": "23.08"
-        }
+    "build-options" : {
+        "append-path" : "/usr/lib/sdk/vala/bin",
+        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
     },
     "cleanup" : [
         "/include",

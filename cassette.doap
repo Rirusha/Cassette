@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">Cassette</name>
+  <name xml:lang="es">Casete</name>
+  <name xml:lang="fr">Cassette</name>
+  <name xml:lang="de">Kassette</name>
+  <name xml:lang="it">Cassetta</name>
+  <name xml:lang="pt">Cassete</name>
+  <name xml:lang="ru">Кассета</name>
+  <name xml:lang="ja">カセット</name>
+  <name xml:lang="zh">磁带</name>
+  <name xml:lang="ar">كاسيت</name>
+  <name xml:lang="hi">कैसेट</name>
+  <name xml:lang="ko">카세트</name>
+  <name xml:lang="tr">Kaset</name>
+  <name xml:lang="he">קסטה</name>
+  <name xml:lang="el">Κασέτα</name>
+  <name xml:lang="nl">Cassette</name>
+  <name xml:lang="sv">Kassett</name>
+  <name xml:lang="pl">Kaseta</name>
+  <name xml:lang="cs">Kazeta</name>
+  <name xml:lang="da">Kassette</name>
+  <name xml:lang="fi">Kasetti</name>
+  <name xml:lang="hu">Kazetta</name>
+  <name xml:lang="th">เทปคาสเซ็ท</name>
+
+  <shortdesc xml:lang="en">Unofficial Yandex.Music client</shortdesc>
+  <shortdesc xml:lang="es">Cliente no oficial de Yandex.Music</shortdesc>
+  <shortdesc xml:lang="fr">Client non officiel de Yandex.Music</shortdesc>
+  <shortdesc xml:lang="de">Inoffizieller Yandex.Music-Client</shortdesc>
+  <shortdesc xml:lang="it">Client non ufficiale di Yandex.Music</shortdesc>
+  <shortdesc xml:lang="pt">Cliente não oficial do Yandex.Music</shortdesc>
+  <shortdesc xml:lang="ru">Неофициальный клиент Яндекс.Музыки</shortdesc>
+  <shortdesc xml:lang="ja">非公式のYandex.Musicクライアント</shortdesc>
+  <shortdesc xml:lang="zh">非官方的Yandex.Music客户端</shortdesc>
+  <shortdesc xml:lang="ar">عميل غير رسمي لـ Yandex.Music</shortdesc>
+  <shortdesc xml:lang="hi">अनौपचारिक Yandex.Music क्लाइंट</shortdesc>
+  <shortdesc xml:lang="ko">비공식 Yandex.Music 클라이언트</shortdesc>
+  <shortdesc xml:lang="tr">Resmi olmayan Yandex.Music istemcisi</shortdesc>
+  <shortdesc xml:lang="he">לקוח לא רשמי של Yandex.Music</shortdesc>
+  <shortdesc xml:lang="el">Ανεπίσημος πελάτης του Yandex.Music</shortdesc>
+  <shortdesc xml:lang="nl">Onofficiële Yandex.Music-client</shortdesc>
+  <shortdesc xml:lang="sv">Inofficiell Yandex.Music-klient</shortdesc>
+  <shortdesc xml:lang="pl">Nieoficjalny klient Yandex.Music</shortdesc>
+  <shortdesc xml:lang="cs">Neoficiální klient Yandex.Music</shortdesc>
+  <shortdesc xml:lang="da">Uofficiel Yandex.Music-klient</shortdesc>
+  <shortdesc xml:lang="fi">Epävirallinen Yandex.Music-asiakas</shortdesc>
+  <shortdesc xml:lang="hu">Nem hivatalos Yandex.Music kliens</shortdesc>
+  <shortdesc xml:lang="th">ไคลเอนต์ Yandex.Music อย่างไม่เป็นทางการ</shortdesc>
+
+  <description>
+    GTK/Adwaita application that allows you to use Yandex Music service on Linux operating systems
+  </description>
+  <homepage rdf:resource="https://github.com/Rirusha/Cassette" />
+  <download-page rdf:resource="https://github.com/Rirusha/Cassette/tags" />
+  <bug-database rdf:resource="https://github.com/Rirusha/Cassette/issues" />
+
+  <programming-language>Vala</programming-language>
+  <platform>GTK 4</platform>
+  <platform>Libadwaita</platform>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Vladimir Vaskov</foaf:name>
+      <foaf:mbox rdf:resource="mailto:rirusha@altlinux.org" />
+       <foaf:account>
+        <foaf:OnlineAccount>
+          <foaf:accountServiceHomepage rdf:resource="https://github.com"/>
+          <foaf:accountName>Rirusha</foaf:accountName>
+        </foaf:OnlineAccount>
+      </foaf:account>
+    </foaf:Person>
+  </maintainer>
+
+</Project>

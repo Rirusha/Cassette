@@ -15,13 +15,56 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using Gee;
+
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/sidebar.ui")]
+public class Cassette.Sidebar {
+
+    [GtkChild]
+    unowned Adw.OverlaySplitView overlay_split_view;
+    [GtkChild]
+    unowned Adw.ToolbarView toolbar_view;
+    [GtkChild]
+    unowned PrimaryMenuButton menu_button;
+    [GtkChild]
+    unowned CacheIndicator cache_indicator;
+
+    public Gtk.Widget content {
+        get {
+            return toolbar_view.content;
+        }
+        set {
+            toolbar_view.content = value;
+
+            is_shown = value != null;
+        }
+    }
+
+    public bool is_shown { get; set; }
+
+    public bool collapsed { get; set; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 using Cassette.Client;
 using Gee;
 
 namespace Cassette {
     [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/sidebar.ui")]
-    public class SideBar : ShrinkableBin {
+    public class SideBar2 : ShrinkableBin {
 
         [GtkChild]
         unowned Adw.OverlaySplitView root_flap;

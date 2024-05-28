@@ -136,8 +136,8 @@ namespace Cassette {
 
             Idle.add_once (() => {
                 window.window_sidebar.notify["track-detailed"].connect (() => {
-                    if (window.window_sidebar.track_detailed != null && current_track_info != null) {
-                        if (window.window_sidebar.track_detailed.track_info.id == current_track_info.id) {
+                    if (current_track_info != null) {
+                        if (window.window_sidebar.child_id == current_track_info.id) {
                             track_detailed_button.remove_css_class ("flat");
                             return;
                         }
@@ -154,7 +154,7 @@ namespace Cassette {
                 });
 
                 window.window_sidebar.notify["track-list"].connect (() => {
-                    if (window.window_sidebar.track_list == null) {
+                    if (window.window_sidebar.child_id == "queue") {
                         queue_show_button.add_css_class ("flat");
                     } else {
                         queue_show_button.remove_css_class ("flat");
@@ -194,12 +194,10 @@ namespace Cassette {
 
             current_track_info = new_track;
 
-            if (window.window_sidebar.track_detailed != null) {
-                if (current_track_info.id == window.window_sidebar.track_detailed.track_info.id) {
-                    track_detailed_button.remove_css_class ("flat");
-                } else {
-                    track_detailed_button.add_css_class ("flat");
-                }
+            if (current_track_info.id == window.window_sidebar.child_id) {
+                track_detailed_button.remove_css_class ("flat");
+            } else {
+                track_detailed_button.add_css_class ("flat");
             }
 
             var adjustment = slider.get_adjustment ();

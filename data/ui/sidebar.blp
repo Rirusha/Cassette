@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteSideBar: $CassetteShrinkableBin {
+template $CassetteSidebar: $CassetteShrinkableBin {
   shrink-edge-width: 720;
   collapsed: bind overlay_split_view.collapsed;
   is-shown: bind overlay_split_view.show-sidebar bidirectional;
@@ -28,6 +28,8 @@ template $CassetteSideBar: $CassetteShrinkableBin {
           icon-name: "go-next-symbolic";
           action-name: "win.close-sidebar";
         }
+
+        title-widget: Adw.WindowTitle window_title {};
 
         [end]
         $CassettePrimaryMenuButton menu_button {}

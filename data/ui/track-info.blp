@@ -1,167 +1,166 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteTrackInfo: Adw.Bin {
-  Box {
-    margin-top: 12;
-    margin-bottom: 12;
-    margin-start: 12;
-    margin-end: 12;
-    orientation: vertical;
-    spacing: 8;
+template $CassetteTrackInfo: $CassetteSidebarChildBin {
+  ScrolledWindow {
+    propagate-natural-height: true;
+    hscrollbar-policy: never;
 
-    Label track_type_label {
-      styles [
-        "title-3"
-      ]
-    }
-
-    $CassetteTrackInfoPanel info_panel {
+    Box {
+      margin-top: 12;
+      margin-bottom: 12;
+      margin-start: 12;
+      margin-end: 12;
       orientation: vertical;
-      margin-bottom: 8;
-    }
+      spacing: 8;
 
-    CenterBox {
-      center-widget: CenterBox {
-        start-widget: $CassetteDislikeButton dislike_button {
-          styles [
-            "flat",
-            "circular"
-          ]
+      $CassetteTrackInfoPanel info_panel {
+        orientation: vertical;
+        margin-bottom: 8;
+      }
 
-          object-content-type: track;
-          margin-end: 4;
+      CenterBox {
+        center-widget: CenterBox {
+          start-widget: $CassetteDislikeButton dislike_button {
+            styles [
+              "flat",
+              "circular"
+            ]
+
+            object-content-type: track;
+            margin-end: 4;
+          };
+
+          center-widget: Button play_button {
+            styles [
+              "suggested-action",
+              "pill"
+            ]
+
+            vexpand: true;
+            valign: center;
+
+            $CassettePlayMarkTrack play_mark_track {}
+          };
+
+          end-widget: $CassetteLikeButton like_button {
+            styles [
+              "flat",
+              "circular"
+            ]
+
+            object-content-type: track;
+            margin-start: 4;
+          };
         };
 
-        center-widget: Button play_button {
-          styles [
-            "suggested-action",
-            "pill"
-          ]
+        end-widget: Box {
+          halign: end;
+          spacing: 4;
+          margin-end: 8;
 
-          vexpand: true;
-          valign: center;
+          $CassetteSaveStack save_stack {
+            hexpand: false;
+            content-type: track;
+          }
 
-          $CassettePlayMarkTrack play_mark_track {}
-        };
+          $CassetteTrackOptionsButton track_options_button {
+            styles [
+              "flat"
+            ]
 
-        end-widget: $CassetteLikeButton like_button {
-          styles [
-            "flat",
-            "circular"
-          ]
-
-          object-content-type: track;
-          margin-start: 4;
-        };
-      };
-
-      end-widget: Box {
-        halign: end;
-        spacing: 4;
-        margin-end: 8;
-
-        $CassetteSaveStack save_stack {
-          hexpand: false;
-          content-type: track;
-        }
-
-        $CassetteTrackOptionsButton track_options_button {
-          styles [
-            "flat"
-          ]
-
-          hexpand: false;
-          valign: center;
-        }
-      };
-    }
-
-    Stack loading_stack {
-      StackPage {
-        name: "loading";
-
-        child: $CassetteLoadingSpinner loading_spinner {
-          size: 24;
+            hexpand: false;
+            valign: center;
+          }
         };
       }
 
-      StackPage {
-        name: "loaded";
+      Stack loading_stack {
+        StackPage {
+          name: "loading";
 
-        child: Box {
-          orientation: vertical;
+          child: $CassetteLoadingSpinner loading_spinner {
+            size: 24;
+          };
+        }
 
-          Box lyrics_box {
+        StackPage {
+          name: "loaded";
+
+          child: Box {
             orientation: vertical;
-            spacing: 12;
-            margin-top: 16;
 
-            Label {
-              styles [
-                "title-3"
-              ]
-
-              label: _("Track lyrics");
-            }
-
-            $CassetteLyricsPanel lyrics_panel {}
-
-            Box {
+            Box lyrics_box {
               orientation: vertical;
+              spacing: 12;
+              margin-top: 16;
 
               Label {
                 styles [
-                  "caption-heading"
+                  "title-3"
                 ]
 
-                halign: start;
-                label: _("Authors");
+                label: _("Track lyrics");
               }
 
-              Label writers_label {
-                styles [
-                  "caption"
-                ]
+              $CassetteLyricsPanel lyrics_panel {}
 
-                halign: start;
-                wrap: true;
+              Box {
+                orientation: vertical;
+
+                Label {
+                  styles [
+                    "caption-heading"
+                  ]
+
+                  halign: start;
+                  label: _("Authors");
+                }
+
+                Label writers_label {
+                  styles [
+                    "caption"
+                  ]
+
+                  halign: start;
+                  wrap: true;
+                }
+
+                Label {
+                  styles [
+                    "caption-heading"
+                  ]
+
+                  halign: start;
+                  label: _("Source");
+                }
+
+                Label major_label {
+                  styles [
+                    "caption"
+                  ]
+
+                  halign: start;
+                  wrap: true;
+                }
               }
+            }
+
+            Box similar_box {
+              orientation: vertical;
+              margin-top: 16;
 
               Label {
                 styles [
-                  "caption-heading"
+                  "title-3"
                 ]
 
-                halign: start;
-                label: _("Source");
-              }
-
-              Label major_label {
-                styles [
-                  "caption"
-                ]
-
-                halign: start;
-                wrap: true;
+                label: _("Similar tracks");
+                margin-bottom: 16;
               }
             }
-          }
-
-          Box similar_box {
-            orientation: vertical;
-            margin-top: 16;
-
-            Label {
-              styles [
-                "title-3"
-              ]
-
-              label: _("Similar tracks");
-              margin-bottom: 16;
-            }
-          }
-        };
+          };
+        }
       }
     }
   }

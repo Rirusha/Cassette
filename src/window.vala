@@ -32,7 +32,7 @@ public class Cassette.Window : ApplicationWindow {
     [GtkChild]
     unowned Adw.ToolbarView player_bar_toolbar;
     [GtkChild]
-    unowned SideBar sidebar;
+    unowned Sidebar sidebar;
     [GtkChild]
     unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
@@ -88,7 +88,7 @@ public class Cassette.Window : ApplicationWindow {
         }
     }
 
-    public SideBar window_sidebar {
+    public Sidebar window_sidebar {
         get {
             return sidebar;
         }

@@ -50,10 +50,10 @@ cassette_gui_sources = files(
   'widgets/shrinkable/bin.vala',
 
   'widgets/sidebar/childs/history.vala',
-  'widgets/sidebar/childs/interface-sidebar-child.vala',
   'widgets/sidebar/childs/queue.vala',
   'widgets/sidebar/childs/track-info.vala',
   'widgets/sidebar/childs/wave-settings.vala',
+  'widgets/sidebar/abstract-sidebar-child.vala',
   'widgets/sidebar/sidebar.vala',
 
   'widgets/track-list/track-list.vala',

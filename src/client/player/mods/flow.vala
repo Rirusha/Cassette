@@ -146,6 +146,14 @@ public class Cassette.Client.Player.Flow : Mode {
                 break;
 
             case RepeatMode.ONE:
+                if (!consider_repeat_mode) {
+                    if (index + 1 == queue.size) {
+                        index = -1;
+    
+                    } else {
+                        index++;
+                    }
+                }
                 break;
 
             default:

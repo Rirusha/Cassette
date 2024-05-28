@@ -3,9 +3,10 @@ using Adw 1;
 
 template $CassetteSideBar: $CassetteShrinkableBin {
   shrink-edge-width: 720;
-  collapsed: bind root_flap.collapsed;
+  collapsed: bind overlay_split_view.collapsed;
+  is-shown: bind overlay_split_view.show-sidebar bidirectional;
 
-  Adw.OverlaySplitView root_flap {
+  Adw.OverlaySplitView overlay_split_view {
     show-sidebar: false;
     sidebar-position: end;
     collapsed: false;
@@ -15,7 +16,7 @@ template $CassetteSideBar: $CassetteShrinkableBin {
     max-sidebar-width: 450;
 
     [sidebar]
-    Adw.ToolbarView {
+    Adw.ToolbarView toolbar_view {
       top-bar-style: flat;
 
       [top]
@@ -34,11 +35,6 @@ template $CassetteSideBar: $CassetteShrinkableBin {
         [end]
         $CassetteCacheIndicator cache_indicator {}
       }
-
-      content: Gtk.ScrolledWindow sidebar_content {
-        hscrollbar-policy: never;
-        hexpand: false;
-      };
     }
   }
 }

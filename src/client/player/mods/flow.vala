@@ -139,7 +139,7 @@ public class Cassette.Client.Player.Flow : Mode {
             case RepeatMode.OFF:
                 if (index + 1 == queue.size) {
                     index = -1;
-        
+
                 } else {
                     index++;
                 }

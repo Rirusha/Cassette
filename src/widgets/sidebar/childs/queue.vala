@@ -17,5 +17,8 @@
 
 public class Cassette.PlayerQueue : SidebarChildBin {
 
-
+    construct {
+        title = _("Queue");
+        child_id = "queue";
+    }
 }

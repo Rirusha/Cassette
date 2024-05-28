@@ -32,13 +32,18 @@ public class Cassette.Sidebar : ShrinkableBin {
     [GtkChild]
     unowned CacheIndicator cache_indicator;
 
-    public string child_id {
+    public string child_id { get; set; }
+
+    public Gtk.Widget content {
         get {
-            return content.child_id;
+            return overlay_split_view.content;
+        }
+        set {
+            overlay_split_view.content = value;
         }
     }
 
-    public SidebarChildBin content {
+    public SidebarChildBin sidebar_child {
         get {
             return (SidebarChildBin) toolbar_view.content;
         }
@@ -46,10 +51,11 @@ public class Cassette.Sidebar : ShrinkableBin {
             toolbar_view.content = value;
 
             if (value != null) {
-                window_title.title = value.title;
-                window_title.subtitle = value.subtitle;
+                value.bind_property ("title", window_title, "title", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+                value.bind_property ("subtitle", window_title, "subtitle", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
             }
 
+            child_id = value != null ? value.child_id : "";
             is_shown = value != null;
         }
     }
@@ -59,22 +65,22 @@ public class Cassette.Sidebar : ShrinkableBin {
     public bool collapsed { get; set; }
 
     public void close () {
-        content = null;
+        sidebar_child = null;
     }
 
     public void show_track_info (YaMAPI.Track track_info) {
-        content = null;
+        sidebar_child = null;
 
         if (track_info.available) {
-            content = new TrackInfo (track_info);
+            sidebar_child = new TrackInfo (track_info);
         }
     }
 
     public void show_queue () {
-        content = null;
+        sidebar_child = null;
 
         if (player.mode is Player.TrackList) {
-            content = new PlayerQueue ();
+            sidebar_child = new PlayerQueue ();
         }
     }
 }

@@ -135,7 +135,7 @@ namespace Cassette {
             on_shuffle_mode_changed ();
 
             Idle.add_once (() => {
-                window.window_sidebar.notify["track-detailed"].connect (() => {
+                window.window_sidebar.notify["child-id"].connect (() => {
                     if (current_track_info != null) {
                         if (window.window_sidebar.child_id == current_track_info.id) {
                             track_detailed_button.remove_css_class ("flat");
@@ -153,8 +153,8 @@ namespace Cassette {
                     }
                 });
 
-                window.window_sidebar.notify["track-list"].connect (() => {
-                    if (window.window_sidebar.child_id == "queue") {
+                window.window_sidebar.notify["child-id"].connect (() => {
+                    if (window.window_sidebar.child_id != "queue") {
                         queue_show_button.add_css_class ("flat");
                     } else {
                         queue_show_button.remove_css_class ("flat");

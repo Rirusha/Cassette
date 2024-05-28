@@ -404,6 +404,11 @@ public class Cassette.Client.Player.Player : Object {
     }
 
     void next_natural () {
+        if (mode.current_index == mode.get_next_index (true)) {
+            seek (0);
+            return;
+        }
+
         track_stop (true);
 
         mode.next (true);
@@ -426,16 +431,17 @@ public class Cassette.Client.Player.Player : Object {
     public void prev (bool ignore_progress = false) {
         if (playback_pos_sec > 3.0 && !ignore_progress) {
             seek (0);
+            return;
 
-        } else {
-            track_stop (false);
-
-            mode.prev ();
-
-            start_current_track.begin (() => {
-                ready_play_prev ();
-            });
         }
+
+        track_stop (false);
+
+        mode.prev ();
+
+        start_current_track.begin (() => {
+            ready_play_prev ();
+        });
     }
 
     public void change_track (YaMAPI.Track track_info) {

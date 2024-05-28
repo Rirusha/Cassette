@@ -131,11 +131,17 @@ namespace Cassette {
     public static void roll_repeat_mode () {
         switch (player.repeat_mode) {
             case Player.RepeatMode.OFF:
-                player.repeat_mode = Player.RepeatMode.QUEUE;
+                if (player.mode is Player.Flow) {
+                    player.repeat_mode = Player.RepeatMode.ONE;
+                } else {
+                    player.repeat_mode = Player.RepeatMode.QUEUE;
+                }
                 break;
+
             case Player.RepeatMode.QUEUE:
                 player.repeat_mode = Player.RepeatMode.ONE;
                 break;
+
             case Player.RepeatMode.ONE:
                 player.repeat_mode = Player.RepeatMode.OFF;
                 break;

@@ -135,22 +135,25 @@ public class Cassette.Client.Player.Flow : Mode {
     public override int get_next_index (bool consider_repeat_mode) {
         var index = current_index;
 
-        if (index + 1 == queue.size) {
-            index = -1;
+        switch (player.repeat_mode) {
+            case RepeatMode.OFF:
+                if (index + 1 == queue.size) {
+                    index = -1;
+        
+                } else {
+                    index++;
+                }
+                break;
 
-        } else {
-            index++;
+            case RepeatMode.ONE:
+                break;
+
+            default:
+                Logger.error ("Flow with `RepeatMode.QUEUE unsupported");
+                break;
         }
 
         return index;
-    }
-
-    public override void next (bool consider_repeat_mode) {
-        var new_index = get_next_index (consider_repeat_mode);
-
-        if (new_index != -1) {
-            current_index = new_index;
-        }
     }
 
     public void prepare_next_track () {

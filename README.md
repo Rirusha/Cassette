@@ -115,12 +115,12 @@ flatpak remote-delete cassette-nightly
 
 #### yay
 ```shell
-yay -S cassette-dev
+yay -S cassette-git
 ```
 
 #### pamac
 ```shell
-pamac install cassette-dev
+pamac install cassette-git
 ```
 
 ## Установка в Windows

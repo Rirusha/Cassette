@@ -87,11 +87,12 @@ flatpak install io.github.Rirusha.Cassette
 > Данная версия собирается и обновляется при каждом изменение в коде, поэтому может оказаться нестабильной.
 
 ### Flatpak
-<!-- #### Подключаем репозиторий `gnome-nightly` и устанавливаем GNOME Platform:
+
+#### Подключаем репозиторий `gnome-nightly` и устанавливаем GNOME Platform:
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 flatpak install gnome-nightly org.gnome.Platform//master
-``` -->
+```
 
 #### Подключаем Nightly репозиторий и устанавливаем приложение:
 ```shell
@@ -199,22 +200,22 @@ sudo ninja -C builddir uninstall
 
 ### Зависимости
 
-<!-- #### репозиторий [gnome-nightly](https://wiki.gnome.org/Apps/Nightly):
+#### репозиторий [gnome-nightly](https://wiki.gnome.org/Apps/Nightly):
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-``` -->
+```
 
 #### Для запуска
-`org.gnome.Platform//46`
+`org.gnome.Platform//master`
 ```shell
-flatpak install org.gnome.Platform//46 
+flatpak install org.gnome.Platform//master
 ```
 
 #### Для сборки
-`org.gnome.Sdk//46` \
-`org.freedesktop.Sdk.Extension.vala//23.08`
+`org.gnome.Sdk//master` \
+`org.freedesktop.Sdk.Extension.vala//23.08beta`
 ```shell
-flatpak install org.gnome.Sdk//46 org.freedesktop.Sdk.Extension.vala//23.08
+flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala//23.08beta
 ```
 
 

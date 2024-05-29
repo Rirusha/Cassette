@@ -87,11 +87,12 @@ flatpak install io.github.Rirusha.Cassette
 > Данная версия собирается и обновляется при каждом изменение в коде, поэтому может оказаться нестабильной.
 
 ### Flatpak
-<!-- #### Подключаем репозиторий `gnome-nightly` и устанавливаем GNOME Platform:
+
+#### Подключаем репозиторий `gnome-nightly` и устанавливаем GNOME Platform:
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 flatpak install gnome-nightly org.gnome.Platform//master
-``` -->
+```
 
 #### Подключаем Nightly репозиторий и устанавливаем приложение:
 ```shell
@@ -114,12 +115,12 @@ flatpak remote-delete cassette-nightly
 
 #### yay
 ```shell
-yay -S cassette-dev
+yay -S cassette-git
 ```
 
 #### pamac
 ```shell
-pamac install cassette-dev
+pamac install cassette-git
 ```
 
 ## Установка в Windows
@@ -130,8 +131,8 @@ pamac install cassette-dev
 ## Сборка из исходного кода
 
 #### Зависимости:
-* `gtk4`, version >= 4.14
-* `libadwaita-1`, version >= 1.5
+* `gtk4`, version: `>= 4.14`
+* `libadwaita-1`, version: `>= 1.5`
 * `libsoup-3.0`
 * `gdk-pixbuf-2.0`
 * `json-glib-1.0`
@@ -140,7 +141,8 @@ pamac install cassette-dev
 * `libxml-2.0`
 * `gstreamer-1.0`
 * `webkitgtk-6.0`
-* `gio-2.0`, version: '>= 2.72'
+* `gio-2.0`, version: `>= 2.72`
+* `git`, только для `devel`
 
 #### Утилиты для сборки:
 * `meson`
@@ -199,22 +201,22 @@ sudo ninja -C builddir uninstall
 
 ### Зависимости
 
-<!-- #### репозиторий [gnome-nightly](https://wiki.gnome.org/Apps/Nightly):
+#### репозиторий [gnome-nightly](https://wiki.gnome.org/Apps/Nightly):
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-``` -->
+```
 
 #### Для запуска
-`org.gnome.Platform//46`
+`org.gnome.Platform//master`
 ```shell
-flatpak install org.gnome.Platform//46 
+flatpak install org.gnome.Platform//master
 ```
 
 #### Для сборки
-`org.gnome.Sdk//46` \
-`org.freedesktop.Sdk.Extension.vala//23.08`
+`org.gnome.Sdk//master` \
+`org.freedesktop.Sdk.Extension.vala//23.08beta`
 ```shell
-flatpak install org.gnome.Sdk//46 org.freedesktop.Sdk.Extension.vala//23.08
+flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala//23.08beta
 ```
 
 

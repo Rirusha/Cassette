@@ -60,11 +60,11 @@ sudo flatpak install io.github.Rirusha.Cassette
 
 #### В терминале Ubuntu:
 
-<!-- Подключаем репоизторий `gnome-nightly`:
+Подключаем репоизторий `gnome-nightly`:
 
 ```shell
 sudo flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-``` -->
+```
 
 Подключаем репозиторий `cassette-nightly`:
 
@@ -75,7 +75,7 @@ sudo flatpak remote-add --if-not-exists cassette-nightly https://rirusha.github.
 Устанавливаем зависимости и приложение:
 
 ```shell
-sudo flatpak install org.gnome.Platform//46
+sudo flatpak install org.gnome.Platform//master
 sudo flatpak install cassette-nightly io.github.Rirusha.Cassette-Devel
 ```
 
@@ -84,4 +84,3 @@ sudo flatpak install cassette-nightly io.github.Rirusha.Cassette-Devel
 > ```shell
 > flatpak run io.github.Rirusha.Cassette-Devel
 > ```
-

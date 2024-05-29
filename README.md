@@ -131,8 +131,8 @@ pamac install cassette-git
 ## Сборка из исходного кода
 
 #### Зависимости:
-* `gtk4`, version >= 4.14
-* `libadwaita-1`, version >= 1.5
+* `gtk4`, version: `>= 4.14`
+* `libadwaita-1`, version: `>= 1.5`
 * `libsoup-3.0`
 * `gdk-pixbuf-2.0`
 * `json-glib-1.0`
@@ -141,7 +141,8 @@ pamac install cassette-git
 * `libxml-2.0`
 * `gstreamer-1.0`
 * `webkitgtk-6.0`
-* `gio-2.0`, version: '>= 2.72'
+* `gio-2.0`, version: `>= 2.72`
+* `git`, только для `devel`
 
 #### Утилиты для сборки:
 * `meson`

@@ -289,6 +289,10 @@ public class Cassette.Client.Player.Player : Object {
     ) {
         stop ();
 
+        if (repeat_mode == RepeatMode.QUEUE) {
+            repeat_mode = RepeatMode.OFF;
+        }
+
         var flow = new Flow (
             this,
             station_id,

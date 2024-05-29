@@ -17,7 +17,7 @@
 
 public class Cassette.VolumeButton : CustomMenuButton {
 
-    Gtk.Adjustment adjustment = new Gtk.Adjustment (50.0, 0.0, 100.0, 5.0, 5.0, 1.0);
+    Gtk.Adjustment adjustment;
 
     double _volume;
     public double volume {
@@ -63,12 +63,17 @@ public class Cassette.VolumeButton : CustomMenuButton {
     double volume_lower;
     double volume_step;
 
+    double adjustment_actual_upper = 100.0;
+    double adjustment_actual_lower = 0.0;
+
     construct {
+        adjustment = new Gtk.Adjustment (50.0, adjustment_actual_lower, adjustment_actual_upper + 1.0, 5.0, 5.0, 1.0);
+
         add_css_class ("flat");
         icon_name = "audio-volume-high-symbolic";
 
-        volume_upper = adjustment.upper * MUL;
-        volume_lower = adjustment.lower * MUL;
+        volume_upper = adjustment_actual_upper * MUL;
+        volume_lower = adjustment_actual_lower * MUL;
         volume_step = adjustment.step_increment * MUL;
 
         real_button.direction = Gtk.ArrowType.UP;
@@ -181,17 +186,30 @@ public class Cassette.VolumeButton : CustomMenuButton {
         };
         volume_box.append (volume_level_scale);
         volume_level_scale.change_value.connect ((range, type, new_val) => {
-            var val = new_val * MUL;
+            double val = new_val;
+
+            message (new_val.to_string ());
+
+            if (val < adjustment_actual_lower) {
+                val = adjustment_actual_lower;
+
+            } else if (val > adjustment_actual_upper) {
+                val = adjustment_actual_upper;
+            }
+
+            val *= MUL;
 
             mute = false;
 
             volume = Math.pow (val, 3.0);
 
-            if (val < volume_lower || val > volume_upper) {
-                return false;
-            }
-
             return true;
+
+            //  if (val < volume_lower || val > volume_upper) { 
+            //      return false;
+            //  }
+
+            //  return true;
         });
 
         var volume_second_button = new Gtk.Button () {

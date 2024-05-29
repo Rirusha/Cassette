@@ -64,6 +64,10 @@ public class Cassette.Sidebar : ShrinkableBin {
 
     public bool collapsed { get; set; }
 
+    construct {
+        bind_property ("is-shrinked", this, "collapsed", BindingFlags.DEFAULT);
+    }
+
     public void close () {
         sidebar_child = null;
     }

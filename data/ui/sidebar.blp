@@ -3,13 +3,12 @@ using Adw 1;
 
 template $CassetteSidebar: $CassetteShrinkableBin {
   shrink-edge-width: 720;
-  collapsed: bind overlay_split_view.collapsed;
   is-shown: bind overlay_split_view.show-sidebar bidirectional;
 
   Adw.OverlaySplitView overlay_split_view {
     show-sidebar: false;
     sidebar-position: end;
-    collapsed: false;
+    collapsed: bind template.collapsed;
     pin-sidebar: true;
     enable-show-gesture: false;
     min-sidebar-width: 360;

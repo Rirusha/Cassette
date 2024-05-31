@@ -188,8 +188,6 @@ public class Cassette.VolumeButton : CustomMenuButton {
         volume_level_scale.change_value.connect ((range, type, new_val) => {
             double val = new_val;
 
-            message (new_val.to_string ());
-
             if (val < adjustment_actual_lower) {
                 val = adjustment_actual_lower;
 

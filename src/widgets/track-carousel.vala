@@ -118,6 +118,8 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
                 if (dx != 0) {
                     is_scrolling_now = true;
                 }
+
+                return false;
             });
             carousel.add_controller (se);
 

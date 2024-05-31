@@ -113,6 +113,14 @@ public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
             });
             carousel.add_controller (gs);
 
+            var se = new Gtk.EventControllerScroll (Gtk.EventControllerScrollFlags.HORIZONTAL);
+            se.scroll.connect ((dx, dy) => {
+                if (dx != 0) {
+                    is_scrolling_now = true;
+                }
+            });
+            carousel.add_controller (se);
+
             player.bind_property (
                 "current-track-loading",
                 this,

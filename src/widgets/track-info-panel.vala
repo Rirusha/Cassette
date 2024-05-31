@@ -131,6 +131,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                 case Gtk.Orientation.HORIZONTAL:
                     track_name_label.add_css_class ("heading");
                     track_name_label.remove_css_class ("title-3");
+                    track_version_label.add_css_class ("caption");
 
                     track_name_label.halign = Gtk.Align.START;
                     track_version_label.halign = Gtk.Align.START;
@@ -160,6 +161,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                 case Gtk.Orientation.VERTICAL:
                     track_name_label.remove_css_class ("heading");
                     track_name_label.add_css_class ("title-3");
+                    track_version_label.remove_css_class ("caption");
 
                     track_name_label.halign = Gtk.Align.CENTER;
                     track_version_label.halign = Gtk.Align.CENTER;

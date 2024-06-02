@@ -22,6 +22,7 @@ using Gee;
  *
  */
 public abstract class Cassette.Client.Player.Shufflable : Mode {
+
     ArrayList<YaMAPI.Track> original_queue { get; set; default = new ArrayList<YaMAPI.Track> (); }
 
     construct {

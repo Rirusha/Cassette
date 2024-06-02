@@ -109,6 +109,7 @@ public abstract class Cassette.Client.Player.Mode : Object {
             }
 
             return queue[current_index];
+
         } else {
             return null;
         }

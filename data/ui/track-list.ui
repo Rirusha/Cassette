@@ -8,45 +8,6 @@
         <property name="spacing">16</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkBox" id="title">
-            <property name="spacing">6</property>
-            <property name="orientation">vertical</property>
-            <property name="visible">false</property>
-            <child>
-              <object class="GtkBox">
-                <property name="orientation">horizontal</property>
-                <child>
-                  <object class="GtkLabel">
-                    <style>
-                      <class name="dim-label"/>
-                    </style>
-                    <!-- Translators: now PLAYING -->
-                    <property name="label" translatable="true">PLAYING </property>
-                    <property name="halign">start</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="list_type_label">
-                    <style>
-                      <class name="dim-label"/>
-                    </style>
-                    <property name="halign">start</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="list_name_label">
-                <style>
-                  <class name="title-1"/>
-                </style>
-                <property name="wrap">true</property>
-                <property name="halign">start</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
           <object class="GtkBox" id="search_box">
             <property name="spacing">8</property>
             <child>

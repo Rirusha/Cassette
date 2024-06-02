@@ -115,14 +115,9 @@ namespace Cassette {
 
     [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-list.ui")]
     public class TrackList : Adw.Bin {
+
         [GtkChild]
-        public unowned Gtk.Box title;
-        [GtkChild]
-        public unowned Gtk.Label list_name_label;
-        [GtkChild]
-        public unowned Gtk.Label list_type_label;
-        [GtkChild]
-        public unowned Gtk.Box search_box;
+        unowned Gtk.Box search_box;
         [GtkChild]
         unowned Gtk.SearchEntry search_entry;
         [GtkChild]

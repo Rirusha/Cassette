@@ -15,7 +15,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-
 using Gee;
 
 public class Cassette.Client.Player.TrackList : Shufflable {
@@ -35,6 +34,21 @@ public class Cassette.Client.Player.TrackList : Shufflable {
             context_id: context_id,
             current_index: current_index,
             context_description: context_description
+        );
+    }
+
+    construct {
+        change_queue ();
+        sh_queue_changed.connect (change_queue);
+    }
+
+    void change_queue () {
+        player.queue_changed (
+            queue,
+            context_type,
+            context_id,
+            current_index,
+            context_description
         );
     }
 

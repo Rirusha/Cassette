@@ -80,12 +80,7 @@ public class Cassette.VolumeButton : CustomMenuButton {
 
         var se = new Gtk.EventControllerScroll (Gtk.EventControllerScrollFlags.VERTICAL);
         se.scroll.connect ((dx, dy) => {
-            if (dy < 0) {
-                increase_volume ();
-
-            } else {
-                decrease_volume ();
-            }
+            change_volume (dy * MUL);
         });
         add_controller (se);
 
@@ -98,18 +93,29 @@ public class Cassette.VolumeButton : CustomMenuButton {
     }
 
     void increase_volume () {
-        if (volume + volume_step > volume_upper) {
-            volume = volume_upper;
-        } else {
-            volume += volume_step;
-        }
+        change_volume (volume_step);
     }
 
     void decrease_volume () {
-        if (volume - volume_step < volume_lower) {
+        change_volume (-volume_step);
+    }
+
+    /*
+     * @param dvol  delta volume, 0.0-1.0
+     */
+    void change_volume (double dvol) {
+        double svol = Math.pow (volume, 1.0 / 3.0);
+
+        svol += dvol;
+
+        if (svol > volume_upper) {
+            volume = volume_upper;
+
+        } else if (svol < volume_lower) {
             volume = volume_lower;
+
         } else {
-            volume -= volume_step;
+            volume = Math.pow (svol, 3.0);
         }
     }
 
@@ -195,19 +201,11 @@ public class Cassette.VolumeButton : CustomMenuButton {
                 val = adjustment_actual_upper;
             }
 
-            val *= MUL;
-
             mute = false;
 
-            volume = Math.pow (val, 3.0);
+            volume = Math.pow (val * MUL, 3.0);
 
             return true;
-
-            //  if (val < volume_lower || val > volume_upper) { 
-            //      return false;
-            //  }
-
-            //  return true;
         });
 
         var volume_second_button = new Gtk.Button () {

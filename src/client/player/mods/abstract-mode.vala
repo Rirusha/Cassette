@@ -31,23 +31,6 @@ public abstract class Cassette.Client.Player.Mode : Object {
      */
     public Player player { get; construct; }
 
-    /**
-     * Queue changed.
-     * Triggers when track added/removed
-     *
-     * @param queue         queue with tracks
-     * @param content_type  type of played context. E.g. "radio"
-     * @param context_id    id ofplayed context. E.g. "666824:3" for
-     *                      "playlist" context type
-     */
-    public signal void queue_changed (
-        ArrayList<YaMAPI.Track> queue,
-        string context_type,
-        string? context_id,
-        int current_index,
-        string? context_description
-    );
-
     public ArrayList<YaMAPI.Track> queue { get; construct; default = new ArrayList<YaMAPI.Track> (); }
 
     public string context_type { get; construct set; }

@@ -80,7 +80,7 @@ public class Cassette.VolumeButton : CustomMenuButton {
 
         var se = new Gtk.EventControllerScroll (Gtk.EventControllerScrollFlags.VERTICAL);
         se.scroll.connect ((dx, dy) => {
-            change_volume (dy * MUL);
+            change_volume (-dy * MUL);
         });
         add_controller (se);
 

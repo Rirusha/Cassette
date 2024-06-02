@@ -20,6 +20,20 @@ using Gee;
 
 public class Cassette.Client.Player.Empty : Mode {
 
+    public Empty (Player player) {
+        Object (player: player);
+    }
+
+    construct {
+        player.queue_changed (
+            new Gee.ArrayList<YaMAPI.Track> (),
+            "various",
+            null,
+            -1,
+            null
+        );
+    }
+
     public override int get_prev_index () {
         return -1;
     }

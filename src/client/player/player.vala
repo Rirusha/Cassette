@@ -198,7 +198,7 @@ public class Cassette.Client.Player.Player : Object {
 
     public signal void mode_inited ();
 
-    public Mode mode { get; private set; default = new Empty (); }
+    public Mode mode { get; private set; }
 
     const double PLAY_CALLBACK_STEP = 0.1;
 
@@ -208,6 +208,8 @@ public class Cassette.Client.Player.Player : Object {
 
     construct {
         init (null);
+
+        mode = new Empty (this);
 
         playbin = Gst.ElementFactory.make ("playbin", null);
         var bus = playbin.get_bus ();
@@ -337,7 +339,7 @@ public class Cassette.Client.Player.Player : Object {
     public void clear_mode () {
         stop ();
 
-        mode = new Empty ();
+        mode = new Empty (this);
 
         mode_inited ();
     }

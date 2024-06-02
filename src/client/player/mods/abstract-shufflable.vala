@@ -25,6 +25,8 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
 
     ArrayList<YaMAPI.Track> original_queue { get; set; default = new ArrayList<YaMAPI.Track> (); }
 
+    public signal void sh_queue_changed ();
+
     construct {
         original_queue.add_all (queue);
 
@@ -51,6 +53,8 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
         queue.add_all (shuffled_queue[0:new_index]);
 
         current_index = 0;
+
+        sh_queue_changed ();
     }
 
     public void unshuffle () {
@@ -59,6 +63,8 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
         queue.clear ();
         queue.add_all (original_queue);
         current_index = queue.index_of (current_track);
+
+        sh_queue_changed ();
     }
 
     public void add_track_next (YaMAPI.Track track_info) {
@@ -69,11 +75,15 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
 
         queue.insert (current_index + 1, track_info);
         original_queue.insert (original_queue.index_of (get_current_track_info ()) + 1, track_info);
+
+        sh_queue_changed ();
     }
 
     public void remove_track_by_pos (int position) {
         var track_info = queue[position];
         remove_track (track_info);
+
+        sh_queue_changed ();
     }
 
     public void remove_track (YaMAPI.Track track_info) {
@@ -96,15 +106,21 @@ public abstract class Cassette.Client.Player.Shufflable : Mode {
         } else {
             player.clear_mode ();
         }
+
+        sh_queue_changed ();
     }
 
     public void add_track_end (YaMAPI.Track track_info) {
         queue.add (track_info);
         original_queue.add (track_info);
+
+        sh_queue_changed ();
     }
 
     public void add_many_end (ArrayList<YaMAPI.Track> track_list) {
         queue.add_all (track_list);
         original_queue.add_all (track_list);
+
+        sh_queue_changed ();
     }
 }

@@ -338,6 +338,7 @@ public class Cassette.Client.Player.Player : Object {
         stop ();
 
         mode = new Empty ();
+
         mode_inited ();
     }
 

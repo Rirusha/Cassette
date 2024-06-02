@@ -23,7 +23,7 @@ public class Cassette.PlayerQueue : SidebarChildBin {
 
     [GtkChild]
     unowned Gtk.ScrolledWindow scrolled_window;
-    
+
     TrackList track_list;
 
     construct {

@@ -45,6 +45,10 @@ frame {
  * Other
  */
 
+.unbold {
+    font-weight: normal;
+}
+
 .equalaizer-scale {
     padding: 10px;
 }

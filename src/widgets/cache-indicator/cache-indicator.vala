@@ -47,10 +47,13 @@ namespace Cassette {
                 }
             });
 
-            indicator_revealer.notify.connect (() => {
+            indicator_revealer.notify["reveal-child"].connect (() => {
                 if (indicator_revealer.reveal_child) {
                     indicator_revealer.visible = true;
                 }
+            });
+
+            indicator_revealer.notify["child-revealed"].connect (() => {
                 if (!indicator_revealer.child_revealed) {
                     indicator_revealer.visible = false;
                 }

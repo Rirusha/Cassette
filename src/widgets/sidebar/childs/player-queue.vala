@@ -27,6 +27,8 @@ public class Cassette.PlayerQueue : SidebarChildBin {
     TrackList track_list;
 
     construct {
+        child_id = "queue";
+
         track_list = new TrackList (scrolled_window.vadjustment) {
             margin_top = 12,
             margin_bottom = 12,

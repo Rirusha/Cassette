@@ -26,13 +26,13 @@ template $CassetteSidebar: $CassetteShrinkableBin {
           action-name: "win.close-sidebar";
         }
 
+        [start]
+        $CassetteCacheIndicator cache_indicator {}
+
         title-widget: Adw.WindowTitle window_title {};
 
         [end]
-        $CassettePrimaryMenuButton menu_button {}
-
-        [end]
-        $CassetteCacheIndicator cache_indicator {}
+        $CassettePrimaryMenuButton menu_button {}        
       }
     }
   }

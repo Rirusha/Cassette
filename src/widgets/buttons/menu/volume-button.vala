@@ -85,7 +85,7 @@ public class Cassette.VolumeButton : CustomMenuButton {
         se.scroll.connect ((dx, dy) => {
             switch (se.get_unit ()) {
                 case Gdk.ScrollUnit.WHEEL:
-                    bool is_increase = dy > 0;
+                    bool is_increase = dy < 0;
 
                     for (int i = 0; i < dy.abs (); i++) {
                         if (is_increase) {

@@ -33,15 +33,11 @@ namespace Cassette {
             }
             set {
                 if (value) {
-                    if (!is_disliked) {
-                        real_button.remove_css_class ("dim-label");
-                        real_button.tooltip_text = _("Remove dislike");
-                    }
+                    real_button.remove_css_class ("dim-label");
+                    real_button.tooltip_text = _("Remove dislike");
                 } else {
-                    if (is_disliked) {
-                        real_button.add_css_class ("dim-label");
-                        real_button.tooltip_text = _("Set dislike");
-                    }
+                    real_button.add_css_class ("dim-label");
+                    real_button.tooltip_text = _("Set dislike");
                 }
             }
         }
@@ -53,8 +49,6 @@ namespace Cassette {
         construct {
             valign = Gtk.Align.CENTER;
             halign = Gtk.Align.CENTER;
-
-            is_disliked = false;
 
             real_button.icon_name = "disliked-symbolic";
             real_button.add_css_class ("dim-label");

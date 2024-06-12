@@ -237,24 +237,15 @@ public class Cassette.VolumeButton : CustomMenuButton {
         };
         volume_box.append (volume_second_button);
 
-        var mute_button = new Gtk.Button () {
+        var mute_button = new Gtk.ToggleButton () {
             css_classes = { "flat" },
-            icon_name = mute ? "audio-volume-high-symbolic" : "audio-volume-muted-symbolic",
-            tooltip_text = mute ? _("Unmute") : _("Mute")
+            icon_name = "audio-volume-muted-symbolic"
         };
-        mute_button.clicked.connect ((button) => {
-            mute = !mute;
-        });
         player.bind_property (
             "mute",
             mute_button,
-            "icon-name",
-            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE,
-            (binding, srcval, ref trgval) => {
-                trgval.set_string (srcval.get_boolean () ? "audio-volume-high-symbolic" : "audio-volume-muted-symbolic");
-
-                return true;
-            }
+            "active",
+            BindingFlags.DEFAULT | BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE
         );
         player.bind_property (
             "mute",

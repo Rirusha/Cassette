@@ -73,7 +73,7 @@ namespace Cassette {
             "katze_942", "gen1s", "Semen Fomchenkov", "Oleg Shchavelev", "Fissium", "Fiersik", "belovmv",
             "krylov_alexandr", "Spp595", "Mikazil", "Sergey P.", "khaustovdn", "dant4ick", "Nikolai M.",
             "Toxblh", "Roman Aysin", "IQQator", "𝙰𝚖𝚙𝚎𝚛 𝚂𝚑𝚒𝚣", "kvadrozorro", "Mikhail Postnikov", "eugene_t",
-            "Do6pblu_Jyk"
+            "Do6pblu_Jyk", "werlock", "Vasily Biryukov"
         });
 
         return about;

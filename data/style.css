@@ -25,6 +25,10 @@ listview row {
     background-color: rgba(0, 0, 0, 0);
 }
 
+.card-box flowboxchild {
+    border-radius: 12px;
+}
+
 flowbox flowboxchild {
     padding: 0px;
 }

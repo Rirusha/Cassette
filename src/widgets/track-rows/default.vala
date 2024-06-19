@@ -21,7 +21,7 @@ using Cassette.Client;
 
 namespace Cassette {
     [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-default-content.ui")]
-    public class TrackDefault : YATrackRowContent {
+    public class TrackDefault : TrackRow {
 
         [GtkChild]
         unowned TrackInfoPanel info_panel;
@@ -34,7 +34,9 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Label duration_label;
         [GtkChild]
-        unowned TrackOptionsButton track_options_button;
+        unowned TrackPlaylistOptionsButton track_playlist_options_button;
+
+        public HasTrackList yam_object { get; construct; }
 
         public bool show_dislike_button { get; construct; default = false; }
 
@@ -72,8 +74,8 @@ namespace Cassette {
                 }
             });
 
-            track_options_button.track_info = track_info;
-            //  setup_options_button ();
+            track_playlist_options_button.track_info = track_info;
+            track_playlist_options_button.playlist_info = (YaMAPI.Playlist) yam_object;
             set_values ();
         }
 
@@ -99,7 +101,7 @@ namespace Cassette {
 
                 info_panel.sensitive = false;
                 duration_label.label = "";
-                track_options_button.sensitive = false;
+                track_playlist_options_button.sensitive = false;
 
                 this.tooltip_text = _("Track is not available");
             }

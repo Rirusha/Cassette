@@ -49,6 +49,18 @@ public class Cassette.TrackOptionsButton : CustomMenuButton {
             player.add_track (track_info, false);
         });
         actions.add_action (add_end_action);
+
+        SimpleAction add_to_playlist_action = new SimpleAction ("add-to-playlist", null);
+        add_to_playlist_action.activate.connect (() => {
+            add_track_to_playlist (track_info);
+        });
+        actions.add_action (add_to_playlist_action);
+
+        SimpleAction save_action = new SimpleAction ("save", null);
+        save_action.activate.connect (() => {
+            Client.Cachier.save_track.begin (track_info);
+        });
+        actions.add_action (save_action);
     }
 
     protected override Gtk.Widget? get_title_widget () {

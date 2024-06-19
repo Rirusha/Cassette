@@ -37,11 +37,11 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Label duration_label;
         [GtkChild]
-        unowned TrackOptionsButton track_options_button;
+        unowned TrackQueueOptionsButton track_queue_options_button;
 
-        public YaMAPI.Track track_info { get; construct set; }
+        public YaMAPI.Track track_info { get; construct; }
 
-        public int position { get; set; }
+        public int position { get; construct; }
 
         public TrackQueue (YaMAPI.Track track_info, int position) {
             Object (track_info: track_info, position: position);
@@ -60,6 +60,8 @@ namespace Cassette {
                 }
             });
 
+            track_queue_options_button.track_info = track_info;
+            track_queue_options_button.position = position;
             set_values ();
         }
 

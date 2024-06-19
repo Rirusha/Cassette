@@ -106,6 +106,18 @@ namespace Cassette {
         }
     }
 
+    public void remove_track_from_playlist (YaMAPI.Track track_info, YaMAPI.Playlist playlist_info) {
+        int position = -1;
+        for (int i = 0; i < playlist_info.tracks.size; i++) {
+            if (track_info.id == playlist_info.tracks[i].id) {
+                position = i;
+                break;
+            }
+        }
+
+        yam_talker.remove_tracks_from_playlist.begin (playlist_info.kind, position, playlist_info.revision);
+    }
+
     /**
      * Переключить режим перемешивания на следующий.
      * ON -> OFF

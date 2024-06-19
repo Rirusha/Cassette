@@ -22,6 +22,8 @@ cassette_gui_sources = files(
   'widgets/buttons/menu/primary-menu-button.vala',
   'widgets/buttons/menu/playlist-options-button.vala',
   'widgets/buttons/menu/track-options-button.vala',
+  'widgets/buttons/menu/track-playlist-options-button.vala',
+  'widgets/buttons/menu/track-queue-options-button.vala',
   'widgets/buttons/menu/volume-button.vala',
   'widgets/buttons/label-button.vala',
   'widgets/buttons/playlist-create-button.vala',
@@ -66,7 +68,6 @@ cassette_gui_sources = files(
   'widgets/track-rows/local.vala',
   'widgets/track-rows/placeholder.vala',
   'widgets/track-rows/queue.vala',
-  'widgets/track-rows/ya-content.vala',
 
   'widgets/views/abstract-base.vala',
   'widgets/views/abstract-cachiable.vala',

@@ -57,4 +57,8 @@ public abstract class Cassette.TrackRow : Reactable {
             play_mark_track.trigger ();
         }
     }
+
+    construct {
+        add_css_class ("track-row");
+    }
 }

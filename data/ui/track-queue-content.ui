@@ -98,7 +98,7 @@
               </object>
             </child>
             <child>
-              <object class="CassetteTrackOptionsButton" id="track_options_button">
+              <object class="CassetteTrackQueueOptionsButton" id="track_queue_options_button">
                 <style>
                   <class name="flat"/>
                 </style>

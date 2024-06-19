@@ -83,6 +83,11 @@ public class Cassette.VolumeButton : CustomMenuButton {
 
         se = new Gtk.EventControllerScroll (Gtk.EventControllerScrollFlags.VERTICAL);
         se.scroll.connect ((dx, dy) => {
+            if (mute) {
+                mute = false;
+                volume = 0.0;
+            }
+
             switch (se.get_unit ()) {
                 case Gdk.ScrollUnit.WHEEL:
                     bool is_increase = dy < 0;

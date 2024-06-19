@@ -20,35 +20,15 @@
 // Look: https://t.me/CassetteGNOME_Discussion/10666
 public abstract class Cassette.Reactable : Gtk.Frame {
 
-    protected virtual string css_class_name_hover {
-        owned get {
-            assert_not_reached ();
-        }
-    }
+    protected abstract string css_class_name_hover { owned get; }
 
-    protected virtual string css_class_name_active {
-        owned get {
-            assert_not_reached ();
-        }
-    }
+    protected abstract string css_class_name_active { owned get; }
 
-    protected virtual string css_class_name_playing_default {
-        owned get {
-            assert_not_reached ();
-        }
-    }
+    protected abstract string css_class_name_playing_default { owned get; } 
 
-    protected virtual string css_class_name_playing_hover {
-        owned get {
-            assert_not_reached ();
-        }
-    }
+    protected abstract string css_class_name_playing_hover { owned get; }
 
-    protected virtual string css_class_name_playing_active {
-        owned get {
-            assert_not_reached ();
-        }
-    }
+    protected abstract string css_class_name_playing_active { owned get; }
 
     bool _is_current_playing = false;
     public bool is_current_playing {

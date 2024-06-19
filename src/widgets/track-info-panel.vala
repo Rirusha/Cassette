@@ -17,7 +17,6 @@
 
 using Cassette.Client;
 
-
 [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-info-panel.ui")]
 public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
 
@@ -54,7 +53,7 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
         set {
             _track_info = value;
 
-            if (_track_info == null) {
+            if (value == null) {
                 track_name_label.label = "";
                 track_version_label.label = "";
                 track_authors_label.label = "";
@@ -66,18 +65,20 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
                 cover_image.clear ();
 
             } else {
-                track_name_label.label = _track_info.title;
-                track_version_label.label = _track_info.version;
-                track_authors_label.label = _track_info.get_artists_names ();
+                track_name_label.label = value.title == null ? "" : value.title;
+                track_version_label.label = value.title == null ? "" : value.version;
+                track_authors_label.label = value.get_artists_names ();
 
                 info_marks.is_exp = track_info.is_explicit;
                 info_marks.is_child = track_info.is_suitable_for_children;
                 info_marks.replaced_by = track_info.substituted;
 
-                cover_image.init_content (track_info);
-                cover_image.load_image.begin ();
+                if (load_cover) {
+                    cover_image.init_content (track_info);
+                    cover_image.load_image.begin ();
+                }
 
-                play_mark_track.init_content (_track_info.id);
+                play_mark_track.init_content (value.id);
             }
         }
     }
@@ -112,6 +113,8 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
     }
 
     public int position { get; set; }
+
+    public bool load_cover { get; construct; default = true; }
 
     Gtk.Orientation _orientation = Gtk.Orientation.HORIZONTAL;
     public Gtk.Orientation orientation {

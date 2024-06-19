@@ -1,0 +1,37 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteTrackQueue: $CassetteTrackRow {
+  Box {
+    spacing: 8;
+
+    $CassetteTrackInfoPanel info_panel {
+      load-cover: false;
+      orientation: horizontal;
+      hexpand: true;
+      halign: start;
+    }
+
+    Label duration_label {
+      styles [
+        "dim-label"
+      ]
+
+      width-request: 32;
+      xalign: 1;
+      halign: end;
+      label: "0:00";
+      margin-end: 4;
+      margin-start: 4;
+    }
+
+    $CassetteTrackQueueOptionsButton track_queue_options_button {
+      styles [
+        "flat"
+      ]
+
+      halign: end;
+      valign: center;
+    }
+  }
+}

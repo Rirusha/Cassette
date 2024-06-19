@@ -91,6 +91,7 @@ popover contents {
  */
 
 .track-row {
+    padding: 6px;
     transition: 200ms;
 }
 

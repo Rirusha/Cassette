@@ -19,12 +19,44 @@ public class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
 
     public int position { get; set; }
 
+    Gtk.Box get_toolbox (bool hexpand) {
+        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+            hexpand = hexpand,
+            halign = hexpand? Gtk.Align.FILL : Gtk.Align.START,
+            homogeneous = true,
+        };
+
+        var dislike_button = new DislikeButton () {
+            css_classes = {"flat"},
+        };
+        dislike_button.init_content (track_info.id);
+        box.append (dislike_button);
+ 
+        var like_button = new LikeButton (Client.LikableType.TRACK) {
+            css_classes = {"flat"},
+        };
+        like_button.init_content (track_info.id);
+        box.append (like_button);
+
+        var save_stack = new SaveStack ();
+        save_stack.init_content (track_info.id);
+        box.append (save_stack);
+
+        return box;
+    }
+
     construct {
         SimpleAction remove_from_queue_action = new SimpleAction ("remove-from-queue", null);
         remove_from_queue_action.activate.connect (() => {
             player.remove_track_by_pos (position);
         });
         actions.add_action (remove_from_queue_action);
+    }
+
+    protected override Gtk.Widget[] get_popover_menu_widgets () {
+        return {
+            get_toolbox (true),
+        };
     }
 
     protected override CustomMenuButton.MenuItem[] get_popover_menu_items () {
@@ -37,6 +69,25 @@ public class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
             {_("Remove from queue"), "track.remove-from-queue", 2},
             {_("Save"), "track.save", 3},
             {_("Share"), "track.share", 3}
+        };
+    }
+
+    protected override Gtk.Widget[] get_dialog_menu_widgets () {
+        var like_button = new LikeButton (Client.LikableType.TRACK);
+        like_button.init_content (track_info.id);
+
+        return {
+            new ActionCardStation (new Client.YaMAPI.Rotor.StationInfo () {
+                id = new Client.YaMAPI.Rotor.Id () {
+                    type_ = "track",
+                    tag = track_info.id
+                },
+                name = _("My Vibe by track"),
+                icon = new Client.YaMAPI.Icon ()
+            }) {
+                is_shrinked = true
+            },
+            get_toolbox (false),
         };
     }
 

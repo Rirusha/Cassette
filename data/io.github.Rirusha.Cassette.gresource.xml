@@ -170,6 +170,7 @@
     <file preprocess="xml-stripblanks">ui/save-stack.ui</file>
     <file preprocess="xml-stripblanks">ui/sidebar.ui</file>
     <file preprocess="xml-stripblanks">ui/stations-view.ui</file>
+    <file preprocess="xml-stripblanks">ui/track-base-content.ui</file>
     <file preprocess="xml-stripblanks">ui/track-carousel.ui</file>
     <file preprocess="xml-stripblanks">ui/track-default-content.ui</file>
     <file preprocess="xml-stripblanks">ui/track-info.ui</file>

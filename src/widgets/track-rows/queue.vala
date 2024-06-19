@@ -15,75 +15,49 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-
 using Cassette.Client;
 
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-queue-content.ui")]
+public class Cassette.TrackQueue : TrackRow {
 
-namespace Cassette {
-    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-queue-content.ui")]
-    public class TrackQueue : Gtk.Frame {
-        [GtkChild]
-        unowned PlayButtonTrack play_button;
-        [GtkChild]
-        unowned Gtk.Label track_name_label;
-        [GtkChild]
-        unowned Gtk.Label track_version_label;
-        [GtkChild]
-        unowned Gtk.Label track_authors_label;
-        [GtkChild]
-        unowned InfoMarks info_marks;
-        [GtkChild]
-        unowned LikeButton like_button;
-        [GtkChild]
-        unowned Gtk.Label duration_label;
-        [GtkChild]
-        unowned TrackQueueOptionsButton track_queue_options_button;
+    [GtkChild]
+    unowned TrackInfoPanel info_panel;
+    [GtkChild]
+    unowned Gtk.Label duration_label;
+    [GtkChild]
+    unowned TrackQueueOptionsButton track_queue_options_button;
 
-        public YaMAPI.Track track_info { get; construct; }
+    public int position { get; construct; }
 
-        public int position { get; construct; }
-
-        public TrackQueue (YaMAPI.Track track_info, int position) {
-            Object (track_info: track_info, position: position);
+    protected override PlayMarkTrack play_mark_track {
+        owned get {
+            return info_panel.get_play_mark_track ();
         }
+    }
 
-        construct {
-            play_button.clicked_not_playing.connect (() => {
-                player.change_track (track_info);
-            });
+    public TrackQueue (YaMAPI.Track track_info, int position) {
+        Object (track_info: track_info, position: position);
+    }
 
-            play_button.notify["is-current-playing"].connect (() => {
-                if (play_button.is_current_playing) {
-                    add_css_class ("track-row-playing");
-                } else {
-                    remove_css_class ("track-row-playing");
-                }
-            });
+    construct {
+        play_mark_track.triggered_not_playing.connect (() => {
+            player.change_track (track_info);
+        });
 
-            track_queue_options_button.track_info = track_info;
-            track_queue_options_button.position = position;
-            set_values ();
-        }
+        play_mark_track.bind_property (
+            "is-current-playing",
+            this, "is-current-playing",
+            BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+        );
 
-        public void set_values () {
-            track_name_label.label = track_info.title;
-            track_name_label.tooltip_text = track_info.title;
+        info_panel.track_info = track_info;
 
-            info_marks.is_exp = track_info.is_explicit;
-            info_marks.is_child = track_info.is_suitable_for_children;
-            info_marks.replaced_by = track_info.substituted;
+        duration_label.label = ms2str (track_info.duration_ms, true);
 
-            if (track_info.version != null) {
-                track_version_label.label = track_info.version;
-                track_name_label.tooltip_text += ", " + track_info.version;
-                track_version_label.tooltip_text = track_name_label.tooltip_text;
-            }
-            track_authors_label.label = track_info.get_artists_names ();
-            track_authors_label.tooltip_text = track_info.get_artists_names ();
-            duration_label.label = ms2str (track_info.duration_ms, true);
-
-            like_button.init_content (track_info.id);
-            play_button.init_content (track_info.id);
-        }
+        info_panel.show_play_button ();
+        play_mark_track.init_content (track_info.id);
+        track_queue_options_button.track_info = track_info;
+        track_queue_options_button.position = position;
+        info_panel.position = position + 1;
     }
 }

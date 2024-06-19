@@ -74,12 +74,6 @@ namespace Cassette {
                 }
             });
 
-            track_playlist_options_button.track_info = track_info;
-            track_playlist_options_button.playlist_info = (YaMAPI.Playlist) yam_object;
-            set_values ();
-        }
-
-        void set_values () {
             var motion_controller = new Gtk.EventControllerMotion ();
             add_controller (motion_controller);
 
@@ -111,6 +105,9 @@ namespace Cassette {
             play_mark_track.init_content (track_info.id);
 
             save_stack.init_content (track_info.id);
+
+            track_playlist_options_button.track_info = track_info;
+            track_playlist_options_button.playlist_info = (YaMAPI.Playlist) yam_object;
         }
 
         void form_queue () {

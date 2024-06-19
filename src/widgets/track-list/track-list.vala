@@ -57,6 +57,17 @@ namespace Cassette {
         }
     }
 
+    protected class TrackRowBase : TrackRowW {
+
+        public TrackRowBase (YaMAPI.Track track_info, HasTrackList yam_object) {
+            Object (track_info: track_info, yam_object: yam_object);
+        }
+
+        public override void load_content () {
+            child = new TrackBase (track_info, yam_object);
+        }
+    }
+
     protected class TrackRowDis : TrackRowW {
 
         public TrackRowDis (YaMAPI.Track track_info, HasTrackList yam_object) {
@@ -232,7 +243,7 @@ namespace Cassette {
             }
 
             track_box.child_activated.connect ((row) => {
-                ((TrackDefault) ((TrackRowW) row).child).trigger ();
+                ((TrackRow) ((TrackRowW) row).child).trigger ();
                 //  application.main_window.window_sidebar.show_track_info (((TrackRow) row).track_info);
             });
         }
@@ -511,10 +522,18 @@ namespace Cassette {
             track_box.append (track_row);
         }
 
-        public void set_tracks_default (ArrayList<YaMAPI.Track> track_list, HasTrackList yam_object) {
+        public void set_tracks_default (ArrayList<YaMAPI.Track> track_list, YaMAPI.Playlist yam_object) {
             preset_actions ();
             foreach (var track_info in track_list) {
                 add_row (new TrackRowW (track_info, yam_object));
+            }
+            postset_actions ();
+        }
+
+        public void set_tracks_base (ArrayList<YaMAPI.Track> track_list, HasTrackList yam_object) {
+            preset_actions ();
+            foreach (var track_info in track_list) {
+                add_row (new TrackRowBase (track_info, yam_object));
             }
             postset_actions ();
         }

@@ -36,6 +36,25 @@ public class Cassette.ActionCardCustom : Reactable {
         }
     }
 
+
+    protected override string css_class_name_playing_default {
+        owned get {
+            return "";
+        }
+    }
+
+    protected override string css_class_name_playing_hover {
+        owned get {
+            return "";
+        }
+    }
+
+    protected override string css_class_name_playing_active {
+        owned get {
+            return "";
+        }
+    }
+
     construct {
         var gs = new Gtk.GestureClick ();
         gs.released.connect ((n, x, y) => {

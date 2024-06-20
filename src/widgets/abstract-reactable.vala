@@ -24,7 +24,7 @@ public abstract class Cassette.Reactable : Gtk.Frame {
 
     protected abstract string css_class_name_active { owned get; }
 
-    protected abstract string css_class_name_playing_default { owned get; } 
+    protected abstract string css_class_name_playing_default { owned get; }
 
     protected abstract string css_class_name_playing_hover { owned get; }
 

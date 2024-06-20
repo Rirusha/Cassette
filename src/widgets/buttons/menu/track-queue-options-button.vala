@@ -31,7 +31,7 @@ public class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
         };
         dislike_button.init_content (track_info.id);
         box.append (dislike_button);
- 
+
         var like_button = new LikeButton (Client.LikableType.TRACK) {
             css_classes = {"flat"},
         };

@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-public class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
+public sealed class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
 
     public int position { get; set; }
 

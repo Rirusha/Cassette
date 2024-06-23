@@ -22,4 +22,8 @@ public abstract class Cassette.SidebarChildBin: Adw.Bin {
     public string title { get; set; }
 
     public string subtitle { get; set; }
+
+    static construct {
+        set_css_name ("sidebar-child-bin");
+    }
 }

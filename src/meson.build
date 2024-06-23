@@ -63,7 +63,6 @@ cassette_gui_sources = files(
   'widgets/track-list/tracks-model.vala',
   'widgets/track-list/tracks-view.vala',
 
-  'widgets/track-rows/abstract-track-row.vala',
   'widgets/track-rows/base.vala',
   'widgets/track-rows/default.vala',
   'widgets/track-rows/local.vala',

@@ -140,8 +140,20 @@ public class Cassette.Window : ApplicationWindow {
             }
         });
 
+        close_request.connect (on_close_request);
+
         if (Cassette.application.is_devel) {
             add_css_class ("devel");
+        }
+    }
+
+    bool on_close_request () {
+        if (window_sidebar.sidebar_child == null) {
+            return false;
+
+        } else {
+            window_sidebar.close ();
+            return true;
         }
     }
 

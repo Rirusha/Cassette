@@ -43,9 +43,9 @@ public class Cassette.Sidebar : ShrinkableBin {
         }
     }
 
-    public SidebarChildBin sidebar_child {
+    public SidebarChildBin? sidebar_child {
         get {
-            return (SidebarChildBin) toolbar_view.content;
+            return (SidebarChildBin?) toolbar_view.content;
         }
         set {
             toolbar_view.content = value;
@@ -57,12 +57,16 @@ public class Cassette.Sidebar : ShrinkableBin {
 
             child_id = value != null ? value.child_id : "";
             is_shown = value != null;
+
+            child_changed (value);
         }
     }
 
     public bool is_shown { get; set; }
 
     public bool collapsed { get; set; }
+
+    public signal void child_changed (SidebarChildBin? new_child);
 
     construct {
         bind_property ("is-shrinked", this, "collapsed", BindingFlags.DEFAULT);
@@ -77,6 +81,14 @@ public class Cassette.Sidebar : ShrinkableBin {
 
         if (track_info.available) {
             sidebar_child = new TrackInfo (track_info);
+        }
+    }
+
+    public void show_wave_settings () {
+        sidebar_child = null;
+
+        if (player.mode is Player.Flow && player.mode.context_id == "user:onyourwave") {
+            sidebar_child = new WaveSettings ();
         }
     }
 

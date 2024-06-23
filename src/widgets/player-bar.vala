@@ -97,6 +97,14 @@ namespace Cassette {
 
             player.mode_inited.connect (on_player_mode_inited);
 
+            player.notify["mode"].connect (() => {
+                if (window.window_sidebar.sidebar_child is WaveSettings) {
+                    window.window_sidebar.close ();
+                }
+
+                sensitive = false;
+            });
+
             var playerbar_actions = new SimpleActionGroup ();
 
             SimpleAction prev_action = new SimpleAction ("prev", null);
@@ -122,10 +130,20 @@ namespace Cassette {
             });
 
             queue_show_button.clicked.connect (() => {
-                if (queue_show_button.has_css_class ("flat")) {
-                    window.window_sidebar.show_queue ();
-                } else {
+                if (window.window_sidebar.sidebar_child is PlayerQueue) {
                     window.window_sidebar.close ();
+
+                } else {
+                    window.window_sidebar.show_queue ();
+                }
+            });
+
+            flow_settings_button.clicked.connect (() => {
+                if (window.window_sidebar.sidebar_child is WaveSettings) {
+                    window.window_sidebar.close ();
+
+                } else {
+                    window.window_sidebar.show_wave_settings ();
                 }
             });
 
@@ -150,14 +168,25 @@ namespace Cassette {
                     if (window.window_sidebar.is_shown == false) {
                         queue_show_button.add_css_class ("flat");
                         track_detailed_button.add_css_class ("flat");
+                        flow_settings_button.add_css_class ("flat");
                     }
                 });
 
-                window.window_sidebar.notify["child-id"].connect (() => {
-                    if (window.window_sidebar.child_id != "queue") {
-                        queue_show_button.add_css_class ("flat");
-                    } else {
+                window.window_sidebar.child_changed.connect ((new_child) => {
+                    if (new_child is PlayerQueue) {
                         queue_show_button.remove_css_class ("flat");
+
+                    } else {
+                        queue_show_button.add_css_class ("flat");
+                    }
+                });
+
+                window.window_sidebar.child_changed.connect ((new_child) => {
+                    if (new_child is WaveSettings) {
+                        flow_settings_button.remove_css_class ("flat");
+
+                    } else {
+                        flow_settings_button.add_css_class ("flat");
                     }
                 });
             });
@@ -222,8 +251,8 @@ namespace Cassette {
 
         void to_flow () {
             shuffle_button.visible = false;
-            flow_settings_button.visible = true;
             queue_show_button.visible = false;
+            flow_settings_button.visible = player.mode.context_id == "user:onyourwave";
         }
 
         void to_track_list () {

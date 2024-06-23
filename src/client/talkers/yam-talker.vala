@@ -778,5 +778,51 @@ namespace Cassette.Client {
 
             return stations_list;
         }
+
+        public async Rotor.Settings? get_wave_settings () {
+            Rotor.Settings? wave_settings = null;
+
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    wave_settings = client.rotor_wave_settings ();
+                });
+
+                Idle.add (get_wave_settings.callback);
+            });
+
+            yield;
+
+            return wave_settings;
+        }
+
+        public async Rotor.Wave? get_last_wave () {
+            Rotor.Wave? last_wave = null;
+
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    last_wave = client.rotor_wave_last ();
+                });
+
+                Idle.add (get_last_wave.callback);
+            });
+
+            yield;
+
+            return last_wave;
+        }
+
+        public async void reset_last_wave () {
+            bool is_success = false;
+
+            threader.add (() => {
+                net_run_wout_code (() => {
+                    is_success = client.rotor_wave_last_reset ();
+                });
+
+                Idle.add (reset_last_wave.callback);
+            });
+
+            yield;
+        }
     }
 }

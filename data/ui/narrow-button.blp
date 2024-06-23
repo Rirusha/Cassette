@@ -1,0 +1,20 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteNarrowButton: $GtkButton {
+  Box {
+    orientation: vertical;
+
+    Gtk.Image button_image {
+      icon-size: large;
+      visible: false;
+      margin-bottom: 2;
+    }
+
+    Label button_label {
+      margin-top: 2;
+      wrap: true;
+      justify: center;
+    }
+  }
+}

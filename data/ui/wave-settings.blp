@@ -1,4 +1,93 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteWaveSettings: $CassetteSidebarChildBin {}
+template $CassetteWaveSettings: $CassetteSidebarChildBin {
+  ScrolledWindow {
+    hscrollbar-policy: never;
+    propagate-natural-height: true;
+
+    $CassetteLoadableWidget loadable_widget {
+      margin-start: 12;
+      margin-end: 12;
+      margin-top: 12;
+      margin-bottom: 12;
+
+      result-widget: Box {
+        orientation: vertical;
+        spacing: 6;
+
+        Label {
+          styles [
+            "dim-label",
+            "title-4"
+          ]
+
+          label: _("By activity…");
+          ellipsize: end;
+        }
+
+        FlowBox by_activity_box {
+          row-spacing: 8;
+          column-spacing: 8;
+          homogeneous: true;
+        }
+
+        Label {
+          styles [
+            "dim-label",
+            "title-4"
+          ]
+
+          label: _("By diversity…");
+          ellipsize: end;
+          margin-top: 12;
+        }
+
+        FlowBox by_diversity_box {
+          row-spacing: 8;
+          column-spacing: 8;
+          homogeneous: true;
+        }
+
+        Label {
+          styles [
+            "dim-label",
+            "title-4"
+          ]
+
+          label: _("By mood…");
+          ellipsize: end;
+          margin-top: 12;
+        }
+
+        FlowBox by_mood_energy_box {
+          row-spacing: 8;
+          column-spacing: 8;
+          homogeneous: true;
+        }
+
+        Label {
+          styles [
+            "dim-label",
+            "title-4"
+          ]
+
+          label: _("By language…");
+          ellipsize: end;
+          margin-top: 12;
+        }
+
+        FlowBox by_language_box {
+          row-spacing: 8;
+          column-spacing: 8;
+          homogeneous: true;
+        }
+      };
+
+      error-widget: Adw.StatusPage {
+        icon-name: "network-error-symbolic";
+        title: _("Can't get wave settings");
+      };
+    }
+  }
+}

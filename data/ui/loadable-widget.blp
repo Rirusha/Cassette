@@ -1,0 +1,21 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteLoadableWidget: $AdwBin {
+  Stack main_stack {
+    StackPage {
+      name: "loading";
+      child: $CassetteLoadingSpinner {};
+    }
+
+    StackPage {
+      name: "result";
+      child: Adw.Bin result_bin {};
+    }
+
+    StackPage {
+      name: "error";
+      child: Adw.Bin error_bin {};
+    }
+  }
+}

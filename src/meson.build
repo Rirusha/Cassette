@@ -68,6 +68,7 @@ cassette_gui_sources = files(
   'widgets/track-rows/local.vala',
   'widgets/track-rows/placeholder.vala',
   'widgets/track-rows/queue.vala',
+  'widgets/track-rows/track-row.vala',
 
   'widgets/views/abstract-base.vala',
   'widgets/views/abstract-cachiable.vala',
@@ -87,7 +88,9 @@ cassette_gui_sources = files(
   'widgets/header-bar.vala',
   'widgets/headered-scrolled-window.vala',
   'widgets/info-marks.vala',
+  'widgets/loadable-widget.vala',
   'widgets/loading-spinner.vala',
+  'widgets/narrow-button.vala',
   'widgets/no-plus-dialog.vala',
   'widgets/page-root.vala',
   'widgets/player-bar.vala',

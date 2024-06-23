@@ -188,7 +188,6 @@ namespace Cassette {
             });
 
             block_widget (edit_button, BlockReason.NOT_IMPLEMENTED);
-            block_widget (visibility_switch, BlockReason.NOT_IMPLEMENTED);
             block_widget (like_button, BlockReason.NOT_IMPLEMENTED);
         }
 

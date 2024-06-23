@@ -68,6 +68,6 @@ namespace Cassette.Client.YaMAPI.Rotor {
         /**
          *
          */
-        public Restrictions settings_restrictions { get; set; }
+        public Restrictions setting_restrictions { get; set; }
     }
 }

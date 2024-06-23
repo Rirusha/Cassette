@@ -90,19 +90,21 @@ popover contents {
  * Track row
  */
 
-.track-row {
+track-row {
+    all: inherit;
+
     padding: 6px;
     transition: 200ms;
 }
 
-.track-row-hover {
+track-row.hover {
     box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
                 0   1px 3px 1px rgba(0, 0, 0, .07),
                 0   2px 6px 2px rgba(0, 0, 0, .03);
     background-color: alpha(@window_fg_color, 0.1);
 }
 
-.track-row-active {
+track-row.active {
     background-color: alpha(@window_fg_color, 0.3);
 }
 
@@ -110,7 +112,7 @@ popover contents {
  * Track row playing
  */
 
-.track-row-playing {
+ track-row.playing {
     box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
                 0   1px 3px 1px rgba(0, 0, 0, .07),
                 0   2px 6px 2px rgba(0, 0, 0, .03);
@@ -118,11 +120,11 @@ popover contents {
     background-color: alpha(@accent_bg_color, 0.85);
 }
 
-.track-row-playing-hover {
+track-row.playing-hover {
     background-color: alpha(@accent_bg_color, 0.70);
 }
 
-.track-row-playing-active {
+track-row.playing-active {
     background-color: alpha(@accent_bg_color, 0.54);
 }
 

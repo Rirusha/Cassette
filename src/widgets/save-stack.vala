@@ -32,6 +32,8 @@ namespace Cassette {
         [GtkChild]
         unowned Gtk.Image perm_mark_image;
 
+        public bool show_anyway { get; set; default = false; }
+
         protected string content_id { get; set; }
         public Cachier.ContentType content_type { get; construct; }
 
@@ -125,7 +127,7 @@ namespace Cassette {
                     save_spin.start ();
                     break;
                 case Cachier.CacheingState.TEMP:
-                    if (Cassette.settings.get_boolean ("show-temp-save-mark")) {
+                    if (Cassette.settings.get_boolean ("show-temp-save-mark") || show_anyway) {
                         save_stack.visible_child_name = "temp";
                     } else {
                         save_stack.visible_child_name = "none";

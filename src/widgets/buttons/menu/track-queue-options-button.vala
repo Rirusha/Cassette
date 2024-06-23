@@ -38,7 +38,9 @@ public sealed class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
         like_button.init_content (track_info.id);
         box.append (like_button);
 
-        var save_stack = new SaveStack ();
+        var save_stack = new SaveStack () {
+            show_anyway = true,
+        };
         save_stack.init_content (track_info.id);
         box.append (save_stack);
 

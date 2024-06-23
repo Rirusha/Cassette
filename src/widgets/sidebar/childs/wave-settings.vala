@@ -54,35 +54,78 @@ public sealed class Cassette.WaveSettings: SidebarChildBin {
     }
 
     void set_values () {
+        NarrowToggleButton? button_for_group = null;
+
         foreach (var item in wave_settings.blocks[0].items) {
-            by_activity_box.append (new NarrowButton () {
+            var narrow_button = new NarrowToggleButton () {
                 label = item.name,
                 icon_name = item.icon.get_internal_icon_name (item.id.normal),
-            });
+            };
+
+            if (button_for_group == null) {
+                button_for_group = narrow_button;
+
+            } else {
+                narrow_button.group = button_for_group;
+            }
+
+            by_activity_box.append (narrow_button);
         }
+
+        button_for_group = null;
 
         foreach (var item in wave_settings.setting_restrictions.diversity.possible_values) {
             if (item.value != "default") {
-                by_diversity_box.append (new NarrowButton () {
+                var narrow_button = new NarrowToggleButton () {
                     label = item.name,
-                });
+                };
+
+                if (button_for_group == null) {
+                    button_for_group = narrow_button;
+
+                } else {
+                    narrow_button.group = button_for_group;
+                }
+
+                by_diversity_box.append (narrow_button);
             }
-            
         }
+
+        button_for_group = null;
 
         foreach (var item in wave_settings.setting_restrictions.mood_energy.possible_values) {
             if (item.value != "all") {
-                by_mood_energy_box.append (new NarrowButton () {
+                var narrow_button = new NarrowToggleButton () {
                     label = item.name,
-                });
+                };
+
+                if (button_for_group == null) {
+                    button_for_group = narrow_button;
+
+                } else {
+                    narrow_button.group = button_for_group;
+                }
+
+                by_mood_energy_box.append (narrow_button);
             }
         }
 
+        button_for_group = null;
+
         foreach (var item in wave_settings.setting_restrictions.language.possible_values) {
             if (item.value != "any") {
-                by_language_box.append (new NarrowButton () {
+                var narrow_button = new NarrowToggleButton () {
                     label = item.name,
-                });
+                };
+
+                if (button_for_group == null) {
+                    button_for_group = narrow_button;
+
+                } else {
+                    narrow_button.group = button_for_group;
+                }
+
+                by_language_box.append (narrow_button);
             }
         }
     }

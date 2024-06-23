@@ -90,7 +90,7 @@ cassette_gui_sources = files(
   'widgets/info-marks.vala',
   'widgets/loadable-widget.vala',
   'widgets/loading-spinner.vala',
-  'widgets/narrow-button.vala',
+  'widgets/narrow-toggle-button.vala',
   'widgets/no-plus-dialog.vala',
   'widgets/page-root.vala',
   'widgets/player-bar.vala',

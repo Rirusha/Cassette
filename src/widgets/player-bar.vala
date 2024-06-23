@@ -221,14 +221,12 @@ namespace Cassette {
         }
 
         void to_flow () {
-            //  repeat_button.visible = false;
             shuffle_button.visible = false;
             flow_settings_button.visible = true;
             queue_show_button.visible = false;
         }
 
         void to_track_list () {
-            //  repeat_button.visible = true;
             shuffle_button.visible = true;
             flow_settings_button.visible = false;
             queue_show_button.visible = true;

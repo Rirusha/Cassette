@@ -55,7 +55,7 @@ cassette_gui_sources = files(
   'widgets/sidebar/childs/player-queue.vala',
   'widgets/sidebar/childs/track-info.vala',
   'widgets/sidebar/childs/wave-settings.vala',
-  'widgets/sidebar/abstract-sidebar-child.vala',
+  'widgets/sidebar/sidebar-child-bin.vala',
   'widgets/sidebar/sidebar.vala',
 
   'widgets/track-list/track-list.vala',

@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-public abstract class Cassette.SidebarChildBin : Adw.Bin {
+public abstract class Cassette.SidebarChildBin: Adw.Bin {
 
     public string child_id { get; set; }
 

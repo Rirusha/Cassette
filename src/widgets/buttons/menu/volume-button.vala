@@ -272,8 +272,16 @@ public class Cassette.VolumeButton : CustomMenuButton {
             volume_second_button.icon_name = "plus-symbolic";
             volume_second_button.clicked.connect (increase_volume);
 
-            this.bind_property ("can-decrease", volume_first_button, "sensitive", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
-            this.bind_property ("can-increase", volume_second_button, "sensitive", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+            this.bind_property (
+                "can-decrease",
+                volume_first_button, "sensitive",
+                BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
+            this.bind_property (
+                "can-increase",
+                volume_second_button, "sensitive",
+                BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
 
         } else {
             volume_first_button.icon_name = "plus-symbolic";
@@ -282,8 +290,16 @@ public class Cassette.VolumeButton : CustomMenuButton {
             volume_second_button.icon_name = "minus-symbolic";
             volume_second_button.clicked.connect (decrease_volume);
 
-            this.bind_property ("can-increase", volume_first_button, "sensitive", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
-            this.bind_property ("can-decrease", volume_second_button, "sensitive", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+            this.bind_property (
+                "can-increase",
+                volume_first_button, "sensitive",
+                BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
+            this.bind_property (
+                "can-decrease",
+                volume_second_button, "sensitive",
+                BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
         }
 
         return box;

@@ -93,6 +93,7 @@ popover contents {
 track-row {
     all: inherit;
 
+    border-radius: 12px;
     padding: 6px;
     transition: 200ms;
 }

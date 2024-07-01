@@ -191,6 +191,7 @@ namespace Cassette {
                 });
             });
 
+            block_widget (flow_settings_button, BlockReason.NOT_IMPLEMENTED);
             block_widget (fullscreen_button, BlockReason.NOT_IMPLEMENTED);
         }
 

@@ -127,7 +127,7 @@
             <property name="title" translatable="true" context="preference dialog">Experimental</property>
             <child>
               <object class="AdwSwitchRow" id="use_only_dialogs_switch">
-                <property name="title" translatable="true" context="preference dialog">Use only dialog menus</property>
+                <property name="title" translatable="true" context="preference dialog">Use only bottom sheet menus</property>
               </object>
             </child>
           </object>

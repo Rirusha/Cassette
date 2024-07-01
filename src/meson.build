@@ -132,6 +132,12 @@ cassette_c_args = [
   '-include', 'config.h',
 ]
 
+# GCC14 COMPILE ERROR
+cassette_c_args += [
+  '-Wno-int-conversion',
+]
+# END GCC14
+
 executable(
   'cassette',
   cassette_sources,

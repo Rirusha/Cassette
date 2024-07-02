@@ -459,12 +459,13 @@ namespace Cassette.Client.Cachier {
             }
         }
 
-        public async void clear_user (bool keep_content) {
-            /**
-                Удаляет пользовательские данные и переносить содержимое
-                кэшей во временное 
-            */
-
+        /**
+         * Remove user data and move content to cache
+         *
+         * @param keep_content  remove content or keep
+         * @param keep_settings remove cookies and other or
+         */
+        public async void clear_user (bool keep_content, bool keep_datadir) {
             threader.add (() => {
                 if (keep_content) {
                     move_file_dir (data_images_dir_file, cache_images_dir_file);
@@ -473,7 +474,11 @@ namespace Cassette.Client.Cachier {
                 }
 
                 _db = null;
-                remove_dir_file (data_dir_file);
+                remove_file (db_file);
+
+                if (!keep_datadir) {
+                    remove_dir_file (data_dir_file);
+                }
 
                 Idle.add (clear_user.callback);
             });

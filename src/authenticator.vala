@@ -101,8 +101,7 @@ namespace Cassette {
             loading_win.present ();
             spinner.start ();
 
-            // TODO: let user choose save content ot not
-            yield storager.clear_user (true);
+            yield storager.clear_user (true, false);
         }
 
         public void log_in () {

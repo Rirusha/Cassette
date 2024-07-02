@@ -73,28 +73,7 @@ namespace Cassette {
         }
 
         construct {
-            var actions = new SimpleActionGroup ();
-
-            var add_to_queue_action = new SimpleAction ("add-to-queue", null);
-            add_to_queue_action.activate.connect (() => {
-                var playlist_info = (YaMAPI.Playlist) object_info;
-
-                var track_list = playlist_info.get_filtered_track_list (
-                    Cassette.settings.get_boolean ("explicit-visible"),
-                    Cassette.settings.get_boolean ("child-visible")
-                );
-
-                player.add_many (track_list);
-            });
-            actions.add_action (add_to_queue_action);
-
             visibility_switch.state_set.connect (on_switch_change);
-
-            var share_action = new SimpleAction ("share", null);
-            share_action.activate.connect (() => {
-                playlist_share ((YaMAPI.Playlist) object_info);
-            });
-            actions.add_action (share_action);
 
             if (yam_talker.is_me (uid) && kind != "3") {
                 visibility_switch.visible = true;
@@ -133,8 +112,6 @@ namespace Cassette {
                     dialog.present (application.main_window);
                 });
             }
-
-            insert_action_group ("playlist", actions);
 
             //  playlist_name_entry.activate.connect (() => {
             //      string old_playlist_title = ((YaMAPI.Playlist) object_info).title;
@@ -287,6 +264,7 @@ namespace Cassette {
             like_button.init_content (playlist_info.oid);
             save_stack.init_content (playlist_info.oid);
             play_mark_context.init_content (playlist_info.oid);
+            playlist_options_button.playlist_info = playlist_info;
 
             show_ready ();
         }

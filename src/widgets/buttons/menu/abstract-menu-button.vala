@@ -71,7 +71,7 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
         bind_property ("css-classes", real_button, "css-classes", BindingFlags.DEFAULT);
 
         actions = new SimpleActionGroup ();
-        insert_action_group ("track", actions);
+        insert_action_group ("actions", actions);
 
         real_button.set_create_popup_func ((menu_button) => {
             if (root_window_is_shrinked || settings.get_boolean ("use-only-dialogs")) {

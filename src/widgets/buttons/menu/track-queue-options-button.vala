@@ -63,14 +63,14 @@ public sealed class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
 
     protected override CustomMenuButton.MenuItem[] get_popover_menu_items () {
         return {
-            {_("My Vibe by track"), "track.my-vibe", 0},
-            {_("Show info"), "track.show-info", 0},
-            {_("Play next"), "track.add-next", 1},
-            {_("Add to queue"), "track.add-end", 1},
-            {_("Add to playlist"), "track.add-to-playlist", 2},
-            {_("Remove from queue"), "track.remove-from-queue", 2},
-            {_("Save"), "track.save", 3},
-            {_("Share"), "track.share", 3}
+            {_("My Vibe by track"), "actions.my-vibe", 0},
+            {_("Show info"), "actions.show-info", 0},
+            {_("Play next"), "actions.add-next", 1},
+            {_("Add to queue"), "actions.add-end", 1},
+            {_("Add to playlist"), "actions.add-to-playlist", 2},
+            {_("Remove from queue"), "actions.remove-from-queue", 2},
+            {_("Save"), "actions.save", 3},
+            {_("Share"), "actions.share", 3}
         };
     }
 
@@ -95,12 +95,12 @@ public sealed class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
 
     protected override CustomMenuButton.MenuItem[] get_dialog_menu_items () {
         return {
-            {_("Play next"), "track.add-next", 1},
-            {_("Add to queue"), "track.add-end", 1},
-            {_("Add to playlist"), "track.add-to-playlist", 2},
-            {_("Remove from queue"), "track.remove-from-queue", 2},
-            {_("Save"), "track.save", 3},
-            {_("Share"), "track.share", 3}
+            {_("Play next"), "actions.add-next", 1},
+            {_("Add to queue"), "actions.add-end", 1},
+            {_("Add to playlist"), "actions.add-to-playlist", 2},
+            {_("Remove from queue"), "actions.remove-from-queue", 2},
+            {_("Save"), "actions.save", 3},
+            {_("Share"), "actions.share", 3}
         };
     }
 }

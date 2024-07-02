@@ -200,7 +200,7 @@ public class Cassette.Client.Player.Player : Object {
 
     public Mode mode { get; private set; }
 
-    const double PLAY_CALLBACK_STEP = 0.1;
+    const double PLAY_CALLBACK_STEP = 1.0;
 
     string play_id { get; set; default = ""; }
 
@@ -271,6 +271,8 @@ public class Cassette.Client.Player.Player : Object {
     void reset_play () {
         play_id = Uuid.string_random ();
         total_played_seconds = 0.0;
+
+        update_can_go ();
     }
 
     void init (string[]? args) {
@@ -282,6 +284,7 @@ public class Cassette.Client.Player.Player : Object {
             ms = 0;
         }
 
+        update_can_go ();
         playbin.seek_simple (Gst.Format.TIME, Gst.SeekFlags.FLUSH | Gst.SeekFlags.KEY_UNIT, ms * Gst.MSECOND);
     }
 

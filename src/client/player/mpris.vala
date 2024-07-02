@@ -48,7 +48,7 @@ public class Mpris : Object {
     public bool can_quit { get; set; default = true; }
     public bool can_raise { get; set; default = true; }
     public string desktop_entry { get; set; default = Config.APP_ID_DYN; }
-    public string identity { get; set; default = "Cassette"; }
+    public string identity { get; set; default = Config.APP_IDENTITY_DYN; }
 
     public signal void quit_triggered ();
     public signal void raise_triggered ();

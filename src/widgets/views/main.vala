@@ -15,38 +15,45 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace Cassette {
-    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/main-view.ui")]
-    public class MainView : BaseView {
-        [GtkChild]
-        unowned Adw.StatusPage status_page;
+[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/main-view.ui")]
+public class Cassette.MainView : BaseView {
 
-        public MainView () {
-            Object ();
-        }
+    [GtkChild]
+    unowned Adw.StatusPage status_page;
+    [GtkChild]
+    unowned Gtk.Button stations_view_button;
 
-        construct {
-            status_page.icon_name = "%s-symbolic".printf (Config.APP_ID_DYN);
-        }
+    public MainView () {
+        Object ();
+    }
 
-        void set_values () {
-            show_ready ();
-        }
+    construct {
+        status_page.icon_name = "%s-symbolic".printf (Config.APP_ID_DYN);
 
-        public async override void first_show () {
-            set_values ();
-        }
+        stations_view_button.clicked.connect (() => {
+            root_view.add_view (new StationsView ());
+        });
+    }
 
-        public async override bool try_load_from_cache () {
-            return true;
-        }
+    void set_values () {
+        set_focus_child (null);
 
-        public async override int try_load_from_web () {
-            return -1;
-        }
+        show_ready ();
+    }
 
-        public async override void refresh () {
+    public async override void first_show () {
+        set_values ();
+    }
 
-        }
+    public async override bool try_load_from_cache () {
+        return true;
+    }
+
+    public async override int try_load_from_web () {
+        return -1;
+    }
+
+    public async override void refresh () {
+
     }
 }

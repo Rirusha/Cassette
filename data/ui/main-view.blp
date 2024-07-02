@@ -3,6 +3,23 @@ using Adw 1;
 
 template $CassetteMainView: $CassetteBaseView {
   Adw.StatusPage status_page {
-    title: _("Not implemented yet");
+    title: _("Page under construction");
+
+    Adw.Clamp {
+      margin-top: 24;
+      margin-bottom: 24;
+      margin-start: 12;
+      margin-end: 12;
+      maximum-size: 450;
+
+      Box main_box {
+        orientation: vertical;
+        spacing: 4;
+
+        Button stations_view_button {
+          label: _("List of all stations");
+        }
+      }
+    }
   }
 }

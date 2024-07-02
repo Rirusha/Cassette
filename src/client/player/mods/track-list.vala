@@ -52,6 +52,17 @@ public class Cassette.Client.Player.TrackList : Shufflable {
         );
     }
 
+    public override void next (bool consider_repeat_mode) {
+        var new_index = get_next_index (consider_repeat_mode);
+
+        if (new_index != -1) {
+            current_index = new_index;
+
+        } else {
+            player.start_flow ("%s:%s".printf (context_type, context_id), queue);
+        }
+    }
+
     public override int get_next_index (bool consider_repeat_one) {
         int index = current_index;
 

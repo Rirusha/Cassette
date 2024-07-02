@@ -60,7 +60,7 @@ public class Cassette.Client.Player.Flow : Mode {
             queue.add (station_tracks.sequence[0].track);
             queue.add (station_tracks.sequence[1].track);
 
-            current_index = 0;
+            current_index = queue.size - 2;
 
             send_feedback.begin (YaMAPI.Rotor.FeedbackType.RADIO_STARTED);
 

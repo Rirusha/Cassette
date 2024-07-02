@@ -298,10 +298,18 @@ public class Cassette.Client.Player.Player : Object {
             repeat_mode = RepeatMode.OFF;
         }
 
+        var flow_queue = new ArrayList<YaMAPI.Track> ();
+
+        foreach (var track_info in queue) {
+            if (!track_info.is_ugc) {
+                flow_queue.add (track_info);
+            }
+        }
+
         var flow = new Flow (
             this,
             station_id,
-            queue
+            flow_queue
         );
 
         mode = flow;
@@ -423,9 +431,11 @@ public class Cassette.Client.Player.Player : Object {
 
         mode.next (true);
 
-        start_current_track.begin (() => {
-            ready_play_next ();
-        });
+        if (mode.current_index != -1) {
+            start_current_track.begin (() => {
+                ready_play_next ();
+            });
+        }
     }
 
     public void next () {
@@ -433,9 +443,11 @@ public class Cassette.Client.Player.Player : Object {
 
         mode.next (false);
 
-        start_current_track.begin (() => {
-            ready_play_next ();
-        });
+        if (mode.current_index != -1) {
+            start_current_track.begin (() => {
+                ready_play_next ();
+            });
+        }
     }
 
     public void prev (bool ignore_progress = false) {

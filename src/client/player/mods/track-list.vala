@@ -59,7 +59,12 @@ public class Cassette.Client.Player.TrackList : Shufflable {
             current_index = new_index;
 
         } else {
-            player.start_flow ("%s:%s".printf (context_type, context_id), queue);
+            player.start_flow (
+                "%s:%s".printf (
+                    context_type,
+                    context_id.replace (":", "_")
+                ),
+                queue);
         }
     }
 

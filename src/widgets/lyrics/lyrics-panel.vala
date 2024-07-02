@@ -68,7 +68,7 @@ namespace Cassette {
                 line_list.add (lyrics_line);
             }
 
-            player.playback_callback.connect (() => {
+            Timeout.add (100, () => {
                 if (track_id != player.mode.get_current_track_info ().id || player.state != Player.State.PLAYING) {
                     current_line = null;
                     show_as_text ();
@@ -88,6 +88,15 @@ namespace Cassette {
                             break;
                         }
                     }
+                }
+
+                message (current_line.line);
+
+                if (get_mapped ()) {
+                    return Source.CONTINUE;
+
+                } else {
+                    return Source.REMOVE;
                 }
             });
         }

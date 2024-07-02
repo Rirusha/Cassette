@@ -90,8 +90,6 @@ namespace Cassette {
                     }
                 }
 
-                message (current_line.line);
-
                 if (get_mapped ()) {
                     return Source.CONTINUE;
 

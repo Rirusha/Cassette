@@ -60,6 +60,8 @@ namespace Cassette {
         unowned Gtk.Switch visibility_switch;
         [GtkChild]
         unowned Gtk.Button edit_button;
+        [GtkChild]
+        unowned Gtk.Button remove_button;
 
         public override bool can_refresh { get; default = true; }
 
@@ -96,11 +98,9 @@ namespace Cassette {
 
             if (yam_talker.is_me (uid) && kind != "3") {
                 visibility_switch.visible = true;
+                remove_button.visible = true;
 
-                //  playlist_options_button.add_delete_playlist_action ();
-
-                var delete_playlist_action = new SimpleAction ("delete-playlist", null);
-                delete_playlist_action.activate.connect (() => {
+                remove_button.clicked.connect (() => {
                     var dialog = new Adw.AlertDialog (
                         _("Delete playlist?"),
                         _("Playlist '%s' will be permanently deleted.").printf (((YaMAPI.Playlist) object_info).title)
@@ -119,6 +119,9 @@ namespace Cassette {
                         if (response == "delete") {
                             playlist_delete_async.begin ((obj, res) => {
                                 if (playlist_delete_async.end (res)) {
+                                    root_view.backward ();
+                                    application.main_window.pager.remove_page (object_info.oid);
+
                                     application.show_message (_("Playlist '%s' was deleted").printf (
                                         ((YaMAPI.Playlist) object_info).title
                                     ));
@@ -129,7 +132,6 @@ namespace Cassette {
 
                     dialog.present (application.main_window);
                 });
-                actions.add_action (delete_playlist_action);
             }
 
             insert_action_group ("playlist", actions);
@@ -214,7 +216,6 @@ namespace Cassette {
                 Idle.add (playlist_delete_async.callback);
             });
 
-            root_view.backward ();
             yield;
 
             if (success) {

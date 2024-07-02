@@ -120,6 +120,19 @@
                                 <property name="visible">false</property>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkButton" id="remove_button">
+                                <style>
+                                  <class name="flat"/>
+                                  <class name="circular"/>
+                                  <class name="destructive-action"/>
+                                </style>
+                                <property name="halign">end</property>
+                                <property name="valign">start</property>
+                                <property name="icon-name">user-trash-symbolic</property>
+                                <property name="visible">false</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child>

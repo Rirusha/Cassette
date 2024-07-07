@@ -15,7 +15,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-
 using Cassette.Client;
 
 [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/window.ui")]

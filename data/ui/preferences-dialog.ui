@@ -12,23 +12,6 @@
             <!-- Translators: title of preference group -->
             <property name="title" translatable="true" context="preference dialog">General</property>
             <child>
-              <object class="AdwSpinRow" id="max_thread_number_spin">
-                <!-- Translators: title of preference -->
-                <property name="title" translatable="true" context="preference dialog">Max active threads</property>
-                <!-- Translators: tooltip of preference -->
-                <property name="tooltip-text" translatable="true" context="preference dialog">The maximum number of threads for content loading. A large value can affect the performance of the system. The changes will take effect after restarting the application.</property>
-                <property name="adjustment">
-                  <object class="GtkAdjustment">
-                    <property name="lower">1</property>
-                    <property name="upper">20</property>
-                    <property name="value">5</property>
-                    <property name="page-increment">1</property>
-                    <property name="step-increment">1</property>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <child>
               <object class="AdwSwitchRow" id="is_hq_switch">
                 <!-- Translators: title of preference -->
                 <property name="title" translatable="true" context="preference dialog">Enable high quality audio</property>

@@ -99,7 +99,7 @@
 			<default>false</default>
 		</key>
 		<key name="max-thread-number" type="i">
-			<default>6</default>
+			<default>10</default>
 		</key>
 		<key name="add-tracks-to-start" type="b">
 			<default>true</default>

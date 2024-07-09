@@ -51,8 +51,6 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.SwitchRow can_cache_switch;
         [GtkChild]
-        unowned Adw.SpinRow max_thread_number_spin;
-        [GtkChild]
         unowned CacheDeletionPreferences deletion_preferences;
         [GtkChild]
         unowned Adw.SwitchRow debug_mode_switch;
@@ -64,7 +62,6 @@ namespace Cassette {
 
             show_save_stack_switch.notify["active"].connect (on_show_save_stack_switch_changed);
 
-            max_thread_number_spin.value = Cassette.Client.settings.get_int ("max-thread-number");
             can_cache_switch.active = Cassette.Client.settings.get_boolean ("can-cache");
 
             can_cache_switch.notify["active"].connect (() => {
@@ -118,10 +115,6 @@ namespace Cassette {
             Cassette.settings.bind (
                 "show-playlists", show_playlists_switch, "active", GLib.SettingsBindFlags.DEFAULT
             );
-
-            max_thread_number_spin.notify["value"].connect (() => {
-                Cassette.Client.settings.set_int ("max-thread-number", (int) max_thread_number_spin.value);
-            });
 
             on_show_save_stack_switch_changed ();
 

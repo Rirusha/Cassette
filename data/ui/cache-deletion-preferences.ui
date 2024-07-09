@@ -156,10 +156,11 @@
                         <style>
                           <class name="destructive-action"/>
                         </style>
+                        <property name="tooltip-text" translatable="true">Move to cache</property>
                         <child>
                           <object class="AdwButtonContent">
                             <property name="icon-name">user-trash-symbolic</property>
-                            <property name="label" translatable="true">Move data</property>
+                            <property name="label" translatable="true">Move</property>
                           </object>
                         </child>
                       </object>

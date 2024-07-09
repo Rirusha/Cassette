@@ -40,6 +40,12 @@
             "problemMatcher": []
         },
         {
+            "label": "Generate .pot",
+            "type": "shell",
+            "command": "sh po/update_potfiles.sh && flatpak run --command=meson --filesystem=host org.gnome.Sdk compile -C _build cassette-pot",
+            "problemMatcher": []
+        },
+        {
             "label": "Run tests",
             "type": "shell",
             "command": "flatpak build --share=network --filesystem=${workspaceFolder} --filesystem=${workspaceFolder}/.flatpak/repo --env=PATH=/home/rirusha/bin:/bin:/usr/bin:/usr/local/bin:/usr/games:/app/bin:/usr/bin:/usr/lib/sdk/vala/bin --env=LD_LIBRARY_PATH=/usr/lib/sdk/vala/lib:/app/lib --env=PKG_CONFIG_PATH=/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig --filesystem=${workspaceFolder}/_build ${workspaceFolder}/.flatpak/repo ninja -C _build test",

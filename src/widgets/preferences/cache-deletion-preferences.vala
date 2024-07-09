@@ -87,7 +87,7 @@ namespace Cassette {
             var dialog = new Adw.AlertDialog (
                 is_tmp ? _("Delete cache files?") :
                     _("Moved saved files?"),
-                is_tmp ? _("All cached files will be deleted. This doesn't affect on saved playlists or albums") :
+                is_tmp ? _("All cache will be deleted. This doesn't affect on saved playlists or albums") :
                     _("All saved playlists and albums will be moved to cache files. This could take a while.")
             );
 

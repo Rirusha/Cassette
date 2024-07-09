@@ -50,7 +50,7 @@ public class Cassette.PlaylistOptionsButton : CustomMenuButton {
 
     protected override MenuItem[] get_popover_menu_items () {
         return {
-            {_("My Vibe by Playlist"), "actions.my-vibe", 0},
+            {_("My Vibe by playlist"), "actions.my-vibe", 0},
             {_("Add to queue"), "actions.add-to-queue", 1},
             {_("Share"), "actions.share", 1}
         };

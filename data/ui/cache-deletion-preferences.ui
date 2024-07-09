@@ -17,7 +17,8 @@
             <style>
               <class name="title-4"/>
             </style>
-            <property name="label" translatable="true">Cache dirs size:</property>
+            <!-- Translators: size of cache dirs -->
+            <property name="label" translatable="true">Dirs size:</property>
             <layout>
               <property name="column">0</property>
               <property name="row">0</property>
@@ -31,7 +32,7 @@
               <class name="title-3"/>
             </style>
             <!-- Translators: tempprary cache folder -->
-            <property name="label" translatable="true">Temporary</property>
+            <property name="label" translatable="true">Cache</property>
             <layout>
               <property name="column">0</property>
               <property name="row">1</property>
@@ -78,10 +79,13 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="temp_delete_button">
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
                         <child>
                           <object class="AdwButtonContent">
                             <property name="icon-name">user-trash-symbolic</property>
-                            <property name="label" translatable="true">Clear cache</property>
+                            <property name="label" translatable="true">Clear</property>
                           </object>
                         </child>
                       </object>
@@ -102,7 +106,7 @@
               <class name="title-3"/>
             </style>
             <!-- Translators: temparence cache folder -->
-            <property name="label" translatable="true">Permanent</property>
+            <property name="label" translatable="true">Data</property>
             <layout>
               <property name="column">1</property>
               <property name="row">1</property>
@@ -149,10 +153,13 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="perm_delete_button">
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
                         <child>
                           <object class="AdwButtonContent">
                             <property name="icon-name">user-trash-symbolic</property>
-                            <property name="label" translatable="true">Move saved</property>
+                            <property name="label" translatable="true">Move data</property>
                           </object>
                         </child>
                       </object>

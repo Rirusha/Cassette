@@ -7,8 +7,9 @@ builddir*
 # Personal scripts
 my.*
 
-# Poedit db
+# Po
 *.mo
+po/cassette.pot
 
 # flatpak
 .flatpak-builder

@@ -267,7 +267,7 @@ namespace Cassette {
                 track_info.get_artists_names ()
             ));
 
-            ntf.set_title (_("Now playing"));
+            ntf.set_title (_("Playing now"));
 
             ntf.add_button (_("Previous"), "app.prev-force");
             ntf.add_button (_("Next"), "app.next");

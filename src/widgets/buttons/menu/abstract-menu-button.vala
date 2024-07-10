@@ -218,7 +218,7 @@ public abstract class Cassette.CustomMenuButton : ShrinkableBin {
             content_height = 294
         };
 
-        dialog.insert_action_group ("track", actions);
+        dialog.insert_action_group ("actions", actions);
 
         real_button.active = false;
 

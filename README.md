@@ -123,6 +123,11 @@ yay -S cassette-git
 pamac install cassette-git
 ```
 
+### NixOS
+```shell
+nix run github:Rirusha/Cassette
+```
+
 ## Установка в Windows
 
 Способы установки приложения в Windows описаны [здесь](docs/INSTALLATION_ON_WINDOWS.md).

@@ -69,15 +69,20 @@ namespace Cassette {
         about.add_link (_("Financial support (Tinkoff)"), TINKOFF_SUPPORT_LINK);
         about.add_link (_("Financial support (Boosty)"), BOOSTY_SUPPORT_LINK);
 
+        // Please keep alphabetical
         about.add_acknowledgement_section (_("Sponsors"), {
+            "Alex Gluck",
             "Amper Shiz",
+            "AveryanAlex",
             "belovmv",
             "dant4ick",
+            "Dmitry M.",
             "Do6pblu_Jyk",
             "eugene_t",
             "Fiersik",
             "Fissium",
             "gen1s",
+            "Ivan A.",
             "IQQator",
             "katze_942",
             "khaustovdn",
@@ -90,16 +95,12 @@ namespace Cassette {
             "Roman Aysin",
             "Semen Fomchenkov",
             "Sergey P.",
+            "Shakhrutdin Z.",
             "Spp595",
             "Toxblh",
             "Vasily Biryukov",
             "werlock",
             "Zellrus",
-            "Alex Gluck",
-            "AveryanAlex",
-            "Dmitry M.",
-            "Shakhrutdin Z.",
-            "Ivan A.",
         });
 
         return about;

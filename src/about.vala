@@ -95,6 +95,11 @@ namespace Cassette {
             "Vasily Biryukov",
             "werlock",
             "Zellrus",
+            "Alex Gluck",
+            "AveryanAlex",
+            "Dmitry M.",
+            "Shakhrutdin Z.",
+            "Ivan A.",
         });
 
         return about;

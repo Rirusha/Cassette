@@ -34,7 +34,7 @@
 </p>
 
 
-## План основных версий
+## Ход текущей разработки
 [![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/2?label=0.2.0%20-%20%D0%9C%D0%BE%D1%8F%20%D0%B2%D0%BE%D0%BB%D0%BD%D0%B0)](https://github.com/Rirusha/Cassette/milestone/2) \
 [![GitHub milestone details](https://img.shields.io/github/milestones/progress-percent/Rirusha/Cassette/8?label=0.2.1%20-%20Рефакторинг)](https://github.com/Rirusha/Cassette/milestone/8)
 

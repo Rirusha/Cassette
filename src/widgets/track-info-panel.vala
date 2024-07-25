@@ -80,6 +80,8 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
 
                 play_mark_track.init_content (value.id);
             }
+
+            update_labels_visibility ();
         }
     }
 
@@ -211,17 +213,14 @@ public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {
     }
 
     construct {
-        track_version_label.notify["label"].connect (() => {
-            track_version_label.visible = track_version_label.label != "";
-        });
-
-        track_authors_label.notify["label"].connect (() => {
-            track_authors_label.visible = track_authors_label.label != "";
-        });
-
         notify["position"].connect (() => {
             position_label.label = position.to_string ();
         });
+    }
+
+    void update_labels_visibility () {
+        track_version_label.visible = track_version_label.label != "";
+        track_authors_label.visible = track_authors_label.label != "";
     }
 
     public PlayMarkTrack get_play_mark_track () {

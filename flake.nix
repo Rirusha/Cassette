@@ -47,7 +47,7 @@
           src = self;
 
           mesonFlags = [
-            "-Dprofile=development"
+            "-Dis_devel=true"
           ];
 
           nativeBuildInputs = with pkgs;

@@ -139,7 +139,7 @@ cassette_c_args += [
 # END GCC14
 
 executable(
-  'cassette',
+  meson.project_name(),
   cassette_sources,
   include_directories: config_h_dir,
   vala_args: cassette_vala_args,

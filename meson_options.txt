@@ -1,10 +1,5 @@
 option(
-  'profile',
-  type: 'combo',
-  choices: [
-    'default',
-    'development',
-  ],
-  value: 'default',
-  description: 'The build profile for app. One of "default" or "development".'
+  'is_devel',
+  type: 'boolean',
+  value: false
 )

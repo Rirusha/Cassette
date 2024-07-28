@@ -49,7 +49,7 @@
             "name" : "cassette",
             "builddir" : true,
             "buildsystem" : "meson",
-            "config-opts": [ "-Dprofile=development" ],
+            "config-opts": [ "-Dis_devel=true" ],
             "sources" : [
                 {
                     "type" : "dir",

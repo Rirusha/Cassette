@@ -24,19 +24,17 @@ gio = dependency('gio-2.0', version: '>= 2.72')
 
 app_id = 'io.github.Rirusha.Cassette'
 
-if get_option('profile') == 'development'
+if get_option('is_devel')
   find_program('git', required: true)
   name_postfix = ' (Devel)'
   app_id_dyn = '@0@-Devel'.format(app_id)
   app_identity_dyn = 'Cassette (Devel)'
-  profile = 'Devel'
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
   version_suffix = '-dev.@0@'.format (vcs_tag)
 else
   name_postfix = ''
   app_id_dyn = app_id
   app_identity_dyn = 'Cassette'
-  profile = ''
   version_suffix = ''
 endif
 
@@ -46,7 +44,7 @@ conf.set_quoted('APP_NAME', 'Cassette@0@'.format (name_postfix))
 conf.set_quoted('APP_ID_DYN', app_id_dyn)
 conf.set_quoted('APP_IDENTITY_DYN', app_identity_dyn)
 conf.set_quoted('G_LOG_DOMAIN', app_id)
-conf.set_quoted('PROFILE', profile)
+conf.set10('IS_DEVEL', get_option('is_devel'))
 conf.set_quoted('VERSION', meson.project_version() + version_suffix)
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))

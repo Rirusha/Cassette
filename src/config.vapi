@@ -4,7 +4,7 @@ namespace Config {
     public const string APP_ID_DYN;
     public const string APP_IDENTITY_DYN;
     public const string VERSION;
-    public const string PROFILE;
+    public const bool IS_DEVEL;
     public const string GETTEXT_PACKAGE;
     public const string GNOMELOCALEDIR;
     public const string DATADIR;

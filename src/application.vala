@@ -90,7 +90,7 @@ namespace Cassette {
 
         public bool is_devel {
             get {
-                return Config.PROFILE == "Devel";
+                return Config.IS_DEVEL;
             }
         }
 

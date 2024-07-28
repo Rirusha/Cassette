@@ -24,28 +24,27 @@ gio = dependency('gio-2.0', version: '>= 2.72')
 
 app_id = 'io.github.Rirusha.Cassette'
 
+name_suffix = ''
+version_suffix = ''
+
 if get_option('is_devel')
+  name_suffix = ' (Devel)'
+  app_id_suffix = '-Devel'
+
   find_program('git', required: true)
-  name_postfix = ' (Devel)'
-  app_id_dyn = '@0@-Devel'.format(app_id)
-  app_identity_dyn = 'Cassette (Devel)'
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
   version_suffix = '-dev.@0@'.format (vcs_tag)
-else
-  name_postfix = ''
-  app_id_dyn = app_id
-  app_identity_dyn = 'Cassette'
-  version_suffix = ''
 endif
+
+app_id_dyn = '@0@@1@'.format (app_id, app_id_suffix)
 
 conf = configuration_data()
 conf.set_quoted('APP_ID', app_id)
-conf.set_quoted('APP_NAME', 'Cassette@0@'.format (name_postfix))
 conf.set_quoted('APP_ID_DYN', app_id_dyn)
-conf.set_quoted('APP_IDENTITY_DYN', app_identity_dyn)
+conf.set_quoted('APP_NAME', 'Cassette@0@'.format (name_suffix))
 conf.set_quoted('G_LOG_DOMAIN', app_id)
 conf.set10('IS_DEVEL', get_option('is_devel'))
-conf.set_quoted('VERSION', meson.project_version() + version_suffix)
+conf.set_quoted('VERSION', '@0@@1@'.format (meson.project_version(), version_suffix))
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
 conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))

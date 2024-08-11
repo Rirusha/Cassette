@@ -21,10 +21,10 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
         margin-bottom: 12;
         margin-start: 12;
         margin-end: 12;
-        maximum-size: 450;
+        maximum-size: 360;
 
         Box {
-          spacing: 24;
+          spacing: 12;
           orientation: vertical;
 
           Adw.Avatar avatar {}
@@ -39,45 +39,35 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
             wrap: true;
           }
 
-          Box {
-            orientation: vertical;
-            halign: center;
-            spacing: 8;
+          ListBox {
+            styles [
+              "boxed-list-separate"
+            ]
 
-            Button user_button {
-              styles [
-                "pill"
-              ]
+            margin-top: 12;
+            selection-mode: none;
 
+            Adw.ButtonRow user_button {
               action-name: "app.open-account";
-              label: _("Open in browser");
-              hexpand: true;
-              can-shrink: true;
+              title: _("Open in browser");
             }
 
-            Button plus_button {
+            Adw.ButtonRow plus_button {
               styles [
-                "pill",
-                "plus-background"
+                "plus-button"
               ]
 
               action-name: "app.open-plus";
-              label: _("Plus");
-              hexpand: true;
-              can-shrink: true;
+              title: _("Plus");
             }
 
-            Button logout_button {
+            Adw.ButtonRow logout_button {
               styles [
-                "pill",
                 "destructive-action"
               ]
 
-              margin-top: 24;
               action-name: "app.log-out";
-              label: _("Log out");
-              hexpand: true;
-              can-shrink: true;
+              title: _("Log out");
             }
           }
         }

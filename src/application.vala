@@ -54,6 +54,7 @@ namespace Cassette {
             { "parse-url", on_parse_url_action },
             { "open-account", on_open_account_action },
             { "open-plus", on_open_plus_action },
+            { "get-plus", on_get_plus_action },
             { "mute", on_mute_action },
         };
 
@@ -448,6 +449,15 @@ namespace Cassette {
         void on_open_plus_action () {
             try {
                 Process.spawn_command_line_async ("xdg-open https://plus.yandex.ru/");
+
+            } catch (SpawnError e) {
+                Logger.warning (_("Error while opening uri: %s").printf (e.message));
+            }
+        }
+
+        void on_get_plus_action () {
+            try {
+                Process.spawn_command_line_async ("xdg-open https://plus.yandex.ru/getplus");
 
             } catch (SpawnError e) {
                 Logger.warning (_("Error while opening uri: %s").printf (e.message));

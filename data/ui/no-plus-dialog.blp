@@ -2,37 +2,56 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteNoPlusDialog: Adw.Dialog {
-  width-request: 360;
-  content-width: 360;
+    width-request: 360;
+    content-width: 360;
 
-  Adw.ToolbarView {
-    top-bar-style: flat;
+    Adw.ToolbarView {
+        top-bar-style: flat;
 
-    [top]
-    Adw.HeaderBar {}
+        [top]
+        Adw.HeaderBar {}
 
-    content: Adw.StatusPage {
-      margin-top: 24;
-      margin-bottom: 12;
-      margin-start: 12;
-      margin-end: 12;
-      icon-name: "dialog-warning-symbolic";
-      title: _("No Plus Subscription");
-      description: _("To avoid problems with Yandex, the online functions of the application are not available without a Yandex.Plus subscription. Thanks for understanding.");
+        content: Box {
+            orientation: vertical;
 
-      Button logout_button {
-        styles [
-          "pill",
-          "destructive-action"
-        ]
+            Adw.StatusPage {
+                vexpand: true;
+                icon-name: "dialog-warning-symbolic";
+                title: _("No Plus Subscription");
+                description: _("To avoid problems with Yandex, the online functions of the application are not available without a Yandex.Plus subscription. Thanks for understanding.");
+            }
 
-        visible: bind template.log-out-button-visible;
-        margin-top: 24;
-        action-name: "app.log-out";
-        label: _("Log out");
-        hexpand: true;
-        can-shrink: true;
-      }
-    };
-  }
+            ListBox {
+                styles [
+                    "boxed-list-separate"
+                ]
+
+                margin-top: 12;
+                margin-bottom: 12;
+                margin-start: 12;
+                margin-end: 12;
+                selection-mode: none;
+
+                Adw.ButtonRow get_plus_button {
+                    styles [
+                        "plus-button",
+                    ]
+
+                    action-name: "app.get-plus";
+                    title: _("Get Plus");
+                    hexpand: true;
+                }
+
+                Adw.ButtonRow logout_button {
+                    styles [
+                        "destructive-action"
+                    ]
+
+                    action-name: "app.log-out";
+                    title: _("Log out");
+                    hexpand: true;
+                }
+            }
+        };
+    }
 }

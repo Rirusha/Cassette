@@ -9,8 +9,8 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-gtk = dependency('gtk4', version: '>= 4.14')
-libadwaita = dependency('libadwaita-1', version: '>= 1.5')
+gtk = dependency('gtk4', version: '>= 4.16')
+libadwaita = dependency('libadwaita-1', version: '>= 1.6')
 threads = dependency('threads')
 libsoup = dependency('libsoup-3.0')
 gdkpixbuf = dependency('gdk-pixbuf-2.0')

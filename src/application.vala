@@ -438,30 +438,15 @@ namespace Cassette {
         }
 
         void on_open_account_action () {
-            try {
-                Process.spawn_command_line_async ("xdg-open https://id.yandex.ru/");
-
-            } catch (SpawnError e) {
-                Logger.warning (_("Error while opening uri: %s").printf (e.message));
-            }
+            new Gtk.UriLauncher ("https://id.yandex.ru/").launch.begin (null, null);
         }
 
         void on_open_plus_action () {
-            try {
-                Process.spawn_command_line_async ("xdg-open https://plus.yandex.ru/");
-
-            } catch (SpawnError e) {
-                Logger.warning (_("Error while opening uri: %s").printf (e.message));
-            }
+            new Gtk.UriLauncher ("https://plus.yandex.ru/").launch.begin (null, null);
         }
 
         void on_get_plus_action () {
-            try {
-                Process.spawn_command_line_async ("xdg-open https://plus.yandex.ru/getplus");
-
-            } catch (SpawnError e) {
-                Logger.warning (_("Error while opening uri: %s").printf (e.message));
-            }
+            new Gtk.UriLauncher ("https://plus.yandex.ru/getplus/").launch.begin (null, null);
         }
 
         void on_mute_action () {

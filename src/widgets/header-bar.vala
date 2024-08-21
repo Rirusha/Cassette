@@ -105,6 +105,7 @@ public class Cassette.HeaderBar : ShrinkableBin {
             }
         });
 
+        // Also https://github.com/Rirusha/Cassette/blob/master/data/ui/header-bar.blp#L29
         block_widget (search_button, BlockReason.NOT_IMPLEMENTED);
     }
 

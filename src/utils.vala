@@ -67,7 +67,7 @@ namespace Cassette {
         switch (reason) {
             case BlockReason.NOT_IMPLEMENTED:
                 widget.tooltip_text = _("Not implemented yet");
-                if (get_debug_mode ()) {
+                if (application.is_devel) {
                     widget.sensitive = true;
                 }
                 break;

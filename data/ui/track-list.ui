@@ -17,7 +17,7 @@
               </style>
               <property name="search-delay">900</property>
               <property name="hexpand">true</property>
-              <!-- Translators: placeholder of "search" entry. Local track search (inside of track lsit) -->
+              <!-- Translators: placeholder of "search" entry. Local track search (inside of track list) -->
               <property name="placeholder-text" translatable="true">Search track</property>
             </object>
             </child>

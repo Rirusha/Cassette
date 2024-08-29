@@ -308,7 +308,7 @@ namespace Cassette {
                 }
 
             } catch (Error e) {
-                Logger.warning (_("Can't read pages file. Messsage: %s").printf (e.message));
+                Logger.warning (_("Can't read pages file. Message: %s").printf (e.message));
             }
         }
 
@@ -328,7 +328,7 @@ namespace Cassette {
                 FileUtils.set_contents (pages_file.peek_path (), content_str, content_str.length);
 
             } catch (Error e) {
-                Logger.warning (_("Can't create pages file. Messsage: %s").printf (e.message));
+                Logger.warning (_("Can't create pages file. Message: %s").printf (e.message));
             }
         }
 

@@ -189,7 +189,7 @@ namespace Cassette {
             if (yell_status) {
                 var content_info = get_content_name (object_info, false, false);
                 // Translators: first %s - content type (Playlist), second - name
-                application.show_message (_("Cacheing of %s%s started").printf (content_info[0], content_info[1]));
+                application.show_message (_("Caching of %s%s started").printf (content_info[0], content_info[1]));
             }
         }
 

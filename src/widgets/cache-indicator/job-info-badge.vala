@@ -73,7 +73,11 @@ namespace Cassette {
 
         void update_info (int saved, int total, int now) {
             // Translators: n track from n tracks saved
-            progress_label.label = _("%d / %d saved%s").printf (
+            progress_label.label = ngettext (
+                "%d / %d saved%s",
+                "%d / %d saved%s",
+                saved
+            ).printf (
                 saved,
                 total,
                 (now != 0? ngettext (

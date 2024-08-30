@@ -32,7 +32,7 @@ if get_option('is_devel')
   app_id_suffix = '-Devel'
 
   find_program('git', required: true)
-  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: true).stdout().strip()
   version_suffix = '-dev.@0@'.format (vcs_tag)
 endif
 

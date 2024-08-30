@@ -211,7 +211,7 @@ namespace Cassette.Client.Cachier {
 
             int error_code = statement.step ();
             if (error_code != Sqlite.ROW) {
-                Logger.error ("Error while geting ref for %s in %s, Sqlite error code: %s, message: %s".printf (
+                Logger.error ("Error while getting ref for %s in %s, Sqlite error code: %s, message: %s".printf (
                     what_id, db_path, db.errcode ().to_string (), db.errmsg ()
                 ));
             }

@@ -36,7 +36,7 @@
                     <style>
                       <class name="title-1"/>
                     </style>
-                    <property name="label" translatable="true">Also you liked this playlists</property>
+                    <property name="label" translatable="true">Also you liked these playlists</property>
                   </object>
                 </child>
                 <child>

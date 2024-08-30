@@ -180,19 +180,19 @@ public class Cassette.Client.Player.Player : Object {
 
     /**
      * Triggers when previous track in queue finish loading.
-     * For next track show posibility.
+     * For next track show possibility.
      */
     public signal void next_track_loaded (YaMAPI.Track? next_track);
 
     /**
      * Current track started loaded.
-     * Inteface should block for interaction.
+     * Interface should block for interaction.
      */
     public signal void current_track_start_loading ();
 
     /**
      * Current track started loaded.
-     * Inteface can be released from block.
+     * Interface can be released from block.
      */
     public signal void current_track_finish_loading (YaMAPI.Track track_info);
 

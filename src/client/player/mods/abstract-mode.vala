@@ -64,7 +64,7 @@ public abstract class Cassette.Client.Player.Mode : Object {
      * Get previous track index in queue.
      * Track list and Flow have different rules for this.
      *
-     * @return  new index. Returns -1 if theres no previous track
+     * @return  new index. Returns -1 if there's no previous track
      */
     public abstract int get_prev_index ();
 
@@ -118,7 +118,7 @@ public abstract class Cassette.Client.Player.Mode : Object {
      *
      * @param consider_repeat_mode  some mode ignore this.  
      *
-     * @return  new index. Returns -1 if theres no next track
+     * @return  new index. Returns -1 if there's no next track
      */
     public abstract int get_next_index (bool consider_repeat_mode);
 

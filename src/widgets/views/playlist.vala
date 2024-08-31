@@ -241,12 +241,16 @@ namespace Cassette {
                     playlist_status.label = _("Owner: %s").printf (playlist_info.owner.name);
                 }
             } else {
-                // Translators: 0 - female, 1 - male (different gender endings)
-                string format_string = ngettext (
-                    "%s updated playlist %s",
-                    "%s updated playlist %s",
-                    playlist_info.owner.sex == "female"? 0 : 1
-                );
+                string format_string;
+                if (playlist_info.owner.sex == "female") {
+                    // Translators: %s is female person
+                    format_string = C_ ("female person", "%s updated playlist %s");
+
+                } else {
+                    // Translators: %s is male person
+                    format_string = C_ ("male person", "%s updated playlist %s");
+                }
+
                 playlist_status.label = format_string.printf (playlist_info.owner.name, get_when (playlist_info.modified));
             }
 

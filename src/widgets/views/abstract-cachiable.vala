@@ -20,6 +20,12 @@ using Cassette.Client;
 
 namespace Cassette {
     public abstract class CachiableView : HasTracksView {
+
+        internal struct ContentInfo {
+            public string content_name;
+            public string content_title;
+        }
+
         public Gtk.Stack download_stack { get; set; }
         Gtk.Overlay overlay { get; default = new Gtk.Overlay (); }
         public Gtk.ProgressBar saving_progress_bar { get; default = new Gtk.ProgressBar (); }
@@ -66,34 +72,33 @@ namespace Cassette {
                     _job.job_done.connect ((obj, status) => {
                         switch (status) {
                             case Cachier.JobDoneStatus.SUCCESS:
-                                var content_info = get_content_info (object_info, true, true);
+                                var content_info = get_content_info (object_info);
                                 // Translators: first %s - content type (Playlist), second - name
                                 if (yell_status) {
-                                    application.show_message (_("%s%s successfully cached").printf (
-                                        content_info[0],
-                                        content_info[1]
+                                    application.show_message (_("%s '%s' saved successfully").printf (
+                                        content_info.content_name,
+                                        content_info.content_title
                                     ));
                                 }
                                 download_stack.visible_child_name = "delete";
                                 break;
 
                             case Cachier.JobDoneStatus.FAILED:
-                                var content_info = get_content_info (object_info, false, true);
+                                var content_info = get_content_info (object_info);
                                 // Translators: first %s - content type (Playlist), second - name
-                                application.show_message (_("Caching of %s%s was canceled, due to network error")
-                                    .printf (
-                                        content_info[0],
-                                        content_info[1]
-                                    ));
+                                application.show_message (_("%s '%s' saving was stopped, due to network error").printf (
+                                    content_info.content_name,
+                                    content_info.content_title
+                                ));
                                 download_stack.visible_child_name = "save";
                                 break;
 
                             case Cachier.JobDoneStatus.ABORTED:
-                                var content_info = get_content_info (object_info, false, true);
+                                var content_info = get_content_info (object_info);
                                 // Translators: first %s - content type (Playlist), second - name
-                                application.show_message (_("Caching of %s%s was aborted").printf (
-                                    content_info[0],
-                                    content_info[1]
+                                application.show_message (_("%s '%s' saving was aborted").printf (
+                                    content_info.content_name,
+                                    content_info.content_title
                                 ));
                                 download_stack.visible_child_name = "save";
                                 break;
@@ -153,28 +158,22 @@ namespace Cassette {
             }
         }
 
-        string[] get_content_info (HasTrackList obj_info, bool first_big, bool with_title) {
+        ContentInfo get_content_info (HasTrackList obj_info) {
             string content_name = "";
             string content_title = "";
 
-            var playlist_info = obj_info as YaMAPI.Playlist;
-            if (playlist_info != null) {
+            if (obj_info is YaMAPI.Playlist) {
+                var playlist_info = obj_info as YaMAPI.Playlist;
                 content_name = _("Playlist");
-                content_name = first_big? content_name : content_name.down ();
-                if (with_title) {
-                    content_title = " '%s'".printf (playlist_info.title);
-                }
-            } else {
+                content_title = playlist_info.title;
+
+            } else if (obj_info is YaMAPI.Album) {
                 var album_info = obj_info as YaMAPI.Album;
-                if (album_info != null) {
-                    content_name = _("Album");
-                    content_name = first_big? content_name : content_name.down ();
-                    if (with_title) {
-                        content_title += " '%s'".printf (album_info.title);
-                    }
-                } else {
-                    assert_not_reached ();
-                }
+                content_name = _("Album");
+                content_title = album_info.title;
+
+            } else {
+                assert_not_reached ();
             }
 
             return {content_name, content_title};
@@ -187,9 +186,11 @@ namespace Cassette {
             job = cachier.start_cache (object_info);
 
             if (yell_status) {
-                var content_info = get_content_info (object_info, false, false);
-                // Translators: first %s - content type (Playlist), second - name
-                application.show_message (_("Caching of %s%s started").printf (content_info[0], content_info[1]));
+                var content_info = get_content_info (object_info);
+                // Translators: %s - content type (e.g. "Playlist")
+                application.show_message (_("%s saving has started").printf (
+                    content_info.content_name
+                ));
             }
         }
 
@@ -223,21 +224,20 @@ namespace Cassette {
                 download_stack.sensitive = true;
 
                 if (yell_status) {
-                    var content_info = get_content_info (object_info, true, true);
+                    var content_info = get_content_info (object_info);
                     // Translators: first %s - content type (Playlist), second - name
-                    application.show_message (_("%s%s was removed from cache folder").printf (
-                        content_info[0],
-                        content_info[1]
+                    application.show_message (_("%s '%s' was moved from data to cache").printf (
+                        content_info.content_name,
+                        content_info.content_title
                     ));
                 }
             });
 
             if (yell_status) {
-                var content_info = get_content_info (object_info, true, false);
+                var content_info = get_content_info (object_info);
                 // Translators: first %s - content type (Playlist), second - name
-                application.show_message (_("%s%s is removing, please do not close the app").printf (
-                    content_info[0],
-                    content_info[1]
+                application.show_message (_("%s removing has started. Please do not close the app").printf (
+                    content_info.content_name
                 ));
             }
         }

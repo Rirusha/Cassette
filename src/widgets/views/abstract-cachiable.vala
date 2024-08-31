@@ -66,7 +66,7 @@ namespace Cassette {
                     _job.job_done.connect ((obj, status) => {
                         switch (status) {
                             case Cachier.JobDoneStatus.SUCCESS:
-                                var content_info = get_content_name (object_info, true, true);
+                                var content_info = get_content_info (object_info, true, true);
                                 // Translators: first %s - content type (Playlist), second - name
                                 if (yell_status) {
                                     application.show_message (_("%s%s successfully cached").printf (
@@ -78,7 +78,7 @@ namespace Cassette {
                                 break;
 
                             case Cachier.JobDoneStatus.FAILED:
-                                var content_info = get_content_name (object_info, false, true);
+                                var content_info = get_content_info (object_info, false, true);
                                 // Translators: first %s - content type (Playlist), second - name
                                 application.show_message (_("Caching of %s%s was canceled, due to network error")
                                     .printf (
@@ -89,7 +89,7 @@ namespace Cassette {
                                 break;
 
                             case Cachier.JobDoneStatus.ABORTED:
-                                var content_info = get_content_name (object_info, false, true);
+                                var content_info = get_content_info (object_info, false, true);
                                 // Translators: first %s - content type (Playlist), second - name
                                 application.show_message (_("Caching of %s%s was aborted").printf (
                                     content_info[0],
@@ -153,7 +153,7 @@ namespace Cassette {
             }
         }
 
-        string[] get_content_name (HasTrackList obj_info, bool first_big, bool with_title) {
+        string[] get_content_info (HasTrackList obj_info, bool first_big, bool with_title) {
             string content_name = "";
             string content_title = "";
 
@@ -187,7 +187,7 @@ namespace Cassette {
             job = cachier.start_cache (object_info);
 
             if (yell_status) {
-                var content_info = get_content_name (object_info, false, false);
+                var content_info = get_content_info (object_info, false, false);
                 // Translators: first %s - content type (Playlist), second - name
                 application.show_message (_("Caching of %s%s started").printf (content_info[0], content_info[1]));
             }
@@ -223,7 +223,7 @@ namespace Cassette {
                 download_stack.sensitive = true;
 
                 if (yell_status) {
-                    var content_info = get_content_name (object_info, true, true);
+                    var content_info = get_content_info (object_info, true, true);
                     // Translators: first %s - content type (Playlist), second - name
                     application.show_message (_("%s%s was removed from cache folder").printf (
                         content_info[0],
@@ -233,7 +233,7 @@ namespace Cassette {
             });
 
             if (yell_status) {
-                var content_info = get_content_name (object_info, true, false);
+                var content_info = get_content_info (object_info, true, false);
                 // Translators: first %s - content type (Playlist), second - name
                 application.show_message (_("%s%s is removing, please do not close the app").printf (
                     content_info[0],

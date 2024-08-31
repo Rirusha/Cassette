@@ -80,9 +80,9 @@ namespace Cassette {
             ).printf (
                 saved,
                 total,
-                (now != 0? ngettext (
-                    ". %d track saving now",
-                    ". %d tracks saving now",
+                (now != 0? ". " + ngettext (
+                    "%d track saving now",
+                    "%d tracks saving now",
                     now
                 ).printf (
                     now

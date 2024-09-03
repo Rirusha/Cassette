@@ -8,9 +8,6 @@ result
 # Workspaces
 *.code-workspace
 
-# Personal scripts
-my.*
-
 # Po
 *.mo
 po/cassette.pot

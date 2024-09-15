@@ -1,3 +1,0 @@
-#!/bin/sh
-
-flatpak build --with-appdir --allow=devel --bind-mount=/run/user/1000/doc=/run/user/1000/doc/by-app/io.github.Rirusha.Cassette-Devel --share=network --share=ipc --socket=fallback-x11 --socket=wayland --device=dri --socket=pulseaudio --filesystem=xdg-music:ro --filesystem=xdg-download:ro --talk-name=org.mpris.MediaPlayer2.Player --own-name=org.mpris.MediaPlayer2.cassette .flatpak/repo gdb "$@"

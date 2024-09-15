@@ -12,19 +12,19 @@
         {
             "label": "Empty lines check",
             "type": "shell",
-            "command": "python3 ${workspaceFolder}/checkers/empty_lines_checker.py .",
+            "command": "python3 ${workspaceFolder}/vala-checkers/empty_lines_checker.py .",
             "problemMatcher": []
         },
         {
             "label": "Indentation check",
             "type": "shell",
-            "command": "python3 ${workspaceFolder}/checkers/indentation_checker.py .",
+            "command": "python3 ${workspaceFolder}/vala-checkers/indentation_checker.py .",
             "problemMatcher": []
         },
         {
             "label": "Full check",
             "type": "shell",
-            "command": "io.elementary.vala-lint -d . -c vala-lint.conf && python3 ${workspaceFolder}/checkers/empty_lines_checker.py . && python3 ${workspaceFolder}/checkers/indentation_checker.py .",
+            "command": "io.elementary.vala-lint -d . -c vala-lint.conf && python3 ${workspaceFolder}/vala-checkers/empty_lines_checker.py . && python3 ${workspaceFolder}/vala-checkers/indentation_checker.py .",
             "problemMatcher": []
         },
         {
@@ -37,12 +37,6 @@
             "label": "Fix all .blp",
             "type": "shell",
             "command": "blueprint-compiler format -f -s 2 data/ui/*.blp",
-            "problemMatcher": []
-        },
-        {
-            "label": "Generate .pot",
-            "type": "shell",
-            "command": "sh po/update_potfiles.sh && flatpak run --command=meson --filesystem=host org.gnome.Sdk compile -C _build cassette-pot",
             "problemMatcher": []
         },
         {

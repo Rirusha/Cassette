@@ -18,10 +18,10 @@
 namespace Cassette {
 
     public Adw.AboutDialog build_about_dialog () {
-        const string RIRUSHA = "Rirusha https://github.com/Rirusha";
+        const string RIRUSHA = "Rirusha https://gitlab.gnome.org/Rirusha";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
         const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
-        const string ISSUE_LINK = "https://github.com/Rirusha/Cassette/issues/new";
+        const string ISSUE_LINK = "https://gitlab.gnome.org/Rirusha/Cassette/-/issues";
         const string TINKOFF_SUPPORT_LINK = "https://www.tinkoff.ru/cf/21GCxLuFuE9";
         const string BOOSTY_SUPPORT_LINK = "https://boosty.to/rirusha/donate";
 

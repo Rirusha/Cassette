@@ -1,12 +1,13 @@
 # build dir
-builddir*
+_build
 
 # nix
 result
 .direnv
 
-# Workspaces
+# Codium
 *.code-workspace
+.vscode/settings.json
 
 # Po
 *.mo
@@ -17,7 +18,3 @@ po/cassette.pot
 build-dir
 repo
 .flatpak
-_build
-
-# gh
-settings.json

@@ -40,8 +40,8 @@
     <control>touch</control>
   </recommends>
   <branding>
-    <color type="primary" scheme_preference="light">#c0c0c0</color>
-    <color type="primary" scheme_preference="dark">#303030</color>
+    <color type="primary" scheme_preference="light">#fee372</color>
+    <color type="primary" scheme_preference="dark">#dd624b</color>
   </branding>
   <content_rating type="oars-1.1">
     <content_attribute id="sex-themes">mild</content_attribute>

@@ -13,11 +13,11 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: '@0@.appdata.xml.in'.format(app_id),
-  output: '@0@.appdata.xml'.format(app_id),
+  input: '@0@.metainfo.xml.in'.format(app_id),
+  output: '@0@.metainfo.xml'.format(app_id),
   po_dir: '../po',
   install: true,
-  install_dir: join_paths(get_option('datadir'), 'appdata')
+  install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
 
 appstreamcli = find_program('appstreamcli', required: false)

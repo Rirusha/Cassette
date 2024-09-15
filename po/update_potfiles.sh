@@ -7,7 +7,7 @@ find ./data/ui -iname "*.ui" -type f -exec grep -l "translatable" {} + | while r
 find ./data/ui -iname "*.blp" -type f -exec grep -lrE '_\(|C_|ngettext' {} + | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
 find ./src -iname "*.vala" -type f -exec grep -lrE '_\(|C_|ngettext' {} + | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
 find ./data/ -iname "*.desktop.in" | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
-find ./data/ -iname "*.appdata.xml.in" | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
+find ./data/ -iname "*.metainfo.xml.in" | while read file; do echo "${file#./}" >> ./po/unsort-POTFILES.in; done
 
 cat ./po/unsort-POTFILES.in | sort | uniq > ./po/POTFILES.in
 

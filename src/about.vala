@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Rirusha
+/* Copyright 2023-2024 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 namespace Cassette {
 
     public Adw.AboutDialog build_about_dialog () {
-        const string RIRUSHA = "Rirusha https://gitlab.gnome.org/Rirusha";
+        const string ME = "Vladimir Vaskov https://gitlab.gnome.org/Rirusha";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
         const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
         const string ISSUE_LINK = "https://gitlab.gnome.org/Rirusha/Cassette/-/issues";
@@ -26,22 +26,22 @@ namespace Cassette {
         const string BOOSTY_SUPPORT_LINK = "https://boosty.to/rirusha/donate";
 
         string[] developers = {
-            RIRUSHA,
+            ME,
             "KseBooka https://github.com/KseBooka"
         };
 
         string[] designers = {
-            RIRUSHA
+            ME
         };
 
         string[] artists = {
-            RIRUSHA,
+            ME,
             "Arseniy Nechkin <krisgeniusnos@gmail.com>",
             "NaumovSN",
         };
 
         string[] documenters = {
-            RIRUSHA,
+            ME,
             "Armatik https://github.com/Armatik",
             "Fiersik https://github.com/fiersik",
             "Mikazil https://github.com/Mikazil",
@@ -50,7 +50,7 @@ namespace Cassette {
         var about = new Adw.AboutDialog () {
             application_name = Config.APP_NAME,
             application_icon = Config.APP_ID_DYN,
-            developer_name = "Rirusha",
+            developer_name = "Vladimir Vaskov",
             version = Config.VERSION,
             developers = developers,
             designers = designers,
@@ -59,7 +59,7 @@ namespace Cassette {
             //  Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
             translator_credits = _("translator-credits"),
             license_type = Gtk.License.GPL_3_0_ONLY,
-            copyright = "© 2023-2024 Rirusha",
+            copyright = "© 2023-2024 Vladimir Vaskov",
             support_url = TELEGRAM_CHAT,
             issue_url = ISSUE_LINK,
             release_notes_version = Config.VERSION

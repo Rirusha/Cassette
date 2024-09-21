@@ -47,7 +47,7 @@ static void on_bus_aquired (DBusConnection con, string name) {
 public class Mpris : Object {
     public bool can_quit { get; set; default = true; }
     public bool can_raise { get; set; default = true; }
-    public string desktop_entry { get; set; default = Config.APP_ID_DYN; }
+    public string desktop_entry { get; set; default = "%s.desktop".printf (Config.APP_ID_DYN); }
     public string identity { get; set; default = Config.APP_NAME; }
 
     public signal void quit_triggered ();

@@ -21,7 +21,6 @@ namespace Cassette {
         const string ME = "Vladimir Vaskov https://gitlab.gnome.org/Rirusha";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
         const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
-        const string ISSUE_LINK = "https://gitlab.gnome.org/Rirusha/Cassette/-/issues";
         const string TINKOFF_SUPPORT_LINK = "https://www.tinkoff.ru/cf/21GCxLuFuE9";
         const string BOOSTY_SUPPORT_LINK = "https://boosty.to/rirusha/donate";
 
@@ -61,7 +60,7 @@ namespace Cassette {
             license_type = Gtk.License.GPL_3_0_ONLY,
             copyright = "© 2023-2024 Vladimir Vaskov",
             support_url = TELEGRAM_CHAT,
-            issue_url = ISSUE_LINK,
+            issue_url = Config.BUGTRACKER,
             release_notes_version = Config.VERSION
         };
 

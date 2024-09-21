@@ -1,5 +1,8 @@
 desktop_file = i18n.merge_file(
-  input: '@0@.desktop.in'.format(app_id_dyn),
+  input: configure_file(
+    output: '@0@.desktop.in'.format(app_id_dyn),
+    input: '@0@.desktop.in.in'.format(app_id),
+    configuration: conf),
   output: '@0@.desktop'.format(app_id_dyn),
   type: 'desktop',
   po_dir: '../po',
@@ -13,7 +16,10 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: '@0@.metainfo.xml.in'.format(app_id),
+  input: configure_file(
+    output: '@0@.metainfo.xml.in'.format(app_id_dyn),
+    input: '@0@.metainfo.xml.in.in'.format(app_id),
+    configuration: conf),
   output: '@0@.metainfo.xml'.format(app_id),
   po_dir: '../po',
   install: true,

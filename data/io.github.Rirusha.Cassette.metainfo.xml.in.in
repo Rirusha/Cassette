@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>Cassette</name>
-  <id>io.github.Rirusha.Cassette</id>
+  <name>@APP_NAME@</name>
+  <id>@APP_ID_DYN@</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
   <description>
@@ -66,7 +66,7 @@
     </screenshot>
   </screenshots>
   <summary>Unofficial Yandex.Music client</summary>
-  <launchable type="desktop-id">io.github.Rirusha.Cassette.desktop</launchable>
+  <launchable type="desktop-id">@APP_ID_DYN@.desktop</launchable>
   <releases>
     <release version="0.2.0" date="2024-01-28">
       <description>
@@ -132,8 +132,8 @@
       </description>
     </release>
   </releases>
-  <url type="homepage">https://gitlab.gnome.org/Rirusha/Cassette</url>
-  <url type="bugtracker">https://gitlab.gnome.org/Rirusha/Cassette/-/issues</url>
-  <url type="help">https://t.me/CassetteGNOME_Discussion</url>
+  <url type="homepage">@HOMEPAGE@</url>
+  <url type="bugtracker">@BUGTRACKER@</url>
+  <url type="help">@HELP@</url>
   <developer_name>Vladimir Vaskov</developer_name>
 </component>

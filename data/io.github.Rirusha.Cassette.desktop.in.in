@@ -1,11 +1,11 @@
 [Desktop Entry]
 # Translators: app name should be translated
-Name=Cassette
-Comment=Unofficial Yandex.Music client for GNOME
+Name=@APP_NAME@
+Comment=Unofficial Yandex.Music client for GNOME @NAME_SUFFIX@
 # Translators: keep number of ';'
 Keywords=yandex;yandex music;yam;music;
 Exec=cassette %U
-Icon=io.github.Rirusha.Cassette
+Icon=@APP_ID_DYN@
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Music;Audio;AudioVideo;

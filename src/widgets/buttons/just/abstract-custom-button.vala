@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/custom-button.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/custom-button.ui")]
 public abstract class Cassette.CustomButton : Adw.Bin {
 
     [GtkChild]

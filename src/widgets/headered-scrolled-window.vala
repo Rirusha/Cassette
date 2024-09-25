@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/headered-scrolled-window.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/headered-scrolled-window.ui")]
 public class Cassette.HeaderedScrolledWindow : Adw.Bin {
 
     [GtkChild]

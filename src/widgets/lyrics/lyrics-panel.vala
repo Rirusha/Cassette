@@ -21,7 +21,7 @@ using Gee;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/lyrics-panel.ui")]
+    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/lyrics-panel.ui")]
     public class LyricsPanel : Adw.Bin {
         [GtkChild]
         unowned Gtk.Box lines_box;

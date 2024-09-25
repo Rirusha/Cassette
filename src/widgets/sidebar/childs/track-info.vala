@@ -18,7 +18,7 @@
 using Cassette.Client;
 using Gee;
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-info.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/track-info.ui")]
 public class Cassette.TrackInfo : SidebarChildBin {
 
     [GtkChild]

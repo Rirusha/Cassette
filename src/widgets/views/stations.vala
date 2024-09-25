@@ -18,7 +18,7 @@
 
 using Cassette.Client;
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/stations-view.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/stations-view.ui")]
 public class Cassette.StationsView : BaseView {
 
     [GtkChild]

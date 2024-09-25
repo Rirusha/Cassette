@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/io/github/Rirusha/Cassette/icons/scalable/actions/">
+  <gresource prefix="/io/gitlab/Rirusha/Cassette/icons/scalable/actions/">
     <file alias="audio-volume-high-symbolic.svg">assets/icons/audio-volume-high-symbolic.svg</file>
     <file alias="audio-volume-low-symbolic.svg">assets/icons/audio-volume-low-symbolic.svg</file>
     <file alias="audio-volume-medium-symbolic.svg">assets/icons/audio-volume-medium-symbolic.svg</file>
@@ -128,7 +128,7 @@
     <file alias="wave-my-wave-symbolic.svg">assets/icons/wave-my-wave-symbolic.svg</file>
     <file alias="window-close-symbolic.svg">assets/icons/window-close-symbolic.svg</file>
   </gresource>
-  <gresource prefix="/io/github/Rirusha/Cassette">
+  <gresource prefix="/io/gitlab/Rirusha/Cassette">
     <file alias="gtk/help-overlay.ui" preprocess="xml-stripblanks">ui/help-overlay.ui</file>
     <file>style.css</file>
     <file preprocess="xml-stripblanks">ui/account-info-dialog.ui</file>

@@ -18,7 +18,7 @@
 using Cassette.Client;
 using Gee;
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/sidebar.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/sidebar.ui")]
 public class Cassette.Sidebar : ShrinkableBin {
 
     [GtkChild]

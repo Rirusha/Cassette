@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/account-info-dialog.ui")]
+    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/account-info-dialog.ui")]
     public class AccountInfoDialog : Adw.Dialog {
         [GtkChild]
         unowned Adw.Avatar avatar;

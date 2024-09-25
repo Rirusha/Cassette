@@ -21,7 +21,7 @@ using Cassette.Client;
 
 namespace Cassette {
 
-    [GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/disliked-tracks-view.ui")]
+    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/disliked-tracks-view.ui")]
     public class DislikedTracksView : HasTracksView {
         [GtkChild]
         unowned Gtk.Box main_box;

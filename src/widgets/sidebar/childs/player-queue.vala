@@ -18,7 +18,7 @@
 using Cassette.Client;
 using Gee;
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/player-queue.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/player-queue.ui")]
 public class Cassette.PlayerQueue : SidebarChildBin {
 
     [GtkChild]

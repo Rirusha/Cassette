@@ -17,7 +17,7 @@
 
 using Cassette.Client;
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/track-queue-content.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/track-queue-content.ui")]
 public class Cassette.TrackQueue : TrackRow {
 
     [GtkChild]

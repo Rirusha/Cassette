@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/no-plus-dialog.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/no-plus-dialog.ui")]
 public class Cassette.NoPlusDialog : Adw.Dialog {
 
     public bool log_out_button_visible { get; set; }

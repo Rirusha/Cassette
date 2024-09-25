@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-[GtkTemplate (ui = "/io/github/Rirusha/Cassette/ui/main-view.ui")]
+[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/main-view.ui")]
 public class Cassette.MainView : BaseView {
 
     [GtkChild]

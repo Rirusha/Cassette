@@ -1,7 +1,5 @@
 desktop_conf = configuration_data()
 desktop_conf.set('APP_ID_DYN', app_id_dyn)
-desktop_conf.set('NAME_SUFFIX', name_suffix)
-desktop_conf.set('APP_NAME', 'Cassette@0@'.format (name_suffix))
 
 desktop_file = i18n.merge_file(
   input: configure_file(
@@ -21,15 +19,14 @@ if desktop_utils.found()
 endif
 
 appstream_conf = configuration_data()
-appstream_conf.set('APP_ID_DYN', app_id_dyn)
-appstream_conf.set('APP_NAME', 'Cassette@0@'.format (name_suffix))
+appstream_conf.set('APP_ID', app_id)
 appstream_conf.set('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
 appstream_conf.set('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
 appstream_conf.set('HELP', 'https://t.me/CassetteGNOME_Discussion')
 
 appstream_file = i18n.merge_file(
   input: configure_file(
-    output: '@0@.metainfo.xml.in'.format(app_id_dyn),
+    output: '@0@.metainfo.xml.in'.format(app_id),
     input: '@0@.metainfo.xml.in.in'.format(app_id),
     configuration: appstream_conf),
   output: '@0@.metainfo.xml'.format(app_id),

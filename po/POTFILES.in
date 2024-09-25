@@ -1,4 +1,5 @@
 data/io.gitlab.Rirusha.Cassette.desktop.in.in
+data/io.gitlab.Rirusha.Cassette-Devel.desktop.in.in
 data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in
 data/ui/account-info-dialog.blp
 data/ui/begin-view.ui

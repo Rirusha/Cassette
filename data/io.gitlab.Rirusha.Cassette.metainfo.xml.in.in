@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <name>@APP_NAME@</name>
-  <id>@APP_ID_DYN@</id>
+  <name>Cassette</name>
+  <id>@APP_ID@</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <summary>Unofficial Yandex.Music client</summary>

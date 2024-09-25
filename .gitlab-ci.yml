@@ -79,7 +79,7 @@ stages:
 
     - echo "[Flatpak Repo]" > repo/index.flatpakrepo
     - echo "Title=Cassette Nightly Repo" >> repo/index.flatpakrepo
-    - echo "Url=https://cassette-test-ci-rirusha-d1749b6104806a82118d20e39e6730af246b02.pages.gitlab.gnome.org/" >> repo/index.flatpakrepo
+    - echo "Url=https://cassette-rirusha-7b5d032b879376545602ad6add1827529edccbba8e6c57.pages.gitlab.gnome.org/" >> repo/index.flatpakrepo
     - echo "Homepage=https://https://gitlab.gnome.org/Rirusha/Cassette/" >> repo/index.flatpakrepo
     - echo "Comment=Repository with development version of Cassette" >> repo/index.flatpakrepo
     - echo "Description=Repository with development version of Cassette" >> repo/index.flatpakrepo

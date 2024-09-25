@@ -1,6 +1,5 @@
-data/io.github.Rirusha.Cassette.desktop.in
-data/io.github.Rirusha.Cassette-Devel.desktop.in
-data/io.github.Rirusha.Cassette.metainfo.xml.in
+data/io.gitlab.Rirusha.Cassette.desktop.in.in
+data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in
 data/ui/account-info-dialog.blp
 data/ui/begin-view.ui
 data/ui/cache-deletion-preferences.ui

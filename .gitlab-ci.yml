@@ -1,0 +1,140 @@
+include:
+  - project: 'gnome/citemplates'
+    file: 'flatpak/flatpak-ci-initiative-sdk-extensions.yml'
+
+variables:
+  MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/nightly/${APP_ID_DEVEL}.json
+  BUNDLE: "${APP_ID_DEVEL}.flatpak"
+  RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+  FLATPAK_MODULE: "cassette"
+
+stages:
+  - build-aarch64 
+  - build-x86_64
+  - update-repo
+  - deploy
+
+.setup-gpg:
+  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
+  stage: 'setup-gpg'
+  tags:
+    - flatpak
+  before_script:
+    - mkdir -p ${GNUPGHOME}
+
+    - gpg --list-keys --with-keygrip
+    - touch ${GNUPGHOME}/gpg.conf
+    - touch ${GNUPGHOME}/gpg-agent.conf
+  
+    - echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf
+    - echo "pinentry-mode loopback" >> ${GNUPGHOME}/gpg.conf
+    - echo "batch" >> ${GNUPGHOME}/gpg.conf
+    - echo "yes" >> ${GNUPGHOME}/gpg.conf
+    - echo "passphrase-file ${GPG_PASSPHRASE}" >> ${GNUPGHOME}/gpg.conf
+
+    - gpg-connect-agent reloadagent /bye
+    - cat ${GPG_PASSPHRASE} | /usr/libexec/gpg-preset-passphrase --preset ${GPG_KEY_GREP}
+    - base64 -d ${GPG_PRIVATE_KEY} | gpg --import
+
+.build:
+  extends: '.setup-gpg'
+  stage: 'build'
+  interruptible: true
+  variables:
+    GNUPGHOME: /build/.gnupg
+    LANG: "C.UTF-8"
+    RUN_TESTS: "0"
+    ARCH: x86_64
+  script:
+    - cat /etc/os-release
+
+    - flatpak --version
+    # Report the installed versions of the runtime
+    - flatpak info org.gnome.Platform
+    - flatpak info org.gnome.Sdk
+
+    # Print the date, since appstream depends on local timezone
+    - date && date -u
+
+    - |
+      export REWRITE_RUN_TESTS="--run-tests"
+      if [[ $RUN_TESTS != "1" ]]; then
+        export REWRITE_RUN_TESTS="--no-run-tests"
+      fi
+      rewrite-flatpak-manifest ${REWRITE_RUN_TESTS} ${MANIFEST_PATH} ${FLATPAK_MODULE} -- ${CONFIG_OPTS}
+
+    - |
+      if [ ${ARCH} = "x86_64" ]; then
+        tar xf repo.tar
+        rm -rf repo.tar
+      fi
+
+    - >-
+      xvfb-run -a -s "-screen 0 1024x768x24" --
+      dbus-run-session
+      flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse flatpak_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
+
+    # Generate a Flatpak bundle
+    - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE} ${APP_ID_DEVEL} ${BRANCH}
+
+    - echo "[Flatpak Repo]" > repo/index.flatpakrepo
+    - echo "Title=Cassette Nightly Repo" >> repo/index.flatpakrepo
+    - echo "Url=https://cassette-test-ci-rirusha-d1749b6104806a82118d20e39e6730af246b02.pages.gitlab.gnome.org/" >> repo/index.flatpakrepo
+    - echo "Homepage=https://https://gitlab.gnome.org/Rirusha/Cassette/" >> repo/index.flatpakrepo
+    - echo "Comment=Repository with development version of Cassette" >> repo/index.flatpakrepo
+    - echo "Description=Repository with development version of Cassette" >> repo/index.flatpakrepo
+    - echo "Icon=https://dl.flathub.org/repo/logo.svg" >> repo/index.flatpakrepo
+    - echo "GPGKey=$(gpg --export ${GPG_KEY_ID} | base64 --wrap=0)" >> repo/index.flatpakrepo
+
+    - flatpak build-update-repo --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --generate-static-deltas --prune repo
+    - tar cf repo.tar repo/
+    - rm -rf .flatpak-builder
+
+  artifacts:
+    name: 'Flatpak artifacts'
+    when: 'always'
+    paths:
+      - $BUNDLE
+      - 'repo.tar'
+      - '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/meson-log.txt'
+      - '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.txt'
+    reports:
+      junit: '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.junit.xml'
+    expire_in: 14 days
+
+build-x86_64:
+  extends: '.build'
+  variables:
+    ARCH: x86_64
+  dependencies:
+    - "build-aarch64"
+  tags:
+    - flatpak
+  stage: "build-x86_64"
+
+# Need to fix `Error: module cassette: Error removing file /builds/Rirusha/cassette-test-ci/.flatpak-builder/build/cassette: Directory not empty`
+build-aarch64:
+  extends: '.build'
+  variables:
+    ARCH: aarch64
+  tags:
+    - flatpak-aarch64
+  stage: "build-aarch64"
+
+pages:
+  variables:
+    BUILD_OUTPUT_PATH: $CI_PROJECT_DIR/repo
+  stage: deploy
+  image: alpine:latest
+  dependencies:
+    - "build-x86_64"
+  script:
+    - apk add rsync
+    - tar xf repo.tar
+    - find $BUILD_OUTPUT_PATH \( -type d -name .git -prune \) -o -type f -print0 | xargs -0 sed -i -e "s#href=\"\/#href=\"$CI_PAGES_URL/#g" -e "s#src=\"\/#src=\"$CI_PAGES_URL/#g"
+    - mkdir public || true
+    - rsync -av --exclude='public' --exclude='.git' $BUILD_OUTPUT_PATH/ public
+  artifacts:
+    paths:
+      - public
+    expire_in: 14 days

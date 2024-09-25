@@ -99,39 +99,55 @@ nix-shell -p cassette
 * `pkg`
 * `appstream-utils`
 
-#### latest
+### PreRelease
 
 > Unstable features under development will not be available in this version.
 ```shell
 meson setup _build
 ```
 
-#### devel
+### `is_devel` flag
 
-> In this version, all devel functions will be available, the application may work unstable.
+> In this version, all devel functions will be available.
 ```shell
 meson setup _build -Dis_devel=true
 ```
 
-### Testing
-```shell
-ninja -C _build test
-```
-
-### Installation:
+#### Install
 ```shell
 sudo ninja install -C _build
 ```
 
-### Delete:
+#### Testing
+```shell
+ninja -C _build test
+```
+
+#### Uninstal
 ```shell
 sudo ninja uninstall -C _build
 ```
 
+## Devel version
+
+> This version is built and updated with every commit, so it may be unstable.
+
+You need to add `cassette-nightly` and `gnome-nightly` repositories:
+
+```shell
+flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+flatpak remote-add --if-not-exists cassette-nightly https://cassette-rirusha-7b5d032b879376545602ad6add1827529edccbba8e6c57.pages.gitlab.gnome.org/index.flatpakrepo
+```
+
+Install application:
+
+```shell
+sudo flatpak install cassette-nightly io.gitlab.Rirusha.Cassette-Devel
+```
+
 ## For developers
 
-### Using Visual Studio Code
-The repository has recommended extensions for checking and running the application with gdb.
+> The repository has recommended extensions for developing with Visual Studio Code.
 
 ### Dependencies
 
@@ -163,7 +179,7 @@ You can support in several ways:
 <br>
 
 <div align="center">
-  <a href="https://www.tbank.ru/cf/21GCxLuFuE9">
+  <a href="https://www.tbank.ru/cf/21GCxLuFuE9" style="margin-right: 100px;">
     <img height="200" src="data/assets/tbank.png" alt="Tinkoff">
   </a>
   <a href="https://boosty.to/rirusha/donate">

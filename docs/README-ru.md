@@ -99,40 +99,55 @@ nix-shell -p cassette
 * `pkg`
 * `appstream-utils`
 
-#### latest
+### ПредРелиз
 
 > В данной версии будут недоступны нестабильные функции, находящиеся в разработке.
 ```shell
-meson setup builddir
+meson setup _build
 ```
 
-#### devel
+### Флаг `is_devel`
 
-> В данной версии будут доступны все devel функции, приложение может работать нестабильно.
+> В данной версии будут доступны все разрабатываемые функции.
 ```shell
-meson setup builddir
-meson configure -Dprofile=development builddir
+meson setup _build -Dis_devel=true
 ```
 
-### Тестирование
+#### Установка
 ```shell
-ninja -C builddir test
+sudo ninja install -C _build
 ```
 
-### Установка:
+#### Тестирование
 ```shell
-sudo ninja -C builddir install
+ninja -C _build test
 ```
 
-### Удаление:
+#### Удаление
 ```shell
-sudo ninja -C builddir uninstall
+sudo ninja uninstall -C _build
+```
+
+## Версия "В разработке"
+
+> Эта версия обновляется после каждого изменения, так что она может быть нестабильна.
+
+Нужно добавить `cassette-nightly` и `gnome-nightly` репозиторий:
+
+```shell
+flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+flatpak remote-add --if-not-exists cassette-nightly https://cassette-rirusha-7b5d032b879376545602ad6add1827529edccbba8e6c57.pages.gitlab.gnome.org/index.flatpakrepo
+```
+
+Установка приложения:
+
+```shell
+sudo flatpak install cassette-nightly io.gitlab.Rirusha.Cassette-Devel
 ```
 
 ## Для разработчиков
 
-### Использование Visual Studio Code
-В репозитории есть рекомендуемые расширения для проверки и запуска приложения с помощью gdb.
+> Репозиторий имеет рекомендуемые расширения для разработки с Visual Studio Code.
 
 ### Зависимости
 
@@ -164,7 +179,7 @@ flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala//23.08b
 <br>
 
 <div align="center">
-  <a href="https://www.tbank.ru/cf/21GCxLuFuE9">
+  <a href="https://www.tbank.ru/cf/21GCxLuFuE9" style="margin-right: 100px;">
     <img height="200" src="../data/assets/tbank.png" alt="Tinkoff">
   </a>
   <a href="https://boosty.to/rirusha/donate">

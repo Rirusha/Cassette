@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   fill="none"
+   version="1.1"
+   id="svg35"
+   sodipodi:docname="io.gitlab.Rirusha.Cassette-Devel-symbolic.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   inkscape:export-filename="io.gitlab.Rirusha.Cassette-symbolic.png"
+   inkscape:export-xdpi="75"
+   inkscape:export-ydpi="75"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview35"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.9491808"
+     inkscape:cx="53.808628"
+     inkscape:cy="90.01867"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg35"
+     showguides="true">
+    <sodipodi:guide
+       position="28.576594,45.243506"
+       orientation="0,-1"
+       id="guide1"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="20.317463,50.52935"
+       orientation="1,0"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="28.797729,82.851913"
+       orientation="1,0"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="25.440713,76.678911"
+       orientation="0,-1"
+       id="guide6"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="31.118425,53.315781"
+       orientation="0,-1"
+       id="guide7"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="99.789931,41.817787"
+       orientation="1,0"
+       id="guide8"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="91.351036,89.814001"
+       orientation="1,0"
+       id="guide9"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="83.017628,80.109272"
+       orientation="1,0"
+       id="guide10"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="91.140064,90.868863"
+       orientation="0,-1"
+       id="guide11"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="4.3276723,29.112079"
+       orientation="0,-1"
+       id="guide12"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="87.898903,110.72731"
+       orientation="1,0"
+       id="guide13"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="24.037751,25.387235"
+       orientation="0,-1"
+       id="guide14"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="107.31088,61.058674"
+       orientation="1,0"
+       id="guide15"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="54.514557,84.691957"
+       orientation="0,-1"
+       id="guide16"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="54.830173,57.766505"
+       orientation="1,0"
+       id="guide17"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="72.918477,57.483876"
+       orientation="1,0"
+       id="guide18"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <path
+     id="path1"
+     style="fill:#2e3436;fill-opacity:1"
+     d="m 87.881025,25.414537 -0.08467,25.581112 c -2.058067,-0.904518 -2.333344,-1.231737 -4.663391,-1.231737 -4.396049,0 -8.272223,2.219328 -10.574961,5.596672 h -17.22569 c -2.302677,-3.37776 -6.180156,-5.596672 -10.576523,-5.596672 -7.065057,0 -12.792392,5.727416 -12.792392,12.792393 0,0.08841 0.0045,0.175921 0.0062,0.263905 -8e-4,0.04569 -0.0062,0.08997 -0.0062,0.135857 0,0.39027 0.03849,0.77021 0.09526,1.144632 0.762726,6.33657 6.154947,11.247998 12.697136,11.247998 4.039035,0 7.638706,-1.873598 9.983126,-4.797147 h 18.417172 c 2.344474,2.921953 5.939127,4.797147 9.97688,4.797147 6.562651,0 11.971002,-4.942078 12.706512,-11.307338 0.051,-0.355512 0.0859,-0.715663 0.0859,-1.085292 0,-0.0306 -0.004,-0.06006 -0.005,-0.09057 2.5e-4,-0.01047 0.002,-0.02076 0.002,-0.03123 l 0.003,-0.0016 0.165819,-23.038278 c 0.01902,-2.64258 3.153364,-2.992175 4.125587,-2.275354 2.4373,1.797021 2.00397,1.640305 4.46291,3.815139 1.59273,1.408705 4.39962,1.363921 5.90041,-0.13548 l 5.04867,-5.968826 c 1.56009,-1.65952 1.52912,-4.088687 -0.18408,-5.631605 -11.62162,-10.466501 -14.41553,-12.007212 -20.071842,-11.957859 -3.886208,0.03391 -7.475676,2.89258 -7.491833,7.774135 z M 20.204593,30.814453 C 13.619504,30.814453 8,36.313343 8,42.527453 v 56.059692 c 0,5.542365 6.07697,12.227305 12.159056,12.227305 h 87.742084 c 6.34673,0 12.09886,-5.76826 12.09886,-11.741979 0.0564,-15.969425 0.0899,-26.500348 0.0215,-42.469892 0,-4.043991 -2.46364,-7.009322 -6.08265,-7.099454 -3.96264,-0.09869 -6.60078,3.361201 -6.60078,7.282921 v 17.882499 c 0,4.746335 -3.14976,8.128278 -8.000008,8.132789 l -70.511817,0.0641 c -4.524458,0.0041 -8.518618,-3.372632 -8.518618,-8.530675 V 63 52.017797 c 0,-4.571992 4.203362,-8.677178 8.599983,-8.677178 h 42.84548 c 3.227152,0.01218 6.047376,-2.728628 6.047376,-6.595782 -0.002,-3.705975 -2.893705,-5.930384 -6.077738,-5.930384 z m 6.757124,57.519709 c 3.58197,3.12e-4 6.485221,2.904807 6.484,6.486777 -3.1e-4,3.580885 -2.903115,6.483681 -6.484,6.483991 -3.581969,8.9e-4 -6.486466,-2.902021 -6.486777,-6.483991 -0.0012,-3.583055 2.903723,-6.487999 6.486777,-6.486777 z m 73.568923,0.08269 c 3.6351,3.15e-4 6.58184,2.947063 6.58216,6.582158 -3.2e-4,3.635093 -2.94706,6.58183 -6.58216,6.58215 -3.636184,8.9e-4 -6.584657,-2.945957 -6.584975,-6.58215 3.18e-4,-3.636196 2.948791,-6.583397 6.584975,-6.582158 z m -24.797484,3.166992 c 3.695995,-0.0012 6.692949,2.994412 6.69327,6.690408 -3.18e-4,3.695998 -2.997272,6.691658 -6.69327,6.690408 -3.694879,-3.2e-4 -6.69009,-2.99552 -6.690408,-6.690408 3.22e-4,-3.694877 2.995532,-6.690086 6.690408,-6.690408 z m -23.673101,0.02864 c 3.695995,3.2e-4 6.691667,2.997276 6.690407,6.693271 -3.23e-4,3.694875 -2.995531,6.690075 -6.690407,6.690395 -3.695994,8.9e-4 -6.692949,-2.99441 -6.69327,-6.690395 -0.0012,-3.697115 2.996156,-6.694532 6.69327,-6.693271 z"
+     sodipodi:nodetypes="ccsccsscscsccscscccsssccsssccssccscssscssccscccccccccccccccccccccccc" />
+  <defs
+     id="defs35">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect4"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,4.6737453,0,1 @ F,0,0,1,0,2.2201753,0,1 @ F,0,0,1,0,1.795416,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,4.2609818,0,1 @ F,0,0,1,0,3.9060244,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,2.5710778,0,1 @ F,0,0,1,0,2.5698802,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect2"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,2.3764884,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <filter
+       id="filter0_i_12_4"
+       x="16"
+       y="39"
+       width="96"
+       height="24"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood17" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="BackgroundImageFix"
+         result="shape"
+         id="feBlend17" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix17" />
+      <feOffset
+         dy="1"
+         id="feOffset17" />
+      <feComposite
+         in2="hardAlpha"
+         operator="arithmetic"
+         k2="-1"
+         k3="1"
+         id="feComposite17" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix18" />
+      <feBlend
+         mode="normal"
+         in2="shape"
+         result="effect1_innerShadow_12_4"
+         id="feBlend18" />
+    </filter>
+    <filter
+       id="filter1_i_12_4"
+       x="99"
+       y="89.8146"
+       width="5"
+       height="5"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood18" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="BackgroundImageFix"
+         result="shape"
+         id="feBlend19" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix19" />
+      <feOffset
+         dy="1"
+         id="feOffset19" />
+      <feComposite
+         in2="hardAlpha"
+         operator="arithmetic"
+         k2="-1"
+         k3="1"
+         id="feComposite19" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix20" />
+      <feBlend
+         mode="normal"
+         in2="shape"
+         result="effect1_innerShadow_12_4"
+         id="feBlend20" />
+    </filter>
+    <filter
+       id="filter2_i_12_4"
+       x="51"
+       y="94.8146"
+       width="5"
+       height="5"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood20" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="BackgroundImageFix"
+         result="shape"
+         id="feBlend21" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix21" />
+      <feOffset
+         dy="1"
+         id="feOffset21" />
+      <feComposite
+         in2="hardAlpha"
+         operator="arithmetic"
+         k2="-1"
+         k3="1"
+         id="feComposite21" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix22" />
+      <feBlend
+         mode="normal"
+         in2="shape"
+         result="effect1_innerShadow_12_4"
+         id="feBlend22" />
+    </filter>
+    <filter
+       id="filter3_i_12_4"
+       x="72"
+       y="94.8146"
+       width="5"
+       height="5"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood22" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="BackgroundImageFix"
+         result="shape"
+         id="feBlend23" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix23" />
+      <feOffset
+         dy="1"
+         id="feOffset23" />
+      <feComposite
+         in2="hardAlpha"
+         operator="arithmetic"
+         k2="-1"
+         k3="1"
+         id="feComposite23" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix24" />
+      <feBlend
+         mode="normal"
+         in2="shape"
+         result="effect1_innerShadow_12_4"
+         id="feBlend24" />
+    </filter>
+    <filter
+       id="filter4_i_12_4"
+       x="24"
+       y="89.8146"
+       width="5"
+       height="5"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood24" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="BackgroundImageFix"
+         result="shape"
+         id="feBlend25" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix25" />
+      <feOffset
+         dy="1"
+         id="feOffset25" />
+      <feComposite
+         in2="hardAlpha"
+         operator="arithmetic"
+         k2="-1"
+         k3="1"
+         id="feComposite25" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix26" />
+      <feBlend
+         mode="normal"
+         in2="shape"
+         result="effect1_innerShadow_12_4"
+         id="feBlend26" />
+    </filter>
+    <linearGradient
+       id="paint0_linear_12_4"
+       x1="8"
+       y1="110.815"
+       x2="120"
+       y2="110.815"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#545454"
+         id="stop26"
+         offset="0"
+         style="stop-color:#474747;stop-opacity:1;" />
+      <stop
+         offset="0.0176714"
+         stop-color="#9F9F9F"
+         id="stop27" />
+      <stop
+         offset="0.0716421"
+         stop-color="#545454"
+         id="stop28"
+         style="stop-color:#474747;stop-opacity:1;" />
+      <stop
+         offset="0.92859203"
+         stop-color="#545454"
+         id="stop29"
+         style="stop-color:#474747;stop-opacity:1;" />
+      <stop
+         offset="0.981657"
+         stop-color="#9F9F9F"
+         id="stop30" />
+      <stop
+         offset="1"
+         stop-color="#545454"
+         id="stop31"
+         style="stop-color:#474747;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       id="paint1_linear_12_4"
+       x1="96.0013"
+       y1="22.8146"
+       x2="96.0013"
+       y2="70.8146"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#FF5D3D"
+         id="stop32" />
+      <stop
+         offset="1"
+         stop-color="#FC3D17"
+         id="stop33" />
+    </linearGradient>
+    <linearGradient
+       id="paint2_linear_12_4"
+       x1="40"
+       y1="30.8146"
+       x2="40.0967"
+       y2="70.8144"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#FF5D3D"
+         id="stop34" />
+      <stop
+         offset="1"
+         stop-color="#FC3D17"
+         id="stop35" />
+    </linearGradient>
+  </defs>
+</svg>

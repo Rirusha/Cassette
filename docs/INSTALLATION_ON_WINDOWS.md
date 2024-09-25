@@ -42,13 +42,13 @@ wsl -t Ubuntu
 #### В терминале Ubuntu:
 ```shell
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-sudo flatpak install io.github.Rirusha.Cassette
+sudo flatpak install io.gitlab.Rirusha.Cassette
 ```
 
 > [!NOTE]
 > После перезагрузки Windows в меню «Пуск» появиться ярлык приложения Cassette, но его также можно запустить из терминала Ubuntu так:
 > ```shell
-> flatpak run io.github.Rirusha.Cassette
+> flatpak run io.gitlab.Rirusha.Cassette
 > ```
 
 ### nightly версия
@@ -76,11 +76,11 @@ sudo flatpak remote-add --if-not-exists cassette-nightly https://rirusha.github.
 
 ```shell
 sudo flatpak install org.gnome.Platform//master
-sudo flatpak install cassette-nightly io.github.Rirusha.Cassette-Devel
+sudo flatpak install cassette-nightly io.gitlab.Rirusha.Cassette-Devel
 ```
 
 > [!NOTE]
 > После перезагрузки Windows в меню «Пуск» появиться ярлык приложения Cassette-Devel, но его также можно запустить из терминала Ubuntu так:
 > ```shell
-> flatpak run io.github.Rirusha.Cassette-Devel
+> flatpak run io.gitlab.Rirusha.Cassette-Devel
 > ```

@@ -5,7 +5,7 @@
 <div align="center">
   <h1>
     <img
-      src="data/icons/hicolor/scalable/apps/io.github.Rirusha.Cassette.svg"
+      src="data/icons/hicolor/scalable/apps/io.gitlab.Rirusha.Cassette.svg"
       height="64"
     />
     Cassette
@@ -34,12 +34,12 @@
 
 **Flathub**
 
-<a href="https://flathub.org/apps/details/io.github.Rirusha.Cassette">
+<a href="https://flathub.org/apps/details/io.gitlab.Rirusha.Cassette">
   <img width='240' alt='Скачать на Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
 </a>
 
 ```shell
-flatpak install io.github.Rirusha.Cassette
+flatpak install io.gitlab.Rirusha.Cassette
 ```
 
 **Репозитории дистрибутивов**
@@ -176,4 +176,3 @@ flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala//23.08b
 Спасибо [MarshalX](https://github.com/MarshalX). Библиотека [yandex-music-api](https://github.com/MarshalX/yandex-music-api) была использована в качестве документации к api.
 
 > Cassette - неофициальный клиент, не связан с компанией Яндекс и не одобрен ей.
-

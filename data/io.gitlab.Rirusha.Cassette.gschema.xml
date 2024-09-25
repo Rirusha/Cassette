@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="cassette">
+
+    <schema id="io.gitlab.Rirusha.Cassette" path="/io/github/Rirusha/Cassette/">
+        <child schema="io.gitlab.Rirusha.Cassette.application" name="application"/>
+        <child schema="io.gitlab.Rirusha.Cassette.client" name="client"/>
+    </schema>
+
+    <!-- GUI Application -->
+
+	<enum id="io.gitlab.Rirusha.Cassette.application.application-state">
+		<value nick="begin" value="0"/>
+		<value nick="online" value="1"/>
+		<value nick="local" value="2"/>
+		<value nick="offline" value="3"/>
+	</enum>
+
+	<schema id="io.gitlab.Rirusha.Cassette.application" path="/io/github/Rirusha/Cassette/application/">
+		
+		<key name="application-state" enum="io.gitlab.Rirusha.Cassette.application.application-state">
+			<default>"begin"</default>
+		</key>
+
+		<key name="last-version" type="s">
+			<default>"0.0.0"</default>
+		</key>
+		<key name="window-width" type="i">
+			<default>600</default>
+		</key>
+		<key name="window-height" type="i">
+			<default>500</default>
+		</key>
+		<key name="window-maximized" type="b">
+			<default>false</default>
+		</key>
+		<key name="available-visible" type="b">
+			<default>false</default>
+		</key>
+		<key name="explicit-visible" type="b">
+			<default>true</default>
+		</key>
+		<key name="child-visible" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-replaced-mark" type="b">
+			<default>false</default>
+		</key>
+		<key name="show-save-stack" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-temp-save-mark" type="b">
+			<default>false</default>
+		</key>
+		<key name="default-pages-set" type="b">
+			<default>false</default>
+		</key>
+		<key name="show-main" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-liked" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-playlists" type="b">
+			<default>true</default>
+		</key>
+		<key name="show-playing-track-notif" type="b">
+			<default>false</default>
+		</key>
+		<key name="use-only-dialogs" type="b">
+			<default>false</default>
+		</key>
+	</schema>
+
+    <!-- Client -->
+
+    <enum id="io.gitlab.Rirusha.Cassette.client.repeat-mode">
+		<value nick="off" value="0"/>
+		<value nick="one" value="1"/>
+		<value nick="queue" value="2"/>
+	</enum>
+	<enum id="io.gitlab.Rirusha.Cassette.client.shuffle-mode">
+		<value nick="off" value="0"/>
+		<value nick="on" value="1"/>
+	</enum>
+
+	<schema id="io.gitlab.Rirusha.Cassette.client" path="/io/github/Rirusha/Cassette/client/">
+
+		<key name="repeat-mode" enum="io.gitlab.Rirusha.Cassette.client.repeat-mode">
+			<default>"off"</default>
+		</key>
+		<key name="shuffle-mode" enum="io.gitlab.Rirusha.Cassette.client.shuffle-mode">
+			<default>"off"</default>
+		</key>
+
+		<key name="volume" type="d">
+			<default>0.2</default>
+		</key>
+		<key name="mute" type="b">
+			<default>false</default>
+		</key>
+		<key name="max-thread-number" type="i">
+			<default>10</default>
+		</key>
+		<key name="add-tracks-to-start" type="b">
+			<default>true</default>
+		</key>
+		<key name="is-hq" type="b">
+			<default>true</default>
+		</key>
+		<key name="can-cache" type="b">
+			<default>true</default>
+		</key>
+		<key name="debug-mode" type="b">
+			<default>false</default>
+		</key>
+	</schema>
+
+</schemalist>

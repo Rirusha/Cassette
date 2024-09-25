@@ -5,7 +5,7 @@ README language: \
 <div align="center">
   <h1>
     <img
-      src="data/icons/hicolor/scalable/apps/io.github.Rirusha.Cassette.svg"
+      src="data/icons/hicolor/scalable/apps/io.gitlab.Rirusha.Cassette.svg"
       height="64"
     />
     Cassette
@@ -34,12 +34,12 @@ README language: \
 
 **Flathub**
 
-<a href="https://flathub.org/apps/details/io.github.Rirusha.Cassette">
+<a href="https://flathub.org/apps/details/io.gitlab.Rirusha.Cassette">
   <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
 </a>
 
 ```shell
-flatpak install io.github.Rirusha.Cassette
+flatpak install io.gitlab.Rirusha.Cassette
 ```
 
 **Distribution repositories**
@@ -103,30 +103,29 @@ nix-shell -p cassette
 
 > Unstable features under development will not be available in this version.
 ```shell
-meson setup builddir
+meson setup _build
 ```
 
 #### devel
 
 > In this version, all devel functions will be available, the application may work unstable.
 ```shell
-meson setup builddir
-meson configure -Dprofile=development builddir
+meson setup _build -Dis_devel=true
 ```
 
 ### Testing
 ```shell
-ninja -C builddir test
+ninja -C _build test
 ```
 
 ### Installation:
 ```shell
-sudo ninja -C builddir install
+sudo ninja install -C _build
 ```
 
 ### Delete:
 ```shell
-sudo ninja -C builddir uninstall
+sudo ninja uninstall -C _build
 ```
 
 ## For developers

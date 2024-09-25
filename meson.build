@@ -22,10 +22,11 @@ gstreamer = dependency('gstreamer-1.0')
 webkit = dependency('webkitgtk-6.0')
 gio = dependency('gio-2.0', version: '>= 2.72')
 
-app_id = 'io.github.Rirusha.Cassette'
+app_id = 'io.gitlab.Rirusha.Cassette'
 
 name_suffix = ''
 version_suffix = ''
+app_id_suffix = ''
 
 if get_option('is_devel')
   name_suffix = ' (Devel)'
@@ -37,11 +38,12 @@ if get_option('is_devel')
 endif
 
 app_id_dyn = '@0@@1@'.format (app_id, app_id_suffix)
+app_name = 'Cassette@0@'.format (name_suffix)
 
 conf = configuration_data()
 conf.set_quoted('APP_ID', app_id)
 conf.set_quoted('APP_ID_DYN', app_id_dyn)
-conf.set_quoted('APP_NAME', 'Cassette@0@'.format (name_suffix))
+conf.set_quoted('APP_NAME', app_name)
 conf.set_quoted('NAME_SUFFIX', name_suffix)
 conf.set_quoted('G_LOG_DOMAIN', app_id)
 conf.set10('IS_DEVEL', get_option('is_devel'))

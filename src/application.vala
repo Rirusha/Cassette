@@ -106,7 +106,7 @@ namespace Cassette {
         construct {
             application = this;
 
-            settings = new Settings ("io.github.Rirusha.Cassette.application");
+            settings = new Settings ("io.gitlab.Rirusha.Cassette.application");
 
             Cassette.Client.init (is_devel);
 

@@ -1,0 +1,1305 @@
+# Turkish translation for cassette.
+# Copyright (C) 2024 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+#
+# Sabri Ünal <yakushabb@gmail.com>, 2024.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2024-09-17 07:00+0000\n"
+"PO-Revision-Date: 2024-09-12 21:56+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Translators: app name should be translated
+#: data/io.github.Rirusha.Cassette.desktop.in:4
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:3 src/main.vala:23
+msgid "Cassette"
+msgstr "Kaset"
+
+#: data/io.github.Rirusha.Cassette.desktop.in:5
+msgid "Unofficial Yandex.Music client for GNOME"
+msgstr "GNOME için resmi olmayan Yandex.Music istemcisi"
+
+#. Translators: keep number of ';'
+#: data/io.github.Rirusha.Cassette.desktop.in:7
+#: data/io.github.Rirusha.Cassette-Devel.desktop.in:7
+msgid "yandex;yandex music;yam;music;"
+msgstr "yandex;yandex music;yam;music;yandex müzik;"
+
+#. Translators: app name should be translated
+#: data/io.github.Rirusha.Cassette-Devel.desktop.in:4
+msgid "Cassette (Devel)"
+msgstr "Kaset (Geliştirme)"
+
+#: data/io.github.Rirusha.Cassette-Devel.desktop.in:5
+msgid "Unofficial Yandex.Music client for GNOME (Development)"
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:8
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:12
+msgid "Features:"
+msgstr "Özellikler:"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:16
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:19
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:22
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:26
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:29
+msgid "Shows which tracks have been replaced and by what"
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:33
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr ""
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:68
+msgid "Unofficial Yandex.Music client"
+msgstr "Resmi olmayan Yandex.Music istemcisi"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:138
+msgid "Vladimir Vaskov"
+msgstr ""
+
+#: data/ui/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "Hesap Bilgileri"
+
+#: data/ui/account-info-dialog.blp:52
+msgid "Open in browser"
+msgstr "Tarayıcıda Aç"
+
+# Plus burada Yandex'in ek özellikler içeren bir paketinin adı.
+#: data/ui/account-info-dialog.blp:61
+msgid "Plus"
+msgstr "Plus"
+
+#: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
+#: src/authenticator.vala:51
+msgid "Log out"
+msgstr "Oturumu kapat"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:11
+msgid "Usage mode"
+msgstr "Kullanım kipi"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:40
+msgctxt "auth window"
+msgid "Choose usage mode"
+msgstr "Kullanım kipini seç"
+
+#: data/ui/begin-view.ui:50
+msgctxt "auth window"
+msgid ""
+"If you select the \"Online mode\", you can access local music by enabling "
+"the display of the corresponding pages in the pages preferences, as well as "
+"log in later when selecting \"Local mode\""
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:75
+msgctxt "auth window"
+msgid "Online mode"
+msgstr "Çevrim içi kip"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:85
+msgctxt "auth window"
+msgid "Local mode"
+msgstr "Yerel kip"
+
+#. Translators: "Close" window button label
+#: data/ui/begin-view.ui:97
+msgctxt "auth window"
+msgid "Close"
+msgstr "Kapat"
+
+#: data/ui/begin-view.ui:112
+msgid "Authorization"
+msgstr "Yetkilendirme"
+
+#. Translators: size of cache dirs
+#: data/ui/cache-deletion-preferences.ui:21
+msgid "Dirs size:"
+msgstr "Dizin boyutu:"
+
+#. Translators: tempprary cache folder
+#: data/ui/cache-deletion-preferences.ui:35
+msgid "Cache"
+msgstr "Ön Bellek"
+
+#: data/ui/cache-deletion-preferences.ui:88
+msgid "Clear"
+msgstr "Temizle"
+
+#. Translators: temparence cache folder
+#: data/ui/cache-deletion-preferences.ui:109
+msgid "Data"
+msgstr "Veri"
+
+#: data/ui/cache-deletion-preferences.ui:159
+msgid "Move to cache"
+msgstr "Ön belleğe taşı"
+
+#: data/ui/cache-deletion-preferences.ui:163
+msgid "Move"
+msgstr "Taşı"
+
+#: data/ui/cache-indicator.blp:35
+msgid "Show all cache jobs"
+msgstr "Tüm ön bellek işlerini göster"
+
+#: data/ui/custom-page-preferences.ui:17
+msgid "Title: "
+msgstr "Başlık:"
+
+#: data/ui/custom-page-preferences.ui:38
+msgid "Icon: "
+msgstr "Simge: "
+
+#: data/ui/custom-page-preferences.ui:75
+msgid "Save page"
+msgstr "Sayfayı kaydet"
+
+#: data/ui/custom-page-preferences.ui:92
+msgid "Remove page"
+msgstr "Sayfayı kaldır"
+
+#. Translators: title of preference group
+#: data/ui/custom-pages-preferences.ui:7
+msgctxt "preference window"
+msgid "Custom pages"
+msgstr "Özel sayfalar"
+
+#. Translators: description of preference group
+#: data/ui/custom-pages-preferences.ui:9
+msgctxt "preference window"
+msgid "Here you can control custom pages."
+msgstr "Buradan özel sayfaları denetleyebilirsiniz."
+
+#: data/ui/disliked-tracks-view.ui:23
+#: src/widgets/buttons/menu/primary-menu-button.vala:31
+msgid "Disliked tracks"
+msgstr "Beğenilmeyen parçalar"
+
+#: data/ui/header-bar.blp:12
+msgid "Go back"
+msgstr "Geri git"
+
+#: data/ui/header-bar.blp:20
+msgid "Refresh"
+msgstr "Yenile"
+
+#: data/ui/header-bar.blp:28
+msgid "Yandex.Music search"
+msgstr "Yandex.Music arama"
+
+#: data/ui/help-overlay.blp:11
+msgid "Main Actions"
+msgstr "Ana Eylemler"
+
+#: data/ui/help-overlay.blp:14
+msgid "Show Shortcuts"
+msgstr "Kısayolları Göster"
+
+#: data/ui/help-overlay.blp:19
+msgid "Quit"
+msgstr "Çık"
+
+#: data/ui/help-overlay.blp:25
+msgid "Playback Control"
+msgstr "Oynatma Denetimi"
+
+#: data/ui/help-overlay.blp:28
+msgid "Play/Pause playback"
+msgstr "Oynat/Duraklat"
+
+#: data/ui/help-overlay.blp:33 data/ui/player-bar.blp:87
+msgid "Play previous track"
+msgstr "Önceki parçayı çal"
+
+#: data/ui/help-overlay.blp:38 data/ui/player-bar.blp:119
+msgid "Play next track"
+msgstr "Sonraki parçayı çal"
+
+#: data/ui/help-overlay.blp:43
+msgid "Mute app"
+msgstr "Uygulamayı sustur"
+
+#: data/ui/help-overlay.blp:49
+msgid "Queue control"
+msgstr "Kuyruk denetimi"
+
+#: data/ui/help-overlay.blp:52 data/ui/player-bar.blp:141
+msgid "Change shuffle mode"
+msgstr "Karıştırma kipini değiştir"
+
+#: data/ui/help-overlay.blp:57 data/ui/player-bar.blp:65
+msgid "Change repeat mode"
+msgstr "Yineleme kipini değiştir"
+
+#: data/ui/help-overlay.blp:63
+msgid "Other"
+msgstr "Diğer"
+
+#: data/ui/help-overlay.blp:66
+msgid "Share current track"
+msgstr "Geçerli parçayı paylaş"
+
+#: data/ui/help-overlay.blp:71
+msgid "Parse url from clipboard"
+msgstr "Panodan URL ayrıştır"
+
+#: data/ui/info-marks.ui:23
+msgid "Explicit content"
+msgstr "Yetişkin içerik"
+
+#: data/ui/info-marks.ui:32
+msgid "Child content"
+msgstr "Çocuk içerik"
+
+#: data/ui/main-view.blp:6
+msgid "Page under construction"
+msgstr "Sayfa yapım aşamasında"
+
+#: data/ui/main-view.blp:20
+msgid "All stations"
+msgstr "Tüm istasyonlar"
+
+#: data/ui/no-plus-dialog.blp:20
+msgid "No Plus Subscription"
+msgstr "Plus Aboneliği Yok"
+
+#: data/ui/no-plus-dialog.blp:21
+msgid ""
+"To avoid problems with Yandex, the online functions of the application are "
+"not available without a Yandex.Plus subscription. Thanks for understanding."
+msgstr ""
+
+#: data/ui/no-plus-dialog.blp:41
+msgid "Get Plus"
+msgstr "Plus Al"
+
+#: data/ui/player-bar.blp:22
+msgid "Show track info"
+msgstr "Parça bilgisini göster"
+
+#: data/ui/player-bar.blp:206
+msgid "Show wave settings"
+msgstr "Dalga ayarlarını göster"
+
+#: data/ui/player-bar.blp:216
+msgid "Show playback queue"
+msgstr "Oynatma kuyruğunu göster"
+
+#: data/ui/player-bar.blp:229
+msgid "Change volume"
+msgstr "Sesi değiştir"
+
+#: data/ui/player-queue.blp:5 src/application.vala:271
+msgid "Playing now"
+msgstr "Şimdi oynatılıyor"
+
+#: data/ui/playlist-choose-dialog.ui:8
+msgid "Choose playlist to add"
+msgstr "Eklenecek çalma listesini seç"
+
+#: data/ui/playlist-create-button.ui:36
+msgid "Create playlist"
+msgstr "Çalma listesi oluştur"
+
+#: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
+#: src/widgets/cache-indicator/job-info-badge.vala:42
+#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:167
+msgid "Playlist"
+msgstr "Çalma Listesi"
+
+#: data/ui/playlist-row.ui:40
+msgid "Empty"
+msgstr "Boş"
+
+#: data/ui/playlists-view.ui:23
+msgid "Your playlists"
+msgstr "Çalma listeleriniz"
+
+#: data/ui/playlists-view.ui:39
+msgid "Also you liked these playlists"
+msgstr "Ayrıca şu çalma listelerini de beğendiniz"
+
+#: data/ui/playlist-view.ui:187
+msgid "Change playlist visibility"
+msgstr "Çalma listesi görünürlüğünü değiştir"
+
+#: data/ui/playlist-view.ui:211
+msgid "Add page to header"
+msgstr "Başlığa sayfa ekle"
+
+#. Translators: tooltip of "save" button
+#: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
+#: src/widgets/buttons/menu/track-options-button.vala:82
+#: src/widgets/buttons/menu/track-options-button.vala:107
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
+#: src/widgets/buttons/menu/track-queue-options-button.vala:72
+#: src/widgets/buttons/menu/track-queue-options-button.vala:102
+msgid "Save"
+msgstr "Kaydet"
+
+#. Translators: tooltip of "delete" button
+#: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
+#: src/widgets/preferences/cache-deletion-preferences.vala:96
+#: src/widgets/preferences/preferences-dialog.vala:140
+#: src/widgets/views/playlist.vala:90
+msgid "Delete"
+msgstr "Sil"
+
+#. Translators: tooltip of "abort" button
+#: data/ui/playlist-view.ui:276
+msgid "Abort"
+msgstr "Vazgeç"
+
+#: data/ui/playlist-view.ui:280
+msgid "Stop"
+msgstr "Durdur"
+
+#: data/ui/preferences-dialog.ui:8
+msgctxt "preference dialog"
+msgid "Main"
+msgstr "Ana"
+
+#: data/ui/preferences-dialog.ui:12
+msgctxt "preference dialog"
+msgid "General"
+msgstr "Genel"
+
+#: data/ui/preferences-dialog.ui:15
+msgctxt "preference dialog"
+msgid "Enable high quality audio"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:16
+msgctxt "preference dialog"
+msgid ""
+"Attention! If the track was downloaded in low quality, and after the "
+"download is enabled in high quality, the audio will not be reloaded"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:21
+msgctxt "preference dialog"
+msgid "Add track on top of playlist"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:22
+msgctxt "preference dialog"
+msgid "Will the track be added to the playlist as the first or as the last"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:27
+msgctxt "preference dialog"
+msgid "Show 'Playing now' notification"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:28
+msgctxt "preference dialog"
+msgid "Show a notification when switching a track"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:35
+msgctxt "preference dialog"
+msgid "Show additional marks"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:36
+msgctxt "preference dialog"
+msgid "Additional marks display additional information about the track"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:39
+msgctxt "preference dialog"
+msgid "Show save mark"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:40
+msgctxt "preference dialog"
+msgid "Show a label with information about the caching status of the track"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:45
+msgctxt "preference dialog"
+msgid "Show cache mark"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:46
+msgctxt "preference dialog"
+msgid "Show a mark about saving a track to the cache"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:51
+msgctxt "preference dialog"
+msgid "Show replaced mark"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:52
+msgctxt "preference dialog"
+msgid "Show a mark that shows that the track has been replaced"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:59
+msgctxt "preference dialog"
+msgid "Tracks visibility"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:60
+msgctxt "preference dialog"
+msgid ""
+"Show special tracks in track lists. Filter doesn't work when searching in "
+"track list"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:63
+msgctxt "preference dialog"
+msgid "Show unavailable content"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:64
+msgctxt "preference dialog"
+msgid ""
+"Show tracks that are not available in the service. You can't listen to them"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:69
+msgctxt "preference dialog"
+msgid "Show content suitable for children"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:70
+msgctxt "preference dialog"
+msgid "Show content that is specific to children"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:75
+msgctxt "preference dialog"
+msgid "Show explicit content"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:76
+msgctxt "preference dialog"
+msgid "Show content that has age restrictions"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:83
+msgctxt "preference dialog"
+msgid "Other"
+msgstr "Diğer"
+
+#: data/ui/preferences-dialog.ui:86
+msgctxt "preference dialog"
+msgid "Enable Debug-Mode"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:87
+msgctxt "preference dialog"
+msgid "Enable logging of additional information useful for error detection"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:94
+msgctxt "preference dialog"
+msgid "Experimental"
+msgstr "Deneysel"
+
+#: data/ui/preferences-dialog.ui:95
+msgctxt "preference dialog"
+msgid "Parameters that test anything and may be removed in future releases"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:98
+msgctxt "preference dialog"
+msgid "Use only bottom sheet menus"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:99
+msgctxt "preference dialog"
+msgid "Test preference for bottom sheet menu"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:108
+msgctxt "preference dialog"
+msgid "Pages"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:112
+msgctxt "preference dialog"
+msgid "Static pages"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:113
+msgctxt "preference dialog"
+msgid ""
+"Here you can show or hide static pages. They will always be displayed on the "
+"left side of the header."
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:116
+msgctxt "preference dialog"
+msgid "Show 'Main' page"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:121
+msgctxt "preference dialog"
+msgid "Show 'Liked' page"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:126
+msgctxt "preference dialog"
+msgid "Show 'Playlists' page"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:138
+msgctxt "preference dialog"
+msgid "Cache"
+msgstr "Ön bellek"
+
+#: data/ui/preferences-dialog.ui:142
+msgctxt "preference dialog"
+msgid "Cache managing"
+msgstr "Ön bellek yönetimi"
+
+#: data/ui/preferences-dialog.ui:143
+msgctxt "preference dialog"
+msgid ""
+"Here you can see application memory usage, delete all cache from cache "
+"folder and control downloading cache to disk"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:146
+msgctxt "preference dialog"
+msgid "Cache content"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:147
+msgctxt "preference dialog"
+msgid ""
+"For better performance. Over time, it starts to take up a lot of space. So "
+"far, manual cleaning is required. If enabled, the application will cache all "
+"content to cache dir for better performance, otherwise, the application will "
+"load content only when caching objects (such as playlists or albums). "
+"Disabling the parameter does not delete already downloaded content"
+msgstr ""
+
+#: data/ui/save-stack.ui:25
+msgid "Content saving…"
+msgstr "İçerik kaydediliyor…"
+
+#: data/ui/save-stack.ui:42
+msgid "Content cached"
+msgstr "İçerik ön belleklendi"
+
+#: data/ui/save-stack.ui:56
+msgid "Content saved"
+msgstr "İçerik kaydedildi"
+
+#: data/ui/stations-view.blp:22
+msgid "Stations dashboard"
+msgstr "İstasyonlar tablosu"
+
+#: data/ui/stations-view.blp:58
+msgid "Searching for station…"
+msgstr "İstasyon aranıyor…"
+
+#: data/ui/stations-view.blp:77
+msgid "By genre…"
+msgstr "Türe göre…"
+
+#: data/ui/stations-view.blp:99 data/ui/wave-settings.blp:60
+msgid "By mood…"
+msgstr "Ruh haline göre…"
+
+#: data/ui/stations-view.blp:121 data/ui/wave-settings.blp:25
+msgid "By activity…"
+msgstr "Etkinliğe göre…"
+
+#: data/ui/stations-view.blp:143
+msgid "By epoch…"
+msgstr "Çağlara göre…"
+
+#: data/ui/stations-view.blp:165
+msgid "Other…"
+msgstr "Diğer…"
+
+#: data/ui/stations-view.blp:209
+msgid "No stations with that name were found"
+msgstr ""
+
+#: data/ui/track-info.blp:103
+msgid "Track lyrics"
+msgstr "Parça şarkı sözleri"
+
+#: data/ui/track-info.blp:117
+msgid "Authors"
+msgstr "Yazarlar"
+
+#: data/ui/track-info.blp:135
+msgid "Source"
+msgstr "Kaynak"
+
+#: data/ui/track-info.blp:158
+msgid "Similar tracks"
+msgstr "Benzer parçalar"
+
+#. Translators: placeholder of "search" entry. Local track search (inside of track list)
+#: data/ui/track-list.ui:21
+msgid "Search track"
+msgstr "Parça ara"
+
+#. Translators: part of sort by <name, duration etc>
+#: data/ui/track-list.ui:30
+msgid "Sort by"
+msgstr "Sıralama Ölçütü"
+
+#: data/ui/track-list.ui:77
+msgid "No tracks to display"
+msgstr "Görüntülenecek parça yok"
+
+#: data/ui/track-list.ui:88
+msgid "name"
+msgstr "ad"
+
+#: data/ui/track-list.ui:92
+msgid "artist"
+msgstr "sanatçı"
+
+#: data/ui/track-list.ui:96
+msgid "album"
+msgstr "albüm"
+
+#: data/ui/track-list.ui:100
+msgid "duration"
+msgstr "süre"
+
+#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:37
+msgid "Loading…"
+msgstr "Yükleniyor…"
+
+#: data/ui/wave-settings.blp:42
+msgid "By diversity…"
+msgstr "Çeşitliliğe göre…"
+
+#: data/ui/wave-settings.blp:78
+msgid "By language…"
+msgstr "Dile göre…"
+
+#: data/ui/wave-settings.blp:93
+msgid "Can't get wave settings"
+msgstr "Dalga ayarları alınamadı"
+
+#: data/ui/window.blp:57 src/window.vala:252
+msgid "Reconnect"
+msgstr "Yeniden Bağlan"
+
+#: data/ui/window.blp:58 src/application.vala:151
+msgid "Connection problems"
+msgstr "Bağlantı sorunları"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/about.vala:60
+msgid "translator-credits"
+msgstr ""
+"Sabri Ünal <yakushabb@gmail.com>\n"
+"Emin Tufan Çetin <etcetin@gmail.com>"
+
+#: src/about.vala:68
+msgid "Telegram channel"
+msgstr "Telegram kanalı"
+
+#: src/about.vala:69
+msgid "Financial support (Tinkoff)"
+msgstr "Maddi destek (Tinkoff)"
+
+#: src/about.vala:70
+msgid "Financial support (Boosty)"
+msgstr "Maddi destek (Boosty)"
+
+#. Please keep alphabetical
+#: src/about.vala:73
+msgid "Sponsors"
+msgstr "Sponsorlar"
+
+#: src/application.vala:62
+msgid "Print version information and exit"
+msgstr "Sürüm bilgisini yazdır ve çık"
+
+#: src/application.vala:145
+msgid "Connection restored"
+msgstr "Bağlantı yeniden sağlandı"
+
+#: src/application.vala:273
+msgid "Previous"
+msgstr "Önceki"
+
+#: src/application.vala:274
+msgid "Next"
+msgstr "Sonraki"
+
+#: src/application.vala:357
+msgid "Current track can not be copied to the clipboard"
+msgstr ""
+
+#: src/application.vala:371 src/application.vala:378 src/application.vala:435
+msgid "Can't parse clipboard content"
+msgstr "Pano içeriği ayrıştırılamadı"
+
+#: src/application.vala:389
+msgid "Users view not implemented yet"
+msgstr ""
+
+#: src/application.vala:405 src/application.vala:419
+msgid "Albums view not implemented yet"
+msgstr ""
+
+#: src/authenticator.vala:46
+msgid "Log out?"
+msgstr ""
+
+#: src/authenticator.vala:47
+msgid "You will need to log in again to use the app"
+msgstr ""
+
+#. Translators: cancel of deleting playlist
+#: src/authenticator.vala:50
+#: src/widgets/preferences/cache-deletion-preferences.vala:95
+#: src/widgets/preferences/preferences-dialog.vala:139
+#: src/widgets/views/playlist.vala:89
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/authenticator.vala:97
+#: src/widgets/preferences/cache-deletion-preferences.vala:129
+msgid "Moving…"
+msgstr ""
+
+#. Translators: Playlist with liked tracks
+#: src/client/api/objects/playlist/playlist.vala:49
+#: src/client/api/objects/playlist/playlist.vala:99 src/pager.vala:276
+msgid "Liked"
+msgstr "Beğenildi"
+
+#. Translators: Playlist that updates every day
+#: src/client/api/objects/playlist/playlist.vala:53
+msgid "Daily"
+msgstr "Günlük"
+
+#. Translators: Unknown playlist
+#: src/client/api/objects/playlist/playlist.vala:57
+msgid "Unknown"
+msgstr ""
+
+#: src/client/cachier/storager.vala:124
+#, c-format
+msgid "Database was initialized, loc - %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:801
+#, c-format
+msgid "Can't save object %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:818
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "Bayt"
+
+#: src/client/cachier/storager.vala:821
+msgid "Kilobyte"
+msgid_plural "Kilobytes"
+msgstr[0] "Kilobayt"
+
+#: src/client/cachier/storager.vala:824
+msgid "Megabyte"
+msgid_plural "Megabytes"
+msgstr[0] "Megabayt"
+
+#: src/client/cachier/storager.vala:827
+msgid "Gigabyte"
+msgid_plural "Gigabytes"
+msgstr[0] "Gigabyte"
+
+#: src/client/cachier/storager.vala:830
+msgid "Terabyte"
+msgid_plural "Terabytes"
+msgstr[0] "Terabayt"
+
+#: src/client/cachier/storager.vala:859
+#, c-format
+msgid "Error while getting cache directory size. Message %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:894
+#, c-format
+msgid "Error while getting permanent directory size. Message %s"
+msgstr ""
+
+#: src/client/jsoner.vala:358 src/client/jsoner.vala:419
+#: src/client/jsoner.vala:526 src/client/jsoner.vala:550
+#, c-format
+msgid "Wrong type: expected %s, got %s"
+msgstr ""
+
+#: src/client/player/mods/abstract-mode.vala:91
+msgid "Problems with queue"
+msgstr ""
+
+#. Translators: name of new created playlist
+#: src/client/talkers/yam-talker.vala:627
+msgid "New Playlist"
+msgstr "Yeni Çalma Listesi"
+
+#: src/pager.vala:162
+#, c-format
+msgid "Can't set title \"%s\" to page"
+msgstr ""
+
+#: src/pager.vala:173
+#, c-format
+msgid "Can't set icon with name \"%s\" to page"
+msgstr ""
+
+#: src/pager.vala:199
+msgid "Reached max page count"
+msgstr ""
+
+#: src/pager.vala:205
+#, c-format
+msgid "Page '%s' already added"
+msgstr ""
+
+#: src/pager.vala:267
+msgid "Main"
+msgstr "Ana"
+
+#: src/pager.vala:286
+msgid "Playlists"
+msgstr "Çalma Listeleri"
+
+#: src/pager.vala:311
+#, c-format
+msgid "Can't read pages file. Message: %s"
+msgstr ""
+
+#: src/pager.vala:331
+#, c-format
+msgid "Can't create pages file. Message: %s"
+msgstr ""
+
+#: src/utils.vala:69
+msgid "Not implemented yet"
+msgstr ""
+
+#: src/utils.vala:76
+msgid "Need authorization"
+msgstr ""
+
+#: src/utils.vala:80
+msgid "Need Bookmate subscription"
+msgstr "Bookmate aboneliği gerekli"
+
+#: src/utils.vala:176 src/utils.vala:192
+msgid "Link copied to clipboard"
+msgstr ""
+
+#: src/utils.vala:241
+#, c-format
+msgid "Duration: %s h. %s min."
+msgstr "Süre: %s sa. %s dk."
+
+#: src/utils.vala:243
+#, c-format
+msgid "Duration: %s min."
+msgstr "Süre: %s dk."
+
+#: src/utils.vala:357
+msgid "today"
+msgstr "bugün"
+
+#: src/utils.vala:359
+msgid "yesterday"
+msgstr "dün"
+
+#: src/widgets/buttons/just/dislike-button.vala:37
+msgid "Remove dislike"
+msgstr ""
+
+#: src/widgets/buttons/just/dislike-button.vala:40
+msgid "Set dislike"
+msgstr ""
+
+#: src/widgets/buttons/just/like-button.vala:41
+msgid "Remove like"
+msgstr ""
+
+#: src/widgets/buttons/just/like-button.vala:48
+msgid "Set like"
+msgstr ""
+
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:37
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:40
+msgid "Pause"
+msgstr "Duraklat"
+
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:44
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:47
+msgid "Play"
+msgstr "Oynat"
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:48
+#, c-format
+msgid "Playlist '%s'"
+msgstr "Çalma Listesi '%s'"
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:53
+#: src/widgets/buttons/menu/playlist-options-button.vala:66
+msgid "My Vibe by playlist"
+msgstr ""
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:54
+#: src/widgets/buttons/menu/playlist-options-button.vala:76
+#: src/widgets/buttons/menu/track-options-button.vala:80
+#: src/widgets/buttons/menu/track-options-button.vala:105
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
+#: src/widgets/buttons/menu/track-queue-options-button.vala:69
+#: src/widgets/buttons/menu/track-queue-options-button.vala:99
+msgid "Add to queue"
+msgstr "Kuyruğa ekle"
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:55
+#: src/widgets/buttons/menu/playlist-options-button.vala:77
+#: src/widgets/buttons/menu/track-options-button.vala:83
+#: src/widgets/buttons/menu/track-options-button.vala:108
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
+#: src/widgets/buttons/menu/track-queue-options-button.vala:73
+#: src/widgets/buttons/menu/track-queue-options-button.vala:103
+msgid "Share"
+msgstr "Paylaş"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:26
+msgid "Primary menu"
+msgstr "Ana Menü"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:32
+msgid "Parse URL from clipboard"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:33
+msgid "Preferences"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:34
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:35
+msgid "About Cassette"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:77
+#: src/widgets/buttons/menu/track-options-button.vala:94
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:32
+#: src/widgets/buttons/menu/track-queue-options-button.vala:66
+#: src/widgets/buttons/menu/track-queue-options-button.vala:87
+msgid "My Vibe by track"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:78
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
+#: src/widgets/buttons/menu/track-queue-options-button.vala:67
+msgid "Show info"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:79
+#: src/widgets/buttons/menu/track-options-button.vala:104
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:45
+#: src/widgets/buttons/menu/track-queue-options-button.vala:68
+#: src/widgets/buttons/menu/track-queue-options-button.vala:98
+msgid "Play next"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:81
+#: src/widgets/buttons/menu/track-options-button.vala:106
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:36
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:47
+#: src/widgets/buttons/menu/track-queue-options-button.vala:70
+#: src/widgets/buttons/menu/track-queue-options-button.vala:100
+msgid "Add to playlist"
+msgstr "Çalma Listesine Ekle"
+
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
+msgid "Remove from playlist"
+msgstr "Çalma Listesinden Kaldır"
+
+#: src/widgets/buttons/menu/track-queue-options-button.vala:71
+#: src/widgets/buttons/menu/track-queue-options-button.vala:101
+msgid "Remove from queue"
+msgstr "Kuyruktan Kaldır"
+
+#: src/widgets/buttons/menu/volume-button.vala:121
+msgid "Volume control"
+msgstr "Ses Denetimi"
+
+#: src/widgets/buttons/menu/volume-button.vala:261
+msgid "Unmute"
+msgstr "Sesi Aç"
+
+#: src/widgets/buttons/menu/volume-button.vala:261
+msgid "Mute"
+msgstr "Sessiz"
+
+#: src/widgets/cache-indicator/job-info-badge.vala:44
+#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:172
+msgid "Album"
+msgstr "Albüm"
+
+#. Translators: n track from n tracks saved
+#: src/widgets/cache-indicator/job-info-badge.vala:77
+#, c-format
+msgid "%d / %d saved%s"
+msgid_plural "%d / %d saved%s"
+msgstr[0] "%d / %d kaydedildi %s"
+
+#: src/widgets/cache-indicator/job-info-badge.vala:84
+#, c-format
+msgid "%d track saving now"
+msgid_plural "%d tracks saving now"
+msgstr[0] "%d parça şimdi kaydediliyor"
+
+#: src/widgets/info-marks.vala:41
+#, c-format
+msgid "Track was replaced. Original version: %s, %s"
+msgstr ""
+
+#: src/widgets/playlist-micro.vala:157 src/widgets/views/playlist.vala:241
+#, c-format
+msgid "Owner: %s"
+msgstr "Sahibi: %s"
+
+#: src/widgets/playlist-row.vala:85
+#, c-format
+msgid "Track count: %s"
+msgstr "Parça sayısı: %s"
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:88
+#: src/widgets/preferences/preferences-dialog.vala:134
+msgid "Delete cache files?"
+msgstr "Ön bellek dosyaları silinsin mi?"
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:89
+msgid "Move saved files?"
+msgstr "Kayıtlı dosyalar taşınsın mı?"
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:90
+#: src/widgets/preferences/preferences-dialog.vala:135
+msgid ""
+"All cache will be deleted. This doesn't affect on saved playlists or albums"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:91
+msgid ""
+"All saved playlists and albums will be moved to cache files. This could take "
+"a while."
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:129
+msgid "Deleting…"
+msgstr "Siliniyor…"
+
+#: src/widgets/save-stack.vala:54
+msgid "Image"
+msgstr "Görüntü"
+
+#: src/widgets/save-stack.vala:58
+msgid "Track"
+msgstr "Parça"
+
+#: src/widgets/save-stack.vala:75
+#, c-format
+msgid "%s saving…"
+msgstr "%s kaydediliyor…"
+
+#: src/widgets/save-stack.vala:76
+#, c-format
+msgid "%s cached"
+msgstr "%s ön belleklendi"
+
+#: src/widgets/save-stack.vala:77
+#, c-format
+msgid "%s saved"
+msgstr "%s kaydedildi"
+
+#: src/widgets/sidebar/childs/player-queue.vala:66
+#, c-format
+msgid "Playlist \"%s\""
+msgstr "Çalma Listesi \"%s\""
+
+#: src/widgets/sidebar/childs/player-queue.vala:70
+#, c-format
+msgid "Album \"%s\""
+msgstr "Sanatçı \"%s\""
+
+#: src/widgets/sidebar/childs/player-queue.vala:74
+#, c-format
+msgid "By search results \"%s\""
+msgstr "Arama sonuçlarına göre \"%s\""
+
+#: src/widgets/sidebar/childs/player-queue.vala:78
+msgid "Track list"
+msgstr "Parça listesi"
+
+#: src/widgets/sidebar/childs/track-info.vala:68
+msgid "Your music track"
+msgstr "Müzik parçanız"
+
+#: src/widgets/sidebar/childs/track-info.vala:84
+msgid "Music track"
+msgstr "Müzik parçası"
+
+#: src/widgets/sidebar/childs/wave-settings.vala:39
+msgid "Wave settings"
+msgstr "Dalga ayarları"
+
+#: src/widgets/track-rows/base.vala:79 src/widgets/track-rows/default.vala:100
+msgid "Track is not available"
+msgstr "Parça yok"
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:78
+#, c-format
+msgid "%s '%s' saved successfully"
+msgstr "%s '%s' kaydedildi"
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:89
+#, c-format
+msgid "%s '%s' saving was stopped, due to network error"
+msgstr "%s '%s' kaydedilemedi, ağ hatası oluştu"
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:99
+#, c-format
+msgid "%s '%s' saving was aborted"
+msgstr "%s '%s' kaydından vazgeçildi"
+
+#. Translators: %s - content type (e.g. "Playlist")
+#: src/widgets/views/abstract-cachiable.vala:191
+#, c-format
+msgid "%s saving has started"
+msgstr "%s kaydı başladı"
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:229
+#, c-format
+msgid "%s '%s' was moved from data to cache"
+msgstr "%s '%s' veriden ön belleğe taşındı"
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:239
+#, c-format
+msgid "%s removing has started. Please do not close the app"
+msgstr "%s kaldırma başladı. Lütfen uygulamayı kapatmayın"
+
+#: src/widgets/views/cant-show.vala:37
+#, c-format
+msgid "Error %d"
+msgstr "Hata %d"
+
+#: src/widgets/views/cant-show.vala:41
+msgid "Can't load page"
+msgstr "Sayfa yüklenemedi"
+
+#: src/widgets/views/cant-show.vala:44
+msgid "Can't find desired content"
+msgstr "İstenen içerik bulunamadı"
+
+#: src/widgets/views/playlist.vala:84
+msgid "Delete playlist?"
+msgstr "Çalma listesi silinsin mi?"
+
+#: src/widgets/views/playlist.vala:85
+#, c-format
+msgid "Playlist '%s' will be permanently deleted."
+msgstr ""
+
+#: src/widgets/views/playlist.vala:104
+#, c-format
+msgid "Playlist '%s' was deleted"
+msgstr "'%s' çalma listesi silindi"
+
+#. Translators: %s is female person
+#: src/widgets/views/playlist.vala:247
+#, c-format
+msgctxt "female person"
+msgid "%s updated playlist %s"
+msgstr "%s, %s çalma listesini güncelledi"
+
+#. Translators: %s is male person
+#: src/widgets/views/playlist.vala:251
+#, c-format
+msgctxt "male person"
+msgid "%s updated playlist %s"
+msgstr "%s, %s çalma listesini güncelledi"
+
+#: src/widgets/views/playlist.vala:281
+#, c-format
+msgid "Can't change visibility of '%s'"
+msgstr "'%s' görünürlüğü değiştirelemedi"
+
+#: src/widgets/views/playlist.vala:287
+#, c-format
+msgid "Playlist '%s' is public now"
+msgstr "Çalma listesi '%s' artık genel"
+
+#: src/widgets/views/playlist.vala:290
+#, c-format
+msgid "Playlist '%s' is private now"
+msgstr "Çalma listesi '%s' artık özel"
+
+#: src/window.vala:235
+#, c-format
+msgid "Window info message: %s"
+msgstr "Pencere bilgi iletisi: %s"
+
+#~ msgid "Rirusha"
+#~ msgstr "Rirusha"

@@ -180,10 +180,10 @@ You can support in several ways:
 
 <div align="center">
   <a href="https://www.tbank.ru/cf/21GCxLuFuE9" style="margin-right: 100px;">
-    <img height="200" src="data/assets/tbank.png" alt="Tinkoff">
+    <img height="200" src="assets/tbank.png" alt="Tinkoff">
   </a>
   <a href="https://boosty.to/rirusha/donate">
-    <img height="200" src="data/assets/boosty.png" alt="boosty.to">
+    <img height="200" src="assets/boosty.png" alt="boosty.to">
   </a>
 </div>
 

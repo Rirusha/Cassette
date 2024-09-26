@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://github.com/Rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2024-09-02 15:24+0000\n"
-"PO-Revision-Date: 2024-09-02 21:10+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2024-09-17 07:00+0000\n"
+"PO-Revision-Date: 2024-09-17 17:24+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -22,63 +22,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: app name should be translated
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:3
-#: data/io.github.Rirusha.Cassette.desktop.in:4 src/main.vala:23
+#: data/io.github.Rirusha.Cassette.desktop.in:4
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:3 src/main.vala:23
 msgid "Cassette"
 msgstr "Kaseta"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:8
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
-msgstr ""
-"Program GTK / Adwaita, ki omogoča uporabo storitve Yandex Music v "
-"operacijskih sistemih Linux."
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:12
-msgid "Features:"
-msgstr "Zmožnosti:"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:16
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr ""
-"Omogoča shranjevanje seznamov predvajanja in albumov za poslušanje brez "
-"povezave"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:19
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr ""
-"Ima dinamičen način »karaoke« neposredno na informacijski plošči posnetka"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:22
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
-"Omogoča natančnejše prilagajanje prikaza in predvajanja posebnih vsebin, na "
-"primer eksplicitnih ali primernih za otroke."
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:26
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Prikaže posnetke, ki trenutno niso na voljo v storitvi"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:29
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Pokaže, kateri posnetki so bili nadomeščeni in s čim"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:33
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr "Kaseta je neuradni odjemalec in ni povezana z Yandexom ali ga podpira."
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:68
-msgid "Unofficial Yandex.Music client"
-msgstr "Neuradni odjemalec za Yandex.Music"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:138
-msgid "Rirusha"
-msgstr "Rirusha"
 
 #: data/io.github.Rirusha.Cassette.desktop.in:5
 msgid "Unofficial Yandex.Music client for GNOME"
@@ -98,6 +45,59 @@ msgstr "Kaseta (razvojna različica)"
 #: data/io.github.Rirusha.Cassette-Devel.desktop.in:5
 msgid "Unofficial Yandex.Music client for GNOME (Development)"
 msgstr "Neuradni odjemalec Yandex.Music za GNOME (razvojna različica)"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:8
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+"Program GTK / Adwaita, ki omogoča uporabo storitve Yandex Music v "
+"operacijskih sistemih Linux."
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:12
+msgid "Features:"
+msgstr "Zmožnosti:"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:16
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr ""
+"Omogoča shranjevanje seznamov predvajanja in albumov za poslušanje brez "
+"povezave"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:19
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr ""
+"Ima dinamičen način »karaoke« neposredno na informacijski plošči posnetka"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:22
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+"Omogoča natančnejše prilagajanje prikaza in predvajanja posebnih vsebin, na "
+"primer eksplicitnih ali primernih za otroke."
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:26
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr "Prikaže posnetke, ki trenutno niso na voljo v storitvi"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:29
+msgid "Shows which tracks have been replaced and by what"
+msgstr "Pokaže, kateri posnetki so bili nadomeščeni in s čim"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:33
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr "Kaseta je neuradni odjemalec in ni povezana z Yandexom ali ga podpira."
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:68
+msgid "Unofficial Yandex.Music client"
+msgstr "Neuradni odjemalec za Yandex.Music"
+
+#: data/io.github.Rirusha.Cassette.metainfo.xml.in:138
+msgid "Vladimir Vaskov"
+msgstr "Vladimir Vaskov"
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"

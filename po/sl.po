@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-26 09:43+0000\n"
-"PO-Revision-Date: 2024-09-26 11:44+0200\n"
+"POT-Creation-Date: 2024-09-27 14:53+0000\n"
+"PO-Revision-Date: 2024-09-27 22:32+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -22,35 +22,35 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: app name should be translated
-#: data/io.gitlab.Rirusha.Cassette.desktop.in.in:4
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
 msgid "Cassette"
 msgstr "Kaseta"
 
-#: data/io.gitlab.Rirusha.Cassette.desktop.in.in:5
-msgid "Unofficial Yandex.Music client for GNOME"
-msgstr "Neuradni odjemalec Yandex.Music za GNOME"
+#: data/space.rirusha.Cassette.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME"
+msgstr "Neuradni odjemalec Yandex Music za GNOME"
 
 #. Translators: keep number of ';'
-#: data/io.gitlab.Rirusha.Cassette.desktop.in.in:7
-#: data/io.gitlab.Rirusha.Cassette-Devel.desktop.in.in:7
+#: data/space.rirusha.Cassette.desktop.in.in:7
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
 msgid "yandex;yandex music;yam;music;"
 msgstr "yandex;glasba yandex;yandex music;yam;glasba;music;"
 
 #. Translators: app name should be translated
-#: data/io.gitlab.Rirusha.Cassette-Devel.desktop.in.in:4
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
 msgid "Cassette (Devel)"
 msgstr "Kaseta (razvojna različica)"
 
-#: data/io.gitlab.Rirusha.Cassette-Devel.desktop.in.in:5
-msgid "Unofficial Yandex.Music client for GNOME (Devel build)"
-msgstr "Neuradni odjemalec Yandex.Music za GNOME (razvojna gradnja)"
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME (Devel build)"
+msgstr "Neuradni odjemalec Yandex Music za GNOME (razvojna gradnja)"
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex.Music client"
-msgstr "Neuradni odjemalec za Yandex.Music"
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Neuradni odjemalec za Yandex Music"
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:9
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
 msgid ""
 "GTK/Adwaita application that allows to use Yandex Music service on Linux "
 "operating systems."
@@ -58,22 +58,22 @@ msgstr ""
 "Program GTK / Adwaita, ki omogoča uporabo storitve Yandex Music v "
 "operacijskih sistemih Linux."
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:13
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
 msgid "Features:"
 msgstr "Zmožnosti:"
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:17
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
 msgid "Allows you to save playlists and albums for offline listening"
 msgstr ""
 "Omogoča shranjevanje seznamov predvajanja in albumov za poslušanje brez "
 "povezave"
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:20
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
 msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
 msgstr ""
 "Ima dinamičen način »karaoke« neposredno na informacijski plošči posnetka"
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:23
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
 "content, such as explicit or suitable for children."
@@ -81,15 +81,15 @@ msgstr ""
 "Omogoča natančnejše prilagajanje prikaza in predvajanja posebnih vsebin, na "
 "primer eksplicitnih ali primernih za otroke."
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:27
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
 msgid "Displays tracks that are currently unavailable in the service"
 msgstr "Prikaže posnetke, ki trenutno niso na voljo v storitvi"
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:30
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
 msgid "Shows which tracks have been replaced and by what"
 msgstr "Pokaže, kateri posnetki so bili nadomeščeni in s čim"
 
-#: data/io.gitlab.Rirusha.Cassette.metainfo.xml.in.in:34
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
 msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
@@ -229,8 +229,8 @@ msgid "Refresh"
 msgstr "Osveži"
 
 #: data/ui/header-bar.blp:28
-msgid "Yandex.Music search"
-msgstr "Iskanje Yandex.Music"
+msgid "Yandex Music search"
+msgstr "Iskanje Yandex Music"
 
 #: data/ui/help-overlay.blp:11
 msgid "Main Actions"

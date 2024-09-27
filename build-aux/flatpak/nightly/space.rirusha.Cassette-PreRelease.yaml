@@ -43,8 +43,8 @@ modules:
   builddir: true
   sources:
   - type: git
-    url: https://github.com/Rirusha/Cassette.git
-    tag: v0.2.1
+    url: https://gitlab.gnome.org/Rirusha/Cassette.git
+    tag: ver-0.2.0
     commit: 
     x-checker-data:
       tag-pattern: ^v([\d.]+)$

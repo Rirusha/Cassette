@@ -98,7 +98,7 @@ namespace Cassette {
         public Application () {
             Object (
                 application_id: Config.APP_ID_DYN,
-                resource_base_path: "/io/gitlab/Rirusha/Cassette/",
+                resource_base_path: "/space/rirusha/Cassette/",
                 flags: ApplicationFlags.DEFAULT_FLAGS | ApplicationFlags.HANDLES_OPEN
             );
         }
@@ -106,7 +106,7 @@ namespace Cassette {
         construct {
             application = this;
 
-            settings = new Settings ("io.gitlab.Rirusha.Cassette.application");
+            settings = new Settings ("space.rirusha.Cassette.application");
 
             Cassette.Client.init (is_devel);
 

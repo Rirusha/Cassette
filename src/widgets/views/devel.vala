@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/devel-view.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/devel-view.ui")]
 public class Cassette.DevelView : BaseView {
 
     [GtkChild]

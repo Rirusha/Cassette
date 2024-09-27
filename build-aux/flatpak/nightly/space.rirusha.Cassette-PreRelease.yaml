@@ -1,4 +1,4 @@
-app-id: space.rirusha.Cassette
+id: space.rirusha.Cassette
 runtime: org.gnome.Platform
 runtime-version: '47'
 sdk: org.gnome.Sdk
@@ -31,21 +31,21 @@ cleanup:
 - '*.la'
 - '*.a'
 modules:
-- buildsystem: meson
-  name: blueprint-compiler
-  sources:
-  - commit: 8e10fcf8692108b9d4ab78f41086c5d7773ef864
-    tag: v0.14.0
-    type: git
-    url: https://gitlab.gnome.org/jwestman/blueprint-compiler
-- builddir: true
+- name: blueprint-compiler
   buildsystem: meson
-  name: cassette
   sources:
-  - commit: 
-    tag: v0.2.1
-    type: git
+  - type: git
+    url: https://gitlab.gnome.org/jwestman/blueprint-compiler
+    tag: v0.14.0
+    commit: 8e10fcf8692108b9d4ab78f41086c5d7773ef864
+- name: cassette
+  buildsystem: meson
+  builddir: true
+  sources:
+  - type: git
     url: https://github.com/Rirusha/Cassette.git
+    tag: v0.2.1
+    commit: 
     x-checker-data:
       tag-pattern: ^v([\d.]+)$
       type: git

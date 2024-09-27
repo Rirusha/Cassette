@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/playlist-create-button.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/playlist-create-button.ui")]
     public class PlaylistCreateButton : Adw.Bin {
         [GtkChild]
         unowned Gtk.Button real_button;

@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/equalaizer.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/equalaizer.ui")]
 public class Cassette.Equalaizer : Adw.Bin {
 
     construct {

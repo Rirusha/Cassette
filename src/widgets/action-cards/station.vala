@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/action-card-station.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/action-card-station.ui")]
 /**
  * A class for convenient work with clickable cards.
  */

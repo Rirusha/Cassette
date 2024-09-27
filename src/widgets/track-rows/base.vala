@@ -17,7 +17,7 @@
 
 using Cassette.Client;
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/track-base-content.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-base-content.ui")]
 public class Cassette.TrackBase: TrackRow {
 
     [GtkChild]

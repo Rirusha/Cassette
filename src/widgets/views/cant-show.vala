@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/cant-show-view.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/cant-show-view.ui")]
     public class CantShowView : Adw.Bin {
 
         [GtkChild]

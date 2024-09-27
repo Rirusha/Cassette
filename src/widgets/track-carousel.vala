@@ -16,7 +16,7 @@
  */
 
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/track-carousel.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-carousel.ui")]
 public class Cassette.TrackCarousel : Adw.Bin, Gtk.Orientable {
 
     [GtkChild]

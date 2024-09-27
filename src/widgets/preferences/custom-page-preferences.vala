@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/custom-page-preferences.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/custom-page-preferences.ui")]
     public class CustomPagePreferences : Adw.PreferencesRow {
         [GtkChild]
         unowned Gtk.Entry page_title_entry;

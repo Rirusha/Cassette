@@ -17,7 +17,7 @@
 
 using Cassette.Client;
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/window.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/window.ui")]
 public class Cassette.Window : ApplicationWindow {
 
     const ActionEntry[] ACTION_ENTRIES = {

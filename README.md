@@ -5,7 +5,7 @@ README language: \
 <div align="center">
   <h1>
     <img
-      src="data/icons/hicolor/scalable/apps/io.gitlab.Rirusha.Cassette.svg"
+      src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg"
       height="64"
     />
     Cassette
@@ -34,12 +34,12 @@ README language: \
 
 **Flathub**
 
-<a href="https://flathub.org/apps/details/io.gitlab.Rirusha.Cassette">
+<a href="https://flathub.org/apps/details/space.rirusha.Cassette">
   <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
 </a>
 
 ```shell
-flatpak install io.gitlab.Rirusha.Cassette
+flatpak install space.rirusha.Cassette
 ```
 
 **Distribution repositories**
@@ -142,7 +142,7 @@ flatpak remote-add --if-not-exists cassette-nightly http://rirusha.space/cassett
 Install application:
 
 ```shell
-sudo flatpak install cassette-nightly io.gitlab.Rirusha.Cassette-Devel
+sudo flatpak install cassette-nightly space.rirusha.Cassette-Devel
 ```
 
 ## For developers

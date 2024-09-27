@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/narrow-toggle-button.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/narrow-toggle-button.ui")]
 public class Cassette.NarrowToggleButton: Gtk.ToggleButton {
 
     [GtkChild]

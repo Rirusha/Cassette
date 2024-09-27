@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="cassette">
 
-    <schema id="io.gitlab.Rirusha.Cassette" path="/io/gitlab/Rirusha/Cassette/">
-        <child schema="io.gitlab.Rirusha.Cassette.application" name="application"/>
-        <child schema="io.gitlab.Rirusha.Cassette.client" name="client"/>
+    <schema id="space.rirusha.Cassette" path="/space/rirusha/Cassette/">
+        <child schema="space.rirusha.Cassette.application" name="application"/>
+        <child schema="space.rirusha.Cassette.client" name="client"/>
     </schema>
 
     <!-- GUI Application -->
 
-	<enum id="io.gitlab.Rirusha.Cassette.application.application-state">
+	<enum id="space.rirusha.Cassette.application.application-state">
 		<value nick="begin" value="0"/>
 		<value nick="online" value="1"/>
 		<value nick="local" value="2"/>
 		<value nick="offline" value="3"/>
 	</enum>
 
-	<schema id="io.gitlab.Rirusha.Cassette.application" path="/io/gitlab/Rirusha/Cassette/application/">
+	<schema id="space.rirusha.Cassette.application" path="/space/rirusha/Cassette/application/">
 		
-		<key name="application-state" enum="io.gitlab.Rirusha.Cassette.application.application-state">
+		<key name="application-state" enum="space.rirusha.Cassette.application.application-state">
 			<default>"begin"</default>
 		</key>
 
@@ -73,22 +73,22 @@
 
     <!-- Client -->
 
-    <enum id="io.gitlab.Rirusha.Cassette.client.repeat-mode">
+    <enum id="space.rirusha.Cassette.client.repeat-mode">
 		<value nick="off" value="0"/>
 		<value nick="one" value="1"/>
 		<value nick="queue" value="2"/>
 	</enum>
-	<enum id="io.gitlab.Rirusha.Cassette.client.shuffle-mode">
+	<enum id="space.rirusha.Cassette.client.shuffle-mode">
 		<value nick="off" value="0"/>
 		<value nick="on" value="1"/>
 	</enum>
 
-	<schema id="io.gitlab.Rirusha.Cassette.client" path="/io/gitlab/Rirusha/Cassette/client/">
+	<schema id="space.rirusha.Cassette.client" path="/space/rirusha/Cassette/client/">
 
-		<key name="repeat-mode" enum="io.gitlab.Rirusha.Cassette.client.repeat-mode">
+		<key name="repeat-mode" enum="space.rirusha.Cassette.client.repeat-mode">
 			<default>"off"</default>
 		</key>
-		<key name="shuffle-mode" enum="io.gitlab.Rirusha.Cassette.client.shuffle-mode">
+		<key name="shuffle-mode" enum="space.rirusha.Cassette.client.shuffle-mode">
 			<default>"off"</default>
 		</key>
 

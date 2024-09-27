@@ -18,7 +18,7 @@
 using Cassette.Client.YaMAPI;
 using Gee;
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/wave-settings.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/wave-settings.ui")]
 public sealed class Cassette.WaveSettings: SidebarChildBin {
 
     [GtkChild]

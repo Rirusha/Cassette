@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/loadable-widget.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/loadable-widget.ui")]
 public class Cassette.LoadableWidget: Adw.Bin {
 
     [GtkChild]

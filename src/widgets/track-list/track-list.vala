@@ -124,7 +124,7 @@ namespace Cassette {
         }
     }
 
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/track-list.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-list.ui")]
     public class TrackList : Adw.Bin {
 
         [GtkChild]

@@ -248,13 +248,13 @@ public class MprisPlayer : Object {
 
         var current_track = player.mode.get_current_track_info ();
         if (current_track == null) {
-            metadata.insert ("mpris:trackid", new ObjectPath ("/io/gitlab/Rirusha/Cassette/Track/0"));
+            metadata.insert ("mpris:trackid", new ObjectPath ("/space/rirusha/Cassette/Track/0"));
         } else {
             ObjectPath obj_path;
             if ("-" in current_track.id) {
-                obj_path = new ObjectPath (@"/io/gitlab/Rirusha/Cassette/Track/$(current_track.id.hash ())");
+                obj_path = new ObjectPath (@"/space/rirusha/Cassette/Track/$(current_track.id.hash ())");
             } else {
-                obj_path = new ObjectPath (@"/io/gitlab/Rirusha/Cassette/Track/$(current_track.id)");
+                obj_path = new ObjectPath (@"/space/rirusha/Cassette/Track/$(current_track.id)");
             }
 
             string[] artists = new string [current_track.artists.size];

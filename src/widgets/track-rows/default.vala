@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/track-default-content.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-default-content.ui")]
     public class TrackDefault : TrackRow {
 
         [GtkChild]

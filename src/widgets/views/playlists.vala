@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/playlists-view.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/playlists-view.ui")]
     public class PlaylistsView : BaseView {
         [GtkChild]
         unowned Gtk.Label playlists_label;

@@ -29,16 +29,18 @@ cleanup:
 - '*.la'
 - '*.a'
 modules:
-- buildsystem: meson
-  name: blueprint-compiler
+- name: blueprint-compiler
+  buildsystem: meson
   sources:
-  - url: https://gitlab.gnome.org/jwestman/blueprint-compiler
+  - type: git
+    url: https://gitlab.gnome.org/jwestman/blueprint-compiler
     commit: 8e10fcf8692108b9d4ab78f41086c5d7773ef864
     tag: v0.14.0
-    type: git
-- builddir: true
+- name: cassette
   buildsystem: meson
-  name: cassette
+  builddir: true
+  config-opts: 
+  - -Dis_devel=true
   sources:
   - type: dir
     path: ../../../

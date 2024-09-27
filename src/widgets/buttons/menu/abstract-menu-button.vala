@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-[GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/custom-menu-button.ui")]
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/custom-menu-button.ui")]
 public abstract class Cassette.CustomMenuButton : ShrinkableBin {
 
     public struct MenuItem {

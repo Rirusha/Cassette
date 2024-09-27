@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/save-stack.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/save-stack.ui")]
     public class SaveStack : Adw.Bin, Initable {
 
         [GtkChild]

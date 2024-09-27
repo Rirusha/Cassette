@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/playlist-row.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/playlist-row.ui")]
     public class PlaylistRow : Gtk.Frame {
         [GtkChild]
         unowned CoverImage cover_image;

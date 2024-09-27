@@ -22,7 +22,7 @@ gstreamer = dependency('gstreamer-1.0')
 webkit = dependency('webkitgtk-6.0')
 gio = dependency('gio-2.0', version: '>= 2.72')
 
-app_id = 'io.gitlab.Rirusha.Cassette'
+app_id = 'space.rirusha.Cassette'
 
 name_suffix = ''
 version_suffix = ''

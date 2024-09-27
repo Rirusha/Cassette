@@ -20,7 +20,7 @@ using Cassette.Client;
 
 
 namespace Cassette {
-    [GtkTemplate (ui = "/io/gitlab/Rirusha/Cassette/ui/player-bar.ui")]
+    [GtkTemplate (ui = "/space/rirusha/Cassette/ui/player-bar.ui")]
     public class PlayerBar : Adw.Bin {
 
         [GtkChild]

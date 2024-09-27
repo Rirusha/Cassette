@@ -3,7 +3,7 @@ include:
     file: 'flatpak/flatpak-ci-initiative-sdk-extensions.yml'
 
 variables:
-  MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/nightly/${APP_ID_DEVEL}.json
+  MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/nightly/${APP_ID_DEVEL}.yml
   BUNDLE: "${APP_ID_DEVEL}.flatpak"
   RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
   FLATPAK_MODULE: "cassette"

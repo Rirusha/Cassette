@@ -29,29 +29,29 @@
   <name xml:lang="hu">Kazetta</name>
   <name xml:lang="th">เทปคาสเซ็ท</name>
 
-  <shortdesc xml:lang="en">Unofficial Yandex.Music client</shortdesc>
-  <shortdesc xml:lang="es">Cliente no oficial de Yandex.Music</shortdesc>
-  <shortdesc xml:lang="fr">Client non officiel de Yandex.Music</shortdesc>
-  <shortdesc xml:lang="de">Inoffizieller Yandex.Music-Client</shortdesc>
-  <shortdesc xml:lang="it">Client non ufficiale di Yandex.Music</shortdesc>
-  <shortdesc xml:lang="pt">Cliente não oficial do Yandex.Music</shortdesc>
+  <shortdesc xml:lang="en">Unofficial Yandex Music client</shortdesc>
+  <shortdesc xml:lang="es">Cliente no oficial de Yandex Music</shortdesc>
+  <shortdesc xml:lang="fr">Client non officiel de Yandex Music</shortdesc>
+  <shortdesc xml:lang="de">Inoffizieller Yandex Music-Client</shortdesc>
+  <shortdesc xml:lang="it">Client non ufficiale di Yandex Music</shortdesc>
+  <shortdesc xml:lang="pt">Cliente não oficial do Yandex Music</shortdesc>
   <shortdesc xml:lang="ru">Неофициальный клиент Яндекс.Музыки</shortdesc>
-  <shortdesc xml:lang="ja">非公式のYandex.Musicクライアント</shortdesc>
-  <shortdesc xml:lang="zh">非官方的Yandex.Music客户端</shortdesc>
-  <shortdesc xml:lang="ar">عميل غير رسمي لـ Yandex.Music</shortdesc>
-  <shortdesc xml:lang="hi">अनौपचारिक Yandex.Music क्लाइंट</shortdesc>
-  <shortdesc xml:lang="ko">비공식 Yandex.Music 클라이언트</shortdesc>
-  <shortdesc xml:lang="tr">Resmi olmayan Yandex.Music istemcisi</shortdesc>
-  <shortdesc xml:lang="he">לקוח לא רשמי של Yandex.Music</shortdesc>
-  <shortdesc xml:lang="el">Ανεπίσημος πελάτης του Yandex.Music</shortdesc>
-  <shortdesc xml:lang="nl">Onofficiële Yandex.Music-client</shortdesc>
-  <shortdesc xml:lang="sv">Inofficiell Yandex.Music-klient</shortdesc>
-  <shortdesc xml:lang="pl">Nieoficjalny klient Yandex.Music</shortdesc>
-  <shortdesc xml:lang="cs">Neoficiální klient Yandex.Music</shortdesc>
-  <shortdesc xml:lang="da">Uofficiel Yandex.Music-klient</shortdesc>
-  <shortdesc xml:lang="fi">Epävirallinen Yandex.Music-asiakas</shortdesc>
-  <shortdesc xml:lang="hu">Nem hivatalos Yandex.Music kliens</shortdesc>
-  <shortdesc xml:lang="th">ไคลเอนต์ Yandex.Music อย่างไม่เป็นทางการ</shortdesc>
+  <shortdesc xml:lang="ja">非公式のYandex Musicクライアント</shortdesc>
+  <shortdesc xml:lang="zh">非官方的Yandex Music客户端</shortdesc>
+  <shortdesc xml:lang="ar">عميل غير رسمي لـ Yandex Music</shortdesc>
+  <shortdesc xml:lang="hi">अनौपचारिक Yandex Music क्लाइंट</shortdesc>
+  <shortdesc xml:lang="ko">비공식 Yandex Music 클라이언트</shortdesc>
+  <shortdesc xml:lang="tr">Resmi olmayan Yandex Music istemcisi</shortdesc>
+  <shortdesc xml:lang="he">לקוח לא רשמי של Yandex Music</shortdesc>
+  <shortdesc xml:lang="el">Ανεπίσημος πελάτης του Yandex Music</shortdesc>
+  <shortdesc xml:lang="nl">Onofficiële Yandex Music-client</shortdesc>
+  <shortdesc xml:lang="sv">Inofficiell Yandex Music-klient</shortdesc>
+  <shortdesc xml:lang="pl">Nieoficjalny klient Yandex Music</shortdesc>
+  <shortdesc xml:lang="cs">Neoficiální klient Yandex Music</shortdesc>
+  <shortdesc xml:lang="da">Uofficiel Yandex Music-klient</shortdesc>
+  <shortdesc xml:lang="fi">Epävirallinen Yandex Music-asiakas</shortdesc>
+  <shortdesc xml:lang="hu">Nem hivatalos Yandex Music kliens</shortdesc>
+  <shortdesc xml:lang="th">ไคลเอนต์ Yandex Music อย่างไม่เป็นทางการ</shortdesc>
 
   <description>
     GTK/Adwaita application that allows you to use Yandex Music service on Linux operating systems

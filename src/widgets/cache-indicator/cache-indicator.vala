@@ -103,7 +103,7 @@ namespace Cassette {
             }
         }
 
-        // Алгоритм взят из https://gitlab.gnome.org/GNOME/nautilus/-/blob/main/src/nautilus-progress-indicator.c
+        // Took from https://gitlab.gnome.org/GNOME/nautilus/-/blob/main/src/nautilus-progress-indicator.c
         void update_jobs_icon (Gtk.DrawingArea drawing_area, Cairo.Context cairo, int width, int height) {
             int elapsed_progress = 0;
             int total_progress = 0;

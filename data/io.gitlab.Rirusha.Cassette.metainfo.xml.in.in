@@ -36,7 +36,7 @@
     </p>
   </description>
   <launchable type="desktop-id">@APP_ID_DYN@.desktop</launchable>
-  <developer>
+  <developer id="space.rirusha">
     <name>Vladimir Vaskov</name>
     <name xml:lang="ru">Владимир Васьков</name>
   </developer>

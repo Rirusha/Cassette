@@ -9,10 +9,22 @@ variables:
   FLATPAK_MODULE: "cassette"
 
 stages:
-  - build-aarch64 
+  - test-x86_64
+  - build-aarch64
   - build-x86_64
+  - test-x86_64
   - update-repo
   - deploy
+
+test-x86_64:
+  extends: '.flatpak'
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+
+test-aarch64:
+  extends: '.flatpak@aarch64'
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 .setup-gpg:
   image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
@@ -35,6 +47,8 @@ stages:
     - gpg-connect-agent reloadagent /bye
     - cat ${GPG_PASSPHRASE} | /usr/libexec/gpg-preset-passphrase --preset ${GPG_KEY_GREP}
     - base64 -d ${GPG_PRIVATE_KEY} | gpg --import
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'
 
 .build:
   extends: '.setup-gpg'
@@ -101,6 +115,8 @@ stages:
     reports:
       junit: '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.junit.xml'
     expire_in: 14 days
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'
 
 build-x86_64:
   extends: '.build'
@@ -111,6 +127,8 @@ build-x86_64:
   tags:
     - flatpak
   stage: "build-x86_64"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'
 
 # Need to fix `Error: module cassette: Error removing file /builds/Rirusha/cassette-test-ci/.flatpak-builder/build/cassette: Directory not empty`
 build-aarch64:
@@ -120,6 +138,8 @@ build-aarch64:
   tags:
     - flatpak-aarch64
   stage: "build-aarch64"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'
 
 pages:
   variables:
@@ -134,6 +154,8 @@ pages:
     - find $BUILD_OUTPUT_PATH \( -type d -name .git -prune \) -o -type f -print0 | xargs -0 sed -i -e "s#href=\"\/#href=\"$CI_PAGES_URL/#g" -e "s#src=\"\/#src=\"$CI_PAGES_URL/#g"
     - mkdir public || true
     - rsync -av --exclude='public' --exclude='.git' $BUILD_OUTPUT_PATH/ public
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'
   artifacts:
     paths:
       - public

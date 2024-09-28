@@ -9,10 +9,10 @@ variables:
   FLATPAK_MODULE: "cassette"
 
 stages:
-  - test-x86_64
+  - test-aarch64
   - build-aarch64
-  - build-x86_64
   - test-x86_64
+  - build-x86_64
   - update-repo
   - deploy
 

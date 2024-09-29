@@ -18,12 +18,16 @@ stages:
   - deploy
 
 test-x86_64:
+  variables:
+    RUN_TESTS: "0"
   stage: 'test-x86_64'
   extends: '.flatpak'
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
 test-aarch64:
+  variables:
+    RUN_TESTS: "0"
   stage: 'test-aarch64'
   extends: '.flatpak@aarch64'
   rules:

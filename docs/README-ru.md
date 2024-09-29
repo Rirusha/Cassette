@@ -32,7 +32,7 @@
 
 ## Установка
 
-**Flathub**
+**Flathub:**
 
 <a href="https://flathub.org/apps/details/space.rirusha.Cassette">
   <img width='240' alt='Скачать на Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
@@ -42,7 +42,7 @@
 flatpak install space.rirusha.Cassette
 ```
 
-**Репозитории дистрибутивов**
+**Репозитории дистрибутивов:**
 
 [![Состояние упаковки](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
 

@@ -32,7 +32,7 @@ README language: \
 
 ## Install
 
-**Flathub**
+**Flathub:**
 
 <a href="https://flathub.org/apps/details/space.rirusha.Cassette">
   <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
@@ -42,7 +42,7 @@ README language: \
 flatpak install space.rirusha.Cassette
 ```
 
-**Distribution repositories**
+**Distribution repositories:**
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
 

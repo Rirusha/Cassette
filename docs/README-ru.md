@@ -190,4 +190,5 @@ flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala//23.08b
 ## Благодарность
 Спасибо [MarshalX](https://github.com/MarshalX). Библиотека [yandex-music-api](https://github.com/MarshalX/yandex-music-api) была использована в качестве документации к api.
 
+> Внимание!
 > Cassette - неофициальный клиент, не связан с компанией Яндекс и не одобрен ей.

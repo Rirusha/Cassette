@@ -190,4 +190,5 @@ You can support in several ways:
 ## Gratitude
 Thank you [MarshalX](https://github.com/MarshalX ). The [yandex-music-api](https://github.com/MarshalX/yandex-music-api) library was used as api documentation.
 
+> Attention!
 > Cassette is an unofficial client, not affiliated with Yandex and not approved by it.

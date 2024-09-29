@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-17 07:00+0000\n"
-"PO-Revision-Date: 2024-09-18 15:59-0300\n"
+"POT-Creation-Date: 2024-09-27 14:53+0000\n"
+"PO-Revision-Date: 2024-09-29 16:54-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
@@ -19,31 +19,35 @@ msgstr ""
 "X-Generator: Gtranslator 46.1\n"
 
 #. Translators: app name should be translated
-#: data/io.github.Rirusha.Cassette.desktop.in:4
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:3 src/main.vala:23
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
 msgid "Cassette"
 msgstr "Cassette"
 
-#: data/io.github.Rirusha.Cassette.desktop.in:5
-msgid "Unofficial Yandex.Music client for GNOME"
-msgstr "Cliente não oficial do Yandex.Music para GNOME"
+#: data/space.rirusha.Cassette.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME"
+msgstr "Cliente não oficial do Yandex Music para GNOME"
 
 #. Translators: keep number of ';'
-#: data/io.github.Rirusha.Cassette.desktop.in:7
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:7
+#: data/space.rirusha.Cassette.desktop.in.in:7
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
 msgid "yandex;yandex music;yam;music;"
 msgstr "yandex;yandex music;yam;música;"
 
 #. Translators: app name should be translated
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:4
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
 msgid "Cassette (Devel)"
 msgstr "Cassette (Devel)"
 
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:5
-msgid "Unofficial Yandex.Music client for GNOME (Development)"
-msgstr "Cliente não oficial do Yandex.Music para GNOME (Desenvolvimento)"
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME (Devel build)"
+msgstr "Cliente não oficial do Yandex Music para GNOME (construção de desenvolvimento)"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:8
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Cliente não oficial do Yandex Music"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
 msgid ""
 "GTK/Adwaita application that allows to use Yandex Music service on Linux "
 "operating systems."
@@ -51,19 +55,19 @@ msgstr ""
 "Aplicativo GTK/Adwaita que permite usar o serviço Yandex Music em sistemas "
 "operacionais Linux."
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:12
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
 msgid "Features:"
 msgstr "Recursos:"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:16
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
 msgid "Allows you to save playlists and albums for offline listening"
 msgstr "Permite salvar listas de reprodução e álbuns para ouvir offline"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:19
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
 msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
 msgstr "Possui um “modo karaokê” dinâmico no painel de informações da faixa"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:22
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
 "content, such as explicit or suitable for children."
@@ -71,28 +75,20 @@ msgstr ""
 "Permite personalizar com mais precisão a exibição e a reprodução de conteúdo "
 "especial, como explícito ou adequado para crianças."
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:26
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
 msgid "Displays tracks that are currently unavailable in the service"
 msgstr "Exibe faixas que estão disponíveis no serviço no momento"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:29
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
 msgid "Shows which tracks have been replaced and by what"
 msgstr "Mostra quais faixas foram substituídas e por quais"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:33
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
 msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
 msgstr ""
 "Cassette é um cliente não oficial e não é associado ou endossado pelo Yandex."
-
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:68
-msgid "Unofficial Yandex.Music client"
-msgstr "Cliente não oficial do Yandex.Music"
-
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:138
-msgid "Vladimir Vaskov"
-msgstr "Vladimir Vaskov"
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"
@@ -228,8 +224,8 @@ msgid "Refresh"
 msgstr "Atualizar"
 
 #: data/ui/header-bar.blp:28
-msgid "Yandex.Music search"
-msgstr "Pesquisa no Yandex.Music"
+msgid "Yandex Music search"
+msgstr "Pesquisa no Yandex Music"
 
 #: data/ui/help-overlay.blp:11
 msgid "Main Actions"
@@ -758,24 +754,24 @@ msgid "Connection problems"
 msgstr "Problemas de conexão"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:60
+#: src/about.vala:59
 msgid "translator-credits"
 msgstr "Rafael Fontenelle <rafaelff@gnome.org>"
 
-#: src/about.vala:68
+#: src/about.vala:67
 msgid "Telegram channel"
 msgstr "Canal de Telegram"
 
-#: src/about.vala:69
+#: src/about.vala:68
 msgid "Financial support (Tinkoff)"
 msgstr "Apoio financeiro (Tinkoff)"
 
-#: src/about.vala:70
+#: src/about.vala:69
 msgid "Financial support (Boosty)"
 msgstr "Apoio financeiro (Boosty)"
 
 #. Please keep alphabetical
-#: src/about.vala:73
+#: src/about.vala:72
 msgid "Sponsors"
 msgstr "Patrocinadores"
 
@@ -1334,6 +1330,9 @@ msgstr "A lista de reprodução “%s” agora está privada"
 #, c-format
 msgid "Window info message: %s"
 msgstr "Mensagem de informações da janela: %s"
+
+#~ msgid "Vladimir Vaskov"
+#~ msgstr "Vladimir Vaskov"
 
 #~ msgid "Rirusha"
 #~ msgstr "Rirusha"

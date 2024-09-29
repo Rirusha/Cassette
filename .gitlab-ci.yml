@@ -20,6 +20,7 @@ stages:
 test-x86_64:
   variables:
     RUN_TESTS: "0"
+    APP_ID: ${APP_ID_DEVEL}
   stage: 'test-x86_64'
   extends: '.flatpak'
   rules:
@@ -28,6 +29,7 @@ test-x86_64:
 test-aarch64:
   variables:
     RUN_TESTS: "0"
+    APP_ID: ${APP_ID_DEVEL}
   stage: 'test-aarch64'
   extends: '.flatpak@aarch64'
   rules:

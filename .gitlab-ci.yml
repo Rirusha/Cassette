@@ -21,6 +21,7 @@ test-x86_64:
   variables:
     RUN_TESTS: "0"
     APP_ID: ${APP_ID_DEVEL}
+    CI_FB_ARGS: "--arch=x86_64"
   stage: 'test-x86_64'
   extends: '.flatpak'
   rules:
@@ -30,6 +31,7 @@ test-aarch64:
   variables:
     RUN_TESTS: "0"
     APP_ID: ${APP_ID_DEVEL}
+    CI_FB_ARGS: "--arch=aarch64"
   stage: 'test-aarch64'
   extends: '.flatpak@aarch64'
   rules:

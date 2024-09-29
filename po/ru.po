@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cassette 0.2.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-10 02:36+0300\n"
-"PO-Revision-Date: 2024-07-10 02:37+0300\n"
-"Last-Translator: Rirusha <anerin_sidiver@outlook.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2024-09-27 14:53+0000\n"
+"PO-Revision-Date: 2024-09-29 14:44+0300\n"
+"Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Cassette Team <rirusha@altlinux.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -17,38 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Flags-xgettext: --add-comments=Translators:\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: app name should be translated
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:3
-#: data/io.github.Rirusha.Cassette.desktop.in:4 src/main.vala:23
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
 msgid "Cassette"
 msgstr "Кассета"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:8
+#: data/space.rirusha.Cassette.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME"
+msgstr "Неофициальный клиент Яндекс Музыки для GNOME"
+
+# Translators: don't translate ';'
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:7
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
+msgid "yandex;yandex music;yam;music;"
+msgstr "яндекс;яндекс музыка;ям;музыка;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
+msgid "Cassette (Devel)"
+msgstr "Кассета (Разрабатываемая версия)"
+
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME (Devel build)"
+msgstr "Неофициальный клиент Яндекс Музыки для GNOME (Разрабатываемая версия)"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Неофициальный клиент Яндекс Музыки"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
 msgid ""
 "GTK/Adwaita application that allows to use Yandex Music service on Linux "
 "operating systems."
 msgstr ""
-"GTK/Adwaita приложение, позволяющее использовать сервис Яндекс.Музыка на "
+"GTK4/Libadwaita приложение, позволяющее использовать сервис Яндекс.Музыка на "
 "операционных системах Linux."
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:12
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
 msgid "Features:"
 msgstr "Из особенностей:"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:16
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
 msgid "Allows you to save playlists and albums for offline listening"
 msgstr "Позволяет вам сохранять плейлисты и альбомы для оффлайн прослушивания"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:19
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
 msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
 msgstr ""
 "Имеет динамический \"режим караоке\" прямо на панели информации о треке"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:22
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
 "content, such as explicit or suitable for children."
@@ -56,15 +80,15 @@ msgstr ""
 "Позволяет более точно настроить отображение и воспроизведение детского или "
 "предназначенного для несовершеннолетних контента."
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:26
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
 msgid "Displays tracks that are currently unavailable in the service"
 msgstr "Отображает треки, недоступные в сервисе на данный момент"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:29
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
 msgid "Shows which tracks have been replaced and by what"
 msgstr "Показывает, какие треки были заменены и чем"
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:33
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
 msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
@@ -72,198 +96,19 @@ msgstr ""
 "Cassette является неофициальным клиентом, не связан с компанией Яндекс и не "
 "одобрен ей."
 
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:68
-msgid "Unofficial Yandex.Music client"
-msgstr "Неофициальный клиент сервиса Я.Музыка"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:73
-msgid "A release dedicated to My Vibe"
-msgstr "Релиз посвящен Моей Волне"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:75
-msgid "Added My Vibe"
-msgstr "Добавлена Моя Волна"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:76
-msgid "Improved appearance"
-msgstr "Улучшен внешний вид"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:77
-msgid "MANY bug fixes"
-msgstr "БОЛЬШОЕ КОЛИЧЕСТВО исправленных багов"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:83
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:91
-msgid "Hotfix"
-msgstr "Срочные исправления"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:85
-msgid "Bug fixes"
-msgstr "Исправления багов"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:93
-msgid ""
-"Crashes that I couldn't reproduce for a long time have been fixed. The "
-"reason was an attempt to save a custom track with an empty cover"
-msgstr ""
-"Были исправлены вылеты, которые я долго не мог воспроизвести. Причина была в "
-"попытке сохранения пользовательского трека с пустой обложкой"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:94
-msgid ""
-"The button for creating a playlist has changed, as well as some other shadows"
-msgstr "Изменилась кнопка добавления нового плейлиста, как и некоторые тени"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:95
-msgid ""
-"The translation has been corrected. The text on the widgets written using "
-"blueprints has not been translated. Now fixed"
-msgstr ""
-"Был исправлен перевод. Текст на виджетах, написанных с использованием "
-"blueprints не был переведен. Теперь исправлено"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:101
-msgid "Cosmetic and code changes"
-msgstr "Косметические изменения и изменения в коде"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:103
-msgid ""
-"The transition to the blueprints interface language is slowly but surely "
-"underway"
-msgstr "Медленно, но верно выполняется переход на язык интерфейса blueprints"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:104
-msgid ""
-"The playback panel has been completely redesigned. Now there are fewer "
-"buttons (if someone has lost the track information button, you need to poke "
-"to the right of the playback slider)"
-msgstr ""
-"Полностью переделана панель воспроизведения. Теперь на ней меньше кнопок "
-"(если кто-то потерял кнопку информации о треке, нужно ткнуть справа от "
-"слайдера воспроизведения)"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:105
-msgid "The appearance of the playlist has been changed"
-msgstr "Изменён внешний вид плейлиста"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:106
-msgid "The sidebar widget has been changed"
-msgstr ""
-"Изменён виджет боковой панели для показа дополнительной информации о треке"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:107
-msgid ""
-"Added the feature with parallel loading of tracks while saving playlists. "
-"And not only that, now when the application starts, all saved playlists will "
-"be checked and updated. You can also view the progress of saving on the top "
-"left"
-msgstr ""
-"Добавлена упомянутая месяц назад фича с параллельной загрузкой треков при "
-"сохранении плейлистов. И не только это, теперь при старте приложения, будет "
-"выполняться проверка всех сохранённых плейлистов и их обновление. Также, "
-"просмотреть прогресс сохранения можно слева сверху"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:108
-msgid "Added the removal of a track from the queue when it is disliked"
-msgstr "Добавлено удаление трека из очереди при его дизлайке"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:109
-msgid ""
-"The Belarusian language has been added. Thanks to Yahor Haurylenka for the "
-"translation"
-msgstr "Был добавлен белорусский язык. Спасибо Yahor Haurylenka за перевод"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:110
-msgid "Added a debug mod"
-msgstr "Добавлен режим отладки"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:111
-msgid "Increased the maximum volume level from 60 to 100"
-msgstr "Увеличен максимальный уровень громкости с 60 до 100"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:112
-msgid ""
-"Added the ability to move all saved objects to the cache folder, that is, "
-"move them to temporary storage"
-msgstr ""
-"Добавлена возможность перемещать все сохраненные объекты в папку кэша, то "
-"есть перемещать их во временное хранилище"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:113
-msgid "Other bug fixes"
-msgstr "Другие исправления багов"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:119
-msgid "Added new authorization via WebView"
-msgstr "Добавлена новая авторизация через WebView"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:124
-msgid "First release of Cassette"
-msgstr "Первый релиз Cassette"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:126
-msgid "Allows you to listen to music"
-msgstr "Позволяет вам слушать музыку"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:127
-msgid "View your playlists"
-msgstr "Просматривать ваши плейлисты"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:128
-msgid "Manage the playback queue, for example shuffle or puts on repeat"
-msgstr ""
-"Управлять очередью воспроизведения, например: перемешивать или ставить на "
-"повтор"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:129
-msgid ""
-"Sends whether the track has been listened to and the playback queue, if it "
-"has been changed"
-msgstr ""
-"Отправлять информацию о том, был ли прослушан трек, и об очереди "
-"воспроизведения, если она была изменена"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:130
-msgid "Implemented mpris2"
-msgstr "Реализован mpris2"
-
-#: data/io.github.Rirusha.Cassette.appdata.xml.in:138
-msgid "Rirusha"
-msgstr "Rirusha"
-
-#: data/io.github.Rirusha.Cassette.desktop.in:5
-msgid "Unofficial Yandex.Music client for GNOME"
-msgstr "Неофициальный клиент сервиса Я.Музыка для GNOME"
-
-# Translators: don't translate ';'
-#. Translators: keep number of ';'
-#: data/io.github.Rirusha.Cassette.desktop.in:7
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:7
-msgid "yandex;yandex music;yam;music;"
-msgstr "яндекс;яндекс музыка;ям;музыка;"
-
-#. Translators: app name should be translated
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:4
-msgid "Cassette (Devel)"
-msgstr "Кассета (Разраб.)"
-
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:5
-msgid "Unofficial Yandex.Music client for GNOME (Development)"
-msgstr "Неофициальный клиент сервиса Я.Музыка для GNOME (Версия в разработке)"
-
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"
 msgstr "Информация об аккаунте"
 
-#: data/ui/account-info-dialog.blp:53
+#: data/ui/account-info-dialog.blp:52
 msgid "Open in browser"
 msgstr "Открыть в браузере"
 
-#: data/ui/account-info-dialog.blp:65
+#: data/ui/account-info-dialog.blp:61
 msgid "Plus"
 msgstr "Плюс"
 
-#: data/ui/account-info-dialog.blp:78 data/ui/no-plus-dialog.blp:32
+#: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
 #: src/authenticator.vala:51
 msgid "Log out"
 msgstr "Выйти из аккаунта"
@@ -288,7 +133,7 @@ msgid ""
 msgstr ""
 "Если вы выберете \"Онлайн использование\", вы сможете получить доступ к "
 "локальной музыке, включив отображение соответствующих страниц в настройках, "
-"а также войти в систему позже, выбрав \"Локальный локальное использование\""
+"а также войти в систему позже, выбрав \"Локальное использование\""
 
 #. Translators: usage mode of application. Online mode or Local mode available
 #: data/ui/begin-view.ui:75
@@ -374,7 +219,7 @@ msgstr "Здесь вы можете управлять пользователь
 #: data/ui/disliked-tracks-view.ui:23
 #: src/widgets/buttons/menu/primary-menu-button.vala:31
 msgid "Disliked tracks"
-msgstr "Дизлайкнутые треки"
+msgstr "Непонравившиеся треки"
 
 #: data/ui/header-bar.blp:12
 msgid "Go back"
@@ -385,8 +230,8 @@ msgid "Refresh"
 msgstr "Обновить"
 
 #: data/ui/header-bar.blp:28
-msgid "Yandex.Music search"
-msgstr "Поиск по Яндекс.Музыке"
+msgid "Yandex Music search"
+msgstr "Поиск по Яндекс Музыке"
 
 #: data/ui/help-overlay.blp:11
 msgid "Main Actions"
@@ -394,7 +239,7 @@ msgstr "Основные действия"
 
 #: data/ui/help-overlay.blp:14
 msgid "Show Shortcuts"
-msgstr "Показать сочетания клавиш"
+msgstr "Показать комбинации клавиш"
 
 #: data/ui/help-overlay.blp:19
 msgid "Quit"
@@ -472,6 +317,10 @@ msgstr ""
 "Чтобы избежать проблем с Яндексом, онлайн-функции приложения недоступны без "
 "подписки Яндекс Плюс. Спасибо за понимание."
 
+#: data/ui/no-plus-dialog.blp:41
+msgid "Get Plus"
+msgstr "Получить Яндекс Плюс"
+
 #: data/ui/player-bar.blp:22
 msgid "Show track info"
 msgstr "Показать информацию о треке"
@@ -488,7 +337,7 @@ msgstr "Показать очередь воспроизведения"
 msgid "Change volume"
 msgstr "Изменить громкость"
 
-#: data/ui/player-queue.blp:5 src/application.vala:270
+#: data/ui/player-queue.blp:5 src/application.vala:271
 msgid "Playing now"
 msgstr "Играет сейчас"
 
@@ -502,7 +351,7 @@ msgstr "Создать плейлист"
 
 #: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
 #: src/widgets/cache-indicator/job-info-badge.vala:42
-#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:162
+#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:167
 msgid "Playlist"
 msgstr "Плейлист"
 
@@ -515,7 +364,7 @@ msgid "Your playlists"
 msgstr "Ваши плейлисты"
 
 #: data/ui/playlists-view.ui:39
-msgid "Also you liked this playlists"
+msgid "Also you liked these playlists"
 msgstr "Вам также понравились эти плейлисты"
 
 #: data/ui/playlist-view.ui:187
@@ -562,7 +411,7 @@ msgstr "Главная"
 #: data/ui/preferences-dialog.ui:12
 msgctxt "preference dialog"
 msgid "General"
-msgstr "Общее"
+msgstr "Общие"
 
 #: data/ui/preferences-dialog.ui:15
 msgctxt "preference dialog"
@@ -592,7 +441,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:27
 msgctxt "preference dialog"
 msgid "Show 'Playing now' notification"
-msgstr "Показывать 'Играет сейчас' уведомление"
+msgstr "Показывать уведомление 'Играет сейчас'"
 
 #: data/ui/preferences-dialog.ui:28
 msgctxt "preference dialog"
@@ -857,7 +706,7 @@ msgstr "Источник"
 msgid "Similar tracks"
 msgstr "Похожие треки"
 
-#. Translators: placeholder of "search" entry. Local track search (inside of track lsit)
+#. Translators: placeholder of "search" entry. Local track search (inside of track list)
 #: data/ui/track-list.ui:21
 msgid "Search track"
 msgstr "Найти трек"
@@ -865,7 +714,7 @@ msgstr "Найти трек"
 #. Translators: part of sort by <name, duration etc>
 #: data/ui/track-list.ui:30
 msgid "Sort by"
-msgstr "Сортировка по"
+msgstr "Сортировать по"
 
 #: data/ui/track-list.ui:77
 msgid "No tracks to display"
@@ -907,67 +756,63 @@ msgstr "Не удаётся получить настройки волны"
 msgid "Reconnect"
 msgstr "Переподключиться"
 
-#: data/ui/window.blp:58 src/application.vala:150
+#: data/ui/window.blp:58 src/application.vala:151
 msgid "Connection problems"
 msgstr "Проблемы с соединением"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:60
+#: src/about.vala:59
 msgid "translator-credits"
 msgstr "Vladimir Vaskov <rirusha@altlinux.org>"
 
-#: src/about.vala:68
+#: src/about.vala:67
 msgid "Telegram channel"
 msgstr "Телеграм-канал"
 
-#: src/about.vala:69
+#: src/about.vala:68
 msgid "Financial support (Tinkoff)"
 msgstr "Финансовая поддержка (Тинькофф)"
 
-#: src/about.vala:70
+#: src/about.vala:69
 msgid "Financial support (Boosty)"
 msgstr "Финансовая поддержка (Бусти)"
 
+#. Please keep alphabetical
 #: src/about.vala:72
 msgid "Sponsors"
 msgstr "Спонсоры"
 
-#: src/application.vala:61
+#: src/application.vala:62
 msgid "Print version information and exit"
 msgstr "Выводит информацию о версии и выходит"
 
-#: src/application.vala:144
+#: src/application.vala:145
 msgid "Connection restored"
 msgstr "Соединение восстановлено"
 
-#: src/application.vala:272
+#: src/application.vala:273
 msgid "Previous"
 msgstr "Предыдущий"
 
-#: src/application.vala:273
+#: src/application.vala:274
 msgid "Next"
 msgstr "Следующий"
 
-#: src/application.vala:356
+#: src/application.vala:357
 msgid "Current track can not be copied to the clipboard"
 msgstr "Текущий трек не может быть скопирован в буфер обмена"
 
-#: src/application.vala:370 src/application.vala:377 src/application.vala:434
+#: src/application.vala:371 src/application.vala:378 src/application.vala:435
 msgid "Can't parse clipboard content"
-msgstr "Не удаётся спарсить содержимое буфера обмена"
+msgstr "Не удаётся разобрать содержимое буфера обмена"
 
-#: src/application.vala:388
+#: src/application.vala:389
 msgid "Users view not implemented yet"
 msgstr "Отображение пользователя пока не реализовано"
 
-#: src/application.vala:404 src/application.vala:418
+#: src/application.vala:405 src/application.vala:419
 msgid "Albums view not implemented yet"
 msgstr "Отображение альбома пока не реализовано"
-
-#: src/application.vala:444 src/application.vala:453
-#, c-format
-msgid "Error while opening uri: %s"
-msgstr "Ошибка при получении ответа: %s"
 
 #: src/authenticator.vala:46
 msgid "Log out?"
@@ -1105,13 +950,13 @@ msgstr "Плейлисты"
 
 #: src/pager.vala:311
 #, c-format
-msgid "Can't read pages file. Messsage: %s"
-msgstr "Не удаётся прочитать файл страницы. Сообщение: %s"
+msgid "Can't read pages file. Message: %s"
+msgstr "Не удаётся прочитать файл страниц. Сообщение: %s"
 
 #: src/pager.vala:331
 #, c-format
-msgid "Can't create pages file. Messsage: %s"
-msgstr "Не удаётся создать файл страницы. Сообщение: %s"
+msgid "Can't create pages file. Message: %s"
+msgstr "Не удаётся создать файл страниц. Сообщение: %s"
 
 #: src/utils.vala:69
 msgid "Not implemented yet"
@@ -1149,19 +994,19 @@ msgstr "вчера"
 
 #: src/widgets/buttons/just/dislike-button.vala:37
 msgid "Remove dislike"
-msgstr "Снять дизлайк"
+msgstr "Удалить \"Не нравится\""
 
 #: src/widgets/buttons/just/dislike-button.vala:40
 msgid "Set dislike"
-msgstr "Поставить дизлайк"
+msgstr "Поставить \"Не нравится\""
 
 #: src/widgets/buttons/just/like-button.vala:41
 msgid "Remove like"
-msgstr "Снять лайк"
+msgstr "Удалить \"Нравится\""
 
 #: src/widgets/buttons/just/like-button.vala:48
 msgid "Set like"
-msgstr "Поставить лайк"
+msgstr "Поставить \"Нравится\""
 
 #: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:37
 #: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:40
@@ -1207,11 +1052,11 @@ msgstr "Поделиться"
 
 #: src/widgets/buttons/menu/primary-menu-button.vala:26
 msgid "Primary menu"
-msgstr "Основное меню"
+msgstr "Главное меню"
 
 #: src/widgets/buttons/menu/primary-menu-button.vala:32
 msgid "Parse URL from clipboard"
-msgstr "Спарсить URL-адрес из буфера обмена"
+msgstr "Разобрать URL-адрес из буфера обмена"
 
 #: src/widgets/buttons/menu/primary-menu-button.vala:33
 msgid "Preferences"
@@ -1219,11 +1064,11 @@ msgstr "Параметры"
 
 #: src/widgets/buttons/menu/primary-menu-button.vala:34
 msgid "Keyboard Shortcuts"
-msgstr "Сочетания клавиш"
+msgstr "Комбинации клавиш"
 
 #: src/widgets/buttons/menu/primary-menu-button.vala:35
 msgid "About Cassette"
-msgstr "О Cassette"
+msgstr "О приложении"
 
 #: src/widgets/buttons/menu/track-options-button.vala:77
 #: src/widgets/buttons/menu/track-options-button.vala:94
@@ -1280,23 +1125,26 @@ msgid "Mute"
 msgstr "Выключить звук"
 
 #: src/widgets/cache-indicator/job-info-badge.vala:44
-#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:170
+#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:172
 msgid "Album"
 msgstr "Альбом"
 
 #. Translators: n track from n tracks saved
-#: src/widgets/cache-indicator/job-info-badge.vala:76
+#: src/widgets/cache-indicator/job-info-badge.vala:77
 #, c-format
 msgid "%d / %d saved%s"
-msgstr "%d / %d сохранено%s"
+msgid_plural "%d / %d saved%s"
+msgstr[0] "%d / %d сохранено%s"
+msgstr[1] "%d / %d сохранено%s"
+msgstr[2] "%d / %d сохранено%s"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:80
+#: src/widgets/cache-indicator/job-info-badge.vala:84
 #, c-format
-msgid ". %d track saving now"
-msgid_plural ". %d tracks saving now"
-msgstr[0] ". %d трек сохраняется сейчас"
-msgstr[1] ". %d трека сохраняется сейчас"
-msgstr[2] ". %d треков сохраняется сейчас"
+msgid "%d track saving now"
+msgid_plural "%d tracks saving now"
+msgstr[0] "%d трек сохраняется сейчас"
+msgstr[1] "%d трека сохраняется сейчас"
+msgstr[2] "%d треков сохраняется сейчас"
 
 #: src/widgets/info-marks.vala:41
 #, c-format
@@ -1319,8 +1167,8 @@ msgid "Delete cache files?"
 msgstr "Удалить кэш?"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:89
-msgid "Moved saved files?"
-msgstr "Переместить сохраненный контент?"
+msgid "Move saved files?"
+msgstr "Переместить сохраненные файлы?"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:90
 #: src/widgets/preferences/preferences-dialog.vala:135
@@ -1357,7 +1205,7 @@ msgstr "%s сохраняется…"
 #: src/widgets/save-stack.vala:76
 #, c-format
 msgid "%s cached"
-msgstr "%s закэширован"
+msgstr "%s кэширован"
 
 #: src/widgets/save-stack.vala:77
 #, c-format
@@ -1400,40 +1248,40 @@ msgid "Track is not available"
 msgstr "Трек не доступен"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:72
+#: src/widgets/views/abstract-cachiable.vala:78
 #, c-format
-msgid "%s%s successfully cached"
-msgstr "%s%s успешно кэширован"
+msgid "%s '%s' saved successfully"
+msgstr "%s '%s' успешно сохранен"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:83
+#: src/widgets/views/abstract-cachiable.vala:89
 #, c-format
-msgid "Caching of %s%s was canceled, due to network error"
-msgstr "Кэширование %sа%s не было завершено из-за сетевой ошибки"
+msgid "%s '%s' saving was stopped, due to network error"
+msgstr "Сохранение %s '%s' было остановлено из-за сетевой ошибки"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:94
+#: src/widgets/views/abstract-cachiable.vala:99
 #, c-format
-msgid "Caching of %s%s was aborted"
-msgstr "Кэширование %sа%s было отменено"
+msgid "%s '%s' saving was aborted"
+msgstr "Сохранение %s '%s' было прервано"
+
+#. Translators: %s - content type (e.g. "Playlist")
+#: src/widgets/views/abstract-cachiable.vala:191
+#, c-format
+msgid "%s saving has started"
+msgstr "Сохранение %s начато"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:192
+#: src/widgets/views/abstract-cachiable.vala:229
 #, c-format
-msgid "Cacheing of %s%s started"
-msgstr "Кэширование %sа%s было начато"
+msgid "%s '%s' was moved from data to cache"
+msgstr "%s '%s' был перемещен из данных в кэш"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:228
+#: src/widgets/views/abstract-cachiable.vala:239
 #, c-format
-msgid "%s%s was removed from cache folder"
-msgstr "%s%s был удалён из кэш-папки"
-
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:238
-#, c-format
-msgid "%s%s is removing, please do not close the app"
-msgstr "%s%s удаляется, пожалуйста, не закрывайте приложение"
+msgid "%s removing has started. Please do not close the app"
+msgstr "Удаление %s начато. Пожалуйста, не закрывайте приложение"
 
 #: src/widgets/views/cant-show.vala:37
 #, c-format
@@ -1462,26 +1310,31 @@ msgstr "Плейлист '%s' будет безвозвратно удалён."
 msgid "Playlist '%s' was deleted"
 msgstr "Плейлист '%s' удалён"
 
-#. Translators: 0 - female, 1 - male (different gender endings)
-#: src/widgets/views/playlist.vala:246
+#. Translators: %s is female person
+#: src/widgets/views/playlist.vala:247
 #, c-format
+msgctxt "female person"
 msgid "%s updated playlist %s"
-msgid_plural "%s updated playlist %s"
-msgstr[0] "%s обновила плейлист %s"
-msgstr[1] "%s обновил плейлист %s"
-msgstr[2] "%s обновили плейлист %s"
+msgstr "%s обновила плейлист %s"
 
-#: src/widgets/views/playlist.vala:277
+#. Translators: %s is male person
+#: src/widgets/views/playlist.vala:251
+#, c-format
+msgctxt "male person"
+msgid "%s updated playlist %s"
+msgstr "%s обновил плейлист %s"
+
+#: src/widgets/views/playlist.vala:281
 #, c-format
 msgid "Can't change visibility of '%s'"
 msgstr "Не удалось изменить видимость плейлиста '%s'"
 
-#: src/widgets/views/playlist.vala:283
+#: src/widgets/views/playlist.vala:287
 #, c-format
 msgid "Playlist '%s' is public now"
 msgstr "Плейлист '%s' виден всем"
 
-#: src/widgets/views/playlist.vala:286
+#: src/widgets/views/playlist.vala:290
 #, c-format
 msgid "Playlist '%s' is private now"
 msgstr "Плейлист '%s' виден только вам"
@@ -1491,503 +1344,14 @@ msgstr "Плейлист '%s' виден только вам"
 msgid "Window info message: %s"
 msgstr "Информационное сообщение об окне: %s"
 
-#~ msgid ""
-#~ "All cached files will be deleted. This doesn't affect on saved playlists "
-#~ "or albums"
-#~ msgstr ""
-#~ "Весь кэш будет удалён. Это не повлияет на сохраненные плейлисты или "
-#~ "альбомы"
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
 
-#~ msgid "My Vibe by Playlist"
-#~ msgstr "Моя Волна по плейлисту"
+#~ msgid "Unofficial Yandex.Music client for GNOME @NAME_SUFFIX@"
+#~ msgstr "Неофициальный клиент сервиса Я.Музыка для GNOME @NAME_SUFFIX@"
 
-#~ msgid "Now playing"
-#~ msgstr "Сейчас играет"
+#~ msgid "Vladimir Vaskov"
+#~ msgstr "Владимир Васьков"
 
-#, c-format
-#~ msgctxt "account info window"
-#~ msgid "Login: %s"
-#~ msgstr "Логин: %s"
-
-#, c-format
-#~ msgctxt "account info window"
-#~ msgid "Phone number: %s"
-#~ msgstr "Номер телефона: %s"
-
-#, c-format
-#~ msgctxt "account info window"
-#~ msgid "First name: %s"
-#~ msgstr "Имя: %s"
-
-#, c-format
-#~ msgctxt "account info window"
-#~ msgid "Second name: %s"
-#~ msgstr "Фамилия: %s"
-
-#, c-format
-#~ msgctxt "account info window"
-#~ msgid "Display name: %s"
-#~ msgstr "Отображаемое имя: %s"
-
-#, c-format
-#~ msgctxt "account info window"
-#~ msgid "Birthday: %s"
-#~ msgstr "Дата рождения: %s"
-
-#~ msgctxt "account info window"
-#~ msgid "Additional options:"
-#~ msgstr "Дополнительные опции:"
-
-#~ msgid "Temporary"
-#~ msgstr "Временный"
-
-#~ msgid "Permanent"
-#~ msgstr "Постоянный"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Play previous track"
-#~ msgstr "Играть предыдущий трек"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Play next track"
-#~ msgstr "Играть следующий трек"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Change shuffle mode"
-#~ msgstr "Переключить перемешивание очереди"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Change repeat mode"
-#~ msgstr "Переключить режим повтора"
-
-#~ msgid "Start playlist"
-#~ msgstr "Проиграть плейлист"
-
-#~ msgid "Add playlist to queue"
-#~ msgstr "Добавить плейлист в очередь"
-
-#~ msgctxt "preference window"
-#~ msgid "Main"
-#~ msgstr "Главное"
-
-#~ msgctxt "preference window"
-#~ msgid "Max active threads"
-#~ msgstr "Максимальное количество активных потоков"
-
-#~ msgctxt "preference window"
-#~ msgid ""
-#~ "The maximum number of threads for content loading. A large value can "
-#~ "affect the performance of the system. The changes will take effect after "
-#~ "restarting the application."
-#~ msgstr ""
-#~ "Максимальное количество потоков для загрузки содержимого. Установка "
-#~ "высокого значения может повлиять на производительность системы. Изменения "
-#~ "этого параметра вступят в силу после перезапуска приложения."
-
-#~ msgctxt "preference window"
-#~ msgid "Try to load queue every window activation"
-#~ msgstr "Пробовать загрузить очередь при каждой активации окна"
-
-#~ msgctxt "preference window"
-#~ msgid ""
-#~ "Every time it is expanded or the focus changes from another window queue "
-#~ "will loaded from the device on which you listened to music last time."
-#~ msgstr ""
-#~ "Каждый раз, когда окно расширяется или фокус меняется с другого окна, "
-#~ "очередь будет загружаться с устройства, на котором вы слушали музыку в "
-#~ "последний раз."
-
-#~ msgctxt "preference window"
-#~ msgid "Show temp save mark"
-#~ msgstr "Отображать отметку о временном сохранении"
-
-#~ msgctxt "preference window"
-#~ msgid ""
-#~ "Show a mark indicating that the track has been saved to temporary storage"
-#~ msgstr "Отображать отметку о сохранении трека во временное хранилище"
-
-#~ msgctxt "preference window"
-#~ msgid "Force enable mobile mode"
-#~ msgstr "Принудительно включить мобильный режим"
-
-#~ msgctxt "preference window"
-#~ msgid ""
-#~ "Cache content for better performance (Over time, it starts to take up a "
-#~ "lot of space. So far, manual cleaning is required)"
-#~ msgstr ""
-#~ "Кэшировать контент для увеличения скорости загрузки (Со временем, он "
-#~ "начинает занимать много места. Пока что требуется ручная очистка)"
-
-#~ msgid "Content saved to temp folder"
-#~ msgstr "Контент сохранён во временную папку"
-
-#~ msgid "PLAYING "
-#~ msgstr "ИГРАЕТ "
-
-#~ msgid "Arseniy Nechkin <krisgeniusnos@gmail.com>"
-#~ msgstr "Арсений Нечкин <krisgeniusnos@gmail.com>"
-
-#, c-format
-#~ msgid "Error while getting temporary dir size. Message %s"
-#~ msgstr "Ошибка при получении размера временного каталога. Сообщение %s"
-
-#~ msgid "Options menu"
-#~ msgstr "Меню опций"
-
-#~ msgid "My wave on playlist"
-#~ msgstr "Моя волна по плейлисту"
-
-#~ msgid "Delete playlist"
-#~ msgstr "Удалить плейлист"
-
-#, c-format
-#~ msgid "%s like"
-#~ msgid_plural "%s likes"
-#~ msgstr[0] "%s лайк"
-#~ msgstr[1] "%s лайка"
-#~ msgstr[2] "%s лайков"
-
-#~ msgid "Delete temporary files?"
-#~ msgstr "Удалить временные файлы?"
-
-#, c-format
-#~ msgid "%s saved to temp folder"
-#~ msgstr "%s сохранён во временную папку"
-
-#~ msgid "PLAYLIST"
-#~ msgstr "ПЛЕЙЛИСТ"
-
-#~ msgid "ALBUM"
-#~ msgstr "АЛЬБОМ"
-
-#~ msgid "SEARCH RESULTS"
-#~ msgstr "РЕЗУЛЬТАТЫ ПОИСКА"
-
-#~ msgid "<p>Added new authorization via WebView</p>"
-#~ msgstr "<p>Добавлена новая авторизация через WebView</p>"
-
-#, c-format
-#~ msgid "In cache folder found suspicious file '%s'. It moved to trash."
-#~ msgstr ""
-#~ "В кэш-папке обнаружен подозрительный файл '%s'. Он был перенесён в "
-#~ "корзину."
-
-#, c-format
-#~ msgid "Can't move file '%s' to '%s'. Error message: %s"
-#~ msgstr "Не удаётся переместить каталог. Сообщение: %s"
-
-#, c-format
-#~ msgid "Can't move directory '%s' to '%s'. Error message: %s"
-#~ msgstr "Не удаётся переместить каталог. Сообщение: %s"
-
-#, fuzzy, c-format
-#~ msgid "Can't delete file '%s'."
-#~ msgstr "Не удаётся создать %s"
-
-#, fuzzy, c-format
-#~ msgid "Can't remove directory '%s'. Error message: %s"
-#~ msgstr "Не удаётся переместить каталог. Сообщение: %s"
-
-#, fuzzy, c-format
-#~ msgid "Can't load image '%s'. Error message: %s"
-#~ msgstr "Не удаётся прочитать файл страницы. Сообщение: %s"
-
-#, fuzzy, c-format
-#~ msgid "Can't load audio '%s'. Error message: %s"
-#~ msgstr "Не удаётся переместить каталог. Сообщение: %s"
-
-#, fuzzy, c-format
-#~ msgid "Can't save audio '%s'. Error message: %s"
-#~ msgstr "Не удаётся переместить каталог. Сообщение: %s"
-
-#, fuzzy, c-format
-#~ msgid "Can't find '%s'. Error message: %s"
-#~ msgstr "Не удаётся переместить каталог. Сообщение: %s"
-
-#~ msgid "Delete temporary"
-#~ msgstr "Удалить временные файлы"
-
-#~ msgid "Temporary playlist"
-#~ msgstr "Временный плейлист"
-
-#~ msgid "Shuffle"
-#~ msgstr "Перемешать очередь"
-
-#~ msgid "Repeat"
-#~ msgstr "Повтор"
-
-#~ msgid "Close"
-#~ msgstr "Закрыть"
-
-#~ msgid "USER "
-#~ msgstr "ПОЛЬЗОВАТЕЛЬСКИЙ "
-
-#~ msgid "TRACK"
-#~ msgstr "ТРЕК"
-
-#~ msgid "ALBUM "
-#~ msgstr "АЛЬБОМ "
-
-#~ msgid "ARTISTS "
-#~ msgstr "ИСПОЛНИТЕЛИ "
-
-#~ msgid "TRACK LYRICS"
-#~ msgstr "ТЕКСТ ПЕСНИ"
-
-#~ msgid "SIMILAR TRACKS"
-#~ msgstr "ПОХОЖИЕ ТРЕКИ"
-
-#~ msgid "Backward"
-#~ msgstr "Назад"
-
-#~ msgid "Main menu"
-#~ msgstr "Главное меню"
-
-#~ msgid "Account menu"
-#~ msgstr "Информация об аккаунте"
-
-#~ msgid "Global search"
-#~ msgstr "Глобальный поиск"
-
-#~ msgid "Compact mode"
-#~ msgstr "Компактный режим"
-
-#~ msgid "Big picture mode"
-#~ msgstr "Режим \"Big picture\""
-
-#~ msgctxt "preference window"
-#~ msgid "Main preferences"
-#~ msgstr "Основные параметры"
-
-#~ msgctxt "preference window"
-#~ msgid "Pages preferences"
-#~ msgstr "Параметры страниц"
-
-#~ msgctxt "preference window"
-#~ msgid "Cache preferences"
-#~ msgstr "Параметры кэширования"
-
-#~ msgctxt "preference window"
-#~ msgid "Cache content to ~/.cache"
-#~ msgstr "Кэшировать содержимое в ~/.cache"
-
-#, c-format
-#~ msgid "Log created, loc - %s"
-#~ msgstr "Журнал создан, расположение - %s"
-
-#, c-format
-#~ msgid "Can't save audio %s"
-#~ msgstr "Не удаётся сохранить аудио %s"
-
-#, c-format
-#~ msgid "Can't create log on %s"
-#~ msgstr "Не удаётся создать файл лога %s"
-
-#, c-format
-#~ msgid "Can't write to log file. Message: %s"
-#~ msgstr "Не удаётся сделать запись в файл лога. Сообщение: %s"
-
-#~ msgid "Can't write to log"
-#~ msgstr "Не удаётся сделать запись в файл лога"
-
-#~ msgid ""
-#~ "Cache state of this object was changed out of this view. Please refresh"
-#~ msgstr ""
-#~ "Состояние кэширования этого объекта было изменено вне этой страницы. "
-#~ "Пожалуйста, обновите страницу"
-
-#~ msgid "Playlist name can't be empty"
-#~ msgstr "Название плейлиста не может быть пустым"
-
-#, c-format
-#~ msgid "Playlist '%s' was renamed to '%s'"
-#~ msgstr "Плейлист '%s' был переименован в '%s'"
-
-#~ msgctxt "auth window"
-#~ msgid "By username"
-#~ msgstr "По имени пользователя"
-
-#~ msgctxt "auth window"
-#~ msgid "Username or email adress"
-#~ msgstr "Имя пользователя или адрес электронной почты"
-
-#~ msgctxt "auth window"
-#~ msgid "By phone number"
-#~ msgstr "По номеру телефона"
-
-#~ msgctxt "auth window"
-#~ msgid "By Qr-code"
-#~ msgstr "По QR-коду"
-
-#~ msgctxt "auth window"
-#~ msgid "Loading…"
-#~ msgstr "Загрузка…"
-
-#~ msgctxt "auth window"
-#~ msgid "Enter password"
-#~ msgstr "Введите пароль"
-
-#~ msgid "Failed while getting csrf token"
-#~ msgstr "Ошибка при получении csrf токена"
-
-#~ msgid "Error while getting qr-code uri"
-#~ msgstr "Ошибка при получении URI QR-кода"
-
-#~ msgid "Authorization warning"
-#~ msgstr "Предупреждение об авторизации"
-
-#~ msgid ""
-#~ "Frequent authorization initialization attempts may lead to Yandex "
-#~ "perceiving this as ddos, so please check the data when entering and do "
-#~ "not log in too often in a short time. And DON'T USE QR-CODE IF YOU HAVE "
-#~ "NOT KEY APP"
-#~ msgstr ""
-#~ "Частые попытки авторизации могут привести к тому, что Яндекс воспримет "
-#~ "это как DDoS-атаку, поэтому, пожалуйста, проверяйте данные при вводе и не "
-#~ "авторизуйтесь в аккаунт слишком часто за короткий промежуток времени. И "
-#~ "НЕ ИСПОЛЬЗУЙТЕ QR-КОД, ЕСЛИ У ВАС НЕ ПОДКЛЮЧЁН Я.Ключ"
-
-#~ msgid "Ok"
-#~ msgstr "Ок"
-
-#~ msgid "Username/phone can't be empty"
-#~ msgstr "Имя пользователя/номер телефона не может быть пустым"
-
-#~ msgid "Yandex send captcha. There nothing we can do. Try later"
-#~ msgstr "Яндекс отправил капчу. Мы ничего не можем сделать. Попробуйте позже"
-
-#~ msgid "User not registered"
-#~ msgstr "Пользователь не зарегистрирован"
-
-#~ msgid "Enter code from key app"
-#~ msgstr "Введите код из приложения Я.Ключ"
-
-#~ msgid "Enter password"
-#~ msgstr "Введите пароль"
-
-#, c-format
-#~ msgid ""
-#~ "Can't login, create an issue with the attached file %s to github page"
-#~ msgstr ""
-#~ "Не удаётся авторизоваться, создайте ишью на GitHub с приложенным файлом: "
-#~ "%s"
-
-#, c-format
-#~ msgid "Auth methods: %s"
-#~ msgstr "Методы аутентификации: %s"
-
-#~ msgid "Username incorrect"
-#~ msgstr "Неверное имя пользователя"
-
-#~ msgid "Password/code can't be empty"
-#~ msgstr "Пароль/код не может быть пустым"
-
-#~ msgid "Password/code incorrect"
-#~ msgstr "Пароль/код неверен"
-
-#~ msgid "Error while checking qr"
-#~ msgstr "Ошибка при проверке QR-кода"
-
-#, c-format
-#~ msgid "Error while checking qr. Message: %s"
-#~ msgstr "Ошибка при проверке QR-кода. Сообщение: %s"
-
-#~ msgid "Error while getting qr-code. Try later"
-#~ msgstr "Ошибка при получении QR-кода. Попробуйте позже"
-
-#~ msgid "<p>First release. For additional info check telegram channel</p>"
-#~ msgstr ""
-#~ "<p>Первый релиз. Дополнительную информацию смотрите в telegram-канале</p>"
-
-#~ msgid "Duration: 11 min."
-#~ msgstr "Продолжительность: %s мин."
-
-#~ msgid "Duration: 120 h. 11 min."
-#~ msgstr "Продолжительность: %s ч. %s мин."
-
-#~ msgid "Repeat playback"
-#~ msgstr "Переключить повтор"
-
-#~ msgid "Delete temp cache?"
-#~ msgstr "Удалить временный кэш?"
-
-#~ msgid "Track was replaced"
-#~ msgstr "Трек был заменён"
-
-#~ msgctxt "preference window"
-#~ msgid "Manage cache"
-#~ msgstr "Управление кэшем"
-
-# Заметки о релизе
-#~ msgid "<p>Added bebra</p>"
-#~ msgstr "<p>Добавлена бебра</p>"
-
-#~ msgctxt "preference window"
-#~ msgid "Download content to disk at all"
-#~ msgstr "Загружать контент без кэша"
-
-#~ msgctxt "preference window"
-#~ msgid "The directory where the content will be saved for permanent storage"
-#~ msgstr ""
-#~ "Каталог, в котором содержимое будет сохранено для постоянного хранения"
-
-#, fuzzy
-#~ msgid "Error while getting qr-code"
-#~ msgstr "Ошибка при получении QR-кода"
-
-#~ msgid "No playlists to display"
-#~ msgstr "Нет плейлистов для отображения"
-
-#~ msgctxt "auth window"
-#~ msgid "Code"
-#~ msgstr "Код"
-
-#~ msgctxt "auth window"
-#~ msgid "Password"
-#~ msgstr "Пароль"
-
-#~ msgctxt "preference window"
-#~ msgid "Cache possibility"
-#~ msgstr "Возможность кэширования"
-
-#~ msgctxt "preference window"
-#~ msgid "Marks visible"
-#~ msgstr "Видимость меток"
-
-#~ msgctxt "preference window"
-#~ msgid "The ability to disable the display of some track information"
-#~ msgstr "Отключение дополнительной информации о треках."
-
-#~ msgid "Login incorrect"
-#~ msgstr "Логин неверен"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Next Track"
-#~ msgstr "Следующий трек"
-
-#~ msgid "Show explicit tracks"
-#~ msgstr "Показывать 18+-треки"
-
-#, c-format
-#~ msgid "Not implemented yet. Will be implemented in version %s"
-#~ msgstr "Ещё не реализовано. Будет реализовано в версии %s"
-
-#~ msgid "Liked tracks"
-#~ msgstr "Любимые треки"
-
-#~ msgid "Queue doesn't exist"
-#~ msgstr "Очереди не существует"
-
-#~ msgid "Answer is error"
-#~ msgstr "Ошибочный ответ"
-
-#, c-format
-#~ msgid "Caching of %s %s was canceled, due to cancellation"
-#~ msgstr "Кэширование %sа %s было отменено"
-
-#, c-format
-#~ msgid "%s caching failed"
-#~ msgstr "%s не был сохранён"
-
-#~ msgid "Content moved"
-#~ msgstr "Содержимое перенесено"
+#~ msgid "Rirusha"
+#~ msgstr "Rirusha"

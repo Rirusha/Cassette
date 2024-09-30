@@ -142,7 +142,7 @@ flatpak remote-add --if-not-exists cassette-nightly http://rirusha.space/cassett
 Установка приложения:
 
 ```shell
-sudo flatpak install cassette-nightly space.rirusha.Cassette-Devel
+flatpak install cassette-nightly space.rirusha.Cassette-Devel
 ```
 
 ## Для разработчиков

@@ -43,10 +43,5 @@ modules:
   buildsystem: meson
   builddir: true
   sources:
-  - type: git
-    url: https://gitlab.gnome.org/Rirusha/Cassette.git
-    tag: ver-0.2.0
-    commit: 
-    x-checker-data:
-      tag-pattern: ^v([\d.]+)$
-      type: git
+  - type: dir
+    path: ../../../

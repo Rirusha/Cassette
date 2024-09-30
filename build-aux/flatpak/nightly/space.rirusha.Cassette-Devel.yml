@@ -2,6 +2,8 @@ id: space.rirusha.Cassette-Devel
 runtime: org.gnome.Platform
 runtime-version: 'master'
 sdk: org.gnome.Sdk
+sdk-extensions:
+- org.freedesktop.Sdk.Extension.vala
 command: cassette
 finish-args:
 - --share=network

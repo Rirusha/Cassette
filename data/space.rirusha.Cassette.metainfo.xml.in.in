@@ -60,18 +60,23 @@
   <screenshots>
     <screenshot type="default">
       <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/main/data/images/1-liked.png</image>
+      <caption>Liked view</caption>
     </screenshot>
     <screenshot>
       <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/main/data/images/2-playlists.png</image>
+      <caption>Playlists view</caption>
     </screenshot>
     <screenshot>
       <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/main/data/images/3-lyrics.png</image>
+      <caption>Sync lyrics</caption>
     </screenshot>
     <screenshot>
       <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/main/data/images/4-queue.png</image>
+      <caption>Playback queue</caption>
     </screenshot>
     <screenshot>
       <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/main/data/images/5-main-settings.png</image>
+      <caption>Main preferences</caption>
     </screenshot>
   </screenshots>
   <releases>

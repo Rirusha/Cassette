@@ -1,6 +1,6 @@
 [submodule "vala-checkers"]
 	path = vala-checkers
-	url = git@ssh.gitlab.gnome.org:Rirusha/vala-checkers.git
+	url = https://gitlab.gnome.org/Rirusha/vala-checkers.git
 [submodule "build-aux/flatpak/stable"]
 	path = build-aux/flatpak/stable
-	url = git@github.com:flathub/space.rirusha.Cassette.git
+	url = https://github.com/flathub/space.rirusha.Cassette.git

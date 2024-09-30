@@ -93,6 +93,7 @@ resource_files = files('@0@.gresource.xml'.format(app_id))
 resources = gnome.compile_resources(
   'cassette-resources',
   resource_files,
+  source_dir: meson.current_build_dir(),
   dependencies: blueprints,
   c_name: 'cassette'
 )

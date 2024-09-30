@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-30 09:19+0000\n"
-"PO-Revision-Date: 2024-09-30 15:22+0200\n"
+"POT-Creation-Date: 2024-09-30 18:34+0000\n"
+"PO-Revision-Date: 2024-09-30 22:20+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -112,6 +112,10 @@ msgid "Playback queue"
 msgstr "Čakalna vrsta za predvajanje"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+msgid "Waves view"
+msgstr "Pogled valovanja"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
 msgid "Main preferences"
 msgstr "Glavne nastavitve"
 

@@ -123,9 +123,7 @@ cassette_sources = [
 
 cassette_vala_args = [
   '--target-glib', '2.76',
-  '--vapidir', meson.current_source_dir(),
-  '--gresources', resource_files,
-  '--gresourcesdir=data/'
+  '--vapidir', meson.current_source_dir()
 ]
 
 cassette_c_args = [

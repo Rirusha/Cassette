@@ -27,7 +27,7 @@ README language: \
 <div align="center"><h4>GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems.</h4></div>
 
 <div align="center">
-  <img src="data/images/1-liked.png" alt="Preview"/>
+  <img src="data/images/1-liked-view.png" alt="Preview"/>
 </div>
 
 ## Install

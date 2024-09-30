@@ -27,7 +27,7 @@
 <div align="center"><h4>GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux.</h4></div>
 
 <div align="center">
-  <img src="data/images/1-liked.png" alt="Preview"/>
+  <img src="data/images/1-liked-view.png" alt="Preview"/>
 </div>
 
 ## Установка

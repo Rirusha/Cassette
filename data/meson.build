@@ -20,6 +20,7 @@ endif
 
 appstream_conf = configuration_data()
 appstream_conf.set('APP_ID', app_id)
+appstream_conf.set('APP_ID_DYN', app_id_dyn)
 appstream_conf.set('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
 appstream_conf.set('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
 appstream_conf.set('HELP', 'https://t.me/CassetteGNOME_Discussion')

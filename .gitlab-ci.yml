@@ -10,30 +10,18 @@ variables:
   FLATPAK_MODULE: "cassette"
 
 stages:
-  - test-aarch64
+  - test-mr
   - build-aarch64
-  - test-x86_64
   - build-x86_64
   - update-repo
   - deploy
 
-test-x86_64:
+test-mr:
   variables:
     RUN_TESTS: "0"
     APP_ID: ${APP_ID_DEVEL}
-    CI_FB_ARGS: "--arch=x86_64"
-  stage: 'test-x86_64'
+  stage: 'test-mr'
   extends: '.flatpak'
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-
-test-aarch64:
-  variables:
-    RUN_TESTS: "0"
-    APP_ID: ${APP_ID_DEVEL}
-    CI_FB_ARGS: "--arch=aarch64"
-  stage: 'test-aarch64'
-  extends: '.flatpak@aarch64'
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 

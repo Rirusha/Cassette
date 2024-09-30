@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-27 14:53+0000\n"
-"PO-Revision-Date: 2024-09-27 22:32+0200\n"
+"POT-Creation-Date: 2024-09-30 09:19+0000\n"
+"PO-Revision-Date: 2024-09-30 15:22+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -94,6 +94,26 @@ msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
 msgstr "Kaseta je neuradni odjemalec in ni povezana z Yandexom ali ga podpira."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+msgid "Liked view"
+msgstr "Pogled všečnih"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+msgid "Playlists view"
+msgstr "Pogled seznamov predvajanja"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+msgid "Sync lyrics"
+msgstr "Sinhroniziraj besedilo"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+msgid "Playback queue"
+msgstr "Čakalna vrsta za predvajanje"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+msgid "Main preferences"
+msgstr "Glavne nastavitve"
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"

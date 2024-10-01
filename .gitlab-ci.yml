@@ -15,6 +15,7 @@ stages:
   - build-x86_64
   - update-repo
   - deploy
+  - update-repo
 
 test-mr:
   variables:
@@ -159,3 +160,20 @@ pages:
     paths:
       - public
     expire_in: 14 days
+
+update-repo:
+  stage: update-repo
+  image: alpine:latest
+  dependencies:
+    - "build-x86_64"
+  script:
+    - tar xf repo.tar
+    - git clone https://Rirusha:${GITHUB_TOKEN}@github.com/Rirusha/rirusha.space.git
+    - rm -f rirusha.space/repos/cassette-nightly.flatpakrepo && cp repo/index.flatpakrepo rirusha.space/repos/cassette-nightly.flatpakrepo
+    - cd rirusha.space
+    - git add .
+    - git commit -m "repos: update cassette-nightly repo"
+    - git push
+    - cd ..
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'

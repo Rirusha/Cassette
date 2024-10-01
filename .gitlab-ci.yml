@@ -172,6 +172,8 @@ update-repo:
     - rm -f rirusha.space/repos/cassette-nightly.flatpakrepo && cp repo/index.flatpakrepo rirusha.space/repos/cassette-nightly.flatpakrepo
     - cd rirusha.space
     - git add .
+    - git config --global user.email "rirusha@altlinux.org"
+    - git config --global user.name "Vladimir Vaskov"
     - git commit -m "Update cassette-nightly repo"
     - git push
     - cd ..

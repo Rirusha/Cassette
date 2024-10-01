@@ -73,6 +73,7 @@ namespace Cassette {
             "Alex Gluck",
             "Amper Shiz",
             "AveryanAlex",
+            "Avr-Iv",
             "belovmv",
             "dant4ick",
             "Dmitry M.",

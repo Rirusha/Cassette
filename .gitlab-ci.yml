@@ -167,6 +167,7 @@ update-repo:
     - "build-x86_64"
   script:
     - tar xf repo.tar
+    - apk add git
     - git clone https://Rirusha:${GITHUB_TOKEN}@github.com/Rirusha/rirusha.space.git
     - rm -f rirusha.space/repos/cassette-nightly.flatpakrepo && cp repo/index.flatpakrepo rirusha.space/repos/cassette-nightly.flatpakrepo
     - cd rirusha.space

@@ -13,7 +13,6 @@ stages:
   - test-mr
   - build-aarch64
   - build-x86_64
-  - update-repo
   - deploy
   - update-repo
 

@@ -136,7 +136,7 @@ sudo ninja uninstall -C _build
 
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-flatpak remote-add --if-not-exists cassette-nightly http://rirusha.space/cassette-nightly.flatpakrepo
+flatpak remote-add --if-not-exists cassette-nightly https://rirusha.space/repos/cassette-nightly.flatpakrepo
 ```
 
 Установка приложения:

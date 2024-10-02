@@ -1,10 +1,8 @@
 include:
   - project: 'gnome/citemplates'
-    file: 'flatpak/flatpak-ci-initiative-sdk-extensions.yml'
-  - project: 'Rirusha/citemplates'
-    file: 'lints.yml'
-  - project: 'Rirusha/citemplates'
-    file: 'vala-checkers.yml'
+    file: 'flatpak/flatpak-ci-initiative.yml'
+  - 'https://gitlab.gnome.org/Rirusha/citemplates/-/raw/main/lints.yml'
+  - 'https://gitlab.gnome.org/Rirusha/citemplates/-/raw/main/vala-checkers.yml'
 
 variables:
   APP_ID: 'space.rirusha.Cassette-Devel'

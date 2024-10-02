@@ -24,7 +24,7 @@
         {
             "label": "Full check",
             "type": "shell",
-            "command": "io.elementary.vala-lint -d . -c vala-lint.conf && python3 ${workspaceFolder}/vala-checkers/empty_lines_checker.py . && python3 ${workspaceFolder}/vala-checkers/indentation_checker.py .",
+            "command": "echo 'Linter:' && io.elementary.vala-lint -d . -c vala-lint.conf && echo 'Empty lines:' && python3 ${workspaceFolder}/vala-checkers/empty_lines_checker.py . && echo 'Indentation:' && python3 ${workspaceFolder}/vala-checkers/indentation_checker.py .",
             "problemMatcher": []
         },
         {

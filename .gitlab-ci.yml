@@ -1,6 +1,5 @@
 include:
-  - project: 'gnome/citemplates'
-    file: 'flatpak/flatpak-ci-initiative.yml'
+  - 'https://gitlab.gnome.org/gnome/citemplates/-/raw/main/flatpak/flatpak_ci_initiative.yml'
   - 'https://gitlab.gnome.org/Rirusha/citemplates/-/raw/main/lints.yml'
   - 'https://gitlab.gnome.org/Rirusha/citemplates/-/raw/main/vala-checkers.yml'
 

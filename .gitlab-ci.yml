@@ -1,25 +1,32 @@
 include:
   - project: 'gnome/citemplates'
     file: 'flatpak/flatpak-ci-initiative-sdk-extensions.yml'
+  - project: 'Rirusha/citemplates'
+    file: 'lints.yml'
+  - project: 'Rirusha/citemplates'
+    file: 'vala-checkers.yml'
 
 variables:
-  APP_ID_DEVEL: 'space.rirusha.Cassette-Devel'
-  MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/nightly/${APP_ID_DEVEL}.yml
-  BUNDLE: "${APP_ID_DEVEL}.flatpak"
+  APP_ID: 'space.rirusha.Cassette-Devel'
+  MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/nightly/${APP_ID}.yml
+  BUNDLE: "${APP_ID}.flatpak"
   RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
   FLATPAK_MODULE: "cassette"
 
 stages:
+  - lint-vala
+  - lint-blp
+  - lint-checkers
   - test-mr
   - build-aarch64
   - build-x86_64
   - deploy
+  - deploy-sithyfus
   - update-repo
 
 test-mr:
   variables:
     RUN_TESTS: "0"
-    APP_ID: ${APP_ID_DEVEL}
   stage: 'test-mr'
   extends: '.flatpak'
   rules:
@@ -88,7 +95,7 @@ test-mr:
       flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse flatpak_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
 
     # Generate a Flatpak bundle
-    - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE} ${APP_ID_DEVEL} ${BRANCH}
+    - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE} ${APP_ID} ${BRANCH}
 
     - echo "[Flatpak Repo]" > repo/index.flatpakrepo
     - echo "Title=Cassette Nightly Repo" >> repo/index.flatpakrepo

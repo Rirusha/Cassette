@@ -1,5 +1,5 @@
 include:
-  - 'https://gitlab.gnome.org/gnome/citemplates/-/raw/main/flatpak/flatpak_ci_initiative.yml'
+  - 'https://gitlab.gnome.org/GNOME/citemplates/-/raw/master/flatpak/flatpak_ci_initiative.yml'
   - 'https://gitlab.gnome.org/Rirusha/citemplates/-/raw/main/lints.yml'
   - 'https://gitlab.gnome.org/Rirusha/citemplates/-/raw/main/vala-checkers.yml'
 

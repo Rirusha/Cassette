@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-27 14:53+0000\n"
-"PO-Revision-Date: 2024-09-29 16:54-0300\n"
+"POT-Creation-Date: 2024-09-30 18:34+0000\n"
+"PO-Revision-Date: 2024-10-01 22:02-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
@@ -41,7 +41,9 @@ msgstr "Cassette (Devel)"
 
 #: data/space.rirusha.Cassette-Devel.desktop.in.in:5
 msgid "Unofficial Yandex Music client for GNOME (Devel build)"
-msgstr "Cliente não oficial do Yandex Music para GNOME (construção de desenvolvimento)"
+msgstr ""
+"Cliente não oficial do Yandex Music para GNOME (construção de "
+"desenvolvimento)"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:7
 msgid "Unofficial Yandex Music client"
@@ -89,6 +91,30 @@ msgid ""
 "Yandex."
 msgstr ""
 "Cassette é um cliente não oficial e não é associado ou endossado pelo Yandex."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+msgid "Liked view"
+msgstr "Visualização de curtidas"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+msgid "Playlists view"
+msgstr "Visualização de listas de reprodução"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+msgid "Sync lyrics"
+msgstr "Sincronização de letras"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+msgid "Playback queue"
+msgstr "Fila de reprodução"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+msgid "Waves view"
+msgstr "Visualização de ondas"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+msgid "Main preferences"
+msgstr "Preferências principais"
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"

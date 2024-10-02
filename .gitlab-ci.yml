@@ -14,6 +14,9 @@ variables:
   FLATPAK_MODULE: "cassette"
 
 stages:
+  - lint-vala
+  - lint-blp
+  - lint-checkers
   - test-mr
   - build-aarch64
   - build-x86_64
@@ -21,17 +24,17 @@ stages:
   - deploy-sithyfus
   - update-repo
 
-lint-vala:
-  stage: 'lint-vala'
-  extends: '.lint-vala'
+# lint-vala:
+#   stage: 'lint-vala'
+#   extends: '.lint-vala'
 
-lint-blp:
-  stage: 'lint-blp'
-  extends: '.lint-blp'
+# lint-blp:
+#   stage: 'lint-blp'
+#   extends: '.lint-blp'
 
-lint-checkers:
-  stage: 'lint-checkers'
-  extends: '.lint-checkers'
+# lint-checkers:
+#   stage: 'lint-checkers'
+#   extends: '.lint-checkers'
 
 test-mr:
   variables:

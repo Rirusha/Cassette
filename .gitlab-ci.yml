@@ -14,9 +14,6 @@ variables:
   FLATPAK_MODULE: "cassette"
 
 stages:
-  # - lint-vala
-  # - lint-blp
-  # - lint-checkers
   - test-mr
   - build-aarch64
   - build-x86_64

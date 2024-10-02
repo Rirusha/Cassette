@@ -179,10 +179,13 @@ update-repo:
     - rm -f rirusha.space/repos/cassette-nightly.flatpakrepo && cp repo/index.flatpakrepo rirusha.space/repos/cassette-nightly.flatpakrepo
     - cd rirusha.space
     - git add .
-    - git config --global user.email "not-a@mail.com"
-    - git config --global user.name "Updater Bot"
-    - git commit -m "Update cassette-nightly repo"
-    - git push
+    - |
+      if [[ -n $(git status --porcelain) ]]; then
+        git config --global user.email "not-a@mail.com"
+        git config --global user.name "Updater Bot"
+        git commit -m "Update cassette-nightly repo"
+        git push
+      fi
     - cd ..
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'

@@ -24,6 +24,18 @@ stages:
   - deploy-sithyfus
   - update-repo
 
+lint-vala:
+  stage: 'lint-vala'
+  extends: '.lint-vala'
+
+lint-blp:
+  stage: 'lint-blp'
+  extends: '.lint-blp'
+
+lint-checkers:
+  stage: 'lint-checkers'
+  extends: '.lint-checkers'
+
 test-mr:
   variables:
     RUN_TESTS: "0"

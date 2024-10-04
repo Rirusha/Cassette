@@ -192,13 +192,10 @@ update-repo:
     - cd rirusha.space
     - git add .
     - echo $(git status --porcelain)
-    - |
-      if [[ -n $(git status --porcelain) ]]; then
-        git config --global user.email "not-a@mail.com"
-        git config --global user.name "Updater Bot"
-        git commit -m "Update cassette-nightly repo"
-        git push
-      fi
+    - git config --global user.email "not-a@mail.com"
+    - git config --global user.name "Updater Bot"
+    - git commit -m "Update cassette-nightly repo" || true
+    - git push
     - cd ..
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'

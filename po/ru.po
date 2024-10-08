@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cassette 0.2.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-27 14:53+0000\n"
-"PO-Revision-Date: 2024-09-29 14:44+0300\n"
+"POT-Creation-Date: 2024-09-30 18:34+0000\n"
+"PO-Revision-Date: 2024-10-01 14:44+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Cassette Team <rirusha@altlinux.org>\n"
 "Language: ru\n"
@@ -93,8 +93,32 @@ msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
 msgstr ""
-"Cassette является неофициальным клиентом, не связан с компанией Яндекс и не "
+"Кассета является неофициальным клиентом, не связан с компанией Яндекс и не "
 "одобрен ей."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+msgid "Liked view"
+msgstr "Мне нравится"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+msgid "Playlists view"
+msgstr "Плейлисты"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+msgid "Sync lyrics"
+msgstr "Текст песни"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+msgid "Playback queue"
+msgstr "Очередь воспроизведения"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+msgid "Waves view"
+msgstr "Моя волна"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+msgid "Main preferences"
+msgstr "Главные параметры"
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"

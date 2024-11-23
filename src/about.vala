@@ -84,6 +84,7 @@ namespace Cassette {
             "Fiersik",
             "Fissium",
             "gen1s",
+            "InDevOne",
             "Ivan A.",
             "IQQator",
             "katze_942",

@@ -105,7 +105,7 @@ namespace Cassette {
         }
 
         construct {
-            pages_file = File.new_build_filename (storager.cache_dir_file.peek_path (), "cassette.pages");
+            pages_file = File.new_build_filename (storager.data_dir_file.peek_path (), "cassette.pages");
 
             // Type register
             typeof (PlaylistView).ensure ();

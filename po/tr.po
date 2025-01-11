@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-17 07:00+0000\n"
-"PO-Revision-Date: 2024-09-12 21:56+0300\n"
+"POT-Creation-Date: 2024-09-30 18:34+0000\n"
+"PO-Revision-Date: 2024-10-28 15:49+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -21,75 +21,96 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #. Translators: app name should be translated
-#: data/io.github.Rirusha.Cassette.desktop.in:4
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:3 src/main.vala:23
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
 msgid "Cassette"
 msgstr "Kaset"
 
-#: data/io.github.Rirusha.Cassette.desktop.in:5
-msgid "Unofficial Yandex.Music client for GNOME"
-msgstr "GNOME için resmi olmayan Yandex.Music istemcisi"
+#: data/space.rirusha.Cassette.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME"
+msgstr "GNOME için resmi olmayan Yandex Müzik istemcisi"
 
 #. Translators: keep number of ';'
-#: data/io.github.Rirusha.Cassette.desktop.in:7
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:7
+#: data/space.rirusha.Cassette.desktop.in.in:7
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
 msgid "yandex;yandex music;yam;music;"
 msgstr "yandex;yandex music;yam;music;yandex müzik;"
 
 #. Translators: app name should be translated
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:4
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
 msgid "Cassette (Devel)"
 msgstr "Kaset (Geliştirme)"
 
-#: data/io.github.Rirusha.Cassette-Devel.desktop.in:5
-msgid "Unofficial Yandex.Music client for GNOME (Development)"
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME (Devel build)"
 msgstr ""
+"GNOME için resmi olmayan Yandex Müzik istemcisi (Geliştirici derlemesi)"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:8
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Resmi olmayan Yandex Müzik istemcisi"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
 msgid ""
 "GTK/Adwaita application that allows to use Yandex Music service on Linux "
 "operating systems."
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:12
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
 msgid "Features:"
 msgstr "Özellikler:"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:16
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
 msgid "Allows you to save playlists and albums for offline listening"
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:19
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
 msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:22
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
 "content, such as explicit or suitable for children."
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:26
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
 msgid "Displays tracks that are currently unavailable in the service"
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:29
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
 msgid "Shows which tracks have been replaced and by what"
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:33
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
 msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
 msgstr ""
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:68
-msgid "Unofficial Yandex.Music client"
-msgstr "Resmi olmayan Yandex.Music istemcisi"
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+msgid "Liked view"
+msgstr "Beğenilenler görünümü"
 
-#: data/io.github.Rirusha.Cassette.metainfo.xml.in:138
-msgid "Vladimir Vaskov"
-msgstr ""
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+msgid "Playlists view"
+msgstr "Çalma listeleri görünümü"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+msgid "Sync lyrics"
+msgstr "Şarkı sözlerini eşzamanla"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+msgid "Playback queue"
+msgstr "Çalma listesi kuyruğu"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+msgid "Waves view"
+msgstr "Dalgalar görünümü"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+msgid "Main preferences"
+msgstr "Ana tercihler"
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"
@@ -223,7 +244,9 @@ msgid "Refresh"
 msgstr "Yenile"
 
 #: data/ui/header-bar.blp:28
-msgid "Yandex.Music search"
+#, fuzzy
+#| msgid "Yandex.Music search"
+msgid "Yandex Music search"
 msgstr "Yandex.Music arama"
 
 #: data/ui/help-overlay.blp:11
@@ -407,7 +430,7 @@ msgstr "Genel"
 #: data/ui/preferences-dialog.ui:15
 msgctxt "preference dialog"
 msgid "Enable high quality audio"
-msgstr ""
+msgstr "Yüksek kaliteli sesi etkinleştir"
 
 #: data/ui/preferences-dialog.ui:16
 msgctxt "preference dialog"
@@ -449,7 +472,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:39
 msgctxt "preference dialog"
 msgid "Show save mark"
-msgstr ""
+msgstr "Kaydetme imini göster"
 
 #: data/ui/preferences-dialog.ui:40
 msgctxt "preference dialog"
@@ -459,7 +482,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:45
 msgctxt "preference dialog"
 msgid "Show cache mark"
-msgstr ""
+msgstr "Önbellek imini göster"
 
 #: data/ui/preferences-dialog.ui:46
 msgctxt "preference dialog"
@@ -469,7 +492,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:51
 msgctxt "preference dialog"
 msgid "Show replaced mark"
-msgstr ""
+msgstr "Değiştirildi imini göster"
 
 #: data/ui/preferences-dialog.ui:52
 msgctxt "preference dialog"
@@ -491,7 +514,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:63
 msgctxt "preference dialog"
 msgid "Show unavailable content"
-msgstr ""
+msgstr "Kullanılamayan içeriği göster"
 
 #: data/ui/preferences-dialog.ui:64
 msgctxt "preference dialog"
@@ -502,7 +525,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:69
 msgctxt "preference dialog"
 msgid "Show content suitable for children"
-msgstr ""
+msgstr "Çocuklar için uygun içeriği göster"
 
 #: data/ui/preferences-dialog.ui:70
 msgctxt "preference dialog"
@@ -512,7 +535,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:75
 msgctxt "preference dialog"
 msgid "Show explicit content"
-msgstr ""
+msgstr "Müstehcen içeriği göster"
 
 #: data/ui/preferences-dialog.ui:76
 msgctxt "preference dialog"
@@ -527,7 +550,7 @@ msgstr "Diğer"
 #: data/ui/preferences-dialog.ui:86
 msgctxt "preference dialog"
 msgid "Enable Debug-Mode"
-msgstr ""
+msgstr "Hata ayıklama kipini etkinleştir"
 
 #: data/ui/preferences-dialog.ui:87
 msgctxt "preference dialog"
@@ -557,12 +580,12 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:108
 msgctxt "preference dialog"
 msgid "Pages"
-msgstr ""
+msgstr "Sayfalar"
 
 #: data/ui/preferences-dialog.ui:112
 msgctxt "preference dialog"
 msgid "Static pages"
-msgstr ""
+msgstr "Sabit sayfalar"
 
 #: data/ui/preferences-dialog.ui:113
 msgctxt "preference dialog"
@@ -574,17 +597,17 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:116
 msgctxt "preference dialog"
 msgid "Show 'Main' page"
-msgstr ""
+msgstr "'Ana' sayfayı göster"
 
 #: data/ui/preferences-dialog.ui:121
 msgctxt "preference dialog"
 msgid "Show 'Liked' page"
-msgstr ""
+msgstr "'Beğenilen' sayfasını göster"
 
 #: data/ui/preferences-dialog.ui:126
 msgctxt "preference dialog"
 msgid "Show 'Playlists' page"
-msgstr ""
+msgstr "'Çalma Listeleri' sayfasını göster"
 
 #: data/ui/preferences-dialog.ui:138
 msgctxt "preference dialog"
@@ -606,7 +629,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:146
 msgctxt "preference dialog"
 msgid "Cache content"
-msgstr ""
+msgstr "İçeriği ön bellekle"
 
 #: data/ui/preferences-dialog.ui:147
 msgctxt "preference dialog"
@@ -733,26 +756,26 @@ msgid "Connection problems"
 msgstr "Bağlantı sorunları"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:60
+#: src/about.vala:59
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <yakushabb@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/about.vala:68
+#: src/about.vala:67
 msgid "Telegram channel"
 msgstr "Telegram kanalı"
 
-#: src/about.vala:69
+#: src/about.vala:68
 msgid "Financial support (Tinkoff)"
 msgstr "Maddi destek (Tinkoff)"
 
-#: src/about.vala:70
+#: src/about.vala:69
 msgid "Financial support (Boosty)"
 msgstr "Maddi destek (Boosty)"
 
 #. Please keep alphabetical
-#: src/about.vala:73
+#: src/about.vala:72
 msgid "Sponsors"
 msgstr "Sponsorlar"
 
@@ -790,7 +813,7 @@ msgstr ""
 
 #: src/authenticator.vala:46
 msgid "Log out?"
-msgstr ""
+msgstr "Oturum kapatılsın mı?"
 
 #: src/authenticator.vala:47
 msgid "You will need to log in again to use the app"
@@ -807,7 +830,7 @@ msgstr "İptal"
 #: src/authenticator.vala:97
 #: src/widgets/preferences/cache-deletion-preferences.vala:129
 msgid "Moving…"
-msgstr ""
+msgstr "Taşınıyor…"
 
 #. Translators: Playlist with liked tracks
 #: src/client/api/objects/playlist/playlist.vala:49
@@ -823,7 +846,7 @@ msgstr "Günlük"
 #. Translators: Unknown playlist
 #: src/client/api/objects/playlist/playlist.vala:57
 msgid "Unknown"
-msgstr ""
+msgstr "Bilinmeyen"
 
 #: src/client/cachier/storager.vala:124
 #, c-format
@@ -878,7 +901,7 @@ msgstr ""
 
 #: src/client/player/mods/abstract-mode.vala:91
 msgid "Problems with queue"
-msgstr ""
+msgstr "Kuyruk ile ilgili sorun"
 
 #. Translators: name of new created playlist
 #: src/client/talkers/yam-talker.vala:627

@@ -1,0 +1,1335 @@
+# Chinese (China) translation for cassette.
+# Copyright (C) 2024 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+# lumingzh <lumingzh@qq.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2024-10-02 10:23+0000\n"
+"PO-Revision-Date: 2024-10-08 08:35+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 47.0\n"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
+msgid "Cassette"
+msgstr "Cassette"
+
+#: data/space.rirusha.Cassette.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME"
+msgstr "GNOME 的第三方 Yandex 音乐客户端"
+
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:7
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
+msgid "yandex;yandex music;yam;music;"
+msgstr "yandex;yandex music;yam;music;音乐;播放器;歌曲;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
+msgid "Cassette (Devel)"
+msgstr "Cassette（开发版）"
+
+#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME (Devel build)"
+msgstr "GNOME 的第三方 Yandex 音乐客户端（开发版构建）"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "第三方 Yandex 音乐客户端"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr "可让您在 Linux 操作系统上使用 Yandex 音乐服务的 GTK/Adwaita 应用程序。"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
+msgid "Features:"
+msgstr "特性："
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr "可让您保存播放列表和专辑用于离线播放"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr "在曲目信息面板中有动态“卡拉 OK 模式”"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr "可让您更精准自定义显示和播放特定内容，比如露骨内容或适合儿童的内容。"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr "显示当前在服务中不可用的曲目"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
+msgid "Shows which tracks have been replaced and by what"
+msgstr "显示被替换的曲目和替换后的曲目"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr "Cassette 是第三方客户端且未与 Yandex 关联或受其支持。"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+msgid "Liked view"
+msgstr "喜欢视图"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+msgid "Playlists view"
+msgstr "播放列表视图"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+msgid "Sync lyrics"
+msgstr "同步歌词"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+msgid "Playback queue"
+msgstr "播放队列"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+msgid "Waves view"
+msgstr "波形视图"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+msgid "Main preferences"
+msgstr "主首选项"
+
+#: data/ui/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "账号信息"
+
+#: data/ui/account-info-dialog.blp:52
+msgid "Open in browser"
+msgstr "在浏览器中打开"
+
+#: data/ui/account-info-dialog.blp:61
+msgid "Plus"
+msgstr "会员"
+
+#: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
+#: src/authenticator.vala:51
+msgid "Log out"
+msgstr "登出"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:11
+msgid "Usage mode"
+msgstr "使用模式"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:40
+msgctxt "auth window"
+msgid "Choose usage mode"
+msgstr "选择使用模式"
+
+#: data/ui/begin-view.ui:50
+msgctxt "auth window"
+msgid ""
+"If you select the \"Online mode\", you can access local music by enabling "
+"the display of the corresponding pages in the pages preferences, as well as "
+"log in later when selecting \"Local mode\""
+msgstr ""
+"如果您选择“在线模式”，可以通过在页面首选项中启用显示相应页面来访问本地音乐，"
+"或选择“本地模式”后登录"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:75
+msgctxt "auth window"
+msgid "Online mode"
+msgstr "在线模式"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:85
+msgctxt "auth window"
+msgid "Local mode"
+msgstr "本地模式"
+
+#. Translators: "Close" window button label
+#: data/ui/begin-view.ui:97
+msgctxt "auth window"
+msgid "Close"
+msgstr "关闭"
+
+#: data/ui/begin-view.ui:112
+msgid "Authorization"
+msgstr "授权"
+
+#. Translators: size of cache dirs
+#: data/ui/cache-deletion-preferences.ui:21
+msgid "Dirs size:"
+msgstr "目录大小："
+
+#. Translators: tempprary cache folder
+#: data/ui/cache-deletion-preferences.ui:35
+msgid "Cache"
+msgstr "缓存"
+
+#: data/ui/cache-deletion-preferences.ui:88
+msgid "Clear"
+msgstr "清除"
+
+#. Translators: temparence cache folder
+#: data/ui/cache-deletion-preferences.ui:109
+msgid "Data"
+msgstr "数据"
+
+#: data/ui/cache-deletion-preferences.ui:159
+msgid "Move to cache"
+msgstr "移至缓存"
+
+#: data/ui/cache-deletion-preferences.ui:163
+msgid "Move"
+msgstr "移动"
+
+#: data/ui/cache-indicator.blp:35
+msgid "Show all cache jobs"
+msgstr "显示所有缓存任务"
+
+#: data/ui/custom-page-preferences.ui:17
+msgid "Title: "
+msgstr "标题："
+
+#: data/ui/custom-page-preferences.ui:38
+msgid "Icon: "
+msgstr "图标："
+
+#: data/ui/custom-page-preferences.ui:75
+msgid "Save page"
+msgstr "保存页面"
+
+#: data/ui/custom-page-preferences.ui:92
+msgid "Remove page"
+msgstr "移除页面"
+
+#. Translators: title of preference group
+#: data/ui/custom-pages-preferences.ui:7
+msgctxt "preference window"
+msgid "Custom pages"
+msgstr "自定义页面"
+
+#. Translators: description of preference group
+#: data/ui/custom-pages-preferences.ui:9
+msgctxt "preference window"
+msgid "Here you can control custom pages."
+msgstr "您可以在这里控制自定义页面。"
+
+#: data/ui/disliked-tracks-view.ui:23
+#: src/widgets/buttons/menu/primary-menu-button.vala:31
+msgid "Disliked tracks"
+msgstr "讨厌的曲目"
+
+#: data/ui/header-bar.blp:12
+msgid "Go back"
+msgstr "返回"
+
+#: data/ui/header-bar.blp:20
+msgid "Refresh"
+msgstr "刷新"
+
+#: data/ui/header-bar.blp:28
+msgid "Yandex Music search"
+msgstr "Yandex 音乐搜索"
+
+#: data/ui/help-overlay.blp:11
+msgid "Main Actions"
+msgstr "主操作"
+
+#: data/ui/help-overlay.blp:14
+msgid "Show Shortcuts"
+msgstr "显示快捷键"
+
+#: data/ui/help-overlay.blp:19
+msgid "Quit"
+msgstr "退出"
+
+#: data/ui/help-overlay.blp:25
+msgid "Playback Control"
+msgstr "播放控制"
+
+#: data/ui/help-overlay.blp:28
+msgid "Play/Pause playback"
+msgstr "播放/暂停播放"
+
+#: data/ui/help-overlay.blp:33 data/ui/player-bar.blp:87
+msgid "Play previous track"
+msgstr "播放上一首曲目"
+
+#: data/ui/help-overlay.blp:38 data/ui/player-bar.blp:119
+msgid "Play next track"
+msgstr "播放下一首曲目"
+
+#: data/ui/help-overlay.blp:43
+msgid "Mute app"
+msgstr "静音应用"
+
+#: data/ui/help-overlay.blp:49
+msgid "Queue control"
+msgstr "队列控制"
+
+#: data/ui/help-overlay.blp:52 data/ui/player-bar.blp:141
+msgid "Change shuffle mode"
+msgstr "更改乱序模式"
+
+#: data/ui/help-overlay.blp:57 data/ui/player-bar.blp:65
+msgid "Change repeat mode"
+msgstr "更改重复模式"
+
+#: data/ui/help-overlay.blp:63
+msgid "Other"
+msgstr "其它"
+
+#: data/ui/help-overlay.blp:66
+msgid "Share current track"
+msgstr "分享当前曲目"
+
+#: data/ui/help-overlay.blp:71
+msgid "Parse url from clipboard"
+msgstr "从剪贴板解析 URL"
+
+#: data/ui/info-marks.ui:23
+msgid "Explicit content"
+msgstr "露骨内容"
+
+#: data/ui/info-marks.ui:32
+msgid "Child content"
+msgstr "儿童内容"
+
+#: data/ui/main-view.blp:6
+msgid "Page under construction"
+msgstr "施工中页面"
+
+#: data/ui/main-view.blp:20
+msgid "All stations"
+msgstr "所有电台"
+
+#: data/ui/no-plus-dialog.blp:20
+msgid "No Plus Subscription"
+msgstr "无会员订阅"
+
+#: data/ui/no-plus-dialog.blp:21
+msgid ""
+"To avoid problems with Yandex, the online functions of the application are "
+"not available without a Yandex.Plus subscription. Thanks for understanding."
+msgstr ""
+"为了避免与 Yandex 相关的问题，该应用程序的在线功能在没有 Yandex 会员订阅时不"
+"可用。感谢理解。"
+
+#: data/ui/no-plus-dialog.blp:41
+msgid "Get Plus"
+msgstr "获取会员"
+
+#: data/ui/player-bar.blp:22
+msgid "Show track info"
+msgstr "显示曲目信息"
+
+#: data/ui/player-bar.blp:206
+msgid "Show wave settings"
+msgstr "显示波形设置"
+
+#: data/ui/player-bar.blp:216
+msgid "Show playback queue"
+msgstr "显示播放队列"
+
+#: data/ui/player-bar.blp:229
+msgid "Change volume"
+msgstr "更改音量"
+
+#: data/ui/player-queue.blp:5 src/application.vala:271
+msgid "Playing now"
+msgstr "正在播放"
+
+#: data/ui/playlist-choose-dialog.ui:8
+msgid "Choose playlist to add"
+msgstr "选择添加的播放列表"
+
+#: data/ui/playlist-create-button.ui:36
+msgid "Create playlist"
+msgstr "创建播放列表"
+
+#: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
+#: src/widgets/cache-indicator/job-info-badge.vala:42
+#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:167
+msgid "Playlist"
+msgstr "播放列表"
+
+#: data/ui/playlist-row.ui:40
+msgid "Empty"
+msgstr "空"
+
+#: data/ui/playlists-view.ui:23
+msgid "Your playlists"
+msgstr "您的播放列表"
+
+#: data/ui/playlists-view.ui:39
+msgid "Also you liked these playlists"
+msgstr "您也喜欢这些播放列表"
+
+#: data/ui/playlist-view.ui:187
+msgid "Change playlist visibility"
+msgstr "更改播放列表可见性"
+
+#: data/ui/playlist-view.ui:211
+msgid "Add page to header"
+msgstr "将页面添加到头部"
+
+#. Translators: tooltip of "save" button
+#: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
+#: src/widgets/buttons/menu/track-options-button.vala:82
+#: src/widgets/buttons/menu/track-options-button.vala:107
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
+#: src/widgets/buttons/menu/track-queue-options-button.vala:72
+#: src/widgets/buttons/menu/track-queue-options-button.vala:102
+msgid "Save"
+msgstr "保存"
+
+#. Translators: tooltip of "delete" button
+#: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
+#: src/widgets/preferences/cache-deletion-preferences.vala:96
+#: src/widgets/preferences/preferences-dialog.vala:140
+#: src/widgets/views/playlist.vala:90
+msgid "Delete"
+msgstr "删除"
+
+#. Translators: tooltip of "abort" button
+#: data/ui/playlist-view.ui:276
+msgid "Abort"
+msgstr "中止"
+
+#: data/ui/playlist-view.ui:280
+msgid "Stop"
+msgstr "停止"
+
+#: data/ui/preferences-dialog.ui:8
+msgctxt "preference dialog"
+msgid "Main"
+msgstr "主要"
+
+#: data/ui/preferences-dialog.ui:12
+msgctxt "preference dialog"
+msgid "General"
+msgstr "常规"
+
+#: data/ui/preferences-dialog.ui:15
+msgctxt "preference dialog"
+msgid "Enable high quality audio"
+msgstr "启用高质量音频"
+
+#: data/ui/preferences-dialog.ui:16
+msgctxt "preference dialog"
+msgid ""
+"Attention! If the track was downloaded in low quality, and after the "
+"download is enabled in high quality, the audio will not be reloaded"
+msgstr ""
+"注意！如果曲目已以低质量下载并在下载之后启用了高质量选项，则已下载音频不会重"
+"新加载"
+
+#: data/ui/preferences-dialog.ui:21
+msgctxt "preference dialog"
+msgid "Add track on top of playlist"
+msgstr "添加曲目至播放列表顶部"
+
+#: data/ui/preferences-dialog.ui:22
+msgctxt "preference dialog"
+msgid "Will the track be added to the playlist as the first or as the last"
+msgstr "将曲目添加至播放列表顶部还是底部"
+
+#: data/ui/preferences-dialog.ui:27
+msgctxt "preference dialog"
+msgid "Show 'Playing now' notification"
+msgstr "显示“正在播放”通知"
+
+#: data/ui/preferences-dialog.ui:28
+msgctxt "preference dialog"
+msgid "Show a notification when switching a track"
+msgstr "切换曲目时显示通知"
+
+#: data/ui/preferences-dialog.ui:35
+msgctxt "preference dialog"
+msgid "Show additional marks"
+msgstr "显示额外标记"
+
+#: data/ui/preferences-dialog.ui:36
+msgctxt "preference dialog"
+msgid "Additional marks display additional information about the track"
+msgstr "额外标记会显示关于曲目的额外信息"
+
+#: data/ui/preferences-dialog.ui:39
+msgctxt "preference dialog"
+msgid "Show save mark"
+msgstr "显示保存标记"
+
+#: data/ui/preferences-dialog.ui:40
+msgctxt "preference dialog"
+msgid "Show a label with information about the caching status of the track"
+msgstr "显示带有关于曲目缓存状态信息的标签"
+
+#: data/ui/preferences-dialog.ui:45
+msgctxt "preference dialog"
+msgid "Show cache mark"
+msgstr "显示缓存标记"
+
+#: data/ui/preferences-dialog.ui:46
+msgctxt "preference dialog"
+msgid "Show a mark about saving a track to the cache"
+msgstr "显示关于将曲目保存至缓存的标记"
+
+#: data/ui/preferences-dialog.ui:51
+msgctxt "preference dialog"
+msgid "Show replaced mark"
+msgstr "显示替换标记"
+
+#: data/ui/preferences-dialog.ui:52
+msgctxt "preference dialog"
+msgid "Show a mark that shows that the track has been replaced"
+msgstr "显示表明曲目已被替换的标记"
+
+#: data/ui/preferences-dialog.ui:59
+msgctxt "preference dialog"
+msgid "Tracks visibility"
+msgstr "曲目可见性"
+
+#: data/ui/preferences-dialog.ui:60
+msgctxt "preference dialog"
+msgid ""
+"Show special tracks in track lists. Filter doesn't work when searching in "
+"track list"
+msgstr "显示曲目列表中的特定曲目。在曲目列表中搜索时无法使用筛选器"
+
+#: data/ui/preferences-dialog.ui:63
+msgctxt "preference dialog"
+msgid "Show unavailable content"
+msgstr "显示不可用内容"
+
+#: data/ui/preferences-dialog.ui:64
+msgctxt "preference dialog"
+msgid ""
+"Show tracks that are not available in the service. You can't listen to them"
+msgstr "显示服务中不可用的曲目。您无法听这些曲目"
+
+#: data/ui/preferences-dialog.ui:69
+msgctxt "preference dialog"
+msgid "Show content suitable for children"
+msgstr "显示适合儿童的内容"
+
+#: data/ui/preferences-dialog.ui:70
+msgctxt "preference dialog"
+msgid "Show content that is specific to children"
+msgstr "显示儿童特定的内容"
+
+#: data/ui/preferences-dialog.ui:75
+msgctxt "preference dialog"
+msgid "Show explicit content"
+msgstr "显示露骨内容"
+
+#: data/ui/preferences-dialog.ui:76
+msgctxt "preference dialog"
+msgid "Show content that has age restrictions"
+msgstr "显示具有年龄限制的内容"
+
+#: data/ui/preferences-dialog.ui:83
+msgctxt "preference dialog"
+msgid "Other"
+msgstr "其它"
+
+#: data/ui/preferences-dialog.ui:86
+msgctxt "preference dialog"
+msgid "Enable Debug-Mode"
+msgstr "启用调试模式"
+
+#: data/ui/preferences-dialog.ui:87
+msgctxt "preference dialog"
+msgid "Enable logging of additional information useful for error detection"
+msgstr "启用对错误检测有用的额外信息的日志记录"
+
+#: data/ui/preferences-dialog.ui:94
+msgctxt "preference dialog"
+msgid "Experimental"
+msgstr "试验"
+
+#: data/ui/preferences-dialog.ui:95
+msgctxt "preference dialog"
+msgid "Parameters that test anything and may be removed in future releases"
+msgstr "测试所有部分且可能在未来发布中移除的参数"
+
+#: data/ui/preferences-dialog.ui:98
+msgctxt "preference dialog"
+msgid "Use only bottom sheet menus"
+msgstr "使用仅底部操作表菜单"
+
+#: data/ui/preferences-dialog.ui:99
+msgctxt "preference dialog"
+msgid "Test preference for bottom sheet menu"
+msgstr "底部操作表菜单的测试首选项"
+
+#: data/ui/preferences-dialog.ui:108
+msgctxt "preference dialog"
+msgid "Pages"
+msgstr "页面"
+
+#: data/ui/preferences-dialog.ui:112
+msgctxt "preference dialog"
+msgid "Static pages"
+msgstr "静态页面"
+
+#: data/ui/preferences-dialog.ui:113
+msgctxt "preference dialog"
+msgid ""
+"Here you can show or hide static pages. They will always be displayed on the "
+"left side of the header."
+msgstr "这里您可以显示或隐藏静态页面。它们将总是显示在标头的左侧。"
+
+#: data/ui/preferences-dialog.ui:116
+msgctxt "preference dialog"
+msgid "Show 'Main' page"
+msgstr "显示“主”页面"
+
+#: data/ui/preferences-dialog.ui:121
+msgctxt "preference dialog"
+msgid "Show 'Liked' page"
+msgstr "显示“喜欢”页面"
+
+#: data/ui/preferences-dialog.ui:126
+msgctxt "preference dialog"
+msgid "Show 'Playlists' page"
+msgstr "显示“播放列表”页面"
+
+#: data/ui/preferences-dialog.ui:138
+msgctxt "preference dialog"
+msgid "Cache"
+msgstr "缓存"
+
+#: data/ui/preferences-dialog.ui:142
+msgctxt "preference dialog"
+msgid "Cache managing"
+msgstr "缓存管理"
+
+#: data/ui/preferences-dialog.ui:143
+msgctxt "preference dialog"
+msgid ""
+"Here you can see application memory usage, delete all cache from cache "
+"folder and control downloading cache to disk"
+msgstr ""
+"这里您可以查看应用程序的内存占用，从缓存文件夹删除所有缓存和对将缓存下载至磁"
+"盘进行控制"
+
+#: data/ui/preferences-dialog.ui:146
+msgctxt "preference dialog"
+msgid "Cache content"
+msgstr "缓存内容"
+
+#: data/ui/preferences-dialog.ui:147
+msgctxt "preference dialog"
+msgid ""
+"For better performance. Over time, it starts to take up a lot of space. So "
+"far, manual cleaning is required. If enabled, the application will cache all "
+"content to cache dir for better performance, otherwise, the application will "
+"load content only when caching objects (such as playlists or albums). "
+"Disabling the parameter does not delete already downloaded content"
+msgstr ""
+"为了更好的性能。随着使用，它会开始占用大量空间。目前需要手动清理。如果启用，"
+"应用程序会将所有内容缓存至缓存目录以获得更好的性能，否则会仅在缓存对象（比如"
+"播放列表或专辑）时加载内容。禁用该选项不会删除已经下载的内容"
+
+#: data/ui/save-stack.ui:25
+msgid "Content saving…"
+msgstr "正在保存内容…"
+
+#: data/ui/save-stack.ui:42
+msgid "Content cached"
+msgstr "内容已缓存"
+
+#: data/ui/save-stack.ui:56
+msgid "Content saved"
+msgstr "内容已保存"
+
+#: data/ui/stations-view.blp:22
+msgid "Stations dashboard"
+msgstr "电台仪表盘"
+
+#: data/ui/stations-view.blp:58
+msgid "Searching for station…"
+msgstr "搜索电台…"
+
+#: data/ui/stations-view.blp:77
+msgid "By genre…"
+msgstr "按流派…"
+
+#: data/ui/stations-view.blp:99 data/ui/wave-settings.blp:60
+msgid "By mood…"
+msgstr "按情绪…"
+
+#: data/ui/stations-view.blp:121 data/ui/wave-settings.blp:25
+msgid "By activity…"
+msgstr "按活跃…"
+
+#: data/ui/stations-view.blp:143
+msgid "By epoch…"
+msgstr "按时代…"
+
+#: data/ui/stations-view.blp:165
+msgid "Other…"
+msgstr "其它…"
+
+#: data/ui/stations-view.blp:209
+msgid "No stations with that name were found"
+msgstr "未找到带有该名称的电台"
+
+#: data/ui/track-info.blp:103
+msgid "Track lyrics"
+msgstr "曲目歌词"
+
+#: data/ui/track-info.blp:117
+msgid "Authors"
+msgstr "作者"
+
+#: data/ui/track-info.blp:135
+msgid "Source"
+msgstr "来源"
+
+#: data/ui/track-info.blp:158
+msgid "Similar tracks"
+msgstr "相似曲目"
+
+#. Translators: placeholder of "search" entry. Local track search (inside of track list)
+#: data/ui/track-list.ui:21
+msgid "Search track"
+msgstr "搜索曲目"
+
+#. Translators: part of sort by <name, duration etc>
+#: data/ui/track-list.ui:30
+msgid "Sort by"
+msgstr "排序方式"
+
+#: data/ui/track-list.ui:77
+msgid "No tracks to display"
+msgstr "无可显示曲目"
+
+#: data/ui/track-list.ui:88
+msgid "name"
+msgstr "名称"
+
+#: data/ui/track-list.ui:92
+msgid "artist"
+msgstr "艺人"
+
+#: data/ui/track-list.ui:96
+msgid "album"
+msgstr "专辑"
+
+#: data/ui/track-list.ui:100
+msgid "duration"
+msgstr "时长"
+
+#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:37
+msgid "Loading…"
+msgstr "正在加载…"
+
+#: data/ui/wave-settings.blp:42
+msgid "By diversity…"
+msgstr "按多元性…"
+
+#: data/ui/wave-settings.blp:78
+msgid "By language…"
+msgstr "按语言…"
+
+#: data/ui/wave-settings.blp:93
+msgid "Can't get wave settings"
+msgstr "无法获取波形设置"
+
+#: data/ui/window.blp:57 src/window.vala:252
+msgid "Reconnect"
+msgstr "重新连接"
+
+#: data/ui/window.blp:58 src/application.vala:151
+msgid "Connection problems"
+msgstr "连接问题"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/about.vala:59
+msgid "translator-credits"
+msgstr "lumingzh <lumingzh@qq.com>, 2024"
+
+#: src/about.vala:67
+msgid "Telegram channel"
+msgstr "Telegram 频道"
+
+#: src/about.vala:68
+msgid "Financial support (Tinkoff)"
+msgstr "财政支持（Tinkoff）"
+
+#: src/about.vala:69
+msgid "Financial support (Boosty)"
+msgstr "财政支持（Boosty）"
+
+#. Please keep alphabetical
+#: src/about.vala:72
+msgid "Sponsors"
+msgstr "赞助者"
+
+#: src/application.vala:62
+msgid "Print version information and exit"
+msgstr "显示版本信息并退出"
+
+#: src/application.vala:145
+msgid "Connection restored"
+msgstr "连接已恢复"
+
+#: src/application.vala:273
+msgid "Previous"
+msgstr ""
+
+#: src/application.vala:274
+msgid "Next"
+msgstr ""
+
+#: src/application.vala:357
+msgid "Current track can not be copied to the clipboard"
+msgstr ""
+
+#: src/application.vala:371 src/application.vala:378 src/application.vala:435
+msgid "Can't parse clipboard content"
+msgstr ""
+
+#: src/application.vala:389
+msgid "Users view not implemented yet"
+msgstr ""
+
+#: src/application.vala:405 src/application.vala:419
+msgid "Albums view not implemented yet"
+msgstr ""
+
+#: src/authenticator.vala:46
+msgid "Log out?"
+msgstr ""
+
+#: src/authenticator.vala:47
+msgid "You will need to log in again to use the app"
+msgstr ""
+
+#. Translators: cancel of deleting playlist
+#: src/authenticator.vala:50
+#: src/widgets/preferences/cache-deletion-preferences.vala:95
+#: src/widgets/preferences/preferences-dialog.vala:139
+#: src/widgets/views/playlist.vala:89
+msgid "Cancel"
+msgstr ""
+
+#: src/authenticator.vala:97
+#: src/widgets/preferences/cache-deletion-preferences.vala:129
+msgid "Moving…"
+msgstr ""
+
+#. Translators: Playlist with liked tracks
+#: src/client/api/objects/playlist/playlist.vala:49
+#: src/client/api/objects/playlist/playlist.vala:99 src/pager.vala:276
+msgid "Liked"
+msgstr ""
+
+#. Translators: Playlist that updates every day
+#: src/client/api/objects/playlist/playlist.vala:53
+msgid "Daily"
+msgstr ""
+
+#. Translators: Unknown playlist
+#: src/client/api/objects/playlist/playlist.vala:57
+msgid "Unknown"
+msgstr ""
+
+#: src/client/cachier/storager.vala:124
+#, c-format
+msgid "Database was initialized, loc - %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:801
+#, c-format
+msgid "Can't save object %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:818
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/client/cachier/storager.vala:821
+msgid "Kilobyte"
+msgid_plural "Kilobytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/client/cachier/storager.vala:824
+msgid "Megabyte"
+msgid_plural "Megabytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/client/cachier/storager.vala:827
+msgid "Gigabyte"
+msgid_plural "Gigabytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/client/cachier/storager.vala:830
+msgid "Terabyte"
+msgid_plural "Terabytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/client/cachier/storager.vala:859
+#, c-format
+msgid "Error while getting cache directory size. Message %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:894
+#, c-format
+msgid "Error while getting permanent directory size. Message %s"
+msgstr ""
+
+#: src/client/jsoner.vala:358 src/client/jsoner.vala:419
+#: src/client/jsoner.vala:526 src/client/jsoner.vala:550
+#, c-format
+msgid "Wrong type: expected %s, got %s"
+msgstr ""
+
+#: src/client/player/mods/abstract-mode.vala:91
+msgid "Problems with queue"
+msgstr ""
+
+#. Translators: name of new created playlist
+#: src/client/talkers/yam-talker.vala:627
+msgid "New Playlist"
+msgstr ""
+
+#: src/pager.vala:162
+#, c-format
+msgid "Can't set title \"%s\" to page"
+msgstr ""
+
+#: src/pager.vala:173
+#, c-format
+msgid "Can't set icon with name \"%s\" to page"
+msgstr ""
+
+#: src/pager.vala:199
+msgid "Reached max page count"
+msgstr ""
+
+#: src/pager.vala:205
+#, c-format
+msgid "Page '%s' already added"
+msgstr ""
+
+#: src/pager.vala:267
+msgid "Main"
+msgstr ""
+
+#: src/pager.vala:286
+msgid "Playlists"
+msgstr ""
+
+#: src/pager.vala:311
+#, c-format
+msgid "Can't read pages file. Message: %s"
+msgstr ""
+
+#: src/pager.vala:331
+#, c-format
+msgid "Can't create pages file. Message: %s"
+msgstr ""
+
+#: src/utils.vala:69
+msgid "Not implemented yet"
+msgstr ""
+
+#: src/utils.vala:76
+msgid "Need authorization"
+msgstr ""
+
+#: src/utils.vala:80
+msgid "Need Bookmate subscription"
+msgstr ""
+
+#: src/utils.vala:176 src/utils.vala:192
+msgid "Link copied to clipboard"
+msgstr ""
+
+#: src/utils.vala:241
+#, c-format
+msgid "Duration: %s h. %s min."
+msgstr ""
+
+#: src/utils.vala:243
+#, c-format
+msgid "Duration: %s min."
+msgstr ""
+
+#: src/utils.vala:357
+msgid "today"
+msgstr ""
+
+#: src/utils.vala:359
+msgid "yesterday"
+msgstr ""
+
+#: src/widgets/buttons/just/dislike-button.vala:37
+msgid "Remove dislike"
+msgstr ""
+
+#: src/widgets/buttons/just/dislike-button.vala:40
+msgid "Set dislike"
+msgstr ""
+
+#: src/widgets/buttons/just/like-button.vala:41
+msgid "Remove like"
+msgstr ""
+
+#: src/widgets/buttons/just/like-button.vala:48
+msgid "Set like"
+msgstr ""
+
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:37
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:40
+msgid "Pause"
+msgstr ""
+
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:44
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:47
+msgid "Play"
+msgstr ""
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:48
+#, c-format
+msgid "Playlist '%s'"
+msgstr ""
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:53
+#: src/widgets/buttons/menu/playlist-options-button.vala:66
+msgid "My Vibe by playlist"
+msgstr ""
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:54
+#: src/widgets/buttons/menu/playlist-options-button.vala:76
+#: src/widgets/buttons/menu/track-options-button.vala:80
+#: src/widgets/buttons/menu/track-options-button.vala:105
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
+#: src/widgets/buttons/menu/track-queue-options-button.vala:69
+#: src/widgets/buttons/menu/track-queue-options-button.vala:99
+msgid "Add to queue"
+msgstr ""
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:55
+#: src/widgets/buttons/menu/playlist-options-button.vala:77
+#: src/widgets/buttons/menu/track-options-button.vala:83
+#: src/widgets/buttons/menu/track-options-button.vala:108
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
+#: src/widgets/buttons/menu/track-queue-options-button.vala:73
+#: src/widgets/buttons/menu/track-queue-options-button.vala:103
+msgid "Share"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:26
+msgid "Primary menu"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:32
+msgid "Parse URL from clipboard"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:33
+msgid "Preferences"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:34
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:35
+msgid "About Cassette"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:77
+#: src/widgets/buttons/menu/track-options-button.vala:94
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:32
+#: src/widgets/buttons/menu/track-queue-options-button.vala:66
+#: src/widgets/buttons/menu/track-queue-options-button.vala:87
+msgid "My Vibe by track"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:78
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
+#: src/widgets/buttons/menu/track-queue-options-button.vala:67
+msgid "Show info"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:79
+#: src/widgets/buttons/menu/track-options-button.vala:104
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:45
+#: src/widgets/buttons/menu/track-queue-options-button.vala:68
+#: src/widgets/buttons/menu/track-queue-options-button.vala:98
+msgid "Play next"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:81
+#: src/widgets/buttons/menu/track-options-button.vala:106
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:36
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:47
+#: src/widgets/buttons/menu/track-queue-options-button.vala:70
+#: src/widgets/buttons/menu/track-queue-options-button.vala:100
+msgid "Add to playlist"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
+msgid "Remove from playlist"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-queue-options-button.vala:71
+#: src/widgets/buttons/menu/track-queue-options-button.vala:101
+msgid "Remove from queue"
+msgstr ""
+
+#: src/widgets/buttons/menu/volume-button.vala:121
+msgid "Volume control"
+msgstr ""
+
+#: src/widgets/buttons/menu/volume-button.vala:261
+msgid "Unmute"
+msgstr ""
+
+#: src/widgets/buttons/menu/volume-button.vala:261
+msgid "Mute"
+msgstr ""
+
+#: src/widgets/cache-indicator/job-info-badge.vala:44
+#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:172
+msgid "Album"
+msgstr ""
+
+#. Translators: n track from n tracks saved
+#: src/widgets/cache-indicator/job-info-badge.vala:77
+#, c-format
+msgid "%d / %d saved%s"
+msgid_plural "%d / %d saved%s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/widgets/cache-indicator/job-info-badge.vala:84
+#, c-format
+msgid "%d track saving now"
+msgid_plural "%d tracks saving now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/widgets/info-marks.vala:41
+#, c-format
+msgid "Track was replaced. Original version: %s, %s"
+msgstr ""
+
+#: src/widgets/playlist-micro.vala:157 src/widgets/views/playlist.vala:241
+#, c-format
+msgid "Owner: %s"
+msgstr ""
+
+#: src/widgets/playlist-row.vala:85
+#, c-format
+msgid "Track count: %s"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:88
+#: src/widgets/preferences/preferences-dialog.vala:134
+msgid "Delete cache files?"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:89
+msgid "Move saved files?"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:90
+#: src/widgets/preferences/preferences-dialog.vala:135
+msgid ""
+"All cache will be deleted. This doesn't affect on saved playlists or albums"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:91
+msgid ""
+"All saved playlists and albums will be moved to cache files. This could take "
+"a while."
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:129
+msgid "Deleting…"
+msgstr ""
+
+#: src/widgets/save-stack.vala:54
+msgid "Image"
+msgstr ""
+
+#: src/widgets/save-stack.vala:58
+msgid "Track"
+msgstr ""
+
+#: src/widgets/save-stack.vala:75
+#, c-format
+msgid "%s saving…"
+msgstr ""
+
+#: src/widgets/save-stack.vala:76
+#, c-format
+msgid "%s cached"
+msgstr ""
+
+#: src/widgets/save-stack.vala:77
+#, c-format
+msgid "%s saved"
+msgstr ""
+
+#: src/widgets/sidebar/childs/player-queue.vala:66
+#, c-format
+msgid "Playlist \"%s\""
+msgstr ""
+
+#: src/widgets/sidebar/childs/player-queue.vala:70
+#, c-format
+msgid "Album \"%s\""
+msgstr ""
+
+#: src/widgets/sidebar/childs/player-queue.vala:74
+#, c-format
+msgid "By search results \"%s\""
+msgstr ""
+
+#: src/widgets/sidebar/childs/player-queue.vala:78
+msgid "Track list"
+msgstr ""
+
+#: src/widgets/sidebar/childs/track-info.vala:68
+msgid "Your music track"
+msgstr ""
+
+#: src/widgets/sidebar/childs/track-info.vala:84
+msgid "Music track"
+msgstr ""
+
+#: src/widgets/sidebar/childs/wave-settings.vala:39
+msgid "Wave settings"
+msgstr ""
+
+#: src/widgets/track-rows/base.vala:79 src/widgets/track-rows/default.vala:100
+msgid "Track is not available"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:78
+#, c-format
+msgid "%s '%s' saved successfully"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:89
+#, c-format
+msgid "%s '%s' saving was stopped, due to network error"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:99
+#, c-format
+msgid "%s '%s' saving was aborted"
+msgstr ""
+
+#. Translators: %s - content type (e.g. "Playlist")
+#: src/widgets/views/abstract-cachiable.vala:191
+#, c-format
+msgid "%s saving has started"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:229
+#, c-format
+msgid "%s '%s' was moved from data to cache"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:239
+#, c-format
+msgid "%s removing has started. Please do not close the app"
+msgstr ""
+
+#: src/widgets/views/cant-show.vala:37
+#, c-format
+msgid "Error %d"
+msgstr ""
+
+#: src/widgets/views/cant-show.vala:41
+msgid "Can't load page"
+msgstr ""
+
+#: src/widgets/views/cant-show.vala:44
+msgid "Can't find desired content"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:84
+msgid "Delete playlist?"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:85
+#, c-format
+msgid "Playlist '%s' will be permanently deleted."
+msgstr ""
+
+#: src/widgets/views/playlist.vala:104
+#, c-format
+msgid "Playlist '%s' was deleted"
+msgstr ""
+
+#. Translators: %s is female person
+#: src/widgets/views/playlist.vala:247
+#, c-format
+msgctxt "female person"
+msgid "%s updated playlist %s"
+msgstr ""
+
+#. Translators: %s is male person
+#: src/widgets/views/playlist.vala:251
+#, c-format
+msgctxt "male person"
+msgid "%s updated playlist %s"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:281
+#, c-format
+msgid "Can't change visibility of '%s'"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:287
+#, c-format
+msgid "Playlist '%s' is public now"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:290
+#, c-format
+msgid "Playlist '%s' is private now"
+msgstr ""
+
+#: src/window.vala:235
+#, c-format
+msgid "Window info message: %s"
+msgstr ""

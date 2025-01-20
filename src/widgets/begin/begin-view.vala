@@ -75,6 +75,8 @@ namespace Cassette {
             webview.load_changed.connect ((event) => {
                 if (("https://music.yandex." in webview.uri) && event != LoadEvent.STARTED) {
                     online_complete ();
+                } else {
+                    warning ("Redirected to %s", webview.uri);
                 }
 
                 if (event == LoadEvent.FINISHED && is_loading) {

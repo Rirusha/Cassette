@@ -30,7 +30,7 @@ namespace Cassette {
 
         bool is_liked {
             get {
-                return icon_name == "emblem-favorite-symbolic";
+                return icon_name == "like-symbolic";
             }
             set {
                 if (value) {
@@ -38,7 +38,7 @@ namespace Cassette {
                         likes_count++;
                     }
 
-                    icon_name = "emblem-favorite-symbolic";
+                    icon_name = "like-symbolic";
                     real_button.tooltip_text = _("Remove like");
                 } else {
                     if (is_liked && should_change_likes_count && likes_count != -1) {

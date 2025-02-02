@@ -44,4 +44,4 @@ modules:
     builddir: true
     sources:
       - type: dir
-        path: ../../../
+        path: ../../

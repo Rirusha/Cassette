@@ -30,7 +30,7 @@ app_id_suffix = ''
 
 if get_option('is_devel')
   name_suffix = ' (Devel)'
-  app_id_suffix = '-Devel'
+  app_id_suffix = '.Devel'
 
   find_program('git', required: true)
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: true).stdout().strip()

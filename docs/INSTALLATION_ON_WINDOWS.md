@@ -76,11 +76,11 @@ sudo flatpak remote-add --if-not-exists cassette-nightly https://rirusha.github.
 
 ```shell
 sudo flatpak install org.gnome.Platform//master
-sudo flatpak install cassette-nightly space.rirusha.Cassette-Devel
+sudo flatpak install cassette-nightly space.rirusha.Cassette.Devel
 ```
 
 > [!NOTE]
-> После перезагрузки Windows в меню «Пуск» появиться ярлык приложения Cassette-Devel, но его также можно запустить из терминала Ubuntu так:
+> После перезагрузки Windows в меню «Пуск» появиться ярлык приложения Cassette.Devel, но его также можно запустить из терминала Ubuntu так:
 > ```shell
-> flatpak run space.rirusha.Cassette-Devel
+> flatpak run space.rirusha.Cassette.Devel
 > ```

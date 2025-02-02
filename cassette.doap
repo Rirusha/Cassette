@@ -5,7 +5,6 @@
          xmlns:gnome="http://api.gnome.org/doap-extensions#"
          xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">Cassette</name>
   <name xml:lang="es">Casete</name>
   <name xml:lang="fr">Cassette</name>
   <name xml:lang="de">Kassette</name>
@@ -28,8 +27,8 @@
   <name xml:lang="fi">Kasetti</name>
   <name xml:lang="hu">Kazetta</name>
   <name xml:lang="th">เทปคาสเซ็ท</name>
+  <name xml:lang="en">Cassette</name>
 
-  <shortdesc xml:lang="en">Unofficial Yandex Music client</shortdesc>
   <shortdesc xml:lang="es">Cliente no oficial de Yandex Music</shortdesc>
   <shortdesc xml:lang="fr">Client non officiel de Yandex Music</shortdesc>
   <shortdesc xml:lang="de">Inoffizieller Yandex Music-Client</shortdesc>
@@ -52,6 +51,7 @@
   <shortdesc xml:lang="fi">Epävirallinen Yandex Music-asiakas</shortdesc>
   <shortdesc xml:lang="hu">Nem hivatalos Yandex Music kliens</shortdesc>
   <shortdesc xml:lang="th">ไคลเอนต์ Yandex Music อย่างไม่เป็นทางการ</shortdesc>
+  <shortdesc xml:lang="en">Unofficial Yandex Music client</shortdesc>
 
   <description>
     GTK/Adwaita application that allows you to use Yandex Music service on Linux operating systems

@@ -7,8 +7,8 @@ include:
     file: 'vala-checkers.yml'
 
 variables:
-  APP_ID: 'space.rirusha.Cassette-Devel'
-  MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/nightly/${APP_ID}.yml
+  APP_ID: 'space.rirusha.Cassette.Devel'
+  MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/${APP_ID}.yml
   BUNDLE: "${APP_ID}.flatpak"
   RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
   FLATPAK_MODULE: "cassette"

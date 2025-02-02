@@ -1,4 +1,4 @@
-id: space.rirusha.Cassette-Devel
+id: space.rirusha.Cassette.Devel
 runtime: org.gnome.Platform
 runtime-version: 'master'
 sdk: org.gnome.Sdk
@@ -14,7 +14,7 @@ finish-args:
   - --socket=wayland
   - --filesystem=xdg-music:ro
   - --filesystem=xdg-download:ro
-  - --own-name=org.mpris.MediaPlayer2.space.rirusha.Cassette-Devel
+  - --own-name=org.mpris.MediaPlayer2.space.rirusha.Cassette.Devel
 build-options:
   append-path: /usr/lib/sdk/vala/bin
   prepend-ld-library-path: /usr/lib/sdk/vala/lib
@@ -42,7 +42,7 @@ modules:
   - name: cassette
     buildsystem: meson
     builddir: true
-    config-opts: 
+    config-opts:
       - -Dis_devel=true
     sources:
       - type: dir

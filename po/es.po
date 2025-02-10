@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
 "POT-Creation-Date: 2025-01-14 06:02+0000\n"
-"PO-Revision-Date: 2025-02-04 19:38-0300\n"
+"PO-Revision-Date: 2025-02-09 10:12-0300\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
 "Language: es\n"
@@ -189,7 +189,6 @@ msgid "Close"
 msgstr "Cerrar"
 
 #: data/ui/begin-view.ui:112
-#, fuzzy
 msgid "Authorization"
 msgstr "Autorización"
 
@@ -202,14 +201,12 @@ msgstr "Tamaño de los dirs de caché:"
 
 #. Translators: tempprary cache folder
 #: data/ui/cache-deletion-preferences.ui:35
-#, fuzzy
 msgid "Cache"
-msgstr "Limpiar cola de reproducción"
+msgstr "Caché"
 
 #: data/ui/cache-deletion-preferences.ui:88
-#, fuzzy
 msgid "Clear"
-msgstr "Limpiar cola de reproducción"
+msgstr "Limpiar"
 
 #. Translators: temparence cache folder
 #: data/ui/cache-deletion-preferences.ui:109
@@ -217,9 +214,8 @@ msgid "Data"
 msgstr ""
 
 #: data/ui/cache-deletion-preferences.ui:159
-#, fuzzy
 msgid "Move to cache"
-msgstr "Contenido guardado"
+msgstr "Mover a la caché"
 
 #: data/ui/cache-deletion-preferences.ui:163
 msgid "Move"
@@ -275,49 +271,32 @@ msgid "Yandex Music search"
 msgstr ""
 
 #: data/ui/help-overlay.blp:11
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Main Actions"
 msgid "Main Actions"
 msgstr "Acciones principales"
 
 #: data/ui/help-overlay.blp:14
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Show Shortcuts"
 msgid "Show Shortcuts"
 msgstr "Mostrar atajos"
 
 #: data/ui/help-overlay.blp:19
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Quit"
 msgid "Quit"
 msgstr "Salir"
 
 #: data/ui/help-overlay.blp:25
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Media Control"
 msgid "Playback Control"
 msgstr "Control de medios"
 
 #: data/ui/help-overlay.blp:28
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Play/Pause playback"
 msgid "Play/Pause playback"
 msgstr "Reproducir/pausar reproducción"
 
 #: data/ui/help-overlay.blp:33 data/ui/player-bar.blp:87
-#, fuzzy
 msgid "Play previous track"
-msgstr "Reproducir canción anterior"
+msgstr "Reproducir la canción anterior"
 
 #: data/ui/help-overlay.blp:38 data/ui/player-bar.blp:119
-#, fuzzy
 msgid "Play next track"
-msgstr "Reproducir siguiente canción"
+msgstr "Reproducir la siguiente canción"
 
 #: data/ui/help-overlay.blp:43
 msgid "Mute app"
@@ -385,11 +364,8 @@ msgid ""
 msgstr ""
 
 #: data/ui/no-plus-dialog.blp:41
-#, fuzzy
-#| msgctxt "account info window"
-#| msgid "Has Plus"
 msgid "Get Plus"
-msgstr "Tiene Plus"
+msgstr "Obtener Plus"
 
 #: data/ui/player-bar.blp:22
 #, fuzzy
@@ -410,10 +386,8 @@ msgid "Change volume"
 msgstr "Modificar volumen"
 
 #: data/ui/player-queue.blp:5 src/application.vala:272
-#, fuzzy
-#| msgid "Play next"
 msgid "Playing now"
-msgstr "Reproducir siguiente"
+msgstr "Reproduciendo ahora"
 
 #: data/ui/playlist-choose-dialog.ui:8
 msgid "Choose playlist to add"
@@ -480,16 +454,11 @@ msgid "Stop"
 msgstr "Parar"
 
 #: data/ui/preferences-dialog.ui:8
-#, fuzzy
-#| msgid "Main"
 msgctxt "preference dialog"
 msgid "Main"
 msgstr "Principal"
 
 #: data/ui/preferences-dialog.ui:12
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "General"
 msgctxt "preference dialog"
 msgid "General"
 msgstr "General"
@@ -628,9 +597,6 @@ msgstr ""
 "funciona al buscar en la lista de reproducción."
 
 #: data/ui/preferences-dialog.ui:63
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show unavailable content"
 msgctxt "preference dialog"
 msgid "Show unavailable content"
 msgstr "Mostrar contenido no disponible"
@@ -649,28 +615,19 @@ msgstr ""
 "escuchar"
 
 #: data/ui/preferences-dialog.ui:69
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show content suitable for children"
 msgctxt "preference dialog"
 msgid "Show content suitable for children"
 msgstr "Mostrar contenido apto para niños"
 
 #: data/ui/preferences-dialog.ui:70
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show content suitable for children"
 msgctxt "preference dialog"
 msgid "Show content that is specific to children"
-msgstr "Mostrar contenido apto para niños"
+msgstr "Mostrar contenido específico para niños"
 
 #: data/ui/preferences-dialog.ui:75
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show explicit content"
 msgctxt "preference dialog"
 msgid "Show explicit content"
-msgstr "Mostrar contenido explícito (NSFW)"
+msgstr "Mostrar contenido explícito"
 
 #: data/ui/preferences-dialog.ui:76
 msgctxt "preference dialog"
@@ -718,9 +675,6 @@ msgid "Pages"
 msgstr ""
 
 #: data/ui/preferences-dialog.ui:112
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Static pages"
 msgctxt "preference dialog"
 msgid "Static pages"
 msgstr "Páginas estáticas"
@@ -740,9 +694,6 @@ msgstr ""
 "la izquierda del encabezado."
 
 #: data/ui/preferences-dialog.ui:116
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show \"Main\" page"
 msgctxt "preference dialog"
 msgid "Show 'Main' page"
 msgstr "Mostrar página «Principal»"
@@ -764,10 +715,9 @@ msgid "Show 'Playlists' page"
 msgstr "Mostrar página «Listas de reproducción»"
 
 #: data/ui/preferences-dialog.ui:138
-#, fuzzy
 msgctxt "preference dialog"
 msgid "Cache"
-msgstr "Limpiar cola de reproducción"
+msgstr "Caché"
 
 #: data/ui/preferences-dialog.ui:142
 #, fuzzy
@@ -1352,7 +1302,7 @@ msgstr "Recuento de pistas: %s"
 #: src/widgets/preferences/cache-deletion-preferences.vala:89
 #: src/widgets/preferences/preferences-dialog.vala:135
 msgid "Delete cache files?"
-msgstr "¿Eliminar los archivos temporales?"
+msgstr "¿Eliminar los archivos de la caché?"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:90
 #, fuzzy

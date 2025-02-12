@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-01-14 06:02+0000\n"
-"PO-Revision-Date: 2025-02-09 10:12-0300\n"
+"POT-Creation-Date: 2025-02-10 11:26+0000\n"
+"PO-Revision-Date: 2025-02-10 11:11-0300\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
 "Language: es\n"
@@ -37,17 +37,17 @@ msgstr "Cliente no oficial de Yandex Music para GNOME"
 
 #. Translators: keep number of ';'
 #: data/space.rirusha.Cassette.desktop.in.in:7
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:7
 msgid "yandex;yandex music;yam;music;"
 msgstr "yandex;yandex music;yam;music;"
 
 #. Translators: app name should be translated
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
 #, fuzzy
 msgid "Cassette (Devel)"
 msgstr "Cassette"
 
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:5
 #, fuzzy
 msgid "Unofficial Yandex Music client for GNOME (Devel build)"
 msgstr "Cliente no oficial de Yandex.Music para GNOME"
@@ -219,7 +219,7 @@ msgstr "Mover a la caché"
 
 #: data/ui/cache-deletion-preferences.ui:163
 msgid "Move"
-msgstr ""
+msgstr "Mover"
 
 #: data/ui/cache-indicator.blp:35
 msgid "Show all cache jobs"
@@ -300,7 +300,7 @@ msgstr "Reproducir la siguiente canción"
 
 #: data/ui/help-overlay.blp:43
 msgid "Mute app"
-msgstr ""
+msgstr "Silenciar la aplicación"
 
 #: data/ui/help-overlay.blp:49
 #, fuzzy
@@ -321,13 +321,11 @@ msgstr "Cambiar al modo de repetición"
 
 #: data/ui/help-overlay.blp:63
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #: data/ui/help-overlay.blp:66
-#, fuzzy
-#| msgid "Search track"
 msgid "Share current track"
-msgstr "Buscar canción"
+msgstr "Compartir la canción actual"
 
 #: data/ui/help-overlay.blp:71
 #, fuzzy
@@ -368,9 +366,8 @@ msgid "Get Plus"
 msgstr "Obtener Plus"
 
 #: data/ui/player-bar.blp:22
-#, fuzzy
 msgid "Show track info"
-msgstr "Información de la canción"
+msgstr "Mostrar información de la canción"
 
 #: data/ui/player-bar.blp:206
 msgid "Show wave settings"
@@ -637,12 +634,12 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:83
 msgctxt "preference dialog"
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #: data/ui/preferences-dialog.ui:86
 msgctxt "preference dialog"
 msgid "Enable Debug-Mode"
-msgstr ""
+msgstr "Activar modo depuración"
 
 #: data/ui/preferences-dialog.ui:87
 msgctxt "preference dialog"
@@ -672,7 +669,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:108
 msgctxt "preference dialog"
 msgid "Pages"
-msgstr ""
+msgstr "Páginas"
 
 #: data/ui/preferences-dialog.ui:112
 msgctxt "preference dialog"
@@ -790,11 +787,11 @@ msgstr ""
 
 #: data/ui/stations-view.blp:58
 msgid "Searching for station…"
-msgstr ""
+msgstr "Buscando por emisora…"
 
 #: data/ui/stations-view.blp:77
 msgid "By genre…"
-msgstr ""
+msgstr "Por género…"
 
 #: data/ui/stations-view.blp:99 data/ui/wave-settings.blp:60
 msgid "By mood…"
@@ -802,15 +799,15 @@ msgstr ""
 
 #: data/ui/stations-view.blp:121 data/ui/wave-settings.blp:25
 msgid "By activity…"
-msgstr ""
+msgstr "Por actividad…"
 
 #: data/ui/stations-view.blp:143
 msgid "By epoch…"
-msgstr ""
+msgstr "Por la época…"
 
 #: data/ui/stations-view.blp:165
 msgid "Other…"
-msgstr ""
+msgstr "Otro…"
 
 #: data/ui/stations-view.blp:209
 msgid "No stations with that name were found"
@@ -870,11 +867,11 @@ msgstr "Cargando…"
 
 #: data/ui/wave-settings.blp:42
 msgid "By diversity…"
-msgstr ""
+msgstr "Por diversidad…"
 
 #: data/ui/wave-settings.blp:78
 msgid "By language…"
-msgstr ""
+msgstr "Por lenguaje…"
 
 #: data/ui/wave-settings.blp:93
 #, fuzzy
@@ -884,7 +881,7 @@ msgstr "No se puede guardar la imagen %s"
 
 #: data/ui/window.blp:57 src/window.vala:253
 msgid "Reconnect"
-msgstr ""
+msgstr "Reconectar"
 
 #: data/ui/window.blp:58 src/application.vala:152
 msgid "Connection problems"
@@ -901,16 +898,16 @@ msgstr "Canal de Telegram"
 
 #: src/about.vala:69
 msgid "Financial support (Tinkoff)"
-msgstr ""
+msgstr "Soporte financiero (Tinkoff)"
 
 #: src/about.vala:70
 msgid "Financial support (Boosty)"
-msgstr ""
+msgstr "Soporte financiero (Boosty)"
 
 #. Please keep alphabetical
 #: src/about.vala:73
 msgid "Sponsors"
-msgstr ""
+msgstr "Patrocinadores"
 
 #: src/application.vala:63
 msgid "Print version information and exit"
@@ -1190,7 +1187,7 @@ msgstr "Compartir"
 
 #: src/widgets/buttons/menu/primary-menu-button.vala:27
 msgid "Primary menu"
-msgstr ""
+msgstr "Menú principal"
 
 #: src/widgets/buttons/menu/primary-menu-button.vala:33
 msgid "Parse URL from clipboard"

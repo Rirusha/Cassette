@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-02-10 11:26+0000\n"
-"PO-Revision-Date: 2025-02-10 11:11-0300\n"
+"POT-Creation-Date: 2025-02-10 19:14+0000\n"
+"PO-Revision-Date: 2025-02-12 10:21-0300\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
 "Language: es\n"
@@ -43,14 +43,13 @@ msgstr "yandex;yandex music;yam;music;"
 
 #. Translators: app name should be translated
 #: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-#, fuzzy
 msgid "Cassette (Devel)"
-msgstr "Cassette"
+msgstr "Cassette (Desarrollo)"
 
 #: data/space.rirusha.Cassette.Devel.desktop.in.in:5
-#, fuzzy
 msgid "Unofficial Yandex Music client for GNOME (Devel build)"
-msgstr "Cliente no oficial de Yandex.Music para GNOME"
+msgstr ""
+"Cliente no oficial de Yandex Music para GNOME (Construcción de desarrollo)"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:7
 msgid "Unofficial Yandex Music client"
@@ -81,7 +80,6 @@ msgstr ""
 "información de la pista"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-#, fuzzy
 msgid ""
 "Allows you to more precisely customize the display and playback of special "
 "content, such as explicit or suitable for children."
@@ -160,7 +158,7 @@ msgstr "Modo de uso"
 #: data/ui/begin-view.ui:40
 msgctxt "auth window"
 msgid "Choose usage mode"
-msgstr ""
+msgstr "Seleccionar modo de uso"
 
 #: data/ui/begin-view.ui:50
 msgctxt "auth window"
@@ -223,7 +221,7 @@ msgstr "Mover"
 
 #: data/ui/cache-indicator.blp:35
 msgid "Show all cache jobs"
-msgstr ""
+msgstr "Mostrar todos los trabajos de la caché"
 
 #: data/ui/custom-page-preferences.ui:17
 msgid "Title: "
@@ -260,7 +258,7 @@ msgstr "Canciones que no le gustaron"
 
 #: data/ui/header-bar.blp:12
 msgid "Go back"
-msgstr ""
+msgstr "Retroceder"
 
 #: data/ui/header-bar.blp:20
 msgid "Refresh"
@@ -303,21 +301,16 @@ msgid "Mute app"
 msgstr "Silenciar la aplicación"
 
 #: data/ui/help-overlay.blp:49
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Queue control"
 msgid "Queue control"
 msgstr "Control de colas"
 
 #: data/ui/help-overlay.blp:52 data/ui/player-bar.blp:141
-#, fuzzy
 msgid "Change shuffle mode"
-msgstr "Cambiar al modo aleatorio"
+msgstr "Cambiar modo aleatorio"
 
 #: data/ui/help-overlay.blp:57 data/ui/player-bar.blp:65
-#, fuzzy
 msgid "Change repeat mode"
-msgstr "Cambiar al modo de repetición"
+msgstr "Cambiar modo de repetición"
 
 #: data/ui/help-overlay.blp:63
 msgid "Other"
@@ -328,8 +321,6 @@ msgid "Share current track"
 msgstr "Compartir la canción actual"
 
 #: data/ui/help-overlay.blp:71
-#, fuzzy
-#| msgid "Parse URL from clipboard"
 msgid "Parse url from clipboard"
 msgstr "Analizar URL desde el portapapeles"
 
@@ -343,11 +334,11 @@ msgstr "Contenido para apto para niños"
 
 #: data/ui/main-view.blp:6
 msgid "Page under construction"
-msgstr ""
+msgstr "Página bajo construcción"
 
 #: data/ui/main-view.blp:20
 msgid "All stations"
-msgstr ""
+msgstr "Todas las emisoras"
 
 #: data/ui/no-plus-dialog.blp:20
 #, fuzzy
@@ -374,9 +365,8 @@ msgid "Show wave settings"
 msgstr ""
 
 #: data/ui/player-bar.blp:216
-#, fuzzy
 msgid "Show playback queue"
-msgstr "Cola de reproducción"
+msgstr "Mostrar cola de reproducción"
 
 #: data/ui/player-bar.blp:229
 msgid "Change volume"
@@ -409,8 +399,6 @@ msgid "Your playlists"
 msgstr "Sus listas de reproducción"
 
 #: data/ui/playlists-view.ui:39
-#, fuzzy
-#| msgid "Also you liked this playlists"
 msgid "Also you liked these playlists"
 msgstr "También le gustaron estas listas de reproducción"
 
@@ -461,17 +449,11 @@ msgid "General"
 msgstr "General"
 
 #: data/ui/preferences-dialog.ui:15
-#, fuzzy
 msgctxt "preference dialog"
 msgid "Enable high quality audio"
-msgstr "Descargar cancioones de alta calidad"
+msgstr "Activar audio de alta calidad"
 
 #: data/ui/preferences-dialog.ui:16
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid ""
-#| "Attention! If the track was downloaded in low quality, and after the "
-#| "download is enabled in high quality, the audio will not be reloaded"
 msgctxt "preference dialog"
 msgid ""
 "Attention! If the track was downloaded in low quality, and after the "
@@ -481,17 +463,11 @@ msgstr ""
 "se activa en alta calidad, el audio no se volverá a cargar"
 
 #: data/ui/preferences-dialog.ui:21
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Add track on top of playlist"
 msgctxt "preference dialog"
 msgid "Add track on top of playlist"
 msgstr "Añadir canción al principio de la lista de reproducción"
 
 #: data/ui/preferences-dialog.ui:22
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Will the track be added to the playlist as the first or as the last"
 msgctxt "preference dialog"
 msgid "Will the track be added to the playlist as the first or as the last"
 msgstr ""
@@ -509,9 +485,6 @@ msgid "Show a notification when switching a track"
 msgstr ""
 
 #: data/ui/preferences-dialog.ui:35
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show additional marks"
 msgctxt "preference dialog"
 msgid "Show additional marks"
 msgstr "Mostrar marcas adicionales"
@@ -522,12 +495,9 @@ msgid "Additional marks display additional information about the track"
 msgstr ""
 
 #: data/ui/preferences-dialog.ui:39
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show save mark"
 msgctxt "preference dialog"
 msgid "Show save mark"
-msgstr "Mostrar marca de guardado"
+msgstr "Mostrar marca de guardada"
 
 #: data/ui/preferences-dialog.ui:40
 #, fuzzy
@@ -539,12 +509,9 @@ msgstr ""
 "Muestra una marca que indica el estado actual de la caché de la canción"
 
 #: data/ui/preferences-dialog.ui:45
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show save mark"
 msgctxt "preference dialog"
 msgid "Show cache mark"
-msgstr "Mostrar marca de guardado"
+msgstr "Mostrar marca de la caché"
 
 #: data/ui/preferences-dialog.ui:46
 #, fuzzy
@@ -556,9 +523,6 @@ msgstr ""
 "Muestra una marca que indica el estado actual de la caché de la canción"
 
 #: data/ui/preferences-dialog.ui:51
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show replaced mark"
 msgctxt "preference dialog"
 msgid "Show replaced mark"
 msgstr "Mostrar marca sustituida"
@@ -572,9 +536,6 @@ msgid "Show a mark that shows that the track has been replaced"
 msgstr "Mostrar una marca que indique que la vía ha sido sustituida"
 
 #: data/ui/preferences-dialog.ui:59
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Tracks visibility"
 msgctxt "preference dialog"
 msgid "Tracks visibility"
 msgstr "Visibilidad de las canciones"
@@ -639,7 +600,7 @@ msgstr "Otro"
 #: data/ui/preferences-dialog.ui:86
 msgctxt "preference dialog"
 msgid "Enable Debug-Mode"
-msgstr "Activar modo depuración"
+msgstr "Activar modo de depuración"
 
 #: data/ui/preferences-dialog.ui:87
 msgctxt "preference dialog"
@@ -697,16 +658,12 @@ msgstr "Mostrar página «Principal»"
 
 #: data/ui/preferences-dialog.ui:121
 #, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show \"Liked\" page"
 msgctxt "preference dialog"
 msgid "Show 'Liked' page"
 msgstr "Mostrar página «Canciones que me gustan»"
 
 #: data/ui/preferences-dialog.ui:126
 #, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show \"Playlists\" page"
 msgctxt "preference dialog"
 msgid "Show 'Playlists' page"
 msgstr "Mostrar página «Listas de reproducción»"
@@ -717,12 +674,9 @@ msgid "Cache"
 msgstr "Caché"
 
 #: data/ui/preferences-dialog.ui:142
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Cache managing"
 msgctxt "preference dialog"
 msgid "Cache managing"
-msgstr "Gestión de la caché"
+msgstr "Gestiónar la caché"
 
 #: data/ui/preferences-dialog.ui:143
 #, fuzzy
@@ -739,11 +693,9 @@ msgstr ""
 "la carpeta temporal y controlar la descarga de la caché al disco."
 
 #: data/ui/preferences-dialog.ui:146
-#, fuzzy
-#| msgid "Child content"
 msgctxt "preference dialog"
 msgid "Cache content"
-msgstr "Contenido para apto para niños"
+msgstr "Contenido de la caché"
 
 #: data/ui/preferences-dialog.ui:147
 #, fuzzy
@@ -814,9 +766,8 @@ msgid "No stations with that name were found"
 msgstr ""
 
 #: data/ui/track-info.blp:103
-#, fuzzy
 msgid "Track lyrics"
-msgstr "Lista de canciones"
+msgstr "Letras de la canción"
 
 #: data/ui/track-info.blp:117
 msgid "Authors"
@@ -827,9 +778,8 @@ msgid "Source"
 msgstr "Fuente"
 
 #: data/ui/track-info.blp:158
-#, fuzzy
 msgid "Similar tracks"
-msgstr "Buscar canción"
+msgstr "Canciones similares"
 
 #. Translators: placeholder of "search" entry. Local track search (inside of track list)
 #: data/ui/track-list.ui:21
@@ -926,10 +876,8 @@ msgid "Next"
 msgstr "Siguiente"
 
 #: src/application.vala:358
-#, fuzzy
-#| msgid "Link copied to clipboard"
 msgid "Current track can not be copied to the clipboard"
-msgstr "Enlace copiado al portapapeles"
+msgstr "La canción actual no se puede copiar al portapapeles"
 
 #: src/application.vala:372 src/application.vala:379 src/application.vala:436
 msgid "Can't parse clipboard content"
@@ -1098,10 +1046,8 @@ msgid "Need authorization"
 msgstr "Necesita autorización"
 
 #: src/utils.vala:81
-#, fuzzy
-#| msgid "Need Plus subscription"
 msgid "Need Bookmate subscription"
-msgstr "Necesitas una suscripción Plus"
+msgstr "Necesita una suscripción a Bookmate"
 
 #: src/utils.vala:177 src/utils.vala:193
 msgid "Link copied to clipboard"
@@ -1302,9 +1248,8 @@ msgid "Delete cache files?"
 msgstr "¿Eliminar los archivos de la caché?"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:90
-#, fuzzy
 msgid "Move saved files?"
-msgstr "Contenido guardado"
+msgstr "¿Mover archivos guardados?"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:91
 #: src/widgets/preferences/preferences-dialog.vala:136

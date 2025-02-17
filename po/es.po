@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
 "POT-Creation-Date: 2025-02-10 19:14+0000\n"
-"PO-Revision-Date: 2025-02-12 10:21-0300\n"
+"PO-Revision-Date: 2025-02-13 09:22-0300\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
 "Language: es\n"
@@ -108,14 +108,12 @@ msgid "Liked view"
 msgstr "Lista de canciones que le gustaron"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:67
-#, fuzzy
-#| msgid "Playlists"
 msgid "Playlists view"
 msgstr "Listas de reproducción"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:71
 msgid "Sync lyrics"
-msgstr "Sincronizar letra"
+msgstr "Sincronizar letras"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:75
 msgid "Playback queue"
@@ -138,11 +136,8 @@ msgid "Open in browser"
 msgstr "Abrir en el navegador web"
 
 #: data/ui/account-info-dialog.blp:61
-#, fuzzy
-#| msgctxt "account info window"
-#| msgid "Has Plus"
 msgid "Plus"
-msgstr "Tiene Plus"
+msgstr "Plus"
 
 #: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
 #: src/authenticator.vala:52
@@ -167,6 +162,9 @@ msgid ""
 "the display of the corresponding pages in the pages preferences, as well as "
 "log in later when selecting \"Local mode\""
 msgstr ""
+"Si selecciona el «Modo en línea», puede acceder música local activando la "
+"vista de las páginas correspondiente en las preferencias de páginas, además "
+"de iniciar sesión más tarde seleccionando «Modo local»."
 
 #. Translators: usage mode of application. Online mode or Local mode available
 #: data/ui/begin-view.ui:75
@@ -266,7 +264,7 @@ msgstr "Refrescar"
 
 #: data/ui/header-bar.blp:28
 msgid "Yandex Music search"
-msgstr ""
+msgstr "Búsqueda de Yandex Music"
 
 #: data/ui/help-overlay.blp:11
 msgid "Main Actions"
@@ -334,23 +332,24 @@ msgstr "Contenido para apto para niños"
 
 #: data/ui/main-view.blp:6
 msgid "Page under construction"
-msgstr "Página bajo construcción"
+msgstr "Página en construcción"
 
 #: data/ui/main-view.blp:20
 msgid "All stations"
 msgstr "Todas las emisoras"
 
 #: data/ui/no-plus-dialog.blp:20
-#, fuzzy
-#| msgid "Need Plus subscription"
 msgid "No Plus Subscription"
-msgstr "Necesitas una suscripción Plus"
+msgstr "No tiene una suscripción a Plus"
 
 #: data/ui/no-plus-dialog.blp:21
 msgid ""
 "To avoid problems with Yandex, the online functions of the application are "
 "not available without a Yandex.Plus subscription. Thanks for understanding."
 msgstr ""
+"Para evitar problemas con Yandex, las funcionalidades en línea de la "
+"aplicación no están disponibles sin una suscripción a Yandex.Plus. Gracias "
+"por comprender."
 
 #: data/ui/no-plus-dialog.blp:41
 msgid "Get Plus"
@@ -451,7 +450,7 @@ msgstr "General"
 #: data/ui/preferences-dialog.ui:15
 msgctxt "preference dialog"
 msgid "Enable high quality audio"
-msgstr "Activar audio de alta calidad"
+msgstr "Activar sonido de alta calidad"
 
 #: data/ui/preferences-dialog.ui:16
 msgctxt "preference dialog"
@@ -475,14 +474,15 @@ msgstr ""
 "última"
 
 #: data/ui/preferences-dialog.ui:27
+#, fuzzy
 msgctxt "preference dialog"
 msgid "Show 'Playing now' notification"
-msgstr ""
+msgstr "Mostrar una notificación de «reproduciendo ahora»"
 
 #: data/ui/preferences-dialog.ui:28
 msgctxt "preference dialog"
 msgid "Show a notification when switching a track"
-msgstr ""
+msgstr "Mostrar una notificación cuando se cambia de canción"
 
 #: data/ui/preferences-dialog.ui:35
 msgctxt "preference dialog"
@@ -492,7 +492,7 @@ msgstr "Mostrar marcas adicionales"
 #: data/ui/preferences-dialog.ui:36
 msgctxt "preference dialog"
 msgid "Additional marks display additional information about the track"
-msgstr ""
+msgstr "Marcas adicionales muestran información adicional sobre la canción"
 
 #: data/ui/preferences-dialog.ui:39
 msgctxt "preference dialog"
@@ -590,7 +590,7 @@ msgstr "Mostrar contenido explícito"
 #: data/ui/preferences-dialog.ui:76
 msgctxt "preference dialog"
 msgid "Show content that has age restrictions"
-msgstr ""
+msgstr "Mostrar contenido con restricción de edad"
 
 #: data/ui/preferences-dialog.ui:83
 msgctxt "preference dialog"
@@ -610,7 +610,7 @@ msgstr ""
 #: data/ui/preferences-dialog.ui:94
 msgctxt "preference dialog"
 msgid "Experimental"
-msgstr ""
+msgstr "Experimental"
 
 #: data/ui/preferences-dialog.ui:95
 msgctxt "preference dialog"
@@ -747,7 +747,7 @@ msgstr "Por género…"
 
 #: data/ui/stations-view.blp:99 data/ui/wave-settings.blp:60
 msgid "By mood…"
-msgstr ""
+msgstr "Por estado de ánimo…"
 
 #: data/ui/stations-view.blp:121 data/ui/wave-settings.blp:25
 msgid "By activity…"
@@ -763,7 +763,7 @@ msgstr "Otro…"
 
 #: data/ui/stations-view.blp:209
 msgid "No stations with that name were found"
-msgstr ""
+msgstr "No se encontraron emisoras con ese nombre"
 
 #: data/ui/track-info.blp:103
 msgid "Track lyrics"
@@ -861,7 +861,7 @@ msgstr "Patrocinadores"
 
 #: src/application.vala:63
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Mostrar información de la versión y salir"
 
 #: src/application.vala:146
 msgid "Connection restored"
@@ -972,14 +972,12 @@ msgstr[0] "Terabyte"
 msgstr[1] "Terabytes"
 
 #: src/client/cachier/storager.vala:860
-#, fuzzy, c-format
-#| msgid "Error while getting permanent dir size. Message %s"
+#, c-format
 msgid "Error while getting cache directory size. Message %s"
-msgstr "Error al obtener el tamaño del directorio permanente. Mensaje %s"
+msgstr "Error al obtener el tamaño del directorio de la caché. Mensaje %s"
 
 #: src/client/cachier/storager.vala:895
-#, fuzzy, c-format
-#| msgid "Error while getting permanent dir size. Message %s"
+#, c-format
 msgid "Error while getting permanent directory size. Message %s"
 msgstr "Error al obtener el tamaño del directorio permanente. Mensaje %s"
 
@@ -1013,9 +1011,9 @@ msgid "Reached max page count"
 msgstr "Número máximo de páginas alcanzado"
 
 #: src/pager.vala:206
-#, fuzzy, c-format
+#, c-format
 msgid "Page '%s' already added"
-msgstr "Página %s ya añadida"
+msgstr "Página «%s» ya fue añadida"
 
 #: src/pager.vala:268
 msgid "Main"
@@ -1026,14 +1024,12 @@ msgid "Playlists"
 msgstr "Listas de reproducción"
 
 #: src/pager.vala:312
-#, fuzzy, c-format
-#| msgid "Can't read pages file. Messsage: %s"
+#, c-format
 msgid "Can't read pages file. Message: %s"
 msgstr "No se puede leer el archivo de páginas. Mensaje: %s"
 
 #: src/pager.vala:332
-#, fuzzy, c-format
-#| msgid "Can't create pages file. Messsage: %s"
+#, c-format
 msgid "Can't create pages file. Message: %s"
 msgstr "No se puede crear el archivo de páginas. Mensaje: %s"
 
@@ -1217,8 +1213,8 @@ msgstr "Álbum"
 #, fuzzy, c-format
 msgid "%d / %d saved%s"
 msgid_plural "%d / %d saved%s"
-msgstr[0] "%s guardado"
-msgstr[1] "%s guardado"
+msgstr[0] "%d / %d guardado%s"
+msgstr[1] "%d / %d guardado%s"
 
 #: src/widgets/cache-indicator/job-info-badge.vala:85
 #, c-format
@@ -1309,7 +1305,7 @@ msgstr "Álbum «%s»"
 #: src/widgets/sidebar/childs/player-queue.vala:75
 #, c-format
 msgid "By search results \"%s\""
-msgstr ""
+msgstr "Por resultados de búsqueda «%s»"
 
 #: src/widgets/sidebar/childs/player-queue.vala:79
 msgid "Track list"
@@ -1334,46 +1330,41 @@ msgstr "La canción no está disponible"
 
 #. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:79
-#, fuzzy, c-format
-#| msgid "%s%s successfully cached"
+#, c-format
 msgid "%s '%s' saved successfully"
-msgstr "%s%s almacenado en caché correctamente"
+msgstr "%s «%s» se ha almacenado en caché correctamente"
 
 #. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:90
-#, fuzzy, c-format
-#| msgid "Caching of %s%s was canceled, due to network error"
+#, c-format
 msgid "%s '%s' saving was stopped, due to network error"
 msgstr ""
-"Se ha cancelado el almacenamiento en caché de %s%s debido a un error de red."
+"Se ha cancelado el almacenamiento en caché de %s «%s» debido a un error de "
+"red."
 
 #. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:100
-#, fuzzy, c-format
-#| msgid "Caching of %s%s was aborted"
+#, c-format
 msgid "%s '%s' saving was aborted"
-msgstr "Se ha cancelado el almacenamiento en caché de %s%s"
+msgstr "Se ha cancelado el almacenamiento en caché de %s «%s»"
 
 #. Translators: %s - content type (e.g. "Playlist")
 #: src/widgets/views/abstract-cachiable.vala:192
-#, fuzzy, c-format
-#| msgid "Cacheing of %s%s started"
+#, c-format
 msgid "%s saving has started"
-msgstr "Se ha iniciado el almacenamiento en caché de %s%s"
+msgstr "Se ha iniciado el almacenamiento en caché de %s"
 
 #. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:230
-#, fuzzy, c-format
-#| msgid "%s%s was removed from cache folder"
+#, c-format
 msgid "%s '%s' was moved from data to cache"
-msgstr "%s%s ha sido eliminado de la carpeta caché"
+msgstr "%s «%s» ha sido eliminado de la carpeta caché"
 
 #. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:240
-#, fuzzy, c-format
-#| msgid "%s%s is removing, please do not close the app"
+#, c-format
 msgid "%s removing has started. Please do not close the app"
-msgstr "%s%s se está eliminando, por favor no cierres la app"
+msgstr "%s se está eliminando. No cierre la aplicación"
 
 #: src/widgets/views/cant-show.vala:38
 #, c-format
@@ -1404,21 +1395,17 @@ msgstr "La lista de reproducción '%s' ha sido eliminada"
 
 #. Translators: %s is female person
 #: src/widgets/views/playlist.vala:248
-#, fuzzy, c-format
-#| msgid "%s updated playlist %s"
-#| msgid_plural "%s updated playlist %s"
+#, c-format
 msgctxt "female person"
 msgid "%s updated playlist %s"
-msgstr "%s lista de reproducción actualizada %s"
+msgstr "%s actualizó la lista de reproducción %s"
 
 #. Translators: %s is male person
 #: src/widgets/views/playlist.vala:252
-#, fuzzy, c-format
-#| msgid "%s updated playlist %s"
-#| msgid_plural "%s updated playlist %s"
+#, c-format
 msgctxt "male person"
 msgid "%s updated playlist %s"
-msgstr "%s lista de reproducción actualizada %s"
+msgstr "%s actualizó la lista de reproducción %s"
 
 #: src/widgets/views/playlist.vala:282
 #, c-format

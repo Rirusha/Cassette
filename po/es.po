@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
 "POT-Creation-Date: 2025-02-10 19:14+0000\n"
-"PO-Revision-Date: 2025-02-13 09:22-0300\n"
+"PO-Revision-Date: 2025-02-18 20:27+0100\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
 "Language: es\n"
@@ -121,7 +121,7 @@ msgstr "Cola de reproducción"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:79
 msgid "Waves view"
-msgstr ""
+msgstr "Vista de ondas"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:83
 msgid "Main preferences"
@@ -190,10 +190,8 @@ msgstr "Autorización"
 
 #. Translators: size of cache dirs
 #: data/ui/cache-deletion-preferences.ui:21
-#, fuzzy
-#| msgid "Cache dirs size:"
 msgid "Dirs size:"
-msgstr "Tamaño de los dirs de caché:"
+msgstr "Tamaño de las carpetas temporales:"
 
 #. Translators: tempprary cache folder
 #: data/ui/cache-deletion-preferences.ui:35
@@ -207,7 +205,7 @@ msgstr "Limpiar"
 #. Translators: temparence cache folder
 #: data/ui/cache-deletion-preferences.ui:109
 msgid "Data"
-msgstr ""
+msgstr "Datos"
 
 #: data/ui/cache-deletion-preferences.ui:159
 msgid "Move to cache"
@@ -361,7 +359,7 @@ msgstr "Mostrar información de la canción"
 
 #: data/ui/player-bar.blp:206
 msgid "Show wave settings"
-msgstr ""
+msgstr "Mostrar configuración de ondas"
 
 #: data/ui/player-bar.blp:216
 msgid "Show playback queue"
@@ -474,7 +472,6 @@ msgstr ""
 "última"
 
 #: data/ui/preferences-dialog.ui:27
-#, fuzzy
 msgctxt "preference dialog"
 msgid "Show 'Playing now' notification"
 msgstr "Mostrar una notificación de «reproduciendo ahora»"
@@ -500,13 +497,10 @@ msgid "Show save mark"
 msgstr "Mostrar marca de guardada"
 
 #: data/ui/preferences-dialog.ui:40
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show a mark showing the current state of the track cache"
 msgctxt "preference dialog"
 msgid "Show a label with information about the caching status of the track"
 msgstr ""
-"Muestra una marca que indica el estado actual de la caché de la canción"
+"Muestra una etiqueta que indica el estado actual de la caché de la canción"
 
 #: data/ui/preferences-dialog.ui:45
 msgctxt "preference dialog"
@@ -514,13 +508,9 @@ msgid "Show cache mark"
 msgstr "Mostrar marca de la caché"
 
 #: data/ui/preferences-dialog.ui:46
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show a mark showing the current state of the track cache"
 msgctxt "preference dialog"
 msgid "Show a mark about saving a track to the cache"
-msgstr ""
-"Muestra una marca que indica el estado actual de la caché de la canción"
+msgstr "Muestra una marca sobre guardar la canción a la caché"
 
 #: data/ui/preferences-dialog.ui:51
 msgctxt "preference dialog"
@@ -528,12 +518,9 @@ msgid "Show replaced mark"
 msgstr "Mostrar marca sustituida"
 
 #: data/ui/preferences-dialog.ui:52
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid "Show a mark that shows that the track has been replaced"
 msgctxt "preference dialog"
 msgid "Show a mark that shows that the track has been replaced"
-msgstr "Mostrar una marca que indique que la vía ha sido sustituida"
+msgstr "Mostrar una marca que indique que se ha sustituido la canción"
 
 #: data/ui/preferences-dialog.ui:59
 msgctxt "preference dialog"
@@ -541,18 +528,13 @@ msgid "Tracks visibility"
 msgstr "Visibilidad de las canciones"
 
 #: data/ui/preferences-dialog.ui:60
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid ""
-#| "Show special tracks in track lists. Filter doesn't work when searching in "
-#| "track list"
 msgctxt "preference dialog"
 msgid ""
 "Show special tracks in track lists. Filter doesn't work when searching in "
 "track list"
 msgstr ""
 "Mostrar canciones especiales en las listas de reproducción. El filtro no "
-"funciona al buscar en la lista de reproducción."
+"funciona al buscar en la lista de reproducción"
 
 #: data/ui/preferences-dialog.ui:63
 msgctxt "preference dialog"
@@ -560,11 +542,6 @@ msgid "Show unavailable content"
 msgstr "Mostrar contenido no disponible"
 
 #: data/ui/preferences-dialog.ui:64
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid ""
-#| "Show tracks that are not available in the service. You can't listen to "
-#| "them"
 msgctxt "preference dialog"
 msgid ""
 "Show tracks that are not available in the service. You can't listen to them"
@@ -605,7 +582,7 @@ msgstr "Activar modo de depuración"
 #: data/ui/preferences-dialog.ui:87
 msgctxt "preference dialog"
 msgid "Enable logging of additional information useful for error detection"
-msgstr ""
+msgstr "Registrar información adicional útil para detectar errores"
 
 #: data/ui/preferences-dialog.ui:94
 msgctxt "preference dialog"
@@ -616,16 +593,18 @@ msgstr "Experimental"
 msgctxt "preference dialog"
 msgid "Parameters that test anything and may be removed in future releases"
 msgstr ""
+"Parámetros que prueban cualquier cosa y que pueden ser eliminados en futuras "
+"versiones"
 
 #: data/ui/preferences-dialog.ui:98
 msgctxt "preference dialog"
 msgid "Use only bottom sheet menus"
-msgstr ""
+msgstr "Usar sólo menús de la hoja inferior"
 
 #: data/ui/preferences-dialog.ui:99
 msgctxt "preference dialog"
 msgid "Test preference for bottom sheet menu"
-msgstr ""
+msgstr "Preferencia de prueba para el menú de la hoja inferior"
 
 #: data/ui/preferences-dialog.ui:108
 msgctxt "preference dialog"
@@ -638,11 +617,6 @@ msgid "Static pages"
 msgstr "Páginas estáticas"
 
 #: data/ui/preferences-dialog.ui:113
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid ""
-#| "Here you can show or hide static pages. They will always be displayed on "
-#| "the left side of the header."
 msgctxt "preference dialog"
 msgid ""
 "Here you can show or hide static pages. They will always be displayed on the "
@@ -657,13 +631,11 @@ msgid "Show 'Main' page"
 msgstr "Mostrar página «Principal»"
 
 #: data/ui/preferences-dialog.ui:121
-#, fuzzy
 msgctxt "preference dialog"
 msgid "Show 'Liked' page"
 msgstr "Mostrar página «Canciones que me gustan»"
 
 #: data/ui/preferences-dialog.ui:126
-#, fuzzy
 msgctxt "preference dialog"
 msgid "Show 'Playlists' page"
 msgstr "Mostrar página «Listas de reproducción»"
@@ -679,11 +651,6 @@ msgid "Cache managing"
 msgstr "Gestiónar la caché"
 
 #: data/ui/preferences-dialog.ui:143
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid ""
-#| "Here you can see application memory usage, delete all cache from temp "
-#| "folder and control downloading cache to disk"
 msgctxt "preference dialog"
 msgid ""
 "Here you can see application memory usage, delete all cache from cache "
@@ -698,13 +665,6 @@ msgid "Cache content"
 msgstr "Contenido de la caché"
 
 #: data/ui/preferences-dialog.ui:147
-#, fuzzy
-#| msgctxt "preference window"
-#| msgid ""
-#| "If enabled, the application will cache all content in /var/tmp/cassette "
-#| "for better performance, otherwise, the application will load content only "
-#| "when caching objects (such as playlists or albums). Disabling the "
-#| "parameter does not delete already downloaded content"
 msgctxt "preference dialog"
 msgid ""
 "For better performance. Over time, it starts to take up a lot of space. So "
@@ -713,21 +673,20 @@ msgid ""
 "load content only when caching objects (such as playlists or albums). "
 "Disabling the parameter does not delete already downloaded content"
 msgstr ""
-"Si se activa, la aplicación almacenará en caché todo el contenido en /var/"
-"tmp/cassette para mejorar el rendimiento; de lo contrario, la aplicación "
-"cargará el contenido sólo cuando almacene en caché objetos (como listas de "
-"reproducción o álbumes). La desactivación del parámetro no elimina el "
-"contenido ya descargado."
+"Para un mejor rendimiento. Con el tiempo, empieza a ocupar mucho espacio. "
+"Hasta ahora, se requiere limpieza manual. Si está activado, la aplicación "
+"almacenará en caché todo el contenido en la carpeta de caché para obtener un "
+"mejor rendimiento; de lo contrario, la aplicación cargará contenido solo "
+"cuando almacene en caché objetos (como listas de reproducción o álbumes). "
+"Desactivar el parámetro no elimina el contenido ya descargado"
 
 #: data/ui/save-stack.ui:25
 msgid "Content saving…"
 msgstr "Ahorro de contenidos…"
 
 #: data/ui/save-stack.ui:42
-#, fuzzy
-#| msgid "Content saved"
 msgid "Content cached"
-msgstr "Contenido guardado"
+msgstr "Contenido en la caché"
 
 #: data/ui/save-stack.ui:56
 msgid "Content saved"
@@ -735,7 +694,7 @@ msgstr "Contenido guardado"
 
 #: data/ui/stations-view.blp:22
 msgid "Stations dashboard"
-msgstr ""
+msgstr "Panel de emisoras"
 
 #: data/ui/stations-view.blp:58
 msgid "Searching for station…"
@@ -824,10 +783,8 @@ msgid "By language…"
 msgstr "Por lenguaje…"
 
 #: data/ui/wave-settings.blp:93
-#, fuzzy
-#| msgid "Can't save image %s"
 msgid "Can't get wave settings"
-msgstr "No se puede guardar la imagen %s"
+msgstr "No se puede obtener la configuración de onda"
 
 #: data/ui/window.blp:57 src/window.vala:253
 msgid "Reconnect"
@@ -1100,10 +1057,8 @@ msgstr "Listas de reproducción «%s»"
 
 #: src/widgets/buttons/menu/playlist-options-button.vala:54
 #: src/widgets/buttons/menu/playlist-options-button.vala:67
-#, fuzzy
-#| msgid "View your playlists"
 msgid "My Vibe by playlist"
-msgstr "Ver sus listas de reproducción"
+msgstr "Mis vibras por listas de reproducción"
 
 #: src/widgets/buttons/menu/playlist-options-button.vala:55
 #: src/widgets/buttons/menu/playlist-options-button.vala:77
@@ -1152,10 +1107,8 @@ msgstr "Sobre Cassette"
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:33
 #: src/widgets/buttons/menu/track-queue-options-button.vala:67
 #: src/widgets/buttons/menu/track-queue-options-button.vala:88
-#, fuzzy
-#| msgid "My wave on track"
 msgid "My Vibe by track"
-msgstr "Mi ola en la canción"
+msgstr "Mis vibras por canción"
 
 #: src/widgets/buttons/menu/track-options-button.vala:79
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:34
@@ -1197,7 +1150,7 @@ msgstr "Control de volumen"
 
 #: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Unmute"
-msgstr ""
+msgstr "Quitar silencio"
 
 #: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Mute"
@@ -1210,18 +1163,18 @@ msgstr "Álbum"
 
 #. Translators: n track from n tracks saved
 #: src/widgets/cache-indicator/job-info-badge.vala:78
-#, fuzzy, c-format
+#, c-format
 msgid "%d / %d saved%s"
 msgid_plural "%d / %d saved%s"
 msgstr[0] "%d / %d guardado%s"
-msgstr[1] "%d / %d guardado%s"
+msgstr[1] "%d / %d guardados%s"
 
 #: src/widgets/cache-indicator/job-info-badge.vala:85
 #, c-format
 msgid "%d track saving now"
 msgid_plural "%d tracks saving now"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Guardando %d canción ahora"
+msgstr[1] "Guardando %d canciones ahora"
 
 #: src/widgets/info-marks.vala:42
 #, c-format
@@ -1249,21 +1202,19 @@ msgstr "¿Mover archivos guardados?"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:91
 #: src/widgets/preferences/preferences-dialog.vala:136
-#, fuzzy
-#| msgid ""
-#| "All temporary cache will be deleted. This doesn't affect on saved "
-#| "playlists or albums"
 msgid ""
 "All cache will be deleted. This doesn't affect on saved playlists or albums"
 msgstr ""
-"Se borrará toda la caché temporal. Esto no afecta a las listas de "
-"reproducción o álbumes guardados."
+"Se borrará toda la caché. Esto no afecta a las listas de reproducción o "
+"álbumes guardados."
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:92
 msgid ""
 "All saved playlists and albums will be moved to cache files. This could take "
 "a while."
 msgstr ""
+"Todas las listas de reproducción y álbumes serán movidos a la caché. Esto "
+"puede tomar un tiempo"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Deleting…"
@@ -1283,9 +1234,9 @@ msgid "%s saving…"
 msgstr "%s guardando…"
 
 #: src/widgets/save-stack.vala:77
-#, fuzzy, c-format
+#, c-format
 msgid "%s cached"
-msgstr "Limpiar cola de reproducción"
+msgstr "%s en la caché"
 
 #: src/widgets/save-stack.vala:78
 #, c-format
@@ -1313,16 +1264,15 @@ msgstr "Lista de canciones"
 
 #: src/widgets/sidebar/childs/track-info.vala:69
 msgid "Your music track"
-msgstr ""
+msgstr "Su pista de música"
 
 #: src/widgets/sidebar/childs/track-info.vala:85
-#, fuzzy
 msgid "Music track"
-msgstr "Canciones que no te gustaron"
+msgstr "Pista de música"
 
 #: src/widgets/sidebar/childs/wave-settings.vala:40
 msgid "Wave settings"
-msgstr ""
+msgstr "Configuración de onda"
 
 #: src/widgets/track-rows/base.vala:80 src/widgets/track-rows/default.vala:101
 msgid "Track is not available"

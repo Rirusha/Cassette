@@ -2,7 +2,7 @@ project(
   'cassette',
   ['c', 'vala'],
   version: '0.2.0',
-  meson_version: '>= 0.62.0',
+  meson_version: '>= 1.0.0',
   license: 'GPL-3.0-or-later',
 )
 

@@ -141,6 +141,27 @@ public class Cassette.StationsView : BaseView {
         }
 
         show_ready ();
+
+        //  Magicaly fix it https://t.me/RiruAndFriends/49936
+        Idle.add_once (() => {
+            dashboard_flow_box.homogeneous = false;
+            genre_flow_box.homogeneous = false;
+            mood_flow_box.homogeneous = false;
+            activity_flow_box.homogeneous = false;
+            epoch_flow_box.homogeneous = false;
+            other_flow_box.homogeneous = false;
+            search_flow_box.homogeneous = false;
+        });
+
+        Idle.add_once (() => {
+            dashboard_flow_box.homogeneous = true;
+            genre_flow_box.homogeneous = true;
+            mood_flow_box.homogeneous = true;
+            activity_flow_box.homogeneous = true;
+            epoch_flow_box.homogeneous = true;
+            other_flow_box.homogeneous = true;
+            search_flow_box.homogeneous = true;
+        });
     }
 
     public async override int try_load_from_web () {

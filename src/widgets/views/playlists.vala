@@ -114,6 +114,17 @@ namespace Cassette {
             }
 
             show_ready ();
+
+            //  Magicaly fix it https://t.me/RiruAndFriends/49936
+            Idle.add_once (() => {
+                flow_box.homogeneous = false;
+                likes_flow_box.homogeneous = false;
+            });
+
+            Idle.add_once (() => {
+                flow_box.homogeneous = true;
+                likes_flow_box.homogeneous = true;
+            });
         }
 
         public async override void first_show () {

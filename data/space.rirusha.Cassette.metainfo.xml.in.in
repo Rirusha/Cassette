@@ -84,7 +84,12 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="0.2.0" date="2024-01-28">
+    <release version="0.2.1" date="2025-02-25">
+      <description>
+        <p>Fix bug in station page and playlists page in GNOME 48</p>
+      </description>
+    </release>
+    <release version="0.2.0" date="2024-07-10">
       <description>
         <p>A release dedicated to My Vibe</p>
         <ul>

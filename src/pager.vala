@@ -266,7 +266,7 @@ namespace Cassette {
                 add_page ({
                     "main",
                     _("Main"),
-                    "go-home-symbolic",
+                    "user-home-symbolic",
                     typeof (MainView).name ()
                 });
             }

@@ -1,0 +1,1317 @@
+# Georgian translation for cassette.
+# Copyright (C) 2025 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+# Ekaterine Papava <papava.e@gtu.ge>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2025-03-10 11:23+0000\n"
+"PO-Revision-Date: 2025-03-20 04:05+0100\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
+"Language-Team: Georgian <ka@li.org>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:24
+msgid "Cassette"
+msgstr "კასეტა"
+
+#: data/space.rirusha.Cassette.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME"
+msgstr "არაოფიციალური Yandex Music კლიენტი GNOME–სთვის"
+
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:7
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:7
+msgid "yandex;yandex music;yam;music;"
+msgstr "yandex;yandex music;yam;music;იანდექსი;მუსიკა;იანდექსისმუსიკა;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
+msgid "Cassette (Devel)"
+msgstr "Cassette (სატესტო)"
+
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:5
+msgid "Unofficial Yandex Music client for GNOME (Devel build)"
+msgstr "არაოფიციალური Yandex Music-ის კლიენტი GNOME-სთვის (სატეტო აგება)"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "არაოფიციალური Yandex Music-ის კლიენტი"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
+msgid "Features:"
+msgstr "თვისებები:"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
+msgid "Shows which tracks have been replaced and by what"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+msgid "Liked view"
+msgstr "მოწონებულების ხედი"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+msgid "Playlists view"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+msgid "Sync lyrics"
+msgstr "ლირიკის სინქრონიზაცია"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+msgid "Playback queue"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+msgid "Waves view"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+msgid "Main preferences"
+msgstr "მთავარი პარამეტრები"
+
+#: data/ui/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "ანგარიშის ინფორმაცია"
+
+#: data/ui/account-info-dialog.blp:52
+msgid "Open in browser"
+msgstr "ბრაუზერში გახსნა"
+
+#: data/ui/account-info-dialog.blp:61
+msgid "Plus"
+msgstr "პლუსი"
+
+#: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
+#: src/authenticator.vala:52
+msgid "Log out"
+msgstr "სისტემიდან გასვლა"
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:11
+msgid "Usage mode"
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:40
+msgctxt "auth window"
+msgid "Choose usage mode"
+msgstr ""
+
+#: data/ui/begin-view.ui:50
+msgctxt "auth window"
+msgid ""
+"If you select the \"Online mode\", you can access local music by enabling "
+"the display of the corresponding pages in the pages preferences, as well as "
+"log in later when selecting \"Local mode\""
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:75
+msgctxt "auth window"
+msgid "Online mode"
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:85
+msgctxt "auth window"
+msgid "Local mode"
+msgstr ""
+
+#. Translators: "Close" window button label
+#: data/ui/begin-view.ui:97
+msgctxt "auth window"
+msgid "Close"
+msgstr "დახურვა"
+
+#: data/ui/begin-view.ui:112
+msgid "Authorization"
+msgstr "ავტორიზაცია"
+
+#. Translators: size of cache dirs
+#: data/ui/cache-deletion-preferences.ui:21
+msgid "Dirs size:"
+msgstr ""
+
+#. Translators: tempprary cache folder
+#: data/ui/cache-deletion-preferences.ui:35
+msgid "Cache"
+msgstr "კეში"
+
+#: data/ui/cache-deletion-preferences.ui:88
+msgid "Clear"
+msgstr "გასუფთავება"
+
+#. Translators: temparence cache folder
+#: data/ui/cache-deletion-preferences.ui:109
+msgid "Data"
+msgstr "მონაცემები"
+
+#: data/ui/cache-deletion-preferences.ui:159
+msgid "Move to cache"
+msgstr ""
+
+#: data/ui/cache-deletion-preferences.ui:163
+msgid "Move"
+msgstr "გადატანა"
+
+#: data/ui/cache-indicator.blp:35
+msgid "Show all cache jobs"
+msgstr ""
+
+#: data/ui/custom-page-preferences.ui:17
+msgid "Title: "
+msgstr "სათაური; "
+
+#: data/ui/custom-page-preferences.ui:38
+msgid "Icon: "
+msgstr "ხატულა: "
+
+#: data/ui/custom-page-preferences.ui:75
+msgid "Save page"
+msgstr "გვერდის შენახვა"
+
+#: data/ui/custom-page-preferences.ui:92
+msgid "Remove page"
+msgstr "გვერდის წაშლა"
+
+#. Translators: title of preference group
+#: data/ui/custom-pages-preferences.ui:7
+msgctxt "preference window"
+msgid "Custom pages"
+msgstr ""
+
+#. Translators: description of preference group
+#: data/ui/custom-pages-preferences.ui:9
+msgctxt "preference window"
+msgid "Here you can control custom pages."
+msgstr ""
+
+#: data/ui/disliked-tracks-view.ui:23
+#: src/widgets/buttons/menu/primary-menu-button.vala:32
+msgid "Disliked tracks"
+msgstr ""
+
+#: data/ui/header-bar.blp:12
+msgid "Go back"
+msgstr "უკან გადასვლა"
+
+#: data/ui/header-bar.blp:20
+msgid "Refresh"
+msgstr "განახლება"
+
+#: data/ui/header-bar.blp:28
+msgid "Yandex Music search"
+msgstr "ძებნა Yandex Music-ში"
+
+#: data/ui/help-overlay.blp:11
+msgid "Main Actions"
+msgstr "მთავარი ქმედებები"
+
+#: data/ui/help-overlay.blp:14
+msgid "Show Shortcuts"
+msgstr "მალსახმობების ჩვენება"
+
+#: data/ui/help-overlay.blp:19
+msgid "Quit"
+msgstr "გასვლა"
+
+#: data/ui/help-overlay.blp:25
+msgid "Playback Control"
+msgstr "დაკვრის კონტროლი"
+
+#: data/ui/help-overlay.blp:28
+msgid "Play/Pause playback"
+msgstr ""
+
+#: data/ui/help-overlay.blp:33 data/ui/player-bar.blp:87
+msgid "Play previous track"
+msgstr ""
+
+#: data/ui/help-overlay.blp:38 data/ui/player-bar.blp:119
+msgid "Play next track"
+msgstr ""
+
+#: data/ui/help-overlay.blp:43
+msgid "Mute app"
+msgstr ""
+
+#: data/ui/help-overlay.blp:49
+msgid "Queue control"
+msgstr ""
+
+#: data/ui/help-overlay.blp:52 data/ui/player-bar.blp:141
+msgid "Change shuffle mode"
+msgstr "შემთხვევითი რეჟიმის შეცვლა"
+
+#: data/ui/help-overlay.blp:57 data/ui/player-bar.blp:65
+msgid "Change repeat mode"
+msgstr "გამეორების რეჟიმის შეცვლა"
+
+#: data/ui/help-overlay.blp:63
+msgid "Other"
+msgstr "სხვა"
+
+#: data/ui/help-overlay.blp:66
+msgid "Share current track"
+msgstr ""
+
+#: data/ui/help-overlay.blp:71
+msgid "Parse url from clipboard"
+msgstr ""
+
+#: data/ui/info-marks.ui:23
+msgid "Explicit content"
+msgstr ""
+
+#: data/ui/info-marks.ui:32
+msgid "Child content"
+msgstr ""
+
+#: data/ui/main-view.blp:6
+msgid "Page under construction"
+msgstr ""
+
+#: data/ui/main-view.blp:20
+msgid "All stations"
+msgstr ""
+
+#: data/ui/no-plus-dialog.blp:20
+msgid "No Plus Subscription"
+msgstr ""
+
+#: data/ui/no-plus-dialog.blp:21
+msgid ""
+"To avoid problems with Yandex, the online functions of the application are "
+"not available without a Yandex.Plus subscription. Thanks for understanding."
+msgstr ""
+
+#: data/ui/no-plus-dialog.blp:41
+msgid "Get Plus"
+msgstr ""
+
+#: data/ui/player-bar.blp:22
+msgid "Show track info"
+msgstr ""
+
+#: data/ui/player-bar.blp:206
+msgid "Show wave settings"
+msgstr ""
+
+#: data/ui/player-bar.blp:216
+msgid "Show playback queue"
+msgstr ""
+
+#: data/ui/player-bar.blp:229
+msgid "Change volume"
+msgstr ""
+
+#: data/ui/player-queue.blp:5 src/application.vala:272
+msgid "Playing now"
+msgstr "თამაშობთ"
+
+#: data/ui/playlist-choose-dialog.ui:8
+msgid "Choose playlist to add"
+msgstr ""
+
+#: data/ui/playlist-create-button.ui:36
+msgid "Create playlist"
+msgstr "დასაკრავი სიის შექმნა"
+
+#: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
+#: src/widgets/cache-indicator/job-info-badge.vala:43
+#: src/widgets/save-stack.vala:57 src/widgets/views/abstract-cachiable.vala:168
+msgid "Playlist"
+msgstr "დასაკრავი სია"
+
+#: data/ui/playlist-row.ui:40
+msgid "Empty"
+msgstr "ცარიელი"
+
+#: data/ui/playlists-view.ui:23
+msgid "Your playlists"
+msgstr ""
+
+#: data/ui/playlists-view.ui:39
+msgid "Also you liked these playlists"
+msgstr ""
+
+#: data/ui/playlist-view.ui:187
+msgid "Change playlist visibility"
+msgstr ""
+
+#: data/ui/playlist-view.ui:211
+msgid "Add page to header"
+msgstr ""
+
+#. Translators: tooltip of "save" button
+#: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
+#: src/widgets/buttons/menu/track-options-button.vala:83
+#: src/widgets/buttons/menu/track-options-button.vala:108
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
+#: src/widgets/buttons/menu/track-queue-options-button.vala:73
+#: src/widgets/buttons/menu/track-queue-options-button.vala:103
+msgid "Save"
+msgstr "შენახვა"
+
+#. Translators: tooltip of "delete" button
+#: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
+#: src/widgets/preferences/cache-deletion-preferences.vala:97
+#: src/widgets/preferences/preferences-dialog.vala:141
+#: src/widgets/views/playlist.vala:91
+msgid "Delete"
+msgstr "წაშლა"
+
+#. Translators: tooltip of "abort" button
+#: data/ui/playlist-view.ui:276
+msgid "Abort"
+msgstr "შეწყვეტა"
+
+#: data/ui/playlist-view.ui:280
+msgid "Stop"
+msgstr "გაჩერება"
+
+#: data/ui/preferences-dialog.ui:8
+msgctxt "preference dialog"
+msgid "Main"
+msgstr "მთავარი"
+
+#: data/ui/preferences-dialog.ui:12
+msgctxt "preference dialog"
+msgid "General"
+msgstr "ზოგადი"
+
+#: data/ui/preferences-dialog.ui:15
+msgctxt "preference dialog"
+msgid "Enable high quality audio"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:16
+msgctxt "preference dialog"
+msgid ""
+"Attention! If the track was downloaded in low quality, and after the "
+"download is enabled in high quality, the audio will not be reloaded"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:21
+msgctxt "preference dialog"
+msgid "Add track on top of playlist"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:22
+msgctxt "preference dialog"
+msgid "Will the track be added to the playlist as the first or as the last"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:27
+msgctxt "preference dialog"
+msgid "Show 'Playing now' notification"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:28
+msgctxt "preference dialog"
+msgid "Show a notification when switching a track"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:35
+msgctxt "preference dialog"
+msgid "Show additional marks"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:36
+msgctxt "preference dialog"
+msgid "Additional marks display additional information about the track"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:39
+msgctxt "preference dialog"
+msgid "Show save mark"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:40
+msgctxt "preference dialog"
+msgid "Show a label with information about the caching status of the track"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:45
+msgctxt "preference dialog"
+msgid "Show cache mark"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:46
+msgctxt "preference dialog"
+msgid "Show a mark about saving a track to the cache"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:51
+msgctxt "preference dialog"
+msgid "Show replaced mark"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:52
+msgctxt "preference dialog"
+msgid "Show a mark that shows that the track has been replaced"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:59
+msgctxt "preference dialog"
+msgid "Tracks visibility"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:60
+msgctxt "preference dialog"
+msgid ""
+"Show special tracks in track lists. Filter doesn't work when searching in "
+"track list"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:63
+msgctxt "preference dialog"
+msgid "Show unavailable content"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:64
+msgctxt "preference dialog"
+msgid ""
+"Show tracks that are not available in the service. You can't listen to them"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:69
+msgctxt "preference dialog"
+msgid "Show content suitable for children"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:70
+msgctxt "preference dialog"
+msgid "Show content that is specific to children"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:75
+msgctxt "preference dialog"
+msgid "Show explicit content"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:76
+msgctxt "preference dialog"
+msgid "Show content that has age restrictions"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:83
+msgctxt "preference dialog"
+msgid "Other"
+msgstr "სხვა"
+
+#: data/ui/preferences-dialog.ui:86
+msgctxt "preference dialog"
+msgid "Enable Debug-Mode"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:87
+msgctxt "preference dialog"
+msgid "Enable logging of additional information useful for error detection"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:94
+msgctxt "preference dialog"
+msgid "Experimental"
+msgstr "ექსპერიმენტული"
+
+#: data/ui/preferences-dialog.ui:95
+msgctxt "preference dialog"
+msgid "Parameters that test anything and may be removed in future releases"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:98
+msgctxt "preference dialog"
+msgid "Use only bottom sheet menus"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:99
+msgctxt "preference dialog"
+msgid "Test preference for bottom sheet menu"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:108
+msgctxt "preference dialog"
+msgid "Pages"
+msgstr "გვერდები"
+
+#: data/ui/preferences-dialog.ui:112
+msgctxt "preference dialog"
+msgid "Static pages"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:113
+msgctxt "preference dialog"
+msgid ""
+"Here you can show or hide static pages. They will always be displayed on the "
+"left side of the header."
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:116
+msgctxt "preference dialog"
+msgid "Show 'Main' page"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:121
+msgctxt "preference dialog"
+msgid "Show 'Liked' page"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:126
+msgctxt "preference dialog"
+msgid "Show 'Playlists' page"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:138
+msgctxt "preference dialog"
+msgid "Cache"
+msgstr "კეში"
+
+#: data/ui/preferences-dialog.ui:142
+msgctxt "preference dialog"
+msgid "Cache managing"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:143
+msgctxt "preference dialog"
+msgid ""
+"Here you can see application memory usage, delete all cache from cache "
+"folder and control downloading cache to disk"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:146
+msgctxt "preference dialog"
+msgid "Cache content"
+msgstr ""
+
+#: data/ui/preferences-dialog.ui:147
+msgctxt "preference dialog"
+msgid ""
+"For better performance. Over time, it starts to take up a lot of space. So "
+"far, manual cleaning is required. If enabled, the application will cache all "
+"content to cache dir for better performance, otherwise, the application will "
+"load content only when caching objects (such as playlists or albums). "
+"Disabling the parameter does not delete already downloaded content"
+msgstr ""
+
+#: data/ui/save-stack.ui:25
+msgid "Content saving…"
+msgstr ""
+
+#: data/ui/save-stack.ui:42
+msgid "Content cached"
+msgstr ""
+
+#: data/ui/save-stack.ui:56
+msgid "Content saved"
+msgstr ""
+
+#: data/ui/stations-view.blp:22
+msgid "Stations dashboard"
+msgstr ""
+
+#: data/ui/stations-view.blp:58
+msgid "Searching for station…"
+msgstr ""
+
+#: data/ui/stations-view.blp:77
+msgid "By genre…"
+msgstr ""
+
+#: data/ui/stations-view.blp:99 data/ui/wave-settings.blp:60
+msgid "By mood…"
+msgstr ""
+
+#: data/ui/stations-view.blp:121 data/ui/wave-settings.blp:25
+msgid "By activity…"
+msgstr ""
+
+#: data/ui/stations-view.blp:143
+msgid "By epoch…"
+msgstr ""
+
+#: data/ui/stations-view.blp:165
+msgid "Other…"
+msgstr "სხვა…"
+
+#: data/ui/stations-view.blp:209
+msgid "No stations with that name were found"
+msgstr ""
+
+#: data/ui/track-info.blp:103
+msgid "Track lyrics"
+msgstr ""
+
+#: data/ui/track-info.blp:117
+msgid "Authors"
+msgstr "ავტორები"
+
+#: data/ui/track-info.blp:135
+msgid "Source"
+msgstr "წყარო"
+
+#: data/ui/track-info.blp:158
+msgid "Similar tracks"
+msgstr ""
+
+#. Translators: placeholder of "search" entry. Local track search (inside of track list)
+#: data/ui/track-list.ui:21
+msgid "Search track"
+msgstr ""
+
+#. Translators: part of sort by <name, duration etc>
+#: data/ui/track-list.ui:30
+msgid "Sort by"
+msgstr "დალაგება"
+
+#: data/ui/track-list.ui:77
+msgid "No tracks to display"
+msgstr ""
+
+#: data/ui/track-list.ui:88
+msgid "name"
+msgstr "სახელი"
+
+#: data/ui/track-list.ui:92
+msgid "artist"
+msgstr "შემსრულებელი"
+
+#: data/ui/track-list.ui:96
+msgid "album"
+msgstr "ალბომი"
+
+#: data/ui/track-list.ui:100
+msgid "duration"
+msgstr "ხანგრძლივობა"
+
+#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:38
+msgid "Loading…"
+msgstr "ჩატვირთვა…"
+
+#: data/ui/wave-settings.blp:42
+msgid "By diversity…"
+msgstr ""
+
+#: data/ui/wave-settings.blp:78
+msgid "By language…"
+msgstr ""
+
+#: data/ui/wave-settings.blp:93
+msgid "Can't get wave settings"
+msgstr ""
+
+#: data/ui/window.blp:57 src/window.vala:253
+msgid "Reconnect"
+msgstr "თავიდან დაკავშირება"
+
+#: data/ui/window.blp:58 src/application.vala:152
+msgid "Connection problems"
+msgstr ""
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/about.vala:60
+msgid "translator-credits"
+msgstr "თემური დოღონაძე"
+
+#: src/about.vala:68
+msgid "Telegram channel"
+msgstr ""
+
+#: src/about.vala:69
+msgid "Financial support (Tinkoff)"
+msgstr ""
+
+#: src/about.vala:70
+msgid "Financial support (Boosty)"
+msgstr ""
+
+#. Please keep alphabetical
+#: src/about.vala:73
+msgid "Sponsors"
+msgstr "სპონსორები"
+
+#: src/application.vala:63
+msgid "Print version information and exit"
+msgstr "ვერსიის ჩვენება და გასვლა"
+
+#: src/application.vala:146
+msgid "Connection restored"
+msgstr ""
+
+#: src/application.vala:274
+msgid "Previous"
+msgstr "წინა"
+
+#: src/application.vala:275
+msgid "Next"
+msgstr "შემდეგი"
+
+#: src/application.vala:358
+msgid "Current track can not be copied to the clipboard"
+msgstr ""
+
+#: src/application.vala:372 src/application.vala:379 src/application.vala:436
+msgid "Can't parse clipboard content"
+msgstr ""
+
+#: src/application.vala:390
+msgid "Users view not implemented yet"
+msgstr ""
+
+#: src/application.vala:406 src/application.vala:420
+msgid "Albums view not implemented yet"
+msgstr ""
+
+#: src/authenticator.vala:47
+msgid "Log out?"
+msgstr ""
+
+#: src/authenticator.vala:48
+msgid "You will need to log in again to use the app"
+msgstr ""
+
+#. Translators: cancel of deleting playlist
+#: src/authenticator.vala:51
+#: src/widgets/preferences/cache-deletion-preferences.vala:96
+#: src/widgets/preferences/preferences-dialog.vala:140
+#: src/widgets/views/playlist.vala:90
+msgid "Cancel"
+msgstr "გაუქმება"
+
+#: src/authenticator.vala:98
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
+msgid "Moving…"
+msgstr ""
+
+#. Translators: Playlist with liked tracks
+#: src/client/api/objects/playlist/playlist.vala:50
+#: src/client/api/objects/playlist/playlist.vala:100 src/pager.vala:277
+msgid "Liked"
+msgstr ""
+
+#. Translators: Playlist that updates every day
+#: src/client/api/objects/playlist/playlist.vala:54
+msgid "Daily"
+msgstr "დღიურად"
+
+#. Translators: Unknown playlist
+#: src/client/api/objects/playlist/playlist.vala:58
+msgid "Unknown"
+msgstr "უცნობი"
+
+#: src/client/cachier/storager.vala:125
+#, c-format
+msgid "Database was initialized, loc - %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:802
+#, c-format
+msgid "Can't save object %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:819
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "ბაიტი"
+
+#: src/client/cachier/storager.vala:822
+msgid "Kilobyte"
+msgid_plural "Kilobytes"
+msgstr[0] "კილობაიტი"
+
+#: src/client/cachier/storager.vala:825
+msgid "Megabyte"
+msgid_plural "Megabytes"
+msgstr[0] "მეგაბაიტი"
+
+#: src/client/cachier/storager.vala:828
+msgid "Gigabyte"
+msgid_plural "Gigabytes"
+msgstr[0] "გიგაბაიტი"
+
+#: src/client/cachier/storager.vala:831
+msgid "Terabyte"
+msgid_plural "Terabytes"
+msgstr[0] ""
+
+#: src/client/cachier/storager.vala:860
+#, c-format
+msgid "Error while getting cache directory size. Message %s"
+msgstr ""
+
+#: src/client/cachier/storager.vala:895
+#, c-format
+msgid "Error while getting permanent directory size. Message %s"
+msgstr ""
+
+#: src/client/jsoner.vala:358 src/client/jsoner.vala:419
+#: src/client/jsoner.vala:526 src/client/jsoner.vala:550
+#, c-format
+msgid "Wrong type: expected %s, got %s"
+msgstr ""
+
+#: src/client/player/mods/abstract-mode.vala:92
+msgid "Problems with queue"
+msgstr ""
+
+#. Translators: name of new created playlist
+#: src/client/talkers/yam-talker.vala:628
+msgid "New Playlist"
+msgstr "ახალი დასაკრავი სია"
+
+#: src/pager.vala:163
+#, c-format
+msgid "Can't set title \"%s\" to page"
+msgstr ""
+
+#: src/pager.vala:174
+#, c-format
+msgid "Can't set icon with name \"%s\" to page"
+msgstr ""
+
+#: src/pager.vala:200
+msgid "Reached max page count"
+msgstr ""
+
+#: src/pager.vala:206
+#, c-format
+msgid "Page '%s' already added"
+msgstr ""
+
+#: src/pager.vala:268
+msgid "Main"
+msgstr "მთავარი"
+
+#: src/pager.vala:287
+msgid "Playlists"
+msgstr "დასაკრავი სიები"
+
+#: src/pager.vala:312
+#, c-format
+msgid "Can't read pages file. Message: %s"
+msgstr ""
+
+#: src/pager.vala:332
+#, c-format
+msgid "Can't create pages file. Message: %s"
+msgstr ""
+
+#: src/utils.vala:70
+msgid "Not implemented yet"
+msgstr "ჯერ არაა იმპლემენტირებული"
+
+#: src/utils.vala:77
+msgid "Need authorization"
+msgstr ""
+
+#: src/utils.vala:81
+msgid "Need Bookmate subscription"
+msgstr ""
+
+#: src/utils.vala:177 src/utils.vala:193
+msgid "Link copied to clipboard"
+msgstr "ბმული დაკოპირებულია"
+
+#: src/utils.vala:242
+#, c-format
+msgid "Duration: %s h. %s min."
+msgstr ""
+
+#: src/utils.vala:244
+#, c-format
+msgid "Duration: %s min."
+msgstr ""
+
+#: src/utils.vala:358
+msgid "today"
+msgstr "დღეს"
+
+#: src/utils.vala:360
+msgid "yesterday"
+msgstr "გუშინ"
+
+#: src/widgets/buttons/just/dislike-button.vala:38
+msgid "Remove dislike"
+msgstr ""
+
+#: src/widgets/buttons/just/dislike-button.vala:41
+msgid "Set dislike"
+msgstr ""
+
+#: src/widgets/buttons/just/like-button.vala:42
+msgid "Remove like"
+msgstr ""
+
+#: src/widgets/buttons/just/like-button.vala:49
+msgid "Set like"
+msgstr ""
+
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:38
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:41
+msgid "Pause"
+msgstr "შეჩერება"
+
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:45
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:48
+msgid "Play"
+msgstr "დაკვრა"
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:49
+#, c-format
+msgid "Playlist '%s'"
+msgstr ""
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:54
+#: src/widgets/buttons/menu/playlist-options-button.vala:67
+msgid "My Vibe by playlist"
+msgstr ""
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:55
+#: src/widgets/buttons/menu/playlist-options-button.vala:77
+#: src/widgets/buttons/menu/track-options-button.vala:81
+#: src/widgets/buttons/menu/track-options-button.vala:106
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:36
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:47
+#: src/widgets/buttons/menu/track-queue-options-button.vala:70
+#: src/widgets/buttons/menu/track-queue-options-button.vala:100
+msgid "Add to queue"
+msgstr "რიგში ჩამატება"
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:56
+#: src/widgets/buttons/menu/playlist-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:84
+#: src/widgets/buttons/menu/track-options-button.vala:109
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:40
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:51
+#: src/widgets/buttons/menu/track-queue-options-button.vala:74
+#: src/widgets/buttons/menu/track-queue-options-button.vala:104
+msgid "Share"
+msgstr "გაზიარება"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:27
+msgid "Primary menu"
+msgstr "ძირითადი მენიუ"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:33
+msgid "Parse URL from clipboard"
+msgstr ""
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:34
+msgid "Preferences"
+msgstr "მორგება"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:35
+msgid "Keyboard Shortcuts"
+msgstr "კლავიატურის მალსახმობები"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:36
+msgid "About Cassette"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:95
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
+#: src/widgets/buttons/menu/track-queue-options-button.vala:67
+#: src/widgets/buttons/menu/track-queue-options-button.vala:88
+msgid "My Vibe by track"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:79
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
+#: src/widgets/buttons/menu/track-queue-options-button.vala:68
+msgid "Show info"
+msgstr ""
+
+#: src/widgets/buttons/menu/track-options-button.vala:80
+#: src/widgets/buttons/menu/track-options-button.vala:105
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
+#: src/widgets/buttons/menu/track-queue-options-button.vala:69
+#: src/widgets/buttons/menu/track-queue-options-button.vala:99
+msgid "Play next"
+msgstr "შემდეგის დაკვრა"
+
+#: src/widgets/buttons/menu/track-options-button.vala:82
+#: src/widgets/buttons/menu/track-options-button.vala:107
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
+#: src/widgets/buttons/menu/track-queue-options-button.vala:71
+#: src/widgets/buttons/menu/track-queue-options-button.vala:101
+msgid "Add to playlist"
+msgstr "დასაკრავი სიაში დამატება"
+
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
+msgid "Remove from playlist"
+msgstr "დასაკრავი სიიდან წაშლა"
+
+#: src/widgets/buttons/menu/track-queue-options-button.vala:72
+#: src/widgets/buttons/menu/track-queue-options-button.vala:102
+msgid "Remove from queue"
+msgstr "რიგიდან წაშლა"
+
+#: src/widgets/buttons/menu/volume-button.vala:122
+msgid "Volume control"
+msgstr "ხმის კონტროლი"
+
+#: src/widgets/buttons/menu/volume-button.vala:262
+msgid "Unmute"
+msgstr "დადუმების გამორთვა"
+
+#: src/widgets/buttons/menu/volume-button.vala:262
+msgid "Mute"
+msgstr "დადუმება"
+
+#: src/widgets/cache-indicator/job-info-badge.vala:45
+#: src/widgets/save-stack.vala:53 src/widgets/views/abstract-cachiable.vala:173
+msgid "Album"
+msgstr "ალბომი"
+
+#. Translators: n track from n tracks saved
+#: src/widgets/cache-indicator/job-info-badge.vala:78
+#, c-format
+msgid "%d / %d saved%s"
+msgid_plural "%d / %d saved%s"
+msgstr[0] ""
+
+#: src/widgets/cache-indicator/job-info-badge.vala:85
+#, c-format
+msgid "%d track saving now"
+msgid_plural "%d tracks saving now"
+msgstr[0] ""
+
+#: src/widgets/info-marks.vala:42
+#, c-format
+msgid "Track was replaced. Original version: %s, %s"
+msgstr ""
+
+#: src/widgets/playlist-micro.vala:158 src/widgets/views/playlist.vala:242
+#, c-format
+msgid "Owner: %s"
+msgstr ""
+
+#: src/widgets/playlist-row.vala:86
+#, c-format
+msgid "Track count: %s"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:89
+#: src/widgets/preferences/preferences-dialog.vala:135
+msgid "Delete cache files?"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:90
+msgid "Move saved files?"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:91
+#: src/widgets/preferences/preferences-dialog.vala:136
+msgid ""
+"All cache will be deleted. This doesn't affect on saved playlists or albums"
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:92
+msgid ""
+"All saved playlists and albums will be moved to cache files. This could take "
+"a while."
+msgstr ""
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
+msgid "Deleting…"
+msgstr "წაშლა…"
+
+#: src/widgets/save-stack.vala:55
+msgid "Image"
+msgstr "გამოსახულება"
+
+#: src/widgets/save-stack.vala:59
+msgid "Track"
+msgstr "აუდიობილიკი"
+
+#: src/widgets/save-stack.vala:76
+#, c-format
+msgid "%s saving…"
+msgstr ""
+
+#: src/widgets/save-stack.vala:77
+#, c-format
+msgid "%s cached"
+msgstr ""
+
+#: src/widgets/save-stack.vala:78
+#, c-format
+msgid "%s saved"
+msgstr "%s შენახულია"
+
+#: src/widgets/sidebar/childs/player-queue.vala:67
+#, c-format
+msgid "Playlist \"%s\""
+msgstr ""
+
+#: src/widgets/sidebar/childs/player-queue.vala:71
+#, c-format
+msgid "Album \"%s\""
+msgstr ""
+
+#: src/widgets/sidebar/childs/player-queue.vala:75
+#, c-format
+msgid "By search results \"%s\""
+msgstr ""
+
+#: src/widgets/sidebar/childs/player-queue.vala:79
+msgid "Track list"
+msgstr ""
+
+#: src/widgets/sidebar/childs/track-info.vala:69
+msgid "Your music track"
+msgstr ""
+
+#: src/widgets/sidebar/childs/track-info.vala:85
+msgid "Music track"
+msgstr ""
+
+#: src/widgets/sidebar/childs/wave-settings.vala:40
+msgid "Wave settings"
+msgstr ""
+
+#: src/widgets/track-rows/base.vala:80 src/widgets/track-rows/default.vala:101
+msgid "Track is not available"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:79
+#, c-format
+msgid "%s '%s' saved successfully"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:90
+#, c-format
+msgid "%s '%s' saving was stopped, due to network error"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:100
+#, c-format
+msgid "%s '%s' saving was aborted"
+msgstr ""
+
+#. Translators: %s - content type (e.g. "Playlist")
+#: src/widgets/views/abstract-cachiable.vala:192
+#, c-format
+msgid "%s saving has started"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:230
+#, c-format
+msgid "%s '%s' was moved from data to cache"
+msgstr ""
+
+#. Translators: first %s - content type (Playlist), second - name
+#: src/widgets/views/abstract-cachiable.vala:240
+#, c-format
+msgid "%s removing has started. Please do not close the app"
+msgstr ""
+
+#: src/widgets/views/cant-show.vala:38
+#, c-format
+msgid "Error %d"
+msgstr ""
+
+#: src/widgets/views/cant-show.vala:42
+msgid "Can't load page"
+msgstr ""
+
+#: src/widgets/views/cant-show.vala:45
+msgid "Can't find desired content"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:85
+msgid "Delete playlist?"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:86
+#, c-format
+msgid "Playlist '%s' will be permanently deleted."
+msgstr ""
+
+#: src/widgets/views/playlist.vala:105
+#, c-format
+msgid "Playlist '%s' was deleted"
+msgstr ""
+
+#. Translators: %s is female person
+#: src/widgets/views/playlist.vala:248
+#, c-format
+msgctxt "female person"
+msgid "%s updated playlist %s"
+msgstr ""
+
+#. Translators: %s is male person
+#: src/widgets/views/playlist.vala:252
+#, c-format
+msgctxt "male person"
+msgid "%s updated playlist %s"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:282
+#, c-format
+msgid "Can't change visibility of '%s'"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:288
+#, c-format
+msgid "Playlist '%s' is public now"
+msgstr ""
+
+#: src/widgets/views/playlist.vala:291
+#, c-format
+msgid "Playlist '%s' is private now"
+msgstr ""
+
+#: src/window.vala:236
+#, c-format
+msgid "Window info message: %s"
+msgstr ""

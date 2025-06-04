@@ -35,11 +35,10 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
      */
     public int image_widget_size {
         get {
-            return real_image.width_request == real_image.height_request ? real_image.height_request : -1;
+            return real_image.pixel_size;
         }
         set {
-            real_image.width_request = value;
-            real_image.height_request = value;
+            real_image.pixel_size = value;
         }
     }
 

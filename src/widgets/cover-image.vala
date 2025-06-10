@@ -24,7 +24,9 @@ using Gee;
 public sealed class Cassette.CoverImage : Gtk.Frame {
 
     [GtkChild]
-    unowned Gtk.Image real_image;
+    unowned Gtk.Image placeholder_image;
+    [GtkChild]
+    unowned Gtk.Stack stack;
 
     public CoverSize cover_size { get; set; default = CoverSize.BIG; }
 
@@ -33,25 +35,20 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
     /**
      * Easy way to set both width and height of the cover widget.
      */
-    public int image_widget_size {
-        get {
-            return real_image.pixel_size;
-        }
-        set {
-            real_image.pixel_size = value;
-        }
-    }
+    public int image_widget_size { get; set; }
 
     construct {
         notify["cover-size"].connect (() => {
             switch (cover_size) {
                 case CoverSize.SMALL:
-                    real_image.icon_size = Gtk.IconSize.NORMAL;
+                    placeholder_image.icon_size = Gtk.IconSize.NORMAL;
+                    image_widget_size = 60;
                     add_css_class ("small-border-radius");
                     break;
 
                 case CoverSize.BIG:
-                    real_image.icon_size = Gtk.IconSize.LARGE;
+                    placeholder_image.icon_size = Gtk.IconSize.LARGE;
+                    image_widget_size = 200;
                     remove_css_class ("small-border-radius");
                     break;
 
@@ -62,13 +59,11 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
     }
 
     public void init_content (HasCover yam_object) {
-        real_image.icon_name = "audio-x-generic-symbolic";
         this.yam_object = yam_object;
         add_css_class ("card");
     }
 
     public void clear () {
-        real_image.icon_name = null;
         yam_object = null;
         remove_css_class ("card");
     }
@@ -81,7 +76,31 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
         pixbuf_buffer = yield Cachier.get_image (yam_object, (int) cover_size);
 
         if (pixbuf_buffer != null) {
+            var real_image = new Gtk.Image ();
             real_image.set_from_paintable (Gdk.Texture.for_pixbuf (pixbuf_buffer));
+
+            bind_property (
+                "image-widget-size",
+                real_image,
+                "width-request",
+                GLib.BindingFlags.SYNC_CREATE
+            );
+            bind_property (
+                "image-widget-size",
+                real_image,
+                "height-request",
+                GLib.BindingFlags.SYNC_CREATE
+            );
+            bind_property (
+                "image-widget-size",
+                real_image,
+                "pixel-size",
+                GLib.BindingFlags.SYNC_CREATE
+            );
+
+            stack.add_child (real_image);
+
+            stack.visible_child = real_image;
         }
     }
 }

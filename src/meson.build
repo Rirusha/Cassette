@@ -2,7 +2,7 @@ vapi_sources = files(
   'config.vapi',
 )
 
-cassette_gui_sources = files(
+vala_sources = files(
   'widgets/action-cards/custom.vala',
   'widgets/action-cards/station.vala',
 
@@ -111,38 +111,18 @@ cassette_gui_sources = files(
   'utils.vala',
 )
 
-subdir('client')
-
-cassette_sources = [
+sources = [
   vapi_sources,
+  vala_sources,
   blueprints,
-  cassette_gui_sources,
-  cassette_client_sources,
-  resources
+  resources,
 ]
-
-cassette_vala_args = [
-  '--target-glib', '2.76',
-  '--vapidir', meson.current_source_dir()
-]
-
-cassette_c_args = [
-  '-include', 'config.h',
-]
-
-# GCC14 COMPILE ERROR
-cassette_c_args += [
-  '-Wno-int-conversion',
-]
-# END GCC14
 
 executable(
   meson.project_name(),
-  cassette_sources,
+  sources,
   include_directories: config_h_dir,
-  vala_args: cassette_vala_args,
-  c_args: cassette_c_args,
   link_args: ['-lm'],
-  dependencies: cassette_dependencies,
+  dependencies: dependencies,
   install: true,
 )

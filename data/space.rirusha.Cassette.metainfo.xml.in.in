@@ -35,7 +35,7 @@
       Cassette is an unofficial client and is not associated with or endorsed by Yandex.
     </p>
   </description>
-  <launchable type="desktop-id">@APP_ID_DYN@.desktop</launchable>
+  <launchable type="desktop-id">@APP_ID_RELEVANT@.desktop</launchable>
   <developer id="space.rirusha">
     <name>Vladimir Vaskov</name>
     <name xml:lang="ru">Владимир Васьков</name>

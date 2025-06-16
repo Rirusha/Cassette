@@ -98,7 +98,7 @@ namespace Cassette {
 
         public Application () {
             Object (
-                application_id: Config.APP_ID_DYN,
+                application_id: Config.APP_ID_RELEVANT,
                 resource_base_path: "/space/rirusha/Cassette/",
                 flags: ApplicationFlags.DEFAULT_FLAGS | ApplicationFlags.HANDLES_OPEN
             );
@@ -274,7 +274,7 @@ namespace Cassette {
             ntf.add_button (_("Previous"), "app.prev-force");
             ntf.add_button (_("Next"), "app.next");
 
-            ntf.set_icon (new ThemedIcon ("%s-symbolic".printf (Config.APP_ID_DYN)));
+            ntf.set_icon (new ThemedIcon ("%s-symbolic".printf (Config.APP_ID_RELEVANT)));
 
             if (now_playing_t != 0) {
                 Source.remove (now_playing_t);

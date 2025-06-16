@@ -61,7 +61,7 @@ config_h_dir = include_directories('.')
 libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 gee_dep = dependency('gee-0.8')
 gio_dep = dependency('gio-2.0', version: '>= ' + glib_min_version)
-libtape_dep = dependency('libtape-0.2')
+libtape_dep = dependency('libtape-0.2', fallback : ['libtape', 'lib_dep'])
 
 dependencies = [
   libadwaita_dep,

@@ -1,0 +1,4 @@
+[wrap-git]
+directory=libtape
+url=https://gitlab.gnome.org/Rirusha/libtape.git
+revision=main

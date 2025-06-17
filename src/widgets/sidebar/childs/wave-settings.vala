@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client.YaMAPI;
+using Tape.YaMAPI;
 using Gee;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/wave-settings.ui")]

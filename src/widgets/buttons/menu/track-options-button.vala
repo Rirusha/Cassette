@@ -16,9 +16,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
+
 public class Cassette.TrackOptionsButton: CustomMenuButton {
 
-    public Client.YaMAPI.Track track_info { get; set; }
+    public YaMAPI.Track track_info { get; set; }
 
     construct {
         SimpleAction share_action = new SimpleAction ("share", null);
@@ -59,7 +61,7 @@ public class Cassette.TrackOptionsButton: CustomMenuButton {
 
         SimpleAction save_action = new SimpleAction ("save", null);
         save_action.activate.connect (() => {
-            Client.Cachier.save_track.begin (track_info);
+            Cassette.root.cachier.save_track.begin (track_info);
         });
         actions.add_action (save_action);
     }
@@ -87,13 +89,13 @@ public class Cassette.TrackOptionsButton: CustomMenuButton {
 
     protected override Gtk.Widget[] get_dialog_menu_widgets () {
         return {
-            new ActionCardStation (new Client.YaMAPI.Rotor.StationInfo () {
-                id = new Client.YaMAPI.Rotor.Id () {
+            new ActionCardStation (new YaMAPI.Rotor.StationInfo () {
+                id = new YaMAPI.Rotor.Id () {
                     type_ = "track",
                     tag = track_info.id
                 },
                 name = _("My Vibe by track"),
-                icon = new Client.YaMAPI.Icon ()
+                icon = new YaMAPI.Icon ()
             }) {
                 is_shrinked = true
             }

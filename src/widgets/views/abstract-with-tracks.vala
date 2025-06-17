@@ -17,13 +17,14 @@
  */
 
 
-using Cassette.Client;
+using Tape;
+using Tape.YaMAPI;
 
 
 namespace Cassette {
     public abstract class HasTracksView : BaseView {
 
-        protected HasTrackList object_info { get; set; }
+        protected HasTracks object_info { get; set; }
         protected TrackList track_list { get; set; }
 
         ~HasTracksView () {
@@ -40,7 +41,7 @@ namespace Cassette {
                 track_list,
                 get_context_type (object_info),
                 object_info.oid,
-                player.shuffle_mode == Player.ShuffleMode.ON ? Random.int_range (0, track_list.size) : 0,
+                player.shuffle_mode == ShuffleMode.ON ? Random.int_range (0, track_list.size) : 0,
                 get_context_description (object_info)
             );
         }

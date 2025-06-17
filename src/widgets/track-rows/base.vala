@@ -16,7 +16,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
+using Tape.YaMAPI;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-base-content.ui")]
 public class Cassette.TrackBase: TrackRow {
@@ -28,7 +29,7 @@ public class Cassette.TrackBase: TrackRow {
     [GtkChild]
     unowned TrackOptionsButton track_options_button;
 
-    public HasTrackList yam_object { get; construct; }
+    public HasTracks yam_object { get; construct; }
 
     protected override PlayMarkTrack play_mark_track {
         owned get {
@@ -36,7 +37,7 @@ public class Cassette.TrackBase: TrackRow {
         }
     }
 
-    public TrackBase (YaMAPI.Track track_info, HasTrackList yam_object) {
+    public TrackBase (YaMAPI.Track track_info, HasTracks yam_object) {
         Object (track_info: track_info, yam_object: yam_object);
     }
 
@@ -88,7 +89,7 @@ public class Cassette.TrackBase: TrackRow {
         var track_list = yam_object.get_filtered_track_list (
             Cassette.settings.get_boolean ("explicit-visible"),
             Cassette.settings.get_boolean ("child-visible"),
-            track_info.id
+            { track_info.id }
         );
 
         player.start_track_list (

@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -102,14 +102,14 @@ namespace Cassette {
             loading_win.present ();
             spinner.start ();
 
-            yield storager.clear_user (true, false);
+            yield storager.clear_user_data (true, false);
         }
 
         public void log_in () {
             if (application.application_state != ApplicationState.BEGIN) {
                 init_client_async.begin ();
             } else {
-                start_auth ();
+                start_auth.begin ();
             }
         }
 
@@ -117,25 +117,19 @@ namespace Cassette {
             bool should_auth = false;
             bool cant_use = false;
 
-            threader.add (() => {
-                try {
-                    yam_talker.init_if_not ();
+            try {
+                yield yam_talker.init_if_not ();
 
-                } catch (BadStatusCodeError e) {
-                    warning ("Bad status code while trying init client. Error message: %s".printf (e.message));
+            } catch (ApiBase.BadStatusCodeError e) {
+                warning ("Bad status code while trying init client. Error message: %s".printf (e.message));
 
-                    should_auth = true;
+                should_auth = true;
 
-                } catch (CantUseError e) {
-                    warning ("User hasn't Plus Subscription. Error message: %s".printf (e.message));
+            } catch (CantUseError e) {
+                warning ("User hasn't Plus Subscription. Error message: %s".printf (e.message));
 
-                    cant_use = true;
-                }
-
-                Idle.add (init_client_async.callback);
-            });
-
-            yield;
+                cant_use = true;
+            }
 
             if (cant_use) {
                 application.show_no_plus_dialog ();
@@ -143,17 +137,17 @@ namespace Cassette {
             }
 
             if (should_auth) {
-                start_auth ();
+                start_auth.begin ();
 
             } else {
                 success ();
             }
         }
 
-        public void start_auth () {
+        public async void start_auth () {
             application.application_state = ApplicationState.BEGIN;
             if (storager.cookies_file.query_exists ()) {
-                storager.remove_file (storager.cookies_file);
+                yield Tape.Storager.remove_file (storager.cookies_file);
             }
 
             var begin_window = new BeginDialog ();

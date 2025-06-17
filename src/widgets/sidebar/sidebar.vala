@@ -16,7 +16,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
+using Tape.YaMAPI;
 using Gee;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/sidebar.ui")]
@@ -88,7 +89,7 @@ public class Cassette.Sidebar : ShrinkableBin {
     public void show_wave_settings () {
         sidebar_child = null;
 
-        if (player.mode is Player.Flow && player.mode.context_id == "user:onyourwave") {
+        if (player.mode is PlayerFlow && player.mode.context_id == "user:onyourwave") {
             sidebar_child = new WaveSettings ();
         }
     }
@@ -96,7 +97,7 @@ public class Cassette.Sidebar : ShrinkableBin {
     public void show_queue () {
         sidebar_child = null;
 
-        if (player.mode is Player.TrackList) {
+        if (player.mode is PlayerTrackList) {
             sidebar_child = new PlayerQueue ();
         }
     }

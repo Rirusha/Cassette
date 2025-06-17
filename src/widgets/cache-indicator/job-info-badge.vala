@@ -17,80 +17,80 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 namespace Cassette {
     [GtkTemplate (ui = "/space/rirusha/Cassette/ui/job-info-badge.ui")]
     public class JobInfoBadge : Gtk.Grid {
-        [GtkChild]
-        unowned Gtk.Label title_label;
-        [GtkChild]
-        unowned Gtk.ProgressBar progress_bar;
-        [GtkChild]
-        unowned Gtk.Label progress_label;
-        [GtkChild]
-        unowned Gtk.Button abort_button;
+        //  [GtkChild]
+        //  unowned Gtk.Label title_label;
+        //  [GtkChild]
+        //  unowned Gtk.ProgressBar progress_bar;
+        //  [GtkChild]
+        //  unowned Gtk.Label progress_label;
+        //  [GtkChild]
+        //  unowned Gtk.Button abort_button;
 
-        public Cachier.Job job { get; construct; }
+        //  public Cachier.Job job { get; construct; }
 
-        public JobInfoBadge (Cachier.Job job) {
-            Object (job: job);
-        }
+        //  public JobInfoBadge (Cachier.Job job) {
+        //      Object (job: job);
+        //  }
 
-        string get_job_object_type () {
-            switch (job.object_type) {
-                case Cachier.ContentType.PLAYLIST:
-                    return _("Playlist");
-                case Cachier.ContentType.ALBUM:
-                    return _("Album");
-                default:
-                    assert_not_reached ();
-            }
-        }
+        //  string get_job_object_type () {
+        //      switch (job.object_type) {
+        //          case ContentType.PLAYLIST:
+        //              return _("Playlist");
+        //          case ContentType.ALBUM:
+        //              return _("Album");
+        //          default:
+        //              assert_not_reached ();
+        //      }
+        //  }
 
-        construct {
-            title_label.label = "%s '%s'".printf (get_job_object_type (), job.object_title);
+        //  construct {
+        //      title_label.label = "%s '%s'".printf (get_job_object_type (), job.object_title);
 
-            job.track_saving_started.connect (update_info);
-            job.track_saving_ended.connect (update_info);
-            update_info (job.saved_tracks_count, job.total_tracks_count, job.now_saving_tracks_count);
+        //      job.track_saving_started.connect (update_info);
+        //      job.track_saving_ended.connect (update_info);
+        //      update_info (job.saved_tracks_count, job.total_tracks_count, job.now_saving_tracks_count);
 
-            job.cancelled.connect (() => {
-                abort_button.sensitive = false;
-            });
-            abort_button.sensitive = !job.is_cancelled;
+        //      job.cancelled.connect (() => {
+        //          abort_button.sensitive = false;
+        //      });
+        //      abort_button.sensitive = !job.is_cancelled;
 
-            abort_button.clicked.connect (() => {
-                job.abort ();
-                abort_button.sensitive = false;
-            });
+        //      abort_button.clicked.connect (() => {
+        //          job.abort ();
+        //          abort_button.sensitive = false;
+        //      });
 
-            job.job_done.connect (() => {
-                sensitive = false;
-                abort_button.sensitive = false;
-                abort_button.icon_name = "emblem-default-symbolic";
-            });
-        }
+        //      job.job_done.connect (() => {
+        //          sensitive = false;
+        //          abort_button.sensitive = false;
+        //          abort_button.icon_name = "emblem-default-symbolic";
+        //      });
+        //  }
 
-        void update_info (int saved, int total, int now) {
-            // Translators: n track from n tracks saved
-            progress_label.label = ngettext (
-                "%d / %d saved%s",
-                "%d / %d saved%s",
-                saved
-            ).printf (
-                saved,
-                total,
-                (now != 0? ". " + ngettext (
-                    "%d track saving now",
-                    "%d tracks saving now",
-                    now
-                ).printf (
-                    now
-                ) : "")
-            );
+        //  void update_info (int saved, int total, int now) {
+        //      // Translators: n track from n tracks saved
+        //      progress_label.label = ngettext (
+        //          "%d / %d saved%s",
+        //          "%d / %d saved%s",
+        //          saved
+        //      ).printf (
+        //          saved,
+        //          total,
+        //          (now != 0? ". " + ngettext (
+        //              "%d track saving now",
+        //              "%d tracks saving now",
+        //              now
+        //          ).printf (
+        //              now
+        //          ) : "")
+        //      );
 
-            progress_bar.fraction = (double) saved / (double) total;
-        }
+        //      progress_bar.fraction = (double) saved / (double) total;
+        //  }
     }
 }

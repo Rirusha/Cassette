@@ -15,7 +15,8 @@ app_id = 'space.rirusha.Cassette'
 
 add_project_arguments(
   # GCC14 COMPILE ERROR
-  '-Wno-int-conversion',
+  '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+  '-w',
   language: ['c'],
 )
 
@@ -58,16 +59,18 @@ conf.set_quoted('HELP', 'https://t.me/CassetteGNOME_Discussion')
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
-libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 gee_dep = dependency('gee-0.8')
 gio_dep = dependency('gio-2.0', version: '>= ' + glib_min_version)
+libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 libtape_dep = dependency('libtape-0.2', fallback : ['libtape', 'lib_dep'])
+webkit_dep = dependency('webkitgtk-6.0')
 
 dependencies = [
-  libadwaita_dep,
   gee_dep,
   gio_dep,
+  libadwaita_dep,
   libtape_dep,
+  webkit_dep,
 ]
 
 subdir('data')

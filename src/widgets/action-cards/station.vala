@@ -16,6 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/action-card-station.ui")]
 /**
@@ -86,10 +87,10 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         }
     }
 
-    public Client.YaMAPI.Rotor.StationInfo station_info { get; construct; }
+    public YaMAPI.Rotor.StationInfo station_info { get; construct; }
 
     public ActionCardStation (
-        Client.YaMAPI.Rotor.StationInfo station_info
+        YaMAPI.Rotor.StationInfo station_info
     ) {
         Object (
             station_info: station_info
@@ -97,7 +98,7 @@ public class Cassette.ActionCardStation : ActionCardCustom {
     }
 
     public ActionCardStation.shrinked (
-        Client.YaMAPI.Rotor.StationInfo station_info
+        YaMAPI.Rotor.StationInfo station_info
     ) {
         Object (
             station_info: station_info,
@@ -128,7 +129,7 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         }
 
         play_mark_context.triggered_not_playing.connect (() => {
-            player.start_flow (station_info.id.normal);
+            player.start_flow.begin (station_info.id.normal);
         });
 
         play_mark_context.notify["is-current-playing"].connect (() => {

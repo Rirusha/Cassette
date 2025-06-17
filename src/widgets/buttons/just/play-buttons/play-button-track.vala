@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -70,7 +70,7 @@ namespace Cassette {
             }
 
             if (current_track.id == content_id) {
-                if (player.state == Player.State.PLAYING) {
+                if (player.state == PlayerState.PLAYING) {
                     set_playing ();
                     return;
                 }

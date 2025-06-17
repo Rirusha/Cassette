@@ -17,8 +17,8 @@
  */
 
 
-using Cassette.Client;
-
+using Tape;
+using Tape.YaMAPI;
 
 namespace Cassette {
     [GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-default-content.ui")]
@@ -37,7 +37,7 @@ namespace Cassette {
         [GtkChild]
         unowned TrackPlaylistOptionsButton track_playlist_options_button;
 
-        public HasTrackList yam_object { get; construct; }
+        public HasTracks yam_object { get; construct; }
 
         public bool show_dislike_button { get; construct; default = false; }
 
@@ -47,12 +47,12 @@ namespace Cassette {
             }
         }
 
-        public TrackDefault (YaMAPI.Track track_info, HasTrackList yam_object) {
+        public TrackDefault (YaMAPI.Track track_info, HasTracks yam_object) {
             Object (track_info: track_info, yam_object: yam_object);
         }
 
         // ! Не стоит использовать конструктор with_dislike_button со списком, в котором есть пользовательские треки
-        public TrackDefault.with_dislike_button (YaMAPI.Track track_info, HasTrackList yam_object) {
+        public TrackDefault.with_dislike_button (YaMAPI.Track track_info, HasTracks yam_object) {
             Object (track_info: track_info, yam_object: yam_object, show_dislike_button: true);
         }
 
@@ -115,7 +115,7 @@ namespace Cassette {
             var track_list = yam_object.get_filtered_track_list (
                 Cassette.settings.get_boolean ("explicit-visible"),
                 Cassette.settings.get_boolean ("child-visible"),
-                track_info.id
+                { track_info.id }
             );
 
             player.start_track_list (

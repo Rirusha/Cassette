@@ -17,7 +17,8 @@
  */
 
 
-using Cassette.Client;
+using Tape;
+using Tape.YaMAPI;
 
 namespace Cassette {
     public abstract class CachiableView : HasTracksView {
@@ -40,80 +41,80 @@ namespace Cassette {
             }
         }
 
-        Cachier.Job? _job = null;
-        Cachier.Job? job {
-            get {
-                return _job;
-            }
-            set {
-                _job = value;
+        //  Cachier.Job? _job = null;
+        //  Cachier.Job? job {
+        //      get {
+        //          return _job;
+        //      }
+        //      set {
+        //          _job = value;
 
-                if (_job != null) {
-                    _job.action_done.connect (() => {
-                        if (!saving_progress_bar.visible) {
-                            saving_progress_bar.visible = true;
-                        }
-                    });
+        //          if (_job != null) {
+        //              _job.action_done.connect (() => {
+        //                  if (!saving_progress_bar.visible) {
+        //                      saving_progress_bar.visible = true;
+        //                  }
+        //              });
 
-                    _job.cancelled.connect (() => {
-                        download_stack.sensitive = false;
-                    });
+        //              _job.cancelled.connect (() => {
+        //                  download_stack.sensitive = false;
+        //              });
 
-                    download_stack.set_visible_child_name ("abort");
+        //              download_stack.set_visible_child_name ("abort");
 
-                    if (_job.is_cancelled) {
-                        download_stack.sensitive = false;
-                    }
-                    download_stack.sensitive = !_job.is_cancelled;
+        //              if (_job.is_cancelled) {
+        //                  download_stack.sensitive = false;
+        //              }
+        //              download_stack.sensitive = !_job.is_cancelled;
 
-                    _job.track_saving_ended.connect ((saved, total) => {
-                        saving_progress_bar.fraction = (double) saved / (double) total;
-                    });
+        //              _job.track_saving_ended.connect ((saved, total) => {
+        //                  saving_progress_bar.fraction = (double) saved / (double) total;
+        //              });
 
-                    _job.job_done.connect ((obj, status) => {
-                        switch (status) {
-                            case Cachier.JobDoneStatus.SUCCESS:
-                                var content_info = get_content_info (object_info);
-                                // Translators: first %s - content type (Playlist), second - name
-                                if (yell_status) {
-                                    application.show_message (_("%s '%s' saved successfully").printf (
-                                        content_info.content_name,
-                                        content_info.content_title
-                                    ));
-                                }
-                                download_stack.visible_child_name = "delete";
-                                break;
+        //              _job.job_done.connect ((obj, status) => {
+        //                  switch (status) {
+        //                      case Cachier.JobDoneStatus.SUCCESS:
+        //                          var content_info = get_content_info (object_info);
+        //                          // Translators: first %s - content type (Playlist), second - name
+        //                          if (yell_status) {
+        //                              application.show_message (_("%s '%s' saved successfully").printf (
+        //                                  content_info.content_name,
+        //                                  content_info.content_title
+        //                              ));
+        //                          }
+        //                          download_stack.visible_child_name = "delete";
+        //                          break;
 
-                            case Cachier.JobDoneStatus.FAILED:
-                                var content_info = get_content_info (object_info);
-                                // Translators: first %s - content type (Playlist), second - name
-                                application.show_message (_("%s '%s' saving was stopped, due to network error").printf (
-                                    content_info.content_name,
-                                    content_info.content_title
-                                ));
-                                download_stack.visible_child_name = "save";
-                                break;
+        //                      case Cachier.JobDoneStatus.FAILED:
+        //                          var content_info = get_content_info (object_info);
+        //                          // Translators: first %s - content type (Playlist), second - name
+        //                          application.show_message (_("%s '%s' saving was stopped, due to network error").printf (
+        //                              content_info.content_name,
+        //                              content_info.content_title
+        //                          ));
+        //                          download_stack.visible_child_name = "save";
+        //                          break;
 
-                            case Cachier.JobDoneStatus.ABORTED:
-                                var content_info = get_content_info (object_info);
-                                // Translators: first %s - content type (Playlist), second - name
-                                application.show_message (_("%s '%s' saving was aborted").printf (
-                                    content_info.content_name,
-                                    content_info.content_title
-                                ));
-                                download_stack.visible_child_name = "save";
-                                break;
-                        }
+        //                      case Cachier.JobDoneStatus.ABORTED:
+        //                          var content_info = get_content_info (object_info);
+        //                          // Translators: first %s - content type (Playlist), second - name
+        //                          application.show_message (_("%s '%s' saving was aborted").printf (
+        //                              content_info.content_name,
+        //                              content_info.content_title
+        //                          ));
+        //                          download_stack.visible_child_name = "save";
+        //                          break;
+        //                  }
 
-                        download_stack.sensitive = true;
-                        saving_progress_bar.fraction = 0;
-                        saving_progress_bar.visible = false;
+        //                  download_stack.sensitive = true;
+        //                  saving_progress_bar.fraction = 0;
+        //                  saving_progress_bar.visible = false;
 
-                        _job = null;
-                    });
-                }
-            }
-        }
+        //                  _job = null;
+        //              });
+        //          }
+        //      }
+        //  }
 
         bool yell_status = true;
 
@@ -159,7 +160,7 @@ namespace Cassette {
             }
         }
 
-        ContentInfo get_content_info (HasTrackList obj_info) {
+        ContentInfo get_content_info (HasTracks obj_info) {
             string content_name = "";
             string content_title = "";
 
@@ -181,58 +182,58 @@ namespace Cassette {
         }
 
         protected void start_saving (bool yell_status) {
-            download_stack.visible_child_name = "abort";
-            this.yell_status = yell_status;
+            //  download_stack.visible_child_name = "abort";
+            //  this.yell_status = yell_status;
 
-            job = cachier.start_cache (object_info);
+            //  job = cachier.start_cache (object_info);
 
-            if (yell_status) {
-                var content_info = get_content_info (object_info);
-                // Translators: %s - content type (e.g. "Playlist")
-                application.show_message (_("%s saving has started").printf (
-                    content_info.content_name
-                ));
-            }
+            //  if (yell_status) {
+            //      var content_info = get_content_info (object_info);
+            //      // Translators: %s - content type (e.g. "Playlist")
+            //      application.show_message (_("%s saving has started").printf (
+            //          content_info.content_name
+            //      ));
+            //  }
         }
 
         protected virtual void check_cache () {
-            download_stack.sensitive = true;
+            //  download_stack.sensitive = true;
 
-            if (job == null) {
-                job = cachier.find_job (object_info.oid);
+            //  if (job == null) {
+            //      job = cachier.find_job (object_info.oid);
 
-                if (job == null) {
-                    var location = storager.object_cache_location (object_info.get_type (), object_info.oid);
-                    if (!location.is_tmp) {
-                        start_saving (false);
-                    }
-                }
-            }
+            //      if (job == null) {
+            //          var location = storager.object_cache_location (object_info.get_type (), object_info.oid);
+            //          if (!location.is_tmp) {
+            //              start_saving (false);
+            //          }
+            //      }
+            //  }
         }
 
         public virtual void abort_saving () {
-            if (job != null) {
-                job.abort ();
-            }
+            //  if (job != null) {
+            //      job.abort ();
+            //  }
         }
 
         public virtual void uncache_playlist (bool yell_status) {
             download_stack.sensitive = false;
             this.yell_status = yell_status;
 
-            cachier.uncache.begin (object_info, () => {
-                download_stack.visible_child_name = "save";
-                download_stack.sensitive = true;
+            //  cachier.uncache.begin (object_info, () => {
+            //      download_stack.visible_child_name = "save";
+            //      download_stack.sensitive = true;
 
-                if (yell_status) {
-                    var content_info = get_content_info (object_info);
-                    // Translators: first %s - content type (Playlist), second - name
-                    application.show_message (_("%s '%s' was moved from data to cache").printf (
-                        content_info.content_name,
-                        content_info.content_title
-                    ));
-                }
-            });
+            //      if (yell_status) {
+            //          var content_info = get_content_info (object_info);
+            //          // Translators: first %s - content type (Playlist), second - name
+            //          application.show_message (_("%s '%s' was moved from data to cache").printf (
+            //              content_info.content_name,
+            //              content_info.content_title
+            //          ));
+            //      }
+            //  });
 
             if (yell_status) {
                 var content_info = get_content_info (object_info);

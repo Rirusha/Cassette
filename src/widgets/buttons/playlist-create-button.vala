@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -39,13 +39,7 @@ namespace Cassette {
         async void create_playlist_button_clicked_async () {
             sensitive = false;
 
-            threader.add (() => {
-                yam_talker.create_playlist ();
-
-                Idle.add (create_playlist_button_clicked_async.callback);
-            });
-
-            yield;
+            yield yam_talker.create_playlist ();
         }
 
         void application_state_changed (ApplicationState new_state, ApplicationState old_state) {

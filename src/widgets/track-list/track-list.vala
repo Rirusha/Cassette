@@ -17,7 +17,8 @@
  */
 
 
-using Cassette.Client;
+using Tape;
+using Tape.YaMAPI;
 using Gee;
 
 namespace Cassette {
@@ -36,9 +37,9 @@ namespace Cassette {
     protected class TrackRowW : Gtk.FlowBoxChild {
 
         public YaMAPI.Track track_info { get; construct; }
-        public HasTrackList yam_object { get; construct; }
+        public HasTracks yam_object { get; construct; }
 
-        public TrackRowW (YaMAPI.Track track_info, HasTrackList yam_object) {
+        public TrackRowW (YaMAPI.Track track_info, HasTracks yam_object) {
             Object (track_info: track_info, yam_object: yam_object);
         }
 
@@ -60,7 +61,7 @@ namespace Cassette {
 
     protected class TrackRowBase : TrackRowW {
 
-        public TrackRowBase (YaMAPI.Track track_info, HasTrackList yam_object) {
+        public TrackRowBase (YaMAPI.Track track_info, HasTracks yam_object) {
             Object (track_info: track_info, yam_object: yam_object);
         }
 
@@ -71,7 +72,7 @@ namespace Cassette {
 
     protected class TrackRowDis : TrackRowW {
 
-        public TrackRowDis (YaMAPI.Track track_info, HasTrackList yam_object) {
+        public TrackRowDis (YaMAPI.Track track_info, HasTracks yam_object) {
             Object (track_info: track_info, yam_object: yam_object);
         }
 
@@ -531,7 +532,7 @@ namespace Cassette {
             postset_actions ();
         }
 
-        public void set_tracks_base (ArrayList<YaMAPI.Track> track_list, HasTrackList yam_object) {
+        public void set_tracks_base (ArrayList<YaMAPI.Track> track_list, HasTracks yam_object) {
             preset_actions ();
             foreach (var track_info in track_list) {
                 add_row (new TrackRowBase (track_info, yam_object));
@@ -539,7 +540,7 @@ namespace Cassette {
             postset_actions ();
         }
 
-        public void set_tracks_disliked (ArrayList<YaMAPI.Track> track_list, HasTrackList yam_object) {
+        public void set_tracks_disliked (ArrayList<YaMAPI.Track> track_list, HasTracks yam_object) {
             preset_actions ();
             foreach (var track_info in track_list) {
                 add_row (new TrackRowDis (track_info, yam_object));

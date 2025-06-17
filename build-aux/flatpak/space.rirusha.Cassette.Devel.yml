@@ -30,6 +30,18 @@ cleanup:
   - '*.la'
   - '*.a'
 modules:
+  - name: api-base
+    buildsystem: meson
+    builddir: true
+    sources:
+      - type: dir
+        path: ../../subprojects/api-base
+  - name: tape
+    buildsystem: meson
+    builddir: true
+    sources:
+      - type: dir
+        path: ../../subprojects/libtape
   - name: cassette
     buildsystem: meson
     builddir: true

@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -58,16 +58,10 @@ namespace Cassette {
 
             YaMAPI.Playlist? new_playlist = null;
 
-            threader.add (() => {
-                new_playlist = yam_talker.add_track_to_playlist (
-                    track_info,
-                    playlist_info
-                );
-
-                Idle.add (add_button_clicked_async.callback);
-            });
-
-            yield;
+            new_playlist = yield yam_talker.add_track_to_playlist (
+                track_info,
+                playlist_info
+            );
 
             playlist_info.track_count = new_playlist.track_count;
 

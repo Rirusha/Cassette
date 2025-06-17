@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/window.ui")]
 public class Cassette.Window : ApplicationWindow {
@@ -51,7 +51,7 @@ public class Cassette.Window : ApplicationWindow {
     [GtkChild]
     unowned PlayerBar player_bar;
 
-    int reconnect_timer = Cassette.Client.TIMEOUT;
+    int reconnect_timer = 5;
 
     public Pager pager { get; construct; }
 
@@ -202,19 +202,19 @@ public class Cassette.Window : ApplicationWindow {
             pager.load_pages (PagesType.ONLINE);
 
             header_bar.load_avatar.begin ();
-            yam_talker.update_all.begin ();
+            //  yam_talker.update_all.begin ();
             header_bar.can_search = true;
 
             header_bar.interactive = true;
 
-            cachier.check_all_cache.begin ();
+            //  cachier.check_all_cache.begin ();
 
             notify["is-active"].connect (() => {
                 if (
                     is_active &&
-                    player.state != Player.State.PLAYING
+                    player.state != PlayerState.PLAYING
                 ) {
-                    yam_talker.update_all.begin ();
+                    //  yam_talker.update_all.begin ();
                 }
             });
 
@@ -240,7 +240,7 @@ public class Cassette.Window : ApplicationWindow {
         info_banner.sensitive = false;
         info_banner.button_label = reconnect_timer.to_string ();
 
-        yam_talker.update_all.begin ();
+        //  yam_talker.update_all.begin ();
 
         Timeout.add_seconds (1, () => {
             if (reconnect_timer > 1) {
@@ -251,7 +251,7 @@ public class Cassette.Window : ApplicationWindow {
             } else {
                 info_banner.sensitive = true;
                 info_banner.button_label = _("Reconnect");
-                reconnect_timer = Cassette.Client.TIMEOUT;
+                reconnect_timer = 5;
                 return Source.REMOVE;
             }
         });

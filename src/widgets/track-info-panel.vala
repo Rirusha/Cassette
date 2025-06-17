@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-info-panel.ui")]
 public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {

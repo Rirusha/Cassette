@@ -16,9 +16,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
+
 public abstract class Cassette.TrackRow: Reactable {
 
-    public Client.YaMAPI.Track track_info { get; construct; }
+    public YaMAPI.Track track_info { get; construct; }
 
     protected abstract PlayMarkTrack play_mark_track { owned get; }
 

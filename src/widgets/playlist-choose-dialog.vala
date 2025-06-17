@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -51,13 +51,7 @@ namespace Cassette {
         async void load_playlists () {
             Gee.ArrayList<YaMAPI.Playlist>? playlists_info = null;
 
-            threader.add (() => {
-                playlists_info = yam_talker.get_playlist_list (null);
-
-                Idle.add (load_playlists.callback);
-            });
-
-            yield;
+            playlists_info = yield yam_talker.get_playlist_list (null);
 
             set_values (playlists_info);
         }

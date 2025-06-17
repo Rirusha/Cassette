@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 using WebKit;
 
 namespace Cassette {

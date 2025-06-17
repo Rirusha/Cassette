@@ -16,9 +16,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-
-using Cassette.Client;
-using Cassette.Client.Cachier;
+using Tape;
+using Tape.YaMAPI;
 using Gee;
 
 
@@ -134,19 +133,19 @@ namespace Cassette {
             loading_win.present ();
 
             if (is_tmp) {
-                storager.delete_temp_cache.begin (() => {
-                    loading_win.close ();
-                    loading_win = null;
+                //  storager.delete_temp_cache.begin (() => {
+                //      loading_win.close ();
+                //      loading_win = null;
 
-                    update_data ();
-                });
+                //      update_data ();
+                //  });
             } else {
-                cachier.uncache_all.begin (() => {
-                    loading_win.close ();
-                    loading_win = null;
+                //  cachier.uncache_all.begin (() => {
+                //      loading_win.close ();
+                //      loading_win = null;
 
-                    update_data ();
-                });
+                //      update_data ();
+                //  });
             }
         }
     }

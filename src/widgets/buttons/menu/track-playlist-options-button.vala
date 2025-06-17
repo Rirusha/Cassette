@@ -16,9 +16,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
+
 public class Cassette.TrackPlaylistOptionsButton: TrackOptionsButton {
 
-    public Client.YaMAPI.Playlist playlist_info { get; set; }
+    public YaMAPI.Playlist playlist_info { get; set; }
 
     construct {
         SimpleAction remove_from_playlist_action = new SimpleAction ("remove-from-playlist", null);

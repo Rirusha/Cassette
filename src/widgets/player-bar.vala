@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -206,10 +206,10 @@ namespace Cassette {
 
             update_current_track_controls (current_track_info);
 
-            if (player.mode is Player.Flow) {
+            if (player.mode is PlayerFlow) {
                 to_flow ();
 
-            } else if (player.mode is Player.TrackList) {
+            } else if (player.mode is PlayerTrackList) {
                 to_track_list ();
 
             } else {
@@ -279,11 +279,11 @@ namespace Cassette {
 
         void on_shuffle_mode_changed () {
             switch (player.shuffle_mode) {
-                case Player.ShuffleMode.ON:
+                case ShuffleMode.ON:
                     shuffle_button.remove_css_class ("flat");
                     break;
 
-                case Player.ShuffleMode.OFF:
+                case ShuffleMode.OFF:
                     shuffle_button.add_css_class ("flat");
                     break;
             }
@@ -291,17 +291,17 @@ namespace Cassette {
 
         void on_repeat_mode_changed () {
             switch (player.repeat_mode) {
-                case Player.RepeatMode.QUEUE:
+                case RepeatMode.QUEUE:
                     repeat_button.set_icon_name ("media-playlist-repeat-symbolic");
                     repeat_button.remove_css_class ("flat");
                     break;
 
-                case Player.RepeatMode.ONE:
+                case RepeatMode.ONE:
                     repeat_button.set_icon_name ("media-playlist-repeat-song-symbolic");
                     repeat_button.remove_css_class ("flat");
                     break;
 
-                case Player.RepeatMode.OFF:
+                case RepeatMode.OFF:
                     repeat_button.set_icon_name ("media-playlist-repeat-symbolic");
                     repeat_button.add_css_class ("flat");
                     break;

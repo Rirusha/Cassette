@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
 using Gee;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/player-queue.ui")]

@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -24,13 +24,13 @@ namespace Cassette {
     static Authenticator authenticator;
 
     public static Application application;
-    public static Cassette.Client.Cachier.Cachier cachier;
-    public static Cassette.Client.Cachier.Storager storager;
-    public static Cassette.Client.Threader threader;
-    public static Cassette.Client.YaMTalker yam_talker;
-    public static Cassette.Client.Player.Player player;
+    public static Tape.Client root;
+    public static Tape.Cachier cachier;
+    public static Tape.Storager storager;
+    public static Tape.YaMTalker yam_talker;
+    public static Tape.Player player;
 
-    public static Settings settings;
+    public static GLib.Settings settings;
 
     public enum ApplicationState {
         BEGIN,
@@ -107,24 +107,26 @@ namespace Cassette {
         construct {
             application = this;
 
-            settings = new Settings ("space.rirusha.Cassette.application");
+            settings = new GLib.Settings ("space.rirusha.Cassette.application");
 
-            Cassette.Client.init (is_devel);
+            var tape_settings = new Tape.Settings (
+                Config.APP_NAME,
+                Config.APP_ID_RELEVANT
+            );
+            root = new Tape.Client (tape_settings);
+            cachier = root.cachier;
+            storager = root.cachier.storager;
+            yam_talker = root.yam_talker;
+            player = root.player;
 
-            Cassette.Client.Mpris.mpris.quit_triggered.connect (() => {
+            root.quit.connect (() => {
                 quit ();
             });
-            Cassette.Client.Mpris.mpris.raise_triggered.connect (() => {
+            root.raise.connect (() => {
                 main_window.present ();
             });
 
-            // Shortcuts
-            cachier = Cassette.Client.cachier;
-            storager = Cassette.Client.storager;
-            threader = Cassette.Client.threader;
             authenticator = new Authenticator ();
-            yam_talker = Cassette.Client.yam_talker;
-            player = Cassette.Client.player;
 
             yam_talker.connection_established.connect (() => {
                 application_state = ApplicationState.ONLINE;
@@ -316,7 +318,7 @@ namespace Cassette {
 
         void on_next_action () {
             if (player.can_go_next) {
-                player.next ();
+                player.next.begin ();
             }
         }
 

@@ -17,7 +17,8 @@
  */
 
 
-using Cassette.Client;
+using Tape;
+using Tape.YaMAPI;
 
 
 namespace Cassette {
@@ -188,13 +189,7 @@ namespace Cassette {
         public async bool playlist_delete_async () {
             bool success = false;
 
-            threader.add (() => {
-                success = yam_talker.delete_playlist (kind);
-
-                Idle.add (playlist_delete_async.callback);
-            });
-
-            yield;
+            success = yield yam_talker.delete_playlist (kind);
 
             if (success) {
                 uncache_playlist (false);
@@ -299,13 +294,7 @@ namespace Cassette {
         async YaMAPI.Playlist? on_switch_change_async (bool is_active) {
             YaMAPI.Playlist? playlist_info = null;
 
-            threader.add (() => {
-                playlist_info = yam_talker.change_playlist_visibility (((YaMAPI.Playlist) object_info).kind, is_active);
-
-                Idle.add (on_switch_change_async.callback);
-            });
-
-            yield;
+            playlist_info = yield yam_talker.change_playlist_visibility (((YaMAPI.Playlist) object_info).kind, is_active);
 
             return playlist_info;
         }
@@ -313,17 +302,11 @@ namespace Cassette {
         public async override int try_load_from_web () {
             int code = 0;
 
-            threader.add (() => {
-                try {
-                    object_info = yam_talker.get_playlist_info_old (uid, kind);
-                } catch (BadStatusCodeError e) {
-                    code = e.code;
-                }
-
-                Idle.add (try_load_from_web.callback);
-            });
-
-            yield;
+            try {
+                object_info = yield yam_talker.get_playlist_info_old (uid, kind);
+            } catch (ApiBase.BadStatusCodeError e) {
+                code = e.code;
+            }
 
             if (object_info != null) {
                 set_values ();
@@ -343,13 +326,7 @@ namespace Cassette {
                 uid = yam_talker.me.oid;
             }
 
-            threader.add (() => {
-                object_info = (YaMAPI.Playlist) storager.load_object (typeof (YaMAPI.Playlist), @"$uid:$kind");
-
-                Idle.add (try_load_from_cache.callback);
-            });
-
-            yield;
+            object_info = (YaMAPI.Playlist) (yield storager.load_object (typeof (YaMAPI.Playlist), @"$uid:$kind"));
 
             if (object_info != null) {
                 set_values ();

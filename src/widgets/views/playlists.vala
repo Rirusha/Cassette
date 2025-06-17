@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -135,14 +135,8 @@ namespace Cassette {
             Gee.ArrayList<YaMAPI.Playlist>? playlists_info = null;
             Gee.ArrayList<YaMAPI.LikedPlaylist>? liked_playlists_info = null;
 
-            threader.add (() => {
-                playlists_info = yam_talker.get_playlist_list (uid);
-                liked_playlists_info = yam_talker.get_likes_playlist_list (uid);
-
-                Idle.add (try_load_from_web.callback);
-            });
-
-            yield;
+            playlists_info = yield yam_talker.get_playlist_list (uid);
+            liked_playlists_info = yield yam_talker.get_likes_playlist_list (uid);
 
             if (playlists_info != null && liked_playlists_info != null) {
                 set_values (playlists_info, liked_playlists_info);
@@ -156,21 +150,15 @@ namespace Cassette {
             var playlists_kinds_str = storager.db.get_additional_data ("my_playlists");
             var playlists_info = new Gee.ArrayList<YaMAPI.Playlist?> ();
 
-            threader.add (() => {
-                string uid = yam_talker.me.oid;
-                if (playlists_kinds_str != null && uid != null) {
-                    string[] playlists_kinds = playlists_kinds_str.split (",");
-                    foreach (string kind in playlists_kinds) {
-                        string playlist_id = @"$uid:$kind";
-                        var playlist_info = (YaMAPI.Playlist) storager.load_object (typeof (YaMAPI.Playlist), playlist_id);
-                        playlists_info.add (playlist_info);
-                    }
+            string uid = yam_talker.me.oid;
+            if (playlists_kinds_str != null && uid != null) {
+                string[] playlists_kinds = playlists_kinds_str.split (",");
+                foreach (string kind in playlists_kinds) {
+                    string playlist_id = @"$uid:$kind";
+                    var playlist_info = (YaMAPI.Playlist) (yield storager.load_object (typeof (YaMAPI.Playlist), playlist_id));
+                    playlists_info.add (playlist_info);
                 }
-
-                Idle.add (try_load_from_cache.callback);
-            });
-
-            yield;
+            }
 
             if (playlists_info.size > 0) {
                 set_values (playlists_info, null);

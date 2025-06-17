@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
 using Gee;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-info.ui")]
@@ -120,21 +120,15 @@ public class Cassette.TrackInfo : SidebarChildBin {
         YaMAPI.SimilarTracks? similar_tracks = null;
         YaMAPI.Lyrics? lyrics = null;
 
-        threader.add (() => {
-            similar_tracks = yam_talker.get_track_similar (track_info.id);
+        similar_tracks = yield yam_talker.get_track_similar (track_info.id);
 
-            if (track_info.lyrics_info != null) {
-                if (track_info.lyrics_info.has_available_sync_lyrics) {
-                    lyrics = yam_talker.get_lyrics (track_info.id, true);
-                } else if (track_info.lyrics_info.has_available_text_lyrics) {
-                    lyrics = yam_talker.get_lyrics (track_info.id, false);
-                }
+        if (track_info.lyrics_info != null) {
+            if (track_info.lyrics_info.has_available_sync_lyrics) {
+                lyrics = yield yam_talker.get_lyrics (track_info.id, true);
+            } else if (track_info.lyrics_info.has_available_text_lyrics) {
+                lyrics = yield yam_talker.get_lyrics (track_info.id, false);
             }
-
-            Idle.add (load_content.callback);
-        });
-
-        yield;
+        }
 
         set_values (similar_tracks, lyrics);
     }

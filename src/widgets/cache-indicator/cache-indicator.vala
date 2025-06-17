@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 namespace Cassette {
     [GtkTemplate (ui = "/space/rirusha/Cassette/ui/cache-indicator.ui")]
@@ -62,46 +62,46 @@ namespace Cassette {
 
             jobs_icon.set_draw_func (update_jobs_icon);
 
-            cachier.job_added.connect ((job) => {
-                job.track_saving_ended.connect (jobs_icon.queue_draw);
+            //  cachier.job_added.connect ((job) => {
+            //      job.track_saving_ended.connect (jobs_icon.queue_draw);
 
-                indicator_revealer.reveal_child = true;
-            });
+            //      indicator_revealer.reveal_child = true;
+            //  });
 
-            cachier.job_removed.connect (() => {
-                jobs_icon.queue_draw ();
+            //  cachier.job_removed.connect (() => {
+            //      jobs_icon.queue_draw ();
 
-                if (jobs_popover.visible) {
-                    if (timeout_id == 0) {
-                        timeout_id = Timeout.add_seconds (5, () => {
-                            if (jobs_popover.visible) {
-                                return Source.CONTINUE;
-                            }
+            //      if (jobs_popover.visible) {
+            //          if (timeout_id == 0) {
+            //              timeout_id = Timeout.add_seconds (5, () => {
+            //                  if (jobs_popover.visible) {
+            //                      return Source.CONTINUE;
+            //                  }
 
-                            if (cachier.job_list.size > 0) {
-                                timeout_id = 0;
-                                return Source.REMOVE;
-                            }
+            //                  if (cachier.job_list.size > 0) {
+            //                      timeout_id = 0;
+            //                      return Source.REMOVE;
+            //                  }
 
-                            indicator_revealer.reveal_child = false;
+            //                  indicator_revealer.reveal_child = false;
 
-                            timeout_id = 0;
-                            return Source.REMOVE;
-                        });
-                    }
+            //                  timeout_id = 0;
+            //                  return Source.REMOVE;
+            //              });
+            //          }
 
-                } else {
-                    if (cachier.job_list.size == 0) {
-                        indicator_revealer.reveal_child = false;
-                    }
-                }
-            });
+            //      } else {
+            //          if (cachier.job_list.size == 0) {
+            //              indicator_revealer.reveal_child = false;
+            //          }
+            //      }
+            //  });
         }
 
         void fill_box () {
-            foreach (var job in cachier.job_list) {
-                jobs_box.append (new JobInfoBadge (job));
-            }
+            //  foreach (var job in cachier.job_list) {
+            //      jobs_box.append (new JobInfoBadge (job));
+            //  }
         }
 
         // Took from https://gitlab.gnome.org/GNOME/nautilus/-/blob/main/src/nautilus-progress-indicator.c
@@ -115,10 +115,10 @@ namespace Cassette {
             var background = foreground;
             background.alpha *= 0.3f;
 
-            foreach (var job in cachier.job_list) {
-                elapsed_progress += job.saved_tracks_count;
-                total_progress += job.total_tracks_count;
-            }
+            //  foreach (var job in cachier.job_list) {
+            //      elapsed_progress += job.saved_tracks_count;
+            //      total_progress += job.total_tracks_count;
+            //  }
 
             if (total_progress > 0) {
                 ratio = max (0.01, (double) elapsed_progress / (double) total_progress);

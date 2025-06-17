@@ -233,7 +233,7 @@ public class Cassette.Window : ApplicationWindow {
         var toast = new Adw.Toast (message);
         toast_overlay.add_toast (toast);
 
-        Logger.info (_("Window info message: %s").printf (message));
+        info (_("Window info message: %s").printf (message));
     }
 
     async void try_reconnect () {

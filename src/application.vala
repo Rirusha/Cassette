@@ -369,14 +369,14 @@ namespace Cassette {
                 clear_uri = uri.replace ("yandexmusic://", "");
 
             } else {
-                Logger.warning (_("Can't parse clipboard content"));
+                warning (_("Can't parse clipboard content"));
                 return;
             }
 
             string[] parts = clear_uri.split ("/");
 
             if (parts.length < 2) {
-                Logger.warning (_("Can't parse clipboard content"));
+                warning (_("Can't parse clipboard content"));
                 return;
             }
 

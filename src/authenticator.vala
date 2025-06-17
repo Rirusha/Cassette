@@ -122,12 +122,12 @@ namespace Cassette {
                     yam_talker.init_if_not ();
 
                 } catch (BadStatusCodeError e) {
-                    Logger.warning ("Bad status code while trying init client. Error message: %s".printf (e.message));
+                    warning ("Bad status code while trying init client. Error message: %s".printf (e.message));
 
                     should_auth = true;
 
                 } catch (CantUseError e) {
-                    Logger.warning ("User hasn't Plus Subscription. Error message: %s".printf (e.message));
+                    warning ("User hasn't Plus Subscription. Error message: %s".printf (e.message));
 
                     cant_use = true;
                 }

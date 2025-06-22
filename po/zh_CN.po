@@ -1,14 +1,14 @@
 # Chinese (China) translation for cassette.
 # Copyright (C) 2024 cassette's COPYRIGHT HOLDER
 # This file is distributed under the same license as the cassette package.
-# lumingzh <lumingzh@qq.com>, 2024.
+# lumingzh <lumingzh@qq.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-10-02 10:23+0000\n"
-"PO-Revision-Date: 2024-10-08 08:35+0800\n"
+"POT-Creation-Date: 2025-01-14 06:02+0000\n"
+"PO-Revision-Date: 2025-06-22 14:48+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 47.0\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #. Translators: app name should be translated
 #: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:24
 msgid "Cassette"
 msgstr "Cassette"
 
@@ -122,7 +122,7 @@ msgid "Plus"
 msgstr "会员"
 
 #: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
-#: src/authenticator.vala:51
+#: src/authenticator.vala:52
 msgid "Log out"
 msgstr "登出"
 
@@ -229,7 +229,7 @@ msgid "Here you can control custom pages."
 msgstr "您可以在这里控制自定义页面。"
 
 #: data/ui/disliked-tracks-view.ui:23
-#: src/widgets/buttons/menu/primary-menu-button.vala:31
+#: src/widgets/buttons/menu/primary-menu-button.vala:32
 msgid "Disliked tracks"
 msgstr "讨厌的曲目"
 
@@ -349,7 +349,7 @@ msgstr "显示播放队列"
 msgid "Change volume"
 msgstr "更改音量"
 
-#: data/ui/player-queue.blp:5 src/application.vala:271
+#: data/ui/player-queue.blp:5 src/application.vala:272
 msgid "Playing now"
 msgstr "正在播放"
 
@@ -362,8 +362,8 @@ msgid "Create playlist"
 msgstr "创建播放列表"
 
 #: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
-#: src/widgets/cache-indicator/job-info-badge.vala:42
-#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:167
+#: src/widgets/cache-indicator/job-info-badge.vala:43
+#: src/widgets/save-stack.vala:57 src/widgets/views/abstract-cachiable.vala:168
 msgid "Playlist"
 msgstr "播放列表"
 
@@ -389,20 +389,20 @@ msgstr "将页面添加到头部"
 
 #. Translators: tooltip of "save" button
 #: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
-#: src/widgets/buttons/menu/track-options-button.vala:82
-#: src/widgets/buttons/menu/track-options-button.vala:107
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
-#: src/widgets/buttons/menu/track-queue-options-button.vala:72
-#: src/widgets/buttons/menu/track-queue-options-button.vala:102
+#: src/widgets/buttons/menu/track-options-button.vala:83
+#: src/widgets/buttons/menu/track-options-button.vala:108
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
+#: src/widgets/buttons/menu/track-queue-options-button.vala:73
+#: src/widgets/buttons/menu/track-queue-options-button.vala:103
 msgid "Save"
 msgstr "保存"
 
 #. Translators: tooltip of "delete" button
 #: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
-#: src/widgets/preferences/cache-deletion-preferences.vala:96
-#: src/widgets/preferences/preferences-dialog.vala:140
-#: src/widgets/views/playlist.vala:90
+#: src/widgets/preferences/cache-deletion-preferences.vala:97
+#: src/widgets/preferences/preferences-dialog.vala:141
+#: src/widgets/views/playlist.vala:91
 msgid "Delete"
 msgstr "删除"
 
@@ -736,7 +736,7 @@ msgstr "专辑"
 msgid "duration"
 msgstr "时长"
 
-#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:37
+#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:38
 msgid "Loading…"
 msgstr "正在加载…"
 
@@ -752,584 +752,577 @@ msgstr "按语言…"
 msgid "Can't get wave settings"
 msgstr "无法获取波形设置"
 
-#: data/ui/window.blp:57 src/window.vala:252
+#: data/ui/window.blp:57 src/window.vala:253
 msgid "Reconnect"
 msgstr "重新连接"
 
-#: data/ui/window.blp:58 src/application.vala:151
+#: data/ui/window.blp:58 src/application.vala:152
 msgid "Connection problems"
 msgstr "连接问题"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:59
+#: src/about.vala:60
 msgid "translator-credits"
-msgstr "lumingzh <lumingzh@qq.com>, 2024"
+msgstr "lumingzh <lumingzh@qq.com>, 2024-2025"
 
-#: src/about.vala:67
+#: src/about.vala:68
 msgid "Telegram channel"
 msgstr "Telegram 频道"
 
-#: src/about.vala:68
+#: src/about.vala:69
 msgid "Financial support (Tinkoff)"
 msgstr "财政支持（Tinkoff）"
 
-#: src/about.vala:69
+#: src/about.vala:70
 msgid "Financial support (Boosty)"
 msgstr "财政支持（Boosty）"
 
 #. Please keep alphabetical
-#: src/about.vala:72
+#: src/about.vala:73
 msgid "Sponsors"
 msgstr "赞助者"
 
-#: src/application.vala:62
+#: src/application.vala:63
 msgid "Print version information and exit"
 msgstr "显示版本信息并退出"
 
-#: src/application.vala:145
+#: src/application.vala:146
 msgid "Connection restored"
 msgstr "连接已恢复"
 
-#: src/application.vala:273
-msgid "Previous"
-msgstr ""
-
 #: src/application.vala:274
+msgid "Previous"
+msgstr "上一首"
+
+#: src/application.vala:275
 msgid "Next"
-msgstr ""
+msgstr "下一首"
 
-#: src/application.vala:357
+#: src/application.vala:358
 msgid "Current track can not be copied to the clipboard"
-msgstr ""
+msgstr "当前曲目无法复制到剪贴板"
 
-#: src/application.vala:371 src/application.vala:378 src/application.vala:435
+#: src/application.vala:372 src/application.vala:379 src/application.vala:436
 msgid "Can't parse clipboard content"
-msgstr ""
+msgstr "无法解析剪贴板内容"
 
-#: src/application.vala:389
+#: src/application.vala:390
 msgid "Users view not implemented yet"
-msgstr ""
+msgstr "用户视图尚未实现"
 
-#: src/application.vala:405 src/application.vala:419
+#: src/application.vala:406 src/application.vala:420
 msgid "Albums view not implemented yet"
-msgstr ""
-
-#: src/authenticator.vala:46
-msgid "Log out?"
-msgstr ""
+msgstr "专辑视图尚未实现"
 
 #: src/authenticator.vala:47
+msgid "Log out?"
+msgstr "登出吗？"
+
+#: src/authenticator.vala:48
 msgid "You will need to log in again to use the app"
-msgstr ""
+msgstr "您将需要再次登录以使用该应用"
 
 #. Translators: cancel of deleting playlist
-#: src/authenticator.vala:50
-#: src/widgets/preferences/cache-deletion-preferences.vala:95
-#: src/widgets/preferences/preferences-dialog.vala:139
-#: src/widgets/views/playlist.vala:89
+#: src/authenticator.vala:51
+#: src/widgets/preferences/cache-deletion-preferences.vala:96
+#: src/widgets/preferences/preferences-dialog.vala:140
+#: src/widgets/views/playlist.vala:90
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
-#: src/authenticator.vala:97
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
+#: src/authenticator.vala:98
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Moving…"
-msgstr ""
+msgstr "正在移动…"
 
 #. Translators: Playlist with liked tracks
-#: src/client/api/objects/playlist/playlist.vala:49
-#: src/client/api/objects/playlist/playlist.vala:99 src/pager.vala:276
+#: src/client/api/objects/playlist/playlist.vala:50
+#: src/client/api/objects/playlist/playlist.vala:100 src/pager.vala:277
 msgid "Liked"
-msgstr ""
+msgstr "喜爱"
 
 #. Translators: Playlist that updates every day
-#: src/client/api/objects/playlist/playlist.vala:53
+#: src/client/api/objects/playlist/playlist.vala:54
 msgid "Daily"
-msgstr ""
+msgstr "每日"
 
 #. Translators: Unknown playlist
-#: src/client/api/objects/playlist/playlist.vala:57
+#: src/client/api/objects/playlist/playlist.vala:58
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
-#: src/client/cachier/storager.vala:124
+#: src/client/cachier/storager.vala:125
 #, c-format
 msgid "Database was initialized, loc - %s"
-msgstr ""
+msgstr "数据库已初始化，位置 - %s"
 
-#: src/client/cachier/storager.vala:801
+#: src/client/cachier/storager.vala:802
 #, c-format
 msgid "Can't save object %s"
-msgstr ""
+msgstr "无法保存对象 %s"
 
-#: src/client/cachier/storager.vala:818
+#: src/client/cachier/storager.vala:819
 msgid "Byte"
 msgid_plural "Bytes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B"
 
-#: src/client/cachier/storager.vala:821
+#: src/client/cachier/storager.vala:822
 msgid "Kilobyte"
 msgid_plural "Kilobytes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "KB"
 
-#: src/client/cachier/storager.vala:824
+#: src/client/cachier/storager.vala:825
 msgid "Megabyte"
 msgid_plural "Megabytes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "MB"
 
-#: src/client/cachier/storager.vala:827
+#: src/client/cachier/storager.vala:828
 msgid "Gigabyte"
 msgid_plural "Gigabytes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "GB"
 
-#: src/client/cachier/storager.vala:830
+#: src/client/cachier/storager.vala:831
 msgid "Terabyte"
 msgid_plural "Terabytes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "TB"
 
-#: src/client/cachier/storager.vala:859
+#: src/client/cachier/storager.vala:860
 #, c-format
 msgid "Error while getting cache directory size. Message %s"
-msgstr ""
+msgstr "获取缓存目录大小时出错。消息 %s"
 
-#: src/client/cachier/storager.vala:894
+#: src/client/cachier/storager.vala:895
 #, c-format
 msgid "Error while getting permanent directory size. Message %s"
-msgstr ""
+msgstr "获取永存目录大小时出错。消息 %s"
 
 #: src/client/jsoner.vala:358 src/client/jsoner.vala:419
 #: src/client/jsoner.vala:526 src/client/jsoner.vala:550
 #, c-format
 msgid "Wrong type: expected %s, got %s"
-msgstr ""
+msgstr "类型错误：需要 %s，但获得 %s"
 
-#: src/client/player/mods/abstract-mode.vala:91
+#: src/client/player/mods/abstract-mode.vala:92
 msgid "Problems with queue"
-msgstr ""
+msgstr "队列有问题"
 
 #. Translators: name of new created playlist
-#: src/client/talkers/yam-talker.vala:627
+#: src/client/talkers/yam-talker.vala:628
 msgid "New Playlist"
-msgstr ""
+msgstr "新建播放列表"
 
-#: src/pager.vala:162
+#: src/pager.vala:163
 #, c-format
 msgid "Can't set title \"%s\" to page"
-msgstr ""
+msgstr "无法为页面设定“%s”标题"
 
-#: src/pager.vala:173
+#: src/pager.vala:174
 #, c-format
 msgid "Can't set icon with name \"%s\" to page"
-msgstr ""
+msgstr "无法为页面设定带名字“%s”的图标"
 
-#: src/pager.vala:199
+#: src/pager.vala:200
 msgid "Reached max page count"
-msgstr ""
+msgstr "达到最大页数"
 
-#: src/pager.vala:205
+#: src/pager.vala:206
 #, c-format
 msgid "Page '%s' already added"
-msgstr ""
+msgstr "页面“%s”已经添加"
 
-#: src/pager.vala:267
+#: src/pager.vala:268
 msgid "Main"
-msgstr ""
+msgstr "主页"
 
-#: src/pager.vala:286
+#: src/pager.vala:287
 msgid "Playlists"
-msgstr ""
+msgstr "播放列表"
 
-#: src/pager.vala:311
+#: src/pager.vala:312
 #, c-format
 msgid "Can't read pages file. Message: %s"
-msgstr ""
+msgstr "无法读取页面文件。消息：%s"
 
-#: src/pager.vala:331
+#: src/pager.vala:332
 #, c-format
 msgid "Can't create pages file. Message: %s"
-msgstr ""
+msgstr "无法创建页面文件。消息：%s"
 
-#: src/utils.vala:69
+#: src/utils.vala:70
 msgid "Not implemented yet"
-msgstr ""
+msgstr "尚未实现"
 
-#: src/utils.vala:76
+#: src/utils.vala:77
 msgid "Need authorization"
-msgstr ""
+msgstr "需要认证"
 
-#: src/utils.vala:80
+#: src/utils.vala:81
 msgid "Need Bookmate subscription"
-msgstr ""
+msgstr "需要 Bookmate 订阅"
 
-#: src/utils.vala:176 src/utils.vala:192
+#: src/utils.vala:177 src/utils.vala:193
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "链接已复制到剪贴板"
 
-#: src/utils.vala:241
+#: src/utils.vala:242
 #, c-format
 msgid "Duration: %s h. %s min."
-msgstr ""
+msgstr "时长：%s 时 %s 分"
 
-#: src/utils.vala:243
+#: src/utils.vala:244
 #, c-format
 msgid "Duration: %s min."
-msgstr ""
+msgstr "时长：%s 分"
 
-#: src/utils.vala:357
+#: src/utils.vala:358
 msgid "today"
-msgstr ""
+msgstr "今天"
 
-#: src/utils.vala:359
+#: src/utils.vala:360
 msgid "yesterday"
-msgstr ""
+msgstr "昨天"
 
-#: src/widgets/buttons/just/dislike-button.vala:37
+#: src/widgets/buttons/just/dislike-button.vala:38
 msgid "Remove dislike"
-msgstr ""
+msgstr "移除讨厌"
 
-#: src/widgets/buttons/just/dislike-button.vala:40
+#: src/widgets/buttons/just/dislike-button.vala:41
 msgid "Set dislike"
-msgstr ""
+msgstr "设为讨厌"
 
-#: src/widgets/buttons/just/like-button.vala:41
+#: src/widgets/buttons/just/like-button.vala:42
 msgid "Remove like"
-msgstr ""
+msgstr "移除喜爱"
 
-#: src/widgets/buttons/just/like-button.vala:48
+#: src/widgets/buttons/just/like-button.vala:49
 msgid "Set like"
-msgstr ""
+msgstr "设为喜爱"
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:37
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:40
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:38
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:41
 msgid "Pause"
-msgstr ""
+msgstr "暂停"
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:44
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:47
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:45
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:48
 msgid "Play"
-msgstr ""
+msgstr "播放"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:48
+#: src/widgets/buttons/menu/playlist-options-button.vala:49
 #, c-format
 msgid "Playlist '%s'"
-msgstr ""
-
-#: src/widgets/buttons/menu/playlist-options-button.vala:53
-#: src/widgets/buttons/menu/playlist-options-button.vala:66
-msgid "My Vibe by playlist"
-msgstr ""
+msgstr "播放列表“%s”"
 
 #: src/widgets/buttons/menu/playlist-options-button.vala:54
-#: src/widgets/buttons/menu/playlist-options-button.vala:76
-#: src/widgets/buttons/menu/track-options-button.vala:80
-#: src/widgets/buttons/menu/track-options-button.vala:105
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
-#: src/widgets/buttons/menu/track-queue-options-button.vala:69
-#: src/widgets/buttons/menu/track-queue-options-button.vala:99
-msgid "Add to queue"
-msgstr ""
+#: src/widgets/buttons/menu/playlist-options-button.vala:67
+msgid "My Vibe by playlist"
+msgstr "基于播放列表的推荐"
 
 #: src/widgets/buttons/menu/playlist-options-button.vala:55
 #: src/widgets/buttons/menu/playlist-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:83
-#: src/widgets/buttons/menu/track-options-button.vala:108
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
-#: src/widgets/buttons/menu/track-queue-options-button.vala:73
-#: src/widgets/buttons/menu/track-queue-options-button.vala:103
-msgid "Share"
-msgstr ""
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:26
-msgid "Primary menu"
-msgstr ""
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:32
-msgid "Parse URL from clipboard"
-msgstr ""
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:33
-msgid "Preferences"
-msgstr ""
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:34
-msgid "Keyboard Shortcuts"
-msgstr ""
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:35
-msgid "About Cassette"
-msgstr ""
-
-#: src/widgets/buttons/menu/track-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:94
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:32
-#: src/widgets/buttons/menu/track-queue-options-button.vala:66
-#: src/widgets/buttons/menu/track-queue-options-button.vala:87
-msgid "My Vibe by track"
-msgstr ""
-
-#: src/widgets/buttons/menu/track-options-button.vala:78
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
-#: src/widgets/buttons/menu/track-queue-options-button.vala:67
-msgid "Show info"
-msgstr ""
-
-#: src/widgets/buttons/menu/track-options-button.vala:79
-#: src/widgets/buttons/menu/track-options-button.vala:104
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:45
-#: src/widgets/buttons/menu/track-queue-options-button.vala:68
-#: src/widgets/buttons/menu/track-queue-options-button.vala:98
-msgid "Play next"
-msgstr ""
-
 #: src/widgets/buttons/menu/track-options-button.vala:81
 #: src/widgets/buttons/menu/track-options-button.vala:106
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:36
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:47
 #: src/widgets/buttons/menu/track-queue-options-button.vala:70
 #: src/widgets/buttons/menu/track-queue-options-button.vala:100
-msgid "Add to playlist"
-msgstr ""
+msgid "Add to queue"
+msgstr "添加到队列"
 
+#: src/widgets/buttons/menu/playlist-options-button.vala:56
+#: src/widgets/buttons/menu/playlist-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:84
+#: src/widgets/buttons/menu/track-options-button.vala:109
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:40
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:51
+#: src/widgets/buttons/menu/track-queue-options-button.vala:74
+#: src/widgets/buttons/menu/track-queue-options-button.vala:104
+msgid "Share"
+msgstr "分享"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:27
+msgid "Primary menu"
+msgstr "主菜单"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:33
+msgid "Parse URL from clipboard"
+msgstr "从剪贴板解析 URL"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:34
+msgid "Preferences"
+msgstr "首选项"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:35
+msgid "Keyboard Shortcuts"
+msgstr "键盘快捷键"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:36
+msgid "About Cassette"
+msgstr "关于 Cassette"
+
+#: src/widgets/buttons/menu/track-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:95
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
+#: src/widgets/buttons/menu/track-queue-options-button.vala:67
+#: src/widgets/buttons/menu/track-queue-options-button.vala:88
+msgid "My Vibe by track"
+msgstr "基于单曲的推荐"
+
+#: src/widgets/buttons/menu/track-options-button.vala:79
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
+#: src/widgets/buttons/menu/track-queue-options-button.vala:68
+msgid "Show info"
+msgstr "显示信息"
+
+#: src/widgets/buttons/menu/track-options-button.vala:80
+#: src/widgets/buttons/menu/track-options-button.vala:105
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
+#: src/widgets/buttons/menu/track-queue-options-button.vala:69
+#: src/widgets/buttons/menu/track-queue-options-button.vala:99
+msgid "Play next"
+msgstr "播放下一首"
+
+#: src/widgets/buttons/menu/track-options-button.vala:82
+#: src/widgets/buttons/menu/track-options-button.vala:107
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:37
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:48
-msgid "Remove from playlist"
-msgstr ""
-
 #: src/widgets/buttons/menu/track-queue-options-button.vala:71
 #: src/widgets/buttons/menu/track-queue-options-button.vala:101
+msgid "Add to playlist"
+msgstr "添加到播放列表"
+
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
+msgid "Remove from playlist"
+msgstr "从播放列表移除"
+
+#: src/widgets/buttons/menu/track-queue-options-button.vala:72
+#: src/widgets/buttons/menu/track-queue-options-button.vala:102
 msgid "Remove from queue"
-msgstr ""
+msgstr "从播放队列移除"
 
-#: src/widgets/buttons/menu/volume-button.vala:121
+#: src/widgets/buttons/menu/volume-button.vala:122
 msgid "Volume control"
-msgstr ""
+msgstr "音量控制"
 
-#: src/widgets/buttons/menu/volume-button.vala:261
+#: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Unmute"
-msgstr ""
+msgstr "取消静音"
 
-#: src/widgets/buttons/menu/volume-button.vala:261
+#: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Mute"
-msgstr ""
+msgstr "静音"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:44
-#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:172
+#: src/widgets/cache-indicator/job-info-badge.vala:45
+#: src/widgets/save-stack.vala:53 src/widgets/views/abstract-cachiable.vala:173
 msgid "Album"
-msgstr ""
+msgstr "专辑"
 
 #. Translators: n track from n tracks saved
-#: src/widgets/cache-indicator/job-info-badge.vala:77
+#: src/widgets/cache-indicator/job-info-badge.vala:78
 #, c-format
 msgid "%d / %d saved%s"
 msgid_plural "%d / %d saved%s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d / %d 已保存 %s"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:84
+#: src/widgets/cache-indicator/job-info-badge.vala:85
 #, c-format
 msgid "%d track saving now"
 msgid_plural "%d tracks saving now"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正在保存 %d 首曲目"
 
-#: src/widgets/info-marks.vala:41
+#: src/widgets/info-marks.vala:42
 #, c-format
 msgid "Track was replaced. Original version: %s, %s"
-msgstr ""
+msgstr "曲目已被替换。原始版本：%s，%s"
 
-#: src/widgets/playlist-micro.vala:157 src/widgets/views/playlist.vala:241
+#: src/widgets/playlist-micro.vala:158 src/widgets/views/playlist.vala:242
 #, c-format
 msgid "Owner: %s"
-msgstr ""
+msgstr "所有者：%s"
 
-#: src/widgets/playlist-row.vala:85
+#: src/widgets/playlist-row.vala:86
 #, c-format
 msgid "Track count: %s"
-msgstr ""
-
-#: src/widgets/preferences/cache-deletion-preferences.vala:88
-#: src/widgets/preferences/preferences-dialog.vala:134
-msgid "Delete cache files?"
-msgstr ""
+msgstr "曲目计数：%s"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:89
-msgid "Move saved files?"
-msgstr ""
+#: src/widgets/preferences/preferences-dialog.vala:135
+msgid "Delete cache files?"
+msgstr "删除缓存文件吗？"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:90
-#: src/widgets/preferences/preferences-dialog.vala:135
-msgid ""
-"All cache will be deleted. This doesn't affect on saved playlists or albums"
-msgstr ""
+msgid "Move saved files?"
+msgstr "移动保存的文件吗？"
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:91
+#: src/widgets/preferences/preferences-dialog.vala:136
+msgid ""
+"All cache will be deleted. This doesn't affect on saved playlists or albums"
+msgstr "所有缓存将被删除。此操作不会影响已保存的播放列表或专辑"
+
+#: src/widgets/preferences/cache-deletion-preferences.vala:92
 msgid ""
 "All saved playlists and albums will be moved to cache files. This could take "
 "a while."
-msgstr ""
+msgstr "所有保存的播放列表和专辑将被移至缓存文件。此操作会花费一点时间。"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Deleting…"
-msgstr ""
+msgstr "正在删除…"
 
-#: src/widgets/save-stack.vala:54
+#: src/widgets/save-stack.vala:55
 msgid "Image"
-msgstr ""
+msgstr "图像"
 
-#: src/widgets/save-stack.vala:58
+#: src/widgets/save-stack.vala:59
 msgid "Track"
-msgstr ""
-
-#: src/widgets/save-stack.vala:75
-#, c-format
-msgid "%s saving…"
-msgstr ""
+msgstr "曲目"
 
 #: src/widgets/save-stack.vala:76
 #, c-format
-msgid "%s cached"
-msgstr ""
+msgid "%s saving…"
+msgstr "正在保存 %s…"
 
 #: src/widgets/save-stack.vala:77
 #, c-format
-msgid "%s saved"
-msgstr ""
+msgid "%s cached"
+msgstr "%s 已缓存"
 
-#: src/widgets/sidebar/childs/player-queue.vala:66
+#: src/widgets/save-stack.vala:78
+#, c-format
+msgid "%s saved"
+msgstr "%s 已保存"
+
+#: src/widgets/sidebar/childs/player-queue.vala:67
 #, c-format
 msgid "Playlist \"%s\""
-msgstr ""
+msgstr "播放列表“%s”"
 
-#: src/widgets/sidebar/childs/player-queue.vala:70
+#: src/widgets/sidebar/childs/player-queue.vala:71
 #, c-format
 msgid "Album \"%s\""
-msgstr ""
+msgstr "专辑“%s”"
 
-#: src/widgets/sidebar/childs/player-queue.vala:74
+#: src/widgets/sidebar/childs/player-queue.vala:75
 #, c-format
 msgid "By search results \"%s\""
-msgstr ""
+msgstr "按搜索结果“%s”"
 
-#: src/widgets/sidebar/childs/player-queue.vala:78
+#: src/widgets/sidebar/childs/player-queue.vala:79
 msgid "Track list"
-msgstr ""
+msgstr "曲目列表"
 
-#: src/widgets/sidebar/childs/track-info.vala:68
+#: src/widgets/sidebar/childs/track-info.vala:69
 msgid "Your music track"
-msgstr ""
+msgstr "您的音乐曲目"
 
-#: src/widgets/sidebar/childs/track-info.vala:84
+#: src/widgets/sidebar/childs/track-info.vala:85
 msgid "Music track"
-msgstr ""
+msgstr "音乐曲目"
 
-#: src/widgets/sidebar/childs/wave-settings.vala:39
+#: src/widgets/sidebar/childs/wave-settings.vala:40
 msgid "Wave settings"
-msgstr ""
+msgstr "波形设置"
 
-#: src/widgets/track-rows/base.vala:79 src/widgets/track-rows/default.vala:100
+#: src/widgets/track-rows/base.vala:80 src/widgets/track-rows/default.vala:101
 msgid "Track is not available"
-msgstr ""
+msgstr "曲目不可用"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:78
+#: src/widgets/views/abstract-cachiable.vala:79
 #, c-format
 msgid "%s '%s' saved successfully"
-msgstr ""
+msgstr "%s“%s”已成功保存"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:89
+#: src/widgets/views/abstract-cachiable.vala:90
 #, c-format
 msgid "%s '%s' saving was stopped, due to network error"
-msgstr ""
+msgstr "%s“%s”已停止保存，网络出现错误"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:99
+#: src/widgets/views/abstract-cachiable.vala:100
 #, c-format
 msgid "%s '%s' saving was aborted"
-msgstr ""
+msgstr "%s“%s”已中止保存"
 
 #. Translators: %s - content type (e.g. "Playlist")
-#: src/widgets/views/abstract-cachiable.vala:191
+#: src/widgets/views/abstract-cachiable.vala:192
 #, c-format
 msgid "%s saving has started"
-msgstr ""
+msgstr "已开始保存%s"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:229
+#: src/widgets/views/abstract-cachiable.vala:230
 #, c-format
 msgid "%s '%s' was moved from data to cache"
-msgstr ""
+msgstr "%s“%s”已从数据移至缓存"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:239
+#: src/widgets/views/abstract-cachiable.vala:240
 #, c-format
 msgid "%s removing has started. Please do not close the app"
-msgstr ""
+msgstr "已开始移除%s。请不要关闭应用"
 
-#: src/widgets/views/cant-show.vala:37
+#: src/widgets/views/cant-show.vala:38
 #, c-format
 msgid "Error %d"
-msgstr ""
+msgstr "错误 %d"
 
-#: src/widgets/views/cant-show.vala:41
+#: src/widgets/views/cant-show.vala:42
 msgid "Can't load page"
-msgstr ""
+msgstr "无法加载页面"
 
-#: src/widgets/views/cant-show.vala:44
+#: src/widgets/views/cant-show.vala:45
 msgid "Can't find desired content"
-msgstr ""
-
-#: src/widgets/views/playlist.vala:84
-msgid "Delete playlist?"
-msgstr ""
+msgstr "无法找到想要的内容"
 
 #: src/widgets/views/playlist.vala:85
+msgid "Delete playlist?"
+msgstr "删除播放列表吗？"
+
+#: src/widgets/views/playlist.vala:86
 #, c-format
 msgid "Playlist '%s' will be permanently deleted."
-msgstr ""
+msgstr "播放列表“%s”将被永久删除。"
 
-#: src/widgets/views/playlist.vala:104
+#: src/widgets/views/playlist.vala:105
 #, c-format
 msgid "Playlist '%s' was deleted"
-msgstr ""
+msgstr "播放列表“%s”已删除"
 
 #. Translators: %s is female person
-#: src/widgets/views/playlist.vala:247
+#: src/widgets/views/playlist.vala:248
 #, c-format
 msgctxt "female person"
 msgid "%s updated playlist %s"
-msgstr ""
+msgstr "%s 已更新播放列表 %s"
 
 #. Translators: %s is male person
-#: src/widgets/views/playlist.vala:251
+#: src/widgets/views/playlist.vala:252
 #, c-format
 msgctxt "male person"
 msgid "%s updated playlist %s"
-msgstr ""
+msgstr "%s 已更新播放列表 %s"
 
-#: src/widgets/views/playlist.vala:281
+#: src/widgets/views/playlist.vala:282
 #, c-format
 msgid "Can't change visibility of '%s'"
-msgstr ""
+msgstr "无法更改“%s”的可见性"
 
-#: src/widgets/views/playlist.vala:287
+#: src/widgets/views/playlist.vala:288
 #, c-format
 msgid "Playlist '%s' is public now"
-msgstr ""
+msgstr "播放列表“%s”现在是公开的"
 
-#: src/widgets/views/playlist.vala:290
+#: src/widgets/views/playlist.vala:291
 #, c-format
 msgid "Playlist '%s' is private now"
-msgstr ""
+msgstr "播放列表“%s”现在是私人的"
 
-#: src/window.vala:235
+#: src/window.vala:236
 #, c-format
 msgid "Window info message: %s"
-msgstr ""
+msgstr "窗口信息消息：%s"

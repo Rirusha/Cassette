@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -51,10 +51,10 @@ namespace Cassette {
         async void load_avatar () {
             avatar.text = account_info.public_name;
             avatar.size = 200;
-            var pixbuf = yield Cachier.get_image (account_info, 200);
-            if (pixbuf != null) {
-                avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
-            }
+            //  var pixbuf = yield Cachier.get_image (account_info, 200);
+            //  if (pixbuf != null) {
+            //      avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
+            //  }
         }
     }
 }

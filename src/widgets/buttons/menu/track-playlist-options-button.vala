@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
+
 public class Cassette.TrackPlaylistOptionsButton: TrackOptionsButton {
 
-    public Client.YaMAPI.Playlist playlist_info { get; set; }
+    public YaMAPI.Playlist playlist_info { get; set; }
 
     construct {
         SimpleAction remove_from_playlist_action = new SimpleAction ("remove-from-playlist", null);

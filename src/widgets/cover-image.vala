@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,8 @@
  */
 
 
-using Cassette.Client;
+using Tape;
+using Tape.YaMAPI;
 using Gee;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/cover-image.ui")]
@@ -28,7 +29,7 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
     [GtkChild]
     unowned Gtk.Stack stack;
 
-    public CoverSize cover_size { get; set; default = CoverSize.BIG; }
+    public int cover_size { get; set; default = CoverSize.BIG; }
 
     public HasCover yam_object { get; private set; }
 
@@ -73,7 +74,7 @@ public sealed class Cassette.CoverImage : Gtk.Frame {
 
         Gdk.Pixbuf? pixbuf_buffer = null;
 
-        pixbuf_buffer = yield Cachier.get_image (yam_object, (int) cover_size);
+        //  pixbuf_buffer = yield Cachier.get_image (yam_object, (int) cover_size);
 
         if (pixbuf_buffer != null) {
             var real_image = new Gtk.Image ();

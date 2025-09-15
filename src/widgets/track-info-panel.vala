@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/track-info-panel.ui")]
 public class Cassette.TrackInfoPanel : Adw.Bin, Gtk.Orientable {

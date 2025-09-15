@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 using Gee;
 
 
@@ -70,13 +70,13 @@ namespace Cassette {
             }
 
             Timeout.add (100, () => {
-                if (track_id != player.mode.get_current_track_info ().id || player.state != Player.State.PLAYING) {
+                if (track_id != player.mode.get_current_track_info ().id || player.state != PlayerState.PLAYING) {
                     current_line = null;
                     show_as_text ();
 
                 } else {
                     show_as_sync ();
-                    int64 current_ms = player.playback_pos_ms;
+                    int64 current_ms = player.position;
                     for (int i = 0; i < line_list.size - 1; i++) {
                         if (line_list[i].time_ms > current_ms) {
                             break;

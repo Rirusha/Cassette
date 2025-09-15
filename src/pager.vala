@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 using Gee;
 
 
@@ -105,7 +105,7 @@ namespace Cassette {
         }
 
         construct {
-            pages_file = File.new_build_filename (storager.data_dir_file.peek_path (), "cassette.pages");
+            pages_file = File.new_build_filename (storager.datadir_file.peek_path (), "cassette.pages");
 
             // Type register
             typeof (PlaylistView).ensure ();
@@ -309,7 +309,7 @@ namespace Cassette {
                 }
 
             } catch (Error e) {
-                Logger.warning (_("Can't read pages file. Message: %s").printf (e.message));
+                warning (_("Can't read pages file. Message: %s").printf (e.message));
             }
         }
 
@@ -329,7 +329,7 @@ namespace Cassette {
                 FileUtils.set_contents (pages_file.peek_path (), content_str, content_str.length);
 
             } catch (Error e) {
-                Logger.warning (_("Can't create pages file. Message: %s").printf (e.message));
+                warning (_("Can't create pages file. Message: %s").printf (e.message));
             }
         }
 

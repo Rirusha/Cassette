@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -114,8 +114,8 @@ public class Cassette.VolumeButton : CustomMenuButton {
         });
         add_controller (se);
 
-        Cassette.Client.settings.bind ("volume", this, "volume", SettingsBindFlags.DEFAULT);
-        Cassette.Client.settings.bind ("mute", this, "mute", SettingsBindFlags.DEFAULT);
+        Cassette.root.settings.bind_property ("volume", this, "volume", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Cassette.root.settings.bind_property ("mute", this, "mute", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
     }
 
     protected override string get_title_label () {

@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/header-bar.ui")]
 public class Cassette.HeaderBar : ShrinkableBin {
@@ -118,10 +118,10 @@ public class Cassette.HeaderBar : ShrinkableBin {
     public async void load_avatar () {
         avatar.text = yam_talker.me.public_name;
 
-        var pixbuf = yield Client.Cachier.get_image (yam_talker.me, 28);
-        if (pixbuf != null) {
-            avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
-        }
+        //  var pixbuf = yield Client.Cachier.get_image (yam_talker.me, 28);
+        //  if (pixbuf != null) {
+        //      avatar.custom_image = Gdk.Texture.for_pixbuf (pixbuf);
+        //  }
 
         avatar_button.visible = true;
     }

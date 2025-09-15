@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -63,19 +63,19 @@ namespace Cassette {
 
             show_save_stack_switch.notify["active"].connect (on_show_save_stack_switch_changed);
 
-            can_cache_switch.active = Cassette.Client.settings.get_boolean ("can-cache");
+            can_cache_switch.active = Cassette.root.settings.can_cache;
 
             can_cache_switch.notify["active"].connect (() => {
                 if (!can_cache_switch.active) {
                     ask_about_deletion ();
                 } else {
-                    Cassette.Client.settings.set_boolean ("can-cache", true);
+                    Cassette.root.settings.can_cache = true;
                 }
             });
 
-            Cassette.Client.settings.bind (
-                "add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT
-            );
+            //  Cassette.Client.settings.bind (
+            //      "add-tracks-to-start", add_tracks_to_start_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            //  );
             Cassette.settings.bind (
                 "available-visible", available_visible_switch, "active", GLib.SettingsBindFlags.DEFAULT
             );
@@ -97,12 +97,12 @@ namespace Cassette {
             Cassette.settings.bind (
                 "show-temp-save-mark", show_temp_save_stack_switch, "active", GLib.SettingsBindFlags.DEFAULT
             );
-            Cassette.Client.settings.bind (
-                "is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT
-            );
-            Cassette.Client.settings.bind (
-                "debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT
-            );
+            //  Cassette.Client.settings.bind (
+            //      "is-hq", is_hq_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            //  );
+            //  Cassette.Client.settings.bind (
+            //      "debug-mode", debug_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT
+            //  );
             Cassette.settings.bind (
                 "use-only-dialogs", use_only_dialogs_switch, "active", GLib.SettingsBindFlags.DEFAULT
             );
@@ -148,7 +148,7 @@ namespace Cassette {
             dialog.response.connect ((dialog, response) => {
                 if (response == "delete") {
                     deletion_preferences.delete_files (true);
-                    Cassette.Client.settings.set_boolean ("can-cache", can_cache_switch.active);
+                    Cassette.root.settings.can_cache = can_cache_switch.active;
                 } else {
                     can_cache_switch.active = true;
                 }

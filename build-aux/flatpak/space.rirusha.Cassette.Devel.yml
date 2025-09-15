@@ -30,15 +30,18 @@ cleanup:
   - '*.la'
   - '*.a'
 modules:
-  - name: blueprint-compiler
+  - name: api-base
     buildsystem: meson
-    cleanup:
-      - '*'
+    builddir: true
     sources:
-      - type: git
-        url: https://gitlab.gnome.org/jwestman/blueprint-compiler
-        commit: 04ef0944db56ab01307a29aaa7303df6067cb3c0
-        tag: v0.16.0
+      - type: dir
+        path: ../../subprojects/api-base
+  - name: tape
+    buildsystem: meson
+    builddir: true
+    sources:
+      - type: dir
+        path: ../../subprojects/libtape
   - name: cassette
     buildsystem: meson
     builddir: true

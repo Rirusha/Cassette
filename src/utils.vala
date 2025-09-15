@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using Cassette.Client;
+using Tape;
 using Gee;
 
 namespace Cassette {
@@ -126,11 +126,11 @@ namespace Cassette {
      */
     public static void roll_shuffle_mode () {
         switch (player.shuffle_mode) {
-            case Player.ShuffleMode.OFF:
-                player.shuffle_mode = Player.ShuffleMode.ON;
+            case ShuffleMode.OFF:
+                player.shuffle_mode = ShuffleMode.ON;
                 break;
-            case Player.ShuffleMode.ON:
-                player.shuffle_mode = Player.ShuffleMode.OFF;
+            case ShuffleMode.ON:
+                player.shuffle_mode = ShuffleMode.OFF;
                 break;
         }
     }
@@ -143,20 +143,20 @@ namespace Cassette {
      */
     public static void roll_repeat_mode () {
         switch (player.repeat_mode) {
-            case Player.RepeatMode.OFF:
-                if (player.mode is Player.Flow) {
-                    player.repeat_mode = Player.RepeatMode.ONE;
+            case RepeatMode.OFF:
+                if (player.mode is PlayerFlow) {
+                    player.repeat_mode = RepeatMode.ONE;
                 } else {
-                    player.repeat_mode = Player.RepeatMode.QUEUE;
+                    player.repeat_mode = RepeatMode.QUEUE;
                 }
                 break;
 
-            case Player.RepeatMode.QUEUE:
-                player.repeat_mode = Player.RepeatMode.ONE;
+            case RepeatMode.QUEUE:
+                player.repeat_mode = RepeatMode.ONE;
                 break;
 
-            case Player.RepeatMode.ONE:
-                player.repeat_mode = Player.RepeatMode.OFF;
+            case RepeatMode.ONE:
+                player.repeat_mode = RepeatMode.OFF;
                 break;
         }
     }
@@ -166,7 +166,7 @@ namespace Cassette {
      *
      * @param track_info    объект трека, ссылка на который будет скопирована в буфер обмена
      */
-    public static void track_share (Cassette.Client.YaMAPI.Track track_info) {
+    public static void track_share (Tape.YaMAPI.Track track_info) {
         string url = "https://music.yandex.ru/album/%s/track/%s?utm_medium=copy_link".printf (
             track_info.albums[0].id, track_info.id
         );
@@ -182,7 +182,7 @@ namespace Cassette {
      *
      * @param playlist_info объект плейлиста, ссылка на который будет скопирована в буфер обмена
      */
-    public static void playlist_share (Cassette.Client.YaMAPI.Playlist playlist_info) {
+    public static void playlist_share (Tape.YaMAPI.Playlist playlist_info) {
         string url = "https://music.yandex.ru/users/%s/playlists/%s?utm_medium=copy_link".printf (
             playlist_info.owner.login, playlist_info.kind
         );
@@ -199,17 +199,11 @@ namespace Cassette {
      * @param track_id  id трека
      */
     public static async void show_track_by_id (string track_id) {
-        threader.add (() => {
-            var track_infos = yam_talker.get_tracks_info ({track_id});
+        var track_infos = yield yam_talker.get_tracks_info ({track_id});
 
-            if (track_infos != null) {
-                application.main_window.window_sidebar.show_track_info (track_infos[0]);
-            }
-
-            Idle.add (show_track_by_id.callback);
-        });
-
-        yield;
+        if (track_infos != null) {
+            application.main_window.window_sidebar.show_track_info (track_infos[0]);
+        }
     }
 
     /**

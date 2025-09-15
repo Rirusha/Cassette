@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -113,7 +113,7 @@ namespace Cassette {
             }
 
             diff_con = Timeout.add (100, () => {
-                var diff = (next_time - player.playback_pos_ms) / 1000;
+                var diff = (next_time - player.position) / 1000;
 
                 if (diff > 6 ) {
                     line_big_label.label = "   < . . . >";

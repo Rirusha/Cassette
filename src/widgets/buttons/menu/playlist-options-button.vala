@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
+
 public class Cassette.PlaylistOptionsButton : CustomMenuButton {
 
-    public Client.YaMAPI.Playlist playlist_info { get; set; }
+    public YaMAPI.Playlist playlist_info { get; set; }
 
     construct {
         SimpleAction share_action = new SimpleAction ("share", null);
@@ -59,13 +61,13 @@ public class Cassette.PlaylistOptionsButton : CustomMenuButton {
 
     protected override Gtk.Widget[] get_dialog_menu_widgets () {
         return {
-            new ActionCardStation (new Client.YaMAPI.Rotor.StationInfo () {
-                id = new Client.YaMAPI.Rotor.Id () {
+            new ActionCardStation (new YaMAPI.Rotor.StationInfo () {
+                id = new YaMAPI.Rotor.Id () {
                     type_ = "playlist",
                     tag = "%s_%s".printf (playlist_info.uid, playlist_info.kind)
                 },
                 name = _("My Vibe by playlist"),
-                icon = new Client.YaMAPI.Icon ()
+                icon = new YaMAPI.Icon ()
             }) {
                 is_shrinked = true
             }

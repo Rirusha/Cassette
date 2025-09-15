@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,9 +16,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
+
 public abstract class Cassette.TrackRow: Reactable {
 
-    public Client.YaMAPI.Track track_info { get; construct; }
+    public YaMAPI.Track track_info { get; construct; }
 
     protected abstract PlayMarkTrack play_mark_track { owned get; }
 

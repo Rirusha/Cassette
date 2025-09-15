@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape;
 
 public abstract class Cassette.PlayMarkDefault : PlayMark, Initable {
 
@@ -39,11 +40,11 @@ public abstract class Cassette.PlayMarkDefault : PlayMark, Initable {
         connect_all ();
 
         switch (player.state) {
-            case Client.Player.State.PLAYING:
+            case PlayerState.PLAYING:
                 on_player_played ();
                 break;
 
-            case Client.Player.State.PAUSED:
+            case PlayerState.PAUSED:
                 on_player_paused ();
                 break;
 

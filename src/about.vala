@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ namespace Cassette {
 
         var about = new Adw.AboutDialog () {
             application_name = Config.APP_NAME,
-            application_icon = Config.APP_ID_DYN,
+            application_icon = Config.APP_ID_RELEVANT,
             developer_name = "Vladimir Vaskov",
             version = Config.VERSION,
             developers = developers,

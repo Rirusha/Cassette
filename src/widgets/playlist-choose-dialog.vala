@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -51,13 +51,7 @@ namespace Cassette {
         async void load_playlists () {
             Gee.ArrayList<YaMAPI.Playlist>? playlists_info = null;
 
-            threader.add (() => {
-                playlists_info = yam_talker.get_playlist_list (null);
-
-                Idle.add (load_playlists.callback);
-            });
-
-            yield;
+            playlists_info = yield yam_talker.get_playlist_list (null);
 
             set_values (playlists_info);
         }

@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +15,8 @@
  *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
+
+using Tape;
 
 public sealed class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
 
@@ -33,7 +35,7 @@ public sealed class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
         dislike_button.init_content (track_info.id);
         box.append (dislike_button);
 
-        var like_button = new LikeButton (Client.LikableType.TRACK) {
+        var like_button = new LikeButton (LikableType.TRACK) {
             css_classes = {"flat"},
         };
         like_button.init_content (track_info.id);
@@ -76,17 +78,17 @@ public sealed class Cassette.TrackQueueOptionsButton: TrackOptionsButton {
     }
 
     protected override Gtk.Widget[] get_dialog_menu_widgets () {
-        var like_button = new LikeButton (Client.LikableType.TRACK);
+        var like_button = new LikeButton (LikableType.TRACK);
         like_button.init_content (track_info.id);
 
         return {
-            new ActionCardStation (new Client.YaMAPI.Rotor.StationInfo () {
-                id = new Client.YaMAPI.Rotor.Id () {
+            new ActionCardStation (new YaMAPI.Rotor.StationInfo () {
+                id = new YaMAPI.Rotor.Id () {
                     type_ = "track",
                     tag = track_info.id
                 },
                 name = _("My Vibe by track"),
-                icon = new Client.YaMAPI.Icon ()
+                icon = new YaMAPI.Icon ()
             }) {
                 is_shrinked = true
             },

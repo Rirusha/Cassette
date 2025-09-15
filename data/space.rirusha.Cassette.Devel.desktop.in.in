@@ -5,7 +5,7 @@ Comment=Unofficial Yandex Music client for GNOME (Devel build)
 # Translators: keep number of ';'
 Keywords=yandex;yandex music;yam;music;
 Exec=cassette %U
-Icon=@APP_ID_DYN@
+Icon=@APP_ID_RELEVANT@
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Music;Audio;AudioVideo;

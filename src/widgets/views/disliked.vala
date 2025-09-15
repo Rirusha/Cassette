@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -52,13 +52,7 @@ namespace Cassette {
         }
 
         public async override int try_load_from_web () {
-            threader.add (() => {
-                _track_list = yam_talker.get_disliked_tracks ();
-
-                Idle.add (try_load_from_web.callback);
-            });
-
-            yield;
+            _track_list = yield yam_talker.get_disliked_tracks ();
 
             if (_track_list != null) {
                 set_values ();

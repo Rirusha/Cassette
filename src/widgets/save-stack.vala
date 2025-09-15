@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 
 
-using Cassette.Client;
+using Tape;
 
 
 namespace Cassette {
@@ -36,7 +36,7 @@ namespace Cassette {
         public bool show_anyway { get; set; default = false; }
 
         protected string content_id { get; set; }
-        public Cachier.ContentType content_type { get; construct; }
+        public Tape.ContentType content_type { get; construct; }
 
         // Нужно для резервирования места под виджет
         public bool hide_when_none { get; construct; default = false; }
@@ -49,13 +49,13 @@ namespace Cassette {
 
         string get_content_name () {
             switch (content_type) {
-                case Cachier.ContentType.ALBUM:
+                case Tape.ContentType.ALBUM:
                     return _("Album");
-                case Cachier.ContentType.IMAGE:
+                case Tape.ContentType.IMAGE:
                     return _("Image");
-                case Cachier.ContentType.PLAYLIST:
+                case Tape.ContentType.PLAYLIST:
                     return _("Playlist");
-                case Cachier.ContentType.TRACK:
+                case Tape.ContentType.TRACK:
                     return _("Track");
                 default:
                     assert_not_reached ();
@@ -91,7 +91,7 @@ namespace Cassette {
         }
 
         public void clear () {
-            cache_state_changed (Cachier.CacheingState.NONE);
+            cache_state_changed (CacheingState.NONE);
         }
 
         public void init_content (string content_id) {
@@ -107,27 +107,27 @@ namespace Cassette {
             cache_state_changed (cachier.controller.get_content_cache_state (content_type, content_id));
         }
 
-        void on_content_cache_state_changed (Cachier.ContentType content_type, string content_id, Cachier.CacheingState state) {
+        void on_content_cache_state_changed (Tape.ContentType content_type, string content_id, CacheingState state) {
             if (this.content_id == content_id && this.content_type == content_type) {
                 cache_state_changed (state);
             }
         }
 
-        void cache_state_changed (owned Cachier.CacheingState state) {
+        void cache_state_changed (owned CacheingState state) {
             if (!Cassette.settings.get_boolean ("show-save-stack")) {
-                state = Cachier.CacheingState.NONE;
+                state = CacheingState.NONE;
             }
 
             switch (state) {
-                case Cachier.CacheingState.NONE:
+                case CacheingState.NONE:
                     save_stack.visible_child_name = "none";
                     save_spin.stop ();
                     break;
-                case Cachier.CacheingState.LOADING:
+                case CacheingState.LOADING:
                     save_stack.visible_child_name = "loading";
                     save_spin.start ();
                     break;
-                case Cachier.CacheingState.TEMP:
+                case CacheingState.TEMP:
                     if (Cassette.settings.get_boolean ("show-temp-save-mark") || show_anyway) {
                         save_stack.visible_child_name = "temp";
                     } else {
@@ -135,7 +135,7 @@ namespace Cassette {
                     }
                     save_spin.stop ();
                     break;
-                case Cachier.CacheingState.PERM:
+                case CacheingState.PERM:
                     save_stack.visible_child_name = "perm";
                     save_spin.stop ();
                     break;

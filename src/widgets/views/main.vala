@@ -1,4 +1,4 @@
-/* Copyright 2023-2024 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Vaskov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ public class Cassette.MainView : BaseView {
     }
 
     construct {
-        status_page.icon_name = "%s-symbolic".printf (Config.APP_ID_DYN);
+        status_page.icon_name = "%s-symbolic".printf (Config.APP_ID_RELEVANT);
 
         stations_view_button.clicked.connect (() => {
             root_view.add_view (new StationsView ());

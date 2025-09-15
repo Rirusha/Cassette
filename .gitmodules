@@ -7,6 +7,3 @@
 [submodule "subprojects/libapi-base"]
 	path = subprojects/libapi-base
 	url = https://gitlab.gnome.org/Rirusha/libapi-base.git
-[submodule "subprojects/libyandex-music-api"]
-	path = subprojects/libyandex-music-api
-	url = https://gitlab.gnome.org/Rirusha/yandex-music-api-vala

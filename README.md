@@ -136,7 +136,7 @@ You need to add `cassette-nightly` and `gnome-nightly` repositories:
 
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-flatpak remote-add --if-not-exists cassette-nightly https://rirusha.space/repos/cassette-nightly.flatpakrepo
+flatpak remote-add --if-not-exists cassette-nightly https://rirusha.altlinux.team/space/repos/cassette-nightly.flatpakrepo
 ```
 
 Install application:

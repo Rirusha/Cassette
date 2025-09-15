@@ -21,8 +21,6 @@ stages:
   - build-aarch64
   - build-x86_64
   - deploy
-  - deploy-sithyfus
-  - update-repo
 
 # lint-vala:
 #   stage: 'lint-vala'
@@ -178,24 +176,3 @@ pages:
     paths:
       - public
     expire_in: 14 days
-
-update-repo:
-  stage: update-repo
-  image: alpine:latest
-  dependencies:
-    - "build-x86_64"
-  script:
-    - tar xf repo.tar
-    - apk add git
-    - git clone https://Rirusha:${GITHUB_TOKEN}@github.com/Rirusha/rirusha.space.git
-    - rm -f rirusha.space/repos/cassette-nightly.flatpakrepo && cp repo/index.flatpakrepo rirusha.space/repos/cassette-nightly.flatpakrepo
-    - cd rirusha.space
-    - git add .
-    - echo $(git status --porcelain)
-    - git config --global user.email "not-a@mail.com"
-    - git config --global user.name "Updater Bot"
-    - git commit -m "Update cassette-nightly repo" || true
-    - git push
-    - cd ..
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'

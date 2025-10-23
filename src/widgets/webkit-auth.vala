@@ -30,7 +30,7 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
 
     public signal void success ();
 
-    bool loading {
+    public bool loading {
         get {
             return loading_stack.visible_child_name == "loading";
         }

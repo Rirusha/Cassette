@@ -1,0 +1,17 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.blp]
+indent_style = space
+indent_size = 2
+
+[*.vala]
+indent_style = space
+indent_size = 4
+
+[*meson.build]
+indent_style = space
+indent_size = 2

@@ -1,14 +1,17 @@
 [Desktop Entry]
 # Translators: app name should be translated
 Name=Cassette
-Comment=Unofficial Yandex Music client for GNOME
+Comment=Unofficial Yandex Music client
 # Translators: keep number of ';'
 Keywords=yandex;yandex music;yam;music;
 Exec=cassette %U
 Icon=@APP_ID_RELEVANT@
 Terminal=false
 Type=Application
-Categories=GNOME;GTK;Music;Audio;AudioVideo;
+Categories=GNOME;GTK;Music;
 StartupNotify=true
 MimeType=x-scheme-handler/yandexmusic;
 X-GNOME-UsesNotifications=true
+X-SingleMainWindow=true
+X-Purism-FormFactor=Workstation;Mobile;
+X-GNOME-Gettext-Domain=cassette

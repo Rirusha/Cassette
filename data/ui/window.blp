@@ -99,10 +99,21 @@ template $CassetteWindow : Adw.ApplicationWindow {
       StackPage {
         name: "main";
         child: WindowHandle {
-          Adw.StatusPage {
-            icon-name: "like-symbolic";
-            title: _("Stay tuned");
-            description: _("Work in progress.");
+          Adw.ToolbarView {
+            [top]
+            Adw.HeaderBar {
+              [end]
+              Button {
+                icon-name: "info-outline-symbolic";
+                action-name: "win.about";
+              }
+            }
+
+            content: Adw.StatusPage {
+              icon-name: "like-symbolic";
+              title: _("Stay tuned");
+              description: _("Work in progress.");
+            };
           }
         };
       }

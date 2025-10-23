@@ -3,6 +3,7 @@ vapi_sources = files(
 )
 
 vala_sources = files(
+  'widgets/about.vala',
 
   'application.vala',
   'enums.vala',

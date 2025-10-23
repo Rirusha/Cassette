@@ -29,13 +29,25 @@ appstream_file = i18n.merge_file(
     configuration: non_quoted_conf),
   output: app_id + '.metainfo.xml',
   po_dir: '../po',
-  install: true,
+  install: get_option('is_devel') == false,
+  install_dir: get_option('datadir') / 'metainfo'
+)
+
+appstream_file_devel = i18n.merge_file(
+  input: configure_file(
+    output: app_id + '.Devel' + '.metainfo.xml.in',
+    input: app_id + '.Devel' + '.metainfo.xml.in.in',
+    configuration: non_quoted_conf),
+  output: app_id + '.Devel' + '.metainfo.xml',
+  po_dir: '../po',
+  install: get_option('is_devel') == true,
   install_dir: get_option('datadir') / 'metainfo'
 )
 
 appstreamcli = find_program('appstreamcli', required: false)
 if appstreamcli.found()
   test('Validate appstream file', appstreamcli, args: ['validate', appstream_file])
+  test('Validate appstream file', appstreamcli, args: ['validate', appstream_file_devel])
 endif
 
 install_data(app_id + '.gschema.xml',

@@ -23,6 +23,13 @@ using Tape;
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/window.ui")]
 public sealed class Cassette.Window : Adw.ApplicationWindow {
 
+    const ActionEntry[] ACTION_ENTRIES = {
+        //  { "close-sidebar", on_close_sidebar_action },
+        //  { "show-disliked-tracks", on_show_disliked_tracks_action },
+        { "preferences", on_preferences_action },
+        { "about", on_about_action },
+    };
+
     [GtkChild]
     unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
@@ -39,6 +46,8 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
     }
 
     construct {
+        add_action_entries (ACTION_ENTRIES, this);
+
         Cassette.Application.app_settings.bind ("window-width", this, "default-width", SettingsBindFlags.DEFAULT);
         Cassette.Application.app_settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
         Cassette.Application.app_settings.bind ("window-maximized", this, "maximized", SettingsBindFlags.DEFAULT);
@@ -116,5 +125,13 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
             show_message (_("Connection problems"));
             to_auth ();
         }
+    }
+
+    void on_preferences_action () {
+
+    }
+
+    void on_about_action () {
+        build_about ().present (this);
     }
 }

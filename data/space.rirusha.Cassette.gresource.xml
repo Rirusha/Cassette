@@ -129,6 +129,8 @@
   </gresource>
   <gresource prefix="/space/rirusha/Cassette/">
     <file>style.css</file>
+    <file>space.rirusha.Cassette.metainfo.xml</file>
+    <file>space.rirusha.Cassette.Devel.metainfo.xml</file>
     <file preprocess="xml-stripblanks">ui/window.ui</file>
   </gresource>
 </gresources>

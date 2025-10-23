@@ -43,7 +43,7 @@ namespace Cassette {
         }
 
         construct {
-            yam_talker.playlists_updated.connect (() => {
+            yam_helper.playlists_updated.connect (() => {
                 refresh.begin ();
             });
 
@@ -135,8 +135,8 @@ namespace Cassette {
             Gee.ArrayList<YaMAPI.Playlist>? playlists_info = null;
             Gee.ArrayList<YaMAPI.LikedPlaylist>? liked_playlists_info = null;
 
-            playlists_info = yield yam_talker.get_playlist_list (uid);
-            liked_playlists_info = yield yam_talker.get_likes_playlist_list (uid);
+            //  playlists_info = yield yam_helper.get_playlist_list (uid);
+            //  liked_playlists_info = yield yam_helper.get_likes_playlist_list (uid);
 
             if (playlists_info != null && liked_playlists_info != null) {
                 set_values (playlists_info, liked_playlists_info);
@@ -150,7 +150,7 @@ namespace Cassette {
             var playlists_kinds_str = storager.db.get_additional_data ("my_playlists");
             var playlists_info = new Gee.ArrayList<YaMAPI.Playlist?> ();
 
-            string uid = yam_talker.me.oid;
+            string uid = yam_helper.me.oid;
             if (playlists_kinds_str != null && uid != null) {
                 string[] playlists_kinds = playlists_kinds_str.split (",");
                 foreach (string kind in playlists_kinds) {

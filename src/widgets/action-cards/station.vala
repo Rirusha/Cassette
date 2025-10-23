@@ -124,7 +124,7 @@ public class Cassette.ActionCardStation : ActionCardCustom {
         });
         add_controller (gs);
 
-        if (yam_talker.me == null) {
+        if (yam_helper.me == null) {
             block_widget (this, BlockReason.NEED_AUTH);
         }
 

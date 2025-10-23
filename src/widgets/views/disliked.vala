@@ -52,12 +52,12 @@ namespace Cassette {
         }
 
         public async override int try_load_from_web () {
-            _track_list = yield yam_talker.get_disliked_tracks ();
+            //  _track_list = yield yam_helper.get_disliked_tracks ();
 
-            if (_track_list != null) {
-                set_values ();
-                return -1;
-            }
+            //  if (_track_list != null) {
+            //      set_values ();
+            //      return -1;
+            //  }
             return 0;
         }
 

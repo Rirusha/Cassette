@@ -27,7 +27,7 @@ namespace Cassette {
     public static Tape.Client root;
     public static Tape.Cachier cachier;
     public static Tape.Storager storager;
-    public static Tape.YaMTalker yam_talker;
+    public static Tape.YaMHelper yam_helper;
     public static Tape.Player player;
 
     public static GLib.Settings settings;
@@ -116,7 +116,7 @@ namespace Cassette {
             root = new Tape.Client (tape_settings);
             cachier = root.cachier;
             storager = root.cachier.storager;
-            yam_talker = root.yam_talker;
+            yam_helper = root.yam_helper;
             player = root.player;
 
             root.quit.connect (() => {
@@ -128,12 +128,12 @@ namespace Cassette {
 
             authenticator = new Authenticator ();
 
-            yam_talker.connection_established.connect (() => {
-                application_state = ApplicationState.ONLINE;
-            });
-            yam_talker.connection_lost.connect (() => {
-                application_state = ApplicationState.OFFLINE;
-            });
+            //  yam_talker.connection_established.connect (() => {
+            //      application_state = ApplicationState.ONLINE;
+            //  });
+            //  yam_talker.connection_lost.connect (() => {
+            //      application_state = ApplicationState.OFFLINE;
+            //  });
 
             player.current_track_finish_loading.connect (show_now_playing_notif);
 

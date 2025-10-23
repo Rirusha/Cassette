@@ -111,12 +111,12 @@ public class Cassette.HeaderBar : ShrinkableBin {
     }
 
     public void on_avatar_button_clicked () {
-        var dilaog = new AccountInfoDialog (yam_talker.me);
+        var dilaog = new AccountInfoDialog (yam_helper.me);
         dilaog.present (this);
     }
 
     public async void load_avatar () {
-        avatar.text = yam_talker.me.public_name;
+        avatar.text = yam_helper.me.public_name;
 
         //  var pixbuf = yield Client.Cachier.get_image (yam_talker.me, 28);
         //  if (pixbuf != null) {

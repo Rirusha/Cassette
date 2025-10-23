@@ -120,17 +120,17 @@ public class Cassette.TrackInfo : SidebarChildBin {
         YaMAPI.SimilarTracks? similar_tracks = null;
         YaMAPI.Lyrics? lyrics = null;
 
-        similar_tracks = yield yam_talker.get_track_similar (track_info.id);
+        //  similar_tracks = yield yam_helper.get_track_similar (track_info.id);
 
-        if (track_info.lyrics_info != null) {
-            if (track_info.lyrics_info.has_available_sync_lyrics) {
-                lyrics = yield yam_talker.get_lyrics (track_info.id, true);
-            } else if (track_info.lyrics_info.has_available_text_lyrics) {
-                lyrics = yield yam_talker.get_lyrics (track_info.id, false);
-            }
-        }
+        //  if (track_info.lyrics_info != null) {
+        //      if (track_info.lyrics_info.has_available_sync_lyrics) {
+        //          lyrics = yield yam_helper.get_lyrics (track_info.id, true);
+        //      } else if (track_info.lyrics_info.has_available_text_lyrics) {
+        //          lyrics = yield yam_helper.get_lyrics (track_info.id, false);
+        //      }
+        //  }
 
-        set_values (similar_tracks, lyrics);
+        //  set_values (similar_tracks, lyrics);
     }
 
     void set_values (YaMAPI.SimilarTracks? similar_tracks, YaMAPI.Lyrics? lyrics) {

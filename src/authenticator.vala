@@ -118,7 +118,7 @@ namespace Cassette {
             bool cant_use = false;
 
             try {
-                yield yam_talker.init_if_not ();
+                yield yam_helper.init ();
 
             } catch (ApiBase.BadStatusCodeError e) {
                 warning ("Bad status code while trying init client. Error message: %s".printf (e.message));

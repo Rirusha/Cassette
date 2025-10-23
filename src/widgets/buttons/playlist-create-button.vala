@@ -39,7 +39,7 @@ namespace Cassette {
         async void create_playlist_button_clicked_async () {
             sensitive = false;
 
-            yield yam_talker.create_playlist ();
+            //  yield yam_helper.create_playlist ();
         }
 
         void application_state_changed (ApplicationState new_state, ApplicationState old_state) {

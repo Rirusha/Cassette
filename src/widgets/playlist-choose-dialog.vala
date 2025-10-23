@@ -51,7 +51,7 @@ namespace Cassette {
         async void load_playlists () {
             Gee.ArrayList<YaMAPI.Playlist>? playlists_info = null;
 
-            playlists_info = yield yam_talker.get_playlist_list (null);
+            //  playlists_info = yield yam_helper.get_playlist_list (null);
 
             set_values (playlists_info);
         }

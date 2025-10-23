@@ -80,21 +80,21 @@ namespace Cassette {
                     ));
                 });
 
-                if (short_playlist_info.uid == yam_talker.me.oid) {
-                    yam_talker.playlist_start_delete.connect ((kind) => {
+                if (short_playlist_info.uid == yam_helper.me.oid) {
+                    yam_helper.playlist_start_delete.connect ((kind) => {
                         if (short_playlist_info.kind == kind) {
                             sensitive = false;
                         }
                     });
 
-                    yam_talker.playlist_stop_delete.connect ((kind) => {
+                    yam_helper.playlist_stop_delete.connect ((kind) => {
                         if (short_playlist_info.kind == kind) {
                             sensitive = true;
                         }
                     });
                 }
 
-                yam_talker.playlist_changed.connect ((new_playlist) => {
+                yam_helper.playlist_changed.connect ((new_playlist) => {
                     if (new_playlist.oid == short_playlist_info.oid) {
                         short_playlist_info.cover = new_playlist.cover;
                         short_playlist_info.title = new_playlist.title;
@@ -154,13 +154,13 @@ namespace Cassette {
             //  like_button.likes_count = short_playlist_info.likes_count;
 
             if (short_playlist_info.owner != null) {
-                if (short_playlist_info.owner.uid != yam_talker.me.oid) {
+                if (short_playlist_info.owner.uid != yam_helper.me.oid) {
                     self.tooltip_text = _("Owner: %s").printf (short_playlist_info.owner.get_user_name ());
                 }
             }
 
             if (short_playlist_info.uid == null) {
-                var me = yam_talker.me;
+                var me = yam_helper.me;
                 if (me.oid != null) {
                     short_playlist_info.uid = me.oid;
                 }

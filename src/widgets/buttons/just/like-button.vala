@@ -95,14 +95,14 @@ namespace Cassette {
 
             real_button.clicked.connect (like_dislike);
 
-            yam_talker.track_likes_start_change.connect (liked_start_change);
-            yam_talker.track_likes_end_change.connect (liked_changed);
-            yam_talker.track_dislikes_start_change.connect ((track_id) => {
+            yam_helper.track_likes_start_change.connect (liked_start_change);
+            yam_helper.track_likes_end_change.connect (liked_changed);
+            yam_helper.track_dislikes_start_change.connect ((track_id) => {
                 if (track_id == content_id) {
                     real_button.sensitive = false;
                 }
             });
-            yam_talker.track_dislikes_end_change.connect ((track_id) => {
+            yam_helper.track_dislikes_end_change.connect ((track_id) => {
                 if (track_id == content_id) {
                     real_button.sensitive = true;
                 }
@@ -120,7 +120,7 @@ namespace Cassette {
 
         void check_liked () {
             if (content_id != null) {
-                is_liked = yam_talker.likes_controller.get_content_is_liked (object_content_type, content_id);
+                is_liked = yam_helper.likes_controller.get_content_is_liked (object_content_type, content_id);
             }
         }
 
@@ -165,12 +165,12 @@ namespace Cassette {
 
             real_button.sensitive = false;
 
-            if (is_liked) {
-                yield yam_talker.unlike (object_content_type, content_id);
+            //  if (is_liked) {
+            //      yield yam_helper.unlike (object_content_type, content_id);
 
-            } else {
-                yield yam_talker.like (object_content_type, content_id);
-            }
+            //  } else {
+            //      yield yam_helper.like (object_content_type, content_id);
+            //  }
         }
     }
 }

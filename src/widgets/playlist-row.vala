@@ -58,10 +58,10 @@ namespace Cassette {
 
             YaMAPI.Playlist? new_playlist = null;
 
-            new_playlist = yield yam_talker.add_track_to_playlist (
-                track_info,
-                playlist_info
-            );
+            //  new_playlist = yield yam_helper.add_track_to_playlist (
+            //      track_info,
+            //      playlist_info
+            //  );
 
             playlist_info.track_count = new_playlist.track_count;
 

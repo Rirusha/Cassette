@@ -165,14 +165,14 @@ public class Cassette.StationsView : BaseView {
     }
 
     public async override int try_load_from_web () {
-        var dashboard = yield yam_talker.get_stations_dashboard ();
-        var stations_list = yield yam_talker.get_all_stations ();
+        //  var dashboard = yield yam_helper.get_stations_dashboard ();
+        //  var stations_list = yield yam_helper.get_all_stations ();
 
-        if (dashboard != null && stations_list != null) {
-            yield set_values_async (dashboard, stations_list);
+        //  if (dashboard != null && stations_list != null) {
+        //      yield set_values_async (dashboard, stations_list);
 
-            return -1;
-        }
+        //      return -1;
+        //  }
 
         return 0;
     }

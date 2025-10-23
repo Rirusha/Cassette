@@ -43,15 +43,15 @@ public sealed class Cassette.WaveSettings: SidebarChildBin {
     }
 
     async void fetch_wave_settings () {
-        wave_settings = yield yam_talker.get_wave_settings ();
+        //  wave_settings = yield yam_helper.get_wave_settings ();
 
-        if (wave_settings != null) {
-            loadable_widget.show_result ();
-            set_values ();
+        //  if (wave_settings != null) {
+        //      loadable_widget.show_result ();
+        //      set_values ();
 
-        } else {
-            loadable_widget.show_error ();
-        }
+        //  } else {
+        //      loadable_widget.show_error ();
+        //  }
     }
 
     void set_values () {

@@ -116,7 +116,7 @@ namespace Cassette {
             }
         }
 
-        yam_talker.remove_tracks_from_playlist.begin (playlist_info.kind, position, playlist_info.revision);
+        //  yam_helper.remove_tracks_from_playlist.begin (playlist_info.kind, position, playlist_info.revision);
     }
 
     /**
@@ -199,11 +199,11 @@ namespace Cassette {
      * @param track_id  id трека
      */
     public static async void show_track_by_id (string track_id) {
-        var track_infos = yield yam_talker.get_tracks_info ({track_id});
+        //  var track_infos = yield yam_helper.get_tracks_info ({track_id});
 
-        if (track_infos != null) {
-            application.main_window.window_sidebar.show_track_info (track_infos[0]);
-        }
+        //  if (track_infos != null) {
+        //      application.main_window.window_sidebar.show_track_info (track_infos[0]);
+        //  }
     }
 
     /**

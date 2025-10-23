@@ -77,7 +77,7 @@ namespace Cassette {
         construct {
             visibility_switch.state_set.connect (on_switch_change);
 
-            if (yam_talker.is_me (uid) && kind != "3") {
+            if (yam_helper.is_me (uid) && kind != "3") {
                 visibility_switch.visible = true;
                 remove_button.visible = true;
 
@@ -147,7 +147,7 @@ namespace Cassette {
 
             play_mark_context.triggered_not_playing.connect (start_playing);
 
-            if (kind != "3" || (uid != null && uid != yam_talker.me.oid)) {
+            if (kind != "3" || (uid != null && uid != yam_helper.me.oid)) {
                 add_page_button.visible = true;
                 add_page_button.clicked.connect (() => {
                     var playlist_info = object_info as YaMAPI.Playlist;
@@ -161,7 +161,7 @@ namespace Cassette {
                 });
             }
 
-            yam_talker.playlist_changed.connect ((new_playlist) => {
+            yam_helper.playlist_changed.connect ((new_playlist) => {
                 if (new_playlist.oid == ((YaMAPI.Playlist) object_info).oid) {
                     object_info = new_playlist;
                     set_values ();
@@ -189,11 +189,11 @@ namespace Cassette {
         public async bool playlist_delete_async () {
             bool success = false;
 
-            success = yield yam_talker.delete_playlist (kind);
+            //  success = yield yam_helper.delete_playlist (kind);
 
-            if (success) {
-                uncache_playlist (false);
-            }
+            //  if (success) {
+            //      uncache_playlist (false);
+            //  }
 
             return success;
         }
@@ -201,7 +201,7 @@ namespace Cassette {
         void set_values () {
             var playlist_info = object_info as YaMAPI.Playlist;
 
-            if (playlist_info.owner.uid == yam_talker.me.oid && playlist_info.kind != "3") {
+            if (playlist_info.owner.uid == yam_helper.me.oid && playlist_info.kind != "3") {
                 edit_button.visible = true;
             }
 
@@ -223,7 +223,7 @@ namespace Cassette {
                 like_button.likes_count = playlist_info.likes_count;
 
                 // Понять, где брать инфу о количестве лайков своих плейлистов (не загружая все плейлисты)
-                if (playlist_info.uid == yam_talker.me.oid) {
+                if (playlist_info.uid == yam_helper.me.oid) {
                     like_button.visible = false;
                 }
             }
@@ -231,7 +231,7 @@ namespace Cassette {
             duration_label.label = ms2str (playlist_info.duration_ms, false);
 
             if (playlist_info.kind == "3") {
-                if (playlist_info.owner.uid == yam_talker.me.oid) {
+                if (playlist_info.owner.uid == yam_helper.me.oid) {
                     playlist_status.visible = false;
                 } else {
                     playlist_status.label = _("Owner: %s").printf (playlist_info.owner.name);
@@ -294,7 +294,7 @@ namespace Cassette {
         async YaMAPI.Playlist? on_switch_change_async (bool is_active) {
             YaMAPI.Playlist? playlist_info = null;
 
-            playlist_info = yield yam_talker.change_playlist_visibility (((YaMAPI.Playlist) object_info).kind, is_active);
+            //  playlist_info = yield yam_helper.change_playlist_visibility (((YaMAPI.Playlist) object_info).kind, is_active);
 
             return playlist_info;
         }
@@ -303,7 +303,7 @@ namespace Cassette {
             int code = 0;
 
             try {
-                object_info = yield yam_talker.get_playlist_info_old (uid, kind);
+                object_info = yield yam_helper.get_playlist_info_old (uid, kind);
             } catch (ApiBase.BadStatusCodeError e) {
                 code = e.code;
             }
@@ -320,10 +320,10 @@ namespace Cassette {
 
         public async override bool try_load_from_cache () {
             if (uid == null) {
-                if (yam_talker.me.oid == null) {
+                if (yam_helper.me.oid == null) {
                     return false;
                 }
-                uid = yam_talker.me.oid;
+                uid = yam_helper.me.oid;
             }
 
             object_info = (YaMAPI.Playlist) (yield storager.load_object (typeof (YaMAPI.Playlist), @"$uid:$kind"));

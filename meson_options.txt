@@ -3,3 +3,9 @@ option(
   type: 'boolean',
   value: false
 )
+option(
+  'with_webkit',
+  description: 'Use webkit for auth via yandex or not (use token)',
+  type: 'boolean',
+  value: true
+)

@@ -72,7 +72,7 @@ template $CassetteWindow : Adw.ApplicationWindow {
       }
       StackPage {
         name: "no-plus";
-        child: WindowControls {
+        child: WindowHandle {
           Adw.StatusPage {
             icon-name: "dialog-error-symbolic";
             title: _("No Plus subscription");
@@ -98,7 +98,7 @@ template $CassetteWindow : Adw.ApplicationWindow {
 
       StackPage {
         name: "main";
-        child: WindowControls {
+        child: WindowHandle {
           Adw.StatusPage {
             icon-name: "like-symbolic";
             title: _("Stay tuned");

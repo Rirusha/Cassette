@@ -14,7 +14,6 @@ glib_min_version = '2.76'
 app_id = 'space.rirusha.Cassette'
 
 add_project_arguments(
-  # GCC14 COMPILE ERROR
   '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
   '-w',
   language: ['c'],
@@ -25,6 +24,13 @@ add_project_arguments(
   '--vapidir', meson.current_source_dir(),
   language: ['vala'],
 )
+
+if get_option('with_webkit')
+  add_project_arguments(
+    '--define=WITH_WEBKIT',
+    language: ['vala']
+  )
+endif
 
 name_suffix = ''
 version_suffix = ''
@@ -64,7 +70,10 @@ gio_dep = dependency('gio-2.0', version: '>= ' + glib_min_version)
 libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 libapi_base_dep = dependency('libapi-base-4')
 libtape_dep = dependency('libtape-0.2', fallback : ['libtape', 'lib_dep'])
-webkit_dep = dependency('webkitgtk-6.0')
+
+if get_option('with_webkit')
+  webkit_dep = dependency('webkitgtk-6.0')
+endif
 
 dependencies = [
   gee_dep,
@@ -72,8 +81,11 @@ dependencies = [
   libadwaita_dep,
   libapi_base_dep,
   libtape_dep,
-  webkit_dep,
 ]
+
+if get_option('with_webkit')
+  dependencies += webkit_dep
+endif
 
 subdir('data')
 subdir('po')

@@ -19,7 +19,6 @@
     <file alias="emblem-ok-symbolic.svg">assets/icons/emblem-ok-symbolic.svg</file>
     <file alias="explicit-symbolic.svg">assets/icons/explicit-symbolic.svg</file>
     <file alias="face-sad-symbolic.svg">assets/icons/face-sad-symbolic.svg</file>
-    <file alias="go-next-symbolic.svg">assets/icons/go-next-symbolic.svg</file>
     <file alias="go-previous-symbolic.svg">assets/icons/go-previous-symbolic.svg</file>
     <file alias="isound-wave-alt-symbolic.svg">assets/icons/isound-wave-alt-symbolic.svg</file>
     <file alias="like-symbolic.svg">assets/icons/like-symbolic.svg</file>
@@ -44,7 +43,6 @@
     <file alias="user-trash-symbolic.svg">assets/icons/user-trash-symbolic.svg</file>
     <file alias="view-fullscreen-symbolic.svg">assets/icons/view-fullscreen-symbolic.svg</file>
     <file alias="view-paged-symbolic.svg">assets/icons/view-paged-symbolic.svg</file>
-    <file alias="view-refresh-symbolic.svg">assets/icons/view-refresh-symbolic.svg</file>
     <file alias="view-sort-ascending-symbolic.svg">assets/icons/view-sort-ascending-symbolic.svg</file>
     <file alias="view-sort-descending-symbolic.svg">assets/icons/view-sort-descending-symbolic.svg</file>
     <file alias="wave-classes-concentration-symbolic.svg">assets/icons/wave-classes-concentration-symbolic.svg</file>
@@ -130,59 +128,7 @@
     <file alias="window-close-symbolic.svg">assets/icons/window-close-symbolic.svg</file>
   </gresource>
   <gresource prefix="/space/rirusha/Cassette/">
-    <file alias="gtk/help-overlay.ui" preprocess="xml-stripblanks">ui/help-overlay.ui</file>
     <file>style.css</file>
-    <file preprocess="xml-stripblanks">ui/account-info-dialog.ui</file>
-    <file preprocess="xml-stripblanks">ui/action-card-custom.ui</file>
-    <file preprocess="xml-stripblanks">ui/action-card-station.ui</file>
-    <file preprocess="xml-stripblanks">ui/begin-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/cache-deletion-preferences.ui</file>
-    <file preprocess="xml-stripblanks">ui/cache-indicator.ui</file>
-    <file preprocess="xml-stripblanks">ui/cant-show-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/cover-image.ui</file>
-    <file preprocess="xml-stripblanks">ui/custom-button.ui</file>
-    <file preprocess="xml-stripblanks">ui/custom-menu-button.ui</file>
-    <file preprocess="xml-stripblanks">ui/custom-page-preferences.ui</file>
-    <file preprocess="xml-stripblanks">ui/custom-pages-preferences.ui</file>
-    <file preprocess="xml-stripblanks">ui/devel-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/disliked-tracks-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/equalaizer.ui</file>
-    <file preprocess="xml-stripblanks">ui/header-bar.ui</file>
-    <file preprocess="xml-stripblanks">ui/headered-scrolled-window.ui</file>
-    <file preprocess="xml-stripblanks">ui/info-marks.ui</file>
-    <file preprocess="xml-stripblanks">ui/job-info-badge.ui</file>
-    <file preprocess="xml-stripblanks">ui/label-button.ui</file>
-    <file preprocess="xml-stripblanks">ui/loadable-widget.ui</file>
-    <file preprocess="xml-stripblanks">ui/lyrics-line.ui</file>
-    <file preprocess="xml-stripblanks">ui/lyrics-panel.ui</file>
-    <file preprocess="xml-stripblanks">ui/main-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/menu-dialog.ui</file>
-    <file preprocess="xml-stripblanks">ui/narrow-toggle-button.ui</file>
-    <file preprocess="xml-stripblanks">ui/no-plus-dialog.ui</file>
-    <file preprocess="xml-stripblanks">ui/player-bar.ui</file>
-    <file preprocess="xml-stripblanks">ui/player-queue.ui</file>
-    <file preprocess="xml-stripblanks">ui/playlist-choose-dialog.ui</file>
-    <file preprocess="xml-stripblanks">ui/playlist-create-button.ui</file>
-    <file preprocess="xml-stripblanks">ui/playlist-micro.ui</file>
-    <file preprocess="xml-stripblanks">ui/playlist-row.ui</file>
-    <file preprocess="xml-stripblanks">ui/playlist-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/playlists-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/preferences-dialog.ui</file>
-    <file preprocess="xml-stripblanks">ui/root-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/save-stack.ui</file>
-    <file preprocess="xml-stripblanks">ui/sidebar.ui</file>
-    <file preprocess="xml-stripblanks">ui/stations-view.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-base-content.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-carousel.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-default-content.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-info.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-info-panel.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-list.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-local-content.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-placeholder.ui</file>
-    <file preprocess="xml-stripblanks">ui/track-queue-content.ui</file>
-    <file preprocess="xml-stripblanks">ui/volume-button.ui</file>
-    <file preprocess="xml-stripblanks">ui/wave-settings.ui</file>
     <file preprocess="xml-stripblanks">ui/window.ui</file>
   </gresource>
 </gresources>

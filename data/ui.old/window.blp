@@ -1,0 +1,97 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteWindow: $CassetteApplicationWindow {
+  default-width: 600;
+  default-height: 500;
+  width-request: 360;
+  height-request: 294;
+  shrink-edge-width: 450;
+  player-bar-is-visible: bind player_bar.visible bidirectional;
+
+  content: Adw.ToolbarView switcher_toolbar {
+    bottom-bar-style: flat;
+    reveal-bottom-bars: false;
+
+    content: Adw.ToolbarView player_bar_toolbar {
+      bottom-bar-style: raised;
+      reveal-bottom-bars: false;
+
+      content: Adw.ToastOverlay toast_overlay {
+        vexpand: true;
+
+        child: $CassetteSidebar sidebar {
+          content: Adw.ToolbarView {
+            top-bar-style: raised;
+
+            [top]
+            $CassetteHeaderBar header_bar {
+              interactive: false;
+              title-stack: main_stack;
+              sidebar-shown: bind sidebar.is-shown;
+              switcher-visible: bind switcher_toolbar.reveal-bottom-bars inverted;
+            }
+
+            [top]
+            Gtk.Revealer search_revealer {
+              reveal-child: bind header_bar.search-active;
+
+              Adw.Clamp {
+                maximum-size: 500;
+                margin-top: 4;
+                margin-bottom: 4;
+                margin-start: 12;
+                margin-end: 12;
+
+                SearchEntry search_entry {
+                  hexpand: true;
+                  search-delay: 1500;
+                }
+              }
+            }
+
+            content: Box {
+              orientation: vertical;
+
+              Adw.Banner info_banner {
+                button-label: _("Reconnect");
+                title: _("Connection problems");
+                revealed: false;
+              }
+
+              Stack loading_stack {
+                StackPage {
+                  name: "loading";
+
+                  child: $CassetteLoadingSpinner loading_spinner {
+                    size: 24;
+                  };
+                }
+
+                StackPage {
+                  name: "done";
+
+                  child: Adw.ViewStack main_stack {
+                    vhomogeneous: false;
+                    hhomogeneous: false;
+                  };
+                }
+              }
+            };
+          };
+        };
+      };
+
+      [bottom]
+      $CassettePlayerBar player_bar {
+        window: template;
+      }
+    };
+
+    [bottom]
+    Adw.ViewSwitcherBar {
+      stack: main_stack;
+      reveal: true;
+    }
+  };
+}

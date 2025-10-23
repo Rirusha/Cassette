@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2025 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,13 +18,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-int main (string[] args) {
-    Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
-    Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
-    Intl.textdomain (Config.GETTEXT_PACKAGE);
+namespace Cassette {
 
-    Environment.set_application_name (_("Cassette"));
 
-    var app = new Cassette.Application ();
-    return app.run (args);
 }

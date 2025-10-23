@@ -82,6 +82,11 @@
 		<value nick="off" value="0"/>
 		<value nick="on" value="1"/>
 	</enum>
+	<enum id="space.rirusha.Cassette.client.music-quality">
+		<value nick="lq" value="0"/>
+		<value nick="nq" value="1"/>
+		<value nick="lossless" value="2"/>
+	</enum>
 
 	<schema id="space.rirusha.Cassette.client" path="/space/rirusha/Cassette/client/">
 
@@ -91,6 +96,9 @@
 		<key name="shuffle-mode" enum="space.rirusha.Cassette.client.shuffle-mode">
 			<default>"off"</default>
 		</key>
+		<key name="music-quality" enum="space.rirusha.Cassette.client.music-quality">
+			<default>"nq"</default>
+		</key>
 
 		<key name="volume" type="d">
 			<default>0.2</default>
@@ -98,20 +106,11 @@
 		<key name="mute" type="b">
 			<default>false</default>
 		</key>
-		<key name="max-thread-number" type="i">
-			<default>10</default>
-		</key>
 		<key name="add-tracks-to-start" type="b">
-			<default>true</default>
-		</key>
-		<key name="is-hq" type="b">
 			<default>true</default>
 		</key>
 		<key name="can-cache" type="b">
 			<default>true</default>
-		</key>
-		<key name="debug-mode" type="b">
-			<default>false</default>
 		</key>
 	</schema>
 

@@ -1,97 +1,111 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteWindow: $CassetteApplicationWindow {
-  default-width: 600;
-  default-height: 500;
-  width-request: 360;
-  height-request: 294;
-  shrink-edge-width: 450;
-  player-bar-is-visible: bind player_bar.visible bidirectional;
+template $CassetteWindow : Adw.ApplicationWindow {
+  Adw.ToastOverlay toast_overlay {
+    Stack win_stack {
+      transition-type: crossfade;
 
-  content: Adw.ToolbarView switcher_toolbar {
-    bottom-bar-style: flat;
-    reveal-bottom-bars: false;
+      StackPage {
+        name: "loading";
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {}
 
-    content: Adw.ToolbarView player_bar_toolbar {
-      bottom-bar-style: raised;
-      reveal-bottom-bars: false;
-
-      content: Adw.ToastOverlay toast_overlay {
-        vexpand: true;
-
-        child: $CassetteSidebar sidebar {
-          content: Adw.ToolbarView {
-            top-bar-style: raised;
-
-            [top]
-            $CassetteHeaderBar header_bar {
-              interactive: false;
-              title-stack: main_stack;
-              sidebar-shown: bind sidebar.is-shown;
-              switcher-visible: bind switcher_toolbar.reveal-bottom-bars inverted;
-            }
-
-            [top]
-            Gtk.Revealer search_revealer {
-              reveal-child: bind header_bar.search-active;
-
-              Adw.Clamp {
-                maximum-size: 500;
-                margin-top: 4;
-                margin-bottom: 4;
-                margin-start: 12;
-                margin-end: 12;
-
-                SearchEntry search_entry {
-                  hexpand: true;
-                  search-delay: 1500;
-                }
-              }
-            }
-
-            content: Box {
-              orientation: vertical;
-
-              Adw.Banner info_banner {
-                button-label: _("Reconnect");
-                title: _("Connection problems");
-                revealed: false;
-              }
-
-              Stack loading_stack {
-                StackPage {
-                  name: "loading";
-
-                  child: $CassetteLoadingSpinner loading_spinner {
-                    size: 24;
-                  };
-                }
-
-                StackPage {
-                  name: "done";
-
-                  child: Adw.ViewStack main_stack {
-                    vhomogeneous: false;
-                    hhomogeneous: false;
-                  };
-                }
-              }
-            };
-          };
+          content: Adw.Spinner {};
         };
-      };
-
-      [bottom]
-      $CassettePlayerBar player_bar {
-        window: template;
       }
-    };
 
-    [bottom]
-    Adw.ViewSwitcherBar {
-      stack: main_stack;
-      reveal: true;
-    }
-  };
+      StackPage {
+        name: "auth";
+        child: WindowHandle {
+          Adw.StatusPage auth_status_page {
+            icon-name: "space.rirusha.Cassette-symbolic";
+            title: _("Welcome to Cassette!");
+
+            Adw.Clamp {
+              maximum-size: 360;
+
+              Box {
+                orientation: vertical;
+                spacing: 24;
+
+                ListBox {
+                  styles [
+                    "boxed-list-separate"
+                  ]
+
+                  selection-mode: none;
+
+                  Adw.ButtonRow webkit_login {
+                    styles [
+                      "suggested-action"
+                    ]
+
+                    title: _("Login with Yandex account");
+                    end-icon-name: "go-next-symbolic";
+                    activated => $on_yandex_apply();
+                  }
+
+                  Adw.PasswordEntryRow token_login {
+                    title: _("Yandex Music token");
+                    show-apply-button: true;
+                    apply => $on_token_apply();
+                    entry-activated => $on_token_apply();
+                  }
+                }
+
+                Button {
+                  styles [
+                    "pill",
+                    "destructive-action"
+                  ]
+
+                  halign: center;
+                  label: _("Quit");
+                  action-name: "app.quit";
+                }
+              }
+            }
+          }
+        };
+      }
+      StackPage {
+        name: "no-plus";
+        child: WindowControls {
+          Adw.StatusPage {
+            icon-name: "dialog-error-symbolic";
+            title: _("No Plus subscription");
+            description: _("You won't be able to use the app without a Yandex Plus subscription.");
+
+            Adw.Clamp {
+              maximum-size: 360;
+
+              Button {
+                styles [
+                  "pill",
+                  "destructive-action"
+                ]
+
+                halign: center;
+                label: _("Quit");
+                action-name: "app.quit";
+              }
+            }
+          }
+        };
+      }
+
+      StackPage {
+        name: "main";
+        child: WindowControls {
+          Adw.StatusPage {
+            icon-name: "like-symbolic";
+            title: _("Stay tuned");
+            description: _("Work in progress.");
+          }
+        };
+      }
+    } 
+  }
 }

@@ -1,9 +1,3 @@
-[submodule "vala-checkers"]
-	path = vala-checkers
-	url = https://gitlab.gnome.org/Rirusha/vala-checkers.git
 [submodule "subprojects/libtape"]
 	path = subprojects/libtape
 	url = https://gitlab.gnome.org/Rirusha/libtape.git
-[submodule "subprojects/libapi-base"]
-	path = subprojects/libapi-base
-	url = https://gitlab.gnome.org/Rirusha/libapi-base.git

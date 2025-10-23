@@ -1,4 +1,4 @@
-/* Copyright 2023-2025 Vladimir Vaskov
+/* Copyright 2023-2025 Vladimir Romanov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 namespace Cassette {
 
     public Adw.AboutDialog build_about_dialog () {
-        const string ME = "Vladimir Vaskov https://gitlab.gnome.org/Rirusha";
+        const string ME = "Vladimir Romanov https://gitlab.gnome.org/Rirusha";
         const string TELEGRAM_CHAT = "https://t.me/CassetteGNOME_Discussion";
         const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
         const string TINKOFF_SUPPORT_LINK = "https://www.tinkoff.ru/cf/21GCxLuFuE9";
@@ -50,7 +50,7 @@ namespace Cassette {
         var about = new Adw.AboutDialog () {
             application_name = Config.APP_NAME,
             application_icon = Config.APP_ID_RELEVANT,
-            developer_name = "Vladimir Vaskov",
+            developer_name = "Vladimir Romanov",
             version = Config.VERSION,
             developers = developers,
             designers = designers,
@@ -59,7 +59,7 @@ namespace Cassette {
             //  Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
             translator_credits = _("translator-credits"),
             license_type = Gtk.License.GPL_3_0,
-            copyright = "© 2023-2024 Vladimir Vaskov",
+            copyright = "© 2023-2024 Vladimir Romanov",
             support_url = TELEGRAM_CHAT,
             issue_url = Config.BUGTRACKER,
             release_notes_version = Config.VERSION

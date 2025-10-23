@@ -24,30 +24,18 @@ endif
 
 appstream_file = i18n.merge_file(
   input: configure_file(
-    output: app_id + '.metainfo.xml.in',
-    input: app_id + '.metainfo.xml.in.in',
+    output: app_id_relevant + '.metainfo.xml.in',
+    input: app_id_relevant + '.metainfo.xml.in.in',
     configuration: non_quoted_conf),
-  output: app_id + '.metainfo.xml',
+  output: app_id_relevant + '.metainfo.xml',
   po_dir: '../po',
-  install: get_option('is_devel') == false,
-  install_dir: get_option('datadir') / 'metainfo'
-)
-
-appstream_file_devel = i18n.merge_file(
-  input: configure_file(
-    output: app_id + '.Devel' + '.metainfo.xml.in',
-    input: app_id + '.Devel' + '.metainfo.xml.in.in',
-    configuration: non_quoted_conf),
-  output: app_id + '.Devel' + '.metainfo.xml',
-  po_dir: '../po',
-  install: get_option('is_devel') == true,
+  install: true,
   install_dir: get_option('datadir') / 'metainfo'
 )
 
 appstreamcli = find_program('appstreamcli', required: false)
 if appstreamcli.found()
   test('Validate appstream file', appstreamcli, args: ['validate', appstream_file])
-  test('Validate appstream file', appstreamcli, args: ['validate', appstream_file_devel])
 endif
 
 install_data(app_id + '.gschema.xml',
@@ -69,10 +57,15 @@ blueprints = custom_target('blueprints',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 
-resource_files = files(app_id + '.gresource.xml')
+gres = configure_file(
+  output: app_id + '.gresource.xml',
+  input: app_id + '.gresource.xml.in',
+  configuration: non_quoted_conf
+)
+
 resources = gnome.compile_resources(
   'cassette-resources',
-  resource_files,
+  gres,
   source_dir: meson.current_build_dir(),
   dependencies: blueprints,
   c_name: 'cassette'

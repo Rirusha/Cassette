@@ -52,6 +52,8 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
         Cassette.Application.app_settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
         Cassette.Application.app_settings.bind ("window-maximized", this, "maximized", SettingsBindFlags.DEFAULT);
 
+        auth_status_page.icon_name = Config.APP_ID_RELEVANT + "-symbolic";
+
 #if WITH_WEBKIT
         auth_status_page.description = _("Choose a way to log in to the app. You can log in via your Yandex account or with your token."); // vala-lint=line-length
 #else

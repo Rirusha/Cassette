@@ -34,14 +34,16 @@ modules:
     buildsystem: meson
     builddir: true
     sources:
-      - type: dir
-        path: ../../subprojects/api-base
+      - type: git
+        url: https://altlinux.space/rirusha/libapi-base.git
+        branch: main
   - name: tape
     buildsystem: meson
     builddir: true
     sources:
-      - type: dir
-        path: ../../subprojects/libtape
+      - type: git
+        url: https://gitlab.gnome.org/Rirusha/libtape.git
+        branch: main
   - name: cassette
     buildsystem: meson
     builddir: true

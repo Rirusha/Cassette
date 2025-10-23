@@ -97,7 +97,7 @@ namespace Cassette {
         };
 
         var about = new Adw.AboutDialog.from_appdata (
-            "/space/rirusha/Cassette/space.rirusha.Cassette.metainfo.xml",
+            "/space/rirusha/Cassette/%s.metainfo.xml".printf (Config.APP_ID_RELEVANT),
             Config.VERSION
         ) {
             application_icon = Config.APP_ID_RELEVANT,

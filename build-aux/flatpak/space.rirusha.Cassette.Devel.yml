@@ -15,6 +15,7 @@ finish-args:
   - --filesystem=xdg-music:ro
   - --filesystem=xdg-download:ro
   - --own-name=org.mpris.MediaPlayer2.space.rirusha.Cassette.Devel
+  - --environment=API_BASE_UNKNOWN_FIELDS=1
 build-options:
   append-path: /usr/lib/sdk/vala/bin
   prepend-ld-library-path: /usr/lib/sdk/vala/lib
@@ -37,7 +38,7 @@ modules:
       - type: git
         url: https://altlinux.space/rirusha/libapi-base.git
         branch: main
-  - name: tape
+  - name: libtape
     buildsystem: meson
     builddir: true
     sources:

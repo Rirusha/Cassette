@@ -2,6 +2,9 @@ using Gtk 4.0;
 using Adw 1;
 
 template $CassetteWindow : Adw.ApplicationWindow {
+  default-height: 294;
+  default-width: 360;
+
   Adw.ToastOverlay toast_overlay {
     Stack win_stack {
       transition-type: crossfade;

@@ -4,15 +4,18 @@ vapi_sources = files(
 
 vala_sources = files(
   'widgets/about.vala',
+  'widgets/auth.vala',
+  'widgets/main-content.vala',
 
   'application.vala',
   'enums.vala',
   'main.vala',
+  'utils.vala',
   'window.vala',
 )
 
 if get_option('with_webkit')
-  vala_sources += files('widgets/webkit-auth.vala')
+  vala_sources += files('widgets/webkit/webkit-auth.vala')
 endif
 
 sources = [

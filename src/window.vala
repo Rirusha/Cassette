@@ -26,20 +26,15 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
     const ActionEntry[] ACTION_ENTRIES = {
         //  { "close-sidebar", on_close_sidebar_action },
         //  { "show-disliked-tracks", on_show_disliked_tracks_action },
-        { "preferences", on_preferences_action },
-        { "about", on_about_action },
+        { "preferences", show_preferences },
+        { "about", show_about },
+        { "show-auth", show_auth },
     };
 
     [GtkChild]
     unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
-    unowned Gtk.Stack win_stack;
-    [GtkChild]
-    unowned Adw.StatusPage auth_status_page;
-    [GtkChild]
-    unowned Adw.ButtonRow webkit_login;
-    [GtkChild]
-    unowned Adw.PasswordEntryRow token_login;
+    unowned Auth auth;
 
     public Window (Cassette.Application app) {
         Object (application: app);
@@ -52,38 +47,8 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
         Cassette.Application.app_settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
         Cassette.Application.app_settings.bind ("window-maximized", this, "maximized", SettingsBindFlags.DEFAULT);
 
-        auth_status_page.icon_name = Config.APP_ID_RELEVANT + "-symbolic";
-
-#if WITH_WEBKIT
-        auth_status_page.description = _("Choose a way to log in to the app. You can log in via your Yandex account or with your token."); // vala-lint=line-length
-#else
-        webkit_login.visible = false;
-        auth_status_page.description = "%s\n<a href=\"https://yandex-music.readthedocs.io/en/main/token.html\">%s</a>".printf ( // vala-lint=line-length
-            _("You need your Yandex music token to login."),
-            _("The methods of obtaining it are described here.")
-        );
-#endif
-
-        try_auth.begin (null);
-
         if (Config.IS_DEVEL) {
             add_css_class ("devel");
-        }
-    }
-
-    void to_main () {
-        win_stack.visible_child_name = "main";
-    }
-
-    void to_auth () {
-        win_stack.visible_child_name = "auth";
-    }
-
-    void to_cant_use (CantUseError e) {
-        switch (e.domain) {
-            case CantUseError.NO_PLUS:
-                win_stack.visible_child_name = "no-plus";
-                break;
         }
     }
 
@@ -91,49 +56,15 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
         toast_overlay.add_toast (new Adw.Toast (message));
     }
 
-    [GtkCallback]
-    void on_yandex_apply () {
-#if WITH_WEBKIT
-        var dialog = new WebkitAuthDialog (Cassette.Application.tape_client.cachier.storager.cookies_file);
-        dialog.present (this);
-        dialog.success.connect (() => {
-            try_auth.begin (null);
-        });
-#endif
+    void show_auth () {
+        auth.to_auth ();
     }
 
-    [GtkCallback]
-    void on_token_apply () {
-        win_stack.visible_child_name = "loading";
-        try_auth.begin (token_login.text);
-    }
-
-    async void try_auth (string? token) {
-        try {
-            if (yield Cassette.Application.tape_client.init (token)) {
-                to_main ();
-            } else {
-                if (token != null) {
-                    show_message (_("Failed to login. Probably wrong token"));
-                }
-                to_auth ();
-            }
-        } catch (ApiBase.BadStatusCodeError e) {
-            show_message (_("Bad status code: %i").printf (e.code));
-            to_auth ();
-        } catch (CantUseError e) {
-            to_cant_use (e);
-        } catch (ApiBase.SoupError e) {
-            show_message (_("Connection problems"));
-            to_auth ();
-        }
-    }
-
-    void on_preferences_action () {
+    void show_preferences () {
 
     }
 
-    void on_about_action () {
+    void show_about () {
         build_about ().present (this);
     }
 }

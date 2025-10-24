@@ -24,6 +24,7 @@ public sealed class Cassette.Application : Adw.Application {
 
     const ActionEntry[] ACTION_ENTRIES = {
         { "quit", quit },
+        { "show-message", show_message, "s" },
         //  { "log-out", on_log_out_action },
         //  { "force-log-out", on_force_log_out_action },
         //  { "play-pause", on_play_pause_action },
@@ -99,5 +100,21 @@ public sealed class Cassette.Application : Adw.Application {
         } else {
             active_window.present ();
         }
+    }
+
+    public void show_message (SimpleAction action, Variant? param) {
+        var message = param.get_string ();
+
+        if (active_window != null) {
+            ((Cassette.Window) active_window).show_message (message);
+
+            if (active_window.is_active) {
+                return;
+            }
+        }
+
+        var ntf = new Notification (_("Cassette"));
+        ntf.set_body (message);
+        send_notification (Config.APP_ID_RELEVANT, ntf);
     }
 }

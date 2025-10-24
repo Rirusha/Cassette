@@ -51,6 +51,8 @@ endif
 
 blueprints = custom_target('blueprints',
   input: files(
+    'ui/auth.blp',
+    'ui/main-content.blp',
     'ui/window.blp',
   ),
   output: '.',

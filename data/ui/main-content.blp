@@ -1,0 +1,23 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteMainContent : Adw.Bin {
+  WindowHandle {
+    Adw.ToolbarView {
+      [top]
+      Adw.HeaderBar {
+        [end]
+        Button {
+          icon-name: "info-outline-symbolic";
+          action-name: "win.about";
+        }
+      }
+
+      content: Adw.StatusPage {
+        icon-name: "like-symbolic";
+        title: _("Stay tuned");
+        description: _("Work in progress.");
+      };
+    }
+  }
+}

@@ -98,7 +98,7 @@ namespace Cassette {
 
         var about = new Adw.AboutDialog.from_appdata (
             "/space/rirusha/Cassette/%s.metainfo.xml".printf (Config.APP_ID_RELEVANT),
-            Config.VERSION
+            Config.LAST_STABLE_VERSION
         ) {
             application_icon = Config.APP_ID_RELEVANT,
             artists = artists,

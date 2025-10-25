@@ -130,7 +130,9 @@
   <gresource prefix="/space/rirusha/Cassette/">
     <file>style.css</file>
     <file>@APP_ID_RELEVANT@.metainfo.xml</file>
+    <file preprocess="xml-stripblanks">ui/webkit/webkit-auth.ui</file>
     <file preprocess="xml-stripblanks">ui/auth.ui</file>
+    <file preprocess="xml-stripblanks">ui/loadable.ui</file>
     <file preprocess="xml-stripblanks">ui/main-content.ui</file>
     <file preprocess="xml-stripblanks">ui/window.ui</file>
   </gresource>

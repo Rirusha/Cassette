@@ -20,61 +20,37 @@
 
 using WebKit;
 
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/webkit/webkit-auth.ui")]
 public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
 
-    WebView webview = new WebView ();
+    [GtkChild]
+    unowned Adw.Bin webview_bin;
+    [GtkChild]
+    unowned Loadable loadable;
 
-    Gtk.Stack loading_stack = new Gtk.Stack ();
+    WebView webview = new WebView ();
 
     public File cookies_file { get; construct; }
 
     public signal void success ();
-
-    public bool loading {
-        get {
-            return loading_stack.visible_child_name == "loading";
-        }
-        set {
-            loading_stack.visible_child_name = value ? "loading" : "main";
-        }
-    }
 
     public WebkitAuthDialog (File cookies_file) {
         Object (cookies_file: cookies_file);
     }
 
     construct {
-        content_width = 600;
-        content_height = 800;
-
-        loading_stack.add_named (new Adw.Spinner (), "loading");
-        loading_stack.add_named (webview, "main");
-
-        var toolbarview = new Adw.ToolbarView ();
-        child = toolbarview;
-
-        toolbarview.content = loading_stack;
-
-        var headerbar = new Adw.HeaderBar ();
-        toolbarview.add_top_bar (headerbar);
-
-        var refresh_button = new Gtk.Button.from_icon_name ("view-refresh-symbolic");
-        refresh_button.clicked.connect (on_refresh);
-        bind_property ("loading", refresh_button, "sensitive");
-        headerbar.pack_start (refresh_button);
-
-        loading = true;
+        webview_bin.child = webview;
 
         webview.load_changed.connect ((event) => {
             if (("https://music.yandex." in webview.uri) && event != LoadEvent.STARTED) {
                 close ();
                 success ();
             } else {
-                warning ("Redirected to %s", webview.uri);
+                debug ("Redirected to %s", webview.uri);
             }
 
-            if (event == LoadEvent.FINISHED && loading) {
-                loading = false;
+            if (event == LoadEvent.FINISHED && loadable.is_loading) {
+                loadable.is_loading = false;
             }
         });
 
@@ -92,8 +68,9 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
         }
     }
 
+    [GtkCallback]
     void on_refresh () {
-        loading = true;
+        loadable.is_loading = true;
 
         webview.reload ();
     }

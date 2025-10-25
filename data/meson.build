@@ -51,7 +51,9 @@ endif
 
 blueprints = custom_target('blueprints',
   input: files(
+    'ui/webkit/webkit-auth.blp',
     'ui/auth.blp',
+    'ui/loadable.blp',
     'ui/main-content.blp',
     'ui/window.blp',
   ),

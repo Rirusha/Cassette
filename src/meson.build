@@ -5,6 +5,7 @@ vapi_sources = files(
 vala_sources = files(
   'widgets/about.vala',
   'widgets/auth.vala',
+  'widgets/loadable.vala',
   'widgets/main-content.vala',
 
   'application.vala',

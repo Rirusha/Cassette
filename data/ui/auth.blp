@@ -1,67 +1,53 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteAuth : Adw.Bin {
-  Stack win_stack {
+template $CassetteAuth : $CassetteLoadable {
+  content: Stack win_stack {
     transition-type: crossfade;
-
-    StackPage {
-      name: "loading";
-      child: Adw.ToolbarView {
-        [top]
-        Adw.HeaderBar {}
-
-        content: Adw.Spinner {};
-      };
-    }
 
     StackPage {
       name: "auth";
       child: WindowHandle {
-        Adw.StatusPage auth_status_page {
-          title: _("Welcome to Cassette!");
+        Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            
+          }
 
-          Adw.Clamp {
-            maximum-size: 360;
+          Adw.StatusPage auth_status_page {
+            title: _("Welcome to Cassette!");
 
-            Box {
-              orientation: vertical;
-              spacing: 24;
+            Adw.Clamp {
+              maximum-size: 360;
 
-              ListBox {
-                styles [
-                  "boxed-list-separate"
-                ]
+              Box {
+                orientation: vertical;
+                spacing: 24;
 
-                selection-mode: none;
-
-                Adw.ButtonRow webkit_login {
+                ListBox {
                   styles [
-                    "suggested-action"
+                    "boxed-list-separate"
                   ]
 
-                  title: _("Login with Yandex account");
-                  end-icon-name: "go-next-symbolic";
-                  activated => $on_yandex_apply();
+                  selection-mode: none;
+
+                  Adw.ButtonRow webkit_login {
+                    styles [
+                      "suggested-action"
+                    ]
+
+                    title: _("Login with Yandex account");
+                    end-icon-name: "go-next-symbolic";
+                    activated => $on_yandex_apply();
+                  }
+
+                  Adw.PasswordEntryRow token_login {
+                    title: _("Yandex Music token");
+                    show-apply-button: true;
+                    apply => $on_token_apply();
+                    entry-activated => $on_token_apply();
+                  }
                 }
-
-                Adw.PasswordEntryRow token_login {
-                  title: _("Yandex Music token");
-                  show-apply-button: true;
-                  apply => $on_token_apply();
-                  entry-activated => $on_token_apply();
-                }
-              }
-
-              Button {
-                styles [
-                  "pill",
-                  "destructive-action"
-                ]
-
-                halign: center;
-                label: _("Quit");
-                action-name: "app.quit";
               }
             }
           }
@@ -94,5 +80,5 @@ template $CassetteAuth : Adw.Bin {
         }
       };
     }
-  } 
+  }; 
 }

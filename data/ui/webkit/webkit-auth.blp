@@ -1,0 +1,29 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteWebkitAuthDialog : Adw.Dialog {
+  content-width: 600;
+  content-height: 1000;
+
+  $CassetteLoadable loadable {
+    content: Overlay {
+      Adw.Bin webview_bin {}
+
+      [overlay]
+      Adw.ToolbarView toolbar_view {
+        valign: start;
+        vexpand: false;
+
+        [top]
+        Adw.HeaderBar {
+          [start]
+          Button {
+            icon-name: "view-refresh-symbolic";
+            sensitive: bind loadable.is-loading inverted;
+            clicked => $on_refresh();
+          }
+        }
+      }
+    };
+  }
+}

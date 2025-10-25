@@ -1,0 +1,24 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteLoadable : Adw.Bin {
+  notify::is-loading => $on_loading_changed();
+
+  Stack stack {
+    notify::transition-running => $on_transition_ended();
+    transition-type: crossfade;
+    transition-duration: 400;
+
+    StackPage {
+      name: "loading";
+      child: WindowHandle {
+        Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {}
+
+          content: Adw.Spinner {};
+        }
+      };
+    }
+  }
+}

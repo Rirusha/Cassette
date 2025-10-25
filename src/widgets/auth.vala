@@ -21,7 +21,7 @@
 using Tape;
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/auth.ui")]
-public sealed class Cassette.Auth : Adw.Bin {
+public sealed class Cassette.Auth : Loadable {
 
     [GtkChild]
     unowned Gtk.Stack win_stack;
@@ -60,11 +60,13 @@ public sealed class Cassette.Auth : Adw.Bin {
         clear_main ();
         win_stack.add_named (new MainContent (), "main");
         win_stack.visible_child_name = "main";
+        is_loading = false;
     }
 
     public void to_auth () {
         win_stack.visible_child_name = "auth";
         clear_main ();
+        is_loading = false;
     }
 
     void to_cant_use (CantUseError e) {
@@ -74,6 +76,7 @@ public sealed class Cassette.Auth : Adw.Bin {
                 break;
         }
         clear_main ();
+        is_loading = false;
     }
 
     [GtkCallback]
@@ -89,7 +92,7 @@ public sealed class Cassette.Auth : Adw.Bin {
 
     [GtkCallback]
     void on_token_apply () {
-        win_stack.visible_child_name = "loading";
+        is_loading = true;
         try_auth.begin (token_login.text);
     }
 

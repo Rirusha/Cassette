@@ -46,6 +46,18 @@ template $CassetteAuth : $CassetteLoadable {
                     show-apply-button: true;
                     apply => $on_token_apply();
                     entry-activated => $on_token_apply();
+
+                    [suffix]
+                    Button {
+                      styles [
+                        "flat",
+                      ]
+
+                      valign: center;
+                      clicked => $on_open_link();
+                      tooltip-text: _("How to obtain token");
+                      icon-name: "info-outline-symbolic";
+                    }
                   }
                 }
               }

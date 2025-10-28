@@ -27,6 +27,10 @@ public sealed class Cassette.Auth : Loadable {
     unowned Gtk.Stack win_stack;
     [GtkChild]
     unowned Adw.StatusPage auth_status_page;
+#if !WITH_WEBKIT
+    [GtkChild]
+    unowned Adw.ButtonRow webkit_login;
+#endif
     [GtkChild]
     unowned Adw.PasswordEntryRow token_login;
 
@@ -37,10 +41,7 @@ public sealed class Cassette.Auth : Loadable {
         auth_status_page.description = _("Choose a way to log in to the app. You can log in via your Yandex account or with your token."); // vala-lint=line-length
 #else
         webkit_login.visible = false;
-        auth_status_page.description = "%s\n<a href=\"https://yandex-music.readthedocs.io/en/main/token.html\">%s</a>".printf ( // vala-lint=line-length
-            _("You need your Yandex music token to login."),
-            _("The methods of obtaining it are described here.")
-        );
+        auth_status_page.description = _("You need your Yandex music token to login.");
 #endif
 
         try_auth.begin (null);
@@ -115,5 +116,10 @@ public sealed class Cassette.Auth : Loadable {
             activate_action_variant ("app.show-message", _("Connection problems"));
             to_auth ();
         }
+    }
+
+    [GtkCallback]
+    void on_open_link () {
+        new Gtk.UriLauncher ("https://yandex-music.readthedocs.io/en/main/token.html").launch.begin (null, null);
     }
 }

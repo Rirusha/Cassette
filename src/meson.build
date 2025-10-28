@@ -30,7 +30,6 @@ executable(
   meson.project_name(),
   sources,
   include_directories: config_h_dir,
-  link_args: ['-lm'],
   dependencies: dependencies,
   install: true,
 )

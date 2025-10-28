@@ -25,10 +25,10 @@
 			<default>"0.0.0"</default>
 		</key>
 		<key name="window-width" type="i">
-			<default>600</default>
+			<default>800</default>
 		</key>
 		<key name="window-height" type="i">
-			<default>500</default>
+			<default>900</default>
 		</key>
 		<key name="window-maximized" type="b">
 			<default>false</default>

@@ -70,6 +70,15 @@ public sealed class Cassette.Application : Adw.Application {
         set_accels_for_action ("app.quit", { "<primary>q" });
     }
 
+    protected override int handle_local_options (VariantDict options) {
+        if (options.contains ("version")) {
+            print ("%s %s\n", Config.APP_NAME, Config.VERSION);
+            return 0;
+        }
+
+        return -1;
+    }
+
     protected override void startup () {
         base.startup ();
 

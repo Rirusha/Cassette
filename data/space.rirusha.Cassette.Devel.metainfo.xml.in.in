@@ -91,6 +91,18 @@
     </screenshot>
   </screenshots>
   <releases>
+    <!-- Need for about in devel version -->
+    <release version="next">
+      <description>
+        <p>The long-awaited 0.3.0</p>
+        <ul>
+          <li>A completely new adaptive optimized interface</li>
+          <li>Added possibility to login via token (and build app without webkit auth)</li>
+          <li>New libtape SDK</li>
+          <li>New cache system</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.1" date="2025-02-25">
       <description>
         <p>Fixed a bug on the stations page and the playlist page in GNOME 48</p>

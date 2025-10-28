@@ -23,7 +23,6 @@ namespace Config {
     public const string APP_ID_RELEVANT;
     public const string APP_NAME;
     public const string VERSION;
-    public const string LAST_STABLE_VERSION;
     public const bool IS_DEVEL;
     public const string G_LOG_DOMAIN;
     public const string GETTEXT_PACKAGE;

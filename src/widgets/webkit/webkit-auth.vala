@@ -32,6 +32,8 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
 
     public File cookies_file { get; construct; }
 
+    File tmp_cookies_file;
+
     public signal void success ();
 
     public WebkitAuthDialog (File cookies_file) {
@@ -39,10 +41,23 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
     }
 
     construct {
+        string tmpdir;
+        try {
+            tmpdir = DirUtils.make_tmp ("XXXXXX-%s".printf (Application.tape_client.settings.app_name_lower));
+        } catch (Error e) {
+            error (e.message);
+        }
+        tmp_cookies_file = File.new_build_filename (tmpdir, "cookies");
+
         webview_bin.child = webview;
 
         webview.load_changed.connect ((event) => {
             if (("https://music.yandex." in webview.uri) && event != LoadEvent.STARTED) {
+                try {
+                    tmp_cookies_file.move (cookies_file, FileCopyFlags.ALL_METADATA);
+                } catch (Error e) {
+                    error (e.message);
+                }
                 close ();
                 success ();
             } else {
@@ -57,7 +72,7 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
         var network_session = webview.get_network_session ();
         var cookie_manager = network_session.get_cookie_manager ();
 
-        cookie_manager.set_persistent_storage (cookies_file.peek_path (), CookiePersistentStorage.SQLITE);
+        cookie_manager.set_persistent_storage (tmp_cookies_file.get_path (), CookiePersistentStorage.SQLITE);
 
         webview.load_uri (
             "https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d" // vala-lint=line-length

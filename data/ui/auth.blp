@@ -70,27 +70,33 @@ template $CassetteAuth : $CassetteLoadable {
     StackPage {
       name: "no-plus";
       child: WindowHandle {
-        Adw.StatusPage {
-          icon-name: "dialog-error-symbolic";
-          title: _("No Plus subscription");
-          description: _("You won't be able to use the app without a Yandex Plus subscription.");
-
-          Adw.Clamp {
-            maximum-size: 360;
-
-            Button {
-              styles [
-                "pill",
-                "destructive-action"
-              ]
-
-              halign: center;
-              label: _("Quit");
-              action-name: "app.quit";
-            }
+        Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            
           }
+
+          content: Adw.StatusPage {
+            icon-name: "dialog-error-symbolic";
+            title: _("No Plus subscription");
+            description: _("You won't be able to use the app without a Yandex Plus subscription.");
+
+            Adw.Clamp {
+              maximum-size: 360;
+
+              Button {
+                styles [
+                  "pill",
+                ]
+
+                halign: center;
+                label: _("Back");
+                clicked => $on_to_auth_clicked();
+              }
+            }
+          };
         }
       };
     }
-  }; 
+  };
 }

@@ -71,7 +71,7 @@ public sealed class Cassette.Auth : Loadable {
     }
 
     void to_cant_use (CantUseError e) {
-        switch (e.domain) {
+        switch (e.code) {
             case CantUseError.NO_PLUS:
                 win_stack.visible_child_name = "no-plus";
                 break;
@@ -88,6 +88,7 @@ public sealed class Cassette.Auth : Loadable {
         dialog.success.connect (() => {
             try_auth.begin (null);
         });
+        is_loading = true;
 #endif
     }
 
@@ -121,5 +122,10 @@ public sealed class Cassette.Auth : Loadable {
     [GtkCallback]
     void on_open_link () {
         new Gtk.UriLauncher ("https://yandex-music.readthedocs.io/en/main/token.html").launch.begin (null, null);
+    }
+
+    [GtkCallback]
+    void on_to_auth_clicked () {
+        Tape.Storager.remove_file.begin (Application.tape_client.cachier.storager.cookies_file, to_auth);
     }
 }

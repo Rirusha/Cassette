@@ -35,7 +35,7 @@ README language: \
 **Flathub:**
 
 <a href="https://flathub.org/apps/details/space.rirusha.Cassette">
-  <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
+  <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/>
 </a>
 
 ```shell
@@ -46,14 +46,21 @@ flatpak install space.rirusha.Cassette
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
 
-### ALT Linux
+
+<img alt="ALT Linux" src="https://www.basealt.ru/typo3conf/ext/ttmpl/Resources/Public/Tmpl2/images/icon27.png" style="height:96px;">
+<details><summary>Click to expand</summary>
+  
 ```shell
 su -
 apt-get install cassette
 ```
+</p>
+</details>
 
-### Arch Linux
-
+<img alt="Arch Linux" src="https://archlinux.org/static/logos/archlinux-logo-white-scalable.svg" style="height:96px;">
+<details><summary>Click to expand</summary>
+<p></p>
+  
 > Most AUR Helpers support Pacman-style flags, for example, yay.
 
 #### yay
@@ -65,11 +72,31 @@ yay -S cassette
 ```shell
 pamac install cassette
 ```
+</p>
+</details>
 
-### NixOS Unstable	
+<img alt="NixOS" src="https://brand.nixos.org/logos/nixos-logo-white-flat-white-regular-horizontal-minimal.svg" style="height:124px; ">
+<details><summary>Click to expand</summary>
+  
+#### NixOS Configuration
+```nix
+environment.systemPackages = with pkgs; [
+  cassette
+];
+```
+
+#### nix-env
+```shell
+nix-env -iA nixos.cassette
+```
+
+#### nix-shell
+> You can use this to try the Cassette before deciding whether to install it permanently.
 ```shell
 nix-shell -p cassette
 ```
+</p>
+</details>
 
 ## Building
 

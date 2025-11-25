@@ -32,8 +32,18 @@ README language: \
 
 ## Install
 
-**Flathub:**
+### Distribution repositories:
+<div style="padding-bottom:10vh;">
+  <a href="https://repology.org/project/cassette/versions">
+    <img src='https://repology.org/badge/vertical-allrepos/cassette.svg'>
+  </a>
+</div>
 
+###
+
+<img alt="Flathub" src="/assets/flathub-logo.svg" style="height:96px;">
+<details><summary>Нажмите чтобы развернуть</summary>
+  
 <a href="https://flathub.org/apps/details/space.rirusha.Cassette">
   <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/>
 </a>
@@ -41,10 +51,8 @@ README language: \
 ```shell
 flatpak install space.rirusha.Cassette
 ```
-
-**Distribution repositories:**
-
-[![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
+</p>
+</details>
 
 
 <img alt="ALT Linux" src="https://www.basealt.ru/typo3conf/ext/ttmpl/Resources/Public/Tmpl2/images/icon27.png" style="height:96px;">

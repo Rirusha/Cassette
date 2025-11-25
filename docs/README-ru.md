@@ -5,7 +5,7 @@
 <div align="center">
   <h1>
     <img
-      src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg"
+      src="/data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg"
       height="64"
     />
     Cassette
@@ -27,33 +27,47 @@
 <div align="center"><h4>GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux.</h4></div>
 
 <div align="center">
-  <img src="data/images/1-liked-view.png" alt="Preview"/>
+  <img src="/data/images/1-liked-view.png" alt="Preview"/>
 </div>
 
 ## Установка
 
-**Flathub:**
+### Репозитории дистрибутивов:
+<div style="padding-bottom:10vh;">
+  <a href="https://repology.org/project/cassette/versions">
+    <img src='https://repology.org/badge/vertical-allrepos/cassette.svg'>
+  </a>
+</div>
 
+###
+
+<img alt="Flathub" src="/assets/flathub-logo.svg" style="height:96px;">
+<details><summary>Нажмите чтобы развернуть</summary>
+  
 <a href="https://flathub.org/apps/details/space.rirusha.Cassette">
-  <img width='240' alt='Скачать на Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
+  <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=ru'/>
 </a>
 
 ```shell
 flatpak install space.rirusha.Cassette
 ```
+</p>
+</details>
 
-**Репозитории дистрибутивов:**
-
-[![Состояние упаковки](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
-
-### ALT Linux
+<img alt="ALT Linux" src="https://www.basealt.ru/typo3conf/ext/ttmpl/Resources/Public/Tmpl2/images/icon27.png" style="height:96px;">
+<details><summary>Нажмите чтобы развернуть</summary>
+  
 ```shell
 su -
 apt-get install cassette
 ```
+</p>
+</details>
 
-### Arch Linux
-
+<img alt="Arch Linux" src="https://archlinux.org/static/logos/archlinux-logo-white-scalable.svg" style="height:96px;">
+<details><summary>Нажмите чтобы развернуть</summary>
+<p></p>
+  
 > Большинство помощников AUR поддерживают флаги в стиле Pacman, например, yay.
 
 #### yay
@@ -65,11 +79,31 @@ yay -S cassette
 ```shell
 pamac install cassette
 ```
+</p>
+</details>
 
-### NixOS Unstable	
+<img alt="NixOS" src="/assets/nixos-logo.svg" style="height:72px; ">
+<details><summary>Нажмите чтобы развернуть</summary>
+  
+#### NixOS Configuration
+```nix
+environment.systemPackages = with pkgs; [
+  cassette
+];
+```
+
+#### nix-env
+```shell
+nix-env -iA nixos.cassette
+```
+
+#### nix-shell
+> Вы можете использовать это для того, чтобы попробовать Cassette, прежде чем принимать решение о ее постоянной установке.
 ```shell
 nix-shell -p cassette
 ```
+</p>
+</details>
 
 ## Сборка
 

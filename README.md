@@ -83,7 +83,7 @@ pamac install cassette
 </p>
 </details>
 
-<img alt="NixOS" src="https://brand.nixos.org/logos/nixos-logo-white-flat-white-regular-horizontal-minimal.svg" style="height:124px; ">
+<img alt="NixOS" src="/assets/nixos-logo.svg" style="height:72px; ">
 <details><summary>Click to expand</summary>
   
 #### NixOS Configuration

@@ -8,49 +8,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cassette 0.2.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-01-10 21:07+0000\n"
-"PO-Revision-Date: 2025-06-11 21:25+0300\n"
-"Last-Translator: David Sultaniiazov <x1z53@alt-gnome.ru>\n"
+"POT-Creation-Date: 2025-12-10 11:26+0000\n"
+"PO-Revision-Date: 2025-12-10 15:17+0300\n"
+"Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 48.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 "X-Poedit-Flags-xgettext: --add-comments=Translators:\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:24
+#: data/space.rirusha.Cassette.desktop.in.in:3
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
+#: src/main.vala:26
 msgid "Cassette"
 msgstr "Кассета"
 
-#: data/space.rirusha.Cassette.desktop.in.in:5
-msgid "Unofficial Yandex Music client for GNOME"
-msgstr "Неофициальный клиент Яндекс Музыки для GNOME"
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Неофициальный клиент Яндекс Музыки"
 
 # Translators: don't translate ';'
 #. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:7
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
+#: data/space.rirusha.Cassette.desktop.in.in:6
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
 msgid "yandex;yandex music;yam;music;"
 msgstr "яндекс;яндекс музыка;ям;музыка;"
 
 #. Translators: app name should be translated
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
 msgid "Cassette (Devel)"
 msgstr "Кассета (Разрабатываемая версия)"
 
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
-msgid "Unofficial Yandex Music client for GNOME (Devel build)"
-msgstr "Неофициальный клиент Яндекс Музыки для GNOME (Разрабатываемая версия)"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "Неофициальный клиент Яндекс Музыки"
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
+msgid "Unofficial Yandex Music client (Devel build)"
+msgstr "Неофициальный клиент Яндекс Музыки (Разрабатываемая версия)"
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:9
 msgid ""
@@ -97,1277 +95,950 @@ msgstr ""
 "Кассета является неофициальным клиентом, не связан с компанией Яндекс и не "
 "одобрен ей."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
 msgid "Liked view"
 msgstr "Мне нравится"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
 msgid "Playlists view"
 msgstr "Плейлисты"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
 msgid "Sync lyrics"
 msgstr "Текст песни"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
 msgid "Playback queue"
 msgstr "Очередь воспроизведения"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
 msgid "Waves view"
 msgstr "Моя волна"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
 msgid "Main preferences"
 msgstr "Главные параметры"
 
-#: data/ui/account-info-dialog.blp:5
-msgid "Account information"
-msgstr "Информация об аккаунте"
-
-#: data/ui/account-info-dialog.blp:52
-msgid "Open in browser"
-msgstr "Открыть в браузере"
-
-#: data/ui/account-info-dialog.blp:61
-msgid "Plus"
-msgstr "Плюс"
-
-#: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
-#: src/authenticator.vala:52
-msgid "Log out"
-msgstr "Выйти из аккаунта"
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:11
-msgid "Usage mode"
-msgstr "Режим использования"
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:40
-msgctxt "auth window"
-msgid "Choose usage mode"
-msgstr "Выберите режим использования"
-
-#: data/ui/begin-view.ui:50
-msgctxt "auth window"
-msgid ""
-"If you select the \"Online mode\", you can access local music by enabling "
-"the display of the corresponding pages in the pages preferences, as well as "
-"log in later when selecting \"Local mode\""
-msgstr ""
-"Если вы выберете \"Онлайн использование\", вы сможете получить доступ к "
-"локальной музыке, включив отображение соответствующих страниц в настройках, "
-"а также войти в систему позже, выбрав \"Локальное использование\""
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:75
-msgctxt "auth window"
-msgid "Online mode"
-msgstr "Онлайн использование"
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:85
-msgctxt "auth window"
-msgid "Local mode"
-msgstr "Локальное использование"
-
-#. Translators: "Close" window button label
-#: data/ui/begin-view.ui:97
-msgctxt "auth window"
-msgid "Close"
-msgstr "Закрыть"
-
-#: data/ui/begin-view.ui:112
-msgid "Authorization"
-msgstr "Авторизация"
-
-#. Translators: size of cache dirs
-#: data/ui/cache-deletion-preferences.ui:21
-msgid "Dirs size:"
-msgstr "Размер директорий:"
-
-#. Translators: tempprary cache folder
-#: data/ui/cache-deletion-preferences.ui:35
-msgid "Cache"
-msgstr "Кэш"
-
-#: data/ui/cache-deletion-preferences.ui:88
-msgid "Clear"
-msgstr "Очистить"
-
-#. Translators: temparence cache folder
-#: data/ui/cache-deletion-preferences.ui:109
-msgid "Data"
-msgstr "Данные"
-
-#: data/ui/cache-deletion-preferences.ui:159
-msgid "Move to cache"
-msgstr "Переместить в кэш"
-
-#: data/ui/cache-deletion-preferences.ui:163
-msgid "Move"
-msgstr "Переместить"
-
-#: data/ui/cache-indicator.blp:35
-msgid "Show all cache jobs"
-msgstr "Показать все сохранения"
-
-#: data/ui/custom-page-preferences.ui:17
-msgid "Title: "
-msgstr "Название: "
-
-#: data/ui/custom-page-preferences.ui:38
-msgid "Icon: "
-msgstr "Иконка: "
-
-#: data/ui/custom-page-preferences.ui:75
-msgid "Save page"
-msgstr "Сохранить страницу"
-
-#: data/ui/custom-page-preferences.ui:92
-msgid "Remove page"
-msgstr "Удалить страницу"
-
-#. Translators: title of preference group
-#: data/ui/custom-pages-preferences.ui:7
-msgctxt "preference window"
-msgid "Custom pages"
-msgstr "Пользовательские страницы"
-
-#. Translators: description of preference group
-#: data/ui/custom-pages-preferences.ui:9
-msgctxt "preference window"
-msgid "Here you can control custom pages."
-msgstr "Здесь вы можете управлять пользовательскими страницами."
-
-#: data/ui/disliked-tracks-view.ui:23
-#: src/widgets/buttons/menu/primary-menu-button.vala:32
-msgid "Disliked tracks"
-msgstr "Непонравившиеся треки"
-
-#: data/ui/header-bar.blp:12
-msgid "Go back"
-msgstr "Вернуться назад"
-
-#: data/ui/header-bar.blp:20
-msgid "Refresh"
-msgstr "Обновить"
-
-#: data/ui/header-bar.blp:28
-msgid "Yandex Music search"
-msgstr "Поиск по Яндекс Музыке"
-
-#: data/ui/help-overlay.blp:11
-msgid "Main Actions"
-msgstr "Основные действия"
-
-#: data/ui/help-overlay.blp:14
-msgid "Show Shortcuts"
-msgstr "Показать комбинации клавиш"
-
-#: data/ui/help-overlay.blp:19
-msgid "Quit"
-msgstr "Выйти"
-
-#: data/ui/help-overlay.blp:25
-msgid "Playback Control"
-msgstr "Управление воспроизведением"
-
-#: data/ui/help-overlay.blp:28
-msgid "Play/Pause playback"
-msgstr "Продолжить/Остановить воспроизведение"
-
-#: data/ui/help-overlay.blp:33 data/ui/player-bar.blp:87
-msgid "Play previous track"
-msgstr "Играть предыдущий трек"
-
-#: data/ui/help-overlay.blp:38 data/ui/player-bar.blp:119
-msgid "Play next track"
-msgstr "Играть следующий трек"
-
-#: data/ui/help-overlay.blp:43
-msgid "Mute app"
-msgstr "Отключить звук в приложении"
-
-#: data/ui/help-overlay.blp:49
-msgid "Queue control"
-msgstr "Управление очередью"
-
-#: data/ui/help-overlay.blp:52 data/ui/player-bar.blp:141
-msgid "Change shuffle mode"
-msgstr "Переключить перемешивание очереди"
-
-#: data/ui/help-overlay.blp:57 data/ui/player-bar.blp:65
-msgid "Change repeat mode"
-msgstr "Переключить режим повтора"
-
-#: data/ui/help-overlay.blp:63
-msgid "Other"
-msgstr "Остальное"
-
-#: data/ui/help-overlay.blp:66
-msgid "Share current track"
-msgstr "Поделиться текущим треком"
-
-#: data/ui/help-overlay.blp:71
-msgid "Parse url from clipboard"
-msgstr "Прочитать URL-адрес из буфера обмена"
-
-#: data/ui/info-marks.ui:23
-msgid "Explicit content"
-msgstr "Контент 18+"
-
-#: data/ui/info-marks.ui:32
-msgid "Child content"
-msgstr "Детский контент"
-
-#: data/ui/main-view.blp:6
-msgid "Page under construction"
-msgstr "Страница на стадии разработки"
-
-#: data/ui/main-view.blp:20
-msgid "All stations"
-msgstr "Все станции"
-
-#: data/ui/no-plus-dialog.blp:20
-msgid "No Plus Subscription"
-msgstr "Нет подписки Яндекс Плюс"
-
-#: data/ui/no-plus-dialog.blp:21
-msgid ""
-"To avoid problems with Yandex, the online functions of the application are "
-"not available without a Yandex.Plus subscription. Thanks for understanding."
-msgstr ""
-"Чтобы избежать проблем с Яндексом, онлайн-функции приложения недоступны без "
-"подписки Яндекс Плюс. Спасибо за понимание."
-
-#: data/ui/no-plus-dialog.blp:41
-msgid "Get Plus"
-msgstr "Получить Яндекс Плюс"
-
-#: data/ui/player-bar.blp:22
-msgid "Show track info"
-msgstr "Показать информацию о треке"
-
-#: data/ui/player-bar.blp:206
-msgid "Show wave settings"
-msgstr "Показать настройки Волны"
-
-#: data/ui/player-bar.blp:216
-msgid "Show playback queue"
-msgstr "Показать очередь воспроизведения"
-
-#: data/ui/player-bar.blp:229
-msgid "Change volume"
-msgstr "Изменить громкость"
-
-#: data/ui/player-queue.blp:5 src/application.vala:272
-msgid "Playing now"
-msgstr "Играет сейчас"
-
-#: data/ui/playlist-choose-dialog.ui:8
-msgid "Choose playlist to add"
-msgstr "Выберите плейлист для добавления"
-
-#: data/ui/playlist-create-button.ui:36
-msgid "Create playlist"
-msgstr "Создать плейлист"
-
-#: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
-#: src/widgets/cache-indicator/job-info-badge.vala:43
-#: src/widgets/save-stack.vala:57 src/widgets/views/abstract-cachiable.vala:168
-msgid "Playlist"
-msgstr "Плейлист"
-
-#: data/ui/playlist-row.ui:40
-msgid "Empty"
-msgstr "Пусто"
-
-#: data/ui/playlists-view.ui:23
-msgid "Your playlists"
-msgstr "Ваши плейлисты"
-
-#: data/ui/playlists-view.ui:39
-msgid "Also you liked these playlists"
-msgstr "Вам также понравились эти плейлисты"
-
-#: data/ui/playlist-view.ui:187
-msgid "Change playlist visibility"
-msgstr "Изменить видимость плейлиста"
-
-#: data/ui/playlist-view.ui:211
-msgid "Add page to header"
-msgstr "Добавить страницу в заголовок"
-
-#. Translators: tooltip of "save" button
-#: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
-#: src/widgets/buttons/menu/track-options-button.vala:83
-#: src/widgets/buttons/menu/track-options-button.vala:108
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
-#: src/widgets/buttons/menu/track-queue-options-button.vala:73
-#: src/widgets/buttons/menu/track-queue-options-button.vala:103
-msgid "Save"
-msgstr "Сохранить"
-
-#. Translators: tooltip of "delete" button
-#: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
-#: src/widgets/preferences/cache-deletion-preferences.vala:97
-#: src/widgets/preferences/preferences-dialog.vala:141
-#: src/widgets/views/playlist.vala:91
-msgid "Delete"
-msgstr "Удалить"
-
-#. Translators: tooltip of "abort" button
-#: data/ui/playlist-view.ui:276
-msgid "Abort"
-msgstr "Прервать"
-
-#: data/ui/playlist-view.ui:280
-msgid "Stop"
-msgstr "Приостановить"
-
-#: data/ui/preferences-dialog.ui:8
-msgctxt "preference dialog"
-msgid "Main"
-msgstr "Главная"
-
-#: data/ui/preferences-dialog.ui:12
-msgctxt "preference dialog"
-msgid "General"
-msgstr "Общие"
-
-#: data/ui/preferences-dialog.ui:15
-msgctxt "preference dialog"
-msgid "Enable high quality audio"
-msgstr "Включить высокое качество аудио"
-
-#: data/ui/preferences-dialog.ui:16
-msgctxt "preference dialog"
-msgid ""
-"Attention! If the track was downloaded in low quality, and after the "
-"download is enabled in high quality, the audio will not be reloaded"
-msgstr ""
-"Внимание! Если трек был загружен в низком качестве, то после включения "
-"настройки трек не будет загружен в высоком качестве"
-
-#: data/ui/preferences-dialog.ui:21
-msgctxt "preference dialog"
-msgid "Add track on top of playlist"
-msgstr "Добавить трек в начало плейлиста"
-
-#: data/ui/preferences-dialog.ui:22
-msgctxt "preference dialog"
-msgid "Will the track be added to the playlist as the first or as the last"
-msgstr ""
-"Будет ли трек добавлен в список воспроизведения как первый или как последний"
-
-#: data/ui/preferences-dialog.ui:27
-msgctxt "preference dialog"
-msgid "Show 'Playing now' notification"
-msgstr "Показывать уведомление 'Играет сейчас'"
-
-#: data/ui/preferences-dialog.ui:28
-msgctxt "preference dialog"
-msgid "Show a notification when switching a track"
-msgstr "Показывать уведомление при переключении трека"
-
-#: data/ui/preferences-dialog.ui:35
-msgctxt "preference dialog"
-msgid "Show additional marks"
-msgstr "Показывать дополнительные метки"
-
-#: data/ui/preferences-dialog.ui:36
-msgctxt "preference dialog"
-msgid "Additional marks display additional information about the track"
-msgstr "Дополнительные метки отображают дополнительную информацию о треке"
-
-#: data/ui/preferences-dialog.ui:39
-msgctxt "preference dialog"
-msgid "Show save mark"
-msgstr "Отображать метку сохранения"
-
-#: data/ui/preferences-dialog.ui:40
-msgctxt "preference dialog"
-msgid "Show a label with information about the caching status of the track"
-msgstr "Показывать метку с информацией о состоянии кэширования трека"
-
-#: data/ui/preferences-dialog.ui:45
-msgctxt "preference dialog"
-msgid "Show cache mark"
-msgstr "Отображать метку кэша"
-
-#: data/ui/preferences-dialog.ui:46
-msgctxt "preference dialog"
-msgid "Show a mark about saving a track to the cache"
-msgstr "Отображать метку о сохранении трека в кэше"
-
-#: data/ui/preferences-dialog.ui:51
-msgctxt "preference dialog"
-msgid "Show replaced mark"
-msgstr "Отображать метку о замене трека"
-
-#: data/ui/preferences-dialog.ui:52
-msgctxt "preference dialog"
-msgid "Show a mark that shows that the track has been replaced"
-msgstr "Показывать метку, указывающую на то, что трек был заменен"
-
-#: data/ui/preferences-dialog.ui:59
-msgctxt "preference dialog"
-msgid "Tracks visibility"
-msgstr "Видимость треков"
-
-#: data/ui/preferences-dialog.ui:60
-msgctxt "preference dialog"
-msgid ""
-"Show special tracks in track lists. Filter doesn't work when searching in "
-"track list"
-msgstr ""
-"Показывать особые треки в списке. Фильтр не работает при поиске в списке "
-"треков"
-
-#: data/ui/preferences-dialog.ui:63
-msgctxt "preference dialog"
-msgid "Show unavailable content"
-msgstr "Показывать недоступный контент"
-
-#: data/ui/preferences-dialog.ui:64
-msgctxt "preference dialog"
-msgid ""
-"Show tracks that are not available in the service. You can't listen to them"
-msgstr ""
-"Показывать недуступные на данный момент треки. Вы не можете их прослушать"
-
-#: data/ui/preferences-dialog.ui:69
-msgctxt "preference dialog"
-msgid "Show content suitable for children"
-msgstr "Показывать детский контент"
-
-#: data/ui/preferences-dialog.ui:70
-msgctxt "preference dialog"
-msgid "Show content that is specific to children"
-msgstr "Показывать контент, предназначенный для детей"
-
-#: data/ui/preferences-dialog.ui:75
-msgctxt "preference dialog"
-msgid "Show explicit content"
-msgstr "Показывать контент, не предназначенный для несовершеннолетних"
-
-#: data/ui/preferences-dialog.ui:76
-msgctxt "preference dialog"
-msgid "Show content that has age restrictions"
-msgstr "Показывать контент, имеющий возрастные ограничения"
-
-#: data/ui/preferences-dialog.ui:83
-msgctxt "preference dialog"
-msgid "Other"
-msgstr "Остальное"
-
-#: data/ui/preferences-dialog.ui:86
-msgctxt "preference dialog"
-msgid "Enable Debug-Mode"
-msgstr "Включить режим отладки"
-
-#: data/ui/preferences-dialog.ui:87
-msgctxt "preference dialog"
-msgid "Enable logging of additional information useful for error detection"
-msgstr ""
-"Включить запись в логи дополнительной информации, которая может быть "
-"полезной для обнаружения ошибок"
-
-#: data/ui/preferences-dialog.ui:94
-msgctxt "preference dialog"
-msgid "Experimental"
-msgstr "Экспериментальные функции"
-
-#: data/ui/preferences-dialog.ui:95
-msgctxt "preference dialog"
-msgid "Parameters that test anything and may be removed in future releases"
-msgstr ""
-"Параметры, которые тестируют что-либо и которые могут быть удалены в будущих "
-"релизах"
-
-#: data/ui/preferences-dialog.ui:98
-msgctxt "preference dialog"
-msgid "Use only bottom sheet menus"
-msgstr "Использовать только bottom sheet для меню"
-
-#: data/ui/preferences-dialog.ui:99
-msgctxt "preference dialog"
-msgid "Test preference for bottom sheet menu"
-msgstr "Тестовая настройка для bottom sheet меню"
-
-#: data/ui/preferences-dialog.ui:108
-msgctxt "preference dialog"
-msgid "Pages"
-msgstr "Страницы"
-
-#: data/ui/preferences-dialog.ui:112
-msgctxt "preference dialog"
-msgid "Static pages"
-msgstr "Статические страницы"
-
-#: data/ui/preferences-dialog.ui:113
-msgctxt "preference dialog"
-msgid ""
-"Here you can show or hide static pages. They will always be displayed on the "
-"left side of the header."
-msgstr ""
-"Здесь вы можете показывать или скрывать статические страницы. Они всегда "
-"будут отображаться в левой части заголовка."
-
-#: data/ui/preferences-dialog.ui:116
-msgctxt "preference dialog"
-msgid "Show 'Main' page"
-msgstr "Показывать страницу 'Главное'"
-
-#: data/ui/preferences-dialog.ui:121
-msgctxt "preference dialog"
-msgid "Show 'Liked' page"
-msgstr "Показывать страницу 'Мне нравится'"
-
-#: data/ui/preferences-dialog.ui:126
-msgctxt "preference dialog"
-msgid "Show 'Playlists' page"
-msgstr "Показывать страницу 'Плейлисты'"
-
-#: data/ui/preferences-dialog.ui:138
-msgctxt "preference dialog"
-msgid "Cache"
-msgstr "Кэш"
-
-#: data/ui/preferences-dialog.ui:142
-msgctxt "preference dialog"
-msgid "Cache managing"
-msgstr "Управление кэшем"
-
-#: data/ui/preferences-dialog.ui:143
-msgctxt "preference dialog"
-msgid ""
-"Here you can see application memory usage, delete all cache from cache "
-"folder and control downloading cache to disk"
-msgstr ""
-"Здесь вы можете увидеть использование памяти приложением, удалить весь кэш "
-"из временного хранилища и управлять загрузкой кэша на диск"
-
-#: data/ui/preferences-dialog.ui:146
-msgctxt "preference dialog"
-msgid "Cache content"
-msgstr "Кэшировать контент"
-
-#: data/ui/preferences-dialog.ui:147
-msgctxt "preference dialog"
-msgid ""
-"For better performance. Over time, it starts to take up a lot of space. So "
-"far, manual cleaning is required. If enabled, the application will cache all "
-"content to cache dir for better performance, otherwise, the application will "
-"load content only when caching objects (such as playlists or albums). "
-"Disabling the parameter does not delete already downloaded content"
-msgstr ""
-"Если включено, приложение будет кэшировать контент в директорию с кэшем для "
-"повышения производительности, в противном случае приложение будет загружать "
-"содержимое только при кэшировании объектов (таких как списки воспроизведения "
-"или альбомы). Отключение параметра не приводит к удалению уже загруженного "
-"содержимого"
-
-#: data/ui/save-stack.ui:25
-msgid "Content saving…"
-msgstr "Сохранение контента…"
-
-#: data/ui/save-stack.ui:42
-msgid "Content cached"
-msgstr "Контент закэширован"
-
-#: data/ui/save-stack.ui:56
-msgid "Content saved"
-msgstr "Контент сохранён"
-
-#: data/ui/stations-view.blp:22
-msgid "Stations dashboard"
-msgstr "Ваши станции"
-
-#: data/ui/stations-view.blp:58
-msgid "Searching for station…"
-msgstr "Поиск по станциям…"
-
-#: data/ui/stations-view.blp:77
-msgid "By genre…"
-msgstr "По жанру…"
-
-#: data/ui/stations-view.blp:99 data/ui/wave-settings.blp:60
-msgid "By mood…"
-msgstr "По настроению…"
-
-#: data/ui/stations-view.blp:121 data/ui/wave-settings.blp:25
-msgid "By activity…"
-msgstr "По занятию…"
-
-#: data/ui/stations-view.blp:143
-msgid "By epoch…"
-msgstr "По эпохе…"
-
-#: data/ui/stations-view.blp:165
-msgid "Other…"
-msgstr "Остальное…"
-
-#: data/ui/stations-view.blp:209
-msgid "No stations with that name were found"
-msgstr "Не найдено станции с таким имененм"
-
-#: data/ui/track-info.blp:103
-msgid "Track lyrics"
-msgstr "Текст песни"
-
-#: data/ui/track-info.blp:117
-msgid "Authors"
-msgstr "Авторы"
-
-#: data/ui/track-info.blp:135
-msgid "Source"
-msgstr "Источник"
-
-#: data/ui/track-info.blp:158
-msgid "Similar tracks"
-msgstr "Похожие треки"
-
-#. Translators: placeholder of "search" entry. Local track search (inside of track list)
-#: data/ui/track-list.ui:21
-msgid "Search track"
-msgstr "Найти трек"
-
-#. Translators: part of sort by <name, duration etc>
-#: data/ui/track-list.ui:30
-msgid "Sort by"
-msgstr "Сортировать по"
-
-#: data/ui/track-list.ui:77
-msgid "No tracks to display"
-msgstr "Нет треков для отображения"
-
-#: data/ui/track-list.ui:88
-msgid "name"
-msgstr "имени"
-
-#: data/ui/track-list.ui:92
-msgid "artist"
-msgstr "исполнителям"
-
-#: data/ui/track-list.ui:96
-msgid "album"
-msgstr "альбому"
-
-#: data/ui/track-list.ui:100
-msgid "duration"
-msgstr "продолжительности"
-
-#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:38
-msgid "Loading…"
-msgstr "Загрузка…"
-
-#: data/ui/wave-settings.blp:42
-msgid "By diversity…"
-msgstr "По разнообразию…"
-
-#: data/ui/wave-settings.blp:78
-msgid "By language…"
-msgstr "По языку…"
-
-#: data/ui/wave-settings.blp:93
-msgid "Can't get wave settings"
-msgstr "Не удаётся получить настройки волны"
-
-#: data/ui/window.blp:57 src/window.vala:253
-msgid "Reconnect"
-msgstr "Переподключиться"
-
-#: data/ui/window.blp:58 src/application.vala:152
-msgid "Connection problems"
-msgstr "Проблемы с соединением"
-
-#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:60
-msgid "translator-credits"
-msgstr "Vladimir Vaskov <rirusha@altlinux.org>"
-
-#: src/about.vala:68
-msgid "Telegram channel"
-msgstr "Телеграм-канал"
-
-#: src/about.vala:69
-msgid "Financial support (Tinkoff)"
-msgstr "Финансовая поддержка (Тинькофф)"
-
-#: src/about.vala:70
-msgid "Financial support (Boosty)"
-msgstr "Финансовая поддержка (Бусти)"
-
-#. Please keep alphabetical
-#: src/about.vala:73
-msgid "Sponsors"
-msgstr "Спонсоры"
-
-#: src/application.vala:63
+#: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Выводит информацию о версии и выходит"
 
-#: src/application.vala:146
-msgid "Connection restored"
-msgstr "Соединение восстановлено"
+#~ msgid "Unofficial Yandex Music client for GNOME"
+#~ msgstr "Неофициальный клиент Яндекс Музыки для GNOME"
 
-#: src/application.vala:274
-msgid "Previous"
-msgstr "Предыдущий"
+#~ msgid "Account information"
+#~ msgstr "Информация об аккаунте"
 
-#: src/application.vala:275
-msgid "Next"
-msgstr "Следующий"
+#~ msgid "Open in browser"
+#~ msgstr "Открыть в браузере"
 
-#: src/application.vala:358
-msgid "Current track can not be copied to the clipboard"
-msgstr "Текущий трек не может быть скопирован в буфер обмена"
+#~ msgid "Plus"
+#~ msgstr "Плюс"
 
-#: src/application.vala:372 src/application.vala:379 src/application.vala:436
-msgid "Can't parse clipboard content"
-msgstr "Не удаётся разобрать содержимое буфера обмена"
+#~ msgid "Log out"
+#~ msgstr "Выйти из аккаунта"
 
-#: src/application.vala:390
-msgid "Users view not implemented yet"
-msgstr "Отображение пользователя пока не реализовано"
+#~ msgid "Usage mode"
+#~ msgstr "Режим использования"
 
-#: src/application.vala:406 src/application.vala:420
-msgid "Albums view not implemented yet"
-msgstr "Отображение альбома пока не реализовано"
+#~ msgctxt "auth window"
+#~ msgid "Choose usage mode"
+#~ msgstr "Выберите режим использования"
 
-#: src/authenticator.vala:47
-msgid "Log out?"
-msgstr "Выйти из аккаунта?"
+#~ msgctxt "auth window"
+#~ msgid ""
+#~ "If you select the \"Online mode\", you can access local music by enabling "
+#~ "the display of the corresponding pages in the pages preferences, as well "
+#~ "as log in later when selecting \"Local mode\""
+#~ msgstr ""
+#~ "Если вы выберете \"Онлайн использование\", вы сможете получить доступ к "
+#~ "локальной музыке, включив отображение соответствующих страниц в "
+#~ "настройках, а также войти в систему позже, выбрав \"Локальное "
+#~ "использование\""
 
-#: src/authenticator.vala:48
-msgid "You will need to log in again to use the app"
-msgstr "Вам нужно будет войти в аккаунт снова, чтобы использовать приложение"
+#~ msgctxt "auth window"
+#~ msgid "Online mode"
+#~ msgstr "Онлайн использование"
 
-#. Translators: cancel of deleting playlist
-#: src/authenticator.vala:51
-#: src/widgets/preferences/cache-deletion-preferences.vala:96
-#: src/widgets/preferences/preferences-dialog.vala:140
-#: src/widgets/views/playlist.vala:90
-msgid "Cancel"
-msgstr "Отменить"
+#~ msgctxt "auth window"
+#~ msgid "Local mode"
+#~ msgstr "Локальное использование"
 
-#: src/authenticator.vala:98
-#: src/widgets/preferences/cache-deletion-preferences.vala:130
-msgid "Moving…"
-msgstr "Перемещение…"
+#~ msgctxt "auth window"
+#~ msgid "Close"
+#~ msgstr "Закрыть"
 
-#. Translators: Playlist with liked tracks
-#: src/client/api/objects/playlist/playlist.vala:50
-#: src/client/api/objects/playlist/playlist.vala:100 src/pager.vala:277
-msgid "Liked"
-msgstr "Мне нравится"
+#~ msgid "Authorization"
+#~ msgstr "Авторизация"
 
-#. Translators: Playlist that updates every day
-#: src/client/api/objects/playlist/playlist.vala:54
-msgid "Daily"
-msgstr "Плейлист дня"
+#~ msgid "Dirs size:"
+#~ msgstr "Размер директорий:"
 
-#. Translators: Unknown playlist
-#: src/client/api/objects/playlist/playlist.vala:58
-msgid "Unknown"
-msgstr "Неизвестный"
+#~ msgid "Cache"
+#~ msgstr "Кэш"
 
-#: src/client/cachier/storager.vala:125
+#~ msgid "Clear"
+#~ msgstr "Очистить"
+
+#~ msgid "Data"
+#~ msgstr "Данные"
+
+#~ msgid "Move to cache"
+#~ msgstr "Переместить в кэш"
+
+#~ msgid "Move"
+#~ msgstr "Переместить"
+
+#~ msgid "Show all cache jobs"
+#~ msgstr "Показать все сохранения"
+
+#~ msgid "Title: "
+#~ msgstr "Название: "
+
+#~ msgid "Icon: "
+#~ msgstr "Иконка: "
+
+#~ msgid "Save page"
+#~ msgstr "Сохранить страницу"
+
+#~ msgid "Remove page"
+#~ msgstr "Удалить страницу"
+
+#~ msgctxt "preference window"
+#~ msgid "Custom pages"
+#~ msgstr "Пользовательские страницы"
+
+#~ msgctxt "preference window"
+#~ msgid "Here you can control custom pages."
+#~ msgstr "Здесь вы можете управлять пользовательскими страницами."
+
+#~ msgid "Disliked tracks"
+#~ msgstr "Непонравившиеся треки"
+
+#~ msgid "Go back"
+#~ msgstr "Вернуться назад"
+
+#~ msgid "Refresh"
+#~ msgstr "Обновить"
+
+#~ msgid "Yandex Music search"
+#~ msgstr "Поиск по Яндекс Музыке"
+
+#~ msgid "Main Actions"
+#~ msgstr "Основные действия"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "Показать комбинации клавиш"
+
+#~ msgid "Quit"
+#~ msgstr "Выйти"
+
+#~ msgid "Playback Control"
+#~ msgstr "Управление воспроизведением"
+
+#~ msgid "Play/Pause playback"
+#~ msgstr "Продолжить/Остановить воспроизведение"
+
+#~ msgid "Play previous track"
+#~ msgstr "Играть предыдущий трек"
+
+#~ msgid "Play next track"
+#~ msgstr "Играть следующий трек"
+
+#~ msgid "Mute app"
+#~ msgstr "Отключить звук в приложении"
+
+#~ msgid "Queue control"
+#~ msgstr "Управление очередью"
+
+#~ msgid "Change shuffle mode"
+#~ msgstr "Переключить перемешивание очереди"
+
+#~ msgid "Change repeat mode"
+#~ msgstr "Переключить режим повтора"
+
+#~ msgid "Other"
+#~ msgstr "Остальное"
+
+#~ msgid "Share current track"
+#~ msgstr "Поделиться текущим треком"
+
+#~ msgid "Parse url from clipboard"
+#~ msgstr "Прочитать URL-адрес из буфера обмена"
+
+#~ msgid "Explicit content"
+#~ msgstr "Контент 18+"
+
+#~ msgid "Child content"
+#~ msgstr "Детский контент"
+
+#~ msgid "Page under construction"
+#~ msgstr "Страница на стадии разработки"
+
+#~ msgid "All stations"
+#~ msgstr "Все станции"
+
+#~ msgid "No Plus Subscription"
+#~ msgstr "Нет подписки Яндекс Плюс"
+
+#~ msgid ""
+#~ "To avoid problems with Yandex, the online functions of the application "
+#~ "are not available without a Yandex.Plus subscription. Thanks for "
+#~ "understanding."
+#~ msgstr ""
+#~ "Чтобы избежать проблем с Яндексом, онлайн-функции приложения недоступны "
+#~ "без подписки Яндекс Плюс. Спасибо за понимание."
+
+#~ msgid "Get Plus"
+#~ msgstr "Получить Яндекс Плюс"
+
+#~ msgid "Show track info"
+#~ msgstr "Показать информацию о треке"
+
+#~ msgid "Show wave settings"
+#~ msgstr "Показать настройки Волны"
+
+#~ msgid "Show playback queue"
+#~ msgstr "Показать очередь воспроизведения"
+
+#~ msgid "Change volume"
+#~ msgstr "Изменить громкость"
+
+#~ msgid "Playing now"
+#~ msgstr "Играет сейчас"
+
+#~ msgid "Choose playlist to add"
+#~ msgstr "Выберите плейлист для добавления"
+
+#~ msgid "Create playlist"
+#~ msgstr "Создать плейлист"
+
+#~ msgid "Playlist"
+#~ msgstr "Плейлист"
+
+#~ msgid "Empty"
+#~ msgstr "Пусто"
+
+#~ msgid "Your playlists"
+#~ msgstr "Ваши плейлисты"
+
+#~ msgid "Also you liked these playlists"
+#~ msgstr "Вам также понравились эти плейлисты"
+
+#~ msgid "Change playlist visibility"
+#~ msgstr "Изменить видимость плейлиста"
+
+#~ msgid "Add page to header"
+#~ msgstr "Добавить страницу в заголовок"
+
+#~ msgid "Save"
+#~ msgstr "Сохранить"
+
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgid "Abort"
+#~ msgstr "Прервать"
+
+#~ msgid "Stop"
+#~ msgstr "Приостановить"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Main"
+#~ msgstr "Главная"
+
+#~ msgctxt "preference dialog"
+#~ msgid "General"
+#~ msgstr "Общие"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Enable high quality audio"
+#~ msgstr "Включить высокое качество аудио"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Attention! If the track was downloaded in low quality, and after the "
+#~ "download is enabled in high quality, the audio will not be reloaded"
+#~ msgstr ""
+#~ "Внимание! Если трек был загружен в низком качестве, то после включения "
+#~ "настройки трек не будет загружен в высоком качестве"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Add track on top of playlist"
+#~ msgstr "Добавить трек в начало плейлиста"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Will the track be added to the playlist as the first or as the last"
+#~ msgstr ""
+#~ "Будет ли трек добавлен в список воспроизведения как первый или как "
+#~ "последний"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Playing now' notification"
+#~ msgstr "Показывать уведомление 'Играет сейчас'"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a notification when switching a track"
+#~ msgstr "Показывать уведомление при переключении трека"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show additional marks"
+#~ msgstr "Показывать дополнительные метки"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Additional marks display additional information about the track"
+#~ msgstr "Дополнительные метки отображают дополнительную информацию о треке"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show save mark"
+#~ msgstr "Отображать метку сохранения"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a label with information about the caching status of the track"
+#~ msgstr "Показывать метку с информацией о состоянии кэширования трека"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show cache mark"
+#~ msgstr "Отображать метку кэша"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a mark about saving a track to the cache"
+#~ msgstr "Отображать метку о сохранении трека в кэше"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show replaced mark"
+#~ msgstr "Отображать метку о замене трека"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a mark that shows that the track has been replaced"
+#~ msgstr "Показывать метку, указывающую на то, что трек был заменен"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Tracks visibility"
+#~ msgstr "Видимость треков"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Show special tracks in track lists. Filter doesn't work when searching in "
+#~ "track list"
+#~ msgstr ""
+#~ "Показывать особые треки в списке. Фильтр не работает при поиске в списке "
+#~ "треков"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show unavailable content"
+#~ msgstr "Показывать недоступный контент"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Show tracks that are not available in the service. You can't listen to "
+#~ "them"
+#~ msgstr ""
+#~ "Показывать недуступные на данный момент треки. Вы не можете их прослушать"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show content suitable for children"
+#~ msgstr "Показывать детский контент"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show content that is specific to children"
+#~ msgstr "Показывать контент, предназначенный для детей"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show explicit content"
+#~ msgstr "Показывать контент, не предназначенный для несовершеннолетних"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show content that has age restrictions"
+#~ msgstr "Показывать контент, имеющий возрастные ограничения"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Other"
+#~ msgstr "Остальное"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Enable Debug-Mode"
+#~ msgstr "Включить режим отладки"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Enable logging of additional information useful for error detection"
+#~ msgstr ""
+#~ "Включить запись в логи дополнительной информации, которая может быть "
+#~ "полезной для обнаружения ошибок"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Experimental"
+#~ msgstr "Экспериментальные функции"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Parameters that test anything and may be removed in future releases"
+#~ msgstr ""
+#~ "Параметры, которые тестируют что-либо и которые могут быть удалены в "
+#~ "будущих релизах"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Use only bottom sheet menus"
+#~ msgstr "Использовать только bottom sheet для меню"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Test preference for bottom sheet menu"
+#~ msgstr "Тестовая настройка для bottom sheet меню"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Pages"
+#~ msgstr "Страницы"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Static pages"
+#~ msgstr "Статические страницы"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Here you can show or hide static pages. They will always be displayed on "
+#~ "the left side of the header."
+#~ msgstr ""
+#~ "Здесь вы можете показывать или скрывать статические страницы. Они всегда "
+#~ "будут отображаться в левой части заголовка."
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Main' page"
+#~ msgstr "Показывать страницу 'Главное'"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Liked' page"
+#~ msgstr "Показывать страницу 'Мне нравится'"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Playlists' page"
+#~ msgstr "Показывать страницу 'Плейлисты'"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Cache"
+#~ msgstr "Кэш"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Cache managing"
+#~ msgstr "Управление кэшем"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Here you can see application memory usage, delete all cache from cache "
+#~ "folder and control downloading cache to disk"
+#~ msgstr ""
+#~ "Здесь вы можете увидеть использование памяти приложением, удалить весь "
+#~ "кэш из временного хранилища и управлять загрузкой кэша на диск"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Cache content"
+#~ msgstr "Кэшировать контент"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "For better performance. Over time, it starts to take up a lot of space. "
+#~ "So far, manual cleaning is required. If enabled, the application will "
+#~ "cache all content to cache dir for better performance, otherwise, the "
+#~ "application will load content only when caching objects (such as "
+#~ "playlists or albums). Disabling the parameter does not delete already "
+#~ "downloaded content"
+#~ msgstr ""
+#~ "Если включено, приложение будет кэшировать контент в директорию с кэшем "
+#~ "для повышения производительности, в противном случае приложение будет "
+#~ "загружать содержимое только при кэшировании объектов (таких как списки "
+#~ "воспроизведения или альбомы). Отключение параметра не приводит к удалению "
+#~ "уже загруженного содержимого"
+
+#~ msgid "Content saving…"
+#~ msgstr "Сохранение контента…"
+
+#~ msgid "Content cached"
+#~ msgstr "Контент закэширован"
+
+#~ msgid "Content saved"
+#~ msgstr "Контент сохранён"
+
+#~ msgid "Stations dashboard"
+#~ msgstr "Ваши станции"
+
+#~ msgid "Searching for station…"
+#~ msgstr "Поиск по станциям…"
+
+#~ msgid "By genre…"
+#~ msgstr "По жанру…"
+
+#~ msgid "By mood…"
+#~ msgstr "По настроению…"
+
+#~ msgid "By activity…"
+#~ msgstr "По занятию…"
+
+#~ msgid "By epoch…"
+#~ msgstr "По эпохе…"
+
+#~ msgid "Other…"
+#~ msgstr "Остальное…"
+
+#~ msgid "No stations with that name were found"
+#~ msgstr "Не найдено станции с таким имененм"
+
+#~ msgid "Track lyrics"
+#~ msgstr "Текст песни"
+
+#~ msgid "Authors"
+#~ msgstr "Авторы"
+
+#~ msgid "Source"
+#~ msgstr "Источник"
+
+#~ msgid "Similar tracks"
+#~ msgstr "Похожие треки"
+
+#~ msgid "Search track"
+#~ msgstr "Найти трек"
+
+#~ msgid "Sort by"
+#~ msgstr "Сортировать по"
+
+#~ msgid "No tracks to display"
+#~ msgstr "Нет треков для отображения"
+
+#~ msgid "name"
+#~ msgstr "имени"
+
+#~ msgid "artist"
+#~ msgstr "исполнителям"
+
+#~ msgid "album"
+#~ msgstr "альбому"
+
+#~ msgid "duration"
+#~ msgstr "продолжительности"
+
+#~ msgid "Loading…"
+#~ msgstr "Загрузка…"
+
+#~ msgid "By diversity…"
+#~ msgstr "По разнообразию…"
+
+#~ msgid "By language…"
+#~ msgstr "По языку…"
+
+#~ msgid "Can't get wave settings"
+#~ msgstr "Не удаётся получить настройки волны"
+
+#~ msgid "Reconnect"
+#~ msgstr "Переподключиться"
+
+#~ msgid "Connection problems"
+#~ msgstr "Проблемы с соединением"
+
+#~ msgid "translator-credits"
+#~ msgstr "Vladimir Vaskov <rirusha@altlinux.org>"
+
+#~ msgid "Telegram channel"
+#~ msgstr "Телеграм-канал"
+
+#~ msgid "Financial support (Tinkoff)"
+#~ msgstr "Финансовая поддержка (Тинькофф)"
+
+#~ msgid "Financial support (Boosty)"
+#~ msgstr "Финансовая поддержка (Бусти)"
+
+#~ msgid "Sponsors"
+#~ msgstr "Спонсоры"
+
+#~ msgid "Connection restored"
+#~ msgstr "Соединение восстановлено"
+
+#~ msgid "Previous"
+#~ msgstr "Предыдущий"
+
+#~ msgid "Next"
+#~ msgstr "Следующий"
+
+#~ msgid "Current track can not be copied to the clipboard"
+#~ msgstr "Текущий трек не может быть скопирован в буфер обмена"
+
+#~ msgid "Can't parse clipboard content"
+#~ msgstr "Не удаётся разобрать содержимое буфера обмена"
+
+#~ msgid "Users view not implemented yet"
+#~ msgstr "Отображение пользователя пока не реализовано"
+
+#~ msgid "Albums view not implemented yet"
+#~ msgstr "Отображение альбома пока не реализовано"
+
+#~ msgid "Log out?"
+#~ msgstr "Выйти из аккаунта?"
+
+#~ msgid "You will need to log in again to use the app"
+#~ msgstr ""
+#~ "Вам нужно будет войти в аккаунт снова, чтобы использовать приложение"
+
+#~ msgid "Cancel"
+#~ msgstr "Отменить"
+
+#~ msgid "Moving…"
+#~ msgstr "Перемещение…"
+
+#~ msgid "Liked"
+#~ msgstr "Мне нравится"
+
+#~ msgid "Daily"
+#~ msgstr "Плейлист дня"
+
+#~ msgid "Unknown"
+#~ msgstr "Неизвестный"
+
 #, c-format
-msgid "Database was initialized, loc - %s"
-msgstr "База данных была инициализирована, расположение - %s"
+#~ msgid "Database was initialized, loc - %s"
+#~ msgstr "База данных была инициализирована, расположение - %s"
 
-#: src/client/cachier/storager.vala:802
 #, c-format
-msgid "Can't save object %s"
-msgstr "Не удается сохранить объект %s"
+#~ msgid "Can't save object %s"
+#~ msgstr "Не удается сохранить объект %s"
 
-#: src/client/cachier/storager.vala:819
-msgid "Byte"
-msgid_plural "Bytes"
-msgstr[0] "Байт"
-msgstr[1] "Байта"
-msgstr[2] "Байтов"
+#~ msgid "Byte"
+#~ msgid_plural "Bytes"
+#~ msgstr[0] "Байт"
+#~ msgstr[1] "Байта"
+#~ msgstr[2] "Байтов"
 
-#: src/client/cachier/storager.vala:822
-msgid "Kilobyte"
-msgid_plural "Kilobytes"
-msgstr[0] "Килобайт"
-msgstr[1] "Килобайта"
-msgstr[2] "Килобайтов"
+#~ msgid "Kilobyte"
+#~ msgid_plural "Kilobytes"
+#~ msgstr[0] "Килобайт"
+#~ msgstr[1] "Килобайта"
+#~ msgstr[2] "Килобайтов"
 
-#: src/client/cachier/storager.vala:825
-msgid "Megabyte"
-msgid_plural "Megabytes"
-msgstr[0] "Мегабайт"
-msgstr[1] "Мегабайта"
-msgstr[2] "Мегабайтов"
+#~ msgid "Megabyte"
+#~ msgid_plural "Megabytes"
+#~ msgstr[0] "Мегабайт"
+#~ msgstr[1] "Мегабайта"
+#~ msgstr[2] "Мегабайтов"
 
-#: src/client/cachier/storager.vala:828
-msgid "Gigabyte"
-msgid_plural "Gigabytes"
-msgstr[0] "Гигабайт"
-msgstr[1] "Гигабайта"
-msgstr[2] "Гигабайтов"
+#~ msgid "Gigabyte"
+#~ msgid_plural "Gigabytes"
+#~ msgstr[0] "Гигабайт"
+#~ msgstr[1] "Гигабайта"
+#~ msgstr[2] "Гигабайтов"
 
-#: src/client/cachier/storager.vala:831
-msgid "Terabyte"
-msgid_plural "Terabytes"
-msgstr[0] "Терабайт"
-msgstr[1] "Терабайта"
-msgstr[2] "Терабайтов"
+#~ msgid "Terabyte"
+#~ msgid_plural "Terabytes"
+#~ msgstr[0] "Терабайт"
+#~ msgstr[1] "Терабайта"
+#~ msgstr[2] "Терабайтов"
 
-#: src/client/cachier/storager.vala:860
 #, c-format
-msgid "Error while getting cache directory size. Message %s"
-msgstr "Ошибка при получении размера директории кэша. Сообщение %s"
+#~ msgid "Error while getting cache directory size. Message %s"
+#~ msgstr "Ошибка при получении размера директории кэша. Сообщение %s"
 
-#: src/client/cachier/storager.vala:895
 #, c-format
-msgid "Error while getting permanent directory size. Message %s"
-msgstr "Ошибка при получении размера директории данных. Сообщение %s"
+#~ msgid "Error while getting permanent directory size. Message %s"
+#~ msgstr "Ошибка при получении размера директории данных. Сообщение %s"
 
-#: src/client/jsoner.vala:358 src/client/jsoner.vala:419
-#: src/client/jsoner.vala:526 src/client/jsoner.vala:550
 #, c-format
-msgid "Wrong type: expected %s, got %s"
-msgstr "Неверный тип: ожидалось %s, получено %s"
+#~ msgid "Wrong type: expected %s, got %s"
+#~ msgstr "Неверный тип: ожидалось %s, получено %s"
 
-#: src/client/player/mods/abstract-mode.vala:92
-msgid "Problems with queue"
-msgstr "Проблемы с очередью"
+#~ msgid "Problems with queue"
+#~ msgstr "Проблемы с очередью"
 
-#. Translators: name of new created playlist
-#: src/client/talkers/yam-talker.vala:628
-msgid "New Playlist"
-msgstr "Новый плейлист"
+#~ msgid "New Playlist"
+#~ msgstr "Новый плейлист"
 
-#: src/pager.vala:163
 #, c-format
-msgid "Can't set title \"%s\" to page"
-msgstr "Не удаётся установить заголовок \"%s\" для страницы"
+#~ msgid "Can't set title \"%s\" to page"
+#~ msgstr "Не удаётся установить заголовок \"%s\" для страницы"
 
-#: src/pager.vala:174
 #, c-format
-msgid "Can't set icon with name \"%s\" to page"
-msgstr "Не удаётся установить иконку с именем \"%s\" на страницу"
+#~ msgid "Can't set icon with name \"%s\" to page"
+#~ msgstr "Не удаётся установить иконку с именем \"%s\" на страницу"
 
-#: src/pager.vala:200
-msgid "Reached max page count"
-msgstr "Достигнуто максимальное количество страниц"
+#~ msgid "Reached max page count"
+#~ msgstr "Достигнуто максимальное количество страниц"
 
-#: src/pager.vala:206
 #, c-format
-msgid "Page '%s' already added"
-msgstr "Страница '%s' уже добавлена"
+#~ msgid "Page '%s' already added"
+#~ msgstr "Страница '%s' уже добавлена"
 
-#: src/pager.vala:268
-msgid "Main"
-msgstr "Главное"
+#~ msgid "Main"
+#~ msgstr "Главное"
 
-#: src/pager.vala:287
-msgid "Playlists"
-msgstr "Плейлисты"
+#~ msgid "Playlists"
+#~ msgstr "Плейлисты"
 
-#: src/pager.vala:312
 #, c-format
-msgid "Can't read pages file. Message: %s"
-msgstr "Не удаётся прочитать файл страниц. Сообщение: %s"
+#~ msgid "Can't read pages file. Message: %s"
+#~ msgstr "Не удаётся прочитать файл страниц. Сообщение: %s"
 
-#: src/pager.vala:332
 #, c-format
-msgid "Can't create pages file. Message: %s"
-msgstr "Не удаётся создать файл страниц. Сообщение: %s"
+#~ msgid "Can't create pages file. Message: %s"
+#~ msgstr "Не удаётся создать файл страниц. Сообщение: %s"
 
-#: src/utils.vala:70
-msgid "Not implemented yet"
-msgstr "Пока не реализовано"
+#~ msgid "Not implemented yet"
+#~ msgstr "Пока не реализовано"
 
-#: src/utils.vala:77
-msgid "Need authorization"
-msgstr "Нужна авторизация"
+#~ msgid "Need authorization"
+#~ msgstr "Нужна авторизация"
 
-#: src/utils.vala:81
-msgid "Need Bookmate subscription"
-msgstr "Нужна подписка Букмейт"
+#~ msgid "Need Bookmate subscription"
+#~ msgstr "Нужна подписка Букмейт"
 
-#: src/utils.vala:177 src/utils.vala:193
-msgid "Link copied to clipboard"
-msgstr "Ссылка скопирована в буфер обмена"
+#~ msgid "Link copied to clipboard"
+#~ msgstr "Ссылка скопирована в буфер обмена"
 
-#: src/utils.vala:242
 #, c-format
-msgid "Duration: %s h. %s min."
-msgstr "Продолжительность: %s ч. %s мин."
+#~ msgid "Duration: %s h. %s min."
+#~ msgstr "Продолжительность: %s ч. %s мин."
 
-#: src/utils.vala:244
 #, c-format
-msgid "Duration: %s min."
-msgstr "Продолжительность: %s мин."
+#~ msgid "Duration: %s min."
+#~ msgstr "Продолжительность: %s мин."
 
-#: src/utils.vala:358
-msgid "today"
-msgstr "сегодня"
+#~ msgid "today"
+#~ msgstr "сегодня"
 
-#: src/utils.vala:360
-msgid "yesterday"
-msgstr "вчера"
+#~ msgid "yesterday"
+#~ msgstr "вчера"
 
-#: src/widgets/buttons/just/dislike-button.vala:38
-msgid "Remove dislike"
-msgstr "Удалить \"Не нравится\""
+#~ msgid "Remove dislike"
+#~ msgstr "Удалить \"Не нравится\""
 
-#: src/widgets/buttons/just/dislike-button.vala:41
-msgid "Set dislike"
-msgstr "Поставить \"Не нравится\""
+#~ msgid "Set dislike"
+#~ msgstr "Поставить \"Не нравится\""
 
-#: src/widgets/buttons/just/like-button.vala:42
-msgid "Remove like"
-msgstr "Удалить \"Нравится\""
+#~ msgid "Remove like"
+#~ msgstr "Удалить \"Нравится\""
 
-#: src/widgets/buttons/just/like-button.vala:49
-msgid "Set like"
-msgstr "Поставить \"Нравится\""
+#~ msgid "Set like"
+#~ msgstr "Поставить \"Нравится\""
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:38
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:41
-msgid "Pause"
-msgstr "Пауза"
+#~ msgid "Pause"
+#~ msgstr "Пауза"
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:45
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:48
-msgid "Play"
-msgstr "Играть"
+#~ msgid "Play"
+#~ msgstr "Играть"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:49
 #, c-format
-msgid "Playlist '%s'"
-msgstr "Плейлист '%s'"
+#~ msgid "Playlist '%s'"
+#~ msgstr "Плейлист '%s'"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:54
-#: src/widgets/buttons/menu/playlist-options-button.vala:67
-msgid "My Vibe by playlist"
-msgstr "Моя волна по плейлисту"
+#~ msgid "My Vibe by playlist"
+#~ msgstr "Моя волна по плейлисту"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:55
-#: src/widgets/buttons/menu/playlist-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:81
-#: src/widgets/buttons/menu/track-options-button.vala:106
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:36
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:47
-#: src/widgets/buttons/menu/track-queue-options-button.vala:70
-#: src/widgets/buttons/menu/track-queue-options-button.vala:100
-msgid "Add to queue"
-msgstr "Добавить в очередь"
+#~ msgid "Add to queue"
+#~ msgstr "Добавить в очередь"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:56
-#: src/widgets/buttons/menu/playlist-options-button.vala:78
-#: src/widgets/buttons/menu/track-options-button.vala:84
-#: src/widgets/buttons/menu/track-options-button.vala:109
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:40
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:51
-#: src/widgets/buttons/menu/track-queue-options-button.vala:74
-#: src/widgets/buttons/menu/track-queue-options-button.vala:104
-msgid "Share"
-msgstr "Поделиться"
+#~ msgid "Share"
+#~ msgstr "Поделиться"
 
-#: src/widgets/buttons/menu/primary-menu-button.vala:27
-msgid "Primary menu"
-msgstr "Главное меню"
+#~ msgid "Primary menu"
+#~ msgstr "Главное меню"
 
-#: src/widgets/buttons/menu/primary-menu-button.vala:33
-msgid "Parse URL from clipboard"
-msgstr "Разобрать URL-адрес из буфера обмена"
+#~ msgid "Parse URL from clipboard"
+#~ msgstr "Разобрать URL-адрес из буфера обмена"
 
-#: src/widgets/buttons/menu/primary-menu-button.vala:34
-msgid "Preferences"
-msgstr "Параметры"
+#~ msgid "Preferences"
+#~ msgstr "Параметры"
 
-#: src/widgets/buttons/menu/primary-menu-button.vala:35
-msgid "Keyboard Shortcuts"
-msgstr "Комбинации клавиш"
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "Комбинации клавиш"
 
-#: src/widgets/buttons/menu/primary-menu-button.vala:36
-msgid "About Cassette"
-msgstr "О приложении"
+#~ msgid "About Cassette"
+#~ msgstr "О приложении"
 
-#: src/widgets/buttons/menu/track-options-button.vala:78
-#: src/widgets/buttons/menu/track-options-button.vala:95
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
-#: src/widgets/buttons/menu/track-queue-options-button.vala:67
-#: src/widgets/buttons/menu/track-queue-options-button.vala:88
-msgid "My Vibe by track"
-msgstr "Моя волна по треку"
+#~ msgid "My Vibe by track"
+#~ msgstr "Моя волна по треку"
 
-#: src/widgets/buttons/menu/track-options-button.vala:79
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
-#: src/widgets/buttons/menu/track-queue-options-button.vala:68
-msgid "Show info"
-msgstr "Подробнее"
+#~ msgid "Show info"
+#~ msgstr "Подробнее"
 
-#: src/widgets/buttons/menu/track-options-button.vala:80
-#: src/widgets/buttons/menu/track-options-button.vala:105
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
-#: src/widgets/buttons/menu/track-queue-options-button.vala:69
-#: src/widgets/buttons/menu/track-queue-options-button.vala:99
-msgid "Play next"
-msgstr "Играть следующим"
+#~ msgid "Play next"
+#~ msgstr "Играть следующим"
 
-#: src/widgets/buttons/menu/track-options-button.vala:82
-#: src/widgets/buttons/menu/track-options-button.vala:107
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
-#: src/widgets/buttons/menu/track-queue-options-button.vala:71
-#: src/widgets/buttons/menu/track-queue-options-button.vala:101
-msgid "Add to playlist"
-msgstr "Добавить в плейлист"
+#~ msgid "Add to playlist"
+#~ msgstr "Добавить в плейлист"
 
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
-msgid "Remove from playlist"
-msgstr "Удалить из плейлиста"
+#~ msgid "Remove from playlist"
+#~ msgstr "Удалить из плейлиста"
 
-#: src/widgets/buttons/menu/track-queue-options-button.vala:72
-#: src/widgets/buttons/menu/track-queue-options-button.vala:102
-msgid "Remove from queue"
-msgstr "Удалить из очереди"
+#~ msgid "Remove from queue"
+#~ msgstr "Удалить из очереди"
 
-#: src/widgets/buttons/menu/volume-button.vala:122
-msgid "Volume control"
-msgstr "Управление громкостью"
+#~ msgid "Volume control"
+#~ msgstr "Управление громкостью"
 
-#: src/widgets/buttons/menu/volume-button.vala:262
-msgid "Unmute"
-msgstr "Включить звук"
+#~ msgid "Unmute"
+#~ msgstr "Включить звук"
 
-#: src/widgets/buttons/menu/volume-button.vala:262
-msgid "Mute"
-msgstr "Выключить звук"
+#~ msgid "Mute"
+#~ msgstr "Выключить звук"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:45
-#: src/widgets/save-stack.vala:53 src/widgets/views/abstract-cachiable.vala:173
-msgid "Album"
-msgstr "Альбом"
+#~ msgid "Album"
+#~ msgstr "Альбом"
 
-#. Translators: n track from n tracks saved
-#: src/widgets/cache-indicator/job-info-badge.vala:78
 #, c-format
-msgid "%d / %d saved%s"
-msgid_plural "%d / %d saved%s"
-msgstr[0] "%d / %d сохранено%s"
-msgstr[1] "%d / %d сохранено%s"
-msgstr[2] "%d / %d сохранено%s"
+#~ msgid "%d / %d saved%s"
+#~ msgid_plural "%d / %d saved%s"
+#~ msgstr[0] "%d / %d сохранено%s"
+#~ msgstr[1] "%d / %d сохранено%s"
+#~ msgstr[2] "%d / %d сохранено%s"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:85
 #, c-format
-msgid "%d track saving now"
-msgid_plural "%d tracks saving now"
-msgstr[0] "%d трек сохраняется сейчас"
-msgstr[1] "%d трека сохраняется сейчас"
-msgstr[2] "%d треков сохраняется сейчас"
+#~ msgid "%d track saving now"
+#~ msgid_plural "%d tracks saving now"
+#~ msgstr[0] "%d трек сохраняется сейчас"
+#~ msgstr[1] "%d трека сохраняется сейчас"
+#~ msgstr[2] "%d треков сохраняется сейчас"
 
-#: src/widgets/info-marks.vala:42
 #, c-format
-msgid "Track was replaced. Original version: %s, %s"
-msgstr "Трек был заменён. Оригинальная версия: %s, %s"
+#~ msgid "Track was replaced. Original version: %s, %s"
+#~ msgstr "Трек был заменён. Оригинальная версия: %s, %s"
 
-#: src/widgets/playlist-micro.vala:158 src/widgets/views/playlist.vala:242
 #, c-format
-msgid "Owner: %s"
-msgstr "Владелец: %s"
+#~ msgid "Owner: %s"
+#~ msgstr "Владелец: %s"
 
-#: src/widgets/playlist-row.vala:86
 #, c-format
-msgid "Track count: %s"
-msgstr "Количество треков: %s"
+#~ msgid "Track count: %s"
+#~ msgstr "Количество треков: %s"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:89
-#: src/widgets/preferences/preferences-dialog.vala:135
-msgid "Delete cache files?"
-msgstr "Удалить кэш?"
+#~ msgid "Delete cache files?"
+#~ msgstr "Удалить кэш?"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:90
-msgid "Move saved files?"
-msgstr "Переместить сохраненные файлы?"
+#~ msgid "Move saved files?"
+#~ msgstr "Переместить сохраненные файлы?"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:91
-#: src/widgets/preferences/preferences-dialog.vala:136
-msgid ""
-"All cache will be deleted. This doesn't affect on saved playlists or albums"
-msgstr ""
-"Весь кэш будет удалён. Это не влияет на сохраненные плейлисты или альбомы"
+#~ msgid ""
+#~ "All cache will be deleted. This doesn't affect on saved playlists or "
+#~ "albums"
+#~ msgstr ""
+#~ "Весь кэш будет удалён. Это не влияет на сохраненные плейлисты или альбомы"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:92
-msgid ""
-"All saved playlists and albums will be moved to cache files. This could take "
-"a while."
-msgstr ""
-"Все сохранённые плейлисты и альбомы будут перемещены в кэш-файлы. Это может "
-"занять некоторое время."
+#~ msgid ""
+#~ "All saved playlists and albums will be moved to cache files. This could "
+#~ "take a while."
+#~ msgstr ""
+#~ "Все сохранённые плейлисты и альбомы будут перемещены в кэш-файлы. Это "
+#~ "может занять некоторое время."
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:130
-msgid "Deleting…"
-msgstr "Удаление…"
+#~ msgid "Deleting…"
+#~ msgstr "Удаление…"
 
-#: src/widgets/save-stack.vala:55
-msgid "Image"
-msgstr "Изображение"
+#~ msgid "Image"
+#~ msgstr "Изображение"
 
-#: src/widgets/save-stack.vala:59
-msgid "Track"
-msgstr "Трек"
+#~ msgid "Track"
+#~ msgstr "Трек"
 
-#: src/widgets/save-stack.vala:76
 #, c-format
-msgid "%s saving…"
-msgstr "%s сохраняется…"
+#~ msgid "%s saving…"
+#~ msgstr "%s сохраняется…"
 
-#: src/widgets/save-stack.vala:77
 #, c-format
-msgid "%s cached"
-msgstr "%s кэширован"
+#~ msgid "%s cached"
+#~ msgstr "%s кэширован"
 
-#: src/widgets/save-stack.vala:78
 #, c-format
-msgid "%s saved"
-msgstr "%s сохранён"
+#~ msgid "%s saved"
+#~ msgstr "%s сохранён"
 
-#: src/widgets/sidebar/childs/player-queue.vala:67
 #, c-format
-msgid "Playlist \"%s\""
-msgstr "Плейлист \"%s\""
+#~ msgid "Playlist \"%s\""
+#~ msgstr "Плейлист \"%s\""
 
-#: src/widgets/sidebar/childs/player-queue.vala:71
 #, c-format
-msgid "Album \"%s\""
-msgstr "Альбом \"%s\""
+#~ msgid "Album \"%s\""
+#~ msgstr "Альбом \"%s\""
 
-#: src/widgets/sidebar/childs/player-queue.vala:75
 #, c-format
-msgid "By search results \"%s\""
-msgstr "По результатам поиска \"%s\""
+#~ msgid "By search results \"%s\""
+#~ msgstr "По результатам поиска \"%s\""
 
-#: src/widgets/sidebar/childs/player-queue.vala:79
-msgid "Track list"
-msgstr "Список треков"
+#~ msgid "Track list"
+#~ msgstr "Список треков"
 
-#: src/widgets/sidebar/childs/track-info.vala:69
-msgid "Your music track"
-msgstr "Ваш трек"
+#~ msgid "Your music track"
+#~ msgstr "Ваш трек"
 
-#: src/widgets/sidebar/childs/track-info.vala:85
-msgid "Music track"
-msgstr "Трек"
+#~ msgid "Music track"
+#~ msgstr "Трек"
 
-#: src/widgets/sidebar/childs/wave-settings.vala:40
-msgid "Wave settings"
-msgstr "Настройки Волны"
+#~ msgid "Wave settings"
+#~ msgstr "Настройки Волны"
 
-#: src/widgets/track-rows/base.vala:80 src/widgets/track-rows/default.vala:101
-msgid "Track is not available"
-msgstr "Трек не доступен"
+#~ msgid "Track is not available"
+#~ msgstr "Трек не доступен"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:79
 #, c-format
-msgid "%s '%s' saved successfully"
-msgstr "%s '%s' успешно сохранен"
+#~ msgid "%s '%s' saved successfully"
+#~ msgstr "%s '%s' успешно сохранен"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:90
 #, c-format
-msgid "%s '%s' saving was stopped, due to network error"
-msgstr "Сохранение %s '%s' было остановлено из-за сетевой ошибки"
+#~ msgid "%s '%s' saving was stopped, due to network error"
+#~ msgstr "Сохранение %s '%s' было остановлено из-за сетевой ошибки"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:100
 #, c-format
-msgid "%s '%s' saving was aborted"
-msgstr "Сохранение %s '%s' было прервано"
+#~ msgid "%s '%s' saving was aborted"
+#~ msgstr "Сохранение %s '%s' было прервано"
 
-#. Translators: %s - content type (e.g. "Playlist")
-#: src/widgets/views/abstract-cachiable.vala:192
 #, c-format
-msgid "%s saving has started"
-msgstr "Сохранение %s начато"
+#~ msgid "%s saving has started"
+#~ msgstr "Сохранение %s начато"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:230
 #, c-format
-msgid "%s '%s' was moved from data to cache"
-msgstr "%s '%s' был перемещен из данных в кэш"
+#~ msgid "%s '%s' was moved from data to cache"
+#~ msgstr "%s '%s' был перемещен из данных в кэш"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:240
 #, c-format
-msgid "%s removing has started. Please do not close the app"
-msgstr "Удаление %s начато. Пожалуйста, не закрывайте приложение"
+#~ msgid "%s removing has started. Please do not close the app"
+#~ msgstr "Удаление %s начато. Пожалуйста, не закрывайте приложение"
 
-#: src/widgets/views/cant-show.vala:38
 #, c-format
-msgid "Error %d"
-msgstr "Ошибка %d"
+#~ msgid "Error %d"
+#~ msgstr "Ошибка %d"
 
-#: src/widgets/views/cant-show.vala:42
-msgid "Can't load page"
-msgstr "Не удаётся загрузить страницу"
+#~ msgid "Can't load page"
+#~ msgstr "Не удаётся загрузить страницу"
 
-#: src/widgets/views/cant-show.vala:45
-msgid "Can't find desired content"
-msgstr "Не удаётся найти желаемый контент"
+#~ msgid "Can't find desired content"
+#~ msgstr "Не удаётся найти желаемый контент"
 
-#: src/widgets/views/playlist.vala:85
-msgid "Delete playlist?"
-msgstr "Удалить плейлист?"
+#~ msgid "Delete playlist?"
+#~ msgstr "Удалить плейлист?"
 
-#: src/widgets/views/playlist.vala:86
 #, c-format
-msgid "Playlist '%s' will be permanently deleted."
-msgstr "Плейлист '%s' будет безвозвратно удалён."
+#~ msgid "Playlist '%s' will be permanently deleted."
+#~ msgstr "Плейлист '%s' будет безвозвратно удалён."
 
-#: src/widgets/views/playlist.vala:105
 #, c-format
-msgid "Playlist '%s' was deleted"
-msgstr "Плейлист '%s' удалён"
+#~ msgid "Playlist '%s' was deleted"
+#~ msgstr "Плейлист '%s' удалён"
 
-#. Translators: %s is female person
-#: src/widgets/views/playlist.vala:248
 #, c-format
-msgctxt "female person"
-msgid "%s updated playlist %s"
-msgstr "%s обновила плейлист %s"
+#~ msgctxt "female person"
+#~ msgid "%s updated playlist %s"
+#~ msgstr "%s обновила плейлист %s"
 
-#. Translators: %s is male person
-#: src/widgets/views/playlist.vala:252
 #, c-format
-msgctxt "male person"
-msgid "%s updated playlist %s"
-msgstr "%s обновил плейлист %s"
+#~ msgctxt "male person"
+#~ msgid "%s updated playlist %s"
+#~ msgstr "%s обновил плейлист %s"
 
-#: src/widgets/views/playlist.vala:282
 #, c-format
-msgid "Can't change visibility of '%s'"
-msgstr "Не удалось изменить видимость плейлиста '%s'"
+#~ msgid "Can't change visibility of '%s'"
+#~ msgstr "Не удалось изменить видимость плейлиста '%s'"
 
-#: src/widgets/views/playlist.vala:288
 #, c-format
-msgid "Playlist '%s' is public now"
-msgstr "Плейлист '%s' виден всем"
+#~ msgid "Playlist '%s' is public now"
+#~ msgstr "Плейлист '%s' виден всем"
 
-#: src/widgets/views/playlist.vala:291
 #, c-format
-msgid "Playlist '%s' is private now"
-msgstr "Плейлист '%s' виден только вам"
+#~ msgid "Playlist '%s' is private now"
+#~ msgstr "Плейлист '%s' виден только вам"
 
-#: src/window.vala:236
 #, c-format
-msgid "Window info message: %s"
-msgstr "Информационное сообщение об окне: %s"
+#~ msgid "Window info message: %s"
+#~ msgstr "Информационное сообщение об окне: %s"
 
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"

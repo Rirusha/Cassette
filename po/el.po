@@ -1,0 +1,117 @@
+# Greek translation for cassette.
+# Copyright (C) 2025 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+# Efstathios Iosifidis <eiosifidis@gnome.org>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2025-12-10 11:26+0000\n"
+"PO-Revision-Date: 2025-12-10 11:26+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek <Greek>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.desktop.in.in:3
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
+#: src/main.vala:26
+msgid "Cassette"
+msgstr "Cassette"
+
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Unofficial Yandex Music client"
+
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:6
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
+msgid "yandex;yandex music;yam;music;"
+msgstr "yandex;yandex music;yam;music;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
+msgid "Cassette (Devel)"
+msgstr "Cassette (Ανάπτυξη)"
+
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
+msgid "Unofficial Yandex Music client (Devel build)"
+msgstr "Unofficial Yandex Music client (Έκδοση ανάπτυξης)"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+"Εφαρμογή GTK/Adwaita που επιτρέπει τη χρήση της υπηρεσίας Yandex Music σε "
+"λειτουργικά συστήματα Linux."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
+msgid "Features:"
+msgstr "Χαρακτηριστικά:"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr "Επιτρέπει την αποθήκευση λιστών αναπαραγωγής και άλμπουμ για ακρόαση εκτός σύνδεσης"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr "Διαθέτει ένα δυναμικό «λειτουργία karaoke» ακριβώς στον πίνακα πληροφοριών κομματιού"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+"Επιτρέπει μια πιο ακριβή προσαρμογή της εμφάνισης και αναπαραγωγής ειδικού "
+"περιεχομένου, όπως άσεμνου ή κατάλληλου για παιδιά."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr "Εμφανίζει κομμάτια που προς το παρόν δεν είναι διαθέσιμα στην υπηρεσία"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
+msgid "Shows which tracks have been replaced and by what"
+msgstr "Δείχνει ποια κομμάτια έχουν αντικατασταθεί και με τι"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr ""
+"Το Cassette είναι ένα ανεπίσημο πρόγραμμα-πελάτης και δεν σχετίζεται ούτε "
+"έχει την έγκριση της Yandex."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
+msgid "Liked view"
+msgstr "Προβολή αγαπημένων"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
+msgid "Playlists view"
+msgstr "Προβολή λιστών αναπαραγωγής"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
+msgid "Sync lyrics"
+msgstr "Συγχρονισμός στίχων"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
+msgid "Playback queue"
+msgstr "Ουρά αναπαραγωγής"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
+msgid "Waves view"
+msgstr "Προβολή κυμάτων"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
+msgid "Main preferences"
+msgstr "Κύριες προτιμήσεις"
+
+#: src/application.vala:45
+msgid "Print version information and exit"
+msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"

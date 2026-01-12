@@ -47,6 +47,8 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
         Cassette.Application.app_settings.bind ("window-height", this, "default-height", SettingsBindFlags.DEFAULT);
         Cassette.Application.app_settings.bind ("window-maximized", this, "maximized", SettingsBindFlags.DEFAULT);
 
+        title = Config.APP_NAME;
+
         if (Config.IS_DEVEL) {
             add_css_class ("devel");
         }

@@ -34,7 +34,7 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
 
     File tmp_cookies_file;
 
-    public signal void success ();
+    public bool success { get; private set; }
 
     public WebkitAuthDialog (File cookies_file) {
         Object (cookies_file: cookies_file);
@@ -58,8 +58,8 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
                 } catch (Error e) {
                     error (e.message);
                 }
+                success = true;
                 close ();
-                success ();
             } else {
                 debug ("Redirected to %s", webview.uri);
             }

@@ -85,8 +85,12 @@ public sealed class Cassette.Auth : Loadable {
 #if WITH_WEBKIT
         var dialog = new WebkitAuthDialog (Cassette.Application.tape_client.cachier.storager.cookies_file);
         dialog.present (this);
-        dialog.success.connect (() => {
-            try_auth.begin (null);
+        dialog.closed.connect ((dialog) => {
+            if (((WebkitAuthDialog) dialog).success) {
+                try_auth.begin (null);
+            } else {
+                to_auth ();
+            }
         });
         is_loading = true;
 #endif

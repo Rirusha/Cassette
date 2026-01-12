@@ -11,7 +11,11 @@ template $CassetteAuth : $CassetteLoadable {
         Adw.ToolbarView {
           [top]
           Adw.HeaderBar {
-            
+            [end]
+            Button {
+              icon-name: "info-outline-symbolic";
+              action-name: "win.about";
+            }
           }
 
           Adw.StatusPage auth_status_page {

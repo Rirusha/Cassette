@@ -1,0 +1,119 @@
+# Kazakh translation for cassette.
+# Copyright (C) 2026 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2025-10-28 21:43+0000\n"
+"PO-Revision-Date: 2026-01-26 19:23+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <Kazakh>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.desktop.in.in:3
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
+#: src/main.vala:26
+msgid "Cassette"
+msgstr "Cassette"
+
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Бейресми Яндекс Музыка клиенті"
+
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:6
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
+msgid "yandex;yandex music;yam;music;"
+msgstr "yandex;yandex музыка;yam;музыка;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
+msgid "Cassette (Devel)"
+msgstr "Cassette (Devel)"
+
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
+msgid "Unofficial Yandex Music client (Devel build)"
+msgstr "Бейресми Яндекс Музыка клиенті (Devel жинағы)"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+"Linux операциялық жүйелерінде Яндекс Музыка сервисін қолдануға мүмкіндік "
+"беретін GTK/Adwaita қолданбасы."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
+msgid "Features:"
+msgstr "Мүмкіндіктері:"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr ""
+"Ойнату тізімдері мен альбомдарды желіден тыс тыңдау үшін сақтауға "
+"мүмкіндік береді"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr "Трек ақпараты панелінде динамикалық \"караоке режимі\" бар"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+"Арнайы мазмұнды (мысалы, бейәдеп немесе балаларға арналған) көрсетуді және "
+"ойнатуды дәлірек баптауға мүмкіндік береді."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr "Сервисте қазіргі уақытта қолжетімсіз тректерді көрсетеді"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
+msgid "Shows which tracks have been replaced and by what"
+msgstr "Қай тректердің немен ауыстырылғанын көрсетеді"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr ""
+"Cassette — бейресми клиент және ол Яндекс компаниясымен байланысты емес "
+"немесе мақұлданбаған."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
+msgid "Liked view"
+msgstr "Ұнағандар көрінісі"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
+msgid "Playlists view"
+msgstr "Ойнату тізімдері көрінісі"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
+msgid "Sync lyrics"
+msgstr "Ән мәтінін синхрондау"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
+msgid "Playback queue"
+msgstr "Ойнату кезегі"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
+msgid "Waves view"
+msgstr "Толқындар көрінісі"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
+msgid "Main preferences"
+msgstr "Негізгі баптаулар"
+
+#: src/application.vala:45
+msgid "Print version information and exit"
+msgstr "Нұсқа ақпаратын шығару және шығу"

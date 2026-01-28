@@ -1,0 +1,125 @@
+# Cornish translation for cassette.
+# Copyright (C) 2026 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Flynn Peck <cirilla@tuta.io>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2026-01-12 17:26+0000\n"
+"PO-Revision-Date: 2026-01-28 23:01+0000\n"
+"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+"Language-Team: kw\n"
+"Language: kw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/Rirusha/Cassette/\n"
+"X-DL-Lang: kw\n"
+"X-DL-Module: cassette\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.desktop.in.in:3
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
+#: src/main.vala:26
+msgid "Cassette"
+msgstr "Kasett"
+
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Kliens Ansodhogel Yandex Music"
+
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:6
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
+msgid "yandex;yandex music;yam;music;"
+msgstr "yandex;yandex music;kam;ilow;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
+msgid "Cassette (Devel)"
+msgstr "Kasett (Arbrovel)"
+
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
+msgid "Unofficial Yandex Music client (Devel build)"
+msgstr "Kliens Ansodhogel Yandex Music (Byld arbrovel)"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+"App GTK/Adwaita ow gasa ty devnydhya gonis Yandex Music war systemow "
+"oberyans Linux."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
+msgid "Features:"
+msgstr "Nasyow:"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr "Gasa ty sawya rolyow kanow ha kuntilowyow rag ow goslowes dhywarlinen"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr "Kavos unn \"fordh karaoke\" dynamek y'n panel kedhlow kan"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+"Gasa ty personelhe moy hardlych an displetyans ha senyans a dalgh arbennik, "
+"kepar ha diskortes po fytti rag fleghes."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr "Diskwedhes kanow ankavadow a-lemmyn y'n gonis"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
+msgid "Shows which tracks have been replaced and by what"
+msgstr "Diskwedhes py kanow re bos asleys ha gans pyth"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr ""
+"Kasett yw unn kliens ansodhogel ha na kowethys gans po keynskrifa gans "
+"Yandex."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
+msgid "Liked view"
+msgstr "Gwel karys"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
+msgid "Playlists view"
+msgstr "Gwel rolyow kanow"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
+msgid "Sync lyrics"
+msgstr "Kettermynyegi geryow"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
+msgid "Playback queue"
+msgstr "Lost senyans"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
+msgid "Waves view"
+msgstr "Gwel tonnow"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
+msgid "Main preferences"
+msgstr "Settyansow chif"
+
+#: src/application.vala:45
+msgid "Print version information and exit"
+msgstr "Prytyna kedhlow versyon ha kwytya"

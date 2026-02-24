@@ -1,0 +1,120 @@
+# Bulgarian translation for cassette.
+# Copyright (C) 2026 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2026-01-12 17:26+0000\n"
+"PO-Revision-Date: 2026-02-24 14:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: Bulgarian <Bulgarian>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.desktop.in.in:3
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
+#: src/main.vala:26
+msgid "Cassette"
+msgstr "Касета"
+
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Неофициален клиент на Yandex Music"
+
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:6
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
+msgid "yandex;yandex music;yam;music;"
+msgstr "музика;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
+msgid "Cassette (Devel)"
+msgstr "Касета (в разработка)"
+
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
+msgid "Unofficial Yandex Music client (Devel build)"
+msgstr "Неофициален клиент на Yandex Music (версия в разработка)"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+"GTK/Adwaita програма, която позволява да се използва услугата Yandex Music "
+"на Linux операционни системи."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
+msgid "Features:"
+msgstr "Функции:"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr ""
+"Позволява ви да запазвате списъци с песни и албуми за слушане без Интернет "
+"връзка"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr "Има динамичен „караоке режим“ в панела с информация за песента"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+"Позволява ви да настройте по-точно показването и възпроизвеждането на "
+"специално съдържание, като например за зрелостни или подходящо за деца."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr "Показва песни, които в момента не са достъпни в услугата"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
+msgid "Shows which tracks have been replaced and by what"
+msgstr "Показва кои песни са били заменени и с какви"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr ""
+"„Касета“ е неофициален клиент и не е свързан с Yandex, нито е одобрен от "
+"тях."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
+msgid "Liked view"
+msgstr "Харесани"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
+msgid "Playlists view"
+msgstr "Изглед на списъци с песни"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
+msgid "Sync lyrics"
+msgstr "Синхронизиране на коплета"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
+msgid "Playback queue"
+msgstr "Опашка за възпроизвеждане"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
+msgid "Waves view"
+msgstr "Изглед с вълни"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
+msgid "Main preferences"
+msgstr "Основни настройки"
+
+#: src/application.vala:45
+msgid "Print version information and exit"
+msgstr "Извеждане на версията и спиране"

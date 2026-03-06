@@ -1,0 +1,123 @@
+# Hungarian translation for cassette.
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the cassette package.
+#
+# Balázs Úr <ur.balazs at fsf dot hu>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"POT-Creation-Date: 2026-01-12 17:26+0000\n"
+"PO-Revision-Date: 2026-03-06 08:33+0100\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 25.08.1\n"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.desktop.in.in:3
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
+#: src/main.vala:26
+msgid "Cassette"
+msgstr "Kazetta"
+
+#: data/space.rirusha.Cassette.desktop.in.in:4
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
+msgid "Unofficial Yandex Music client"
+msgstr "Nem hivatalos Yandex Music ügyfélprogram"
+
+#. Translators: keep number of ';'
+#: data/space.rirusha.Cassette.desktop.in.in:6
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
+msgid "yandex;yandex music;yam;music;"
+msgstr "yandex;yandex music;yam;zene;"
+
+#. Translators: app name should be translated
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
+msgid "Cassette (Devel)"
+msgstr "Kazetta (fejlesztői)"
+
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
+msgid "Unofficial Yandex Music client (Devel build)"
+msgstr "Nem hivatalos Yandex Music ügyfélprogram (fejlesztői összeállítás)"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
+msgid ""
+"GTK/Adwaita application that allows to use Yandex Music service on Linux "
+"operating systems."
+msgstr ""
+"Egy GTK/Adwaita alkalmazás, amely lehetővé teszi a Yandex Music szolgáltatás "
+"használatát Linux operációs rendszereken."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
+msgid "Features:"
+msgstr "Funkciók:"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
+msgid "Allows you to save playlists and albums for offline listening"
+msgstr ""
+"Lehetővé teszi a lejátszási listák és albumok mentését internet nélküli "
+"hallgatáshoz"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
+msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+msgstr "Dinamikus „karaoke mód” közvetlenül a szám információs paneljén"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
+msgid ""
+"Allows you to more precisely customize the display and playback of special "
+"content, such as explicit or suitable for children."
+msgstr ""
+"Lehetővé teszi a különleges, például kifejezetten felnőtteknek szóló vagy "
+"gyermekek számára alkalmas tartalom megjelenítésének és lejátszásának "
+"pontosabb személyre szabását"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
+msgid "Displays tracks that are currently unavailable in the service"
+msgstr ""
+"Megjeleníti azokat a számokat, amelyek jelenleg nem érhetők el a "
+"szolgáltatásban"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
+msgid "Shows which tracks have been replaced and by what"
+msgstr "Megjeleníti, hogy mely számok lettek kicserélve és mire"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
+msgid ""
+"Cassette is an unofficial client and is not associated with or endorsed by "
+"Yandex."
+msgstr ""
+"A Kazetta egy nem hivatalos ügyfélprogram, és nem áll kapcsolatban a "
+"Yandexszel, illetve nem támogatja azt."
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
+msgid "Liked view"
+msgstr "Kedvet nézet"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
+msgid "Playlists view"
+msgstr "Lejátszási listák nézet"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
+msgid "Sync lyrics"
+msgstr "Dalszövegek szinkronizálása"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
+msgid "Playback queue"
+msgstr "Lejátszási sor"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
+msgid "Waves view"
+msgstr "Hullámok nézet"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
+msgid "Main preferences"
+msgstr "Fő beállítások"
+
+#: src/application.vala:45
+msgid "Print version information and exit"
+msgstr "Verzióinformációk kiírása és kilépés"

@@ -1,7 +1,11 @@
 data/space.rirusha.Cassette.desktop.in.in
 data/space.rirusha.Cassette.Devel.desktop.in.in
+data/space.rirusha.Cassette.Devel.metainfo.xml.in.in
 data/space.rirusha.Cassette.metainfo.xml.in.in
-data/ui/window.blp
+data/ui/auth.blp
+data/ui/main-content.blp
+data/ui/webkit/webkit-auth.blp
 src/application.vala
 src/main.vala
-src/window.vala
+src/widgets/about.vala
+src/widgets/auth.vala

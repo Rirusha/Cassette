@@ -18,6 +18,7 @@ template $CassetteWebkitAuthDialog : Adw.Dialog {
         Adw.HeaderBar {
           [start]
           Button {
+            tooltip-text: _("Refresh");
             icon-name: "view-refresh-symbolic";
             sensitive: bind loadable.is-loading inverted;
             clicked => $on_refresh();

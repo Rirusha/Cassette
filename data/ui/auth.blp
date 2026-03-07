@@ -13,6 +13,7 @@ template $CassetteAuth : $CassetteLoadable {
           Adw.HeaderBar {
             [end]
             Button {
+              tooltip-text: _("About");
               icon-name: "info-outline-symbolic";
               action-name: "win.about";
             }
@@ -24,44 +25,39 @@ template $CassetteAuth : $CassetteLoadable {
             Adw.Clamp {
               maximum-size: 360;
 
-              Box {
-                orientation: vertical;
-                spacing: 24;
+              ListBox {
+                styles [
+                  "boxed-list-separate"
+                ]
 
-                ListBox {
+                selection-mode: none;
+
+                Adw.ButtonRow webkit_login {
                   styles [
-                    "boxed-list-separate"
+                    "suggested-action"
                   ]
 
-                  selection-mode: none;
+                  title: _("Login with Yandex account");
+                  end-icon-name: "go-next-symbolic";
+                  activated => $on_yandex_apply();
+                }
 
-                  Adw.ButtonRow webkit_login {
+                Adw.PasswordEntryRow token_login {
+                  title: _("Yandex Music token");
+                  show-apply-button: true;
+                  apply => $on_token_apply();
+                  entry-activated => $on_token_apply();
+
+                  [suffix]
+                  Button {
                     styles [
-                      "suggested-action"
+                      "flat",
                     ]
 
-                    title: _("Login with Yandex account");
-                    end-icon-name: "go-next-symbolic";
-                    activated => $on_yandex_apply();
-                  }
-
-                  Adw.PasswordEntryRow token_login {
-                    title: _("Yandex Music token");
-                    show-apply-button: true;
-                    apply => $on_token_apply();
-                    entry-activated => $on_token_apply();
-
-                    [suffix]
-                    Button {
-                      styles [
-                        "flat",
-                      ]
-
-                      valign: center;
-                      clicked => $on_open_link();
-                      tooltip-text: _("How to obtain token");
-                      icon-name: "info-outline-symbolic";
-                    }
+                    valign: center;
+                    clicked => $on_open_link();
+                    tooltip-text: _("How to obtain token");
+                    icon-name: "info-outline-symbolic";
                   }
                 }
               }
@@ -83,7 +79,7 @@ template $CassetteAuth : $CassetteLoadable {
           content: Adw.StatusPage {
             icon-name: "dialog-error-symbolic";
             title: _("No Plus subscription");
-            description: _("You won't be able to use the app without a Yandex Plus subscription.");
+            description: _("You won’t be able to use the app without a Yandex Plus subscription.");
 
             Adw.Clamp {
               maximum-size: 360;

@@ -3,6 +3,9 @@ vapi_sources = files(
 )
 
 vala_sources = files(
+  'widgets/account/account-button.vala',
+  'widgets/account/account-info-dialog.vala',
+
   'widgets/about.vala',
   'widgets/auth.vala',
   'widgets/loadable.vala',
@@ -22,7 +25,6 @@ endif
 sources = [
   vapi_sources,
   vala_sources,
-  blueprints,
   resources,
 ]
 

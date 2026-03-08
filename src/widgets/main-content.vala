@@ -20,5 +20,8 @@
 
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/main-content.ui")]
 public sealed class Cassette.MainContent : Adw.Bin {
-    
+
+    static construct {
+        typeof (AccountButton).ensure ();
+    }
 }

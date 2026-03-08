@@ -1,0 +1,20 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteAccountButton : Adw.Bin {
+  Button {
+    styles [
+      "flat",
+      "circular",
+    ]
+
+    halign: center;
+    valign: center;
+    clicked => $on_button_clicked();
+    tooltip-text: _("Account information");
+
+    Adw.Avatar avatar {
+      size: 24;
+    }
+  }
+}

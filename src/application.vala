@@ -25,7 +25,7 @@ public sealed class Cassette.Application : Adw.Application {
     const ActionEntry[] ACTION_ENTRIES = {
         { "quit", quit },
         { "show-message", show_message, "s" },
-        //  { "log-out", on_log_out_action },
+        { "log-out", on_log_out_action },
         //  { "force-log-out", on_force_log_out_action },
         //  { "play-pause", on_play_pause_action },
         //  { "next", on_next_action },
@@ -35,8 +35,8 @@ public sealed class Cassette.Application : Adw.Application {
         //  { "change-repeat", on_change_repeat_action },
         //  { "share-current-track", on_share_current_track_action},
         //  { "parse-url", on_parse_url_action },
-        //  { "open-account", on_open_account_action },
-        //  { "open-plus", on_open_plus_action },
+        { "open-account", on_open_account_action },
+        { "open-plus", on_open_plus_action },
         //  { "get-plus", on_get_plus_action },
         //  { "mute", on_mute_action },
     };
@@ -125,5 +125,17 @@ public sealed class Cassette.Application : Adw.Application {
         var ntf = new Notification (_("Cassette"));
         ntf.set_body (message);
         send_notification (Config.APP_ID_RELEVANT, ntf);
+    }
+
+    void on_log_out_action () {
+        warning ("Log out");
+    }
+
+    void on_open_account_action () {
+        new Gtk.UriLauncher ("https://id.yandex.ru/").launch.begin (null, null);
+    }
+
+    void on_open_plus_action () {
+        new Gtk.UriLauncher ("https://plus.yandex.ru/").launch.begin (null, null);
     }
 }

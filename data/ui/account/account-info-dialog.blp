@@ -1,0 +1,93 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CassetteAccountInfoDialog: Adw.Dialog {
+  title: _("Account information");
+  width-request: 360;
+  content-width: 360;
+  content-height: 420;
+  follows-content-size: true;
+
+  Box {
+    orientation: vertical;
+
+    Adw.ToolbarView {
+      [top]
+      Adw.HeaderBar {
+        [start]
+        Button {
+          icon-name: "external-link-symbolic";
+          action-name: "app.open-account";
+          tooltip-text: _("Open in browser");
+        }
+
+        [start]
+        Button {
+          icon-name: "plus-symbolic";
+          action-name: "app.open-plus";
+          tooltip-text: _("Open subscription page in browser");
+        }
+      }
+
+      content: ScrolledWindow {
+        propagate-natural-height: true;
+        hscrollbar-policy: never;
+
+        margin-bottom: 12;
+
+        Adw.Clamp {
+          maximum-size: 500;
+          margin-top: 12;
+          margin-bottom: 12;
+          margin-start: 12;
+          margin-end: 12;
+
+          Box {
+            orientation: vertical;
+            spacing: 6;
+
+            Frame {
+              valign: center;
+              halign: center;
+              margin-bottom: 24;
+
+              Image avatar_image {
+                pixel-size: 200;
+              }
+            }
+
+            Label public_name_label {
+              styles [
+                "title-1",
+              ]
+            }
+
+            Label login_label {
+              styles [
+                "body",
+              ]
+            }
+          }
+        }
+      };
+    }
+
+    ListBox {
+      styles [
+        "boxed-list-separate"
+      ]
+
+      selection-mode: none;
+
+      Adw.ButtonRow {
+        styles [
+          "destructive-action"
+        ]
+
+        width-request: 240;
+        action-name: "app.log-out";
+        title: _("Log out");
+      }
+    }
+  }
+}

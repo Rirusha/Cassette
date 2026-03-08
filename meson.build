@@ -8,6 +8,7 @@ project(
 
 i18n = import('i18n')
 gnome = import('gnome')
+py = import('python')
 
 glib_min_version = '2.76'
 

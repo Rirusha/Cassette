@@ -5,14 +5,20 @@ non_quoted_conf.set('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
 non_quoted_conf.set('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
 non_quoted_conf.set('HELP', 'https://t.me/CassetteGNOME_Discussion')
 
+if get_option('is_devel')
+  metades_suffix = '-devel'
+else
+  metades_suffix = ''
+endif
+
 desktop_file = i18n.merge_file(
   input: configure_file(
-    output: app_id_relevant + '.desktop.in',
-    input: app_id_relevant + '.desktop.in.in',
+    input: 'desktop' + metades_suffix + '.in.in',
+    output: 'desktop.in',
     configuration: non_quoted_conf),
   output: app_id_relevant + '.desktop',
   type: 'desktop',
-  po_dir: '../po',
+  po_dir: meson.project_source_root() / 'po',
   install: true,
   install_dir: get_option('datadir') / 'applications'
 )
@@ -24,11 +30,11 @@ endif
 
 appstream_file = i18n.merge_file(
   input: configure_file(
-    output: app_id_relevant + '.metainfo.xml.in',
-    input: app_id_relevant + '.metainfo.xml.in.in',
+    input: 'metainfo' + metades_suffix + '.xml.in.in',
+    output: 'app.metainfo.xml.in',
     configuration: non_quoted_conf),
   output: app_id_relevant + '.metainfo.xml',
-  po_dir: '../po',
+  po_dir: meson.project_source_root() / 'po',
   install: true,
   install_dir: get_option('datadir') / 'metainfo'
 )
@@ -38,8 +44,9 @@ if appstreamcli.found()
   test('Validate appstream file', appstreamcli, args: ['validate', appstream_file])
 endif
 
-install_data(app_id + '.gschema.xml',
-  install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
+install_data('gschema.xml',
+  install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
+  rename: app_id_relevant + '.gschema.xml',
 )
 
 compile_schemas = find_program('glib-compile-schemas', required: false)
@@ -49,29 +56,28 @@ if compile_schemas.found()
   args: ['--strict', '--dry-run', meson.current_source_dir()])
 endif
 
-blueprints = custom_target('blueprints',
-  input: files(
-    'ui/webkit/webkit-auth.blp',
-    'ui/auth.blp',
-    'ui/loadable.blp',
-    'ui/main-content.blp',
-    'ui/window.blp',
-  ),
+find_program('blueprint-compiler')
+
+auto = custom_target('auto',
+  command: [
+    py.find_installation().full_path(), meson.project_source_root() / 'tools' / 'auto-data.py',
+    '@OUTPUT@',
+    '@SOURCE_ROOT@',
+    '@BUILD_ROOT@',
+    '@CURRENT_SOURCE_DIR@',
+    app_id_relevant,
+  ],
+  build_always_stale: true,
   output: '.',
-  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 
-gres = configure_file(
-  output: app_id + '.gresource.xml',
-  input: app_id + '.gresource.xml.in',
-  configuration: non_quoted_conf
-)
-
+# Create an empty file gresource.xml to prevent meson from giving an error during the configuration stage
+run_command(['touch', meson.current_build_dir() / 'gresource.xml'])
 resources = gnome.compile_resources(
   'cassette-resources',
-  gres,
+  meson.current_build_dir() / 'gresource.xml',
   source_dir: meson.current_build_dir(),
-  dependencies: blueprints,
+  dependencies: auto,
   c_name: 'cassette'
 )
 

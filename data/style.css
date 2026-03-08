@@ -1,168 +1,50 @@
-/* @define-color accent_color #ffdb4d;
-@define-color accent_bg_color #ffdb4d; */
-
-/**
- * Headered Scrollled Window
- */
-
-.border-separator {
-    color: @sidebar_border_color;
+:root {
+  --plus-gradient: linear-gradient(90deg,#ff5c4d,#eb469f 30%,#8341ef 75%,#3f68f9);
 }
 
-.light-background {
-    background-color: @sidebar_bg_color;
+accountbutton {
+  color: white;
+  background-image: var(--plus-gradient);
+  transition: 200ms;
+  border-radius: 999999px;
 }
 
-/**
- * Rework of default
- */
-
-listview {
-    background-color: rgba(0, 0, 0, 0);
+accountbutton > button > widget {
+  margin: 2px;
+  background-color: var(--window-bg-color);
+  border-radius: 999999px;
 }
 
-listview row {
-    background-color: rgba(0, 0, 0, 0);
+accountbutton:hover {
+  background: var(--accent-bg-color);
 }
 
-.card-box flowboxchild {
-    border-radius: 12px;
+accountinfodialog > widget > bottom-sheet > sheet > stack > widget > widget > box > toolbarview > scrolledwindow > viewport > clamp > box > frame,
+accountinfodialog > widget > floating-sheet > sheet > widget > box > toolbarview > scrolledwindow > viewport > clamp > box > frame {
+  border: none;
+  border-radius: 999999px;
 }
 
-flowbox flowboxchild {
-    padding: 0px;
+accountinfodialog > widget > bottom-sheet > sheet > stack > widget > widget > box > toolbarview,
+accountinfodialog > widget > floating-sheet > sheet > widget > box > toolbarview {
+  border: none;
+  border-radius: 18px;
+  color: white;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    var(--plus-gradient);
 }
 
-frame {
-    border-style: none;
+accountinfodialog > widget > bottom-sheet > sheet > stack > widget > widget > box > list {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
-.sp-sw overshoot.top {
-    background-image: none;
-}
-
-.sp-sw overshoot.bottom {
-    background-image: none;
-}
-
-/**
- * Other
- */
-
-.unbold {
-    font-weight: normal;
-}
-
-.equalaizer-scale {
-    padding: 10px;
-}
-
-.small-border-radius {
-    border-radius: 6px;
-}
-
-.transparent-background {
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.plus-button {
-    color: white;
-    background-image: linear-gradient(90deg,#ff5c4d,#eb469f 30%,#8341ef 75%,#3f68f9);
-}
-
-.button-standart-padding {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.menu-button {
-    font-weight: normal;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    transition: none;
-}
-
-popover contents {
-    padding: 6px;
-}
-
-/**
- * Track row
- */
-
-track-row {
-    all: inherit;
-
-    border-radius: 12px;
-    padding: 6px;
-    transition: 200ms;
-}
-
-track-row.hover {
-    box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
-                0   1px 3px 1px rgba(0, 0, 0, .07),
-                0   2px 6px 2px rgba(0, 0, 0, .03);
-    background-color: alpha(@window_fg_color, 0.1);
-}
-
-track-row.active {
-    background-color: alpha(@window_fg_color, 0.3);
-}
-
-/**
- * Track row playing
- */
-
-track-row.playing {
-    box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
-                0   1px 3px 1px rgba(0, 0, 0, .07),
-                0   2px 6px 2px rgba(0, 0, 0, .03);
-    color: @accent_fg_color;
-    background-color: alpha(@accent_bg_color, 0.85);
-}
-
-track-row.playing-hover {
-    background-color: alpha(@accent_bg_color, 0.70);
-}
-
-track-row.playing-active {
-    background-color: alpha(@accent_bg_color, 0.54);
-}
-
-/**
- * Action card
- */
-
-.action-card {
-    transition: 200ms;
-    box-shadow: 0   0   0   1px rgba(0, 0, 0, .03),
-                0   1px 3px 1px rgba(0, 0, 0, .07),
-                0   2px 6px 2px rgba(0, 0, 0, .03);
-    background-color: alpha(@window_fg_color, 0.08);
-    padding: 8px;
-}
-
-.action-card-hover {
-    background-color: alpha(@window_fg_color, 0.18);
-}
-
-.action-card-active {
-    background-color: alpha(@window_fg_color, 0.3);
-}
-
-/**
- * Station card playing
- */
-
-.station-card-playing {
-    background-color: alpha(@accent_bg_color, 0.85);
-    color: @accent_fg_color;
-}
-
-.station-card-playing-hover {
-    background-color: alpha(@accent_bg_color, 0.70);
-}
-
-.station-card-playing-active {
-    background-color: alpha(@accent_bg_color, 0.54);
+accountinfodialog > widget > floating-sheet > sheet > widget > box > list {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
 }

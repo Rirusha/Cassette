@@ -41,19 +41,17 @@ public sealed class Cassette.AccountInfoDialog : Adw.Dialog {
     }
 
     async void set_info () {
+        var bytes = yield Cassette.Application.tape_client.yam_helper.me.get_avatar ();
+        public_name_label.label = Cassette.Application.tape_client.yam_helper.me.public_name;
+        login_label.label = Cassette.Application.tape_client.yam_helper.me.login;
+
+        if (bytes == null) {
+            avatar_image.paintable = null;
+            return;
+        }
+
         try {
-            var bytes = yield Cassette.Application.tape_client.yam_helper.me.get_avatar ();
-            public_name_label.label = Cassette.Application.tape_client.yam_helper.me.public_name;
-            login_label.label = Cassette.Application.tape_client.yam_helper.me.login;
-
-            if (bytes == null) {
-                avatar_image.paintable = null;
-                return;
-            }
-
-            var avatar_paintable = Gdk.Texture.from_bytes (bytes);
-
-            avatar_image.paintable = avatar_paintable;
+            avatar_image.paintable = Gdk.Texture.from_bytes (bytes);
         } catch (Error e) {
             avatar_image.paintable = null;
             warning ("Can't set account info: %s", e.message);

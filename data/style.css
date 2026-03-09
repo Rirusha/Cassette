@@ -19,9 +19,7 @@ accountbutton:hover {
   background: var(--accent-bg-color);
 }
 
-accountinfodialog > widget > bottom-sheet > sheet > stack > widget > widget > box > toolbarview > scrolledwindow > viewport > clamp > box > frame,
-accountinfodialog > widget > floating-sheet > sheet > widget > box > toolbarview > scrolledwindow > viewport > clamp > box > frame {
-  border: none;
+.cassette-circular {
   border-radius: 999999px;
 }
 

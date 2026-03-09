@@ -46,7 +46,12 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
             orientation: vertical;
             spacing: 6;
 
-            Frame {
+            Adw.Bin {
+              styles [
+                "cassette-circular",
+              ]
+
+              overflow: hidden;
               valign: center;
               halign: center;
               margin-bottom: 24;

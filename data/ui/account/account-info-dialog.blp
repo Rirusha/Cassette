@@ -13,7 +13,7 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
 
     Adw.ToolbarView {
       [top]
-      Adw.HeaderBar {
+      Adw.HeaderBar header_bar {
         [start]
         Button {
           icon-name: "external-link-symbolic";
@@ -40,11 +40,9 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
           margin-top: 12;
           margin-bottom: 12;
           margin-start: 12;
-          margin-end: 12;
 
           Box {
             orientation: vertical;
-            spacing: 6;
 
             Adw.Bin {
               styles [
@@ -56,42 +54,70 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
               halign: center;
               margin-bottom: 24;
 
-              Image avatar_image {
-                pixel-size: 200;
+              Stack image_stack {
+                transition-duration: 300;
+                transition-type: crossfade;
+
+                StackPage {
+                  name: "image";
+                  child: Image avatar_image {
+                    pixel-size: 200;
+                  };
+                }
+
+                StackPage {
+                  name: "load";
+                  child: Adw.Spinner {};
+                }
               }
             }
 
-            Label public_name_label {
-              styles [
-                "title-1",
-              ]
-            }
+            Revealer revealer {
+              reveal-child: true;
 
-            Label login_label {
-              styles [
-                "body",
-              ]
+              Box {
+                margin-top: 6;
+                margin-end: 12;
+                orientation: vertical;
+                spacing: 6;
+
+                Label public_name_label {
+                  styles [
+                    "title-1",
+                  ]
+                }
+
+                Label login_label {
+                  styles [
+                    "body",
+                  ]
+                }
+              }
             }
           }
         }
       };
     }
 
-    ListBox {
-      styles [
-        "boxed-list-separate"
-      ]
+    Revealer logout_revealer {
+      reveal-child: true;
 
-      selection-mode: none;
-
-      Adw.ButtonRow {
+      ListBox {
         styles [
-          "destructive-action"
+          "boxed-list-separate"
         ]
 
-        width-request: 240;
-        action-name: "app.log-out";
-        title: _("Log out");
+        selection-mode: none;
+
+        Adw.ButtonRow {
+          styles [
+            "destructive-action"
+          ]
+
+          width-request: 240;
+          title: _("Log out");
+          activated => $on_logout_clicked();
+        }
       }
     }
   }

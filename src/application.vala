@@ -97,6 +97,7 @@ public sealed class Cassette.Application : Adw.Application {
         client_settings.bind ("repeat-mode", tape_settings, "repeat-mode", DEFAULT);
 
         tape_client = new Tape.Client (tape_settings);
+        tape_client.quit.connect (quit);
     }
 
     public override void activate () {
@@ -128,7 +129,7 @@ public sealed class Cassette.Application : Adw.Application {
     }
 
     void on_log_out_action () {
-        warning ("Log out");
+        tape_client.logout.begin ();
     }
 
     void on_open_account_action () {

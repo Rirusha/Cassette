@@ -27,6 +27,16 @@ public sealed class Cassette.AccountInfoDialog : Adw.Dialog {
     unowned Gtk.Label public_name_label;
     [GtkChild]
     unowned Gtk.Label login_label;
+    [GtkChild]
+    unowned Gtk.Stack image_stack;
+    [GtkChild]
+    unowned Adw.HeaderBar header_bar;
+    [GtkChild]
+    unowned Gtk.Revealer revealer;
+    [GtkChild]
+    unowned Gtk.Revealer logout_revealer;
+
+    bool logout_in_process = false;
 
     static construct {
         set_css_name ("accountinfodialog");
@@ -58,5 +68,22 @@ public sealed class Cassette.AccountInfoDialog : Adw.Dialog {
             avatar_image.paintable = null;
             warning ("Can't set account info: %s", e.message);
         }
+    }
+
+    public override void close_attempt () {
+        if (!logout_in_process) {
+            base.close_attempt ();
+        }
+    }
+
+    [GtkCallback]
+    void on_logout_clicked () {
+        activate_action ("app.log-out", null);
+        header_bar.show_end_title_buttons = false;
+        header_bar.show_start_title_buttons = false;
+        revealer.reveal_child = false;
+        logout_revealer.reveal_child = false;
+        can_close = false;
+        image_stack.visible_child_name = "load";
     }
 }

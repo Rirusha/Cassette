@@ -33,14 +33,14 @@ accountinfodialog > widget > floating-sheet > sheet > widget > box > toolbarview
     var(--plus-gradient);
 }
 
-accountinfodialog > widget > bottom-sheet > sheet > stack > widget > widget > box > list {
+accountinfodialog > widget > bottom-sheet > sheet > stack > widget > widget > box > revealer > list {
   margin-top: 12px;
   margin-bottom: 24px;
   margin-left: 12px;
   margin-right: 12px;
 }
 
-accountinfodialog > widget > floating-sheet > sheet > widget > box > list {
+accountinfodialog > widget > floating-sheet > sheet > widget > box > revealer > list {
   margin-top: 12px;
   margin-bottom: 12px;
   margin-left: 12px;

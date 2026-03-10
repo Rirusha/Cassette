@@ -4,24 +4,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Lint check",
-            "type": "shell",
-            "command": "io.elementary.vala-lint -d . -c vala-lint.conf",
-            "problemMatcher": []
-        },
-        {
-            "label": "Empty lines check",
-            "type": "shell",
-            "command": "python3 ${workspaceFolder}/vala-checkers/empty_lines_checker.py .",
-            "problemMatcher": []
-        },
-        {
-            "label": "Indentation check",
-            "type": "shell",
-            "command": "python3 ${workspaceFolder}/vala-checkers/indentation_checker.py .",
-            "problemMatcher": []
-        },
-        {
             "label": "Full check",
             "type": "shell",
             "command": "echo 'Linter:' && io.elementary.vala-lint -d . -c vala-lint.conf && echo 'Empty lines:' && python3 ${workspaceFolder}/vala-checkers/empty_lines_checker.py . && echo 'Indentation:' && python3 ${workspaceFolder}/vala-checkers/indentation_checker.py .",

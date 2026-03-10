@@ -78,6 +78,25 @@ public sealed class Cassette.AccountInfoDialog : Adw.Dialog {
 
     [GtkCallback]
     void on_logout_clicked () {
+        var dialog = new Adw.AlertDialog (_("Logout?"), _("It will erase all application data"));
+        dialog.add_response ("cancel", _("_No"));
+        dialog.add_response ("confirm", _("_Yes"));
+
+        dialog.set_response_appearance ("confirm", Adw.ResponseAppearance.DESTRUCTIVE);
+        dialog.set_default_response ("cancel");
+        dialog.set_close_response ("cancel");
+
+        dialog.response.connect (on_dialog_apply);
+        dialog.present (this);
+    }
+
+    void on_dialog_apply (string response) {
+        if (response == "confirm") {
+            real_logout ();
+        }
+    }
+
+    void real_logout () {
         activate_action ("app.log-out", null);
         header_bar.show_end_title_buttons = false;
         header_bar.show_start_title_buttons = false;

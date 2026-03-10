@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-12-10 11:26+0000\n"
+"POT-Creation-Date: 2026-03-10 08:34+0000\n"
 "PO-Revision-Date: 2025-12-10 11:26+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Greek <Greek>\n"
@@ -17,101 +17,210 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Cassette"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "Πληροφορίες λογαριασμού"
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "Unofficial Yandex Music client"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "Άνοιγμα στον περιηγητή"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;yam;music;"
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "Άνοιγμα σελίδας συνδρομής στον περιηγητή"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Cassette (Ανάπτυξη)"
+#: data/ui/account/account-info-dialog.blp:116
+msgid "Log out"
+msgstr "Αποσύνδεση"
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "Unofficial Yandex Music client (Έκδοση ανάπτυξης)"
+#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+msgid "About"
+msgstr "Περί"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
-msgstr ""
-"Εφαρμογή GTK/Adwaita που επιτρέπει τη χρήση της υπηρεσίας Yandex Music σε "
-"λειτουργικά συστήματα Linux."
+#: data/ui/auth.blp:23
+msgid "Welcome to Cassette!"
+msgstr "Καλώς ορίσατε στο Cassette!"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Χαρακτηριστικά:"
+#: data/ui/auth.blp:40
+msgid "Login with Yandex account"
+msgstr "Είσοδος με λογαριασμό Yandex"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr "Επιτρέπει την αποθήκευση λιστών αναπαραγωγής και άλμπουμ για ακρόαση εκτός σύνδεσης"
+#: data/ui/auth.blp:46
+msgid "Yandex Music token"
+msgstr "Διακριτικό (token) Yandex Music"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "Διαθέτει ένα δυναμικό «λειτουργία karaoke» ακριβώς στον πίνακα πληροφοριών κομματιού"
+#: data/ui/auth.blp:59
+msgid "How to obtain token"
+msgstr "Πώς να αποκτήσετε το διακριτικό"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
-"Επιτρέπει μια πιο ακριβή προσαρμογή της εμφάνισης και αναπαραγωγής ειδικού "
-"περιεχομένου, όπως άσεμνου ή κατάλληλου για παιδιά."
+#: data/ui/auth.blp:81
+msgid "No Plus subscription"
+msgstr "Δεν υπάρχει συνδρομή Plus"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Εμφανίζει κομμάτια που προς το παρόν δεν είναι διαθέσιμα στην υπηρεσία"
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
+msgstr "Δεν θα μπορείτε να χρησιμοποιήσετε την εφαρμογή χωρίς συνδρομή Yandex Plus."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Δείχνει ποια κομμάτια έχουν αντικατασταθεί και με τι"
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr "Πίσω"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr ""
-"Το Cassette είναι ένα ανεπίσημο πρόγραμμα-πελάτης και δεν σχετίζεται ούτε "
-"έχει την έγκριση της Yandex."
+#: data/ui/main-content.blp:22
+msgid "Stay tuned"
+msgstr "Μείνετε συντονισμένοι"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "Προβολή αγαπημένων"
+#: data/ui/main-content.blp:23
+msgid "Work in progress."
+msgstr "Εργασία σε εξέλιξη."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "Προβολή λιστών αναπαραγωγής"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "Συγχρονισμός στίχων"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "Ουρά αναπαραγωγής"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "Προβολή κυμάτων"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "Κύριες προτιμήσεις"
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "Ανανέωση"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
+
+#: src/application.vala:126 src/main.vala:26
+msgid "Cassette"
+msgstr "Cassette"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/widgets/about.vala:110
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"https://gr.gnome.org/"
+
+#: src/widgets/about.vala:111
+msgid "Vladimir Romanov"
+msgstr "Vladimir Romanov"
+
+#: src/widgets/about.vala:114
+msgid "Telegram channel"
+msgstr "Κανάλι Telegram"
+
+#: src/widgets/about.vala:115
+msgid "Financial support (Tinkoff)"
+msgstr "Οικονομική υποστήριξη (Tinkoff)"
+
+#: src/widgets/about.vala:116
+msgid "Financial support (Boosty)"
+msgstr "Οικονομική υποστήριξη (Boosty)"
+
+#: src/widgets/about.vala:118
+msgid "Sponsors"
+msgstr "Χορηγοί"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "Αποσύνδεση;"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr "Θα διαγραφούν όλα τα δεδομένα της εφαρμογής"
+
+#: src/widgets/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "Ό_χι"
+
+#: src/widgets/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "_Ναι"
+
+#: src/widgets/auth.vala:41
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+"Επιλέξτε τρόπο εισόδου στην εφαρμογή. Μπορείτε να συνδεθείτε μέσω του "
+"λογαριασμού σας Yandex ή με το διακριτικό σας."
+
+#: src/widgets/auth.vala:44
+msgid "You need your Yandex music token to login."
+msgstr "Χρειάζεστε το διακριτικό Yandex music για να συνδεθείτε."
+
+#: src/widgets/auth.vala:111
+msgid "Failed to login. Probably wrong token"
+msgstr "Αποτυχία εισόδου. Πιθανώς λάθος διακριτικό"
+
+#: src/widgets/auth.vala:116
+#, c-format
+msgid "Bad status code: %i"
+msgstr "Ελαττωματικός κωδικός κατάστασης: %i"
+
+#: src/widgets/auth.vala:121
+msgid "Connection problems"
+msgstr "Προβλήματα σύνδεσης"
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;yam;music;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Cassette (Ανάπτυξη)"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "Unofficial Yandex Music client (Έκδοση ανάπτυξης)"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "Εφαρμογή GTK/Adwaita που επιτρέπει τη χρήση της υπηρεσίας Yandex Music σε "
+#~ "λειτουργικά συστήματα Linux."
+
+#~ msgid "Features:"
+#~ msgstr "Χαρακτηριστικά:"
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr ""
+#~ "Επιτρέπει την αποθήκευση λιστών αναπαραγωγής και άλμπουμ για ακρόαση "
+#~ "εκτός σύνδεσης"
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr ""
+#~ "Διαθέτει ένα δυναμικό «λειτουργία karaoke» ακριβώς στον πίνακα "
+#~ "πληροφοριών κομματιού"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "Επιτρέπει μια πιο ακριβή προσαρμογή της εμφάνισης και αναπαραγωγής "
+#~ "ειδικού περιεχομένου, όπως άσεμνου ή κατάλληλου για παιδιά."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr ""
+#~ "Εμφανίζει κομμάτια που προς το παρόν δεν είναι διαθέσιμα στην υπηρεσία"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "Δείχνει ποια κομμάτια έχουν αντικατασταθεί και με τι"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr ""
+#~ "Το Cassette είναι ένα ανεπίσημο πρόγραμμα-πελάτης και δεν σχετίζεται ούτε "
+#~ "έχει την έγκριση της Yandex."
+
+#~ msgid "Liked view"
+#~ msgstr "Προβολή αγαπημένων"
+
+#~ msgid "Playlists view"
+#~ msgstr "Προβολή λιστών αναπαραγωγής"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "Συγχρονισμός στίχων"
+
+#~ msgid "Playback queue"
+#~ msgstr "Ουρά αναπαραγωγής"
+
+#~ msgid "Waves view"
+#~ msgstr "Προβολή κυμάτων"
+
+#~ msgid "Main preferences"
+#~ msgstr "Κύριες προτιμήσεις"

@@ -10,4 +10,5 @@ data/ui/webkit/webkit-auth.blp
 src/application.vala
 src/main.vala
 src/widgets/about.vala
+src/widgets/account/account-info-dialog.vala
 src/widgets/auth.vala

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
 "POT-Creation-Date: 2026-03-10 08:34+0000\n"
-"PO-Revision-Date: 2026-03-10 17:58+0100\n"
+"PO-Revision-Date: 2026-03-10 18:00+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -71,12 +71,10 @@ msgid "Back"
 msgstr "Nazaj"
 
 #: data/ui/main-content.blp:22
-#, fuzzy
 msgid "Stay tuned"
 msgstr "Spremljajte novosti"
 
 #: data/ui/main-content.blp:23
-#, fuzzy
 msgid "Work in progress."
 msgstr "Delo v teku."
 
@@ -150,7 +148,7 @@ msgid "Failed to login. Probably wrong token"
 msgstr "Prijava ni uspela. Najbrž napačen žeton"
 
 #: src/widgets/auth.vala:116
-#, fuzzy, c-format
+#, c-format
 msgid "Bad status code: %i"
 msgstr "Koda slabega stanja: %i"
 

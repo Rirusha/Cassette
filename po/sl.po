@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-12-10 11:26+0000\n"
-"PO-Revision-Date: 2025-12-10 17:31+0100\n"
+"POT-Creation-Date: 2026-03-10 08:34+0000\n"
+"PO-Revision-Date: 2026-03-10 17:58+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -21,102 +21,139 @@ msgstr ""
 "X-Generator: Poedit 3.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Kaseta"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "Podrobnosti računa"
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "Neuradni odjemalec za Yandex Music"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "Odpri v brskalniku"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;glasba yandex;yandex music;yam;glasba;music;"
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "Odpri stran naročnine v brskalniku"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Kaseta (razvojna različica)"
+#: data/ui/account/account-info-dialog.blp:116
+msgid "Log out"
+msgstr "Odjava"
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "Neuradni odjemalec Yandex Music (razvojna gradnja)"
+#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+msgid "About"
+msgstr "O programu"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
-msgstr ""
-"Program GTK / Adwaita, ki omogoča uporabo storitve Yandex Music v "
-"operacijskih sistemih Linux."
+#: data/ui/auth.blp:23
+msgid "Welcome to Cassette!"
+msgstr "Dobrodošli v Kaseti"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Zmožnosti:"
+#: data/ui/auth.blp:40
+msgid "Login with Yandex account"
+msgstr "Prijavi z računom Yandex"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr ""
-"Omogoča shranjevanje seznamov predvajanja in albumov za poslušanje brez "
-"povezave"
+#: data/ui/auth.blp:46
+msgid "Yandex Music token"
+msgstr "Žeton Yandex Music"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr ""
-"Ima dinamičen način »karaoke« neposredno na informacijski plošči posnetka"
+#: data/ui/auth.blp:59
+msgid "How to obtain token"
+msgstr "Kako pridobiti žeton"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
-"Omogoča natančnejše prilagajanje prikaza in predvajanja posebnih vsebin, na "
-"primer eksplicitnih ali primernih za otroke."
+#: data/ui/auth.blp:81
+msgid "No Plus subscription"
+msgstr "Brez naročnine Plus"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Prikaže posnetke, ki trenutno niso na voljo v storitvi"
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
+msgstr "Programa ne boste mogli uporabljati brez naročnine Yandex Plus."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Pokaže, kateri posnetki so bili nadomeščeni in s čim"
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr "Nazaj"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr "Kaseta je neuradni odjemalec in ni povezana z Yandexom ali ga podpira."
+#: data/ui/main-content.blp:22
+#, fuzzy
+msgid "Stay tuned"
+msgstr "Spremljajte novosti"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "Pogled všečnih"
+#: data/ui/main-content.blp:23
+#, fuzzy
+msgid "Work in progress."
+msgstr "Delo v teku."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "Pogled seznamov predvajanja"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "Sinhroniziraj besedilo"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "Čakalna vrsta za predvajanje"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "Pogled valovanja"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "Glavne nastavitve"
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "Osveži"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Izpiši podatke o različici in končaj"
+
+#: src/application.vala:126 src/main.vala:26
+msgid "Cassette"
+msgstr "Kaseta"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/widgets/about.vala:110
+msgid "translator-credits"
+msgstr "Martin Srebotnjak <miles@filmsi.net>"
+
+#: src/widgets/about.vala:111
+msgid "Vladimir Romanov"
+msgstr "Vladimir Romanov"
+
+#: src/widgets/about.vala:114
+msgid "Telegram channel"
+msgstr "Kanal Telegram"
+
+#: src/widgets/about.vala:115
+msgid "Financial support (Tinkoff)"
+msgstr "Finančna podpora (Tinkoff)"
+
+#: src/widgets/about.vala:116
+msgid "Financial support (Boosty)"
+msgstr "Finančna podpora (Boosty)"
+
+#: src/widgets/about.vala:118
+msgid "Sponsors"
+msgstr "Sponzorji"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "Ali se želite odjaviti?"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr "S tem boste izbrisali vse podatke programa"
+
+#: src/widgets/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "_Ne"
+
+#: src/widgets/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "_Da"
+
+#: src/widgets/auth.vala:41
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+"Izberite način prijave v program. Prijavite se lahko prek svojega računa "
+"Yandex ali s svojim žetonom."
+
+#: src/widgets/auth.vala:44
+msgid "You need your Yandex music token to login."
+msgstr "Potrebujete svoj žeton Yandex za prijavo."
+
+#: src/widgets/auth.vala:111
+msgid "Failed to login. Probably wrong token"
+msgstr "Prijava ni uspela. Najbrž napačen žeton"
+
+#: src/widgets/auth.vala:116
+#, fuzzy, c-format
+msgid "Bad status code: %i"
+msgstr "Koda slabega stanja: %i"
+
+#: src/widgets/auth.vala:121
+msgid "Connection problems"
+msgstr "Težave s povezavo"

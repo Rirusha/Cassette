@@ -72,7 +72,7 @@ auto = custom_target('auto',
 )
 
 # Create an empty file gresource.xml to prevent meson from giving an error during the configuration stage
-run_command(['touch', meson.current_build_dir() / 'gresource.xml'])
+run_command(['touch', meson.current_build_dir() / 'gresource.xml'], check: true)
 resources = gnome.compile_resources(
   'cassette-resources',
   meson.current_build_dir() / 'gresource.xml',

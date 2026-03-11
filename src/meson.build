@@ -3,23 +3,24 @@ vapi_sources = files(
 )
 
 vala_sources = files(
-  'widgets/account/account-button.vala',
-  'widgets/account/account-info-dialog.vala',
+  'ui/account/account-button.vala',
+  'ui/account/account-info-dialog.vala',
 
-  'widgets/about.vala',
-  'widgets/auth.vala',
-  'widgets/loadable.vala',
-  'widgets/main-content.vala',
+  'ui/about.vala',
+  'ui/auth.vala',
+  'ui/loadable.vala',
+  'ui/main-content.vala',
+  'ui/window.vala',
 
   'application.vala',
+  'devel-action-group.vala',
   'enums.vala',
   'main.vala',
   'utils.vala',
-  'window.vala',
 )
 
 if get_option('with_webkit')
-  vala_sources += files('widgets/webkit/webkit-auth.vala')
+  vala_sources += files('ui/webkit/webkit-auth.vala')
 endif
 
 sources = [

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,15 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/space/rirusha/Cassette/ui/main-content.ui")]
-public sealed class Cassette.MainContent : Adw.Bin {
+public sealed class Cassette.DevelActionGroup : SimpleActionGroup {
 
-    static construct {
-        typeof (AccountButton).ensure ();
+    construct {
+        var play_test_track_action = new SimpleAction ("play-test-track", null);
+        play_test_track_action.activate.connect (play_test_track);
+        add_action (play_test_track_action);
+    }
+
+    void play_test_track () {
+        message ("Hello!");
     }
 }

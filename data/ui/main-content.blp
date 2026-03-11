@@ -1,11 +1,46 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteMainContent : Adw.Bin {
+template $CassetteMainContent : Adw.BreakpointBin {
+  height-request: 294;
+  width-request: 360;
+
+  Adw.Breakpoint {
+    condition ("min-width: 600px")
+
+    setters {
+      stack_switcher.policy: wide;
+    }
+  }
+
+  Adw.Breakpoint {
+    condition ("max-width: 400px")
+
+    setters {
+      header_bar.title-widget: null;
+      toolbar_view.reveal-bottom-bars: true;
+      stack_switcher_bar.reveal: true;
+    }
+  }
+
   WindowHandle {
-    Adw.ToolbarView {
+    Adw.ToolbarView toolbar_view {
+      reveal-bottom-bars: false;
+
       [top]
-      Adw.HeaderBar {
+      Adw.HeaderBar header_bar {
+        [start]
+        Button refresh_button {
+          tooltip-text: _("Refresh current page");
+          icon-name: "refresh-symbolic";
+          action-name: "win.refresh-current-page";
+          visible: bind refresh_button.sensitive;
+        }
+
+        title-widget: Adw.ViewSwitcher stack_switcher {
+          stack: stack;
+        };
+
         [end]
         Button {
           tooltip-text: _("About");
@@ -17,11 +52,42 @@ template $CassetteMainContent : Adw.Bin {
         $CassetteAccountButton {}
       }
 
-      content: Adw.StatusPage {
-        icon-name: "like-symbolic";
-        title: _("Stay tuned");
-        description: _("Work in progress.");
+      content: Overlay overlay {
+        Adw.ViewStack stack {
+          Adw.ViewStackPage {
+            name: "stay-tuner";
+            title: _("Stay tuned");
+            icon-name: "like-symbolic";
+
+            child: Adw.StatusPage {
+              icon-name: "like-symbolic";
+              title: _("Stay tuned");
+              description: _("Work in progress.");
+            };
+          }
+        }
       };
+
+      [bottom]
+      Adw.ViewSwitcherBar stack_switcher_bar {
+        stack: stack;
+        reveal: true;
+      }
     }
+  }
+}
+
+MenuButton devel_button {
+  halign: end;
+  valign: start;
+  margin-end: 6;
+  margin-top: 6;
+
+  menu-model: devel_menu;
+}
+
+menu devel_menu {
+  section {
+    item ("Play test track", "devel.play-test-track")
   }
 }

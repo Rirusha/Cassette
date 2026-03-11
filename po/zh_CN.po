@@ -1,14 +1,14 @@
 # Chinese (China) translation for cassette.
 # Copyright (C) 2024 cassette's COPYRIGHT HOLDER
 # This file is distributed under the same license as the cassette package.
-# lumingzh <lumingzh@qq.com>, 2024-2025.
+# lumingzh <lumingzh@qq.com>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-12-10 11:26+0000\n"
-"PO-Revision-Date: 2025-12-11 08:09+0800\n"
+"POT-Creation-Date: 2026-03-10 08:34+0000\n"
+"PO-Revision-Date: 2026-03-11 13:45+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -18,113 +18,206 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 49.0\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Cassette"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "账号信息"
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "第三方 Yandex 音乐客户端"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "在浏览器中打开"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;yam;music;音乐;播放器;歌曲;"
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "在浏览器中打开订阅页面"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Cassette（开发版）"
+#: data/ui/account/account-info-dialog.blp:116
+msgid "Log out"
+msgstr "登出"
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "第三方 Yandex 音乐客户端（开发版构建）"
+#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+msgid "About"
+msgstr "关于"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
-msgstr "可让您在 Linux 操作系统上使用 Yandex 音乐服务的 GTK/Adwaita 应用程序。"
+#: data/ui/auth.blp:23
+msgid "Welcome to Cassette!"
+msgstr "欢迎使用 Cassette！"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "特性："
+#: data/ui/auth.blp:40
+msgid "Login with Yandex account"
+msgstr "使用 Yandex 账号登录"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr "可让您保存播放列表和专辑用于离线播放"
+#: data/ui/auth.blp:46
+msgid "Yandex Music token"
+msgstr "Yandex 音乐令牌"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "在曲目信息面板中有动态“卡拉 OK 模式”"
+#: data/ui/auth.blp:59
+msgid "How to obtain token"
+msgstr "如何获取令牌"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr "可让您更精准自定义显示和播放特定内容，比如露骨内容或适合儿童的内容。"
+#: data/ui/auth.blp:81
+msgid "No Plus subscription"
+msgstr "无会员订阅"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "显示当前在服务中不可用的曲目"
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
+msgstr "您无法在没有 Yandex 会员订阅的情况下使用该应用。"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "显示被替换的曲目和替换后的曲目"
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr "返回"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr "Cassette 是第三方客户端且未与 Yandex 关联或受其支持。"
+#: data/ui/main-content.blp:22
+msgid "Stay tuned"
+msgstr "敬请期待"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "喜欢视图"
+#: data/ui/main-content.blp:23
+msgid "Work in progress."
+msgstr "正在实现。"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "播放列表视图"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "同步歌词"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "播放队列"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "波形视图"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "主首选项"
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "刷新"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "显示版本信息并退出"
 
+#: src/application.vala:126 src/main.vala:26
+msgid "Cassette"
+msgstr "Cassette"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/widgets/about.vala:110
+msgid "translator-credits"
+msgstr "lumingzh <lumingzh@qq.com>, 2024-2026"
+
+#: src/widgets/about.vala:111
+msgid "Vladimir Romanov"
+msgstr "Vladimir Romanov"
+
+#: src/widgets/about.vala:114
+msgid "Telegram channel"
+msgstr "Telegram 频道"
+
+#: src/widgets/about.vala:115
+msgid "Financial support (Tinkoff)"
+msgstr "财政支持（Tinkoff）"
+
+#: src/widgets/about.vala:116
+msgid "Financial support (Boosty)"
+msgstr "财政支持（Boosty）"
+
+#: src/widgets/about.vala:118
+msgid "Sponsors"
+msgstr "赞助者"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "登出吗？"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr "这会擦除所有应用数据"
+
+#: src/widgets/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "否(_N)"
+
+#: src/widgets/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "是(_Y)"
+
+#: src/widgets/auth.vala:41
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr "选择登录应用的方式。您可以通过 Yandex 账号或令牌登录。"
+
+#: src/widgets/auth.vala:44
+msgid "You need your Yandex music token to login."
+msgstr "您需要 Yandex 音乐令牌来登录。"
+
+#: src/widgets/auth.vala:111
+msgid "Failed to login. Probably wrong token"
+msgstr "登录失败。可能是令牌错误"
+
+#: src/widgets/auth.vala:116
+#, c-format
+msgid "Bad status code: %i"
+msgstr "坏状态代码：%i"
+
+#: src/widgets/auth.vala:121
+msgid "Connection problems"
+msgstr "连接问题"
+
+#~ msgid "Unofficial Yandex Music client"
+#~ msgstr "第三方 Yandex 音乐客户端"
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;yam;music;音乐;播放器;歌曲;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Cassette（开发版）"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "第三方 Yandex 音乐客户端（开发版构建）"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "可让您在 Linux 操作系统上使用 Yandex 音乐服务的 GTK/Adwaita 应用程序。"
+
+#~ msgid "Features:"
+#~ msgstr "特性："
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr "可让您保存播放列表和专辑用于离线播放"
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr "在曲目信息面板中有动态“卡拉 OK 模式”"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "可让您更精准自定义显示和播放特定内容，比如露骨内容或适合儿童的内容。"
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "显示当前在服务中不可用的曲目"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "显示被替换的曲目和替换后的曲目"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr "Cassette 是第三方客户端且未与 Yandex 关联或受其支持。"
+
+#~ msgid "Liked view"
+#~ msgstr "喜欢视图"
+
+#~ msgid "Playlists view"
+#~ msgstr "播放列表视图"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "同步歌词"
+
+#~ msgid "Playback queue"
+#~ msgstr "播放队列"
+
+#~ msgid "Waves view"
+#~ msgstr "波形视图"
+
+#~ msgid "Main preferences"
+#~ msgstr "主首选项"
+
 #~ msgid "Unofficial Yandex Music client for GNOME"
 #~ msgstr "GNOME 的第三方 Yandex 音乐客户端"
 
-#~ msgid "Account information"
-#~ msgstr "账号信息"
-
-#~ msgid "Open in browser"
-#~ msgstr "在浏览器中打开"
-
 #~ msgid "Plus"
 #~ msgstr "会员"
-
-#~ msgid "Log out"
-#~ msgstr "登出"
 
 #~ msgid "Usage mode"
 #~ msgstr "使用模式"
@@ -204,12 +297,6 @@ msgstr "显示版本信息并退出"
 #~ msgid "Go back"
 #~ msgstr "返回"
 
-#~ msgid "Refresh"
-#~ msgstr "刷新"
-
-#~ msgid "Yandex Music search"
-#~ msgstr "Yandex 音乐搜索"
-
 #~ msgid "Main Actions"
 #~ msgstr "主操作"
 
@@ -263,9 +350,6 @@ msgstr "显示版本信息并退出"
 
 #~ msgid "All stations"
 #~ msgstr "所有电台"
-
-#~ msgid "No Plus Subscription"
-#~ msgstr "无会员订阅"
 
 #~ msgid ""
 #~ "To avoid problems with Yandex, the online functions of the application "
@@ -601,24 +685,6 @@ msgstr "显示版本信息并退出"
 #~ msgid "Reconnect"
 #~ msgstr "重新连接"
 
-#~ msgid "Connection problems"
-#~ msgstr "连接问题"
-
-#~ msgid "translator-credits"
-#~ msgstr "lumingzh <lumingzh@qq.com>, 2024-2025"
-
-#~ msgid "Telegram channel"
-#~ msgstr "Telegram 频道"
-
-#~ msgid "Financial support (Tinkoff)"
-#~ msgstr "财政支持（Tinkoff）"
-
-#~ msgid "Financial support (Boosty)"
-#~ msgstr "财政支持（Boosty）"
-
-#~ msgid "Sponsors"
-#~ msgstr "赞助者"
-
 #~ msgid "Connection restored"
 #~ msgstr "连接已恢复"
 
@@ -639,9 +705,6 @@ msgstr "显示版本信息并退出"
 
 #~ msgid "Albums view not implemented yet"
 #~ msgstr "专辑视图尚未实现"
-
-#~ msgid "Log out?"
-#~ msgstr "登出吗？"
 
 #~ msgid "You will need to log in again to use the app"
 #~ msgstr "您将需要再次登录以使用该应用"
@@ -804,9 +867,6 @@ msgstr "显示版本信息并退出"
 
 #~ msgid "Keyboard Shortcuts"
 #~ msgstr "键盘快捷键"
-
-#~ msgid "About Cassette"
-#~ msgstr "关于 Cassette"
 
 #~ msgid "My Vibe by track"
 #~ msgstr "基于单曲的推荐"

@@ -46,6 +46,8 @@ public sealed class Cassette.Application : Adw.Application {
         { null }
     };
 
+    public static Cassette.Application instance { get; private set; }
+
     public static GLib.Settings app_settings;
     public static GLib.Settings client_settings;
     public static Tape.Settings tape_settings;
@@ -63,6 +65,8 @@ public sealed class Cassette.Application : Adw.Application {
     }
 
     construct {
+        instance = this;
+
         add_main_option_entries (OPTION_ENTRIES);
         set_option_context_parameter_string ("[YANDEX-MUSIC-URL]");
 

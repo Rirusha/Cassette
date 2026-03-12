@@ -27,6 +27,26 @@ public sealed class Cassette.DevelActionGroup : SimpleActionGroup {
     }
 
     void play_test_track () {
-        message ("Hello!");
+        var chooser = new Gtk.FileDialog ();
+        chooser.open.begin (
+            Application.instance.active_window,
+            null,
+            on_file_open_callback
+        );
+    }
+
+    void on_file_open_callback (Object? obj, AsyncResult res) {
+        try {
+            var file = ((Gtk.FileDialog) obj).open.end (res);
+
+            if (file == null) {
+                warning ("File not choosed");
+                return;
+            }
+
+            Application.tape_client.player.play_file (file);
+        } catch (Error e) {
+            warning ("Can't open file: %s", e.message);
+        }
     }
 }

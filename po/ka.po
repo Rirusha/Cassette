@@ -1,14 +1,14 @@
 # Georgian translation for cassette.
 # Copyright (C) 2025 cassette's authors
 # This file is distributed under the same license as the cassette package.
-# Ekaterine Papava <papava.e@gtu.ge>,  2025.
+# Ekaterine Papava <papava.e@gtu.ge>, 2025-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-12-10 11:26+0000\n"
-"PO-Revision-Date: 2025-12-11 19:51+0100\n"
+"POT-Creation-Date: 2026-03-10 08:34+0000\n"
+"PO-Revision-Date: 2026-03-19 09:13+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -16,122 +16,213 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "კასეტა"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "ანგარიშის ინფორმაცია"
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "არაოფიციალური Yandex Music-ის კლიენტი"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "ბრაუზერში გახსნა"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;yam;music;იანდექსი;მუსიკა;იანდექსისმუსიკა;"
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "გამოწერის გვერდის გახსნა ბრაუზერში"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Cassette (სატესტო)"
+#: data/ui/account/account-info-dialog.blp:116
+msgid "Log out"
+msgstr "სისტემიდან გასვლა"
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "არაოფიციალური Yandex Music-ის კლიენტი (სატეტო აგება)"
+#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+msgid "About"
+msgstr "შესახებ"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
+#: data/ui/auth.blp:23
+msgid "Welcome to Cassette!"
+msgstr "მოგესალმებათ Cassette!"
+
+#: data/ui/auth.blp:40
+msgid "Login with Yandex account"
+msgstr "შესვლა Yandex ანგარიშით"
+
+#: data/ui/auth.blp:46
+msgid "Yandex Music token"
+msgstr "Yandex Music-ის ტოკენი"
+
+#: data/ui/auth.blp:59
+msgid "How to obtain token"
+msgstr "როგორ მივიღოთ ტოკენი"
+
+#: data/ui/auth.blp:81
+msgid "No Plus subscription"
+msgstr "Plus გამოწერის გარეშე"
+
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr ""
-"GTK/Adwaita-ის აპლიკაცია, რომელის საშუალებას გაძლევთ, გამოიყენოთ Yandex "
-"Music-ის სერვისი Linux-ზე."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "თვისებები:"
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr "უკან"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
+#: data/ui/main-content.blp:22
+msgid "Stay tuned"
 msgstr ""
-"საშუალებას გაძლევთ, შეინახოთ დასაკრავი სიები და ალბომები ინტერნეტის გარეშე "
-"მოსასმენად"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr ""
-"აქვს დინამიკური \"კარაოკეს რეჟიმი\" პირდაპირ ტრეკის ინფორმაციის პანელზე"
+#: data/ui/main-content.blp:23
+msgid "Work in progress."
+msgstr "მიმდინარეობს სამუშაოები."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
-"საშუალებას გაძლევთ, ზუსტად მოირგოთ სპეციალური შემცველობის ჩვენება და "
-"დაკვრის სიჩქარე, მაგალითად - განკუთვნილია თუ არა ის ბავშვებისთვის."
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "აჩვენებს ტრეკებს, რომლებიც სერვისიდან ამჟამად ხელმისაწვდომი არაა"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "აჩვენებს ტრეკებს, რომლებიც ჩანაცვლდა და რით"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr "Casette არაოფიციალური კლიენტია და არაა ასოცირებული Yandex-თან."
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "მოწონებულების ხედი"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "დასაკრავი სიების ხედი"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "ლირიკის სინქრონიზაცია"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "დასაკრავი რიგი"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "ტალღების ხედი"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "მთავარი პარამეტრები"
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "განახლება"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "ვერსიის ჩვენება და გასვლა"
 
+#: src/application.vala:126 src/main.vala:26
+msgid "Cassette"
+msgstr "კასეტა"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/widgets/about.vala:110
+msgid "translator-credits"
+msgstr "თემური დოღონაძე"
+
+#: src/widgets/about.vala:111
+msgid "Vladimir Romanov"
+msgstr "ვლადიმერ რომანოვი"
+
+#: src/widgets/about.vala:114
+msgid "Telegram channel"
+msgstr "Telegram-ის არხი"
+
+#: src/widgets/about.vala:115
+msgid "Financial support (Tinkoff)"
+msgstr "ფინანსური მხარდაჭერა (Tinkoff)"
+
+#: src/widgets/about.vala:116
+msgid "Financial support (Boosty)"
+msgstr "ფინანსური მხარდაჭერა (Boosty)"
+
+#: src/widgets/about.vala:118
+msgid "Sponsors"
+msgstr "სპონსორები"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "გახვალთ?"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr ""
+
+#: src/widgets/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "_არა"
+
+#: src/widgets/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "_დიახ"
+
+#: src/widgets/auth.vala:41
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+
+#: src/widgets/auth.vala:44
+msgid "You need your Yandex music token to login."
+msgstr ""
+
+#: src/widgets/auth.vala:111
+msgid "Failed to login. Probably wrong token"
+msgstr ""
+
+#: src/widgets/auth.vala:116
+#, c-format
+msgid "Bad status code: %i"
+msgstr ""
+
+#: src/widgets/auth.vala:121
+msgid "Connection problems"
+msgstr ""
+
+#~ msgid "Unofficial Yandex Music client"
+#~ msgstr "არაოფიციალური Yandex Music-ის კლიენტი"
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;yam;music;იანდექსი;მუსიკა;იანდექსისმუსიკა;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Cassette (სატესტო)"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "არაოფიციალური Yandex Music-ის კლიენტი (სატეტო აგება)"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "GTK/Adwaita-ის აპლიკაცია, რომელის საშუალებას გაძლევთ, გამოიყენოთ Yandex "
+#~ "Music-ის სერვისი Linux-ზე."
+
+#~ msgid "Features:"
+#~ msgstr "თვისებები:"
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr ""
+#~ "საშუალებას გაძლევთ, შეინახოთ დასაკრავი სიები და ალბომები ინტერნეტის "
+#~ "გარეშე მოსასმენად"
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr ""
+#~ "აქვს დინამიკური \"კარაოკეს რეჟიმი\" პირდაპირ ტრეკის ინფორმაციის პანელზე"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "საშუალებას გაძლევთ, ზუსტად მოირგოთ სპეციალური შემცველობის ჩვენება და "
+#~ "დაკვრის სიჩქარე, მაგალითად - განკუთვნილია თუ არა ის ბავშვებისთვის."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "აჩვენებს ტრეკებს, რომლებიც სერვისიდან ამჟამად ხელმისაწვდომი არაა"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "აჩვენებს ტრეკებს, რომლებიც ჩანაცვლდა და რით"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr "Casette არაოფიციალური კლიენტია და არაა ასოცირებული Yandex-თან."
+
+#~ msgid "Liked view"
+#~ msgstr "მოწონებულების ხედი"
+
+#~ msgid "Playlists view"
+#~ msgstr "დასაკრავი სიების ხედი"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "ლირიკის სინქრონიზაცია"
+
+#~ msgid "Playback queue"
+#~ msgstr "დასაკრავი რიგი"
+
+#~ msgid "Waves view"
+#~ msgstr "ტალღების ხედი"
+
+#~ msgid "Main preferences"
+#~ msgstr "მთავარი პარამეტრები"
+
 #~ msgid "Unofficial Yandex Music client for GNOME"
 #~ msgstr "არაოფიციალური Yandex Music კლიენტი GNOME–სთვის"
 
-#~ msgid "Account information"
-#~ msgstr "ანგარიშის ინფორმაცია"
-
-#~ msgid "Open in browser"
-#~ msgstr "ბრაუზერში გახსნა"
-
 #~ msgid "Plus"
 #~ msgstr "პლუსი"
-
-#~ msgid "Log out"
-#~ msgstr "სისტემიდან გასვლა"
 
 #~ msgctxt "auth window"
 #~ msgid "Close"
@@ -166,12 +257,6 @@ msgstr "ვერსიის ჩვენება და გასვლა"
 
 #~ msgid "Go back"
 #~ msgstr "უკან გადასვლა"
-
-#~ msgid "Refresh"
-#~ msgstr "განახლება"
-
-#~ msgid "Yandex Music search"
-#~ msgstr "ძებნა Yandex Music-ში"
 
 #~ msgid "Main Actions"
 #~ msgstr "მთავარი ქმედებები"
@@ -271,12 +356,6 @@ msgstr "ვერსიის ჩვენება და გასვლა"
 
 #~ msgid "Reconnect"
 #~ msgstr "თავიდან დაკავშირება"
-
-#~ msgid "translator-credits"
-#~ msgstr "თემური დოღონაძე"
-
-#~ msgid "Sponsors"
-#~ msgstr "სპონსორები"
 
 #~ msgid "Previous"
 #~ msgstr "წინა"

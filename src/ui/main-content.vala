@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2025-2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,6 @@
 [GtkTemplate (ui = "/space/rirusha/Cassette/ui/main-content.ui")]
 public sealed class Cassette.MainContent : Adw.BreakpointBin {
 
-    [GtkChild]
-    unowned Adw.ViewStack stack;
     [GtkChild]
     unowned Gtk.Overlay overlay;
     [GtkChild]

@@ -1,0 +1,3 @@
+#!/usr/bin/bash -e
+
+find ./ -name "*.blp" -print0 | xargs -0 blueprint-compiler format -f -s 2

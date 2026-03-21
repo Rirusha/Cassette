@@ -1,12 +1,13 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteAuth : $CassetteLoadable {
+template $CassetteAuth: $CassetteLoadable {
   content: Stack win_stack {
     transition-type: crossfade;
 
     StackPage {
       name: "auth";
+
       child: WindowHandle {
         Adw.ToolbarView {
           [top]
@@ -27,14 +28,14 @@ template $CassetteAuth : $CassetteLoadable {
 
               ListBox {
                 styles [
-                  "boxed-list-separate"
+                  "boxed-list-separate",
                 ]
 
                 selection-mode: none;
 
                 Adw.ButtonRow webkit_login {
                   styles [
-                    "suggested-action"
+                    "suggested-action",
                   ]
 
                   title: _("Login with Yandex account");
@@ -69,12 +70,11 @@ template $CassetteAuth : $CassetteLoadable {
 
     StackPage {
       name: "no-plus";
+
       child: WindowHandle {
         Adw.ToolbarView {
           [top]
-          Adw.HeaderBar {
-            
-          }
+          Adw.HeaderBar {}
 
           content: Adw.StatusPage {
             icon-name: "dialog-error-symbolic";

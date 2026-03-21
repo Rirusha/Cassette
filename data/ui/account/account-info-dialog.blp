@@ -59,6 +59,7 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
 
                 StackPage {
                   name: "image";
+
                   child: Image avatar_image {
                     pixel-size: 200;
                   };
@@ -66,6 +67,7 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
 
                 StackPage {
                   name: "load";
+
                   child: Adw.Spinner {};
                 }
               }
@@ -102,14 +104,14 @@ template $CassetteAccountInfoDialog: Adw.Dialog {
 
       ListBox {
         styles [
-          "boxed-list-separate"
+          "boxed-list-separate",
         ]
 
         selection-mode: none;
 
         Adw.ButtonRow {
           styles [
-            "destructive-action"
+            "destructive-action",
           ]
 
           width-request: 240;

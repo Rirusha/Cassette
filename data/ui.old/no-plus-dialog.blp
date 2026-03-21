@@ -18,12 +18,14 @@ template $CassetteNoPlusDialog: Adw.Dialog {
         vexpand: true;
         icon-name: "dialog-warning-symbolic";
         title: _("No Plus Subscription");
-        description: _("To avoid problems with Yandex, the online functions of the application are not available without a Yandex.Plus subscription. Thanks for understanding.");
+        description: _(
+          "To avoid problems with Yandex, the online functions of the application are not available without a Yandex.Plus subscription. Thanks for understanding."
+        );
       }
 
       ListBox {
         styles [
-          "boxed-list-separate"
+          "boxed-list-separate",
         ]
 
         margin-top: 12;
@@ -44,7 +46,7 @@ template $CassetteNoPlusDialog: Adw.Dialog {
 
         Adw.ButtonRow logout_button {
           styles [
-            "destructive-action"
+            "destructive-action",
           ]
 
           action-name: "app.log-out";

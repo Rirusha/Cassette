@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteLoadable : Adw.Bin {
+template $CassetteLoadable: Adw.Bin {
   notify::is-loading => $on_loading_changed();
 
   Stack stack {
@@ -11,6 +11,7 @@ template $CassetteLoadable : Adw.Bin {
 
     StackPage {
       name: "loading";
+
       child: WindowHandle {
         Adw.ToolbarView {
           [top]

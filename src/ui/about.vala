@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2025-2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@ namespace Cassette {
     Adw.AboutDialog build_about () {
         const string ME = "Vladimir Romanov <rirusha@altlinux.org>";
         const string TELEGRAM_CHANNEL = "https://t.me/CassetteGNOME_Devlog";
+        const string TELEGRAM_GROUP = "https://t.me/CassetteGNOME_Discussion";
+        const string MAX_GROUP = "https://max.ru/join/IKkjZrzqaQbHM8gpdcl_S8W6rfIFHz3g9k7MJ9xijyo";
         const string TINKOFF_SUPPORT_LINK = "https://www.tinkoff.ru/cf/21GCxLuFuE9";
         const string BOOSTY_SUPPORT_LINK = "https://boosty.to/rirusha/donate";
 
@@ -106,12 +108,15 @@ namespace Cassette {
             documenters = documenters,
             designers = designers,
             version = Config.VERSION,
-            // Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+            // Translators: NAME <EMAIL.COM>
             translator_credits = _("translator-credits"),
             copyright = "© 2023-2025 %s".printf (_("Vladimir Romanov"))
         };
 
         about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);
+        about.add_link (_("Telegram group"), TELEGRAM_GROUP);
+        //  TRANSLATORS: MAX is Russian messenger
+        about.add_link (_("MAX group"), MAX_GROUP);
         about.add_link (_("Financial support (Tinkoff)"), TINKOFF_SUPPORT_LINK);
         about.add_link (_("Financial support (Boosty)"), BOOSTY_SUPPORT_LINK);
 

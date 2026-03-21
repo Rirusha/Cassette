@@ -60,7 +60,8 @@ if not get_option('lib_only')
   conf.set_quoted('GNOMELOCALEDIR', get_option('prefix') / get_option('localedir'))
   conf.set_quoted('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
   conf.set_quoted('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
-  conf.set_quoted('HELP', 'https://t.me/CassetteGNOME_Discussion')
+  # matrix.to banned in Russian so we use our matrix-to
+  conf.set_quoted('HELP', 'https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org')
 
   configure_file(output: 'config.h', configuration: conf)
   config_h_dir = include_directories('.')

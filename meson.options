@@ -4,6 +4,24 @@ option(
   value: false
 )
 option(
+  'with_lib_introspection',
+  description: 'Compile GIR instrospection or not',
+  type: 'boolean',
+  value: true
+)
+option(
+  'with_lib_documentation',
+  description: 'Compile valadoc/gtkdoc documentation or not',
+  type: 'boolean',
+  value: false
+)
+option(
+  'lib_only',
+  description: 'Build only libcassette',
+  type: 'boolean',
+  value: false
+)
+option(
   'with_webkit',
   description: 'Use webkit for auth via yandex or not (use token)',
   type: 'boolean',

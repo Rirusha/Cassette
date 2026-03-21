@@ -9,89 +9,78 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 py = import('python')
+pkgconfig = import('pkgconfig')
 
-glib_min_version = '2.76'
-
+api_version = meson.project_version().split('.')[0]
+pascal_name = 'Cassette'
 app_id = 'space.rirusha.Cassette'
 
-add_project_arguments(
-  '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-  '-w',
-  language: ['c'],
-)
+libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 
-add_project_arguments(
-  '--target-glib', glib_min_version,
-  '--vapidir', meson.current_source_dir(),
-  language: ['vala'],
-)
+if not get_option('lib_only')
 
-if get_option('with_webkit')
   add_project_arguments(
-    '--define=WITH_WEBKIT',
-    language: ['vala']
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    '-w',
+    language: ['c'],
+  )
+
+  if get_option('with_webkit')
+    add_project_arguments(
+      '--define=WITH_WEBKIT',
+      language: ['vala']
+    )
+  endif
+
+  name_suffix = ''
+  version_suffix = ''
+  app_id_suffix = ''
+
+  if get_option('is_devel')
+    name_suffix = ' (Devel)'
+    app_id_suffix = '.Devel'
+
+    git = find_program('git', required: true)
+    vcs_tag = run_command(git.full_path(), 'rev-parse', '--short', 'HEAD', check: true).stdout().strip()
+    version_suffix = '-dev.' + vcs_tag
+  endif
+
+  app_id_relevant = app_id + app_id_suffix
+  app_name = 'Cassette' + name_suffix
+
+  conf = configuration_data()
+  conf.set_quoted('APP_ID', app_id)
+  conf.set_quoted('APP_ID_RELEVANT', app_id_relevant)
+  conf.set_quoted('APP_NAME', app_name)
+  conf.set_quoted('G_LOG_DOMAIN', app_id_relevant)
+  conf.set10('IS_DEVEL', get_option('is_devel'))
+  conf.set_quoted('VERSION', meson.project_version() + version_suffix)
+  conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+  conf.set_quoted('DATADIR', get_option('prefix') / get_option('datadir'))
+  conf.set_quoted('GNOMELOCALEDIR', get_option('prefix') / get_option('localedir'))
+  conf.set_quoted('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
+  conf.set_quoted('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
+  conf.set_quoted('HELP', 'https://t.me/CassetteGNOME_Discussion')
+
+  configure_file(output: 'config.h', configuration: conf)
+  config_h_dir = include_directories('.')
+
+  subdir('data')
+  subdir('po')
+endif
+
+subdir('lib')
+
+if not get_option('lib_only')
+  lib_deps_pkgs = [
+    'libadwaita-1',
+  ]
+
+  subdir('src')
+
+  gnome.post_install(
+    glib_compile_schemas: true,
+    gtk_update_icon_cache: true,
+    update_desktop_database: true,
   )
 endif
-
-name_suffix = ''
-version_suffix = ''
-app_id_suffix = ''
-
-if get_option('is_devel')
-  name_suffix = ' (Devel)'
-  app_id_suffix = '.Devel'
-
-  git = find_program('git', required: true)
-  vcs_tag = run_command(git.full_path(), 'rev-parse', '--short', 'HEAD', check: true).stdout().strip()
-  version_suffix = '-dev.' + vcs_tag
-endif
-
-app_id_relevant = app_id + app_id_suffix
-app_name = 'Cassette' + name_suffix
-
-conf = configuration_data()
-conf.set_quoted('APP_ID', app_id)
-conf.set_quoted('APP_ID_RELEVANT', app_id_relevant)
-conf.set_quoted('APP_NAME', app_name)
-conf.set_quoted('G_LOG_DOMAIN', app_id_relevant)
-conf.set10('IS_DEVEL', get_option('is_devel'))
-conf.set_quoted('VERSION', meson.project_version() + version_suffix)
-conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
-conf.set_quoted('DATADIR', get_option('prefix') / get_option('datadir'))
-conf.set_quoted('GNOMELOCALEDIR', get_option('prefix') / get_option('localedir'))
-conf.set_quoted('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
-conf.set_quoted('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
-conf.set_quoted('HELP', 'https://t.me/CassetteGNOME_Discussion')
-
-configure_file(output: 'config.h', configuration: conf)
-config_h_dir = include_directories('.')
-
-gee_dep = dependency('gee-0.8')
-gio_dep = dependency('gio-2.0', version: '>= ' + glib_min_version)
-libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
-libtape_dep = dependency('libtape-0', fallback : ['libtape', 'lib_dep'])
-
-if get_option('with_webkit')
-  webkit_dep = dependency('webkitgtk-6.0')
-endif
-
-dependencies = [
-  gee_dep,
-  gio_dep,
-  libadwaita_dep,
-  libtape_dep,
-]
-
-if get_option('with_webkit')
-  dependencies += webkit_dep
-endif
-
-subdir('data')
-subdir('po')
-subdir('src')
-
-gnome.post_install(
-  glib_compile_schemas: true,
-  gtk_update_icon_cache: true,
-  update_desktop_database: true,
-)

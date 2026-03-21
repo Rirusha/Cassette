@@ -29,10 +29,20 @@ sources = [
   resources,
 ]
 
+app_dependencies = [
+  libadwaita_dep,
+  dependency('gee-0.8'),
+  dependency('libtape-0', fallback : ['libtape', 'lib_dep'])
+]
+
+if get_option('with_webkit')
+  app_dependencies += dependency('webkitgtk-6.0')
+endif
+
 executable(
   meson.project_name(),
   sources,
   include_directories: config_h_dir,
-  dependencies: dependencies,
+  dependencies: app_dependencies,
   install: true,
 )

@@ -1,0 +1,38 @@
+barebasepage > toolbarview > scrolledwindow > viewport > widget {
+    margin: 24px 12px;
+    border-spacing: 36px;
+}
+
+barebasepage > toolbarview > scrolledwindow > viewport > widget > clamp > widget {
+    border-spacing: 12px;
+}
+
+basepage > toolbarview > scrolledwindow > viewport > widget {
+    margin: 24px 12px;
+    border-spacing: 36px;
+}
+
+basepage > toolbarview > scrolledwindow > viewport > widget > clamp > widget {
+    border-spacing: 12px;
+}
+
+basepage > toolbarview > scrolledwindow > viewport > widget > clamp > widget > box > .icon {
+    color: color-mix(in srgb, currentColor var(--dim-opacity), transparent);
+    -gtk-icon-size: 128px;
+}
+
+basepage > toolbarview > scrolledwindow > viewport > widget > clamp > widget > box > .icon:disabled {
+    opacity: var(--disabled-opacity);
+}
+
+basepage > toolbarview > scrolledwindow > viewport > widget > clamp > widget > box > .icon:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+basepage > toolbarview > scrolledwindow > viewport > widget > clamp > widget > box > .icon:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+basepage > toolbarview > scrolledwindow > viewport > widget > clamp > widget > box > .desc:not(:last-child) {
+    margin-bottom: 48px;
+}

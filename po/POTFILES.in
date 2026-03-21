@@ -6,9 +6,11 @@ data/ui/account/account-button.blp
 data/ui/account/account-info-dialog.blp
 data/ui/auth.blp
 data/ui/main-content.blp
+data/ui/warning-dialog.blp
 data/ui/webkit/webkit-auth.blp
 src/application.vala
 src/main.vala
-src/widgets/about.vala
-src/widgets/account/account-info-dialog.vala
-src/widgets/auth.vala
+src/ui/about.vala
+src/ui/account/account-info-dialog.vala
+src/ui/auth.vala
+src/ui/window.vala

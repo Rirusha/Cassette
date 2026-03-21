@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2025 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2023-2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,8 +55,20 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
         }
     }
 
-    public void show_message (string message) {
-        toast_overlay.add_toast (new Adw.Toast (message));
+    public void show_message (Message message) {
+        var toast = new Adw.Toast (message.message);
+
+        if (message.warn_body != null) {
+            toast.button_label = _("More info");
+            toast.button_clicked.connect (() => {
+                var dialog = new WarningDialog () {
+                    body = message.warn_body
+                };
+                dialog.present (this);
+            });
+        }
+
+        toast_overlay.add_toast (toast);
     }
 
     void show_auth () {

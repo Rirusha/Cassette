@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025-2026 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,18 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-namespace Cassette {
+[GtkTemplate (ui = "/space/rirusha/Cassette/ui/warning-dialog.ui")]
+public sealed class Cassette.WarningDialog : Adw.Dialog {
 
+    [GtkChild]
+    unowned Adw.StatusPage status_page;
+
+    public string body {
+        get {
+            return status_page.description;
+        }
+        set {
+            status_page.description = value;
+        }
+    }
 }

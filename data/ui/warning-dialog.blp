@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025-2026 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,34 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-namespace Cassette {
+using Gtk 4.0;
+using Adw 1;
 
+template $CassetteWarningDialog : Adw.Dialog {
+  title: _("Warning message");
+  width-request: 360;
+  height-request: 294;
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
+
+    content: Adw.StatusPage status_page {
+      styles [
+        "compact"
+      ]
+
+      icon-name: "dialog-warning-symbolic";
+
+      Button {
+        styles [
+          "pill",
+        ]
+
+        label: _("Ask the community");
+        action-name: "win.about";
+        halign: center;
+      }
+    };
+  }
 }

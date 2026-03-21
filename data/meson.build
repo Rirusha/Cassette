@@ -27,7 +27,7 @@ desktop_utils = find_program('desktop-file-validate', required: false)
 if desktop_utils.found()
   test('Validate desktop file', desktop_utils, args: [desktop_file])
 endif
-
+ 
 appstream_file = i18n.merge_file(
   input: configure_file(
     input: 'metainfo' + metades_suffix + '.xml.in.in',

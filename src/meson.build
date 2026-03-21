@@ -10,12 +10,14 @@ vala_sources = files(
   'ui/auth.vala',
   'ui/loadable.vala',
   'ui/main-content.vala',
+  'ui/warning-dialog.vala',
   'ui/window.vala',
 
   'application.vala',
   'devel-action-group.vala',
   'enums.vala',
   'main.vala',
+  'message.vala',
   'utils.vala',
 )
 

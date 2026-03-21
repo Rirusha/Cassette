@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2025-2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,18 +27,21 @@ public sealed class Cassette.Auth : Loadable {
     unowned Gtk.Stack win_stack;
     [GtkChild]
     unowned Adw.StatusPage auth_status_page;
-#if !WITH_WEBKIT
     [GtkChild]
     unowned Adw.ButtonRow webkit_login;
-#endif
     [GtkChild]
     unowned Adw.PasswordEntryRow token_login;
+
+    NetworkMonitor monitor = NetworkMonitor.get_default ();
 
     construct {
         auth_status_page.icon_name = Config.APP_ID_RELEVANT + "-symbolic";
 
 #if WITH_WEBKIT
         auth_status_page.description = _("Choose a way to log in to the app. You can log in via your Yandex account or with your token."); // vala-lint=line-length
+
+        monitor.network_changed.connect (on_network_changed);
+        on_network_changed (monitor.network_available);
 #else
         webkit_login.visible = false;
         auth_status_page.description = _("You need your Yandex music token to login.");
@@ -50,6 +53,12 @@ public sealed class Cassette.Auth : Loadable {
             add_css_class ("devel");
         }
     }
+
+#if WITH_WEBKIT
+    void on_network_changed (bool is_available) {
+        webkit_login.sensitive = is_available;
+    }
+#endif
 
     void clear_main () {
         if (win_stack.get_child_by_name ("main") != null) {
@@ -103,22 +112,34 @@ public sealed class Cassette.Auth : Loadable {
     }
 
     async void try_auth (string? token) {
+        webkit_login.sensitive = true;
         try {
             if (yield Cassette.Application.tape_client.init (token)) {
                 to_main ();
             } else {
                 if (token != null) {
-                    activate_action_variant ("app.show-message", _("Failed to login. Probably wrong token"));
+                    activate_action_variant (
+                        "app.show-message",
+                        Message.build_variant (_("Failed to login. Probably wrong token"))
+                    );
                 }
                 to_auth ();
             }
         } catch (ApiBase.BadStatusCodeError e) {
-            activate_action_variant ("app.show-message", _("Bad status code: %i").printf (e.code));
+            activate_action_variant (
+                "app.show-message",
+                Message.build_variant (_("Bad status code: %i").printf (e.code), e.message)
+            );
             to_auth ();
         } catch (CantUseError e) {
             to_cant_use (e);
         } catch (ApiBase.SoupError e) {
-            activate_action_variant ("app.show-message", _("Connection problems"));
+            warning (e.message);
+            webkit_login.sensitive = false;
+            activate_action_variant (
+                "app.show-message",
+                Message.build_variant (_("Connection problems"), e.message)
+            );
             to_auth ();
         }
     }

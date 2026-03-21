@@ -48,6 +48,11 @@ if not get_option('lib_only')
   app_id_relevant = app_id + app_id_suffix
   app_name = 'Cassette' + name_suffix
 
+  homepage = 'https://gitlab.gnome.org/Rirusha/Cassette'
+  bugtracker = 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues'
+  # matrix.to banned in Russian so we use our matrix-to
+  help = 'https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org'
+
   conf = configuration_data()
   conf.set_quoted('APP_ID', app_id)
   conf.set_quoted('APP_ID_RELEVANT', app_id_relevant)
@@ -58,10 +63,9 @@ if not get_option('lib_only')
   conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
   conf.set_quoted('DATADIR', get_option('prefix') / get_option('datadir'))
   conf.set_quoted('GNOMELOCALEDIR', get_option('prefix') / get_option('localedir'))
-  conf.set_quoted('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
-  conf.set_quoted('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
-  # matrix.to banned in Russian so we use our matrix-to
-  conf.set_quoted('HELP', 'https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org')
+  conf.set_quoted('HOMEPAGE', homepage)
+  conf.set_quoted('BUGTRACKER', bugtracker)
+  conf.set_quoted('HELP', help)
 
   configure_file(output: 'config.h', configuration: conf)
   config_h_dir = include_directories('.')

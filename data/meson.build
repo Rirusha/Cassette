@@ -1,9 +1,9 @@
 non_quoted_conf = configuration_data()
 non_quoted_conf.set('APP_ID', app_id)
 non_quoted_conf.set('APP_ID_RELEVANT', app_id_relevant)
-non_quoted_conf.set('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
-non_quoted_conf.set('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
-non_quoted_conf.set('HELP', 'https://t.me/CassetteGNOME_Discussion')
+non_quoted_conf.set('HOMEPAGE', homepage)
+non_quoted_conf.set('BUGTRACKER', bugtracker)
+non_quoted_conf.set('HELP', help)
 
 if get_option('is_devel')
   metades_suffix = '-devel'

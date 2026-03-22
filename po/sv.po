@@ -1,14 +1,14 @@
 # Swedish translation for cassette.
-# Copyright © 2024-2025 cassette's COPYRIGHT HOLDER
+# Copyright © 2024-2026 cassette's COPYRIGHT HOLDER
 # This file is distributed under the same license as the cassette package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2024, 2025.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2024, 2025, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-12-10 11:26+0000\n"
-"PO-Revision-Date: 2025-12-21 22:40+0100\n"
+"POT-Creation-Date: 2026-03-10 08:34+0000\n"
+"PO-Revision-Date: 2026-03-10 17:51+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,119 +18,214 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.8\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Kassett"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "Kontoinformation"
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "Inofficiell Yandex Music-klient"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "Öppna i webbläsare"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;yam;musik;"
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "Öppna prenumerationssida i webbläsare"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Kassett (utveckling)"
+#: data/ui/account/account-info-dialog.blp:116
+msgid "Log out"
+msgstr "Logga ut"
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "Inofficiell Yandex Music-klient (utvecklingsbygge)"
+#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+msgid "About"
+msgstr "Om"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
+#: data/ui/auth.blp:23
+msgid "Welcome to Cassette!"
+msgstr "Välkommen till Kassett!"
+
+#: data/ui/auth.blp:40
+msgid "Login with Yandex account"
+msgstr "Logga in med Yandex-konto"
+
+#: data/ui/auth.blp:46
+msgid "Yandex Music token"
+msgstr "Yandex Music-token"
+
+#: data/ui/auth.blp:59
+msgid "How to obtain token"
+msgstr "Hur du erhåller ett token"
+
+#: data/ui/auth.blp:81
+msgid "No Plus subscription"
+msgstr "Ingen Plus-prenumeration"
+
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr ""
-"GTK/Adwaita-program som låter dig använda Yandex Music-tjänsten på Linux-"
-"operativsystem."
+"Du kommer inte kunna använda programmet utan en Yandex Plus-prenumeration."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Funktioner:"
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr "Tillbaka"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr "Låter dig spara spellistor och album för frånkopplad lyssning"
+#: data/ui/main-content.blp:22
+msgid "Stay tuned"
+msgstr "Byt inte kanal"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "Har ett dynamiskt ”karaokeläge” direkt i spårinformationspanelen"
+#: data/ui/main-content.blp:23
+msgid "Work in progress."
+msgstr "Arbete pågår."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
-"Låter dig mer precist anpassa visningen och uppspelningen av speciellt "
-"innehåll, exempelvis om det är känsligt eller lämpligt för barn."
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Visar spår som för närvarande är otillgängliga på tjänsten"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Visar vilka spår som ersatts och av vad"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr ""
-"Kassett är en inofficiell klient och är inte associerad med eller främjad av "
-"Yandex."
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "Gillatvy"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "Spellistevy"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "Synkronisera låttexter"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "Uppspelningskö"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "Vågvy"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "Huvudinställningar"
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "Uppdatera"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Skriv ut versionsinformation och avsluta"
 
+#: src/application.vala:126 src/main.vala:26
+msgid "Cassette"
+msgstr "Kassett"
+
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
+#: src/widgets/about.vala:110
+msgid "translator-credits"
+msgstr "Anders Jonsson <anders.jonsson@norsjovallen.se>"
+
+#: src/widgets/about.vala:111
+#| msgid "Vladimir Vaskov"
+msgid "Vladimir Romanov"
+msgstr "Vladimir Romanov"
+
+#: src/widgets/about.vala:114
+msgid "Telegram channel"
+msgstr "Telegramkanal"
+
+#: src/widgets/about.vala:115
+msgid "Financial support (Tinkoff)"
+msgstr "Finansiellt stöd (Tinkoff)"
+
+#: src/widgets/about.vala:116
+msgid "Financial support (Boosty)"
+msgstr "Finansiellt stöd (Boosty)"
+
+#: src/widgets/about.vala:118
+msgid "Sponsors"
+msgstr "Sponsorer"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "Logga ut?"
+
+#: src/widgets/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr "Det kommer ta bort alla programdata"
+
+#: src/widgets/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "_Nej"
+
+#: src/widgets/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "_Ja"
+
+#: src/widgets/auth.vala:41
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+"Välj ett sätt att logga in på programmet. Du kan logga in via ditt Yandex-"
+"konto eller med ditt token."
+
+#: src/widgets/auth.vala:44
+msgid "You need your Yandex music token to login."
+msgstr "Du behöver ditt Yandex music-token för att logga in."
+
+#: src/widgets/auth.vala:111
+msgid "Failed to login. Probably wrong token"
+msgstr "Kunde inte logga in. Troligen felaktigt token"
+
+#: src/widgets/auth.vala:116
+#, c-format
+msgid "Bad status code: %i"
+msgstr "Felaktig statuskod: %i"
+
+#: src/widgets/auth.vala:121
+msgid "Connection problems"
+msgstr "Anslutningsproblem"
+
+#~ msgid "Unofficial Yandex Music client"
+#~ msgstr "Inofficiell Yandex Music-klient"
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;yam;musik;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Kassett (utveckling)"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "Inofficiell Yandex Music-klient (utvecklingsbygge)"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "GTK/Adwaita-program som låter dig använda Yandex Music-tjänsten på Linux-"
+#~ "operativsystem."
+
+#~ msgid "Features:"
+#~ msgstr "Funktioner:"
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr "Låter dig spara spellistor och album för frånkopplad lyssning"
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr "Har ett dynamiskt ”karaokeläge” direkt i spårinformationspanelen"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "Låter dig mer precist anpassa visningen och uppspelningen av speciellt "
+#~ "innehåll, exempelvis om det är känsligt eller lämpligt för barn."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "Visar spår som för närvarande är otillgängliga på tjänsten"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "Visar vilka spår som ersatts och av vad"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr ""
+#~ "Kassett är en inofficiell klient och är inte associerad med eller främjad "
+#~ "av Yandex."
+
+#~ msgid "Liked view"
+#~ msgstr "Gillatvy"
+
+#~ msgid "Playlists view"
+#~ msgstr "Spellistevy"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "Synkronisera låttexter"
+
+#~ msgid "Playback queue"
+#~ msgstr "Uppspelningskö"
+
+#~ msgid "Waves view"
+#~ msgstr "Vågvy"
+
+#~ msgid "Main preferences"
+#~ msgstr "Huvudinställningar"
+
 #~ msgid "Unofficial Yandex Music client for GNOME"
 #~ msgstr "Inofficiell Yandex Music-klient för GNOME"
 
-#~ msgid "Account information"
-#~ msgstr "Kontoinformation"
-
-#~ msgid "Open in browser"
-#~ msgstr "Öppna i webbläsare"
-
 #~ msgid "Plus"
 #~ msgstr "Plus"
-
-#~ msgid "Log out"
-#~ msgstr "Logga ut"
 
 #~ msgid "Usage mode"
 #~ msgstr "Användningsläge"
@@ -211,12 +306,6 @@ msgstr "Skriv ut versionsinformation och avsluta"
 #~ msgid "Go back"
 #~ msgstr "Gå bakåt"
 
-#~ msgid "Refresh"
-#~ msgstr "Uppdatera"
-
-#~ msgid "Yandex Music search"
-#~ msgstr "Yandex Music-sökning"
-
 #~ msgid "Main Actions"
 #~ msgstr "Huvudåtgärder"
 
@@ -270,9 +359,6 @@ msgstr "Skriv ut versionsinformation och avsluta"
 
 #~ msgid "All stations"
 #~ msgstr "Alla stationer"
-
-#~ msgid "No Plus Subscription"
-#~ msgstr "Ingen Plus-prenumeration"
 
 #~ msgid ""
 #~ "To avoid problems with Yandex, the online functions of the application "
@@ -618,24 +704,6 @@ msgstr "Skriv ut versionsinformation och avsluta"
 #~ msgid "Reconnect"
 #~ msgstr "Anslut igen"
 
-#~ msgid "Connection problems"
-#~ msgstr "Anslutningsproblem"
-
-#~ msgid "translator-credits"
-#~ msgstr "Anders Jonsson <anders.jonsson@norsjovallen.se>"
-
-#~ msgid "Telegram channel"
-#~ msgstr "Telegramkanal"
-
-#~ msgid "Financial support (Tinkoff)"
-#~ msgstr "Finansiellt stöd (Tinkoff)"
-
-#~ msgid "Financial support (Boosty)"
-#~ msgstr "Finansiellt stöd (Boosty)"
-
-#~ msgid "Sponsors"
-#~ msgstr "Sponsorer"
-
 #~ msgid "Connection restored"
 #~ msgstr "Anslutning återupprättad"
 
@@ -656,9 +724,6 @@ msgstr "Skriv ut versionsinformation och avsluta"
 
 #~ msgid "Albums view not implemented yet"
 #~ msgstr "Albumvy inte implementerad ännu"
-
-#~ msgid "Log out?"
-#~ msgstr "Logga ut?"
 
 #~ msgid "You will need to log in again to use the app"
 #~ msgstr "Du behöver logga in igen för att använda programmet"
@@ -826,9 +891,6 @@ msgstr "Skriv ut versionsinformation och avsluta"
 
 #~ msgid "Keyboard Shortcuts"
 #~ msgstr "Tangentbordsgenvägar"
-
-#~ msgid "About Cassette"
-#~ msgstr "Om Kassett"
 
 #~ msgid "My Vibe by track"
 #~ msgstr "Min vibb efter spår"
@@ -1021,9 +1083,6 @@ msgstr "Skriv ut versionsinformation och avsluta"
 
 #~ msgid "Unofficial Yandex.Music client for GNOME @NAME_SUFFIX@"
 #~ msgstr "Inofficiell Yandex.Music-klient för GNOME @NAME_SUFFIX@"
-
-#~ msgid "Vladimir Vaskov"
-#~ msgstr "Vladimir Vaskov"
 
 #~ msgid "Rirusha"
 #~ msgstr "Rirusha"

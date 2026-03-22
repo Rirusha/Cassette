@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/space/rirusha/Cassette/Lib/">
     <file>style.css</file>
+    <file preprocess="xml-stripblanks">ui/sheet-submenu.ui</file>
   </gresource>
 </gresources>

@@ -16,7 +16,10 @@ lib_vapi_sources = files(
 )
 
 lib_vala_sources = files(
-  'menu-button.vala',
+  'menu-button/menu-button.vala',
+  'menu-button/sheet-menu-item.vala',
+  'menu-button/sheet-menu.vala',
+  'menu-button/sheet-submenu.vala',
 )
 
 lib_sources = [

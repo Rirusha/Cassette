@@ -32,9 +32,10 @@ sources = [
 ]
 
 app_dependencies = [
+  lib_dep,
   libadwaita_dep,
   dependency('gee-0.8'),
-  dependency('libtape-0', fallback : ['libtape', 'lib_dep'])
+  dependency('libtape-0', fallback : ['libtape', 'lib_dep']),
 ]
 
 if get_option('with_webkit')

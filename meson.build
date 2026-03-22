@@ -69,18 +69,17 @@ if not get_option('lib_only')
 
   configure_file(output: 'config.h', configuration: conf)
   config_h_dir = include_directories('.')
-
-  subdir('data')
-  subdir('po')
 endif
+
+lib_deps_pkgs = [
+  'libadwaita-1',
+]
 
 subdir('lib')
 
 if not get_option('lib_only')
-  lib_deps_pkgs = [
-    'libadwaita-1',
-  ]
-
+  subdir('data')
+  subdir('po')
   subdir('src')
 
   gnome.post_install(

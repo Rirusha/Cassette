@@ -1,4 +1,4 @@
-blueprints = custom_target(
+lib_blueprints = custom_target(
   'blueprints',
   input: files(
     'ui/sheet-submenu.blp',
@@ -17,6 +17,6 @@ lib_resource_files = files('@0@.Lib.gresource.xml'.format(app_id))
 lib_resources = gnome.compile_resources(
   'libcassette-resources',
   lib_resource_files,
-  dependencies: blueprints,
+  dependencies: lib_blueprints,
   c_name: 'libcassette'
 )

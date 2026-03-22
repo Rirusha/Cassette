@@ -79,9 +79,9 @@ configure_file(
   install_dir: get_option('datadir') / 'vala' / 'vapi',
 )
 
-if get_option('with_lib_introspection')
+if not get_option('lib_only') or get_option('with_lib_introspection')
   g_ir_compiler = find_program('g-ir-compiler')
-  custom_target(
+  lib_gir = custom_target(
     'typelib',
     command: [
       g_ir_compiler,

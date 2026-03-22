@@ -67,6 +67,7 @@ auto = custom_target('auto',
     '@CURRENT_SOURCE_DIR@',
     app_id_relevant,
   ],
+  depends: lib_gir,
   build_always_stale: true,
   output: '.',
 )

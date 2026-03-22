@@ -108,50 +108,5 @@ Cassette.MenuButton devel_button {
 }
 
 menu devel_menu {
-  item {
-    custom: "my-widget-sheet";
-  }
-  item {
-    custom: "my-widget-popover";
-  }
-  item {
-    label: "Hidden action missing";
-    icon-name: "dialog-warning-symbolic";
-    action: "app.do-barrel-roll";
-    hidden-when: "action-missing";
-  }
-  item ("Quit", "app.quit", "dialog-warning-symbolic")
-  section {
-    label: "Yea";
-    item ("Play test track", "devel.play-test-track", "dialog-warning-symbolic")
-  }
-  section {
-    item ("Play test track", "devel.play-test-track")
-    item ("Play test track", "devel.play-test-track")
-    section {
-      label: "Yea";
-      item ("Play test track", "devel.play-test-track", "dialog-warning-symbolic")
-    }
-  }
-  submenu {
-    label: "Submenu";
-    icon: "dialog-warning-symbolic";
-    section {
-      item ("Play test track", "devel.play-test-track")
-      item ("Play test track", "devel.play-test-track")
-    }
-    section {
-      item ("Play test track", "devel.play-test-track")
-    }
-    submenu {
-      label: "Submenu 2";
-      section {
-        item ("Play test track", "devel.play-test-track")
-        item ("Play test track", "devel.play-test-track")
-      }
-      section {
-        item ("Play test track", "devel.play-test-track")
-      }
-    }
-  }
+  item ("Play test track", "devel.play-test-track")
 }

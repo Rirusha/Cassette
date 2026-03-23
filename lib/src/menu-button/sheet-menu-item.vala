@@ -22,10 +22,13 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
 
     public new string? action_name {
         get {
-            return base.action_name;
+            return tracker?.action_name;
         }
-        construct set {
-            base.action_name = value;
+    }
+
+    public new Variant? action_target {
+        owned get {
+            return tracker?.action_target;
         }
     }
 
@@ -34,6 +37,8 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
     public new string? icon_name { get; construct set; }
 
     public bool is_submenu { get; construct; }
+
+    public ActionActor tracker { get; construct; }
 
     public signal void clicked ();
 
@@ -53,6 +58,7 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
     }
 
     public SheetMenuItem.action (
+        Gtk.Widget menu_real_parent,
         string? action,
         string? label,
         string? icon,
@@ -66,10 +72,18 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
             hidden_when: hidden_when,
             icon_name: icon,
             use_markup: use_markup,
-            action_name: action,
-            action_target: target,
-            is_submenu: false
+            is_submenu: false,
+            tracker: new ActionActor ()
         );
+        tracker.set_parent (menu_real_parent);
+        tracker.action_name = action;
+        tracker.action_target = target;
+
+        tracker.bind_property ("sensitive", this, "sensitive", BindingFlags.SYNC_CREATE);
+    }
+
+    ~SheetMenuItem () {
+        tracker?.unparent ();
     }
 
     construct {
@@ -78,27 +92,7 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
         }
 
         if (hidden_when != null) {
-            switch (hidden_when) {
-                case "macos-menubar":
-                    visible = false;
-                    return;
-                case "action-missing":
-                    if (action_name != null) {
-                        visible = Application.get_default ().has_action (action_name);
-                    } else {
-                        visible = false;
-                    }
-                    break;
-                case "action-disabled":
-                    if (action_name != null) {
-                        visible = Application.get_default ().get_action_enabled (action_name);
-                    } else {
-                        visible = false;
-                    }
-                    break;
-                default:
-                    break;
-            }
+            warning ("hidden_when is not supported");
         }
 
         if (action_name != null) {
@@ -112,10 +106,10 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
             }
         }
 
-        var e = new Gtk.GestureClick ();
-        e.end.connect (() => {
-            activated ();
-        });
-        add_controller (e);
+        activated.connect_after (on_activated);
+    }
+
+    void on_activated () {
+        tracker?.activate_action_variant (action_name, action_target);
     }
 }

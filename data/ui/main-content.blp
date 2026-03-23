@@ -105,8 +105,79 @@ Cassette.MenuButton devel_button {
   margin-end: 6;
   margin-top: 6;
   menu-model: devel_menu;
+  sheet-title: "DEVEL OPTIONS";
 }
 
 menu devel_menu {
-  item ("Play test track", "devel.play-test-track")
+  submenu {
+    label: "Player";
+    item ("Play test track", "devel.play-test-track")
+  }
+  submenu {
+    label: "Widgets";
+    submenu {
+      label: "MenuButton";
+      section {
+        label: "Test Section";
+        item ("Test item", "test.test")
+        item ("Test item with icon", "test.test", "dialog-warning-symbolic")
+      }
+      section {
+        label: "Test Section";
+        item ("Test item", "test.test")
+        item ("Test item with icon", "test.test", "dialog-warning-symbolic")
+      }
+      submenu {
+        label: "Test submenu with icon";
+        icon: "dialog-warning-symbolic";
+        item ("Test item", "test.test")
+        item ("Test item with icon", "test.test", "dialog-warning-symbolic")
+      }
+      submenu {
+        label: "Very big";
+        section {
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+        }
+        section {
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+        }
+        section {
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+        }
+        section {
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+        }
+        section {
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+        }
+        section {
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+          item ("Test item", "test.test")
+        }
+      }
+    }
+  }
 }

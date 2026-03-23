@@ -51,7 +51,6 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
 
         if (Config.IS_DEVEL) {
             add_css_class ("devel");
-            insert_action_group ("devel", new DevelActionGroup ());
         }
     }
 

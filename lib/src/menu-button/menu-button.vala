@@ -62,6 +62,8 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         }
     }
 
+    public string sheet_title { get; construct set; }
+
     Gtk.PopoverMenu popover;
     SheetMenu sheet;
 
@@ -76,7 +78,7 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         popover.set_parent (this);
         popover.closed.connect (on_close);
 
-        sheet = new SheetMenu.from_model (menu_model);
+        sheet = new SheetMenu.from_model (this, menu_model, sheet_title);
         sheet.closed.connect (on_close);
 
         bind_property ("menu-model", popover, "menu-model", GLib.BindingFlags.SYNC_CREATE);

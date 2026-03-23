@@ -29,6 +29,8 @@ internal sealed class Cassette.SheetSubmenu : Adw.NavigationPage {
     [GtkChild]
     unowned Gtk.Box main_box;
 
+    public Gtk.Widget menu_action_parent { get; construct; }
+
     public MenuModel menu_model { get; construct; }
 
     public SheetMenu main_menu { get; construct; }
@@ -40,6 +42,7 @@ internal sealed class Cassette.SheetSubmenu : Adw.NavigationPage {
     Adw.PreferencesGroup current_section;
 
     public SheetSubmenu (
+        Gtk.Widget menu_action_parent,
         SheetMenu main_menu,
         MenuModel menu_model,
         string? submenu_label = null,
@@ -48,6 +51,7 @@ internal sealed class Cassette.SheetSubmenu : Adw.NavigationPage {
         assert (menu_model != null);
 
         Object (
+            menu_action_parent: menu_action_parent,
             menu_model: menu_model,
             main_menu: main_menu,
             submenu_label: submenu_label,
@@ -152,6 +156,7 @@ internal sealed class Cassette.SheetSubmenu : Adw.NavigationPage {
                     add_custom (rcustom);
                 } else {
                     var row = new SheetMenuItem.action (
+                        menu_action_parent,
                         raction_name,
                         rlabel,
                         ricon,
@@ -183,7 +188,7 @@ internal sealed class Cassette.SheetSubmenu : Adw.NavigationPage {
 
         var row = new SheetMenuItem.submenu (label, icon);
 
-        main_menu.add (new SheetSubmenu (main_menu, menu_model, label, icon), label);
+        main_menu.add (new SheetSubmenu (menu_action_parent, main_menu, menu_model, label, icon), label);
 
         row.activated.connect (() => {
             main_menu.push (label);

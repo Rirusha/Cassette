@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025-2026 Vladimir Romanov <rirusha@altlinux.org>
+ * Copyright (C) 2026 Vladimir Romanov <rirusha@altlinux.org>
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,27 +18,22 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/space/rirusha/Cassette/ui/main-content.ui")]
-public sealed class Cassette.MainContent : Adw.BreakpointBin {
-
-    [GtkChild]
-    unowned Gtk.Overlay overlay;
-    [GtkChild]
-    unowned MenuButton devel_button;
+//  ActionMuxer is private so we do a little trick
+internal sealed class Cassette.ActionActor : Gtk.ListBoxRow {
 
     static construct {
-        typeof (AccountButton).ensure ();
-        typeof (MenuButton).ensure ();
+        set_css_name ("");
     }
 
     construct {
-        if (Config.IS_DEVEL) {
-            add_devel_button ();
-        }
+        visible = false;
     }
 
-    void add_devel_button () {
-        insert_action_group ("devel", new DevelActionGroup ());
-        overlay.add_overlay (devel_button);
+    protected override void size_allocate (int width, int height, int baseline) {
+        return;
+    }
+
+    public override bool grab_focus () {
+        return false;
     }
 }

@@ -23,6 +23,11 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
     HashTable<string, SheetSubmenu> submenus = new HashTable<string, SheetSubmenu> (str_hash, str_equal);
     HashTable<string, Adw.Bin> customs = new HashTable<string, Adw.Bin> (str_hash, str_equal);
 
+    /**
+     * It needs for actions query because of `Adw.Dialog` and `MenuButton` has different ancestors
+     */
+    public Gtk.Widget action_parent { get; construct; }
+
     public new Adw.DialogPresentationMode presentation_mode {
         get {
             return BOTTOM_SHEET;
@@ -43,15 +48,20 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
         }
     }
 
-    internal Adw.NavigationView nav_view = new Adw.NavigationView ();
+    Adw.NavigationView nav_view = new Adw.NavigationView () {
+        hhomogeneous = true
+    };
 
     SheetMenu () {}
 
-    public SheetMenu.from_model (MenuModel? menu_model) {
+    public SheetMenu.from_model (Gtk.Widget action_parent, MenuModel? menu_model, string? title = null) {
         Object (
+            action_parent: action_parent,
             menu_model: menu_model,
             presentation_mode: Adw.DialogPresentationMode.BOTTOM_SHEET,
-            width_request: 360
+            title: title,
+            width_request: 360,
+            follows_content_size: true
         );
     }
 
@@ -84,7 +94,7 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
             return;
         }
 
-        nav_view.push (new SheetSubmenu (this, menu_model));
+        nav_view.push (new SheetSubmenu (action_parent, this, menu_model, title));
     }
 
     void to_first () {
@@ -105,6 +115,10 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
     }
 
     internal void push (string? id) {
+        if (id == null) {
+            return;
+        }
+
         if (submenus.contains (id)) {
             nav_view.push (submenus[id]);
         }

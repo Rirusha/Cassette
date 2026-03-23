@@ -27,7 +27,7 @@ template $CassetteMainContent: Adw.BreakpointBin {
   width-request: 360;
 
   Adw.Breakpoint {
-    condition ("min-width: 600px")
+    condition ("min-width: 660px")
 
     setters {
       stack_switcher.policy: wide;
@@ -35,10 +35,10 @@ template $CassetteMainContent: Adw.BreakpointBin {
   }
 
   Adw.Breakpoint {
-    condition ("max-width: 450px")
+    condition ("max-width: 480px")
 
     setters {
-      header_bar.title-widget: null;
+      header_bar.show-title: false;
       toolbar_view.reveal-bottom-bars: true;
       stack_switcher_bar.reveal: true;
     }
@@ -76,13 +76,25 @@ template $CassetteMainContent: Adw.BreakpointBin {
       content: Overlay overlay {
         Adw.ViewStack stack {
           Adw.ViewStackPage {
-            name: "stay-tuner";
+            name: "stay-tuned";
             title: _("Stay tuned");
             icon-name: "like-symbolic";
 
             child: Adw.StatusPage {
               icon-name: "like-symbolic";
               title: _("Stay tuned");
+              description: _("Work in progress.");
+            };
+          }
+
+          Adw.ViewStackPage {
+            name: "keep-it-up";
+            title: _("Keep it up");
+            icon-name: "media-playback-start-symbolic";
+
+            child: Adw.StatusPage {
+              icon-name: "media-playback-start-symbolic";
+              title: _("Keep it up!");
               description: _("Work in progress.");
             };
           }

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2026-03-10 08:34+0000\n"
-"PO-Revision-Date: 2026-03-14 14:02+0500\n"
+"POT-Creation-Date: 2026-03-23 15:13+0000\n"
+"PO-Revision-Date: 2026-03-26 23:15+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <Kazakh>\n"
 "Language: kk\n"
@@ -30,49 +30,69 @@ msgstr "Браузерде ашу"
 msgid "Open subscription page in browser"
 msgstr "Жазылым бетін браузерде ашу"
 
-#: data/ui/account/account-info-dialog.blp:116
+#: data/ui/account/account-info-dialog.blp:118
 msgid "Log out"
 msgstr "Шығу"
 
-#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+#: data/ui/auth.blp:37 data/ui/main-content.blp:67
 msgid "About"
 msgstr "Осы туралы"
 
-#: data/ui/auth.blp:23
+#: data/ui/auth.blp:44
 msgid "Welcome to Cassette!"
 msgstr "Cassette бағдарламасына қош келдіңіз!"
 
-#: data/ui/auth.blp:40
+#: data/ui/auth.blp:61
 msgid "Login with Yandex account"
 msgstr "Yandex тіркелгісі арқылы кіру"
 
-#: data/ui/auth.blp:46
+#: data/ui/auth.blp:67
 msgid "Yandex Music token"
 msgstr "Yandex Music токені"
 
-#: data/ui/auth.blp:59
+#: data/ui/auth.blp:80
 msgid "How to obtain token"
 msgstr "Токенді қалай алуға болады"
 
-#: data/ui/auth.blp:81
+#: data/ui/auth.blp:101
 msgid "No Plus subscription"
 msgstr "Plus жазылымы жоқ"
 
-#: data/ui/auth.blp:82
+#: data/ui/auth.blp:102
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr "Yandex Plus жазылымысыз бағдарламаны пайдалана алмайсыз."
 
-#: data/ui/auth.blp:93
+#: data/ui/auth.blp:113
 msgid "Back"
 msgstr "Артқа"
 
-#: data/ui/main-content.blp:22
-msgid "Stay tuned"
-msgstr "Байланыста болыңыз"
+#: data/ui/main-content.blp:55
+msgid "Refresh current page"
+msgstr "Ағымдағы бетті жаңарту"
 
-#: data/ui/main-content.blp:23
+#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
+msgid "Stay tuned"
+msgstr "Байланыста болу"
+
+#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
 msgid "Work in progress."
 msgstr "Жұмыс жүріп жатыр."
+
+#: data/ui/main-content.blp:92
+msgid "Keep it up"
+msgstr "Тамаша"
+
+#: data/ui/main-content.blp:97
+msgid "Keep it up!"
+msgstr "Тамаша!"
+
+#: data/ui/warning-dialog.blp:24
+msgid "Warning message"
+msgstr "Ескерту хабарламасы"
+
+#: data/ui/warning-dialog.blp:44
+msgid "Ask the community"
+msgstr "Қауымдастықтан сұрау"
 
 #: data/ui/webkit/webkit-auth.blp:21
 msgid "Refresh"
@@ -82,52 +102,61 @@ msgstr "Жаңарту"
 msgid "Print version information and exit"
 msgstr "Нұсқа ақпаратын шығару және шығу"
 
-#: src/application.vala:126 src/main.vala:26
+#: src/application.vala:130 src/main.vala:26
 msgid "Cassette"
 msgstr "Cassette"
 
-#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/widgets/about.vala:110
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: src/widgets/about.vala:111
+#: src/ui/about.vala:113
 msgid "Vladimir Romanov"
 msgstr "Vladimir Romanov"
 
-#: src/widgets/about.vala:114
+#: src/ui/about.vala:116
 msgid "Telegram channel"
 msgstr "Telegram арнасы"
 
-#: src/widgets/about.vala:115
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr "Telegram тобы"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr "MAX тобы"
+
+#: src/ui/about.vala:120
 msgid "Financial support (Tinkoff)"
 msgstr "Қаржылай қолдау (Tinkoff)"
 
-#: src/widgets/about.vala:116
+#: src/ui/about.vala:121
 msgid "Financial support (Boosty)"
 msgstr "Қаржылай қолдау (Boosty)"
 
-#: src/widgets/about.vala:118
+#: src/ui/about.vala:123
 msgid "Sponsors"
 msgstr "Демеушілер"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "Logout?"
 msgstr "Шығу керек пе?"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "It will erase all application data"
 msgstr "Бұл бағдарламаның барлық деректерін өшіреді"
 
-#: src/widgets/account/account-info-dialog.vala:82
+#: src/ui/account/account-info-dialog.vala:82
 msgid "_No"
 msgstr "_Жоқ"
 
-#: src/widgets/account/account-info-dialog.vala:83
+#: src/ui/account/account-info-dialog.vala:83
 msgid "_Yes"
 msgstr "_Иә"
 
-#: src/widgets/auth.vala:41
+#: src/ui/auth.vala:39
 msgid ""
 "Choose a way to log in to the app. You can log in via your Yandex account or "
 "with your token."
@@ -135,22 +164,26 @@ msgstr ""
 "Бағдарламаға кіру әдісін таңдаңыз. Yandex тіркелгісі немесе токен арқылы "
 "кіруге болады."
 
-#: src/widgets/auth.vala:44
+#: src/ui/auth.vala:49
 msgid "You need your Yandex music token to login."
 msgstr "Кіру үшін Yandex Music токені қажет."
 
-#: src/widgets/auth.vala:111
+#: src/ui/auth.vala:125
 msgid "Failed to login. Probably wrong token"
 msgstr "Кіру сәтсіз аяқталды. Токен қате болуы мүмкін"
 
-#: src/widgets/auth.vala:116
+#: src/ui/auth.vala:133
 #, c-format
 msgid "Bad status code: %i"
 msgstr "Күй коды қате: %i"
 
-#: src/widgets/auth.vala:121
+#: src/ui/auth.vala:142
 msgid "Connection problems"
 msgstr "Байланыс мәселелері"
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr "Қосымша ақпарат"
 
 #~ msgid "yandex;yandex music;yam;music;"
 #~ msgstr "yandex;yandex музыка;yam;музыка;"
@@ -173,18 +206,18 @@ msgstr "Байланыс мәселелері"
 
 #~ msgid "Allows you to save playlists and albums for offline listening"
 #~ msgstr ""
-#~ "Ойнату тізімдері мен альбомдарды желіден тыс тыңдау үшін сақтауға мүмкіндік "
-#~ "береді"
+#~ "Ойнату тізімдері мен альбомдарды желіден тыс тыңдау үшін сақтауға "
+#~ "мүмкіндік береді"
 
 #~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
 #~ msgstr "Трек ақпараты панелінде динамикалық \"караоке режимі\" бар"
 
 #~ msgid ""
-#~ "Allows you to more precisely customize the display and playback of special "
-#~ "content, such as explicit or suitable for children."
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
 #~ msgstr ""
-#~ "Арнайы мазмұнды (мысалы, бейәдеп немесе балаларға арналған) көрсетуді және "
-#~ "ойнатуды дәлірек баптауға мүмкіндік береді."
+#~ "Арнайы мазмұнды (мысалы, бейәдеп немесе балаларға арналған) көрсетуді "
+#~ "және ойнатуды дәлірек баптауға мүмкіндік береді."
 
 #~ msgid "Displays tracks that are currently unavailable in the service"
 #~ msgstr "Сервисте қазіргі уақытта қолжетімсіз тректерді көрсетеді"
@@ -193,8 +226,8 @@ msgstr "Байланыс мәселелері"
 #~ msgstr "Қай тректердің немен ауыстырылғанын көрсетеді"
 
 #~ msgid ""
-#~ "Cassette is an unofficial client and is not associated with or endorsed by "
-#~ "Yandex."
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
 #~ msgstr ""
 #~ "Cassette — бейресми клиент және ол Яндекс компаниясымен байланысты емес "
 #~ "немесе мақұлданбаған."

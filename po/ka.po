@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2026-03-10 08:34+0000\n"
-"PO-Revision-Date: 2026-03-19 09:13+0100\n"
+"POT-Creation-Date: 2026-03-23 15:13+0000\n"
+"PO-Revision-Date: 2026-03-26 08:21+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -31,49 +31,69 @@ msgstr "ბრაუზერში გახსნა"
 msgid "Open subscription page in browser"
 msgstr "გამოწერის გვერდის გახსნა ბრაუზერში"
 
-#: data/ui/account/account-info-dialog.blp:116
+#: data/ui/account/account-info-dialog.blp:118
 msgid "Log out"
 msgstr "სისტემიდან გასვლა"
 
-#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+#: data/ui/auth.blp:37 data/ui/main-content.blp:67
 msgid "About"
 msgstr "შესახებ"
 
-#: data/ui/auth.blp:23
+#: data/ui/auth.blp:44
 msgid "Welcome to Cassette!"
 msgstr "მოგესალმებათ Cassette!"
 
-#: data/ui/auth.blp:40
+#: data/ui/auth.blp:61
 msgid "Login with Yandex account"
 msgstr "შესვლა Yandex ანგარიშით"
 
-#: data/ui/auth.blp:46
+#: data/ui/auth.blp:67
 msgid "Yandex Music token"
 msgstr "Yandex Music-ის ტოკენი"
 
-#: data/ui/auth.blp:59
+#: data/ui/auth.blp:80
 msgid "How to obtain token"
 msgstr "როგორ მივიღოთ ტოკენი"
 
-#: data/ui/auth.blp:81
+#: data/ui/auth.blp:101
 msgid "No Plus subscription"
 msgstr "Plus გამოწერის გარეშე"
 
-#: data/ui/auth.blp:82
+#: data/ui/auth.blp:102
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
-msgstr ""
+msgstr "აპს Yandex Plus გამოწერის გარეშე ვერ გამოიყენებთ."
 
-#: data/ui/auth.blp:93
+#: data/ui/auth.blp:113
 msgid "Back"
 msgstr "უკან"
 
-#: data/ui/main-content.blp:22
-msgid "Stay tuned"
-msgstr ""
+#: data/ui/main-content.blp:55
+msgid "Refresh current page"
+msgstr "მიმდინარე გვერდის განახლება"
 
-#: data/ui/main-content.blp:23
+#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
+msgid "Stay tuned"
+msgstr "თვალყური ადევნეთ"
+
+#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
 msgid "Work in progress."
 msgstr "მიმდინარეობს სამუშაოები."
+
+#: data/ui/main-content.blp:92
+msgid "Keep it up"
+msgstr "აბა, თქვენ იცით"
+
+#: data/ui/main-content.blp:97
+msgid "Keep it up!"
+msgstr "აბა, თქვენ იცით!"
+
+#: data/ui/warning-dialog.blp:24
+msgid "Warning message"
+msgstr "გაფრთხილების შეტყობინება"
+
+#: data/ui/warning-dialog.blp:44
+msgid "Ask the community"
+msgstr "საზოგადოებისთვის კითხვა"
 
 #: data/ui/webkit/webkit-auth.blp:21
 msgid "Refresh"
@@ -83,73 +103,88 @@ msgstr "განახლება"
 msgid "Print version information and exit"
 msgstr "ვერსიის ჩვენება და გასვლა"
 
-#: src/application.vala:126 src/main.vala:26
+#: src/application.vala:130 src/main.vala:26
 msgid "Cassette"
 msgstr "კასეტა"
 
-#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/widgets/about.vala:110
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
 msgid "translator-credits"
-msgstr "თემური დოღონაძე"
+msgstr "ეკატერინე პაპავა"
 
-#: src/widgets/about.vala:111
+#: src/ui/about.vala:113
 msgid "Vladimir Romanov"
 msgstr "ვლადიმერ რომანოვი"
 
-#: src/widgets/about.vala:114
+#: src/ui/about.vala:116
 msgid "Telegram channel"
 msgstr "Telegram-ის არხი"
 
-#: src/widgets/about.vala:115
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr "Telegram-ის ჯგუფი"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr "MAX-ის გუნდი"
+
+#: src/ui/about.vala:120
 msgid "Financial support (Tinkoff)"
 msgstr "ფინანსური მხარდაჭერა (Tinkoff)"
 
-#: src/widgets/about.vala:116
+#: src/ui/about.vala:121
 msgid "Financial support (Boosty)"
 msgstr "ფინანსური მხარდაჭერა (Boosty)"
 
-#: src/widgets/about.vala:118
+#: src/ui/about.vala:123
 msgid "Sponsors"
 msgstr "სპონსორები"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "Logout?"
 msgstr "გახვალთ?"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "It will erase all application data"
-msgstr ""
+msgstr "ის აპლიკაციის მონაცემებს სრულად წაშლის"
 
-#: src/widgets/account/account-info-dialog.vala:82
+#: src/ui/account/account-info-dialog.vala:82
 msgid "_No"
 msgstr "_არა"
 
-#: src/widgets/account/account-info-dialog.vala:83
+#: src/ui/account/account-info-dialog.vala:83
 msgid "_Yes"
 msgstr "_დიახ"
 
-#: src/widgets/auth.vala:41
+#: src/ui/auth.vala:39
 msgid ""
 "Choose a way to log in to the app. You can log in via your Yandex account or "
 "with your token."
 msgstr ""
+"აირჩიეთ აპში შესვლის გზა. შეგიძლიათ, შეხვიდეთ თქვენი Yandex-ის ანგარიშით, ან "
+"თქვენი ტოკენით."
 
-#: src/widgets/auth.vala:44
+#: src/ui/auth.vala:49
 msgid "You need your Yandex music token to login."
-msgstr ""
+msgstr "შესასვლელად თქვენი Yandex music-ის ტოკენი გჭირდებათ."
 
-#: src/widgets/auth.vala:111
+#: src/ui/auth.vala:125
 msgid "Failed to login. Probably wrong token"
-msgstr ""
+msgstr "შესვლის შეცდომა. ალბათ, ტოკენი არასწორია"
 
-#: src/widgets/auth.vala:116
+#: src/ui/auth.vala:133
 #, c-format
 msgid "Bad status code: %i"
-msgstr ""
+msgstr "არასწორი სტატუსის კოდი: %i"
 
-#: src/widgets/auth.vala:121
+#: src/ui/auth.vala:142
 msgid "Connection problems"
-msgstr ""
+msgstr "კავშირის პრობლემები"
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr "მეტი ინფორმაცია"
 
 #~ msgid "Unofficial Yandex Music client"
 #~ msgstr "არაოფიციალური Yandex Music-ის კლიენტი"

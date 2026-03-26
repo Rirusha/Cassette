@@ -74,8 +74,6 @@ internal sealed class Cassette.SheetSubmenu : Adw.NavigationPage {
         } else {
             header_bar.show_title = false;
         }
-
-        add_section (menu_model);
     }
 
     void ensure_current_section (string? label) {

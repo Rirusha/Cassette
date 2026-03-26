@@ -43,7 +43,12 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
             return _menu_model;
         }
         set {
+            if (_menu_model != null) {
+                _menu_model.items_changed.disconnect (build_model);
+            }
+
             _menu_model = value;
+            _menu_model.items_changed.connect (build_model);
             build_model ();
         }
     }

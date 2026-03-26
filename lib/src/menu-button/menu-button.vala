@@ -32,7 +32,6 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         }
         set {
             _menu_model = value;
-            _menu_model.freeze ();
         }
     }
 

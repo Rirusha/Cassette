@@ -51,9 +51,11 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
             _popover_menu_model = value;
 
             if (_popover_menu_model == null) {
-                popover_menu_model = menu_model;
+                if (menu_model != null) {
+                    popover_menu_model = menu_model;
+                }
             } else {
-                popover.menu_model = _menu_model;
+                popover.menu_model = _popover_menu_model;
             }
         }
     }
@@ -67,9 +69,11 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
             _sheet_menu_model = value;
 
             if (_sheet_menu_model == null) {
-                sheet_menu_model = menu_model;
+                if (menu_model != null) {
+                    sheet_menu_model = menu_model;
+                }
             } else {
-                sheet.menu_model = _menu_model;
+                sheet.menu_model = _sheet_menu_model;
             }
         }
     }

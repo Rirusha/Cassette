@@ -10,7 +10,7 @@ accountbutton {
 }
 
 accountbutton > button > widget {
-  margin: 3px;
+  margin: 2px;
   background-color: var(--window-bg-color);
   border-radius: 999999px;
 }

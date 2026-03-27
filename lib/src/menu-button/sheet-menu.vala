@@ -48,14 +48,16 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
             }
 
             _menu_model = value;
-            _menu_model.items_changed.connect (build_model);
+
+            if (_menu_model != null) {
+                _menu_model.items_changed.connect (build_model);
+            }
+
             build_model ();
         }
     }
 
-    Adw.NavigationView nav_view = new Adw.NavigationView () {
-        hhomogeneous = true
-    };
+    Adw.NavigationView nav_view;
 
     SheetMenu () {}
 
@@ -107,7 +109,10 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
     }
 
     void reset_content () {
-        nav_view = new Adw.NavigationView ();
+        nav_view = new Adw.NavigationView () {
+            hhomogeneous = true,
+            vhomogeneous = true,
+        };
         child = nav_view;
     }
 

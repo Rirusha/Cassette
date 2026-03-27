@@ -61,12 +61,11 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
 
     SheetMenu () {}
 
-    public SheetMenu.from_model (Gtk.Widget action_parent, MenuModel? menu_model, string? title = null) {
+    public SheetMenu.from_model (Gtk.Widget action_parent, MenuModel? menu_model) {
         Object (
             action_parent: action_parent,
             menu_model: menu_model,
             presentation_mode: Adw.DialogPresentationMode.BOTTOM_SHEET,
-            title: title,
             width_request: 360,
             follows_content_size: true
         );
@@ -105,7 +104,9 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
     }
 
     void to_first () {
-        while (nav_view.pop ()) {}
+        Timeout.add_once (300, () => {
+            while (nav_view.pop ()) {}
+        });
     }
 
     void reset_content () {

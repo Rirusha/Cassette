@@ -32,6 +32,45 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         }
         set {
             _menu_model = value;
+
+            if (popover_menu_model == null) {
+                popover.menu_model = _menu_model;
+            }
+            if (sheet_menu_model == null) {
+                sheet.menu_model = _menu_model;
+            }
+        }
+    }
+
+    Menu _popover_menu_model;
+    public Menu popover_menu_model {
+        get {
+            return _popover_menu_model;
+        }
+        set {
+            _popover_menu_model = value;
+
+            if (_popover_menu_model == null) {
+                popover_menu_model = menu_model;
+            } else {
+                popover.menu_model = _menu_model;
+            }
+        }
+    }
+
+    Menu _sheet_menu_model;
+    public Menu sheet_menu_model {
+        get {
+            return _sheet_menu_model;
+        }
+        set {
+            _sheet_menu_model = value;
+
+            if (_sheet_menu_model == null) {
+                sheet_menu_model = menu_model;
+            } else {
+                sheet.menu_model = _menu_model;
+            }
         }
     }
 
@@ -61,7 +100,7 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         }
     }
 
-    public string sheet_title { get; construct set; }
+    public string sheet_title { get; set; }
 
     Gtk.PopoverMenu popover;
     SheetMenu sheet;
@@ -73,15 +112,13 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
     }
 
     construct {
-        popover = new Gtk.PopoverMenu.from_model (menu_model);
+        popover = new Gtk.PopoverMenu.from_model (null);
         popover.set_parent (this);
         popover.closed.connect (on_close);
 
-        sheet = new SheetMenu.from_model (this, menu_model, sheet_title);
+        sheet = new SheetMenu.from_model (this, null);
+        bind_property ("sheet-title", sheet, "title", BindingFlags.SYNC_CREATE);
         sheet.closed.connect (on_close);
-
-        bind_property ("menu-model", popover, "menu-model", GLib.BindingFlags.SYNC_CREATE);
-        bind_property ("menu-model", sheet, "menu-model", GLib.BindingFlags.SYNC_CREATE);
 
         toggled.connect (on_toggled);
     }

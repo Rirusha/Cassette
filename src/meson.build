@@ -32,11 +32,16 @@ sources = [
 ]
 
 app_dependencies = [
-  lib_dep_static,
   libadwaita_dep,
   dependency('gee-0.8'),
   dependency('libtape-0', fallback : ['libtape', 'lib_dep']),
 ]
+
+if get_option('static')
+  app_dependencies += lib_dep_static
+else 
+  app_dependencies += lib_dep
+endif
 
 if get_option('with_webkit')
   app_dependencies += dependency('webkitgtk-6.0')

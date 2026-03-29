@@ -17,11 +17,15 @@ app_id = 'space.rirusha.Cassette'
 
 libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 
+add_project_arguments(
+  '-w',
+  language: ['c'],
+)
+
 if not get_option('lib_only')
 
   add_project_arguments(
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-    '-w',
     language: ['c'],
   )
 

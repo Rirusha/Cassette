@@ -32,7 +32,7 @@ sources = [
 ]
 
 app_dependencies = [
-  lib_dep,
+  lib_dep_static,
   libadwaita_dep,
   dependency('gee-0.8'),
   dependency('libtape-0', fallback : ['libtape', 'lib_dep']),

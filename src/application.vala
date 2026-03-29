@@ -62,6 +62,7 @@ public sealed class Cassette.Application : Adw.Application {
     }
 
     static construct {
+        Cassette.init ();
     }
 
     construct {

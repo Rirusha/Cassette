@@ -22,6 +22,12 @@ option(
   value: false
 )
 option(
+  'static',
+  description: 'Build lib as static',
+  type: 'boolean',
+  value: true
+)
+option(
   'with_webkit',
   description: 'Use webkit for auth via yandex or not (use token)',
   type: 'boolean',

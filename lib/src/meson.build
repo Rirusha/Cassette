@@ -15,12 +15,22 @@ lib_vapi_sources = files(
 
 )
 
+lib_vapi_sources += configure_file(
+  input: 'resources.vapi.in',
+  output: 'resources.vapi',
+  configuration: {
+    'RESOURCES_HEADER': resources_header,
+  },
+)
+
 lib_vala_sources = files(
   'menu-button/action-tracker.vala',
   'menu-button/menu-button.vala',
   'menu-button/sheet-menu-item.vala',
   'menu-button/sheet-menu.vala',
   'menu-button/sheet-submenu.vala',
+
+  'main.vala',
 )
 
 lib_sources = [
@@ -29,15 +39,6 @@ lib_sources = [
 ]
 
 lib_sources_with_resources = lib_sources + [lib_resources]
-
-lib_c_args = [
-  '-DGETTEXT_PACKAGE="@0@"'.format(lib_name),
-  '-w',
-]
-
-rs_app_vala_args = [
-  '--vapidir', meson.project_source_root() / 'vapi',
-]
 
 lib_dependencies = [
   libadwaita_dep,
@@ -48,7 +49,21 @@ foreach dep : lib_dependencies
   lib_deps_pkgs += [dep.name()]
 endforeach
 
-librs = library(
+if get_option('static')
+  libcassette_static = static_library(
+    lib_versioned_name,
+    lib_sources_with_resources,
+    dependencies: lib_dependencies,
+  )
+
+  lib_dep_static = declare_dependency(
+    link_with: libcassette_static,
+    include_directories: include_directories('.'),
+    dependencies: lib_dependencies
+  )
+endif
+
+libcassette = library(
   lib_versioned_name,
   lib_sources_with_resources,
   dependencies: lib_dependencies,
@@ -57,14 +72,12 @@ librs = library(
   vala_gir: lib_gir_name,
   version: meson.project_version(),
   soversion: meson.project_version(),
-  install: true,
+  install: not get_option('static'),
   install_dir: [ true, true, true, true ],
-  c_args: lib_c_args,
-  vala_args: rs_app_vala_args,
 )
 
 lib_dep = declare_dependency(
-  link_with: librs,
+  link_with: libcassette,
   include_directories: include_directories('.'),
   dependencies: lib_dependencies
 )
@@ -76,7 +89,7 @@ configure_file(
   input: 'lib.deps.in',
   output: lib_deps_name,
   configuration: deps_conf,
-  install: true,
+  install: not get_option('static'),
   install_dir: get_option('datadir') / 'vala' / 'vapi',
 )
 
@@ -90,20 +103,22 @@ if not get_option('lib_only') or get_option('with_lib_introspection')
       '--output', '@OUTPUT@',
       meson.current_build_dir() / lib_gir_name,
     ],
-    input: librs,
+    input: libcassette,
     output: lib_typelib_name,
-    depends: librs,
-    install: true,
+    depends: libcassette,
+    install: not get_option('static'),
     install_dir: get_option('libdir') / 'girepository-1.0',
   )
 endif
 
-pkgconfig.generate(
-  librs,
-  name: lib_versioned_lib_name,
-  requires: lib_dependencies,
-  subdirs: [ lib_versioned_name ],
-  description: 'ReadySet library',
-  version: meson.project_version(),
-  url: 'https://altlinux.space/alt-gnome/ReadySet',
-)
+if not get_option('static')
+  pkgconfig.generate(
+    libcassette,
+    name: lib_versioned_lib_name,
+    requires: lib_dependencies,
+    subdirs: [ lib_versioned_name ],
+    description: 'ReadySet library',
+    version: meson.project_version(),
+    url: 'https://altlinux.space/alt-gnome/ReadySet',
+  )
+endif

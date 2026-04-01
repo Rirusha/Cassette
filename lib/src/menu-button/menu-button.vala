@@ -203,7 +203,8 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
     }
 
     void root_size_changed (Object object, ParamSpec param) {
-        update_mode (((Gdk.Surface) object).get_width (), ((Gdk.Surface) object).get_height ());
+        var surf = ((Gdk.Surface) object);
+        update_mode (surf.get_width (), surf.get_height ());
     }
 
     inline void update_mode (int width, int height) {

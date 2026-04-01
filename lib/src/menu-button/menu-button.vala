@@ -191,20 +191,22 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         base.realize ();
 
         if (wsurface != null) {
-            wsurface.notify["width"].disconnect (root_width_changed);
+            wsurface.notify["width"].disconnect (root_size_changed);
+            wsurface.notify["height"].disconnect (root_size_changed);
         }
 
         wsurface = root.get_surface ();
 
-        wsurface.notify["width"].connect (root_width_changed);
-        update_mode (wsurface.width);
+        wsurface.notify["width"].connect (root_size_changed);
+        wsurface.notify["height"].connect (root_size_changed);
+        update_mode (wsurface.width, wsurface.height);
     }
 
-    void root_width_changed (Object object, ParamSpec param) {
-        update_mode (((Gdk.Surface) object).get_width ());
+    void root_size_changed (Object object, ParamSpec param) {
+        update_mode (((Gdk.Surface) object).get_width (), ((Gdk.Surface) object).get_height ());
     }
 
-    inline void update_mode (int width) {
-        mode = width < 450 ? Mode.SHEET : Mode.POPOVER;
+    inline void update_mode (int width, int height) {
+        mode = width <= 450 || height <= 360 ? Mode.SHEET : Mode.POPOVER;
     }
 }

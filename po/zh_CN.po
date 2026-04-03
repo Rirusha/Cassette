@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2026-03-10 08:34+0000\n"
-"PO-Revision-Date: 2026-03-11 13:45+0800\n"
+"POT-Creation-Date: 2026-03-23 15:13+0000\n"
+"PO-Revision-Date: 2026-04-03 09:55+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: data/ui/account/account-button.blp:14
 #: data/ui/account/account-info-dialog.blp:5
@@ -31,49 +31,69 @@ msgstr "在浏览器中打开"
 msgid "Open subscription page in browser"
 msgstr "在浏览器中打开订阅页面"
 
-#: data/ui/account/account-info-dialog.blp:116
+#: data/ui/account/account-info-dialog.blp:118
 msgid "Log out"
 msgstr "登出"
 
-#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+#: data/ui/auth.blp:37 data/ui/main-content.blp:67
 msgid "About"
 msgstr "关于"
 
-#: data/ui/auth.blp:23
+#: data/ui/auth.blp:44
 msgid "Welcome to Cassette!"
 msgstr "欢迎使用 Cassette！"
 
-#: data/ui/auth.blp:40
+#: data/ui/auth.blp:61
 msgid "Login with Yandex account"
 msgstr "使用 Yandex 账号登录"
 
-#: data/ui/auth.blp:46
+#: data/ui/auth.blp:67
 msgid "Yandex Music token"
 msgstr "Yandex 音乐令牌"
 
-#: data/ui/auth.blp:59
+#: data/ui/auth.blp:80
 msgid "How to obtain token"
 msgstr "如何获取令牌"
 
-#: data/ui/auth.blp:81
+#: data/ui/auth.blp:101
 msgid "No Plus subscription"
 msgstr "无会员订阅"
 
-#: data/ui/auth.blp:82
+#: data/ui/auth.blp:102
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr "您无法在没有 Yandex 会员订阅的情况下使用该应用。"
 
-#: data/ui/auth.blp:93
+#: data/ui/auth.blp:113
 msgid "Back"
 msgstr "返回"
 
-#: data/ui/main-content.blp:22
+#: data/ui/main-content.blp:55
+msgid "Refresh current page"
+msgstr "刷新当前页面"
+
+#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
 msgid "Stay tuned"
 msgstr "敬请期待"
 
-#: data/ui/main-content.blp:23
+#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
 msgid "Work in progress."
 msgstr "正在实现。"
+
+#: data/ui/main-content.blp:92
+msgid "Keep it up"
+msgstr "继续努力"
+
+#: data/ui/main-content.blp:97
+msgid "Keep it up!"
+msgstr "继续努力！"
+
+#: data/ui/warning-dialog.blp:24
+msgid "Warning message"
+msgstr "警告消息"
+
+#: data/ui/warning-dialog.blp:44
+msgid "Ask the community"
+msgstr "询问社区"
 
 #: data/ui/webkit/webkit-auth.blp:21
 msgid "Refresh"
@@ -83,73 +103,86 @@ msgstr "刷新"
 msgid "Print version information and exit"
 msgstr "显示版本信息并退出"
 
-#: src/application.vala:126 src/main.vala:26
+#: src/application.vala:130 src/main.vala:26
 msgid "Cassette"
 msgstr "Cassette"
 
-#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/widgets/about.vala:110
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
 msgid "translator-credits"
 msgstr "lumingzh <lumingzh@qq.com>, 2024-2026"
 
-#: src/widgets/about.vala:111
+#: src/ui/about.vala:113
 msgid "Vladimir Romanov"
 msgstr "Vladimir Romanov"
 
-#: src/widgets/about.vala:114
+#: src/ui/about.vala:116
 msgid "Telegram channel"
 msgstr "Telegram 频道"
 
-#: src/widgets/about.vala:115
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr "Telegram 小组"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr "MAX 小组"
+
+#: src/ui/about.vala:120
 msgid "Financial support (Tinkoff)"
 msgstr "财政支持（Tinkoff）"
 
-#: src/widgets/about.vala:116
+#: src/ui/about.vala:121
 msgid "Financial support (Boosty)"
 msgstr "财政支持（Boosty）"
 
-#: src/widgets/about.vala:118
+#: src/ui/about.vala:123
 msgid "Sponsors"
 msgstr "赞助者"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "Logout?"
 msgstr "登出吗？"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "It will erase all application data"
 msgstr "这会擦除所有应用数据"
 
-#: src/widgets/account/account-info-dialog.vala:82
+#: src/ui/account/account-info-dialog.vala:82
 msgid "_No"
 msgstr "否(_N)"
 
-#: src/widgets/account/account-info-dialog.vala:83
+#: src/ui/account/account-info-dialog.vala:83
 msgid "_Yes"
 msgstr "是(_Y)"
 
-#: src/widgets/auth.vala:41
+#: src/ui/auth.vala:39
 msgid ""
 "Choose a way to log in to the app. You can log in via your Yandex account or "
 "with your token."
 msgstr "选择登录应用的方式。您可以通过 Yandex 账号或令牌登录。"
 
-#: src/widgets/auth.vala:44
+#: src/ui/auth.vala:49
 msgid "You need your Yandex music token to login."
 msgstr "您需要 Yandex 音乐令牌来登录。"
 
-#: src/widgets/auth.vala:111
+#: src/ui/auth.vala:125
 msgid "Failed to login. Probably wrong token"
 msgstr "登录失败。可能是令牌错误"
 
-#: src/widgets/auth.vala:116
+#: src/ui/auth.vala:133
 #, c-format
 msgid "Bad status code: %i"
 msgstr "坏状态代码：%i"
 
-#: src/widgets/auth.vala:121
+#: src/ui/auth.vala:142
 msgid "Connection problems"
 msgstr "连接问题"
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr "更多信息"
 
 #~ msgid "Unofficial Yandex Music client"
 #~ msgstr "第三方 Yandex 音乐客户端"
@@ -332,9 +365,6 @@ msgstr "连接问题"
 
 #~ msgid "Other"
 #~ msgstr "其它"
-
-#~ msgid "Share current track"
-#~ msgstr "分享当前曲目"
 
 #~ msgid "Parse url from clipboard"
 #~ msgstr "从剪贴板解析 URL"
@@ -871,9 +901,6 @@ msgstr "连接问题"
 #~ msgid "My Vibe by track"
 #~ msgstr "基于单曲的推荐"
 
-#~ msgid "Show info"
-#~ msgstr "显示信息"
-
 #~ msgid "Play next"
 #~ msgstr "播放下一首"
 
@@ -1050,7 +1077,3 @@ msgstr "连接问题"
 #, c-format
 #~ msgid "Playlist '%s' is private now"
 #~ msgstr "播放列表“%s”现在是私人的"
-
-#, c-format
-#~ msgid "Window info message: %s"
-#~ msgstr "窗口信息消息：%s"

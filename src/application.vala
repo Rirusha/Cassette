@@ -105,6 +105,11 @@ public sealed class Cassette.Application : Adw.Application {
         tape_client.quit.connect (quit);
     }
 
+    protected override void shutdown () {
+        tape_client.abort ();
+        base.shutdown ();
+    }
+
     public override void activate () {
         base.activate ();
 

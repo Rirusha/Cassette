@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2026-03-10 08:34+0000\n"
-"PO-Revision-Date: 2026-03-10 17:51+0100\n"
+"POT-Creation-Date: 2026-03-23 15:13+0000\n"
+"PO-Revision-Date: 2026-04-06 01:31+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/ui/account/account-button.blp:14
 #: data/ui/account/account-info-dialog.blp:5
@@ -31,50 +31,70 @@ msgstr "Öppna i webbläsare"
 msgid "Open subscription page in browser"
 msgstr "Öppna prenumerationssida i webbläsare"
 
-#: data/ui/account/account-info-dialog.blp:116
+#: data/ui/account/account-info-dialog.blp:118
 msgid "Log out"
 msgstr "Logga ut"
 
-#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+#: data/ui/auth.blp:37 data/ui/main-content.blp:67
 msgid "About"
 msgstr "Om"
 
-#: data/ui/auth.blp:23
+#: data/ui/auth.blp:44
 msgid "Welcome to Cassette!"
 msgstr "Välkommen till Kassett!"
 
-#: data/ui/auth.blp:40
+#: data/ui/auth.blp:61
 msgid "Login with Yandex account"
 msgstr "Logga in med Yandex-konto"
 
-#: data/ui/auth.blp:46
+#: data/ui/auth.blp:67
 msgid "Yandex Music token"
 msgstr "Yandex Music-token"
 
-#: data/ui/auth.blp:59
+#: data/ui/auth.blp:80
 msgid "How to obtain token"
 msgstr "Hur du erhåller ett token"
 
-#: data/ui/auth.blp:81
+#: data/ui/auth.blp:101
 msgid "No Plus subscription"
 msgstr "Ingen Plus-prenumeration"
 
-#: data/ui/auth.blp:82
+#: data/ui/auth.blp:102
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr ""
 "Du kommer inte kunna använda programmet utan en Yandex Plus-prenumeration."
 
-#: data/ui/auth.blp:93
+#: data/ui/auth.blp:113
 msgid "Back"
 msgstr "Tillbaka"
 
-#: data/ui/main-content.blp:22
+#: data/ui/main-content.blp:55
+msgid "Refresh current page"
+msgstr "Uppdatera aktuell sida"
+
+#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
 msgid "Stay tuned"
 msgstr "Byt inte kanal"
 
-#: data/ui/main-content.blp:23
+#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
 msgid "Work in progress."
 msgstr "Arbete pågår."
+
+#: data/ui/main-content.blp:92
+msgid "Keep it up"
+msgstr "Kämpa på"
+
+#: data/ui/main-content.blp:97
+msgid "Keep it up!"
+msgstr "Kämpa på!"
+
+#: data/ui/warning-dialog.blp:24
+msgid "Warning message"
+msgstr "Varningsmeddelande"
+
+#: data/ui/warning-dialog.blp:44
+msgid "Ask the community"
+msgstr "Fråga gemenskapen"
 
 #: data/ui/webkit/webkit-auth.blp:21
 msgid "Refresh"
@@ -84,53 +104,61 @@ msgstr "Uppdatera"
 msgid "Print version information and exit"
 msgstr "Skriv ut versionsinformation och avsluta"
 
-#: src/application.vala:126 src/main.vala:26
+#: src/application.vala:130 src/main.vala:26
 msgid "Cassette"
 msgstr "Kassett"
 
-#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/widgets/about.vala:110
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
 msgid "translator-credits"
 msgstr "Anders Jonsson <anders.jonsson@norsjovallen.se>"
 
-#: src/widgets/about.vala:111
-#| msgid "Vladimir Vaskov"
+#: src/ui/about.vala:113
 msgid "Vladimir Romanov"
 msgstr "Vladimir Romanov"
 
-#: src/widgets/about.vala:114
+#: src/ui/about.vala:116
 msgid "Telegram channel"
 msgstr "Telegramkanal"
 
-#: src/widgets/about.vala:115
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr "Telegramgrupp"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr "MAX-grupp"
+
+#: src/ui/about.vala:120
 msgid "Financial support (Tinkoff)"
 msgstr "Finansiellt stöd (Tinkoff)"
 
-#: src/widgets/about.vala:116
+#: src/ui/about.vala:121
 msgid "Financial support (Boosty)"
 msgstr "Finansiellt stöd (Boosty)"
 
-#: src/widgets/about.vala:118
+#: src/ui/about.vala:123
 msgid "Sponsors"
 msgstr "Sponsorer"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "Logout?"
 msgstr "Logga ut?"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "It will erase all application data"
 msgstr "Det kommer ta bort alla programdata"
 
-#: src/widgets/account/account-info-dialog.vala:82
+#: src/ui/account/account-info-dialog.vala:82
 msgid "_No"
 msgstr "_Nej"
 
-#: src/widgets/account/account-info-dialog.vala:83
+#: src/ui/account/account-info-dialog.vala:83
 msgid "_Yes"
 msgstr "_Ja"
 
-#: src/widgets/auth.vala:41
+#: src/ui/auth.vala:39
 msgid ""
 "Choose a way to log in to the app. You can log in via your Yandex account or "
 "with your token."
@@ -138,22 +166,26 @@ msgstr ""
 "Välj ett sätt att logga in på programmet. Du kan logga in via ditt Yandex-"
 "konto eller med ditt token."
 
-#: src/widgets/auth.vala:44
+#: src/ui/auth.vala:49
 msgid "You need your Yandex music token to login."
 msgstr "Du behöver ditt Yandex music-token för att logga in."
 
-#: src/widgets/auth.vala:111
+#: src/ui/auth.vala:125
 msgid "Failed to login. Probably wrong token"
 msgstr "Kunde inte logga in. Troligen felaktigt token"
 
-#: src/widgets/auth.vala:116
+#: src/ui/auth.vala:133
 #, c-format
 msgid "Bad status code: %i"
 msgstr "Felaktig statuskod: %i"
 
-#: src/widgets/auth.vala:121
+#: src/ui/auth.vala:142
 msgid "Connection problems"
 msgstr "Anslutningsproblem"
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr "Mer info"
 
 #~ msgid "Unofficial Yandex Music client"
 #~ msgstr "Inofficiell Yandex Music-klient"
@@ -341,9 +373,6 @@ msgstr "Anslutningsproblem"
 
 #~ msgid "Other"
 #~ msgstr "Annat"
-
-#~ msgid "Share current track"
-#~ msgstr "Dela aktuellt spår"
 
 #~ msgid "Parse url from clipboard"
 #~ msgstr "Klistra in URL från urklipp"
@@ -895,9 +924,6 @@ msgstr "Anslutningsproblem"
 #~ msgid "My Vibe by track"
 #~ msgstr "Min vibb efter spår"
 
-#~ msgid "Show info"
-#~ msgstr "Visa info"
-
 #~ msgid "Play next"
 #~ msgstr "Spela nästa"
 
@@ -1073,10 +1099,6 @@ msgstr "Anslutningsproblem"
 #, c-format
 #~ msgid "Playlist '%s' is private now"
 #~ msgstr "Spellistan ”%s” är nu privat"
-
-#, c-format
-#~ msgid "Window info message: %s"
-#~ msgstr "Fönsterinfomeddelande: %s"
 
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"

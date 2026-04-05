@@ -135,7 +135,7 @@ public sealed class Cassette.Auth : Loadable {
             to_auth ();
         } catch (CantUseError e) {
             to_cant_use (e);
-        } catch (ApiBase.SoupError e) {
+        } catch (Tape.TapeError e) {
             warning (e.message);
             activate_action_variant (
                 "app.show-message",

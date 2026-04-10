@@ -20,11 +20,6 @@
 
 public sealed class Cassette.MenuButton : Gtk.ToggleButton {
 
-    public enum Mode {
-        POPOVER,
-        SHEET;
-    }
-
     Menu _menu_model;
     public Menu menu_model {
         get {
@@ -78,8 +73,8 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         }
     }
 
-    Mode _mode = POPOVER;
-    Mode mode {
+    PresentationMode _mode = POPOVER;
+    PresentationMode mode {
         get {
             return _mode;
         }
@@ -127,7 +122,7 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         toggled.connect (on_toggled);
     }
 
-    public bool add_child (Gtk.Widget child, string id, Mode mode) {
+    public bool add_child (Gtk.Widget child, string id, PresentationMode mode) {
         switch (mode) {
             case POPOVER:
                 return popover.add_child (child, id);
@@ -137,7 +132,7 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         return false;
     }
 
-    public bool remove_child (Gtk.Widget child, Mode mode) {
+    public bool remove_child (Gtk.Widget child, PresentationMode mode) {
         switch (mode) {
             case POPOVER:
                 return popover.remove_child (child);
@@ -183,7 +178,6 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
 
     protected override void size_allocate (int width, int height, int baseline) {
         base.size_allocate (width, height, baseline);
-
         popover.present ();
     }
 
@@ -208,6 +202,6 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
     }
 
     inline void update_mode (int width, int height) {
-        mode = width <= 450 || height <= 360 ? Mode.SHEET : Mode.POPOVER;
+        mode = width <= 450 || height <= 360 ? PresentationMode.SHEET : PresentationMode.POPOVER;
     }
 }

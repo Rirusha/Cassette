@@ -1,6 +1,8 @@
 lib_blueprints = custom_target(
   'blueprints',
   input: files(
+    'ui/combo-row.blp',
+    'ui/default-row-content.blp',
     'ui/sheet-submenu.blp',
   ),
   output: '.',

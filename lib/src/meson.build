@@ -24,6 +24,9 @@ lib_vapi_sources += configure_file(
 )
 
 lib_vala_sources = files(
+  'combo-row/combo-row.vala',
+  'combo-row/default-row-content.vala',
+
   'menu-button/sheet/action-tracker.vala',
   'menu-button/sheet/menu-item.vala',
   'menu-button/sheet/menu.vala',
@@ -31,7 +34,9 @@ lib_vala_sources = files(
 
   'menu-button/menu-button.vala',
 
+  'enums.vala',
   'main.vala',
+  'utils.vala',
 )
 
 lib_sources = [

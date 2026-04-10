@@ -18,25 +18,31 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-namespace Cassette {
-    public static void init () {
-        resources_register (get_resource ());
+using Gtk 4.0;
 
-        var display = Gdk.Display.get_default ();
-        if (display == null) {
-            warning ("Display not set");
-        } else {
-            var provider = new Gtk.CssProvider ();
-            provider.load_from_resource ("/org/gnome/Adwaita/styles/gtk.css");
-            provider.load_from_resource ("/space/rirusha/Cassette/Lib/style.css");
-            Gtk.StyleContext.add_provider_for_display (
-                display,
-                provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_THEME
-            );
-        }
+template $CassetteDefaultRowContent: Box {
+  styles [
+    "card",
+    "activatable",
+  ]
 
-        typeof (MenuButton).ensure ();
-        typeof (ComboRow).ensure ();
-    }
+  height-request: 48;
+  
+  Label {
+    margin-start: 12;
+    margin-end: 6;
+    label: bind template.string;
+    xalign: 0.0;
+    valign: center;
+    hexpand: true;
+  }
+
+  Image {
+    visible: bind template.selected;
+    margin-end: 12;
+    halign: end;
+    valign: center;
+    icon-name: "object-select-symbolic";
+    accessible-role: presentation;
+  }
 }

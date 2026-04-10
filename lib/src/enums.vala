@@ -19,24 +19,8 @@
  */
 
 namespace Cassette {
-    public static void init () {
-        resources_register (get_resource ());
-
-        var display = Gdk.Display.get_default ();
-        if (display == null) {
-            warning ("Display not set");
-        } else {
-            var provider = new Gtk.CssProvider ();
-            provider.load_from_resource ("/org/gnome/Adwaita/styles/gtk.css");
-            provider.load_from_resource ("/space/rirusha/Cassette/Lib/style.css");
-            Gtk.StyleContext.add_provider_for_display (
-                display,
-                provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_THEME
-            );
-        }
-
-        typeof (MenuButton).ensure ();
-        typeof (ComboRow).ensure ();
+    public enum PresentationMode {
+        POPOVER,
+        SHEET;
     }
 }

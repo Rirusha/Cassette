@@ -22,25 +22,13 @@
 
 internal class Cassette.IndicatorBin : Gtk.Widget, Gtk.Buildable {
 
-    internal class MaskBin : Adw.Bin {
-        static construct {
-            set_css_name ("mask");
-        }
-    }
-
-    internal class IndicatorBin : Adw.Bin {
-        static construct {
-            set_css_name ("indicator");
-        }
-    }
-
     Gtk.Widget? _child = null;
     bool _needs_attention = false;
     uint _badge_number = 0;
     string _description = "";
 
-    Adw.Bin mask;
-    Adw.Bin indicator;
+    Gizmo mask;
+    Gizmo indicator;
     Gtk.Label label;
 
     float _x_offset = 0;
@@ -139,11 +127,11 @@ internal class Cassette.IndicatorBin : Gtk.Widget, Gtk.Buildable {
     }
 
     construct {
-        mask = new MaskBin ();
+        mask = new Gizmo ("mask");
         mask.set_can_target (false);
         mask.set_parent (this);
 
-        indicator = new IndicatorBin ();
+        indicator = new Gizmo ("indicator");
         indicator.set_can_target (false);
         indicator.set_parent (this);
 

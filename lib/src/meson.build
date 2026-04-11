@@ -48,6 +48,7 @@ lib_vala_sources = files(
   'menu-button/menu-button.vala',
 
   'enums.vala',
+  'gizmo.vala',
   'init.vala',
   'utils.vala',
 )

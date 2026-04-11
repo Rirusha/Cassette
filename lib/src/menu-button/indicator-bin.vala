@@ -18,6 +18,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+// Logic based on Adw.IndicatorBin
+
 internal class Cassette.IndicatorBin : Gtk.Widget, Gtk.Buildable {
 
     internal class MaskBin : Adw.Bin {

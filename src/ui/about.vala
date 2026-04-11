@@ -110,7 +110,7 @@ namespace Cassette {
             version = Config.VERSION,
             // Translators: NAME <EMAIL.COM>
             translator_credits = _("translator-credits"),
-            copyright = "© 2023-2025 %s".printf (_("Vladimir Romanov"))
+            copyright = "© 2023-2026 %s".printf (_("Vladimir Romanov"))
         };
 
         about.add_link (_("Telegram channel"), TELEGRAM_CHANNEL);

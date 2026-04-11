@@ -18,3 +18,5 @@ po/cassette.pot
 build-dir
 repo
 .flatpak
+
+*~

@@ -7,6 +7,8 @@ non_quoted_conf.set('HELP', help)
 
 if get_option('is_devel')
   metades_suffix = '-devel'
+  non_quoted_conf.set('DATE', run_command('date', '+%Y-%m-%d', check: true).stdout().strip())
+  non_quoted_conf.set('USER', run_command('whoami', check: true).stdout().strip())
 else
   metades_suffix = ''
 endif

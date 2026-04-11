@@ -29,7 +29,7 @@ modules:
       - type: git
         url: https://altlinux.space/rirusha/libapi-base.git
         tag: v7.4
-	commit:
+        commit:
   - name: libtape
     buildsystem: meson
     builddir: true

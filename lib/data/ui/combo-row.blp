@@ -25,7 +25,6 @@ translation-domain "libadwaita";
 template $CassetteComboRow: Adw.ComboRow {
   notify::factory => $update_list_factories();
   notify::header-factory => $update_list_factories();
-  notify::list-factory => $update_list_factories();
   notify::expression => $update_filter();
   notify::search-match-mode => $update_filter();
 }

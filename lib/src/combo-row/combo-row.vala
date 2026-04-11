@@ -87,6 +87,17 @@ public sealed class Cassette.ComboRow : Adw.ComboRow {
         }
     }
 
+    Gtk.ListItemFactory? _sheet_factory;
+    public Gtk.ListItemFactory? sheet_factory {
+        get {
+            return _sheet_factory;
+        }
+        set {
+            _sheet_factory = value;
+            update_list_factories ();
+        }
+    }
+
     Gdk.Surface wsurface;
 
     construct {
@@ -150,9 +161,9 @@ public sealed class Cassette.ComboRow : Adw.ComboRow {
     [GtkCallback]
     void update_list_factories () {
         if (_factory_set) {
-            sheet_list.factory = list_factory ?? factory ?? default_factory;
+            sheet_list.factory = sheet_factory ?? factory ?? default_factory;
         } else {
-            sheet_list.factory = list_factory ?? default_factory;
+            sheet_list.factory = sheet_factory ?? default_factory;
         }
         sheet_list.header_factory = header_factory;
     }

@@ -34,10 +34,10 @@ def compile_blueprint() -> None:
     ])
 
 def get_blp_files(fix_path:bool=True) -> list[str]:
-    return [str(f).removeprefix('../data/' if fix_path else '') for f in Path(UI_DIR).rglob('*.blp') if f.is_file()]
+    return [(str(f).split('data/', 2)[1] if fix_path else str(f)) for f in Path(UI_DIR).rglob('*.blp') if f.is_file()]
 
 def get_assets_files() -> list[str]:
-    return [str(f).removeprefix('../data/') for f in Path(ASSETS_DIR).rglob('*.svg') if f.is_file()]
+    return [(str(f).split('data/', 2)[1]) for f in Path(ASSETS_DIR).rglob('*.svg') if f.is_file()]
 
 def format_blp_files() -> str:
     files = []
@@ -75,3 +75,4 @@ RESOURCE_PATH_O = os.path.join(BUILD_ROOT, 'data', 'gresource.xml')
 
 compile_blueprint()
 create_gresources()
+

@@ -77,6 +77,7 @@ libcassette = library(
   vala_header: lib_header_name,
   vala_vapi: lib_vapi_name,
   vala_gir: lib_gir_name,
+  c_args: '-DGETTEXT_DOMAIN=libadwaita',
   version: meson.project_version(),
   soversion: meson.project_version(),
   install: not get_option('static'),

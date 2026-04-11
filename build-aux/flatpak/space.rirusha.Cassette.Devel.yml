@@ -1,9 +1,7 @@
 id: space.rirusha.Cassette.Devel
 runtime: org.gnome.Platform
-runtime-version: 'master'
+runtime-version: master
 sdk: org.gnome.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.vala
 command: cassette
 finish-args:
   - --share=network
@@ -15,21 +13,17 @@ finish-args:
   - --filesystem=xdg-music:ro
   - --filesystem=xdg-download:ro
   - --own-name=org.mpris.MediaPlayer2.space.rirusha.Cassette.Devel
-  - --env=API_BASE_UNKNOWN_FIELDS=1
+  - --env=SERIALIZE_UNKNOWN_PROPS=1
+  - --env=SERIALIZE_UNKNOWN_FIELDS=1
 build-options:
   append-path: /usr/lib/sdk/vala/bin
   prepend-ld-library-path: /usr/lib/sdk/vala/lib
 cleanup:
   - /include
   - /lib/pkgconfig
-  - /man
-  - /share/doc
-  - /share/gtk-doc
-  - /share/man
   - /share/pkgconfig
   - /share/vala
-  - '*.la'
-  - '*.a'
+  - "*.a"
 modules:
   - name: api-base
     buildsystem: meson

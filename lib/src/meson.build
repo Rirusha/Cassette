@@ -32,6 +32,7 @@ lib_vala_sources = files(
   'menu-button/sheet/menu.vala',
   'menu-button/sheet/submenu.vala',
 
+  'menu-button/indicator-bin.vala',
   'menu-button/menu-button.vala',
 
   'enums.vala',

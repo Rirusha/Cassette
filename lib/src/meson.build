@@ -124,8 +124,8 @@ if not get_option('static')
     name: lib_versioned_lib_name,
     requires: lib_dependencies,
     subdirs: [ lib_versioned_name ],
-    description: 'ReadySet library',
+    description: 'Library of useful Cassette widgets',
     version: meson.project_version(),
-    url: 'https://altlinux.space/alt-gnome/ReadySet',
+    url: 'https://gitlab.gnome.org/Rirusha/Cassette',
   )
 endif

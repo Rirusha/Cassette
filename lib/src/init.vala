@@ -19,7 +19,15 @@
  */
 
 namespace Cassette {
+    private static bool initialized = false;
+
     public static void init () {
+        if (initialized) {
+            return;
+        }
+
+        Adw.init ();
+
         resources_register (get_resource ());
 
         var display = Gdk.Display.get_default ();
@@ -39,5 +47,9 @@ namespace Cassette {
         typeof (MenuButton).ensure ();
         typeof (ComboRow).ensure ();
         typeof (IndicatorBin).ensure ();
+
+        Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+        Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+        initialized = true;
     }
 }

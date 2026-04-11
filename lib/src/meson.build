@@ -1,3 +1,11 @@
+conf = configuration_data()
+conf.set_quoted('G_LOG_DOMAIN', 'Cassette')
+conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+conf.set_quoted('DATADIR', get_option('datadir'))
+conf.set_quoted('GNOMELOCALEDIR',  get_option('localedir'))
+
+configure_file(output: 'config.h', configuration: conf)
+
 lib_name = 'lib' + meson.project_name()
 lib_gir_name = pascal_name
 
@@ -11,8 +19,12 @@ lib_vapi_name = lib_versioned_lib_name + '.vapi'
 lib_gir_name = lib_versioned_gir_name + '.gir'
 lib_typelib_name = lib_versioned_gir_name + '.typelib'
 
-lib_vapi_sources = files(
+lib_deps_pkgs = [
+  'libadwaita-1',
+]
 
+lib_vapi_sources = files(
+  'config.vapi',
 )
 
 lib_vapi_sources += configure_file(
@@ -36,7 +48,7 @@ lib_vala_sources = files(
   'menu-button/menu-button.vala',
 
   'enums.vala',
-  'main.vala',
+  'init.vala',
   'utils.vala',
 )
 
@@ -77,6 +89,7 @@ libcassette = library(
   vala_header: lib_header_name,
   vala_vapi: lib_vapi_name,
   vala_gir: lib_gir_name,
+  include_directories: include_directories('.'),
   version: meson.project_version(),
   soversion: meson.project_version(),
   install: not get_option('static'),

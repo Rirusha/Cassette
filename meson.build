@@ -38,9 +38,11 @@ if not get_option('lib_only')
     app_id_suffix = '.Devel'
 
     git = find_program('git', required: true)
-    vcs_tag = run_command(git.full_path(), 'rev-parse', '--short', 'HEAD', check: true).stdout().strip()
-    version_suffix = '-dev.' + vcs_tag
+    n_commits = run_command(meson.current_source_dir() + '/tools/get-n-commits', meson.project_version(), check: true).stdout().strip()
+    version_suffix = '.nightly.' + n_commits
   endif
+
+  version = meson.project_version() + version_suffix
 
   app_id_relevant = app_id + app_id_suffix
   app_name = 'Cassette' + name_suffix

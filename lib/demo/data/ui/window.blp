@@ -67,28 +67,32 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                 title: _("ComboRow");
                 description: _("ComboRow with adaptive menu");
 
-                Box {
-                  orientation: vertical;
-                  spacing: 12;
+                Adw.Clamp {
+                  maximum-size: 500;
 
-                  Adw.PreferencesGroup {
-                    Cassette.ComboRow {
-                      title: _("Some text");
-                      model: StringList {
-                        strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
-                      };
+                  Box {
+                    orientation: vertical;
+                    spacing: 12;
+
+                    Adw.PreferencesGroup {
+                      Cassette.ComboRow {
+                        title: _("Some text");
+                        model: StringList {
+                          strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
+                        };
+                      }
                     }
-                  }
 
-                  Adw.PreferencesGroup {
-                    title: _("With search");
-                    Cassette.ComboRow {
-                      title: _("Some text");
-                      enable-search: true;
-                      expression: expr item as <StringObject>.string;
-                      model: StringList {
-                        strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
-                      };
+                    Adw.PreferencesGroup {
+                      title: _("With search");
+                      Cassette.ComboRow {
+                        title: _("Some text");
+                        enable-search: true;
+                        expression: expr item as <StringObject>.string;
+                        model: StringList {
+                          strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
+                        };
+                      }
                     }
                   }
                 }
@@ -100,11 +104,15 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
               child: Adw.StatusPage {
                 title: _("MenuButton");
 
-                Cassette.MenuButton {
-                  menu: test_menu;
-                  halign: center;
-                  icon-name: 'applications-development-symbolic';
-                  sheet-title: "Test Menu";
+                Adw.Clamp {
+                  maximum-size: 500;
+                  
+                  Cassette.MenuButton {
+                    menu: test_menu;
+                    halign: center;
+                    icon-name: 'applications-development-symbolic';
+                    sheet-title: "Test Menu";
+                  }
                 }
               };
             }

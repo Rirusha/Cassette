@@ -28,15 +28,18 @@ internal sealed class Cassette.PopoverPage : Gtk.Box {
         set {
             if (_menu != null) {
                 _menu.items_changed.disconnect (on_items_changed);
+                _menu.notify["has-visible-items"].disconnect (menu_visible_items_changes);
             }
 
             _menu = value;
 
             if (_menu != null) {
                 _menu.items_changed.connect (on_items_changed);
+                _menu.notify["has-visible-items"].connect (menu_visible_items_changes);
             }
 
             on_items_changed ();
+            menu_visible_items_changes ();
         }
     }
 
@@ -59,6 +62,12 @@ internal sealed class Cassette.PopoverPage : Gtk.Box {
             current: current,
             previous_label: previous_label
         );
+    }
+
+    void menu_visible_items_changes () {
+        if (!menu.has_visible_items && previous != null) {
+            main_menu.push (previous, true);
+        }
     }
 
     void on_items_changed () {

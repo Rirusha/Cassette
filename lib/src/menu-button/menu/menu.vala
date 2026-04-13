@@ -26,6 +26,8 @@ public class Cassette.Menu : Buildable, ListModel {
 
     internal ListStore sections { get; set; default = new ListStore (typeof (MenuSection)); }
 
+    internal bool has_visible_items { get; set; }
+
     construct {
         sections.items_changed.connect (on_store_items_changed);
     }
@@ -36,6 +38,7 @@ public class Cassette.Menu : Buildable, ListModel {
     }
 
     void recalc () {
+        bool _has_visible_items = false;
         bool na = false;
         uint bn = 0;
 
@@ -44,11 +47,16 @@ public class Cassette.Menu : Buildable, ListModel {
             if (section.needs_attention) {
                 na = true;
             }
+            if (section.visible) {
+                _has_visible_items = true;
+            }
             bn += section.badge_number;
         }
 
         needs_attention = na;
         badge_number = bn;
+
+        has_visible_items = _has_visible_items;
     }
 
     public override void add_child (Gtk.Builder builder, GLib.Object child, string? type) {
@@ -80,6 +88,7 @@ public class Cassette.Menu : Buildable, ListModel {
 
         section.notify["needs-attention"].connect (recalc);
         section.notify["badge-number"].connect (recalc);
+        section.notify["visible"].connect (recalc);
     }
 
     public void remove_section (MenuSection section) {
@@ -89,6 +98,7 @@ public class Cassette.Menu : Buildable, ListModel {
 
             section.notify["needs-attention"].disconnect (recalc);
             section.notify["badge-number"].disconnect (recalc);
+            section.notify["visible"].connect (recalc);
         }
     }
 

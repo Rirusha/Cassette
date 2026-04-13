@@ -36,15 +36,18 @@ internal sealed class Cassette.SheetPage : Adw.NavigationPage {
         set {
             if (_menu != null) {
                 _menu.items_changed.disconnect (on_items_changed);
+                _menu.notify["has-visible-items"].disconnect (menu_visible_items_changes);
             }
 
             _menu = value;
 
             if (_menu != null) {
                 _menu.items_changed.connect (on_items_changed);
+                _menu.notify["has-visible-items"].connect (menu_visible_items_changes);
             }
 
             on_items_changed ();
+            menu_visible_items_changes ();
         }
     }
 
@@ -58,6 +61,12 @@ internal sealed class Cassette.SheetPage : Adw.NavigationPage {
             menu_action_parent: menu_action_parent,
             main_menu: main_menu
         );
+    }
+
+    void menu_visible_items_changes () {
+        if (!menu.has_visible_items) {
+            main_menu.pop ();
+        }
     }
 
     void on_items_changed () {

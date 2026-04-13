@@ -45,6 +45,7 @@ public class Cassette.MenuItem : Buildable {
             if (_submenu != null) {
                 _submenu.bind_property ("needs-attention", this, "needs-attention", SYNC_CREATE);
                 _submenu.bind_property ("badge-number", this, "badge-number", SYNC_CREATE);
+                _submenu.bind_property ("has-visible-items", this, "visible", SYNC_CREATE);
             }
         }
     }

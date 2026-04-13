@@ -109,4 +109,8 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
             nav_view.push (submenus[id]);
         }
     }
+
+    internal void pop () {
+        nav_view.pop ();
+    }
 }

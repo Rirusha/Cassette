@@ -5,6 +5,7 @@ lib_blueprints = custom_target(
     'ui/default-row-content.blp',
     'ui/popover-menu-item.blp',
     'ui/popover-menu.blp',
+    'ui/popover-section.blp',
     'ui/sheet-page.blp',
   ),
   output: '.',

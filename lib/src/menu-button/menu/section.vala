@@ -97,6 +97,9 @@ public class Cassette.MenuSection : Buildable, ListModel {
 
         item.notify["needs-attention"].connect (recalc);
         item.notify["badge-number"].connect (recalc);
+        item.notify["visible"].connect (recalc);
+
+        recalc ();
     }
 
     public void remove_item (MenuItem item) {
@@ -106,6 +109,9 @@ public class Cassette.MenuSection : Buildable, ListModel {
 
             item.notify["needs-attention"].disconnect (recalc);
             item.notify["badge-number"].disconnect (recalc);
+            item.notify["visible"].connect (recalc);
+
+            recalc ();
         }
     }
 

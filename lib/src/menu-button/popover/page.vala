@@ -67,97 +67,18 @@ internal sealed class Cassette.PopoverPage : Gtk.Box {
         }
 
         if (menu != null) {
-            Gtk.ListBox list;
-
             for (uint i = 0; i < menu.get_n_items (); i++) {
                 var section = (MenuSection) menu.get_item (i);
 
-                PopoverMenuItem? row = null;
-                list = new Gtk.ListBox ();
-
-                section.bind_property ("visible", list, "visible", SYNC_CREATE);
-
                 if (i == 0) {
                     if (previous != null) {
-                        var brow = new Gtk.ListBoxRow ();
-                        var box = new Gtk.CenterBox ();
-                        brow.child = box;
-                        box.center_widget = new Gtk.Label (previous_label);
-                        box.start_widget = new Gtk.Image.from_icon_name ("go-previous-symbolic") {
-                            css_classes = { "dimmed" },
-                            accessible_role = PRESENTATION
-                        };
-                        var e = new Gtk.GestureClick ();
-                        e.end.connect (() => {
-                            main_menu.push (previous, true);
-                        });
-                        brow.add_controller (e);
-                        var hlist = new Gtk.ListBox ();
-                        hlist.append (brow);
-                        append (hlist);
-                    }
-                } else {
-                    if (section.label != null) {
-                        list.set_header_func ((row, before) => {
-                            if (before == null) {
-                                row.set_header (new Gtk.Label (section.label) {
-                                    xalign = 0.0f,
-                                    css_classes = { "heading" },
-                                    margin_bottom = 12,
-                                    margin_top = 18,
-                                    margin_start = 12
-                                });
-                            }
-                        });
-                    } else {
-                        append (new Gtk.Separator (HORIZONTAL));
+                        append (new PopoverSection.back_header (main_menu, previous_label, previous));
                     }
                 }
 
-                append (list);
-
-                for (uint j = 0; j < section.get_n_items (); j++) {
-                    var item = (MenuItem) section.get_item (j);
-
-                    var custom = item.get_custom ("popover") as Gtk.Widget?;
-                    if (custom != null) {
-                        var r = new Gtk.ListBoxRow () {
-                            child = custom,
-                            activatable = false,
-                            css_classes = { "no-backgound" },
-                            margin_top = 6,
-                            margin_bottom = 6
-                        };
-                        list.append (r);
-                        continue;
-                    }
-
-                    if (item.submenu != null) {
-                        row = new PopoverMenuItem.submenu (item);
-                        var label = Uuid.string_random ();
-                        main_menu.add (
-                            new PopoverPage (
-                                main_menu,
-                                current ?? "root",
-                                label,
-                                item.label
-                            ) {
-                                menu = item.submenu
-                            },
-                            label
-                        );
-                        row.activated.connect (() => {
-                            main_menu.push (label);
-                        });
-                        list.append (row);
-                    } else {
-                        row = new PopoverMenuItem.action (item);
-                        row.activated.connect (() => {
-                            main_menu.popdown ();
-                        });
-                        list.append (row);
-                    }
-                }
+                append (new PopoverSection (main_menu, current, i == 0) {
+                    menu = section
+                });
             }
         }
     }

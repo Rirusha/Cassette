@@ -6,6 +6,7 @@
     <file preprocess="xml-stripblanks">ui/default-row-content.ui</file>
     <file preprocess="xml-stripblanks">ui/popover-menu-item.ui</file>
     <file preprocess="xml-stripblanks">ui/popover-menu.ui</file>
+    <file preprocess="xml-stripblanks">ui/popover-section.ui</file>
     <file preprocess="xml-stripblanks">ui/sheet-page.ui</file>
   </gresource>
 </gresources>

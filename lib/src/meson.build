@@ -48,6 +48,7 @@ lib_vala_sources = files(
   'menu-button/popover/menu-item.vala',
   'menu-button/popover/menu.vala',
   'menu-button/popover/page.vala',
+  'menu-button/popover/section.vala',
 
   'menu-button/sheet/action-tracker.vala',
   'menu-button/sheet/menu-item.vala',

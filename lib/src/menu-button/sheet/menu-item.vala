@@ -125,8 +125,8 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
         item.notify["icon-name"].connect (update_icon);
         update_icon ();
 
-        item.bind_property ("needs-attention", badge, "needs-attention");
-        item.bind_property ("badge-number", badge, "badge-number");
+        item.bind_property ("needs-attention", badge, "needs-attention", SYNC_CREATE);
+        item.bind_property ("badge-number", badge, "badge-number", SYNC_CREATE);
 
         activated.connect_after (on_activated);
     }

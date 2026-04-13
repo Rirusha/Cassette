@@ -28,21 +28,20 @@ add_project_arguments(
   '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
   language: ['c']
 )
+name_suffix = ''
+version_suffix = ''
+app_id_suffix = ''
+
+if get_option('is_devel')
+  name_suffix = ' (Devel)'
+  app_id_suffix = '.Devel'
+
+  git = find_program('git', required: true)
+  n_commits = run_command(meson.current_source_dir() + '/tools/get-n-commits', meson.project_version(), check: true).stdout().strip()
+  version_suffix = '.nightly.' + n_commits
+endif
 
 if not get_option('lib_only')
-
-  name_suffix = ''
-  version_suffix = ''
-  app_id_suffix = ''
-
-  if get_option('is_devel')
-    name_suffix = ' (Devel)'
-    app_id_suffix = '.Devel'
-
-    git = find_program('git', required: true)
-    n_commits = run_command(meson.current_source_dir() + '/tools/get-n-commits', meson.project_version(), check: true).stdout().strip()
-    version_suffix = '.nightly.' + n_commits
-  endif
 
   version = meson.project_version() + version_suffix
 

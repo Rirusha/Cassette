@@ -70,6 +70,8 @@ public class Cassette.Menu : Buildable, ListModel {
             var tsec = new MenuSection ();
             tsec.append_item (item);
             append_section (tsec);
+        } else {
+            critical ("Unknown type %s for adding to %s", child.get_type ().name (), get_type ().name ());
         }
     }
 

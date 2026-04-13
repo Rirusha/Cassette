@@ -51,6 +51,7 @@ public class Cassette.MenuItem : Buildable {
 
     public override void add_child (Gtk.Builder builder, GLib.Object child, string? type) {
         if (type == null) {
+            critical ("When trying to add child to %s child-type must be specified", get_type ().name ());
             return;
         }
         add_custom (type, child);

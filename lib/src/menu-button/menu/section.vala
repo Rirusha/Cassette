@@ -66,6 +66,8 @@ public class Cassette.MenuSection : Buildable, ListModel {
             item.submenu = submenu;
 
             append_item (item);
+        } else {
+            critical ("Unknown type %s for adding to %s", child.get_type ().name (), get_type ().name ());
         }
     }
 

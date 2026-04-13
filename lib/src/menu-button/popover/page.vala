@@ -75,6 +75,8 @@ internal sealed class Cassette.PopoverPage : Gtk.Box {
                 PopoverMenuItem? row = null;
                 list = new Gtk.ListBox ();
 
+                section.bind_property ("visible", list, "visible", SYNC_CREATE);
+
                 if (i == 0) {
                     if (previous != null) {
                         var brow = new Gtk.ListBoxRow ();

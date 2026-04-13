@@ -108,6 +108,8 @@ internal sealed class Cassette.PopoverMenuItem : Gtk.ListBoxRow {
         item.notify["badge-number"].connect (update_indicator);
         update_indicator ();
 
+        item.bind_property ("visible", this, "visible", SYNC_CREATE);
+
         var e = new Gtk.GestureClick ();
         e.end.connect (() => {
             Idle.add_once (() => {

@@ -32,6 +32,8 @@ public class Cassette.MenuItem : Buildable {
 
     public Variant? action_target { get; set; }
 
+    public bool visible { get; set; default = true; }
+
     Menu _submenu;
     public Menu submenu {
         get {

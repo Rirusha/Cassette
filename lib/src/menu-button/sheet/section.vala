@@ -38,6 +38,7 @@ internal sealed class Cassette.SheetSection : Adw.PreferencesGroup {
 
             if (_menu != null) {
                 _menu.bind_property ("label", this, "title", SYNC_CREATE);
+                _menu.bind_property ("visible", this, "visible", SYNC_CREATE);
                 _menu.items_changed.connect (on_items_changed);
             }
 

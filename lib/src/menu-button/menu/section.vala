@@ -26,6 +26,18 @@ public class Cassette.MenuSection : Buildable, ListModel {
 
     internal ListStore items { get; set; default = new ListStore (typeof (MenuItem)); }
 
+    bool _visible_set = false;
+    bool _visible = true;
+    public bool visible {
+        get {
+            return _visible;
+        }
+        set {
+            _visible_set = true;
+            _visible = value;
+        }
+    }
+
     public string label { get; set; }
 
     construct {
@@ -38,6 +50,7 @@ public class Cassette.MenuSection : Buildable, ListModel {
     }
 
     void recalc () {
+        bool new_visible = _visible;
         bool na = false;
         uint bn = 0;
 
@@ -46,11 +59,19 @@ public class Cassette.MenuSection : Buildable, ListModel {
             if (item.needs_attention) {
                 na = true;
             }
+            if (item.visible && !_visible_set) {
+                new_visible = true;
+            }
             bn += item.badge_number;
         }
 
         needs_attention = na;
         badge_number = bn;
+
+        if (new_visible != _visible) {
+            _visible = new_visible;
+            notify_property ("visible");
+        }
     }
 
     public override void add_child (Gtk.Builder builder, GLib.Object child, string? type) {

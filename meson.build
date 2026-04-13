@@ -1,17 +1,19 @@
 project(
   'cassette',
   'vala',
-  version: '0.2.1',
+  version: '0.2',
   meson_version: '>= 1.1.0',
   license: 'GPL-3.0-or-later',
 )
+
+api_version = '0'
+lib_version = api_version + '.' + meson.project_version()
 
 i18n = import('i18n')
 gnome = import('gnome')
 py = import('python')
 pkgconfig = import('pkgconfig')
 
-api_version = meson.project_version().split('.')[0]
 pascal_name = 'Cassette'
 app_id = 'space.rirusha.Cassette'
 

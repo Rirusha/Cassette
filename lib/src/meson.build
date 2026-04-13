@@ -9,7 +9,7 @@ configure_file(output: 'config.h', configuration: conf)
 lib_name = 'lib' + meson.project_name()
 lib_gir_name = pascal_name
 
-lib_versioned_name = meson.project_name() + '-' + api_version
+lib_versioned_name = lib_version + '-' + api_version
 lib_versioned_lib_name = lib_name + '-' + api_version
 lib_versioned_gir_name = lib_gir_name + '-' + api_version
 
@@ -103,8 +103,8 @@ libcassette = library(
   vala_vapi: lib_vapi_name,
   vala_gir: lib_gir_name,
   include_directories: include_directories('.'),
-  version: meson.project_version(),
-  soversion: meson.project_version(),
+  version: lib_version,
+  soversion: lib_version,
   install: not get_option('static'),
   install_dir: [ true, true, true, true ],
 )
@@ -151,7 +151,7 @@ if not get_option('static')
     requires: lib_dependencies,
     subdirs: [ lib_versioned_name ],
     description: 'Library of useful Cassette widgets',
-    version: meson.project_version(),
+    version: lib_version,
     url: 'https://gitlab.gnome.org/Rirusha/Cassette',
   )
 endif

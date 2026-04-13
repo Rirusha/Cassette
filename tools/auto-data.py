@@ -65,13 +65,14 @@ OUTPUT = sys.argv[1]
 SOURCE_ROOT = sys.argv[2]
 BUILD_ROOT = sys.argv[3]
 CURRENT_SOURCE_DIR = sys.argv[4]
-METAINFO_NAME = sys.argv[5]
+CURRENT_BUILD_DIR = sys.argv[5]
+METAINFO_NAME = sys.argv[6]
 
-UI_DIR = os.path.join(SOURCE_ROOT, 'data', 'ui')
-ASSETS_DIR = os.path.join(SOURCE_ROOT, 'data', 'assets')
+UI_DIR = os.path.join(CURRENT_SOURCE_DIR, 'ui')
+ASSETS_DIR = os.path.join(CURRENT_SOURCE_DIR, 'assets')
 
-RESOURCE_PATH = os.path.join(SOURCE_ROOT, 'data', 'gresource.xml.in')
-RESOURCE_PATH_O = os.path.join(BUILD_ROOT, 'data', 'gresource.xml')
+RESOURCE_PATH = os.path.join(CURRENT_SOURCE_DIR, 'gresource.xml.in')
+RESOURCE_PATH_O = os.path.join(CURRENT_BUILD_DIR, 'gresource.xml')
 
 compile_blueprint()
 create_gresources()

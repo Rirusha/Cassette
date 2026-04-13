@@ -1,0 +1,273 @@
+/*
+ * Copyright (C) 2026 Vladimir Romanov <rirusha@altlinux.org>
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see
+ * <https://www.gnu.org/licenses/gpl-3.0-standalone.html>.
+ * 
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+using Gtk 4.0;
+using Adw 1;
+using Cassette 0;
+
+template $CassetteDemoWindow: Adw.ApplicationWindow {
+  width-request: 360;
+  height-request: 294;
+  default-height: 900;
+  default-width: 800;
+
+  Adw.Breakpoint {
+    condition ("max-width: 540px")
+
+    setters {
+      sidebar.mode: page;
+      split_view.collapsed: true;
+    }
+  }
+
+  Adw.ToastOverlay toast_overlay {
+    Adw.NavigationSplitView split_view {
+      sidebar: Adw.NavigationPage {
+        title: _("Cassette Demo");
+
+        Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {}
+
+          content: Adw.ViewSwitcherSidebar sidebar {
+            stack: stack;
+            activated => $on_viewswitchersidebar_activated();
+          };
+        }
+      };
+
+      content: Adw.NavigationPage content_nav_page {
+        Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {}
+
+          content: Adw.ViewStack stack {
+            notify::visible-child-name => $on_visible_child_chandes();
+
+            Adw.ViewStackPage {
+              title: "ComboRow with adaptive menu";
+              child: Adw.PreferencesPage {
+                title: _("ComboRow");
+                description: _("ComboRow with adaptive menu");
+
+                Adw.PreferencesGroup {
+                  Cassette.ComboRow {
+                    title: _("Some text");
+                    model: StringList {
+                      strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
+                    };
+                  }
+                }
+
+                Adw.PreferencesGroup {
+                  title: _("With search");
+                  Cassette.ComboRow {
+                    title: _("Some text");
+                    enable-search: true;
+                    expression: expr item as <StringObject>.string;
+                    model: StringList {
+                      strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
+                    };
+                  }
+                }
+              };
+            }
+
+            Adw.ViewStackPage {
+              title: "MenuButton";
+              child: Adw.StatusPage {
+                title: _("MenuButton");
+
+                Cassette.MenuButton {
+                  menu: test_menu;
+                  icon-name: 'applications-development-symbolic';
+                  sheet-title: "Test Menu";
+                }
+              };
+            }
+          };
+        }
+      };
+    }
+  }
+}
+
+Cassette.Menu test_menu {
+  Cassette.MenuItem {
+    [sheet]
+    Box {
+      orientation: horizontal;
+
+      Button {
+        label: "I'm Custom";
+      }
+
+      Button {
+        label: "I'm Custom";
+      }
+    }
+
+    [popover]
+    Box {
+      orientation: horizontal;
+
+      Button {
+        label: "I'm Custom";
+      }
+
+      Button {
+        label: "I'm Custom";
+      }
+    }
+  }
+
+  Cassette.MenuSection {
+    label: "Test Section";
+
+    Cassette.MenuItem {
+      label: "Disabled action";
+      action-name: "test.test";
+      badge-number: 20;
+    }
+
+    Cassette.MenuItem {
+      label: "Action with shortcut";
+      action-name: "app.quit";
+    }
+
+    Cassette.MenuItem {
+      label: "Item with icon";
+      action-name: "test.test";
+      icon-name: "dialog-warning-symbolic";
+    }
+
+    Cassette.MenuSubmenu {
+      label: "Submenu with icon";
+      icon-name: "dialog-warning-symbolic";
+
+      Cassette.MenuItem {
+        label: "Test item";
+        badge-number: 50;
+      }
+    }
+  }
+
+  Cassette.MenuSubmenu {
+    label: "Very big";
+    icon-name: "face-smile-big-symbolic";
+
+    Cassette.MenuSection {
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        needs-attention: true;
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+        badge-number: 20;
+      }
+    }
+
+    Cassette.MenuSection {
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+        badge-number: 20;
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+    }
+
+    Cassette.MenuSection {
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+        badge-number: 20;
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+    }
+
+    Cassette.MenuSection {
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+        badge-number: 20;
+      }
+    }
+
+    Cassette.MenuSection {
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+        badge-number: 20;
+      }
+    }
+
+    Cassette.MenuSection {
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+      }
+      Cassette.MenuItem {
+        label: "Test item";
+        badge-number: 20;
+      }
+    }
+  }
+}

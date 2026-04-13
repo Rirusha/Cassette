@@ -41,18 +41,15 @@ if get_option('is_devel')
   version_suffix = '.nightly.' + n_commits
 endif
 
-if not get_option('lib_only')
+version = meson.project_version() + version_suffix
 
-  version = meson.project_version() + version_suffix
+app_id_relevant = app_id + app_id_suffix
+app_name = 'Cassette' + name_suffix
 
-  app_id_relevant = app_id + app_id_suffix
-  app_name = 'Cassette' + name_suffix
-
-  homepage = 'https://gitlab.gnome.org/Rirusha/Cassette'
-  bugtracker = 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues'
-  # matrix.to banned in Russian so we use our matrix-to
-  help = 'https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org'
-endif
+homepage = 'https://gitlab.gnome.org/Rirusha/Cassette'
+bugtracker = 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues'
+# matrix.to banned in Russian so we use our matrix-to
+help = 'https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org'
 
 subdir('lib')
 

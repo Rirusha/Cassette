@@ -44,6 +44,7 @@ namespace Cassette {
             );
         }
 
+        typeof (Badge).ensure ();
         typeof (MenuButton).ensure ();
         typeof (Menu).ensure ();
         typeof (MenuSection).ensure ();

@@ -76,8 +76,6 @@ template $CassetteMainContent: Adw.BreakpointBin {
       content: Overlay overlay {
         Adw.ViewStack stack {
           Adw.ViewStackPage {
-            needs-attention: true;
-            badge-number: 500;
             name: "stay-tuned";
             title: _("Stay tuned");
             icon-name: "like-symbolic";
@@ -90,7 +88,6 @@ template $CassetteMainContent: Adw.BreakpointBin {
           }
 
           Adw.ViewStackPage {
-            needs-attention: true;
             name: "keep-it-up";
             title: _("Keep it up");
             icon-name: "media-playback-start-symbolic";
@@ -99,11 +96,6 @@ template $CassetteMainContent: Adw.BreakpointBin {
               icon-name: "media-playback-start-symbolic";
               title: _("Keep it up!");
               description: _("Work in progress.");
-
-              Adw.ViewSwitcherSidebar {
-                stack: stack;
-                mode: page;
-              }
             };
           }
         }
@@ -131,6 +123,7 @@ Cassette.MenuButton devel_button {
 Cassette.Menu devel_menu {
   Cassette.MenuSubmenu {
     label: "Player";
+    icon-name: "media-playback-start-symbolic";
 
     Cassette.MenuItem {
       label: "Play test track";
@@ -140,12 +133,27 @@ Cassette.Menu devel_menu {
 
   Cassette.MenuSubmenu {
     label: "Widgets";
+    icon-name: "applications-development-symbolic";
 
     Cassette.MenuSubmenu {
       label: "MenuButton";
+      icon-name: "software-update-urgent-symbolic";
 
       Cassette.MenuItem {
         [sheet]
+        Box {
+          orientation: horizontal;
+
+          Button {
+            label: "I'm Custom";
+          }
+
+          Button {
+            label: "I'm Custom";
+          }
+        }
+
+        [popover]
         Box {
           orientation: horizontal;
 
@@ -165,6 +173,7 @@ Cassette.Menu devel_menu {
         Cassette.MenuItem {
           label: "Disabled action";
           action-name: "test.test";
+          badge-number: 20;
         }
 
         Cassette.MenuItem {
@@ -181,11 +190,17 @@ Cassette.Menu devel_menu {
         Cassette.MenuSubmenu {
           label: "Submenu with icon";
           icon-name: "dialog-warning-symbolic";
+
+          Cassette.MenuItem {
+            label: "Test item";
+            badge-number: 50;
+          }
         }
       }
 
       Cassette.MenuSubmenu {
         label: "Very big";
+        icon-name: "face-smile-big-symbolic";
 
         Cassette.MenuSection {
           Cassette.MenuItem {
@@ -193,6 +208,24 @@ Cassette.Menu devel_menu {
           }
           Cassette.MenuItem {
             label: "Test item";
+          }
+          Cassette.MenuItem {
+            needs-attention: true;
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+            badge-number: 20;
+          }
+        }
+
+        Cassette.MenuSection {
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+            badge-number: 20;
           }
           Cassette.MenuItem {
             label: "Test item";
@@ -211,6 +244,7 @@ Cassette.Menu devel_menu {
           }
           Cassette.MenuItem {
             label: "Test item";
+            badge-number: 20;
           }
           Cassette.MenuItem {
             label: "Test item";
@@ -229,6 +263,7 @@ Cassette.Menu devel_menu {
           }
           Cassette.MenuItem {
             label: "Test item";
+            badge-number: 20;
           }
         }
 
@@ -244,6 +279,7 @@ Cassette.Menu devel_menu {
           }
           Cassette.MenuItem {
             label: "Test item";
+            badge-number: 20;
           }
         }
 
@@ -259,21 +295,7 @@ Cassette.Menu devel_menu {
           }
           Cassette.MenuItem {
             label: "Test item";
-          }
-        }
-
-        Cassette.MenuSection {
-          Cassette.MenuItem {
-            label: "Test item";
-          }
-          Cassette.MenuItem {
-            label: "Test item";
-          }
-          Cassette.MenuItem {
-            label: "Test item";
-          }
-          Cassette.MenuItem {
-            label: "Test item";
+            badge-number: 20;
           }
         }
       }

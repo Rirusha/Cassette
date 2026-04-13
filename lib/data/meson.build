@@ -3,6 +3,8 @@ lib_blueprints = custom_target(
   input: files(
     'ui/combo-row.blp',
     'ui/default-row-content.blp',
+    'ui/popover-menu-item.blp',
+    'ui/popover-menu.blp',
     'ui/sheet-page.blp',
   ),
   output: '.',

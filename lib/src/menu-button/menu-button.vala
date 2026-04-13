@@ -28,8 +28,8 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         set {
             _menu = value;
 
-            if (popover_menu_model == null) {
-                // popover.menu_model = _menu_model;
+            if (popover_menu == null) {
+                popover.menu = _menu;
             }
             if (sheet_menu == null) {
                 sheet.menu = _menu;
@@ -37,22 +37,22 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         }
     }
 
-    Menu _popover_menu_model;
-    public Menu popover_menu_model {
+    Menu _popover_menu;
+    public Menu popover_menu {
         get {
-            return _popover_menu_model;
+            return _popover_menu;
         }
         set {
-            _popover_menu_model = value;
+            _popover_menu = value;
 
-            if (_popover_menu_model == null) {
+            if (_popover_menu == null) {
                 if (menu != null) {
-                    popover_menu_model = menu;
+                    popover_menu = menu;
                 } else {
-                    popover.menu_model = null;
+                    popover.menu = null;
                 }
             } else {
-                // popover.menu_model = _popover_menu_model;
+                popover.menu = _popover_menu;
             }
         }
     }
@@ -105,7 +105,7 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
 
     public string sheet_title { get; set; }
 
-    Gtk.PopoverMenu popover;
+    PopoverMenu popover;
     SheetMenu sheet;
 
     Gdk.Surface wsurface;
@@ -115,7 +115,7 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
     }
 
     construct {
-        popover = new Gtk.PopoverMenu.from_model (null);
+        popover = new PopoverMenu.from_model (null);
         popover.set_parent (this);
         popover.closed.connect (on_close);
 

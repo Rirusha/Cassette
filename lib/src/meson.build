@@ -45,6 +45,10 @@ lib_vala_sources = files(
   'menu-button/menu/section.vala',
   'menu-button/menu/submenu.vala',
 
+  'menu-button/popover/menu-item.vala',
+  'menu-button/popover/menu.vala',
+  'menu-button/popover/page.vala',
+
   'menu-button/sheet/action-tracker.vala',
   'menu-button/sheet/menu-item.vala',
   'menu-button/sheet/menu.vala',
@@ -54,6 +58,7 @@ lib_vala_sources = files(
   'menu-button/indicator-bin.vala',
   'menu-button/menu-button.vala',
 
+  'badge.vala',
   'enums.vala',
   'gizmo.vala',
   'init.vala',

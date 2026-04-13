@@ -18,23 +18,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public sealed class Cassette.SheetMenu : Adw.Dialog {
+[GtkTemplate (ui = "/space/rirusha/Cassette/Lib/ui/popover-menu.ui")]
+public sealed class Cassette.PopoverMenu : Gtk.Popover {
 
-    HashTable<string, SheetPage> submenus = new HashTable<string, SheetPage> (str_hash, str_equal);
-
-    /**
-     * It needs for actions query because of `Adw.Dialog` and `MenuButton` has different ancestors
-     */
-    public Gtk.Widget action_parent { get; construct; }
-
-    public new Adw.DialogPresentationMode presentation_mode {
-        get {
-            return BOTTOM_SHEET;
-        }
-        set {
-            return;
-        }
-    }
+    [GtkChild]
+    unowned Gtk.Stack stack;
 
     Menu? _menu;
     public Menu? menu {
@@ -55,58 +43,49 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
         }
     }
 
-    Adw.NavigationView nav_view;
+    PopoverMenu () {}
 
-    SheetMenu () {}
-
-    public SheetMenu.from_model (Gtk.Widget action_parent, Menu? menu) {
+    public PopoverMenu.from_model (Menu? menu) {
         Object (
-            action_parent: action_parent,
-            menu: menu,
-            presentation_mode: Adw.DialogPresentationMode.BOTTOM_SHEET,
-            width_request: 360,
-            follows_content_size: true
+            menu: menu
         );
     }
 
     construct {
         closed.connect (to_first);
+        add_css_class ("menu");
+        add_css_class ("background");
     }
 
     void on_items_changed () {
         reset_content ();
-        submenus.remove_all ();
  
         if (menu?.get_n_items () > 0) {
-            var page = new SheetPage (action_parent, this) {
+            var page = new PopoverPage (this) {
                 menu = menu
             };
-            bind_property ("title", page, "title", SYNC_CREATE);
-            nav_view.push (page);
+            stack.add_named (page, "root");
+            stack.visible_child_name = "root";
         }
     }
 
     void to_first () {
-        Timeout.add_once (300, () => {
-            while (nav_view.pop ()) {}
-        });
+        stack.visible_child_name = "root";
     }
 
     void reset_content () {
-        nav_view = new Adw.NavigationView () {
-            hhomogeneous = true,
-            vhomogeneous = true,
-        };
-        child = nav_view;
+        while (stack.get_visible_child () != null) {
+            stack.remove (stack.get_visible_child ());
+        }
     }
 
-    internal void add (SheetPage page, string id) {
-        submenus[id] = page;
+    internal void add (PopoverPage page, string id) {
+        stack.add_named (page, id);
     }
 
     internal void push (string id) {
-        if (submenus.contains (id)) {
-            nav_view.push (submenus[id]);
+        if (stack.get_child_by_name (id) != null) {
+            stack.visible_child_name = id;
         }
     }
 }

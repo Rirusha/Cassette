@@ -64,11 +64,7 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
     Gtk.Image? icon = null;
     Menu last_menu;
 
-    Adw.Bin indicator_bin = new Adw.Bin () {
-        visible = false,
-        valign = CENTER,
-        css_classes = { "indicator", "dot" }
-    };
+    Badge badge = new Badge ();
     Adw.ShortcutLabel shortcut_label = new Adw.ShortcutLabel ("") {
         visible = false,
         halign = CENTER,
@@ -116,12 +112,12 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
     }
 
     construct {
-        suffix_box.append (indicator_bin);
+        suffix_box.append (badge);
         suffix_box.append (shortcut_label);
         suffix_box.append (end_icon);
         update_box_visibility ();
 
-        indicator_bin.notify["visible"].connect (update_box_visibility);
+        badge.notify["visible"].connect (update_box_visibility);
         shortcut_label.notify["visible"].connect (update_box_visibility);
         end_icon.notify["visible"].connect (update_box_visibility);
 
@@ -129,15 +125,14 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
         item.notify["icon-name"].connect (update_icon);
         update_icon ();
 
-        item.notify["needs-attention"].connect (update_badge);
-        item.notify["badge-number"].connect (update_badge);
-        update_badge ();
+        item.bind_property ("needs-attention", badge, "needs-attention");
+        item.bind_property ("badge-number", badge, "badge-number");
 
         activated.connect_after (on_activated);
     }
 
     void update_box_visibility () {
-        if (indicator_bin.visible || shortcut_label.visible || end_icon.visible) {
+        if (badge.visible || shortcut_label.visible || end_icon.visible) {
             if (suffix_box.parent == null) {
                 add_suffix (suffix_box);
             }
@@ -185,56 +180,5 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
 
     void menu_items_changed (ListModel model, uint pos, uint added, uint removed) {
         sensitive = model.get_n_items () != 0;
-    }
-
-    void update_badge () {
-        Gtk.Label? label = null;
-        bool needs_attention = item.needs_attention;
-        uint badge_number = item.badge_number;
-
-        if (indicator_bin.child != null) {
-            label = (Gtk.Label) indicator_bin.child;
-        }
-
-        if (!needs_attention && badge_number == 0) {
-            indicator_bin.visible = false;
-            return;
-        }
-
-        if (indicator_bin.visible && label == null && needs_attention && badge_number == 0) {
-            return;
-        }
-
-        if (badge_number > 0) {
-            if (label == null) {
-                label = new Gtk.Label (null) {
-                    css_classes = { "numeric" }
-                };
-
-                indicator_bin.child = label;
-            }
-
-            if (badge_number > 999) {
-                label.label = "999+";
-            } else {
-                label.label = badge_number.to_string ();
-            }
-
-            indicator_bin.remove_css_class ("dot");
-
-        } else if (label != null) {
-            indicator_bin.child = null;
-            label = null;
-
-            indicator_bin.add_css_class ("dot");
-        }
-
-        if (needs_attention) {
-            indicator_bin.add_css_class ("needs-attention");
-        } else {
-            indicator_bin.remove_css_class ("needs-attention");
-        }
-
-        indicator_bin.visible = true;
     }
 }

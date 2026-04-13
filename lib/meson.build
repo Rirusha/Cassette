@@ -1,6 +1,9 @@
 subdir('data')
 subdir('src')
-subdir('demo')
+
+if get_option('with_demo')
+  subdir('demo')
+endif
 
 if get_option('with_lib_documentation')
   subdir('doc')

@@ -33,3 +33,8 @@ option(
   type: 'boolean',
   value: true
 )
+option(
+  'build_demo',
+  type: 'boolean',
+  value: false
+)

@@ -18,11 +18,17 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-internal sealed class Cassette.Badge : Adw.Bin {
+// Logic based on Adw.ViewSwitcherSidebar
+
+public sealed class Cassette.Badge : Adw.Bin {
 
     public bool needs_attention { get; set; }
 
     public uint badge_number { get; set; }
+
+    static construct {
+        set_css_name ("badge");
+    }
 
     construct {
         visible = false;

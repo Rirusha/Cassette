@@ -60,11 +60,6 @@ internal sealed class Cassette.SheetPage : Adw.NavigationPage {
         );
     }
 
-    static construct {
-        //  For indicators
-        set_css_name ("view-switcher-sidebar");
-    }
-
     void on_items_changed () {
         foreach (var sw in section_widgets) {
             pref_page.remove (sw);

@@ -50,7 +50,7 @@ public class Cassette.MenuSection : Buildable, ListModel {
     }
 
     void recalc () {
-        bool new_visible = _visible;
+        bool new_visible = false;
         bool na = false;
         uint bn = 0;
 

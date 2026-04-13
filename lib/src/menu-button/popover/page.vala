@@ -87,7 +87,7 @@ internal sealed class Cassette.PopoverPage : Gtk.Box {
                         };
                         var e = new Gtk.GestureClick ();
                         e.end.connect (() => {
-                            main_menu.push (previous);
+                            main_menu.push (previous, true);
                         });
                         brow.add_controller (e);
                         var hlist = new Gtk.ListBox ();

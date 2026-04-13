@@ -83,8 +83,13 @@ public sealed class Cassette.PopoverMenu : Gtk.Popover {
         stack.add_named (page, id);
     }
 
-    internal void push (string id) {
+    internal void push (string id, bool backward = false) {
         if (stack.get_child_by_name (id) != null) {
+            if (backward) {
+                stack.transition_type = Gtk.StackTransitionType.SLIDE_RIGHT;
+            } else {
+                stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT;
+            }
             stack.visible_child_name = id;
         }
     }

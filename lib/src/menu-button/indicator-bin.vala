@@ -20,7 +20,7 @@
 
 // Logic based on Adw.IndicatorBin
 
-internal class Cassette.IndicatorBin : Gtk.Widget, Gtk.Buildable {
+public class Cassette.IndicatorBin : Gtk.Widget, Gtk.Buildable {
 
     Gtk.Widget? _child = null;
     bool _needs_attention = false;

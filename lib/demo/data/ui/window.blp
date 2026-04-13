@@ -63,28 +63,33 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
 
             Adw.ViewStackPage {
               title: "ComboRow with adaptive menu";
-              child: Adw.PreferencesPage {
+              child: Adw.StatusPage {
                 title: _("ComboRow");
                 description: _("ComboRow with adaptive menu");
 
-                Adw.PreferencesGroup {
-                  Cassette.ComboRow {
-                    title: _("Some text");
-                    model: StringList {
-                      strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
-                    };
-                  }
-                }
+                Box {
+                  orientation: vertical;
+                  spacing: 12;
 
-                Adw.PreferencesGroup {
-                  title: _("With search");
-                  Cassette.ComboRow {
-                    title: _("Some text");
-                    enable-search: true;
-                    expression: expr item as <StringObject>.string;
-                    model: StringList {
-                      strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
-                    };
+                  Adw.PreferencesGroup {
+                    Cassette.ComboRow {
+                      title: _("Some text");
+                      model: StringList {
+                        strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
+                      };
+                    }
+                  }
+
+                  Adw.PreferencesGroup {
+                    title: _("With search");
+                    Cassette.ComboRow {
+                      title: _("Some text");
+                      enable-search: true;
+                      expression: expr item as <StringObject>.string;
+                      model: StringList {
+                        strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing"];
+                      };
+                    }
                   }
                 }
               };
@@ -97,6 +102,7 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
 
                 Cassette.MenuButton {
                   menu: test_menu;
+                  halign: center;
                   icon-name: 'applications-development-symbolic';
                   sheet-title: "Test Menu";
                 }

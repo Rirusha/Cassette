@@ -34,7 +34,7 @@ option(
   value: true
 )
 option(
-  'build_demo',
+  'with_demo',
   type: 'boolean',
   value: false
 )

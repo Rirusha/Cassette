@@ -4,6 +4,6 @@
     <file>style.css</file>
     <file preprocess="xml-stripblanks">ui/combo-row.ui</file>
     <file preprocess="xml-stripblanks">ui/default-row-content.ui</file>
-    <file preprocess="xml-stripblanks">ui/sheet-submenu.ui</file>
+    <file preprocess="xml-stripblanks">ui/sheet-page.ui</file>
   </gresource>
 </gresources>

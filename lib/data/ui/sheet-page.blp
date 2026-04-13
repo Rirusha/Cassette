@@ -21,30 +21,11 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $CassetteSheetSubmenu : Adw.NavigationPage {
+template $CassetteSheetPage : Adw.NavigationPage {
   Adw.ToolbarView {
     [top]
-    Adw.HeaderBar header_bar {
-      title-widget: Box header_box {
-        orientation: horizontal;
-      };
-    }
+    Adw.HeaderBar header_bar {}
 
-    content: ScrolledWindow {
-      propagate-natural-height: true;
-      hscrollbar-policy: never;
-
-      Adw.Clamp {
-        margin-top: 12;
-        margin-bottom: 12;
-        margin-start: 12;
-        margin-end: 12;
-
-        Box main_box {
-          orientation: vertical;
-          spacing: 12;
-        }
-      }
-    };
+    content: Adw.PreferencesPage pref_page {};
   }
 }

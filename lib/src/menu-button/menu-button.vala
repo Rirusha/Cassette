@@ -20,19 +20,19 @@
 
 public sealed class Cassette.MenuButton : Gtk.ToggleButton {
 
-    Menu _menu_model;
-    public Menu menu_model {
+    Menu _menu;
+    public Menu menu {
         get {
-            return _menu_model;
+            return _menu;
         }
         set {
-            _menu_model = value;
+            _menu = value;
 
             if (popover_menu_model == null) {
-                popover.menu_model = _menu_model;
+                // popover.menu_model = _menu_model;
             }
-            if (sheet_menu_model == null) {
-                sheet.menu_model = _menu_model;
+            if (sheet_menu == null) {
+                sheet.menu = _menu;
             }
         }
     }
@@ -46,29 +46,33 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
             _popover_menu_model = value;
 
             if (_popover_menu_model == null) {
-                if (menu_model != null) {
-                    popover_menu_model = menu_model;
+                if (menu != null) {
+                    popover_menu_model = menu;
+                } else {
+                    popover.menu_model = null;
                 }
             } else {
-                popover.menu_model = _popover_menu_model;
+                // popover.menu_model = _popover_menu_model;
             }
         }
     }
 
-    Menu _sheet_menu_model;
-    public Menu sheet_menu_model {
+    Menu _sheet_menu;
+    public Menu sheet_menu {
         get {
-            return _sheet_menu_model;
+            return _sheet_menu;
         }
         set {
-            _sheet_menu_model = value;
+            _sheet_menu = value;
 
-            if (_sheet_menu_model == null) {
-                if (menu_model != null) {
-                    sheet_menu_model = menu_model;
+            if (_sheet_menu == null) {
+                if (menu != null) {
+                    sheet_menu = menu;
+                } else {
+                    sheet.menu = null;
                 }
             } else {
-                sheet.menu_model = _sheet_menu_model;
+                sheet.menu = _sheet_menu;
             }
         }
     }
@@ -120,26 +124,6 @@ public sealed class Cassette.MenuButton : Gtk.ToggleButton {
         sheet.closed.connect (on_close);
 
         toggled.connect (on_toggled);
-    }
-
-    public bool add_child (Gtk.Widget child, string id, PresentationMode mode) {
-        switch (mode) {
-            case POPOVER:
-                return popover.add_child (child, id);
-            case SHEET:
-                return sheet.add_child (child, id);
-        }
-        return false;
-    }
-
-    public bool remove_child (Gtk.Widget child, PresentationMode mode) {
-        switch (mode) {
-            case POPOVER:
-                return popover.remove_child (child);
-            case SHEET:
-                return sheet.remove_child (child);
-        }
-        return false;
     }
 
     void on_close () {

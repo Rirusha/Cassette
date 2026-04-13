@@ -31,7 +31,7 @@ def compile_blueprint() -> None:
         '--typelib-path', os.path.join(BUILD_ROOT, 'lib', 'src'),
         OUTPUT, CURRENT_SOURCE_DIR,
         *get_blp_files(False)
-    ])
+    ], check=True)
 
 def get_blp_files(fix_path:bool=True) -> list[str]:
     return [(str(f).split('data/', 2)[1] if fix_path else str(f)) for f in Path(UI_DIR).rglob('*.blp') if f.is_file()]
@@ -75,4 +75,3 @@ RESOURCE_PATH_O = os.path.join(BUILD_ROOT, 'data', 'gresource.xml')
 
 compile_blueprint()
 create_gresources()
-

@@ -39,10 +39,17 @@ lib_vala_sources = files(
   'combo-row/combo-row.vala',
   'combo-row/default-row-content.vala',
 
+  'menu-button/menu/buildable.vala',
+  'menu-button/menu/item.vala',
+  'menu-button/menu/menu.vala',
+  'menu-button/menu/section.vala',
+  'menu-button/menu/submenu.vala',
+
   'menu-button/sheet/action-tracker.vala',
   'menu-button/sheet/menu-item.vala',
   'menu-button/sheet/menu.vala',
-  'menu-button/sheet/submenu.vala',
+  'menu-button/sheet/page.vala',
+  'menu-button/sheet/section.vala',
 
   'menu-button/indicator-bin.vala',
   'menu-button/menu-button.vala',

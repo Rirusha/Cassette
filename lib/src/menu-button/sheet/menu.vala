@@ -20,8 +20,7 @@
 
 public sealed class Cassette.SheetMenu : Adw.Dialog {
 
-    HashTable<string, SheetSubmenu> submenus = new HashTable<string, SheetSubmenu> (str_hash, str_equal);
-    HashTable<string, Adw.Bin> customs = new HashTable<string, Adw.Bin> (str_hash, str_equal);
+    HashTable<string, SheetPage> submenus = new HashTable<string, SheetPage> (str_hash, str_equal);
 
     /**
      * It needs for actions query because of `Adw.Dialog` and `MenuButton` has different ancestors
@@ -37,23 +36,22 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
         }
     }
 
-    MenuModel? _menu_model;
-    public MenuModel? menu_model {
+    Menu? _menu;
+    public Menu? menu {
         get {
-            return _menu_model;
+            return _menu;
         }
         set {
-            if (_menu_model != null) {
-                _menu_model.items_changed.disconnect (build_model);
+            if (_menu != null) {
+                _menu.items_changed.disconnect (on_items_changed);
             }
 
-            _menu_model = value;
+            _menu = value;
 
-            if (_menu_model != null) {
-                _menu_model.items_changed.connect (build_model);
+            if (_menu != null) {
+                _menu.items_changed.connect (on_items_changed);
+                on_items_changed ();
             }
-
-            build_model ();
         }
     }
 
@@ -61,10 +59,10 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
 
     SheetMenu () {}
 
-    public SheetMenu.from_model (Gtk.Widget action_parent, MenuModel? menu_model) {
+    public SheetMenu.from_model (Gtk.Widget action_parent, Menu? menu) {
         Object (
             action_parent: action_parent,
-            menu_model: menu_model,
+            menu: menu,
             presentation_mode: Adw.DialogPresentationMode.BOTTOM_SHEET,
             width_request: 360,
             follows_content_size: true
@@ -72,35 +70,20 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
     }
 
     construct {
-        reset_content ();
-
         closed.connect (to_first);
     }
 
-    public bool add_child (Gtk.Widget child, string id) {
-        customs[id].child = child;
-        customs[id].visible = true;
-        return true;
-    }
-
-    public bool remove_child (Gtk.Widget child) {
-        foreach (var val in customs.get_values ()) {
-            if (val.child == child) {
-                val.child = null;
-                val.visible = false;
-                return true;
-            }
+    void on_items_changed () {
+        reset_content ();
+        submenus.remove_all ();
+ 
+        if (menu?.get_n_items () > 0) {
+            var page = new SheetPage (action_parent, this) {
+                menu = menu
+            };
+            bind_property ("title", page, "title", SYNC_CREATE);
+            nav_view.push (page);
         }
-        return false;
-    }
-
-    void build_model () {
-        if (menu_model == null) {
-            reset_content ();
-            return;
-        }
-
-        nav_view.push (new SheetSubmenu (action_parent, this, menu_model, title));
     }
 
     void to_first () {
@@ -117,7 +100,7 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
         child = nav_view;
     }
 
-    internal void add (SheetSubmenu submenu, string? id) {
+    internal void add (SheetPage submenu, string? id) {
         if (id == null) {
             return;
         }
@@ -133,10 +116,5 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
         if (submenus.contains (id)) {
             nav_view.push (submenus[id]);
         }
-    }
-
-    internal void add_custom (string id, Adw.Bin widget) {
-        return_if_fail (!customs.contains (id));
-        customs[id] = widget;
     }
 }

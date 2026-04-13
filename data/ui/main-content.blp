@@ -76,6 +76,8 @@ template $CassetteMainContent: Adw.BreakpointBin {
       content: Overlay overlay {
         Adw.ViewStack stack {
           Adw.ViewStackPage {
+            needs-attention: true;
+            badge-number: 500;
             name: "stay-tuned";
             title: _("Stay tuned");
             icon-name: "like-symbolic";
@@ -88,6 +90,7 @@ template $CassetteMainContent: Adw.BreakpointBin {
           }
 
           Adw.ViewStackPage {
+            needs-attention: true;
             name: "keep-it-up";
             title: _("Keep it up");
             icon-name: "media-playback-start-symbolic";
@@ -96,6 +99,11 @@ template $CassetteMainContent: Adw.BreakpointBin {
               icon-name: "media-playback-start-symbolic";
               title: _("Keep it up!");
               description: _("Work in progress.");
+
+              Adw.ViewSwitcherSidebar {
+                stack: stack;
+                mode: page;
+              }
             };
           }
         }
@@ -116,78 +124,157 @@ Cassette.MenuButton devel_button {
   valign: start;
   margin-end: 6;
   margin-top: 6;
-  menu-model: devel_menu;
+  menu: devel_menu;
   sheet-title: "DEVEL OPTIONS";
 }
 
-menu devel_menu {
-  submenu {
+Cassette.Menu devel_menu {
+  Cassette.MenuSubmenu {
     label: "Player";
-    item ("Play test track", "devel.play-test-track")
+
+    Cassette.MenuItem {
+      label: "Play test track";
+      action-name: "devel.play-test-track";
+    }
   }
-  submenu {
+
+  Cassette.MenuSubmenu {
     label: "Widgets";
-    submenu {
+
+    Cassette.MenuSubmenu {
       label: "MenuButton";
-      section {
+
+      Cassette.MenuItem {
+        [sheet]
+        Box {
+          orientation: horizontal;
+
+          Button {
+            label: "I'm Custom";
+          }
+
+          Button {
+            label: "I'm Custom";
+          }
+        }
+      }
+
+      Cassette.MenuSection {
         label: "Test Section";
-        item ("Test item", "test.test")
-        item ("Test item with icon", "test.test", "dialog-warning-symbolic")
+
+        Cassette.MenuItem {
+          label: "Disabled action";
+          action-name: "test.test";
+        }
+
+        Cassette.MenuItem {
+          label: "Action with shortcut";
+          action-name: "app.quit";
+        }
+
+        Cassette.MenuItem {
+          label: "Item with icon";
+          action-name: "test.test";
+          icon-name: "dialog-warning-symbolic";
+        }
+
+        Cassette.MenuSubmenu {
+          label: "Submenu with icon";
+          icon-name: "dialog-warning-symbolic";
+        }
       }
-      section {
-        label: "Test Section";
-        item ("Test item", "test.test")
-        item ("Test item with icon", "test.test", "dialog-warning-symbolic")
-      }
-      submenu {
-        label: "Test submenu with icon";
-        icon: "dialog-warning-symbolic";
-        item ("Test item", "test.test")
-        item ("Test item with icon", "test.test", "dialog-warning-symbolic")
-      }
-      submenu {
+
+      Cassette.MenuSubmenu {
         label: "Very big";
-        section {
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
+
+        Cassette.MenuSection {
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
         }
-        section {
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
+
+        Cassette.MenuSection {
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
         }
-        section {
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
+
+        Cassette.MenuSection {
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
         }
-        section {
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
+
+        Cassette.MenuSection {
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
         }
-        section {
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
+
+        Cassette.MenuSection {
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
         }
-        section {
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
-          item ("Test item", "test.test")
+
+        Cassette.MenuSection {
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
+          Cassette.MenuItem {
+            label: "Test item";
+          }
         }
       }
     }

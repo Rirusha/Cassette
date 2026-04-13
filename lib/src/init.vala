@@ -45,6 +45,10 @@ namespace Cassette {
         }
 
         typeof (MenuButton).ensure ();
+        typeof (Menu).ensure ();
+        typeof (MenuSection).ensure ();
+        typeof (MenuSubmenu).ensure ();
+        typeof (MenuItem).ensure ();
         typeof (ComboRow).ensure ();
         typeof (IndicatorBin).ensure ();
 

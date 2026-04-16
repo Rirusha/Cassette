@@ -1,136 +1,264 @@
 # Brazilian Portuguese translation for cassette.
-# Copyright (C) 2024 cassette's COPYRIGHT HOLDER
+# Copyright (C) 2026 cassette's COPYRIGHT HOLDER
 # This file is distributed under the same license as the cassette package.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2024.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2025.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-12-10 11:26+0000\n"
-"PO-Revision-Date: 2025-12-10 09:22-0300\n"
-"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
-"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
+"POT-Creation-Date: 2026-04-05 21:32+0000\n"
+"PO-Revision-Date: 2026-04-16 17:42-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Cassette"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "Informações da conta"
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "Cliente não oficial do Yandex Music"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "Abrir no navegador"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;yam;música;"
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "Abre a página de assinatura no navegador"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Cassette (Devel)"
+#: data/ui/account/account-info-dialog.blp:118
+msgid "Log out"
+msgstr "Sair"
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "Cliente não oficial do Yandex Music (construção de desenvolvimento)"
+#: data/ui/auth.blp:37 data/ui/main-content.blp:67
+msgid "About"
+msgstr "Sobre"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
+#: data/ui/auth.blp:44
+msgid "Welcome to Cassette!"
+msgstr "Boas-vindas ao Cassette!"
+
+#: data/ui/auth.blp:61
+msgid "Login with Yandex account"
+msgstr "Login com conta Yandex"
+
+#: data/ui/auth.blp:67
+msgid "Yandex Music token"
+msgstr "Token de Yandex Music"
+
+#: data/ui/auth.blp:80
+msgid "How to obtain token"
+msgstr "Como obter token"
+
+#: data/ui/auth.blp:101
+msgid "No Plus subscription"
+msgstr "Sem assinatura Plus"
+
+#: data/ui/auth.blp:102
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr ""
-"Aplicativo GTK/Adwaita que permite usar o serviço Yandex Music em sistemas "
-"operacionais Linux."
+"Você não conseguirá usar o aplicativo sem uma assinatura do Yandux Plus."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Recursos:"
+#: data/ui/auth.blp:113
+msgid "Back"
+msgstr "Voltar"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr "Permite salvar listas de reprodução e álbuns para ouvir offline"
+#: data/ui/main-content.blp:55
+msgid "Refresh current page"
+msgstr "Atualizar a página atual"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "Possui um “modo karaokê” dinâmico no painel de informações da faixa"
+#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
+msgid "Stay tuned"
+msgstr "Fique ligado"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
-"Permite personalizar com mais precisão a exibição e a reprodução de conteúdo "
-"especial, como explícito ou adequado para crianças."
+#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
+msgid "Work in progress."
+msgstr "Trabalho em progresso."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Exibe faixas que estão disponíveis no serviço no momento"
+#: data/ui/main-content.blp:92
+msgid "Keep it up"
+msgstr "Continue assim"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Mostra quais faixas foram substituídas e por quais"
+#: data/ui/main-content.blp:97
+msgid "Keep it up!"
+msgstr "Continue assim!"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr ""
-"Cassette é um cliente não oficial e não é associado ou endossado pelo Yandex."
+#: data/ui/warning-dialog.blp:24
+msgid "Warning message"
+msgstr "Mensagem de aviso"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "Visualização de curtidas"
+#: data/ui/warning-dialog.blp:44
+msgid "Ask the community"
+msgstr "Perguntar à comunidade"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "Visualização de listas de reprodução"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "Sincronização de letras"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "Fila de reprodução"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "Visualização de ondas"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "Preferências principais"
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "Atualizar"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Imprime informações da versão e sai"
 
+#: src/application.vala:136 src/main.vala:26
+msgid "Cassette"
+msgstr "Cassette"
+
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
+msgid "translator-credits"
+msgstr "Rafael Fontenelle <rafaelff@gnome.org>"
+
+#: src/ui/about.vala:113
+msgid "Vladimir Romanov"
+msgstr "Vladimir Romanov"
+
+#: src/ui/about.vala:116
+msgid "Telegram channel"
+msgstr "Canal de Telegram"
+
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr "Grupo de Telegram"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr "Grupo de MAX"
+
+#: src/ui/about.vala:120
+msgid "Financial support (Tinkoff)"
+msgstr "Apoio financeiro (Tinkoff)"
+
+#: src/ui/about.vala:121
+msgid "Financial support (Boosty)"
+msgstr "Apoio financeiro (Boosty)"
+
+#: src/ui/about.vala:123
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "Sair?"
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr "Isso vai apagar todos os dados de aplicativo"
+
+#: src/ui/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "_Não"
+
+#: src/ui/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "_Sim"
+
+#: src/ui/auth.vala:39
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+"Escolha uma forma para iniciar sessão do aplicativo. Você fazê-lo por meio "
+"de sua conta Yandex ou com seu token."
+
+#: src/ui/auth.vala:49
+msgid "You need your Yandex music token to login."
+msgstr "Você precisa do seu token Yandex Music para iniciar sessão."
+
+#: src/ui/auth.vala:125
+msgid "Failed to login. Probably wrong token"
+msgstr "Falha ao iniciar sessão. Provavelmente token incorreto"
+
+#: src/ui/auth.vala:133
+#, c-format
+msgid "Bad status code: %i"
+msgstr "Código inválido de status: %i"
+
+#: src/ui/auth.vala:142
+msgid "Connection problems"
+msgstr "Problemas de conexão"
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr "Mais informações"
+
+#~ msgid "Unofficial Yandex Music client"
+#~ msgstr "Cliente não oficial do Yandex Music"
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;yam;música;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Cassette (Devel)"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "Cliente não oficial do Yandex Music (construção de desenvolvimento)"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "Aplicativo GTK/Adwaita que permite usar o serviço Yandex Music em "
+#~ "sistemas operacionais Linux."
+
+#~ msgid "Features:"
+#~ msgstr "Recursos:"
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr "Permite salvar listas de reprodução e álbuns para ouvir offline"
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr "Possui um “modo karaokê” dinâmico no painel de informações da faixa"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "Permite personalizar com mais precisão a exibição e a reprodução de "
+#~ "conteúdo especial, como explícito ou adequado para crianças."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "Exibe faixas que estão disponíveis no serviço no momento"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "Mostra quais faixas foram substituídas e por quais"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr ""
+#~ "Cassette é um cliente não oficial e não é associado ou endossado pelo "
+#~ "Yandex."
+
+#~ msgid "Liked view"
+#~ msgstr "Visualização de curtidas"
+
+#~ msgid "Playlists view"
+#~ msgstr "Visualização de listas de reprodução"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "Sincronização de letras"
+
+#~ msgid "Playback queue"
+#~ msgstr "Fila de reprodução"
+
+#~ msgid "Waves view"
+#~ msgstr "Visualização de ondas"
+
+#~ msgid "Main preferences"
+#~ msgstr "Preferências principais"
+
 #~ msgid "Unofficial Yandex Music client for GNOME"
 #~ msgstr "Cliente não oficial do Yandex Music para GNOME"
 
-#~ msgid "Account information"
-#~ msgstr "Informações da conta"
-
-#~ msgid "Open in browser"
-#~ msgstr "Abrir no navegador"
-
 #~ msgid "Plus"
 #~ msgstr "Mais"
-
-#~ msgid "Log out"
-#~ msgstr "Sair"
 
 #~ msgid "Usage mode"
 #~ msgstr "Modo de uso"
@@ -212,12 +340,6 @@ msgstr "Imprime informações da versão e sai"
 #~ msgid "Go back"
 #~ msgstr "Voltar"
 
-#~ msgid "Refresh"
-#~ msgstr "Atualizar"
-
-#~ msgid "Yandex Music search"
-#~ msgstr "Pesquisa no Yandex Music"
-
 #~ msgid "Main Actions"
 #~ msgstr "Ações principais"
 
@@ -254,9 +376,6 @@ msgstr "Imprime informações da versão e sai"
 #~ msgid "Other"
 #~ msgstr "Outros"
 
-#~ msgid "Share current track"
-#~ msgstr "Compartilha a trilha atual"
-
 #~ msgid "Parse url from clipboard"
 #~ msgstr "Analisa a URL da área de transferência"
 
@@ -271,9 +390,6 @@ msgstr "Imprime informações da versão e sai"
 
 #~ msgid "All stations"
 #~ msgstr "Todas as estações"
-
-#~ msgid "No Plus Subscription"
-#~ msgstr "Sem assinatura Plus"
 
 #~ msgid ""
 #~ "To avoid problems with Yandex, the online functions of the application "
@@ -622,24 +738,6 @@ msgstr "Imprime informações da versão e sai"
 #~ msgid "Reconnect"
 #~ msgstr "Reconectar"
 
-#~ msgid "Connection problems"
-#~ msgstr "Problemas de conexão"
-
-#~ msgid "translator-credits"
-#~ msgstr "Rafael Fontenelle <rafaelff@gnome.org>"
-
-#~ msgid "Telegram channel"
-#~ msgstr "Canal de Telegram"
-
-#~ msgid "Financial support (Tinkoff)"
-#~ msgstr "Apoio financeiro (Tinkoff)"
-
-#~ msgid "Financial support (Boosty)"
-#~ msgstr "Apoio financeiro (Boosty)"
-
-#~ msgid "Sponsors"
-#~ msgstr "Patrocinadores"
-
 #~ msgid "Connection restored"
 #~ msgstr "Conexão restaurada"
 
@@ -660,9 +758,6 @@ msgstr "Imprime informações da versão e sai"
 
 #~ msgid "Albums view not implemented yet"
 #~ msgstr "A visualização de álbuns ainda não foi implementada"
-
-#~ msgid "Log out?"
-#~ msgstr "Sair?Você precisará fazer login novamente para usar o aplicativo"
 
 #~ msgid "You will need to log in again to use the app"
 #~ msgstr "Você precisará fazer login novamente para usar o aplicativo"
@@ -831,14 +926,8 @@ msgstr "Imprime informações da versão e sai"
 #~ msgid "Keyboard Shortcuts"
 #~ msgstr "Atalhos de teclado"
 
-#~ msgid "About Cassette"
-#~ msgstr "Sobre o Cassette"
-
 #~ msgid "My Vibe by track"
 #~ msgstr "My Vibe por faixa"
-
-#~ msgid "Show info"
-#~ msgstr "Mostrar informações"
 
 #~ msgid "Play next"
 #~ msgstr "Reproduzir próxima"
@@ -1022,13 +1111,6 @@ msgstr "Imprime informações da versão e sai"
 #, c-format
 #~ msgid "Playlist '%s' is private now"
 #~ msgstr "A lista de reprodução “%s” agora está privada"
-
-#, c-format
-#~ msgid "Window info message: %s"
-#~ msgstr "Mensagem de informações da janela: %s"
-
-#~ msgid "Vladimir Vaskov"
-#~ msgstr "Vladimir Vaskov"
 
 #~ msgid "Rirusha"
 #~ msgstr "Rirusha"

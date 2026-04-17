@@ -9,7 +9,7 @@ configure_file(output: 'config.h', configuration: conf)
 lib_name = 'lib' + meson.project_name()
 lib_gir_name = pascal_name
 
-lib_versioned_name = lib_version + '-' + api_version
+lib_versioned_name = lib_name + '-' + api_version
 lib_versioned_lib_name = lib_name + '-' + api_version
 lib_versioned_gir_name = lib_gir_name + '-' + api_version
 
@@ -97,7 +97,7 @@ if get_option('static')
 endif
 
 libcassette = library(
-  lib_versioned_name,
+  meson.project_name() + '-' + api_version,
   lib_sources_with_resources,
   dependencies: lib_dependencies,
   vala_header: lib_header_name,

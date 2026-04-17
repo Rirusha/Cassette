@@ -16,7 +16,6 @@ modules:
       - -Dis_devel=true
       - -Dlib_only=true
       - -Dwith_demo=true
-      - -Dstatic=false
     sources:
       - type: dir
         path: ../../

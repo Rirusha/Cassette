@@ -1,6 +1,6 @@
-id: space.rirusha.Cassette.Devel
+id: space.rirusha.CassetteDemo
 runtime: org.gnome.Platform
-runtime-version: master
+runtime-version: '50'
 sdk: org.gnome.Sdk
 command: cassette
 finish-args:
@@ -15,15 +15,6 @@ finish-args:
   - --own-name=org.mpris.MediaPlayer2.space.rirusha.Cassette.Devel
   - --env=SERIALIZE_UNKNOWN_PROPS=1
   - --env=SERIALIZE_UNKNOWN_FIELDS=1
-build-options:
-  append-path: /usr/lib/sdk/vala/bin
-  prepend-ld-library-path: /usr/lib/sdk/vala/lib
-cleanup:
-  - /include
-  - /lib/pkgconfig
-  - /share/pkgconfig
-  - /share/vala
-  - "*.a"
 modules:
   - name: api-base
     buildsystem: meson

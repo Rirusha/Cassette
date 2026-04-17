@@ -1,6 +1,6 @@
 id: space.rirusha.Cassette
 runtime: org.gnome.Platform
-runtime-version: 50
+runtime-version: '50'
 sdk: org.gnome.Sdk
 command: cassette
 finish-args:
@@ -12,15 +12,6 @@ finish-args:
   - --socket=wayland
   - --filesystem=xdg-music:ro
   - --filesystem=xdg-download:ro
-build-options:
-  append-path: /usr/lib/sdk/vala/bin
-  prepend-ld-library-path: /usr/lib/sdk/vala/lib
-cleanup:
-  - /include
-  - /lib/pkgconfig
-  - /share/pkgconfig
-  - /share/vala
-  - '*.a'
 modules:
   - name: api-base
     buildsystem: meson

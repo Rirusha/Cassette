@@ -53,5 +53,5 @@ executable(
   vala_args: vala_args,
   include_directories: include_directories('.'),
   dependencies: app_dependencies,
-  install: not get_option('static'),
+  install: get_option('with_demo'),
 )

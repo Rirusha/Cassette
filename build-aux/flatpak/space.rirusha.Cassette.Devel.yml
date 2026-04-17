@@ -1,6 +1,6 @@
 id: space.rirusha.CassetteDemo
 runtime: org.gnome.Platform
-runtime-version: '50'
+runtime-version: 'master'
 sdk: org.gnome.Sdk
 command: cassette
 finish-args:

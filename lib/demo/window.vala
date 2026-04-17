@@ -34,6 +34,10 @@ public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
 
     construct {
         on_visible_child_chandes ();
+
+        if (Config.IS_DEVEL) {
+            add_css_class ("devel");
+        }
     }
 
     [GtkCallback]

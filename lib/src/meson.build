@@ -84,7 +84,7 @@ endforeach
 
 if get_option('static')
   libcassette_static = static_library(
-    lib_versioned_name,
+    lib_name,
     lib_sources_with_resources,
     dependencies: lib_dependencies,
   )

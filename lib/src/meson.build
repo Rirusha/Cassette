@@ -131,7 +131,7 @@ configure_file(
   install_dir: get_option('datadir') / 'vala' / 'vapi',
 )
 
-if not get_option('lib_only') or get_option('with_lib_introspection')
+if get_option('with_lib_introspection')
   g_ir_compiler = find_program('g-ir-compiler')
   lib_gir = custom_target(
     'typelib',
@@ -143,7 +143,7 @@ if not get_option('lib_only') or get_option('with_lib_introspection')
     ],
     input: libcassette,
     output: lib_typelib_name,
-    depends: libcassette,
+    depends: [libcassette, libcassette_static],
     install: get_option('install_lib_s'),
     install_dir: get_option('libdir') / 'girepository-1.0',
   )

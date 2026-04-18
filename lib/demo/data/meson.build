@@ -49,15 +49,19 @@ endif
 
 find_program('blueprint-compiler')
 
-lib_blueprints = custom_target(
+blueprints_demo = custom_target(
   'blueprints',
   input: files(
     'ui/window.blp',
   ),
   output: '.',
+  depends: lib_gir,
+  build_always_stale: true,
   command: [
     find_program('blueprint-compiler'),
     'batch-compile',
+    '--gir-path', meson.current_build_dir() / '../../src',
+    '--typelib-path', meson.current_build_dir() / '../../src',
     '@OUTPUT@',
     '@CURRENT_SOURCE_DIR@',
     '@INPUT@',
@@ -73,7 +77,7 @@ res_file = configure_file(
 resources_demo = gnome.compile_resources(
   'libcassette-resources',
   res_file,
-  dependencies: lib_blueprints,
+  dependencies: blueprints_demo,
   c_name: 'cassette_demo',
 )
 

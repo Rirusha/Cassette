@@ -33,7 +33,7 @@ public sealed class Cassette.Auth : Loadable {
     unowned Adw.PasswordEntryRow token_login;
 
     construct {
-        auth_status_page.icon_name = Config.APP_ID_RELEVANT + "-symbolic";
+        auth_status_page.icon_name = Config.APP_ID_RELEVANT;
 
 #if WITH_WEBKIT
         auth_status_page.description = _("Choose a way to log in to the app. You can log in via your Yandex account or with your token."); // vala-lint=line-length

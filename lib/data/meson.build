@@ -19,7 +19,7 @@ lib_blueprints = custom_target(
 )
 
 resources_name = 'libcassette-resources'
-lib_resource_files = files('@0@.Lib.gresource.xml'.format(app_id))
+lib_resource_files = files('gresource.xml')
 lib_resources = gnome.compile_resources(
   resources_name,
   lib_resource_files,

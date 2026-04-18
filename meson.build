@@ -17,6 +17,8 @@ pkgconfig = import('pkgconfig')
 pascal_name = 'Cassette'
 app_id = 'space.rirusha.Cassette'
 
+is_devel = false
+
 libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 
 add_project_arguments(
@@ -24,21 +26,22 @@ add_project_arguments(
   language: ['c'],
 )
 
-add_project_arguments(
-  '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-  language: ['c']
-)
 name_suffix = ''
 version_suffix = ''
 app_id_suffix = ''
 
-if get_option('is_devel')
+git = find_program('git', required: false)
+if git.found()
+  n_commits = run_command(meson.current_source_dir() + '/tools/get-n-commits', meson.project_version(), check: true).stdout().strip()
+else
+  n_commits = '0'
+endif
+
+if n_commits != '0'
+  is_devel = true
+  version_suffix = '.nightly.' + n_commits
   name_suffix = ' (Devel)'
   app_id_suffix = '.Devel'
-
-  git = find_program('git', required: true)
-  n_commits = run_command(meson.current_source_dir() + '/tools/get-n-commits', meson.project_version(), check: true).stdout().strip()
-  version_suffix = '.nightly.' + n_commits
 endif
 
 version = meson.project_version() + version_suffix
@@ -57,10 +60,10 @@ if not get_option('lib_only')
   subdir('data')
   subdir('po')
   subdir('src')
-
-  gnome.post_install(
-    glib_compile_schemas: true,
-    gtk_update_icon_cache: true,
-    update_desktop_database: true,
-  )
 endif
+
+gnome.post_install(
+  glib_compile_schemas: not get_option('lib_only'),
+  gtk_update_icon_cache: true,
+  update_desktop_database: true,
+)

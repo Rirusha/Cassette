@@ -13,9 +13,8 @@ modules:
     buildsystem: meson
     builddir: true
     config-opts:
-      - -Dis_devel=true
       - -Dlib_only=true
-      - -Dwith_demo=true
+      - -Dinstall_demo=true
     sources:
       - type: dir
         path: ../../

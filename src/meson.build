@@ -4,7 +4,7 @@ conf.set_quoted('APP_ID', app_id)
 conf.set_quoted('APP_ID_RELEVANT', app_id_relevant)
 conf.set_quoted('APP_NAME', app_name)
 conf.set_quoted('G_LOG_DOMAIN', app_id_relevant)
-conf.set10('IS_DEVEL', get_option('is_devel'))
+conf.set10('IS_DEVEL', is_devel)
 conf.set_quoted('VERSION', version)
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', get_option('prefix') / get_option('datadir'))
@@ -38,6 +38,10 @@ vala_sources = files(
   'utils.vala',
 )
 
+c_args = [
+  '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+]
+
 vala_args = []
 
 if get_option('with_webkit')
@@ -53,15 +57,10 @@ sources = [
 
 app_dependencies = [
   libadwaita_dep,
+  lib_dep_static,
   dependency('gee-0.8'),
   dependency('libtape-0', fallback : ['libtape', 'lib_dep']),
 ]
-
-if get_option('static')
-  app_dependencies += lib_dep_static
-else 
-  app_dependencies += lib_dep
-endif
 
 if get_option('with_webkit')
   app_dependencies += dependency('webkitgtk-6.0')
@@ -71,6 +70,7 @@ executable(
   meson.project_name(),
   sources,
   vala_args: vala_args,
+  c_args: c_args,
   include_directories: include_directories('.'),
   dependencies: app_dependencies,
   install: true,

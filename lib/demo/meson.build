@@ -10,7 +10,7 @@ conf.set_quoted('APP_ID', demo_app_id)
 conf.set_quoted('APP_ID_RELEVANT', demo_app_id_relevant)
 conf.set_quoted('APP_NAME', demo_app_name)
 conf.set_quoted('G_LOG_DOMAIN', demo_app_id_relevant)
-conf.set10('IS_DEVEL', get_option('is_devel'))
+conf.set10('IS_DEVEL', is_devel)
 conf.set_quoted('VERSION', version)
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', get_option('prefix') / get_option('datadir'))
@@ -31,6 +31,10 @@ vala_sources = files(
   'window.vala',
 )
 
+c_args = [
+  '-DGETTEXT_PACKAGE="@0@"'.format(lib_name),
+]
+
 vala_args = []
 
 sources = [
@@ -39,19 +43,16 @@ sources = [
   resources_demo,
 ]
 
-app_dependencies = []
-
-if get_option('static')
-  app_dependencies += lib_dep_static
-else 
-  app_dependencies += lib_dep
-endif
+app_dependencies = [
+  lib_dep_static
+]
 
 executable(
   meson.project_name() + '-demo',
   sources,
   vala_args: vala_args,
+  c_args: c_args,
   include_directories: include_directories('.'),
   dependencies: app_dependencies,
-  install: get_option('with_demo'),
+  install: get_option('install_demo'),
 )

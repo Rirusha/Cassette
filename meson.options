@@ -1,8 +1,27 @@
 option(
-  'is_devel',
+  'with_webkit',
+  description: 'Use webkit for auth via yandex or not (use token)',
+  type: 'boolean',
+  value: true
+)
+
+option(
+  'lib_only',
   type: 'boolean',
   value: false
 )
+option(
+  'install_demo',
+  type: 'boolean',
+  value: false
+)
+option(
+  'install_lib_s',
+  description: 'Install libs shared objects (.vapi, .so, .gir, .typelib)',
+  type: 'boolean',
+  value: false
+)
+
 option(
   'with_lib_introspection',
   description: 'Compile GIR instrospection or not',
@@ -12,29 +31,6 @@ option(
 option(
   'with_lib_documentation',
   description: 'Compile valadoc/gtkdoc documentation or not',
-  type: 'boolean',
-  value: false
-)
-option(
-  'lib_only',
-  description: 'Build only libcassette',
-  type: 'boolean',
-  value: false
-)
-option(
-  'static',
-  description: 'Build lib as static',
-  type: 'boolean',
-  value: true
-)
-option(
-  'with_webkit',
-  description: 'Use webkit for auth via yandex or not (use token)',
-  type: 'boolean',
-  value: true
-)
-option(
-  'with_demo',
   type: 'boolean',
   value: false
 )

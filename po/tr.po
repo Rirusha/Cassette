@@ -1,138 +1,271 @@
 # Turkish translation for cassette.
-# Copyright (C) 2024 cassette's COPYRIGHT HOLDER
+# Copyright (C) 2024-2026 cassette's COPYRIGHT HOLDER
 # This file is distributed under the same license as the cassette package.
 #
-# Sabri Ünal <yakushabb@gmail.com>, 2024.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2024.
 # Muhammet Kara <muhammetk@gmail.com>, 2025.
+# Sabri Ünal <yakushabb@gmail.com>, 2024-2026.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-12-10 11:26+0000\n"
-"PO-Revision-Date: 2025-12-22 04:02+0300\n"
-"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"POT-Creation-Date: 2026-04-05 21:32+0000\n"
+"PO-Revision-Date: 2026-04-16 23:04+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Poedit 3.9\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Kaset"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "Hesap Bilgileri"
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "Resmi olmayan Yandex Müzik istemcisi"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "Tarayıcıda Aç"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;yam;music;yandex müzik;"
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "Abonelik sayfasını tarayıcıda aç"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Kaset (Geliştirme)"
+#: data/ui/account/account-info-dialog.blp:118
+msgid "Log out"
+msgstr "Oturumu kapat"
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "Resmi olmayan Yandex Müzik istemcisi (Geliştirici derlemesi)"
+#: data/ui/auth.blp:37 data/ui/main-content.blp:67
+msgid "About"
+msgstr "Hakkında"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
-msgstr ""
-"Linux işletim sistemlerinde Yandex Müzik hizmetini kullanmaya olanak tanıyan "
-"GTK/Adwaita uygulaması."
+#: data/ui/auth.blp:44
+msgid "Welcome to Cassette!"
+msgstr "Kasetʼe Hoş Geldiniz"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Özellikler:"
+#: data/ui/auth.blp:61
+msgid "Login with Yandex account"
+msgstr "Yandex hesabıyla oturum aç"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr ""
-"Çalma listelerini ve albümleri çevrimdışı dinlemek için kaydetmenize olanak "
-"tanır"
+#: data/ui/auth.blp:67
+#| msgid "Yandex.Music search"
+msgid "Yandex Music token"
+msgstr "Yandex Music jetonu"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "Parça bilgi panelinde dinamik bir \"karaoke kipi\" bulunur"
+#: data/ui/auth.blp:80
+msgid "How to obtain token"
+msgstr "Jeton nasıl alınır"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
+#: data/ui/auth.blp:101
+msgid "No Plus subscription"
+msgstr "Plus Aboneliği Yok"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr ""
+#: data/ui/auth.blp:102
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
+msgstr "Yandex Plus aboneliğiniz olmadan uygulamayı kullanamazsınız."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr ""
+#: data/ui/auth.blp:113
+msgid "Back"
+msgstr "Geri"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr ""
+#: data/ui/main-content.blp:55
+msgid "Refresh current page"
+msgstr "Geçerli sayfayı yenile"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "Beğenilenler görünümü"
+#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
+msgid "Stay tuned"
+msgstr "Gelişmeleri takip edin"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "Çalma listeleri görünümü"
+#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
+msgid "Work in progress."
+msgstr "Sürüyor."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "Şarkı sözlerini eşzamanla"
+#: data/ui/main-content.blp:92
+msgid "Keep it up"
+msgstr "Böyle devam et"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "Çalma listesi kuyruğu"
+#: data/ui/main-content.blp:97
+msgid "Keep it up!"
+msgstr "Böyle devam et!"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "Dalgalar görünümü"
+#: data/ui/warning-dialog.blp:24
+msgid "Warning message"
+msgstr "Uyarı iletileri"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "Ana tercihler"
+#: data/ui/warning-dialog.blp:44
+msgid "Ask the community"
+msgstr "Topluluğa sor"
+
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "Yenile"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Sürüm bilgisini yazdır ve çık"
 
+#: src/application.vala:136 src/main.vala:26
+msgid "Cassette"
+msgstr "Kaset"
+
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
+msgid "translator-credits"
+msgstr ""
+"Sabri Ünal <yakushabb@gmail.com>\n"
+"Emin Tufan Çetin <etcetin@gmail.com>"
+
+#: src/ui/about.vala:113
+msgid "Vladimir Romanov"
+msgstr "Vladimir Romanov"
+
+#: src/ui/about.vala:116
+msgid "Telegram channel"
+msgstr "Telegram kanalı"
+
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr "Telegram grubu"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr "MAX grubu"
+
+#: src/ui/about.vala:120
+msgid "Financial support (Tinkoff)"
+msgstr "Maddi destek (Tinkoff)"
+
+#: src/ui/about.vala:121
+msgid "Financial support (Boosty)"
+msgstr "Maddi destek (Boosty)"
+
+#: src/ui/about.vala:123
+msgid "Sponsors"
+msgstr "Sponsorlar"
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "Oturum kapatılsın mı?"
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr "Tüm uygulama verilerini silecek"
+
+#: src/ui/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "_Hayır"
+
+#: src/ui/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "_Evet"
+
+#: src/ui/auth.vala:39
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+"Uygulamaya oturum açma yöntemini seçin. Yandex hesabınızla ya da jetonunuzla "
+"oturum açabilirsiniz."
+
+#: src/ui/auth.vala:49
+msgid "You need your Yandex music token to login."
+msgstr "Oturum açmak için Yandex Müzik jetonu gerekiyor."
+
+#: src/ui/auth.vala:125
+msgid "Failed to login. Probably wrong token"
+msgstr "Oturum açılamadı. Muhtemelen jeton hatalı"
+
+#: src/ui/auth.vala:133
+#, c-format
+msgid "Bad status code: %i"
+msgstr "Kötü durum kodu: %i"
+
+#: src/ui/auth.vala:142
+msgid "Connection problems"
+msgstr "Bağlantı sorunları"
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr "Daha fazla bilgi"
+
+#~ msgid "Unofficial Yandex Music client"
+#~ msgstr "Resmi olmayan Yandex Müzik istemcisi"
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;yam;music;yandex müzik;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Kaset (Geliştirme)"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "Resmi olmayan Yandex Müzik istemcisi (Geliştirici derlemesi)"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "Linux işletim sistemlerinde Yandex Müzik hizmetini kullanmayı sağlayan "
+#~ "GTK/Adwaita uygulaması."
+
+#~ msgid "Features:"
+#~ msgstr "Özellikler:"
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr ""
+#~ "Çalma listelerini ve albümleri çevrim dışı dinlemek için kaydetmenizi "
+#~ "sağlar"
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr "Parça bilgi panelinde dinamik bir \"karaoke kipi\" bulunur"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "Müstehcen ya da çocuklara uygun gibi özel içeriklerin görüntülenmesini ve "
+#~ "oynatılmasını daha hassas özelleştirmenizi sağlar."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "Hizmette kullanılamayan parçaları görüntüler"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "Hangi parçaların neyle değiştirildiğini gösterir"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr ""
+#~ "Kaset resmi olmayan bir istemcidir ve Yandex ile ilişkisi yoktur ya da "
+#~ "Yandex tarafından desteklenmemektedir."
+
+#~ msgid "Liked view"
+#~ msgstr "Beğenilenler görünümü"
+
+#~ msgid "Playlists view"
+#~ msgstr "Çalma listeleri görünümü"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "Şarkı sözlerini eşzamanla"
+
+#~ msgid "Playback queue"
+#~ msgstr "Çalma listesi kuyruğu"
+
+#~ msgid "Waves view"
+#~ msgstr "Dalgalar görünümü"
+
+#~ msgid "Main preferences"
+#~ msgstr "Ana tercihler"
+
 #~ msgid "Unofficial Yandex Music client for GNOME"
 #~ msgstr "GNOME için resmi olmayan Yandex Müzik istemcisi"
-
-#~ msgid "Account information"
-#~ msgstr "Hesap Bilgileri"
-
-#~ msgid "Open in browser"
-#~ msgstr "Tarayıcıda Aç"
 
 # Plus burada Yandex'in ek özellikler içeren bir paketinin adı.
 #~ msgid "Plus"
 #~ msgstr "Plus"
-
-#~ msgid "Log out"
-#~ msgstr "Oturumu kapat"
 
 #~ msgid "Usage mode"
 #~ msgstr "Kullanım kipi"
@@ -203,14 +336,6 @@ msgstr "Sürüm bilgisini yazdır ve çık"
 #~ msgid "Go back"
 #~ msgstr "Geri git"
 
-#~ msgid "Refresh"
-#~ msgstr "Yenile"
-
-#, fuzzy
-#~| msgid "Yandex.Music search"
-#~ msgid "Yandex Music search"
-#~ msgstr "Yandex.Music arama"
-
 #~ msgid "Main Actions"
 #~ msgstr "Ana Eylemler"
 
@@ -247,9 +372,6 @@ msgstr "Sürüm bilgisini yazdır ve çık"
 #~ msgid "Other"
 #~ msgstr "Diğer"
 
-#~ msgid "Share current track"
-#~ msgstr "Geçerli parçayı paylaş"
-
 #~ msgid "Parse url from clipboard"
 #~ msgstr "Panodan URL ayrıştır"
 
@@ -264,9 +386,6 @@ msgstr "Sürüm bilgisini yazdır ve çık"
 
 #~ msgid "All stations"
 #~ msgstr "Tüm istasyonlar"
-
-#~ msgid "No Plus Subscription"
-#~ msgstr "Plus Aboneliği Yok"
 
 #~ msgid "Get Plus"
 #~ msgstr "Plus Al"
@@ -480,26 +599,6 @@ msgstr "Sürüm bilgisini yazdır ve çık"
 #~ msgid "Reconnect"
 #~ msgstr "Yeniden Bağlan"
 
-#~ msgid "Connection problems"
-#~ msgstr "Bağlantı sorunları"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Sabri Ünal <yakushabb@gmail.com>\n"
-#~ "Emin Tufan Çetin <etcetin@gmail.com>"
-
-#~ msgid "Telegram channel"
-#~ msgstr "Telegram kanalı"
-
-#~ msgid "Financial support (Tinkoff)"
-#~ msgstr "Maddi destek (Tinkoff)"
-
-#~ msgid "Financial support (Boosty)"
-#~ msgstr "Maddi destek (Boosty)"
-
-#~ msgid "Sponsors"
-#~ msgstr "Sponsorlar"
-
 #~ msgid "Connection restored"
 #~ msgstr "Bağlantı yeniden sağlandı"
 
@@ -511,9 +610,6 @@ msgstr "Sürüm bilgisini yazdır ve çık"
 
 #~ msgid "Can't parse clipboard content"
 #~ msgstr "Pano içeriği ayrıştırılamadı"
-
-#~ msgid "Log out?"
-#~ msgstr "Oturum kapatılsın mı?"
 
 #~ msgid "Cancel"
 #~ msgstr "İptal"
@@ -753,10 +849,6 @@ msgstr "Sürüm bilgisini yazdır ve çık"
 #, c-format
 #~ msgid "Playlist '%s' is private now"
 #~ msgstr "Çalma listesi '%s' artık özel"
-
-#, c-format
-#~ msgid "Window info message: %s"
-#~ msgstr "Pencere bilgi iletisi: %s"
 
 #~ msgid "Rirusha"
 #~ msgstr "Rirusha"

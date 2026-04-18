@@ -1,8 +1,3 @@
-demo_app_id = 'space.rirusha.CassetteDemo'
-
-demo_app_id_relevant = demo_app_id + app_id_suffix
-demo_app_name = 'Cassette Demo' + name_suffix
-
 subdir('data')
 
 conf = configuration_data()

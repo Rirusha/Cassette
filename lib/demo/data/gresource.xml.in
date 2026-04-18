@@ -3,6 +3,6 @@
   <gresource prefix="/space/rirusha/Cassette/Demo/">
     <file>style.css</file>
     <file>@APP_ID_RELEVANT@.metainfo.xml</file>
-    @UI_RESOURCES@
+    <file preprocess="xml-stripblanks">ui/window.ui</file>
   </gresource>
 </gresources>

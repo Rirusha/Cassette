@@ -15,6 +15,7 @@ py = import('python')
 pkgconfig = import('pkgconfig')
 
 pascal_name = 'Cassette'
+demo_app_id = 'space.rirusha.CassetteDemo'
 app_id = 'space.rirusha.Cassette'
 
 is_devel = false
@@ -45,6 +46,9 @@ if n_commits != '0'
 endif
 
 version = meson.project_version() + version_suffix
+
+demo_app_id_relevant = demo_app_id + app_id_suffix
+demo_app_name = 'Cassette Demo' + name_suffix
 
 app_id_relevant = app_id + app_id_suffix
 app_name = 'Cassette' + name_suffix

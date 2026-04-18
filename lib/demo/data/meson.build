@@ -1,6 +1,6 @@
 non_quoted_conf = configuration_data()
-non_quoted_conf.set('APP_ID', app_id)
-non_quoted_conf.set('APP_ID_RELEVANT', app_id_relevant)
+non_quoted_conf.set('APP_ID', demo_app_id)
+non_quoted_conf.set('APP_ID_RELEVANT', demo_app_id_relevant)
 non_quoted_conf.set('HOMEPAGE', homepage)
 non_quoted_conf.set('BUGTRACKER', bugtracker)
 non_quoted_conf.set('HELP', help)
@@ -49,29 +49,32 @@ endif
 
 find_program('blueprint-compiler')
 
-auto = custom_target('auto',
-  command: [
-    py.find_installation().full_path(), meson.project_source_root() / 'tools' / 'auto-data.py',
-    '@OUTPUT@',
-    '@SOURCE_ROOT@',
-    '@BUILD_ROOT@',
-    '@CURRENT_SOURCE_DIR@',
-    meson.current_build_dir(),
-    demo_app_id_relevant,
-  ],
-  depends: lib_gir,
-  build_always_stale: true,
+lib_blueprints = custom_target(
+  'blueprints',
+  input: files(
+    'ui/window.blp',
+  ),
   output: '.',
+  command: [
+    find_program('blueprint-compiler'),
+    'batch-compile',
+    '@OUTPUT@',
+    '@CURRENT_SOURCE_DIR@',
+    '@INPUT@',
+  ],
 )
 
-# Create an empty file gresource.xml to prevent meson from giving an error during the configuration stage
-run_command(['touch', meson.current_build_dir() / 'gresource.xml'], check: true)
+res_file = configure_file(
+  input: 'gresource.xml.in',
+  output: 'gresource.xml',
+  configuration: non_quoted_conf,
+)
+
 resources_demo = gnome.compile_resources(
-  'cassette-demo-resources',
-  meson.current_build_dir() / 'gresource.xml',
-  source_dir: meson.current_build_dir(),
-  dependencies: auto,
-  c_name: 'cassette_demo'
+  'libcassette-resources',
+  res_file,
+  dependencies: lib_blueprints,
+  c_name: 'cassette_demo',
 )
 
 subdir('icons')

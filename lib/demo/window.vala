@@ -18,7 +18,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/space/rirusha/Cassette/Demo/ui/window.ui")]
+[GtkTemplate (ui = "/space/rirusha/CassetteDemo/ui/window.ui")]
 public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
 
     [GtkChild]

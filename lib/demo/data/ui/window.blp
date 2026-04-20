@@ -62,9 +62,10 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
             notify::visible-child-name => $on_visible_child_chandes();
 
             Adw.ViewStackPage {
-              title: "ComboRow with adaptive menu";
+              title: "ComboRow";
               child: Adw.StatusPage {
                 title: _("ComboRow");
+                icon-name: "sign-language-symbolic";
                 description: _("ComboRow with adaptive menu");
 
                 Adw.Clamp {
@@ -102,7 +103,9 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
             Adw.ViewStackPage {
               title: "MenuButton";
               child: Adw.StatusPage {
-                title: _("MenuButton");
+                icon-name: "open-menu-symbolic";
+                title: _("Adaptive menu button");
+                description: _("Adaptive menu button with attention indicators.");
 
                 Adw.Clamp {
                   maximum-size: 500;
@@ -110,7 +113,7 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                   Cassette.MenuButton {
                     menu: test_menu;
                     halign: center;
-                    icon-name: 'applications-development-symbolic';
+                    icon-name: "open-menu-symbolic";
                     sheet-title: "Test Menu";
                   }
                 }
@@ -125,14 +128,14 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
 
                 Cassette.ListView {
                   spacing: 12;
+                  clamp-maximum-size: 500;
+                  clamp-start-end-margin: 12;
 
-                  header: Gtk.Label {
-                    styles [
-                      "title-1",
-                    ]
-
-                    height-request: 200;
-                    label: _("Label header");
+                  header: Adw.StatusPage {
+                    title: _("ListView");
+                    icon-name: "wheelchair-modified-isa-symbolic";
+                    description: _("ListView but with header, footer and internal clamp.");
+                    height-request: 330;
                   };
 
                   factory: BuilderListItemFactory {
@@ -155,8 +158,8 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                       "title-1",
                     ]
 
-                    height-request: 250;
-                    label: _("Label footer");
+                    margin-bottom: 12;
+                    label: _("End of list");
                   };
                 }
               };

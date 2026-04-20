@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/space/rirusha/Cassette/Demo/">
+  <gresource prefix="/space/rirusha/CassetteDemo/icons/scalable/actions/">
+    <file alias="sign-language-symbolic.svg">assets/icons/sign-language-symbolic.svg</file>
+    <file alias="wheelchair-modified-isa-symbolic.svg">assets/icons/wheelchair-modified-isa-symbolic.svg</file>
+  </gresource>
+  <gresource prefix="/space/rirusha/CassetteDemo/">
     <file>style.css</file>
     <file>@APP_ID_RELEVANT@.metainfo.xml</file>
     <file preprocess="xml-stripblanks">ui/window.ui</file>

@@ -179,6 +179,8 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         }
     }
 
+    public new signal void activate (uint position);
+
     ~ListView () {
         _clamp.unparent ();
         _header?.unparent ();
@@ -194,6 +196,8 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         _clamp.child = _list_view;
         _clamp.set_parent (this);
 
+        _list_view.activate.connect (on_list_view);
+
         bind_property ("hadjustment", _list_view, "hadjustment", SYNC_CREATE | BIDIRECTIONAL);
         bind_property ("hscroll-policy", _list_view, "hscroll-policy", SYNC_CREATE | BIDIRECTIONAL);
         bind_property ("vscroll-policy", _list_view, "vscroll-policy", SYNC_CREATE | BIDIRECTIONAL);
@@ -201,6 +205,10 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         _list_view.vadjustment.changed.connect (update_vadjustment_from_lv);
         _list_view.vadjustment.notify["value"].connect (on_list_view_vvalue_changed);
         update_vadjustment_from_lv ();
+    }
+
+    void on_list_view (uint position) {
+        activate (position);
     }
 
     public void scroll_to (uint pos, Gtk.ListScrollFlags flags, owned Gtk.ScrollInfo? scroll) {

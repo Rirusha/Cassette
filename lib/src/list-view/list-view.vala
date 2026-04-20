@@ -316,8 +316,8 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
                 _header.measure (
                     Gtk.Orientation.VERTICAL,
                     -1,
-                    out min_size,
                     null,
+                    out min_size,
                     null,
                     null
                 );
@@ -351,8 +351,8 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
                 _footer.measure (
                     Gtk.Orientation.VERTICAL,
                     -1,
-                    out min_size,
                     null,
+                    out min_size,
                     null,
                     null
                 );

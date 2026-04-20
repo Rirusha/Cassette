@@ -20,3 +20,4 @@ repo
 .flatpak
 
 *~
+subprojects/.wraplock

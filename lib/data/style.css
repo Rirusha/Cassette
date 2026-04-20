@@ -17,12 +17,32 @@ listview.sheet-list > row {
   background: none;
 }
 
-badge.indicator { background: color-mix(in srgb, currentColor 40%, transparent); border-radius: 999px; min-width: 1.6em; min-height: 1.6em; font-weight: bold; font-size: smaller; }
 
-badge.indicator.dot { min-width: 8px; min-height: 8px; }
 
-badge.indicator > label { color: white; padding-left: 6px; padding-right: 6px; }
+badge.indicator {
+  background: color-mix(in srgb, currentColor 40%, transparent);
+  border-radius: 999px;
+  min-width: 1.6em;
+  min-height: 1.6em;
+  font-weight: bold;
+  font-size: smaller;
+}
 
-badge.indicator.needs-attention { background: var(--accent-bg-color); }
+badge.indicator.dot {
+  min-width: 8px; 
+  min-height: 8px;
+}
 
-badge.indicator.needs-attention > label { color: var(--accent-fg-color); }
+badge.indicator > label {
+  color: white;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+badge.indicator.needs-attention {
+  background: var(--accent-bg-color);
+}
+
+badge.indicator.needs-attention > label {
+  color: var(--accent-fg-color);
+}

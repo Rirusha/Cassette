@@ -13,6 +13,7 @@ i18n = import('i18n')
 gnome = import('gnome')
 py = import('python')
 pkgconfig = import('pkgconfig')
+cc = meson.get_compiler('c')
 
 pascal_name = 'Cassette'
 demo_app_id = 'space.rirusha.CassetteDemo'

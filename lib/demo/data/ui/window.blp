@@ -116,6 +116,51 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                 }
               };
             }
+
+            Adw.ViewStackPage {
+              title: "ListView";
+              child: ScrolledWindow {
+                hscrollbar-policy: never;
+                propagate-natural-height: true;
+
+                Cassette.ListView {
+                  spacing: 12;
+
+                  header: Gtk.Label {
+                    styles [
+                      "title-1",
+                    ]
+
+                    height-request: 200;
+                    label: _("Label header");
+                  };
+
+                  factory: BuilderListItemFactory {
+                    template ListItem {
+                      child: Gtk.Label {
+                        label: bind template.item as <StringObject>.string;
+                        height-request: 48;
+                      };
+                    }
+                  };
+
+                  model: SingleSelection {
+                    model: StringList {
+                      strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet",  "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet"];
+                    };
+                  };
+
+                  footer: Gtk.Label {
+                    styles [
+                      "title-1",
+                    ]
+
+                    height-request: 250;
+                    label: _("Label footer");
+                  };
+                }
+              };
+            }
           };
         }
       };

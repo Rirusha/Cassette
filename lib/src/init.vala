@@ -52,6 +52,7 @@ namespace Cassette {
         typeof (MenuItem).ensure ();
         typeof (ComboRow).ensure ();
         typeof (IndicatorBin).ensure ();
+        typeof (ListView).ensure ();
 
         Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
         Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");

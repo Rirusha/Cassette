@@ -3,6 +3,7 @@
   <gresource prefix="/space/rirusha/Cassette/Lib/">
     <file>style.css</file>
     <file preprocess="xml-stripblanks">ui/combo-row.ui</file>
+    <file preprocess="xml-stripblanks">ui/content.ui</file>
     <file preprocess="xml-stripblanks">ui/default-row-content.ui</file>
     <file preprocess="xml-stripblanks">ui/popover-menu-item.ui</file>
     <file preprocess="xml-stripblanks">ui/popover-menu.ui</file>

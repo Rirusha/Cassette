@@ -2,6 +2,7 @@ lib_blueprints = custom_target(
   'blueprints',
   input: files(
     'ui/combo-row.blp',
+    'ui/content.blp',
     'ui/default-row-content.blp',
     'ui/popover-menu-item.blp',
     'ui/popover-menu.blp',

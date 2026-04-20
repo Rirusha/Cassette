@@ -39,6 +39,8 @@ lib_vala_sources = files(
   'combo-row/combo-row.vala',
   'combo-row/default-row-content.vala',
 
+  'content/list-view.vala',
+
   'menu-button/menu/buildable.vala',
   'menu-button/menu/item.vala',
   'menu-button/menu/menu.vala',
@@ -75,6 +77,7 @@ lib_sources_with_resources = lib_sources + [lib_resources]
 
 lib_dependencies = [
   libadwaita_dep,
+  cc.find_library('m'),
 ]
 
 lib_deps_pkgs = []

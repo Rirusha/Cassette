@@ -101,9 +101,9 @@ internal sealed class Cassette.SheetMenuItem : Adw.ActionRow {
         );
 
         tracker.set_parent (menu_real_parent);
-        item.bind_property ("action-name", this, "action-name", SYNC_CREATE);
         item.bind_property ("action-target", this, "action-target", SYNC_CREATE);
 
+        item.bind_property ("action-name", this, "action-name", SYNC_CREATE);
         tracker.bind_property ("sensitive", this, "sensitive", BindingFlags.SYNC_CREATE);
     }
 

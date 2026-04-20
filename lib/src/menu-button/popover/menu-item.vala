@@ -96,8 +96,8 @@ internal sealed class Cassette.PopoverMenuItem : Gtk.ListBoxRow {
             item: item
         );
 
-        item.bind_property ("action-name", this, "action-name", SYNC_CREATE);
         item.bind_property ("action-target", this, "action-target", SYNC_CREATE);
+        item.bind_property ("action-name", this, "action-name", SYNC_CREATE);
     }
 
     construct {

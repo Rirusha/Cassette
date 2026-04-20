@@ -39,7 +39,7 @@ lib_vala_sources = files(
   'combo-row/combo-row.vala',
   'combo-row/default-row-content.vala',
 
-  'content/list-view.vala',
+  'list-view/list-view.vala',
 
   'menu-button/menu/buildable.vala',
   'menu-button/menu/item.vala',

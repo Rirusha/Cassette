@@ -77,7 +77,6 @@ lib_sources_with_resources = lib_sources + [lib_resources]
 
 lib_dependencies = [
   libadwaita_dep,
-  cc.find_library('m'),
 ]
 
 lib_deps_pkgs = []

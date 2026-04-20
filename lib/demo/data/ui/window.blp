@@ -214,6 +214,13 @@ Cassette.Menu test_menu {
     }
 
     Cassette.MenuItem {
+      label: "Test action with target";
+      action-name: "test.test-action";
+      action-target: "'hello!'";
+      badge-number: 20;
+    }
+
+    Cassette.MenuItem {
       label: "Action with shortcut";
       action-name: "app.quit";
     }

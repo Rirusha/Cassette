@@ -38,6 +38,16 @@ public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
         if (Config.IS_DEVEL) {
             add_css_class ("devel");
         }
+
+        var grp = new SimpleActionGroup ();
+        var test_action = new SimpleAction ("test-action", VariantType.STRING);
+        test_action.activate.connect (on_test_action_activate);
+        grp.add_action (test_action);
+        insert_action_group ("test", grp);
+    }
+
+    void on_test_action_activate (Variant? parameter) {
+        message (parameter.get_string ());
     }
 
     [GtkCallback]

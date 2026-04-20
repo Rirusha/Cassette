@@ -27,6 +27,8 @@ public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
     unowned Adw.NavigationPage content_nav_page;
     [GtkChild]
     unowned Adw.ViewStack stack;
+    [GtkChild]
+    unowned Gtk.StringList string_list;
 
     public Window (CassetteDemo.Application app) {
         Object (application: app);
@@ -44,6 +46,11 @@ public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
         test_action.activate.connect (on_test_action_activate);
         grp.add_action (test_action);
         insert_action_group ("test", grp);
+    }
+
+    [GtkCallback]
+    void add_row () {
+        string_list.append (Uuid.string_random ());
     }
 
     void on_test_action_activate (Variant? parameter) {

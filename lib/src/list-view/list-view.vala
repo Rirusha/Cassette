@@ -231,7 +231,6 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
 
         if (!at_end || should_set_upper) {
             vadjustment.page_increment = _list_view.vadjustment.page_increment;
-            vadjustment.page_size = _list_view.vadjustment.page_size;
             vadjustment.step_increment = _list_view.vadjustment.step_increment;
             vadjustment.upper = _list_view.vadjustment.upper + _lower_border + _upper_border;
             vadjustment.lower = _list_view.vadjustment.lower;
@@ -305,9 +304,12 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
             return;
         }
 
+        vadjustment.page_size = height;
+
         int available = height;
 
         int list_view_y = 0;
+        int list_view_h = 0;
 
         if (_header != null) {
             if (_header.should_layout ()) {
@@ -348,11 +350,22 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
             if (_footer.should_layout ()) {
                 int min_size;
 
+                int lv_nav_size;
+
                 _footer.measure (
                     Gtk.Orientation.VERTICAL,
                     -1,
                     null,
                     out min_size,
+                    null,
+                    null
+                );
+
+                _clamp.measure (
+                    Gtk.Orientation.VERTICAL,
+                    -1,
+                    null,
+                    out lv_nav_size,
                     null,
                     null
                 );
@@ -368,9 +381,16 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
                     vadjustment.upper - (vadjustment.value + vadjustment.page_size)
                 ).clamp (0, min_size);
 
+                var y = height - (min_size - offset) + spacing;
+
+                if (list_view_y + lv_nav_size < height) {
+                    y = list_view_y + lv_nav_size + spacing;
+                    list_view_h = lv_nav_size;
+                }
+
                 var alloc = Gtk.Allocation () {
                     x = 0,
-                    y = height - (min_size - offset) + spacing,
+                    y = y,
                     width = width,
                     height = min_size - spacing
                 };
@@ -381,11 +401,17 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         }
 
         if (_clamp.should_layout ()) {
+            int h;
+            if (model.get_n_items () > 0) {
+                h = (list_view_h == 0 ? available : list_view_h).clamp (0, int.MAX);
+            } else {
+                h = 0;
+            }
             var alloc = Gtk.Allocation () {
                 x = 0,
                 y = list_view_y,
                 width = width,
-                height = available
+                height = h
             };
             _clamp.allocate_size (alloc, baseline);
         }

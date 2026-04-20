@@ -135,6 +135,12 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                     title: _("ListView");
                     icon-name: "wheelchair-modified-isa-symbolic";
                     description: _("ListView but with header, footer and internal clamp.");
+
+                    Button {
+                      hexpand: false;
+                      label: _("Add row");
+                      clicked => $add_row();
+                    }
                   };
 
                   factory: BuilderListItemFactory {
@@ -147,8 +153,8 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                   };
 
                   model: SingleSelection {
-                    model: StringList {
-                      strings: ["Lorem", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet",  "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet", "consectetur", "adipiscing", "ipsum dolor", "sit amet"];
+                    model: StringList string_list {
+                      strings: [];
                     };
                   };
 

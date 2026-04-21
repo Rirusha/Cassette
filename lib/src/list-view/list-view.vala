@@ -311,8 +311,6 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
 
             scrollable_child = _list_view;
         }
-
-        queue_allocate ();
     }
 
     void on_list_view_activate (uint position) {
@@ -332,17 +330,9 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
             return;
         }
 
-        bool at_end = vadjustment.value >=
-            scrollable_child.vadjustment.upper - _upper_border - scrollable_child.vadjustment.page_size;
-        bool should_set_upper = vadjustment.upper !=
-            scrollable_child.vadjustment.upper + _lower_border + _upper_border;
-
-        if (!at_end || should_set_upper) {
-            vadjustment.page_increment = scrollable_child.vadjustment.page_increment;
-            vadjustment.step_increment = scrollable_child.vadjustment.step_increment;
-            vadjustment.upper = scrollable_child.vadjustment.upper + _lower_border + _upper_border;
-            vadjustment.lower = scrollable_child.vadjustment.lower;
-        }
+        vadjustment.lower = scrollable_child.vadjustment.lower;
+        vadjustment.page_increment = scrollable_child.vadjustment.page_increment;
+        vadjustment.step_increment = scrollable_child.vadjustment.step_increment;
 
         queue_allocate ();
     }
@@ -421,49 +411,48 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
             return;
         }
 
-        vadjustment.page_size = height;
-        vadjustment.upper = double.max (
-            height,
-            _lower_border + _upper_border + scrollable_child.vadjustment.upper
-        );
+        bool header_layout = false;
+        bool footer_layout = false;
 
-        int header_nav_size = 0;
-        int footer_nav_size = 0;
-        int clamp_nav_size;
+        int header_nat_size = 0;
+        int footer_nat_size = 0;
+        int clamp_nat_size;
 
         if (_header != null) {
             if (_header.should_layout ()) {
+                header_layout = true;
                 _header.measure (
                     Gtk.Orientation.VERTICAL,
                     -1,
                     null,
-                    out header_nav_size,
+                    out header_nat_size,
                     null,
                     null
                 );
             }
         }
-        var header_min_size = header_nav_size + spacing;
-        if (_lower_border != header_min_size) {
-            _lower_border = header_min_size;
+        var header_size_spaced = header_nat_size + spacing;
+        if (_lower_border != header_size_spaced) {
+            _lower_border = header_size_spaced;
             on_scrollable_child_changed ();
         }
 
         if (_footer != null) {
             if (_footer.should_layout ()) {
+                footer_layout = true;
                 _footer.measure (
                     Gtk.Orientation.VERTICAL,
                     -1,
                     null,
-                    out footer_nav_size,
+                    out footer_nat_size,
                     null,
                     null
                 );
             }
         }
-        var footer_min_size = footer_nav_size + spacing;
-        if (_upper_border != footer_min_size) {
-            _upper_border = footer_min_size;
+        var footer_size_spaced = footer_nat_size + spacing;
+        if (_upper_border != footer_size_spaced) {
+            _upper_border = footer_size_spaced;
             on_scrollable_child_changed ();
         }
 
@@ -471,7 +460,7 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
             Gtk.Orientation.VERTICAL,
             -1,
             null,
-            out clamp_nav_size,
+            out clamp_nat_size,
             null,
             null
         );
@@ -479,75 +468,78 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         int available = height;
 
         int list_view_y = 0;
-        int list_view_h = 0;
-        if (list_view_y + clamp_nav_size < height) {
-            list_view_h = clamp_nav_size;
+        bool list_view_fit = list_view_y + clamp_nat_size < height;
+
+        if (header_layout) {
+            var offset = (int) (vadjustment.value)
+                .clamp (0, header_size_spaced);
+
+            if (header_size_spaced + clamp_nat_size + footer_size_spaced < height) {
+                offset = 0;
+                vadjustment.value = 0;
+            } else if (header_size_spaced - offset + clamp_nat_size + footer_size_spaced < height) {
+                offset = ((height - (header_size_spaced + clamp_nat_size + footer_size_spaced))
+                    .clamp (-header_size_spaced, 0))
+                    .abs ();
+            }
+
+            var alloc = Gtk.Allocation () {
+                x = 0,
+                y = -offset,
+                width = width,
+                height = header_size_spaced - spacing
+            };
+
+            available -= header_size_spaced - offset;
+            _header.allocate_size (alloc, baseline);
+            list_view_y += header_size_spaced - offset;
         }
 
-        if (_header != null) {
-            if (_header.should_layout ()) {
-                var offset = (int) (vadjustment.value)
-                    .clamp (0, header_min_size);
+        int list_view_size = 0;
 
-                if (header_min_size + clamp_nav_size + footer_nav_size < height) {
-                    offset = 0;
-                    vadjustment.value = 0;
-                } else if (header_min_size - offset + clamp_nav_size + footer_nav_size < height) {
-                    offset = ((height - (header_min_size + clamp_nav_size + footer_nav_size))
-                        .clamp (-header_min_size, 0))
-                        .abs ();
-                }
+        if (footer_layout) {
+            var offset = (int) (
+                vadjustment.upper - (vadjustment.value + vadjustment.page_size)
+            ).clamp (0, footer_size_spaced);
 
-                var alloc = Gtk.Allocation () {
-                    x = 0,
-                    y = -offset,
-                    width = width,
-                    height = header_min_size - spacing
-                };
+            available -= footer_size_spaced - offset;
 
-                available -= header_min_size - offset;
-                _header.allocate_size (alloc, baseline);
-                list_view_y += header_min_size - offset;
+            if (model.get_n_items () > 0 || (model.get_n_items () == 0 && placeholder != null)) {
+                list_view_size = (!list_view_fit ? available : clamp_nat_size).clamp (0, int.MAX);
             }
-        }
 
-        if (_footer != null) {
-            if (_footer.should_layout ()) {
-                var offset = (int) (
-                    vadjustment.upper - (vadjustment.value + vadjustment.page_size)
-                ).clamp (0, footer_min_size);
+            int y = list_view_y + list_view_size + spacing;
 
-                var y = height - (footer_min_size - offset) + spacing;
+            var alloc = Gtk.Allocation () {
+                x = 0,
+                y = y,
+                width = width,
+                height = footer_size_spaced - spacing
+            };
 
-                if (list_view_y + clamp_nav_size < height) {
-                    y = list_view_y + clamp_nav_size + spacing;
-                }
-
-                var alloc = Gtk.Allocation () {
-                    x = 0,
-                    y = y,
-                    width = width,
-                    height = footer_min_size - spacing
-                };
-
-                available -= footer_min_size - offset;
-                _footer.allocate_size (alloc, baseline);
-            }
+            _footer.allocate_size (alloc, baseline);
         }
 
         if (_clamp.should_layout ()) {
-            int h = 0;
-            if (model.get_n_items () > 0 || (model.get_n_items () == 0 && placeholder != null)) {
-                h = (list_view_h == 0 ? available : list_view_h).clamp (0, int.MAX);
+            if (!footer_layout) {
+                if (model.get_n_items () > 0 || (model.get_n_items () == 0 && placeholder != null)) {
+                    list_view_size = (!list_view_fit ? available : clamp_nat_size).clamp (0, int.MAX);
+                }
             }
             var alloc = Gtk.Allocation () {
                 x = 0,
                 y = list_view_y,
                 width = width,
-                height = h
+                height = list_view_size
             };
             _clamp.allocate_size (alloc, baseline);
         }
+
+        vadjustment.page_size = height;
+        vadjustment.upper = double.max (
+            height,
+            _lower_border + _upper_border + scrollable_child.vadjustment.upper
+        );
     }
 
     void compute_size (

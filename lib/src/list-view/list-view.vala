@@ -283,6 +283,7 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         _clamp.set_parent (this);
 
         _list_view.activate.connect (on_list_view_activate);
+        bind_property ("css-classes", _list_view, "css-classes", SYNC_CREATE);
 
         on_items_changed ();
     }

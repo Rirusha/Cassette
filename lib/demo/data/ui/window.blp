@@ -131,15 +131,31 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                   clamp-maximum-size: 500;
                   clamp-start-end-margin: 12;
 
+                  placeholder: Adw.StatusPage {
+                    icon-name: "face-sad-symbolic";
+                    title: _("Nothing to show");
+                  };
+
                   header: Adw.StatusPage {
                     title: _("ListView");
                     icon-name: "wheelchair-modified-isa-symbolic";
                     description: _("ListView but with header, footer and internal clamp.");
 
-                    Button {
-                      hexpand: false;
-                      label: _("Add row");
-                      clicked => $add_row();
+                    Box {
+                      spacing: 12;
+                      halign: center;
+
+                      Button {
+                        hexpand: false;
+                        label: _("Add row");
+                        clicked => $add_row();
+                      }
+
+                      Button {
+                        hexpand: false;
+                        label: _("Remove first row");
+                        clicked => $remove_first_row();
+                      }
                     }
                   };
 

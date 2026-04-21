@@ -49,6 +49,13 @@ public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
     }
 
     [GtkCallback]
+    void remove_first_row () {
+        if (string_list.get_n_items () > 0) {
+            string_list.remove (0);
+        }
+    }
+
+    [GtkCallback]
     void add_row () {
         string_list.append (Uuid.string_random ());
     }

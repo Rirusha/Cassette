@@ -22,7 +22,7 @@ desktop_file = i18n.merge_file(
   output: demo_app_id_relevant + '.desktop',
   type: 'desktop',
   po_dir: meson.project_source_root() / 'po',
-  install: get_option('install_demo'),
+  install: true,
   install_dir: get_option('datadir') / 'applications'
 )
 
@@ -38,7 +38,7 @@ appstream_file = i18n.merge_file(
     configuration: non_quoted_conf),
   output: demo_app_id_relevant + '.metainfo.xml',
   po_dir: meson.project_source_root() / 'po',
-  install: get_option('install_demo'),
+  install: true,
   install_dir: get_option('datadir') / 'metainfo'
 )
 

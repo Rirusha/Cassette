@@ -69,6 +69,6 @@ endif
 
 gnome.post_install(
   glib_compile_schemas: not get_option('lib_only'),
-  gtk_update_icon_cache: true,
-  update_desktop_database: true,
+  gtk_update_icon_cache: (not get_option('lib_only')) or get_option('install_demo'),
+  update_desktop_database: (not get_option('lib_only')) or get_option('install_demo'),
 )

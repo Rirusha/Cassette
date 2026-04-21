@@ -150,6 +150,24 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         }
     }
 
+    public int clamp_top_margin {
+        get {
+            return _clamp.margin_top;
+        }
+        set {
+            _clamp.margin_top = value;
+        }
+    }
+
+    public int clamp_bottom_margin {
+        get {
+            return _clamp.margin_bottom;
+        }
+        set {
+            _clamp.margin_bottom = value;
+        }
+    }
+
     public Gtk.Adjustment hadjustment { get; set construct; }
 
     public Gtk.ScrollablePolicy hscroll_policy { get; set; }

@@ -273,10 +273,10 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         if (vadjustment.value < _lower_vadjustment_border) {
             if (model != null) {
                 if (model.get_n_items () > 0) {
-                    if (scrollable_child is Gtk.ListView) {
-                        ((Gtk.ListView) scrollable_child).scroll_to (0, NONE, null);
-                    } else {
+                    if (scrollable_child == placeholder_viewport) {
                         scrollable_child.vadjustment.value = double.MIN;
+                    } else {
+                        scroll_to (0, NONE, null);
                     }
                 }
             }
@@ -284,10 +284,10 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         } else if (vadjustment.value > vadjustment.upper - _upper_vadjustment_border - vadjustment.page_size) {
             if (model != null) {
                 if (model.get_n_items () > 0) {
-                    if (scrollable_child is Gtk.ListView) {
-                        ((Gtk.ListView) scrollable_child).scroll_to (model.get_n_items () - 1, NONE, null);
-                    } else {
+                    if (scrollable_child == placeholder_viewport) {
                         scrollable_child.vadjustment.value = double.MAX;
+                    } else {
+                        scroll_to (model.get_n_items () - 1, NONE, null);
                     }
                 }
             }

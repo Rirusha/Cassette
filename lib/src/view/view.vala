@@ -18,7 +18,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
+public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
     Binding hadjustment_binding;
     Binding hscroll_policy_binding;
@@ -65,69 +65,6 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
                 on_scrollable_child_changed ();
             }
             queue_allocate ();
-        }
-    }
-
-    public Gtk.SelectionModel? model {
-        get {
-            return _list_view.model;
-        }
-        set {
-            if (_list_view.model != null) {
-                _list_view.model.items_changed.disconnect (on_items_changed);
-            }
-
-            _list_view.model = value;
-
-            if (_list_view.model != null) {
-                _list_view.model.items_changed.connect_after (on_items_changed);
-            }
-            on_items_changed ();
-        }
-    }
-
-    public Gtk.ListItemFactory? factory {
-        get {
-            return _list_view.factory;
-        }
-        set {
-            _list_view.factory = value;
-        }
-    }
-
-    public Gtk.ListItemFactory? header_factory {
-        get {
-            return _list_view.header_factory;
-        }
-        set {
-            _list_view.header_factory = value;
-        }
-    }
-
-    public bool show_separator {
-        get {
-            return _list_view.show_separators;
-        }
-        set {
-            _list_view.show_separators = value;
-        }
-    }
-
-    public bool single_click_activate {
-        get {
-            return _list_view.single_click_activate;
-        }
-        set {
-            _list_view.single_click_activate = value;
-        }
-    }
-
-    public Gtk.ListTabBehavior tab_behavior {
-        get {
-            return _list_view.tab_behavior;
-        }
-        set {
-            _list_view.tab_behavior = value;
         }
     }
 
@@ -209,9 +146,7 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         maximum_size = int.MAX
     };
 
-    Gtk.ListView _list_view = new Gtk.ListView (null, null) {
-        overflow = VISIBLE
-    };
+    protected abstract Gtk.Scrollable view_widget { get; }
 
     Gtk.Viewport placeholder_viewport = new Gtk.Viewport (null, null);
 
@@ -266,9 +201,9 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         }
     }
 
-    public new signal void activate (uint position);
+    public abstract Gtk.SelectionModel? model { get; set; }
 
-    ~ListView () {
+    ~View () {
         _clamp.unparent ();
         _header?.unparent ();
         _footer?.unparent ();
@@ -282,19 +217,16 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
         overflow = HIDDEN;
         _clamp.set_parent (this);
 
-        _list_view.activate.connect (on_list_view_activate);
-        bind_property ("css-classes", _list_view, "css-classes", SYNC_CREATE);
-
-        on_items_changed ();
+        bind_property ("css-classes", view_widget, "css-classes", SYNC_CREATE);
     }
 
-    void on_items_changed () {
+    protected void on_model_items_changed (ListModel? model) {
         bool show_placeholder = false;
 
-        if (_list_view.model == null) {
+        if (model == null) {
             show_placeholder = true;
         } else {
-            if (_list_view.model.get_n_items () == 0 && placeholder_viewport.child != null) {
+            if (model.get_n_items () == 0 && placeholder_viewport.child != null) {
                 show_placeholder = true;
             }
         }
@@ -306,21 +238,13 @@ public sealed class Cassette.ListView : Gtk.Widget, Gtk.Scrollable {
 
             scrollable_child = placeholder_viewport;
         } else {
-            if (scrollable_child == _list_view) {
+            if (scrollable_child == view_widget) {
                 return;
             }
 
-            scrollable_child = _list_view;
+            scrollable_child = view_widget;
         }
         queue_allocate ();
-    }
-
-    void on_list_view_activate (uint position) {
-        activate (position);
-    }
-
-    public void scroll_to (uint pos, Gtk.ListScrollFlags flags, owned Gtk.ScrollInfo? scroll) {
-        _list_view.scroll_to (pos, flags, scroll);
     }
 
     void on_scrollable_child_vvalue_changed () {

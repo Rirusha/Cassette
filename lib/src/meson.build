@@ -39,8 +39,6 @@ lib_vala_sources = files(
   'combo-row/combo-row.vala',
   'combo-row/default-row-content.vala',
 
-  'list-view/list-view.vala',
-
   'menu-button/menu/buildable.vala',
   'menu-button/menu/item.vala',
   'menu-button/menu/menu.vala',
@@ -60,6 +58,10 @@ lib_vala_sources = files(
 
   'menu-button/indicator-bin.vala',
   'menu-button/menu-button.vala',
+
+  'view/grid-view.vala',
+  'view/list-view.vala',
+  'view/view.vala',
 
   'badge.vala',
   'enums.vala',

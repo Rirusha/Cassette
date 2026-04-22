@@ -174,13 +174,35 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                     };
                   };
 
-                  footer: Gtk.Label {
-                    styles [
-                      "title-1",
-                    ]
+                  footer: Box {
+                    orientation: vertical;
+                    spacing: 200;
 
-                    margin-bottom: 120;
-                    label: _("End of list");
+                    Box {
+                      spacing: 12;
+                      halign: center;
+
+                      Button {
+                        hexpand: false;
+                        label: _("Add row");
+                        clicked => $add_row();
+                      }
+
+                      Button {
+                        hexpand: false;
+                        label: _("Remove first row");
+                        clicked => $remove_first_row();
+                      }
+                    }
+
+                    Label {
+                      styles [
+                        "title-1",
+                      ]
+
+                      label: _("Footer");
+                      margin-bottom: 12;
+                    }
                   };
                 }
               };

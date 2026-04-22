@@ -267,6 +267,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         return false;
     }
 
+    public abstract void scroll_to (uint pos, Gtk.ListScrollFlags flags, owned Gtk.ScrollInfo? scroll);
+
     void vvalue_changed () {
         if (vadjustment.value < _lower_vadjustment_border) {
             if (model != null) {

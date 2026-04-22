@@ -109,15 +109,15 @@ public sealed class Cassette.ListView : View {
         on_items_changed ();
     }
 
-    public void scroll_to (uint pos, Gtk.ListScrollFlags flags, owned Gtk.ScrollInfo? scroll) {
-        _list_view.scroll_to (pos, flags, scroll);
-    }
-
     void on_list_view_activate (uint position) {
         activate (position);
     }
 
     void on_items_changed () {
         on_model_items_changed (model);
+    }
+
+    public override void scroll_to (uint pos, Gtk.ListScrollFlags flags, owned Gtk.ScrollInfo? scroll) {
+        _list_view.scroll_to (pos, flags, scroll);
     }
 }

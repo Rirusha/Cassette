@@ -511,7 +511,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
     }
 
     void trigger_scrolled_child_value_change () {
-        scrollable_child.vadjustment.value_changed ();
+        vvalue_changed ();
     }
 
     void compute_size (

@@ -8,10 +8,14 @@ include:
 
 variables:
   APP_ID: 'space.rirusha.Cassette.Devel'
+  APP_ID_DEMO: 'space.rirusha.CassetteDemo.Devel'
   MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/${APP_ID}.yml
+  MANIFEST_DEMO_PATH: $CI_PROJECT_DIR/build-aux/flatpak/${APP_ID_DEMO}.yml
   BUNDLE: "${APP_ID}.flatpak"
+  BUNDLE_DEMO: "${APP_ID_DEMO}.flatpak"
   RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
   FLATPAK_MODULE: "cassette"
+  FLATPAK_MODULE_DEMO: "cassette-demo"
 
 stages:
   - lint-vala
@@ -92,6 +96,7 @@ test-mr:
         export REWRITE_RUN_TESTS="--no-run-tests"
       fi
       rewrite-flatpak-manifest ${REWRITE_RUN_TESTS} ${MANIFEST_PATH} ${FLATPAK_MODULE} -- ${CONFIG_OPTS}
+      rewrite-flatpak-manifest ${REWRITE_RUN_TESTS} ${MANIFEST_DEMO_PATH} ${FLATPAK_MODULE_DEMO} -- ${CONFIG_OPTS}
 
     - |
       if [ ${ARCH} = "x86_64" ]; then
@@ -104,8 +109,14 @@ test-mr:
       dbus-run-session
       flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse flatpak_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
 
+    - >-
+      xvfb-run -a -s "-screen 0 1024x768x24" --
+      dbus-run-session
+      flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse flatpak_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_DEMO_PATH}
+
     # Generate a Flatpak bundle
     - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE} ${APP_ID} ${BRANCH}
+    - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE_DEMO} ${APP_ID_DEMO} ${BRANCH}
 
     - echo "[Flatpak Repo]" > repo/index.flatpakrepo
     - echo "Title=Cassette Nightly Repo" >> repo/index.flatpakrepo

@@ -8,7 +8,7 @@ include:
 
 variables:
   APP_ID: 'space.rirusha.Cassette.Devel'
-  APP_ID_DEMO: 'space.rirusha.CassetteDemo.Devel'
+  APP_ID_DEMO: 'space.rirusha.CassetteDemo'
   MANIFEST_PATH: $CI_PROJECT_DIR/build-aux/flatpak/${APP_ID}.yml
   MANIFEST_DEMO_PATH: $CI_PROJECT_DIR/build-aux/flatpak/${APP_ID_DEMO}.yml
   BUNDLE: "${APP_ID}.flatpak"
@@ -136,11 +136,8 @@ test-mr:
     when: 'always'
     paths:
       - $BUNDLE
+      - $BUNDLE_DEMO
       - 'repo.tar'
-      - '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/meson-log.txt'
-      - '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.txt'
-    reports:
-      junit: '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.junit.xml'
     expire_in: 14 days
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == 'push'

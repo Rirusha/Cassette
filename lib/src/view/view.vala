@@ -33,8 +33,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 hadjustment_binding.unbind ();
                 hscroll_policy_binding.unbind ();
                 vscroll_policy_binding.unbind ();
-                scrollable_child.vadjustment.changed.disconnect (on_scrollable_child_changed);
-                scrollable_child.vadjustment.notify["value"].disconnect (on_scrollable_child_vvalue_changed);
+                scrollable_child.vadjustment.changed.disconnect (update_vadjustment_data);
             }
 
             assert (value is Gtk.Widget);
@@ -60,9 +59,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                     SYNC_CREATE | BIDIRECTIONAL
                 );
 
-                scrollable_child.vadjustment.changed.connect (on_scrollable_child_changed);
-                scrollable_child.vadjustment.notify["value"].connect (on_scrollable_child_vvalue_changed);
-                on_scrollable_child_changed ();
+                scrollable_child.vadjustment.changed.connect (update_vadjustment_data);
+                update_vadjustment_data ();
             }
             queue_allocate ();
         }
@@ -116,15 +114,15 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         }
         set construct {
             if (_vadjustment != null) {
-                _vadjustment.value_changed.disconnect (vvalue_changed);
+                _vadjustment.value_changed.disconnect (vvalue_changed_with_allocate);
             }
 
             _vadjustment = value;
 
             if (_vadjustment != null) {
-                _vadjustment.value_changed.connect_after (vvalue_changed);
-                on_scrollable_child_changed ();
-                vvalue_changed ();
+                _vadjustment.value_changed.connect_after (vvalue_changed_with_allocate);
+                update_vadjustment_data ();
+                vvalue_changed_with_allocate ();
             }
         }
     }
@@ -247,11 +245,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         queue_allocate ();
     }
 
-    void on_scrollable_child_vvalue_changed () {
-        vadjustment.value = scrollable_child.vadjustment.value + _lower_vadjustment_border;
-    }
-
-    void on_scrollable_child_changed () {
+    void update_vadjustment_data () {
         if (vadjustment == null) {
             return;
         }
@@ -276,7 +270,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                     if (scrollable_child == placeholder_viewport) {
                         scrollable_child.vadjustment.value = double.MIN;
                     } else {
-                        scroll_to (0, NONE, null);
+                        //  Focus needs for Gtk.*View vadjustment value correction
+                        scroll_to (0, FOCUS, null);
                     }
                 }
             }
@@ -287,7 +282,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                     if (scrollable_child == placeholder_viewport) {
                         scrollable_child.vadjustment.value = double.MAX;
                     } else {
-                        scroll_to (model.get_n_items () - 1, NONE, null);
+                        //  Focus needs for Gtk.*View vadjustment value correction
+                        scroll_to (model.get_n_items () - 1, FOCUS, null);
                     }
                 }
             }
@@ -295,7 +291,10 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         } else {
             scrollable_child.vadjustment.value = vadjustment.value - _lower_vadjustment_border;
         }
+    }
 
+    void vvalue_changed_with_allocate () {
+        vvalue_changed ();
         queue_allocate ();
     }
 
@@ -455,6 +454,10 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 ).clamp (0, footer_natural_size_spaced);
 
                 footer_visible_part = footer_natural_size_spaced - footer_offset;
+
+                if (footer_offset == 0) {
+                    vadjustment.value = new_upper - height;
+                }
             }
 
             var available = height - (header_visible_part + footer_visible_part);
@@ -502,16 +505,13 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
         //  Set page_size to height, so scroll alwys has normal scroll step
         vadjustment.page_size = height;
+
         //  If all_fits, we should set upper to height, so bottom ScrolledWindow
         //  effect doesn't show up
         vadjustment.upper = new_upper;
 
-        //  ListView tries to scroll to 0, so we trigger value updating
-        Idle.add_once (trigger_scrolled_child_value_change);
-    }
-
-    void trigger_scrolled_child_value_change () {
-        vvalue_changed ();
+        //  Correct scrolled child value
+        vadjustment.value_changed ();
     }
 
     void compute_size (

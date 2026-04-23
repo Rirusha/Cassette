@@ -188,6 +188,75 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                 }
               };
             }
+
+            Adw.ViewStackPage {
+              title: "GridView";
+              icon-name: "view-list-symbolic";
+              child: ScrolledWindow {
+                hscrollbar-policy: never;
+                propagate-natural-height: true;
+
+                Cassette.GridView {
+                  spacing: 12;
+                  clamp-maximum-size: 500;
+                  clamp-start-end-margin: 12;
+                  min-columns: 3;
+                  max-columns: 3;
+
+                  placeholder: Adw.StatusPage {
+                    icon-name: "system-search-symbolic";
+                    title: _("Nothing to show");
+                  };
+
+                  header: Adw.StatusPage {
+                    title: _("GridView");
+                    icon-name: "view-list-symbolic";
+                    description: _("GridView but with header, footer and internal clamp.");
+
+                    Box {
+                      spacing: 12;
+                      halign: center;
+
+                      Button {
+                        hexpand: false;
+                        label: _("Add row");
+                        clicked => $add_row();
+                      }
+
+                      Button {
+                        hexpand: false;
+                        label: _("Remove first row");
+                        clicked => $remove_first_row();
+                      }
+                    }
+                  };
+
+                  factory: BuilderListItemFactory {
+                    template ListItem {
+                      child: Gtk.Label {
+                        label: bind template.item as <StringObject>.string;
+                        height-request: 48;
+                        wrap: true;
+                        wrap-mode: word_char;
+                      };
+                    }
+                  };
+
+                  model: SingleSelection {
+                    model: bind string_list;
+                  };
+
+                  footer: Label {
+                    styles [
+                      "title-1",
+                    ]
+
+                    label: _("Footer");
+                    margin-bottom: 12;
+                  };
+                }
+              };
+            }
           };
         }
       };

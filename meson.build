@@ -39,9 +39,12 @@ else
   n_commits = '0'
 endif
 
-if n_commits != '0'
+if n_commits != '0' or n_commits == ''
   is_devel = true
-  version_suffix = '.nightly.' + n_commits
+  version_suffix = '.nightly'
+  if n_commits != ''
+    version_suffix += '.' + n_commits
+  endif
   name_suffix = ' (Devel)'
   app_id_suffix = '.Devel'
 endif

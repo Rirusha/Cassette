@@ -43,7 +43,7 @@ app_dependencies = [
 ]
 
 executable(
-  meson.project_name() + '-demo',
+  lib_name + '-demo',
   sources,
   vala_args: vala_args,
   c_args: c_args,

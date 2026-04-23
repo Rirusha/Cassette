@@ -2,7 +2,7 @@ id: space.rirusha.CassetteDemo
 runtime: org.gnome.Platform
 runtime-version: 'master'
 sdk: org.gnome.Sdk
-command: cassette-demo
+command: libcassette-demo
 finish-args:
   - --share=ipc
   - --socket=fallback-x11

@@ -107,12 +107,12 @@ test-mr:
     - >-
       xvfb-run -a -s "-screen 0 1024x768x24" --
       dbus-run-session
-      flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse flatpak_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
+      flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
 
     - >-
       xvfb-run -a -s "-screen 0 1024x768x24" --
       dbus-run-session
-      flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse flatpak_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_DEMO_PATH}
+      flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_demo_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_DEMO_PATH}
 
     # Generate a Flatpak bundle
     - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE} ${APP_ID} ${BRANCH}

@@ -115,8 +115,8 @@ test-mr:
       flatpak-builder ${CI_FB_ARGS} --keep-build-dirs --arch=${ARCH} --user --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_demo_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_DEMO_PATH}
 
     # Generate a Flatpak bundle
-    - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE} ${APP_ID} ${BRANCH}
-    - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE_DEMO} ${APP_ID_DEMO} ${BRANCH}
+    # - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE} ${APP_ID} ${BRANCH}
+    # - flatpak build-bundle --runtime-repo=${RUNTIME_REPO} --gpg-sign=${GPG_KEY_ID} --gpg-homedir=${GNUPGHOME} repo ${BUNDLE_DEMO} ${APP_ID_DEMO} ${BRANCH}
 
     - echo "[Flatpak Repo]" > repo/index.flatpakrepo
     - echo "Title=Cassette Nightly Repo" >> repo/index.flatpakrepo

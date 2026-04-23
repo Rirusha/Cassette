@@ -529,7 +529,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 int cmin, cnat, cbmin, cbnat;
 
                 _header.measure (
-                    Gtk.Orientation.VERTICAL, for_size,
+                    Gtk.Orientation.VERTICAL,
+                    for_size,
                     out cmin,
                     out cnat,
                     out cbmin,
@@ -546,7 +547,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
             int cmin, cnat, cbmin, cbnat;
 
             _clamp.measure (
-                Gtk.Orientation.VERTICAL, for_size,
+                Gtk.Orientation.VERTICAL,
+                for_size,
                 out cmin,
                 out cnat,
                 out cbmin,
@@ -563,7 +565,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 int cmin, cnat, cbmin, cbnat;
 
                 _footer.measure (
-                    Gtk.Orientation.VERTICAL, for_size,
+                    Gtk.Orientation.VERTICAL,
+                    for_size,
                     out cmin,
                     out cnat,
                     out cbmin,

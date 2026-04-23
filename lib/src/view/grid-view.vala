@@ -18,6 +18,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+/**
+ * Children must have fixed size. Otherwise kaboom
+ */
 public sealed class Cassette.GridView : View {
 
     public Gtk.ListItemFactory? factory {

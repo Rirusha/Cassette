@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="/space/rirusha/Cassette/Lib/">
     <file>style.css</file>
+    <file>assets/icons/icon-missing-symbolic.svg</file>
     <file preprocess="xml-stripblanks">ui/combo-row.ui</file>
     <file preprocess="xml-stripblanks">ui/content.ui</file>
     <file preprocess="xml-stripblanks">ui/default-row-content.ui</file>

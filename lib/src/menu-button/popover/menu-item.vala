@@ -127,7 +127,9 @@ internal sealed class Cassette.PopoverMenuItem : Gtk.ListBoxRow {
         indicator_bin.visible = true;
         if (item.icon_name == null) {
             if (item.needs_attention || indicator_bin.badge_number > 0) {
-                icon_image.icon_name = "tablet-symbolic";
+                icon_image.paintable = new Gtk.Svg.from_resource (
+                    "/space/rirusha/Cassette/Lib/assets/icons/icon-missing-symbolic.svg"
+                );
             } else {
                 icon_image.icon_name = null;
                 indicator_bin.visible = false;

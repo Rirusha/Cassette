@@ -270,8 +270,11 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                     if (scrollable_child == placeholder_viewport) {
                         scrollable_child.vadjustment.value = double.MIN;
                     } else {
-                        //  Focus needs for Gtk.*View vadjustment value correction
-                        scroll_to (0, FOCUS, null);
+                        scroll_to (
+                            0,
+                            NONE,
+                            null
+                        );
                     }
                 }
             }
@@ -282,8 +285,11 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                     if (scrollable_child == placeholder_viewport) {
                         scrollable_child.vadjustment.value = double.MAX;
                     } else {
-                        //  Focus needs for Gtk.*View vadjustment value correction
-                        scroll_to (model.get_n_items () - 1, FOCUS, null);
+                        scroll_to (
+                            model.get_n_items () - 1,
+                            NONE,
+                            null
+                        );
                     }
                 }
             }

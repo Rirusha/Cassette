@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:gpa="https://www.gtk.org/grappa" width="16" height="16" gpa:version="1" gpa:keywords="view-list-bullet" gpa:state="0"><style type="text/css">
+    .not-initial-state {
+      display: none;
+    }
+  </style><path d="M 2 3 L 2.01171899 3 M 2 7.98353338 L 2.01171899 7.98353338 M 2 13 L 2.01171899 13 M 5 13 L 14 13 M 5 8 L 14 8 M 5 3 L 14 3" id="path3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0,0,0)" fill="none" class="foreground-stroke transparent-fill" gpa:stroke="foreground">
+    </path></svg>

@@ -18,6 +18,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+/**
+ * Children must have fixed size. Otherwise kaboom
+ */
 public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
     Binding hadjustment_binding;

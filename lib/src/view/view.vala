@@ -362,7 +362,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
                 _header.measure (
                     Gtk.Orientation.VERTICAL,
-                    -1,
+                    width,
                     null,
                     out header_natural_size,
                     null,
@@ -376,7 +376,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
                 _footer.measure (
                     Gtk.Orientation.VERTICAL,
-                    -1,
+                    width,
                     null,
                     out footer_natural_size,
                     null,
@@ -389,7 +389,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
             _clamp.measure (
                 Gtk.Orientation.VERTICAL,
-                -1,
+                width,
                 null,
                 out clamp_natural_size,
                 null,

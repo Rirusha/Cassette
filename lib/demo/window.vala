@@ -57,7 +57,7 @@ public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
 
     [GtkCallback]
     void add_row () {
-        string_list.append (Uuid.string_random ());
+        string_list.append (Uuid.string_random () + Uuid.string_random () + Uuid.string_random ());
     }
 
     void on_test_action_activate (Variant? parameter) {

@@ -166,7 +166,8 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                     template ListItem {
                       child: Gtk.Label {
                         label: bind template.item as <StringObject>.string;
-                        height-request: 48;
+                        wrap: true;
+                        wrap-mode: word_char;
                       };
                     }
                   };
@@ -235,7 +236,7 @@ template $CassetteDemoWindow: Adw.ApplicationWindow {
                     template ListItem {
                       child: Gtk.Label {
                         label: bind template.item as <StringObject>.string;
-                        width-request: 180;
+                        // width-request: 180;
                         wrap: true;
                         wrap-mode: word_char;
                       };

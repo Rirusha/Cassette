@@ -27,22 +27,26 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
     Binding hscroll_policy_binding;
     Binding vscroll_policy_binding;
 
+    Gtk.Scrollable _scrollable_child;
     Gtk.Scrollable scrollable_child {
         get {
-            return (Gtk.Scrollable) _clamp.child;
+            return _scrollable_child;
         }
         set {
-            if (scrollable_child != null) {
+            if (_scrollable_child != null) {
+                ((Gtk.Widget) _scrollable_child).unparent ();
                 hadjustment_binding.unbind ();
                 hscroll_policy_binding.unbind ();
                 vscroll_policy_binding.unbind ();
-                scrollable_child.vadjustment.changed.disconnect (update_vadjustment_data);
+                _scrollable_child.vadjustment.changed.disconnect (update_vadjustment_data);
             }
 
-            assert (value is Gtk.Widget);
-            _clamp.child = (Gtk.Widget) value;
+            assert (value is Gtk.Widget || value == null);
+            _scrollable_child = value;
 
-            if (scrollable_child != null) {
+            if (_scrollable_child != null) {
+                ((Gtk.Widget) _scrollable_child).set_parent (this);
+
                 hadjustment_binding = bind_property (
                     "hadjustment",
                     scrollable_child,
@@ -66,43 +70,6 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 update_vadjustment_data ();
             }
             queue_allocate ();
-        }
-    }
-
-    public int clamp_maximum_size {
-        get {
-            return _clamp.maximum_size;
-        }
-        set {
-            _clamp.maximum_size = value;
-        }
-    }
-
-    public int clamp_start_end_margin {
-        get {
-            return _clamp.margin_start;
-        }
-        set {
-            _clamp.margin_start = value;
-            _clamp.margin_end = value;
-        }
-    }
-
-    public int clamp_top_margin {
-        get {
-            return _clamp.margin_top;
-        }
-        set {
-            _clamp.margin_top = value;
-        }
-    }
-
-    public int clamp_bottom_margin {
-        get {
-            return _clamp.margin_bottom;
-        }
-        set {
-            _clamp.margin_bottom = value;
         }
     }
 
@@ -142,10 +109,6 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
     }
 
     public Gtk.ScrollablePolicy vscroll_policy { get; set; }
-
-    Adw.ClampScrollable _clamp = new Adw.ClampScrollable () {
-        maximum_size = int.MAX
-    };
 
     protected abstract Gtk.Scrollable view_widget { get; }
 
@@ -205,9 +168,9 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
     public abstract Gtk.SelectionModel? model { get; set; }
 
     ~View () {
-        _clamp.unparent ();
-        _header?.unparent ();
-        _footer?.unparent ();
+        scrollable_child = null;
+        header = null;
+        footer = null;
     }
 
     static construct {
@@ -216,7 +179,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
     construct {
         overflow = HIDDEN;
-        _clamp.set_parent (this);
+        scrollable_child = view_widget;
 
         bind_property ("css-classes", view_widget, "css-classes", SYNC_CREATE);
     }
@@ -341,7 +304,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
     ) {
         bool layout_header = false;
         bool layout_footer = false;
-        bool layout_clamp = false;
+        bool layout_scrollable = false;
 
         int header_natural_size = 0;
         int footer_natural_size = 0;
@@ -384,10 +347,10 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 );
             }
         }
-        if (_clamp.should_layout ()) {
-            layout_clamp = true;
+        if (((Gtk.Widget) scrollable_child).should_layout ()) {
+            layout_scrollable = true;
 
-            _clamp.measure (
+            ((Gtk.Widget) scrollable_child).measure (
                 Gtk.Orientation.VERTICAL,
                 width,
                 null,
@@ -421,7 +384,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 header_h = header_natural_size;
                 header_y = 0;
             }
-            if (layout_clamp) {
+            if (layout_scrollable) {
                 clamp_h = clamp_natural_size;
                 clamp_y = header_natural_size_spaced;
             }
@@ -491,7 +454,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
             _header.allocate_size (alloc, baseline);
         }
-        if (layout_clamp) {
+        if (layout_scrollable) {
             alloc = Gtk.Allocation () {
                 x = 0,
                 y = clamp_y,
@@ -499,7 +462,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 height = clamp_h
             };
 
-            _clamp.allocate_size (alloc, baseline);
+            ((Gtk.Widget) scrollable_child).allocate_size (alloc, baseline);
         }
         if (layout_footer) {
             alloc = Gtk.Allocation () {
@@ -552,10 +515,10 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
             }
         }
 
-        if (_clamp.should_layout ()) {
+        if (((Gtk.Widget) scrollable_child).should_layout ()) {
             int cmin, cnat, cbmin, cbnat;
 
-            _clamp.measure (
+            ((Gtk.Widget) scrollable_child).measure (
                 Gtk.Orientation.VERTICAL,
                 for_size,
                 out cmin,
@@ -626,11 +589,11 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
             }
         }
 
-        if (_clamp.should_layout ()) {
+        if (((Gtk.Widget) scrollable_child).should_layout ()) {
 
             int cmin, cnat;
 
-            _clamp.measure (
+            ((Gtk.Widget) scrollable_child).measure (
                 Gtk.Orientation.HORIZONTAL,
                 for_size,
                 out cmin,

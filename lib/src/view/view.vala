@@ -173,10 +173,6 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         footer = null;
     }
 
-    static construct {
-        set_css_name ("clistview");
-    }
-
     construct {
         overflow = HIDDEN;
         scrollable_child = view_widget;

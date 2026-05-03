@@ -304,7 +304,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
         int header_natural_size = 0;
         int footer_natural_size = 0;
-        int clamp_natural_size = 0;
+        int scrollable_natural_size = 0;
 
         int header_y = 0;
         int header_h = 0;
@@ -312,8 +312,8 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         int footer_y = 0;
         int footer_h = 0;
 
-        int clamp_y = 0;
-        int clamp_h = 0;
+        int scrollable_y = 0;
+        int scrollable_h = 0;
 
         if (_header != null) {
             if (_header.should_layout ()) {
@@ -350,7 +350,7 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
                 Gtk.Orientation.VERTICAL,
                 width,
                 null,
-                out clamp_natural_size,
+                out scrollable_natural_size,
                 null,
                 null
             );
@@ -370,23 +370,23 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
         var new_upper = double.max (
             height,
-            header_natural_size_spaced + footer_natural_size_spaced + clamp_natural_size
+            header_natural_size_spaced + footer_natural_size_spaced + scrollable_natural_size
         );
 
         //  All fits, so we don't need to do any calculation, just allocate
-        if (header_natural_size_spaced + clamp_natural_size + footer_natural_size_spaced <= height) {
+        if (header_natural_size_spaced + scrollable_natural_size + footer_natural_size_spaced <= height) {
             vadjustment.value = 0;
             if (layout_header) {
                 header_h = header_natural_size;
                 header_y = 0;
             }
             if (layout_scrollable) {
-                clamp_h = clamp_natural_size;
-                clamp_y = header_natural_size_spaced;
+                scrollable_h = scrollable_natural_size;
+                scrollable_y = header_natural_size_spaced;
             }
             if (layout_footer) {
                 footer_h = footer_natural_size;
-                footer_y = clamp_y + clamp_natural_size + spacing;
+                footer_y = scrollable_y + scrollable_natural_size + spacing;
             }
 
         } else {
@@ -400,9 +400,9 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
                 //  Header offseted but there is place on bottom
                 if (header_natural_size_spaced - header_offset +
-                        clamp_natural_size + footer_natural_size_spaced <= height) {
+                        scrollable_natural_size + footer_natural_size_spaced <= height) {
                     header_offset = (
-                        (height - (header_natural_size_spaced + clamp_natural_size + footer_natural_size_spaced)
+                        (height - (header_natural_size_spaced + scrollable_natural_size + footer_natural_size_spaced)
                     ).clamp (-header_natural_size_spaced, 0)).abs ();
 
                     if (header_offset != header_natural_size_spaced) {
@@ -430,11 +430,11 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
 
             var available = height - (header_visible_part + footer_visible_part);
 
-            clamp_y += header_visible_part;
-            clamp_h = int.min (available, clamp_natural_size).clamp (0, clamp_natural_size);
+            scrollable_y += header_visible_part;
+            scrollable_h = int.min (available, scrollable_natural_size).clamp (0, scrollable_natural_size);
 
             if (layout_footer) {
-                footer_y = clamp_y + clamp_h + spacing;
+                footer_y = scrollable_y + scrollable_h + spacing;
                 footer_h = footer_natural_size;
             }
         }
@@ -453,9 +453,9 @@ public abstract class Cassette.View : Gtk.Widget, Gtk.Scrollable {
         if (layout_scrollable) {
             alloc = Gtk.Allocation () {
                 x = 0,
-                y = clamp_y,
+                y = scrollable_y,
                 width = width,
-                height = clamp_h
+                height = scrollable_h
             };
 
             ((Gtk.Widget) scrollable_child).allocate_size (alloc, baseline);

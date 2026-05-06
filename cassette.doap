@@ -56,9 +56,9 @@
   <description>
     GTK/Adwaita application that allows you to use Yandex Music service on Linux operating systems
   </description>
-  <homepage rdf:resource="https://gitlab.gnome.org/Rirusha/Cassette" />
-  <download-page rdf:resource="https://gitlab.gnome.org/Rirusha/Cassette/-/tags" />
-  <bug-database rdf:resource="https://gitlab.gnome.org/Rirusha/Cassette/-/issues" />
+  <homepage rdf:resource="https://altlinux.space/rirusha/Cassette" />
+  <download-page rdf:resource="https://altlinux.space/rirusha/Cassette/tags" />
+  <bug-database rdf:resource="https://altlinux.space/rirusha/Cassette/issues" />
 
   <programming-language>Vala</programming-language>
   <platform>GTK 4</platform>
@@ -70,8 +70,8 @@
       <foaf:mbox rdf:resource="mailto:rirusha@altlinux.org" />
        <foaf:account>
         <foaf:OnlineAccount>
-          <foaf:accountServiceHomepage rdf:resource="https://gitlab.gnome.org"/>
-          <foaf:accountName>Rirusha</foaf:accountName>
+          <foaf:accountServiceHomepage rdf:resource="https://altlinux.space"/>
+          <foaf:accountName>rirusha</foaf:accountName>
         </foaf:OnlineAccount>
       </foaf:account>
     </foaf:Person>

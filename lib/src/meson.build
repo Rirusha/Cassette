@@ -161,6 +161,6 @@ if get_option('install_lib_s')
     subdirs: [ lib_versioned_name ],
     description: 'Library of useful Cassette widgets',
     version: lib_version,
-    url: 'https://gitlab.gnome.org/Rirusha/Cassette',
+    url: 'https://altlinux.space/rirusha/Cassette',
   )
 endif

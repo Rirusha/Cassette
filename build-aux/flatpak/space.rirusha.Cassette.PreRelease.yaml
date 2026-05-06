@@ -26,7 +26,7 @@ modules:
     builddir: true
     sources:
       - type: git
-        url: https://gitlab.gnome.org/Rirusha/libtape.git
+        url: https://altlinux.space/rirusha/libtape.git
         tag: v0.3.0
         commit:
   - name: cassette
@@ -34,7 +34,7 @@ modules:
     builddir: true
     sources:
       - type: git
-        url: https://gitlab.gnome.org/Rirusha/Cassette.git
+        url: https://altlinux.space/rirusha/Cassette.git
         tag: v0.3.0
         commit:
         x-checker-data:

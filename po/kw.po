@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
+"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
 "POT-Creation-Date: 2026-01-12 17:26+0000\n"
 "PO-Revision-Date: 2026-01-28 23:01+0000\n"
 "Last-Translator: Flynn Peck <cirilla@tuta.io>\n"

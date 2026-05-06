@@ -50,8 +50,8 @@ conf.set_quoted('VERSION', '@0@@1@'.format (meson.project_version(), version_suf
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
 conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
-conf.set_quoted('HOMEPAGE', 'https://gitlab.gnome.org/Rirusha/Cassette')
-conf.set_quoted('BUGTRACKER', 'https://gitlab.gnome.org/Rirusha/Cassette/-/issues')
+conf.set_quoted('HOMEPAGE', 'https://altlinux.space/rirusha/Cassette')
+conf.set_quoted('BUGTRACKER', 'https://altlinux.space/rirusha/Cassette/issues')
 conf.set_quoted('HELP', 'https://t.me/CassetteGNOME_Discussion')
 
 subdir('data')

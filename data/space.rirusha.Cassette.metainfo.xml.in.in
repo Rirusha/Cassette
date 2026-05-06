@@ -37,8 +37,8 @@
   </description>
   <launchable type="desktop-id">@APP_ID_DYN@.desktop</launchable>
   <developer id="space.rirusha">
-    <name>Vladimir Vaskov</name>
-    <name xml:lang="ru">Владимир Васьков</name>
+    <name>Vladimir Romanov</name>
+    <name xml:lang="ru">Владимир Романов</name>
   </developer>
   <recommends>
     <control>keyboard</control>
@@ -59,27 +59,27 @@
   <url type="help">@HELP@</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/1-liked-view.png</image>
+      <image>https://altlinux.space/rirusha/Cassette/raw/commit//959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/1-liked-view.png</image>
       <caption>Liked view</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/2-playlists-view.png</image>
+      <image>https://altlinux.space/rirusha/Cassette/raw/commit//959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/2-playlists-view.png</image>
       <caption>Playlists view</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/3-sync-lyrics.png</image>
+      <image>https://altlinux.space/rirusha/Cassette/raw/commit//959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/3-sync-lyrics.png</image>
       <caption>Sync lyrics</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/4-playback-queue.png</image>
+      <image>https://altlinux.space/rirusha/Cassette/raw/commit//959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/4-playback-queue.png</image>
       <caption>Playback queue</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/5-waves-view.png</image>
+      <image>https://altlinux.space/rirusha/Cassette/raw/commit//959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/5-waves-view.png</image>
       <caption>Waves view</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/Rirusha/Cassette/-/raw/959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/6-main-settings.png</image>
+      <image>https://altlinux.space/rirusha/Cassette/raw/commit//959c28f67e219efdba1fa280d2170d3d72bed20a/data/images/6-main-settings.png</image>
       <caption>Main preferences</caption>
     </screenshot>
   </screenshots>

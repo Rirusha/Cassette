@@ -131,7 +131,7 @@ jobs:
     name: RPM build for ${{ matrix.branch }}.amd64 and uploading
     runs-on: als-huge
     container:
-      image: altlinux.space/actions/runner/hasherc:sisyphus
+      image: altlinux.space/alt-gnome/hasherc:latest
 
     strategy:
       matrix:

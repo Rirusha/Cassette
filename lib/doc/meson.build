@@ -11,7 +11,6 @@ custom_target(
   command: [ valadoc ] + pkgs +
   [
     lib_sources,
-    '--target-glib=' + glib_min_version,
     '--package-name=' + lib_versioned_name,
     '--package-version=' + lib_version,
     '--verbose',
@@ -21,7 +20,7 @@ custom_target(
   build_by_default: true,
   input : lib_sources,
   output: valadoc_vala_dir,
-  depends: librs,
+  depends: libcassette,
 )
 
 valadoc_cdocs_dir = meson.project_name() + '-cdocs'
@@ -30,7 +29,6 @@ custom_target(
   command: [ valadoc ] + pkgs +
   [
     lib_sources,
-    '--target-glib=' + glib_min_version,
     '--package-name=' + lib_versioned_name,
     '--package-version=' + lib_version,
     '--verbose',
@@ -41,5 +39,5 @@ custom_target(
   ],
   build_by_default: true,
   output: valadoc_cdocs_dir,
-  depends: librs,
+  depends: libcassette,
 )

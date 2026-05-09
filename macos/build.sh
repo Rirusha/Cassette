@@ -20,9 +20,10 @@ info "Installing Homebrew dependencies..."
 brew install \
   meson ninja pkg-config \
   vala blueprint-compiler \
+  dylibbundler librsvg \
   gtk4 libadwaita \
   libgee libsoup json-glib \
-  gstreamer \
+  gstreamer glib-networking \
   desktop-file-utils
 
 # ---------------------------------------------------------------------------

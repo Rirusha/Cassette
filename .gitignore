@@ -18,3 +18,7 @@ po/cassette.pot
 build-dir
 repo
 .flatpak
+
+#macos
+.DS_Store
+Cassette.app

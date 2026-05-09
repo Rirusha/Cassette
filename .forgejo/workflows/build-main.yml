@@ -42,6 +42,7 @@ jobs:
   build-doc-translation:
     name: Build, update translation and upload doc
     runs-on: als-huge
+    container: registry.altlinux.org/sisyphus/node:latest
     needs:
       - lint-vala
       - lint-blueprint

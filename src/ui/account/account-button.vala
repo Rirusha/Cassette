@@ -34,8 +34,8 @@ public sealed class Cassette.AccountButton : Adw.Bin {
 
     async void set_avatar () {
         try {
-            var bytes = yield Cassette.Application.tape_client.yam_helper.me.get_avatar ();
-            avatar.name = Cassette.Application.tape_client.yam_helper.me.public_name;
+            var bytes = yield Cassette.Application.tape_client.ym.me.get_avatar ();
+            avatar.name = Cassette.Application.tape_client.ym.me.public_name;
 
             if (bytes == null) {
                 avatar.set_custom_image (null);

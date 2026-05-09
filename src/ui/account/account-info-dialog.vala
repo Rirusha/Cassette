@@ -51,7 +51,7 @@ public sealed class Cassette.AccountInfoDialog : Adw.Dialog {
     }
 
     async void set_info () {
-        var me = Cassette.Application.tape_client.yam_helper.me;
+        var me = Cassette.Application.tape_client.ym.me;
 
         var bytes = yield me.get_avatar ();
         public_name_label.label = me.public_name;

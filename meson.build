@@ -19,7 +19,7 @@ sqlite3 = dependency('sqlite3')
 gee = dependency('gee-0.8')
 libxml = dependency('libxml-2.0')
 gstreamer = dependency('gstreamer-1.0')
-webkit = dependency('webkitgtk-6.0')
+webkit = dependency('webkitgtk-6.0', required: get_option('with_webkit'))
 gio = dependency('gio-2.0', version: '>= 2.72')
 
 app_id = 'space.rirusha.Cassette'
@@ -68,8 +68,24 @@ cassette_dependencies = [
   libxml,
   gstreamer,
   gio,
-  webkit
 ]
+
+if not get_option('with_webkit') and host_machine.system() != 'darwin'
+  error('with_webkit=false is only supported on macOS (native WKWebView is darwin-only)')
+endif
+
+if host_machine.system() == 'darwin' and not webkit.found()
+  add_languages('objc', native: false)
+endif
+
+webkit_vala_args = []
+if webkit.found()
+  cassette_dependencies += webkit
+  conf.set10('WITH_WEBKIT', true)
+  webkit_vala_args = ['--define=WITH_WEBKIT']
+else
+  conf.set10('WITH_WEBKIT', false)
+endif
 
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')

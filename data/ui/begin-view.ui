@@ -76,6 +76,21 @@
                               </object>
                             </child>
                             <child>
+                              <object class="GtkButton" id="button_token_signin">
+                                <style><class name="pill"/></style>
+                                <property name="label" translatable="true">Sign in with token</property>
+                                <property name="visible">false</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="token_entry">
+                                <property name="placeholder-text">OAuth token (y0_...)</property>
+                                <property name="hexpand">true</property>
+                                <property name="visible">false</property>
+                              </object>
+                            </child>
+
+                            <child>
                               <object class="GtkButton" id="button_local_mode">
                                 <style>
                                   <class name="pill"/>

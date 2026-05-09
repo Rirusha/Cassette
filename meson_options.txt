@@ -3,3 +3,10 @@ option(
   type: 'boolean',
   value: false
 )
+
+option(
+  'with_webkit',
+  description: 'Use webkitgtk-6.0 for Yandex OAuth (disable on macOS)',
+  type: 'boolean',
+  value: true
+)

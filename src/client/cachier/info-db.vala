@@ -119,10 +119,10 @@ namespace Cassette.Client.Cachier {
                 );
             }
 
-            string result = statement.column_text (1);
+            string? result = statement.column_text (1);
             statement.reset ();
 
-            return result;
+            return result ?? "";
         }
 
         public void set_content_ref (string what_id, string source_id) {

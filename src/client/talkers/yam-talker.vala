@@ -79,7 +79,18 @@ namespace Cassette.Client {
             }
 
             if (is_need_init) {
-                init ();
+                string saved_token = storager.db.get_additional_data ("oauth_token");
+                if (saved_token != "") {
+                    try {
+                        init_with_token (saved_token);
+                    } catch (BadStatusCodeError e) {
+                        // Token expired — clear it and fall back to cookie flow
+                        storager.db.set_additional_data ("oauth_token", "");
+                        init ();
+                    }
+                } else {
+                    init ();
+                }
             }
 
             if (me != null) {
@@ -99,22 +110,28 @@ namespace Cassette.Client {
 
         public void init () throws BadStatusCodeError {
             client.soup_wrapper.reload_cookies (storager.cookies_file);
+            net_run (() => { client.init (); post_auth_setup (); }, false);
+        }
 
+        public void init_with_token (string token) throws BadStatusCodeError {
             net_run (() => {
-                client.init ();
-
-                storager.db.set_additional_data ("me", me.oid);
-                storager.save_object (me, false);
-
-                // TODO: replace with lib func
-                get_playlist_info_old (null, "3");
-                get_likes_playlist_list (null);
-                get_disliked_tracks_short ();
-
-                _me = null;
-
-                init_end ();
+                client.init_with_token (token);
+                post_auth_setup ();
+                storager.db.set_additional_data ("oauth_token", token);
             }, false);
+        }
+
+        private void post_auth_setup () throws BadStatusCodeError {
+            storager.db.set_additional_data ("me", me.oid);
+            storager.save_object (me, false);
+
+            // TODO: replace with lib func
+            get_playlist_info_old (null, "3");
+            get_likes_playlist_list (null);
+            get_disliked_tracks_short ();
+
+            _me = null;
+            init_end ();
         }
 
         /**

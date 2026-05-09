@@ -67,8 +67,10 @@ namespace Cassette.Client.YaMAPI {
             );
             var jsoner = Jsoner.from_bytes (bytes, {"access_token"}, Case.SNAKE);
 
-            string token = jsoner.deserialize_value ().get_string ();
+            init_with_token (jsoner.deserialize_value ().get_string ());
+        }
 
+        public void init_with_token (string token) throws ClientError, BadStatusCodeError {
             soup_wrapper.add_headers_preset (
                 "default",
                 {
@@ -82,7 +84,6 @@ namespace Cassette.Client.YaMAPI {
                     {"Authorization", @"OAuth $token"}
                 }
             );
-
             me = account_about ();
             is_init_complete = true;
         }

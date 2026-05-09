@@ -1,2 +1,2 @@
-spec: ready-set.spec
+spec: cassette.spec
 tar: .

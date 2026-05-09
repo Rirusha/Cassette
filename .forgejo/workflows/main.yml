@@ -137,7 +137,7 @@ jobs:
       - lint-vala
       - lint-blueprint
       - get-release
-      # - build-doc-translation
+      - build-doc-translation
 
     steps:
       - name: Checkout repository

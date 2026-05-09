@@ -161,10 +161,10 @@ jobs:
             org.gnome.Platform//master \
             org.gnome.Sdk//master
 
-      - name: Checkout repository
+      - name: Checkout space repository
         uses: actions/checkout@v4
         with:
-          repository: https://altlinux.space/rirusha/space.git
+          repository: rirusha/space
           path: .space
           token: ${{ secrets.SPACE }}
 

@@ -1,0 +1,132 @@
+# If you want to suggest changes, please send PR on
+# https://altlinux.space/rirusha/Cassette to altlinux branch 
+
+%define _unpackaged_files_terminate_build 1
+
+%define app_id space.rirusha.Cassette.Devel
+%define app_id_demo space.rirusha.CassetteDemo
+%define libname lib%name
+%define girname Cassette
+%define api_version 0
+
+%ifarch %e2k
+%define for_e2k true
+%else
+%define for_e2k false
+%endif
+
+Name: cassette
+Version: @VERSION@
+Release: alt@RELEASE@
+
+Summary: Unofficial Yandex Music client (Devel build)
+License: GPL-3.0-or-later
+Group: Sound
+URL: https://altlinux.space/rirusha/Cassette
+VCS: https://altlinux.space/rirusha/Cassette.git
+
+Source: %name-%version.tar
+
+BuildRequires(pre): rpm-macros-meson
+BuildRequires: rpm-build-vala
+BuildRequires: rpm-build-gir
+BuildRequires: meson
+BuildRequires: vala
+BuildRequires: vala-tools
+BuildRequires: gobject-introspection-devel
+BuildRequires: blueprint-compiler
+BuildRequires: gir(Adw) = 1
+BuildRequires: pkgconfig(gee-0.8)
+BuildRequires: pkgconfig(libadwaita-1)
+BuildRequires: pkgconfig(libpeas-2)
+
+%description
+%summary.
+
+%package -n %libname-demo
+Summary: libcassette demo application
+Group: Other
+
+%description -n %libname-demo
+%summary.
+
+%package -n %libname%api_version
+Summary: Base objects for API libraries
+Group: Development/C
+
+%description -n %libname%api_version
+%summary.
+
+%package -n %libname-devel
+Summary: Development files for %libname
+Group: Development/C
+
+Requires: %libname%api_version = %EVR
+
+%description -n %libname-devel
+%summary.
+
+%package -n %libname%api_version-gir
+Summary: Typelib files for %libname
+Group: System/Libraries
+
+Requires: %libname%api_version = %EVR
+
+%description -n %libname%api_version-gir
+%summary.
+
+%package -n %libname-gir-devel
+Summary: Development gir files for %libname for various bindings
+Group: Development/Other
+BuildArch: noarch
+
+Requires: %libname%api_version-gir = %EVR
+
+%description -n %libname-gir-devel
+%summary.
+
+%prep
+%setup
+
+%build
+%meson -Dinstall_demo=true -Dinstall_lib_s=true -Dis_devel=true -De2k=%for_e2k
+%meson_build
+
+%install
+%meson_install
+%find_lang %name
+
+%check
+%meson_test
+
+%files -f %name.lang
+%_bindir/%name
+%_datadir/glib-2.0/schemas/%app_id.gschema.xml
+%_datadir/metainfo/%app_id.metainfo.xml
+%_desktopdir/%app_id.desktop
+%_iconsdir/hicolor/*/apps/%app_id.svg
+%_iconsdir/hicolor/*/apps/%app_id-symbolic.svg
+
+%files -n %libname-demo
+%_bindir/%libname-demo
+%_datadir/glib-2.0/schemas/%app_id_demo.gschema.xml
+%_datadir/metainfo/%app_id_demo.metainfo.xml
+%_desktopdir/%app_id_demo.desktop
+%_iconsdir/hicolor/*/apps/%app_id_demo.svg
+%_iconsdir/hicolor/*/apps/%app_id_demo-symbolic.svg
+
+%files -n %libname%api_version
+%_libdir/%libname-%api_version.so.*
+
+%files -n %libname-devel
+%_libdir/%libname-%api_version.so
+%_includedir/%libname-%api_version.h
+%_pkgconfigdir/%libname-%api_version.pc
+%_vapidir/%libname-%api_version.vapi
+%_vapidir/%libname-%api_version.deps
+
+%files -n %libname%api_version-gir
+%_typelibdir/%girname-%api_version.typelib
+
+%files -n %libname-gir-devel
+%_girdir/%girname-%api_version.gir

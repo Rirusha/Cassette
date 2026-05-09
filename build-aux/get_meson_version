@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+import re
+
+def extract_project_version(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # Ищем блок project(), захватываем всё внутри скобок
+    project_match = re.search(r'project\s*\(([^)]+)\)', content, re.DOTALL)
+    if not project_match:
+        return None
+
+    project_body = project_match.group(1)
+
+    # Внутри блока ищем строку version: '...'
+    version_match = re.search(r"version:\s*'([^']*)'", project_body)
+    if version_match:
+        return version_match.group(1)
+    return None
+
+version = extract_project_version('meson.build')
+if version:
+    print(version)

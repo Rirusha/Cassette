@@ -1,0 +1,174 @@
+name: Main
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+    - 'altlinux'
+    tags-ignore:
+      - '*'
+
+env:
+  TAPE_REPO: rpm https://altlinux.space/api/packages/rirusha/alt/group/libtape-nightly.repo x86_64 classic
+
+jobs:
+  lint-vala:
+    name: Check vala files
+    runs-on: als-tiny
+    container:
+      image: altlinux.space/alt-gnome/coding-style-image:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check files
+        uses: alt-gnome/coding-style-actions/vala@main
+
+  lint-blueprint:
+    name: Check blueprint files
+    runs-on: als-tiny
+    container:
+      image: altlinux.space/alt-gnome/coding-style-image:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check files
+        uses: alt-gnome/coding-style-actions/blueprint@main
+
+  build-doc-translation:
+    name: Build, update translation and upload doc
+    runs-on: als-huge
+    needs:
+      - lint-vala
+      - lint-blueprint
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ github.event_name == 'pull_request' && github.token || secrets.REPO_TOKEN }}
+
+      - name: Add tape repo
+        run: |
+          apt-get update
+          apt-get install -y apt-repo
+          apt-repo add ${{ env.TAPE_REPO }}
+
+      - name: Install deps
+        run: |
+          apt-get update
+          xargs apt-get install -y < ./build-aux/altlinux/build-deps
+
+      - name: Setup
+        run: meson setup _build -Dinstall_demo=true -Dinstall_lib_s=true -Dwith_lib_documentation=true -Dis_devel=true
+
+      - name: Build
+        run: meson compile -C _build
+
+      - name: Setup git
+        if: github.event_name != 'pull_request' && github.ref_name == 'main'
+        run: |
+          git config --global user.name "CI Bot"
+          git config --global user.email "ci@altlinux.space"
+          git config --global --add safe.directory '*'
+
+      - name: Update pot file for Weblate
+        if: github.event_name != 'pull_request' && github.ref_name == 'main'
+        run: |
+          has_real_changes() {
+            git diff --cached -U0 | grep -E '^[+-]' \
+              | grep -Ev '^[+-]{3}' \
+              | grep -Ev '^[+-]["#]' \
+              | grep -q '.'
+          }
+
+          ./po/update_potfiles
+
+          git add .
+          git commit -m "i18n: Update POTFILES" || true
+
+          meson compile -C _build cassette-pot
+          git add .
+
+          if has_real_changes; then
+            git commit -m "i18n: Update .pot file" || true
+
+            meson compile -C _build cassette-update-po
+
+            git add po/*.po
+            git commit -m "i18n: Update .po files" || true
+          else
+            git reset --hard
+          fi
+
+          git push
+
+      - name: Deploy pages
+        if: github.event_name != 'pull_request' && github.ref_name == 'main'
+        uses: actions/deploy-pages@v1
+        with:
+          directory: ./_build/lib/doc/cassette-vala
+
+  get-release:
+    name: Get release for RPM package
+    runs-on: als-tiny
+
+    outputs:
+      release: ${{ steps.get_release.outputs.release }}
+    steps:
+      - name: Get release
+        id: get_release
+        run: |
+          echo "release=$(date +%s)" >> $FORGEJO_OUTPUT
+
+  rpm-build:
+    if: github.event_name != 'pull_request' && github.ref_name == 'main'
+    name: RPM build for ${{ matrix.branch }}.amd64 and uploading
+    runs-on: als-huge
+    container:
+      image: altlinux.space/actions/runner/hasherc:sisyphus
+
+    strategy:
+      matrix:
+        branch:
+          - sisyphus
+          - p11
+    needs:
+      - lint-vala
+      - lint-blueprint
+      - get-release
+      - build-doc-translation
+
+    steps:
+      - name: Install utils
+        run: |
+          apt-get update
+          apt-get install -y meson jq /usr/bin/add_changelog
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare RPM build
+        run: |
+          ./build-aux/altlinux/prepare ${{ needs.get-release.outputs.release }}
+          git add .
+
+      - name: Build RPMs
+        run: |
+          git config --global user.email "hasherc-ci@altlinux.org"
+          git config --global user.name "Builder"
+          echo "%packager Builder <hasherc-ci@altlinux.org>" > ~/.rpmmacros
+
+          gear-hshc --commit --no-sisyphus-check=gpg,packager --branch=${{ matrix.branch }} --add-source '${{ env.TAPE_REPO }}'
+
+      - uses: actions/upload-rpm-action@main
+        name: Upload RPMs
+        if: github.event_name != 'pull_request'
+        with:
+          directory: ~/.cache/hasherc/cassette/out/RPMS
+          token: ${{ secrets.TOKEN }}
+          group: cassette-nightly/${{ github.ref_name }}/${{ matrix.branch }}

@@ -34,3 +34,10 @@ option(
   type: 'boolean',
   value: false
 )
+
+option(
+  'e2k',
+  description: 'Optimize build for e2k',
+  type: 'boolean',
+  value: false
+)

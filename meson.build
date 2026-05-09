@@ -7,7 +7,7 @@ project(
 )
 
 api_version = '0'
-lib_version = api_version + '.' + meson.project_version()
+lib_version = api_version + '.' + meson.project_version().replace('.rc', '')
 
 i18n = import('i18n')
 gnome = import('gnome')
@@ -32,18 +32,20 @@ name_suffix = ''
 version_suffix = ''
 app_id_suffix = ''
 
-git = find_program('git', required: false)
-if git.found()
-  n_commits = run_command(meson.current_source_dir() + '/tools/get-n-commits', meson.project_version(), check: true).stdout().strip()
-else
-  n_commits = '0'
-endif
+
 
 if get_option('nightly')
+  git = find_program('git', required: false)
+  hash = ''
+
+  if git.found()
+    hash = run_command(git.full_path(), 'rev-parse', '--short', 'HEAD', check: true).stdout().strip()
+  endif
+
   nightly = true
   version_suffix = '.nightly'
-  if n_commits != ''
-    version_suffix += '.' + n_commits
+  if hash != ''
+    version_suffix += '.' + hash
   endif
   name_suffix = ' (Devel)'
   app_id_suffix = '.Devel'

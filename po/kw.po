@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2026-01-12 17:26+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:32+0000\n"
 "PO-Revision-Date: 2026-01-28 23:01+0000\n"
 "Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
 "Language-Team: kw\n"
@@ -25,101 +25,233 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 49.0\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Kasett"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr ""
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr ""
+
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr ""
+
+#: data/ui/account/account-info-dialog.blp:118
+msgid "Log out"
+msgstr ""
+
+#: data/ui/auth.blp:17 data/ui/main-content.blp:47
+msgid "About"
+msgstr ""
+
+#: data/ui/auth.blp:24
+msgid "Welcome to Cassette!"
+msgstr ""
+
+#: data/ui/auth.blp:41
+msgid "Login with Yandex account"
+msgstr ""
+
+#: data/ui/auth.blp:47
+#, fuzzy
+msgid "Yandex Music token"
 msgstr "Kliens Ansodhogel Yandex Music"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;kam;ilow;"
-
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Kasett (Arbrovel)"
-
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "Kliens Ansodhogel Yandex Music (Byld arbrovel)"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
+#: data/ui/auth.blp:60
+msgid "How to obtain token"
 msgstr ""
-"App GTK/Adwaita ow gasa ty devnydhya gonis Yandex Music war systemow "
-"oberyans Linux."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Nasyow:"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr "Gasa ty sawya rolyow kanow ha kuntilowyow rag ow goslowes dhywarlinen"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "Kavos unn \"fordh karaoke\" dynamek y'n panel kedhlow kan"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
+#: data/ui/auth.blp:81
+msgid "No Plus subscription"
 msgstr ""
-"Gasa ty personelhe moy hardlych an displetyans ha senyans a dalgh arbennik, "
-"kepar ha diskortes po fytti rag fleghes."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Diskwedhes kanow ankavadow a-lemmyn y'n gonis"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Diskwedhes py kanow re bos asleys ha gans pyth"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr ""
-"Kasett yw unn kliens ansodhogel ha na kowethys gans po keynskrifa gans "
-"Yandex."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "Gwel karys"
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "Gwel rolyow kanow"
+#: data/ui/main-content.blp:35
+msgid "Refresh current page"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "Kettermynyegi geryow"
+#: data/ui/main-content.blp:60 data/ui/main-content.blp:65
+msgid "Stay tuned"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "Lost senyans"
+#: data/ui/main-content.blp:66 data/ui/main-content.blp:78
+msgid "Work in progress."
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "Gwel tonnow"
+#: data/ui/main-content.blp:72
+msgid "Keep it up"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "Settyansow chif"
+#: data/ui/main-content.blp:77
+msgid "Keep it up!"
+msgstr ""
+
+#: data/ui/warning-dialog.blp:5
+msgid "Warning message"
+msgstr ""
+
+#: data/ui/warning-dialog.blp:25
+msgid "Ask the community"
+msgstr ""
+
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr ""
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Prytyna kedhlow versyon ha kwytya"
+
+#: src/application.vala:134 src/main.vala:26
+msgid "Cassette"
+msgstr "Kasett"
+
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
+msgid "translator-credits"
+msgstr ""
+
+#: src/ui/about.vala:113
+msgid "Vladimir Romanov"
+msgstr ""
+
+#: src/ui/about.vala:116
+msgid "Telegram channel"
+msgstr ""
+
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr ""
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr ""
+
+#: src/ui/about.vala:120
+msgid "Financial support (Tinkoff)"
+msgstr ""
+
+#: src/ui/about.vala:121
+msgid "Financial support (Boosty)"
+msgstr ""
+
+#: src/ui/about.vala:123
+msgid "Sponsors"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr ""
+
+#: src/ui/auth.vala:39
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+
+#: src/ui/auth.vala:49
+msgid "You need your Yandex music token to login."
+msgstr ""
+
+#: src/ui/auth.vala:125
+msgid "Failed to login. Probably wrong token"
+msgstr ""
+
+#: src/ui/auth.vala:133
+#, c-format
+msgid "Bad status code: %i"
+msgstr ""
+
+#: src/ui/auth.vala:142
+msgid "Connection problems"
+msgstr ""
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr ""
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;kam;ilow;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Kasett (Arbrovel)"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "Kliens Ansodhogel Yandex Music (Byld arbrovel)"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "App GTK/Adwaita ow gasa ty devnydhya gonis Yandex Music war systemow "
+#~ "oberyans Linux."
+
+#~ msgid "Features:"
+#~ msgstr "Nasyow:"
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr ""
+#~ "Gasa ty sawya rolyow kanow ha kuntilowyow rag ow goslowes dhywarlinen"
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr "Kavos unn \"fordh karaoke\" dynamek y'n panel kedhlow kan"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "Gasa ty personelhe moy hardlych an displetyans ha senyans a dalgh "
+#~ "arbennik, kepar ha diskortes po fytti rag fleghes."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "Diskwedhes kanow ankavadow a-lemmyn y'n gonis"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "Diskwedhes py kanow re bos asleys ha gans pyth"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr ""
+#~ "Kasett yw unn kliens ansodhogel ha na kowethys gans po keynskrifa gans "
+#~ "Yandex."
+
+#~ msgid "Liked view"
+#~ msgstr "Gwel karys"
+
+#~ msgid "Playlists view"
+#~ msgstr "Gwel rolyow kanow"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "Kettermynyegi geryow"
+
+#~ msgid "Playback queue"
+#~ msgstr "Lost senyans"
+
+#~ msgid "Waves view"
+#~ msgstr "Gwel tonnow"
+
+#~ msgid "Main preferences"
+#~ msgstr "Settyansow chif"

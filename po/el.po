@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2026-03-10 08:34+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:32+0000\n"
 "PO-Revision-Date: 2025-12-10 11:26+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Greek <Greek>\n"
@@ -30,27 +30,27 @@ msgstr "Άνοιγμα στον περιηγητή"
 msgid "Open subscription page in browser"
 msgstr "Άνοιγμα σελίδας συνδρομής στον περιηγητή"
 
-#: data/ui/account/account-info-dialog.blp:116
+#: data/ui/account/account-info-dialog.blp:118
 msgid "Log out"
 msgstr "Αποσύνδεση"
 
-#: data/ui/auth.blp:16 data/ui/main-content.blp:11
+#: data/ui/auth.blp:17 data/ui/main-content.blp:47
 msgid "About"
 msgstr "Περί"
 
-#: data/ui/auth.blp:23
+#: data/ui/auth.blp:24
 msgid "Welcome to Cassette!"
 msgstr "Καλώς ορίσατε στο Cassette!"
 
-#: data/ui/auth.blp:40
+#: data/ui/auth.blp:41
 msgid "Login with Yandex account"
 msgstr "Είσοδος με λογαριασμό Yandex"
 
-#: data/ui/auth.blp:46
+#: data/ui/auth.blp:47
 msgid "Yandex Music token"
 msgstr "Διακριτικό (token) Yandex Music"
 
-#: data/ui/auth.blp:59
+#: data/ui/auth.blp:60
 msgid "How to obtain token"
 msgstr "Πώς να αποκτήσετε το διακριτικό"
 
@@ -60,19 +60,40 @@ msgstr "Δεν υπάρχει συνδρομή Plus"
 
 #: data/ui/auth.blp:82
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
-msgstr "Δεν θα μπορείτε να χρησιμοποιήσετε την εφαρμογή χωρίς συνδρομή Yandex Plus."
+msgstr ""
+"Δεν θα μπορείτε να χρησιμοποιήσετε την εφαρμογή χωρίς συνδρομή Yandex Plus."
 
 #: data/ui/auth.blp:93
 msgid "Back"
 msgstr "Πίσω"
 
-#: data/ui/main-content.blp:22
+#: data/ui/main-content.blp:35
+msgid "Refresh current page"
+msgstr ""
+
+#: data/ui/main-content.blp:60 data/ui/main-content.blp:65
 msgid "Stay tuned"
 msgstr "Μείνετε συντονισμένοι"
 
-#: data/ui/main-content.blp:23
+#: data/ui/main-content.blp:66 data/ui/main-content.blp:78
 msgid "Work in progress."
 msgstr "Εργασία σε εξέλιξη."
+
+#: data/ui/main-content.blp:72
+msgid "Keep it up"
+msgstr ""
+
+#: data/ui/main-content.blp:77
+msgid "Keep it up!"
+msgstr ""
+
+#: data/ui/warning-dialog.blp:5
+msgid "Warning message"
+msgstr ""
+
+#: data/ui/warning-dialog.blp:25
+msgid "Ask the community"
+msgstr ""
 
 #: data/ui/webkit/webkit-auth.blp:21
 msgid "Refresh"
@@ -82,12 +103,12 @@ msgstr "Ανανέωση"
 msgid "Print version information and exit"
 msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
 
-#: src/application.vala:126 src/main.vala:26
+#: src/application.vala:134 src/main.vala:26
 msgid "Cassette"
 msgstr "Cassette"
 
-#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/widgets/about.vala:110
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -96,43 +117,53 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "https://gr.gnome.org/"
 
-#: src/widgets/about.vala:111
+#: src/ui/about.vala:113
 msgid "Vladimir Romanov"
 msgstr "Vladimir Romanov"
 
-#: src/widgets/about.vala:114
+#: src/ui/about.vala:116
 msgid "Telegram channel"
 msgstr "Κανάλι Telegram"
 
-#: src/widgets/about.vala:115
+#: src/ui/about.vala:117
+#, fuzzy
+msgid "Telegram group"
+msgstr "Κανάλι Telegram"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr ""
+
+#: src/ui/about.vala:120
 msgid "Financial support (Tinkoff)"
 msgstr "Οικονομική υποστήριξη (Tinkoff)"
 
-#: src/widgets/about.vala:116
+#: src/ui/about.vala:121
 msgid "Financial support (Boosty)"
 msgstr "Οικονομική υποστήριξη (Boosty)"
 
-#: src/widgets/about.vala:118
+#: src/ui/about.vala:123
 msgid "Sponsors"
 msgstr "Χορηγοί"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "Logout?"
 msgstr "Αποσύνδεση;"
 
-#: src/widgets/account/account-info-dialog.vala:81
+#: src/ui/account/account-info-dialog.vala:81
 msgid "It will erase all application data"
 msgstr "Θα διαγραφούν όλα τα δεδομένα της εφαρμογής"
 
-#: src/widgets/account/account-info-dialog.vala:82
+#: src/ui/account/account-info-dialog.vala:82
 msgid "_No"
 msgstr "Ό_χι"
 
-#: src/widgets/account/account-info-dialog.vala:83
+#: src/ui/account/account-info-dialog.vala:83
 msgid "_Yes"
 msgstr "_Ναι"
 
-#: src/widgets/auth.vala:41
+#: src/ui/auth.vala:39
 msgid ""
 "Choose a way to log in to the app. You can log in via your Yandex account or "
 "with your token."
@@ -140,22 +171,26 @@ msgstr ""
 "Επιλέξτε τρόπο εισόδου στην εφαρμογή. Μπορείτε να συνδεθείτε μέσω του "
 "λογαριασμού σας Yandex ή με το διακριτικό σας."
 
-#: src/widgets/auth.vala:44
+#: src/ui/auth.vala:49
 msgid "You need your Yandex music token to login."
 msgstr "Χρειάζεστε το διακριτικό Yandex music για να συνδεθείτε."
 
-#: src/widgets/auth.vala:111
+#: src/ui/auth.vala:125
 msgid "Failed to login. Probably wrong token"
 msgstr "Αποτυχία εισόδου. Πιθανώς λάθος διακριτικό"
 
-#: src/widgets/auth.vala:116
+#: src/ui/auth.vala:133
 #, c-format
 msgid "Bad status code: %i"
 msgstr "Ελαττωματικός κωδικός κατάστασης: %i"
 
-#: src/widgets/auth.vala:121
+#: src/ui/auth.vala:142
 msgid "Connection problems"
 msgstr "Προβλήματα σύνδεσης"
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr ""
 
 #~ msgid "yandex;yandex music;yam;music;"
 #~ msgstr "yandex;yandex music;yam;music;"

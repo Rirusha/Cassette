@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2024-09-30 18:34+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:32+0000\n"
 "PO-Revision-Date: 2024-10-07 18:22+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: \n"
@@ -15,1350 +15,1110 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.5\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
-msgid "Cassette"
-msgstr "Cassette"
-
-#: data/space.rirusha.Cassette.desktop.in.in:5
-msgid "Unofficial Yandex Music client for GNOME"
-msgstr "Неафіцыйны кліент сэрвісу Яндэкс Музыка для GNOME"
-
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:7
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex music;yam;music;яндэкс;яндэкс музыка;ям;музыка;"
-
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
-msgid "Cassette (Devel)"
-msgstr "Cassette (Тэст)"
-
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
-msgid "Unofficial Yandex Music client for GNOME (Devel build)"
-msgstr "Неафіцыйны кліент сэрвісу Яндэкс Музыка для GNOME (Тэставая зборка)"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
-msgstr "Неафіцыйны кліент сэрвісу Яндэкс Музыка"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
-msgstr ""
-"Праграма GTK/Adwaita, якая дазваляе карыстацца сэрвісам Яндэкс Музыка ў "
-"аперацыйных сістэмах Linux."
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Магчымасці:"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr ""
-"Дазваляе захоўваць плэйлісты і альбомы для праслухоўвання ў аўтаномным рэжыме"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "Мае дынамічны «рэжым караоке» прама на панэлі звестак пра трэк"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr ""
-"Дазваляе дакладна наладзіць паказ і прайграванне спецыяльнага кантэнту, "
-"напрыклад, для дарослых або прыдатны для дзяцей."
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Паказвае трэкі, якія зараз недаступны ў сэрвісе"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Паказвае, якія трэкі былі заменены і чым"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr ""
-"Cassette — неафіцыйны кліент, які не звязаны з кампаніяй Яндэкс і не "
-"падтрымліваецца ёй."
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
-msgid "Liked view"
-msgstr "Мне падабаецца"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
-msgid "Playlists view"
-msgstr "Плэйлісты"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
-msgid "Sync lyrics"
-msgstr "Тэкст песні"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
-msgid "Playback queue"
-msgstr "Чарга прайгравання"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
-msgid "Waves view"
-msgstr "Хвалі"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
-msgid "Main preferences"
-msgstr "Галоўныя параметры"
-
-#: data/ui/account-info-dialog.blp:5
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
 msgid "Account information"
 msgstr "Інфармацыя пра ўліковы запіс"
 
-#: data/ui/account-info-dialog.blp:52
+#: data/ui/account/account-info-dialog.blp:21
 msgid "Open in browser"
 msgstr "Адкрыць у браўзеры"
 
-#: data/ui/account-info-dialog.blp:61
-msgid "Plus"
-msgstr "Я.Плюс"
+#: data/ui/account/account-info-dialog.blp:28
+#, fuzzy
+msgid "Open subscription page in browser"
+msgstr "Адкрыць у браўзеры"
 
-#: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
-#: src/authenticator.vala:51
+#: data/ui/account/account-info-dialog.blp:118
 msgid "Log out"
 msgstr "Выйсці з уліковага запісу"
 
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:11
-msgid "Usage mode"
-msgstr "Рэжым выкарыстання"
-
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:40
-msgctxt "auth window"
-msgid "Choose usage mode"
-msgstr "Выберыце рэжым выкарыстання"
-
-#: data/ui/begin-view.ui:50
-msgctxt "auth window"
-msgid ""
-"If you select the \"Online mode\", you can access local music by enabling "
-"the display of the corresponding pages in the pages preferences, as well as "
-"log in later when selecting \"Local mode\""
+#: data/ui/auth.blp:17 data/ui/main-content.blp:47
+msgid "About"
 msgstr ""
-"Калі вы выберыце «Анлайн-рэжым», доступ да лакальнай музыкі можна атрымаць, "
-"калі ўключыць паказ адпаведных старонак у наладах, таксама падчас уваходу ў "
-"іншы раз, можна будзе выбраць «Лакальны рэжым»"
 
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:75
-msgctxt "auth window"
-msgid "Online mode"
-msgstr "Анлайн-рэжым"
+#: data/ui/auth.blp:24
+#, fuzzy
+msgid "Welcome to Cassette!"
+msgstr "Аб праграме"
 
-#. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:85
-msgctxt "auth window"
-msgid "Local mode"
-msgstr "Лакальны рэжым"
+#: data/ui/auth.blp:41
+msgid "Login with Yandex account"
+msgstr ""
 
-#. Translators: "Close" window button label
-#: data/ui/begin-view.ui:97
-msgctxt "auth window"
-msgid "Close"
-msgstr "Закрыць"
+#: data/ui/auth.blp:47
+#, fuzzy
+msgid "Yandex Music token"
+msgstr "Пошук у Яндэкс Музыцы"
 
-#: data/ui/begin-view.ui:112
-msgid "Authorization"
-msgstr "Аўтарызацыя"
+#: data/ui/auth.blp:60
+msgid "How to obtain token"
+msgstr ""
 
-#. Translators: size of cache dirs
-#: data/ui/cache-deletion-preferences.ui:21
-msgid "Dirs size:"
-msgstr "Памер каталогаў:"
+#: data/ui/auth.blp:81
+#, fuzzy
+msgid "No Plus subscription"
+msgstr "Няма падпіскі Яндэкс Плюс"
 
-#. Translators: tempprary cache folder
-#: data/ui/cache-deletion-preferences.ui:35
-msgid "Cache"
-msgstr "Кэш"
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
+msgstr ""
 
-#: data/ui/cache-deletion-preferences.ui:88
-msgid "Clear"
-msgstr "Ачысціць"
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr ""
 
-#. Translators: temparence cache folder
-#: data/ui/cache-deletion-preferences.ui:109
-msgid "Data"
-msgstr "Даныя"
+#: data/ui/main-content.blp:35
+#, fuzzy
+msgid "Refresh current page"
+msgstr "Абагуліць бягучы трэк"
 
-#: data/ui/cache-deletion-preferences.ui:159
-msgid "Move to cache"
-msgstr "Перамясціць у кэш"
+#: data/ui/main-content.blp:60 data/ui/main-content.blp:65
+msgid "Stay tuned"
+msgstr ""
 
-#: data/ui/cache-deletion-preferences.ui:163
-msgid "Move"
-msgstr "Перамясціць"
+#: data/ui/main-content.blp:66 data/ui/main-content.blp:78
+msgid "Work in progress."
+msgstr ""
 
-#: data/ui/cache-indicator.blp:35
-msgid "Show all cache jobs"
-msgstr "Паказаць усе захаванні"
+#: data/ui/main-content.blp:72
+msgid "Keep it up"
+msgstr ""
 
-#: data/ui/custom-page-preferences.ui:17
-msgid "Title: "
-msgstr "Назва: "
+#: data/ui/main-content.blp:77
+msgid "Keep it up!"
+msgstr ""
 
-#: data/ui/custom-page-preferences.ui:38
-msgid "Icon: "
-msgstr "Значок: "
+#: data/ui/warning-dialog.blp:5
+#, fuzzy
+msgid "Warning message"
+msgstr "Інфармацыйнае паведамленне аб акне: %s"
 
-#: data/ui/custom-page-preferences.ui:75
-msgid "Save page"
-msgstr "Захаваць старонку"
+#: data/ui/warning-dialog.blp:25
+msgid "Ask the community"
+msgstr ""
 
-#: data/ui/custom-page-preferences.ui:92
-msgid "Remove page"
-msgstr "Выдаліць старонку"
-
-#. Translators: title of preference group
-#: data/ui/custom-pages-preferences.ui:7
-msgctxt "preference window"
-msgid "Custom pages"
-msgstr "Карыстальніцкія старонкі"
-
-#. Translators: description of preference group
-#: data/ui/custom-pages-preferences.ui:9
-msgctxt "preference window"
-msgid "Here you can control custom pages."
-msgstr "Тут вы можаце кіраваць карыстальніцкімі старонкамі."
-
-#: data/ui/disliked-tracks-view.ui:23
-#: src/widgets/buttons/menu/primary-menu-button.vala:31
-msgid "Disliked tracks"
-msgstr "Трэкі, якія не спадабаліся"
-
-#: data/ui/header-bar.blp:12
-msgid "Go back"
-msgstr "Назад"
-
-#: data/ui/header-bar.blp:20
+#: data/ui/webkit/webkit-auth.blp:21
 msgid "Refresh"
 msgstr "Абнавіць"
 
-#: data/ui/header-bar.blp:28
-msgid "Yandex Music search"
-msgstr "Пошук у Яндэкс Музыцы"
-
-#: data/ui/help-overlay.blp:11
-msgid "Main Actions"
-msgstr "Агульныя дзеянні"
-
-#: data/ui/help-overlay.blp:14
-msgid "Show Shortcuts"
-msgstr "Паказаць спалучэнні клавіш"
-
-#: data/ui/help-overlay.blp:19
-msgid "Quit"
-msgstr "Выйсці"
-
-#: data/ui/help-overlay.blp:25
-msgid "Playback Control"
-msgstr "Кіраванне прайграваннем"
-
-#: data/ui/help-overlay.blp:28
-msgid "Play/Pause playback"
-msgstr "Прайграванне/Паўза"
-
-#: data/ui/help-overlay.blp:33 data/ui/player-bar.blp:87
-msgid "Play previous track"
-msgstr "Прайграць папярэдні трэк"
-
-#: data/ui/help-overlay.blp:38 data/ui/player-bar.blp:119
-msgid "Play next track"
-msgstr "Прайграць наступны трэк"
-
-#: data/ui/help-overlay.blp:43
-msgid "Mute app"
-msgstr "Адключыць гук у праграме"
-
-#: data/ui/help-overlay.blp:49
-msgid "Queue control"
-msgstr "Кіраванне чаргой"
-
-#: data/ui/help-overlay.blp:52 data/ui/player-bar.blp:141
-msgid "Change shuffle mode"
-msgstr "Змяніць рэжым перамешвання чаргі"
-
-#: data/ui/help-overlay.blp:57 data/ui/player-bar.blp:65
-msgid "Change repeat mode"
-msgstr "Змяніць рэжым паўтору"
-
-#: data/ui/help-overlay.blp:63
-msgid "Other"
-msgstr "Іншае"
-
-#: data/ui/help-overlay.blp:66
-msgid "Share current track"
-msgstr "Абагуліць бягучы трэк"
-
-#: data/ui/help-overlay.blp:71
-msgid "Parse url from clipboard"
-msgstr "Узяць URL з буфера абмену"
-
-#: data/ui/info-marks.ui:23
-msgid "Explicit content"
-msgstr "Кантэнт для дарослых"
-
-#: data/ui/info-marks.ui:32
-msgid "Child content"
-msgstr "Дзіцячы кантэнт"
-
-#: data/ui/main-view.blp:6
-msgid "Page under construction"
-msgstr "Старонка ў распрацоўцы"
-
-#: data/ui/main-view.blp:20
-msgid "All stations"
-msgstr "Усе станцыі"
-
-#: data/ui/no-plus-dialog.blp:20
-msgid "No Plus Subscription"
-msgstr "Няма падпіскі Яндэкс Плюс"
-
-#: data/ui/no-plus-dialog.blp:21
-msgid ""
-"To avoid problems with Yandex, the online functions of the application are "
-"not available without a Yandex.Plus subscription. Thanks for understanding."
-msgstr ""
-"Каб пазбегнуць праблем з Яндэкс, анлайн-функцыі праграмы недаступны без "
-"падпіскі Яндэкс Плюс. Дзякуй за разуменне."
-
-#: data/ui/no-plus-dialog.blp:41
-msgid "Get Plus"
-msgstr "Атрымаць Яндэкс Плюс"
-
-#: data/ui/player-bar.blp:22
-msgid "Show track info"
-msgstr "Паказаць звесткі пра трэк"
-
-#: data/ui/player-bar.blp:206
-msgid "Show wave settings"
-msgstr "Паказаць налады хвалі"
-
-#: data/ui/player-bar.blp:216
-msgid "Show playback queue"
-msgstr "Паказаць Чаргу прайгравання"
-
-#: data/ui/player-bar.blp:229
-msgid "Change volume"
-msgstr "Змяніць гучнасць"
-
-#: data/ui/player-queue.blp:5 src/application.vala:271
-msgid "Playing now"
-msgstr "Зараз грае"
-
-#: data/ui/playlist-choose-dialog.ui:8
-msgid "Choose playlist to add"
-msgstr "Выберыце плэйліст для дадавання"
-
-#: data/ui/playlist-create-button.ui:36
-msgid "Create playlist"
-msgstr "Стварыць плэйліст"
-
-#: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
-#: src/widgets/cache-indicator/job-info-badge.vala:42
-#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:167
-msgid "Playlist"
-msgstr "Плэйліст"
-
-#: data/ui/playlist-row.ui:40
-msgid "Empty"
-msgstr "Пусты"
-
-#: data/ui/playlists-view.ui:23
-msgid "Your playlists"
-msgstr "Вашы плэйлісты"
-
-#: data/ui/playlists-view.ui:39
-msgid "Also you liked these playlists"
-msgstr "Вам таксама спадабаліся гэтыя плэйлісты"
-
-#: data/ui/playlist-view.ui:187
-msgid "Change playlist visibility"
-msgstr "Змяніць бачнасць плэйліста"
-
-#: data/ui/playlist-view.ui:211
-msgid "Add page to header"
-msgstr "Дадаць старонку ў загаловак"
-
-#. Translators: tooltip of "save" button
-#: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
-#: src/widgets/buttons/menu/track-options-button.vala:82
-#: src/widgets/buttons/menu/track-options-button.vala:107
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
-#: src/widgets/buttons/menu/track-queue-options-button.vala:72
-#: src/widgets/buttons/menu/track-queue-options-button.vala:102
-msgid "Save"
-msgstr "Захаваць"
-
-#. Translators: tooltip of "delete" button
-#: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
-#: src/widgets/preferences/cache-deletion-preferences.vala:96
-#: src/widgets/preferences/preferences-dialog.vala:140
-#: src/widgets/views/playlist.vala:90
-msgid "Delete"
-msgstr "Выдаліць"
-
-#. Translators: tooltip of "abort" button
-#: data/ui/playlist-view.ui:276
-msgid "Abort"
-msgstr "Скасаваць"
-
-#: data/ui/playlist-view.ui:280
-msgid "Stop"
-msgstr "Спыніць"
-
-#: data/ui/preferences-dialog.ui:8
-msgctxt "preference dialog"
-msgid "Main"
-msgstr "Галоўная"
-
-#: data/ui/preferences-dialog.ui:12
-msgctxt "preference dialog"
-msgid "General"
-msgstr "Агульныя"
-
-#: data/ui/preferences-dialog.ui:15
-msgctxt "preference dialog"
-msgid "Enable high quality audio"
-msgstr "Уключыць высокую якасць музыкі"
-
-#: data/ui/preferences-dialog.ui:16
-msgctxt "preference dialog"
-msgid ""
-"Attention! If the track was downloaded in low quality, and after the "
-"download is enabled in high quality, the audio will not be reloaded"
-msgstr ""
-"Увага! Калі трэк быў спампаваны ў нізкай якасці, а пасля таго ўключана "
-"загрузка ў высокай якасці, музыка не перазагружаецца"
-
-#: data/ui/preferences-dialog.ui:21
-msgctxt "preference dialog"
-msgid "Add track on top of playlist"
-msgstr "Дадаваць трэкі ў пачатак плэйліста"
-
-#: data/ui/preferences-dialog.ui:22
-msgctxt "preference dialog"
-msgid "Will the track be added to the playlist as the first or as the last"
-msgstr "Трэк будзе дадавацца ў плэйліст як першы ці як апошні"
-
-#: data/ui/preferences-dialog.ui:27
-msgctxt "preference dialog"
-msgid "Show 'Playing now' notification"
-msgstr "Паказваць апавяшчэнне «Зараз грае»"
-
-#: data/ui/preferences-dialog.ui:28
-msgctxt "preference dialog"
-msgid "Show a notification when switching a track"
-msgstr "Паказваць апавяшчэнне, калі пераключаецца трэк"
-
-#: data/ui/preferences-dialog.ui:35
-msgctxt "preference dialog"
-msgid "Show additional marks"
-msgstr "Паказваць дадатковыя адзнакі"
-
-#: data/ui/preferences-dialog.ui:36
-msgctxt "preference dialog"
-msgid "Additional marks display additional information about the track"
-msgstr "Дадатковыя адзнакі паказваюць дадатковыя звесткі пра трэк"
-
-#: data/ui/preferences-dialog.ui:39
-msgctxt "preference dialog"
-msgid "Show save mark"
-msgstr "Пазначаць захаванне трэка"
-
-#: data/ui/preferences-dialog.ui:40
-msgctxt "preference dialog"
-msgid "Show a label with information about the caching status of the track"
-msgstr "Паказваць надпіс са звесткамі пра стан кэшавання трэка"
-
-#: data/ui/preferences-dialog.ui:45
-msgctxt "preference dialog"
-msgid "Show cache mark"
-msgstr "Пазначаць кэшаванне трэка"
-
-#: data/ui/preferences-dialog.ui:46
-msgctxt "preference dialog"
-msgid "Show a mark about saving a track to the cache"
-msgstr "Паказваць значок, калі трэк захоўваецца ў кэш"
-
-#: data/ui/preferences-dialog.ui:51
-msgctxt "preference dialog"
-msgid "Show replaced mark"
-msgstr "Пазначаць замененыя трэкі"
-
-#: data/ui/preferences-dialog.ui:52
-msgctxt "preference dialog"
-msgid "Show a mark that shows that the track has been replaced"
-msgstr "Паказваць значок, калі трэк быў заменены"
-
-#: data/ui/preferences-dialog.ui:59
-msgctxt "preference dialog"
-msgid "Tracks visibility"
-msgstr "Бачнасць трэкаў"
-
-#: data/ui/preferences-dialog.ui:60
-msgctxt "preference dialog"
-msgid ""
-"Show special tracks in track lists. Filter doesn't work when searching in "
-"track list"
-msgstr ""
-"Паказваць спецыяльна пазначаныя трэкі ў спісах. Фільтр не працуе падчас "
-"пошуку ў спісе трэкаў"
-
-#: data/ui/preferences-dialog.ui:63
-msgctxt "preference dialog"
-msgid "Show unavailable content"
-msgstr "Паказваць недаступны кантэнт"
-
-#: data/ui/preferences-dialog.ui:64
-msgctxt "preference dialog"
-msgid ""
-"Show tracks that are not available in the service. You can't listen to them"
-msgstr "Паказваць трэкі, якія недаступны ў сэрвісе. Вы не можаце іх праслухаць"
-
-#: data/ui/preferences-dialog.ui:69
-msgctxt "preference dialog"
-msgid "Show content suitable for children"
-msgstr "Паказваць дзіцячы кантэнт"
-
-#: data/ui/preferences-dialog.ui:70
-msgctxt "preference dialog"
-msgid "Show content that is specific to children"
-msgstr "Паказваць кантэнт, які прызначаны для дзяцей"
-
-#: data/ui/preferences-dialog.ui:75
-msgctxt "preference dialog"
-msgid "Show explicit content"
-msgstr "Паказваць кантэнт для дарослых"
-
-#: data/ui/preferences-dialog.ui:76
-msgctxt "preference dialog"
-msgid "Show content that has age restrictions"
-msgstr "Паказваць кантэнт з узроставым абмежаваннем"
-
-#: data/ui/preferences-dialog.ui:83
-msgctxt "preference dialog"
-msgid "Other"
-msgstr "Іншае"
-
-#: data/ui/preferences-dialog.ui:86
-msgctxt "preference dialog"
-msgid "Enable Debug-Mode"
-msgstr "Уключыць рэжым адладкі"
-
-#: data/ui/preferences-dialog.ui:87
-msgctxt "preference dialog"
-msgid "Enable logging of additional information useful for error detection"
-msgstr "Уключыць запіс дадатковых звестак, карысных для пошуку памылак"
-
-#: data/ui/preferences-dialog.ui:94
-msgctxt "preference dialog"
-msgid "Experimental"
-msgstr "Эксперыментальныя функцыі"
-
-#: data/ui/preferences-dialog.ui:95
-msgctxt "preference dialog"
-msgid "Parameters that test anything and may be removed in future releases"
-msgstr ""
-"Параметры для выпрабавання нейкіх магчымасцей, могуць быць выдалены у "
-"наступных выпусках"
-
-#: data/ui/preferences-dialog.ui:98
-msgctxt "preference dialog"
-msgid "Use only bottom sheet menus"
-msgstr "Выкарыстоўваць толькі ніжняе меню ўкладак"
-
-#: data/ui/preferences-dialog.ui:99
-msgctxt "preference dialog"
-msgid "Test preference for bottom sheet menu"
-msgstr "Эксперыментальны парамер для ніжняга меню ўкладак"
-
-#: data/ui/preferences-dialog.ui:108
-msgctxt "preference dialog"
-msgid "Pages"
-msgstr "Старонкі"
-
-#: data/ui/preferences-dialog.ui:112
-msgctxt "preference dialog"
-msgid "Static pages"
-msgstr "Статычныя старонкі"
-
-#: data/ui/preferences-dialog.ui:113
-msgctxt "preference dialog"
-msgid ""
-"Here you can show or hide static pages. They will always be displayed on the "
-"left side of the header."
-msgstr ""
-"Тут вы можаце паказаць або схаваць статычныя старонкі. Яны заўсёды будуць "
-"паказвацца ў левай частцы загалоўка."
-
-#: data/ui/preferences-dialog.ui:116
-msgctxt "preference dialog"
-msgid "Show 'Main' page"
-msgstr "Паказваць старонку «Галоўная»"
-
-#: data/ui/preferences-dialog.ui:121
-msgctxt "preference dialog"
-msgid "Show 'Liked' page"
-msgstr "Паказваць старонку «Мне падабаецца»"
-
-#: data/ui/preferences-dialog.ui:126
-msgctxt "preference dialog"
-msgid "Show 'Playlists' page"
-msgstr "Паказваць старонку «Плэйлісты»"
-
-#: data/ui/preferences-dialog.ui:138
-msgctxt "preference dialog"
-msgid "Cache"
-msgstr "Кэш"
-
-#: data/ui/preferences-dialog.ui:142
-msgctxt "preference dialog"
-msgid "Cache managing"
-msgstr "Кіраванне кэшам"
-
-#: data/ui/preferences-dialog.ui:143
-msgctxt "preference dialog"
-msgid ""
-"Here you can see application memory usage, delete all cache from cache "
-"folder and control downloading cache to disk"
-msgstr ""
-"Тут вы можаце паглядзець выкарыстанне памяці праграмай, ачысціць папку з "
-"кэшам і кіраваць спампоўваннем у кэш на дыску"
-
-#: data/ui/preferences-dialog.ui:146
-msgctxt "preference dialog"
-msgid "Cache content"
-msgstr "Змесціва кэша"
-
-#: data/ui/preferences-dialog.ui:147
-msgctxt "preference dialog"
-msgid ""
-"For better performance. Over time, it starts to take up a lot of space. So "
-"far, manual cleaning is required. If enabled, the application will cache all "
-"content to cache dir for better performance, otherwise, the application will "
-"load content only when caching objects (such as playlists or albums). "
-"Disabling the parameter does not delete already downloaded content"
-msgstr ""
-"Калі ўключана, праграма будзе кэшаваць увесь кантэнт у /var/tmp/cassette для "
-"лепшай прадукцыйнасці, інакш праграма будзе загружаць кантэнт толькі пры "
-"кэшаванні аб'ектаў (напрыклад, плэйлістоў або альбомаў). Адключэнне "
-"параметра не выдаляе ўжо спампаваны кантэнт"
-
-#: data/ui/save-stack.ui:25
-msgid "Content saving…"
-msgstr "Захаванне кантэнту…"
-
-#: data/ui/save-stack.ui:42
-msgid "Content cached"
-msgstr "Кантэнт у кэшы"
-
-#: data/ui/save-stack.ui:56
-msgid "Content saved"
-msgstr "Кантэнт захаваны"
-
-#: data/ui/stations-view.blp:22
-msgid "Stations dashboard"
-msgstr "Станцыі"
-
-#: data/ui/stations-view.blp:58
-msgid "Searching for station…"
-msgstr "Пошук станцыі…"
-
-#: data/ui/stations-view.blp:77
-msgid "By genre…"
-msgstr "Жанр…"
-
-#: data/ui/stations-view.blp:99 data/ui/wave-settings.blp:60
-msgid "By mood…"
-msgstr "Настрой…"
-
-#: data/ui/stations-view.blp:121 data/ui/wave-settings.blp:25
-msgid "By activity…"
-msgstr "Занятак…"
-
-#: data/ui/stations-view.blp:143
-msgid "By epoch…"
-msgstr "Эпоха…"
-
-#: data/ui/stations-view.blp:165
-msgid "Other…"
-msgstr "Іншае…"
-
-#: data/ui/stations-view.blp:209
-msgid "No stations with that name were found"
-msgstr "Станцый з такой назвай не знойдзена"
-
-#: data/ui/track-info.blp:103
-msgid "Track lyrics"
-msgstr "Тэкст песні"
-
-#: data/ui/track-info.blp:117
-msgid "Authors"
-msgstr "Аўтары"
-
-#: data/ui/track-info.blp:135
-msgid "Source"
-msgstr "Крыніца"
-
-#: data/ui/track-info.blp:158
-msgid "Similar tracks"
-msgstr "Падобныя трэкі"
-
-#. Translators: placeholder of "search" entry. Local track search (inside of track list)
-#: data/ui/track-list.ui:21
-msgid "Search track"
-msgstr "Шукаць трэк"
-
-#. Translators: part of sort by <name, duration etc>
-#: data/ui/track-list.ui:30
-msgid "Sort by"
-msgstr "Сартаваць па"
-
-#: data/ui/track-list.ui:77
-msgid "No tracks to display"
-msgstr "Няма трэкаў для паказу"
-
-#: data/ui/track-list.ui:88
-msgid "name"
-msgstr "назве"
-
-#: data/ui/track-list.ui:92
-msgid "artist"
-msgstr "выканаўцы"
-
-#: data/ui/track-list.ui:96
-msgid "album"
-msgstr "альбому"
-
-#: data/ui/track-list.ui:100
-msgid "duration"
-msgstr "працягласці"
-
-#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:37
-msgid "Loading…"
-msgstr "Загрузка…"
-
-#: data/ui/wave-settings.blp:42
-msgid "By diversity…"
-msgstr "Разнастайнасць…"
-
-#: data/ui/wave-settings.blp:78
-msgid "By language…"
-msgstr "Мова…"
-
-#: data/ui/wave-settings.blp:93
-msgid "Can't get wave settings"
-msgstr "Немагчыма атрымаць налады хвалі"
-
-#: data/ui/window.blp:57 src/window.vala:252
-msgid "Reconnect"
-msgstr "Перазлучыцца"
-
-#: data/ui/window.blp:58 src/application.vala:151
-msgid "Connection problems"
-msgstr "Праблемы з злучэннем"
-
-#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:59
-msgid "translator-credits"
-msgstr "Yahor Haurylenka <k1llo2810@gmail.com> 2023"
-
-#: src/about.vala:67
-msgid "Telegram channel"
-msgstr "Канал у Telegram"
-
-#: src/about.vala:68
-msgid "Financial support (Tinkoff)"
-msgstr "Фінансавая падтрымка (Tinkoff)"
-
-#: src/about.vala:69
-msgid "Financial support (Boosty)"
-msgstr "Фінансавая падтрымка (Boosty)"
-
-#. Please keep alphabetical
-#: src/about.vala:72
-msgid "Sponsors"
-msgstr "Спонсары"
-
-#: src/application.vala:62
+#: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Вывесці звесткі пра версію і выйсці"
 
-#: src/application.vala:145
-msgid "Connection restored"
-msgstr "Злучэнне адноўлена"
+#: src/application.vala:134 src/main.vala:26
+msgid "Cassette"
+msgstr "Cassette"
 
-#: src/application.vala:273
-msgid "Previous"
-msgstr "Папярэдні"
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
+msgid "translator-credits"
+msgstr "Yahor Haurylenka <k1llo2810@gmail.com> 2023"
 
-#: src/application.vala:274
-msgid "Next"
-msgstr "Наступны"
+#: src/ui/about.vala:113
+msgid "Vladimir Romanov"
+msgstr ""
 
-#: src/application.vala:357
-msgid "Current track can not be copied to the clipboard"
-msgstr "Бягучы трэк нельга скапіяваць у буфер абмену"
+#: src/ui/about.vala:116
+msgid "Telegram channel"
+msgstr "Канал у Telegram"
 
-#: src/application.vala:371 src/application.vala:378 src/application.vala:435
-msgid "Can't parse clipboard content"
-msgstr "Немагчыма разабраць змесціва буфера абмену"
+#: src/ui/about.vala:117
+#, fuzzy
+msgid "Telegram group"
+msgstr "Канал у Telegram"
 
-#: src/application.vala:389
-msgid "Users view not implemented yet"
-msgstr "Прагляд карыстальнікаў яшчэ не рэалізаваны"
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr ""
 
-#: src/application.vala:405 src/application.vala:419
-msgid "Albums view not implemented yet"
-msgstr "Прагляд альбомаў яшчэ не рэалізаваны"
+#: src/ui/about.vala:120
+msgid "Financial support (Tinkoff)"
+msgstr "Фінансавая падтрымка (Tinkoff)"
 
-#: src/authenticator.vala:46
-msgid "Log out?"
+#: src/ui/about.vala:121
+msgid "Financial support (Boosty)"
+msgstr "Фінансавая падтрымка (Boosty)"
+
+#: src/ui/about.vala:123
+msgid "Sponsors"
+msgstr "Спонсары"
+
+#: src/ui/account/account-info-dialog.vala:81
+#, fuzzy
+msgid "Logout?"
 msgstr "Выйсці з уліковага запісу?"
 
-#: src/authenticator.vala:47
-msgid "You will need to log in again to use the app"
-msgstr "Вам трэба будзе ўвайсці зноў, каб выкарыстоўваць праграму"
+#: src/ui/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr ""
 
-#. Translators: cancel of deleting playlist
-#: src/authenticator.vala:50
-#: src/widgets/preferences/cache-deletion-preferences.vala:95
-#: src/widgets/preferences/preferences-dialog.vala:139
-#: src/widgets/views/playlist.vala:89
-msgid "Cancel"
-msgstr "Скасаваць"
+#: src/ui/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr ""
 
-#: src/authenticator.vala:97
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
-msgid "Moving…"
-msgstr "Перамяшчэнне…"
+#: src/ui/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr ""
 
-#. Translators: Playlist with liked tracks
-#: src/client/api/objects/playlist/playlist.vala:49
-#: src/client/api/objects/playlist/playlist.vala:99 src/pager.vala:276
-msgid "Liked"
-msgstr "Мне падабаецца"
+#: src/ui/auth.vala:39
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
 
-#. Translators: Playlist that updates every day
-#: src/client/api/objects/playlist/playlist.vala:53
-msgid "Daily"
-msgstr "Плэйліст дня"
+#: src/ui/auth.vala:49
+msgid "You need your Yandex music token to login."
+msgstr ""
 
-#. Translators: Unknown playlist
-#: src/client/api/objects/playlist/playlist.vala:57
-msgid "Unknown"
-msgstr "Невядомы"
+#: src/ui/auth.vala:125
+msgid "Failed to login. Probably wrong token"
+msgstr ""
 
-#: src/client/cachier/storager.vala:124
+#: src/ui/auth.vala:133
 #, c-format
-msgid "Database was initialized, loc - %s"
-msgstr "База даных ініцыялізавана, размяшчэнне - %s"
+msgid "Bad status code: %i"
+msgstr ""
 
-#: src/client/cachier/storager.vala:801
-#, c-format
-msgid "Can't save object %s"
-msgstr "Немагчыма захаваць аб'ект %s"
+#: src/ui/auth.vala:142
+msgid "Connection problems"
+msgstr "Праблемы з злучэннем"
 
-#: src/client/cachier/storager.vala:818
-msgid "Byte"
-msgid_plural "Bytes"
-msgstr[0] "Байт"
-msgstr[1] "Байты"
-msgstr[2] "Байтаў"
-
-#: src/client/cachier/storager.vala:821
-msgid "Kilobyte"
-msgid_plural "Kilobytes"
-msgstr[0] "Кілабайт"
-msgstr[1] "Кілабайты"
-msgstr[2] "Кілабайтаў"
-
-#: src/client/cachier/storager.vala:824
-msgid "Megabyte"
-msgid_plural "Megabytes"
-msgstr[0] "Мегабайт"
-msgstr[1] "Мегабайты"
-msgstr[2] "Мегабайтаў"
-
-#: src/client/cachier/storager.vala:827
-msgid "Gigabyte"
-msgid_plural "Gigabytes"
-msgstr[0] "Гігабайт"
-msgstr[1] "Гігабайты"
-msgstr[2] "Гігабайтаў"
-
-#: src/client/cachier/storager.vala:830
-msgid "Terabyte"
-msgid_plural "Terabytes"
-msgstr[0] "Терабайт"
-msgstr[1] "Терабайты"
-msgstr[2] "Терабайтаў"
-
-#: src/client/cachier/storager.vala:859
-#, c-format
-msgid "Error while getting cache directory size. Message %s"
-msgstr "Памылка пры атрыманні памеру каталога кэша. Паведамленне %s"
-
-#: src/client/cachier/storager.vala:894
-#, c-format
-msgid "Error while getting permanent directory size. Message %s"
-msgstr "Памылка пры атрыманні пастаяннага памеру каталога. Паведамленне %s"
-
-#: src/client/jsoner.vala:358 src/client/jsoner.vala:419
-#: src/client/jsoner.vala:526 src/client/jsoner.vala:550
-#, c-format
-msgid "Wrong type: expected %s, got %s"
-msgstr "Няправільны тып: чакаўся %s, атрыманы %s"
-
-#: src/client/player/mods/abstract-mode.vala:91
-msgid "Problems with queue"
-msgstr "Праблемы з чаргой"
-
-#. Translators: name of new created playlist
-#: src/client/talkers/yam-talker.vala:627
-msgid "New Playlist"
-msgstr "Новы плэйліст"
-
-#: src/pager.vala:162
-#, c-format
-msgid "Can't set title \"%s\" to page"
-msgstr "Немагчыма задаць для старонкі назву «%s»"
-
-#: src/pager.vala:173
-#, c-format
-msgid "Can't set icon with name \"%s\" to page"
-msgstr "Немагчыма задаць на старонку значок з назвай «%s»"
-
-#: src/pager.vala:199
-msgid "Reached max page count"
-msgstr "Дасягнута максімальная колькасць старонак"
-
-#: src/pager.vala:205
-#, c-format
-msgid "Page '%s' already added"
-msgstr "Старонка '%s' ужо дададзена"
-
-#: src/pager.vala:267
-msgid "Main"
-msgstr "Галоўная"
-
-#: src/pager.vala:286
-msgid "Playlists"
-msgstr "Плэйлісты"
-
-#: src/pager.vala:311
-#, c-format
-msgid "Can't read pages file. Message: %s"
-msgstr "Немагчыма прачытаць файл старонак. Паведамленне: %s"
-
-#: src/pager.vala:331
-#, c-format
-msgid "Can't create pages file. Message: %s"
-msgstr "Немагчыма стварыць файл старонак. Паведамленне: %s"
-
-#: src/utils.vala:69
-msgid "Not implemented yet"
-msgstr "Яшчэ не рэалізавана"
-
-#: src/utils.vala:76
-msgid "Need authorization"
-msgstr "Патрэбна аўтарызацыя"
-
-#: src/utils.vala:80
-msgid "Need Bookmate subscription"
-msgstr "Патрэбна падпіска Букмейт"
-
-#: src/utils.vala:176 src/utils.vala:192
-msgid "Link copied to clipboard"
-msgstr "Спасылка скапіявана ў буфер абмену"
-
-#: src/utils.vala:241
-#, c-format
-msgid "Duration: %s h. %s min."
-msgstr "Працягласць: %s гадз. %s хв."
-
-#: src/utils.vala:243
-#, c-format
-msgid "Duration: %s min."
-msgstr "Працягласць: %s хв."
-
-#: src/utils.vala:357
-msgid "today"
-msgstr "сёння"
-
-#: src/utils.vala:359
-msgid "yesterday"
-msgstr "учора"
-
-#: src/widgets/buttons/just/dislike-button.vala:37
-msgid "Remove dislike"
-msgstr "Выдаліць дызлайк"
-
-#: src/widgets/buttons/just/dislike-button.vala:40
-msgid "Set dislike"
-msgstr "Паставіць дызлайк"
-
-#: src/widgets/buttons/just/like-button.vala:41
-msgid "Remove like"
-msgstr "Выдаліць лайк"
-
-#: src/widgets/buttons/just/like-button.vala:48
-msgid "Set like"
-msgstr "Паставіць лайк"
-
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:37
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:40
-msgid "Pause"
-msgstr "Паўза"
-
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:44
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:47
-msgid "Play"
-msgstr "Прайграць"
-
-#: src/widgets/buttons/menu/playlist-options-button.vala:48
-#, c-format
-msgid "Playlist '%s'"
-msgstr "Плэйліст «%s»"
-
-#: src/widgets/buttons/menu/playlist-options-button.vala:53
-#: src/widgets/buttons/menu/playlist-options-button.vala:66
-msgid "My Vibe by playlist"
-msgstr "Мая хваля з плэйліста"
-
-#: src/widgets/buttons/menu/playlist-options-button.vala:54
-#: src/widgets/buttons/menu/playlist-options-button.vala:76
-#: src/widgets/buttons/menu/track-options-button.vala:80
-#: src/widgets/buttons/menu/track-options-button.vala:105
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
-#: src/widgets/buttons/menu/track-queue-options-button.vala:69
-#: src/widgets/buttons/menu/track-queue-options-button.vala:99
-msgid "Add to queue"
-msgstr "Дадаць у чаргу"
-
-#: src/widgets/buttons/menu/playlist-options-button.vala:55
-#: src/widgets/buttons/menu/playlist-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:83
-#: src/widgets/buttons/menu/track-options-button.vala:108
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
-#: src/widgets/buttons/menu/track-queue-options-button.vala:73
-#: src/widgets/buttons/menu/track-queue-options-button.vala:103
-msgid "Share"
-msgstr "Абагуліць"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:26
-msgid "Primary menu"
-msgstr "Асноўнае меню"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:32
-msgid "Parse URL from clipboard"
-msgstr "Узяць URL з буфера абмену"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:33
-msgid "Preferences"
-msgstr "Параметры"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:34
-msgid "Keyboard Shortcuts"
-msgstr "Спалучэнні клавіш"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:35
-msgid "About Cassette"
-msgstr "Аб праграме"
-
-#: src/widgets/buttons/menu/track-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:94
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:32
-#: src/widgets/buttons/menu/track-queue-options-button.vala:66
-#: src/widgets/buttons/menu/track-queue-options-button.vala:87
-msgid "My Vibe by track"
-msgstr "Мая хваля з трэка"
-
-#: src/widgets/buttons/menu/track-options-button.vala:78
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
-#: src/widgets/buttons/menu/track-queue-options-button.vala:67
-msgid "Show info"
+#: src/ui/window.vala:61
+#, fuzzy
+msgid "More info"
 msgstr "Паказаць звесткі"
 
-#: src/widgets/buttons/menu/track-options-button.vala:79
-#: src/widgets/buttons/menu/track-options-button.vala:104
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:45
-#: src/widgets/buttons/menu/track-queue-options-button.vala:68
-#: src/widgets/buttons/menu/track-queue-options-button.vala:98
-msgid "Play next"
-msgstr "Прайграць наступным"
+#~ msgid "Unofficial Yandex Music client for GNOME"
+#~ msgstr "Неафіцыйны кліент сэрвісу Яндэкс Музыка для GNOME"
 
-#: src/widgets/buttons/menu/track-options-button.vala:81
-#: src/widgets/buttons/menu/track-options-button.vala:106
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:36
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:47
-#: src/widgets/buttons/menu/track-queue-options-button.vala:70
-#: src/widgets/buttons/menu/track-queue-options-button.vala:100
-msgid "Add to playlist"
-msgstr "Дадаць у плэйліст"
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex music;yam;music;яндэкс;яндэкс музыка;ям;музыка;"
 
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
-msgid "Remove from playlist"
-msgstr "Выдаліць з плэйліста"
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Cassette (Тэст)"
 
-#: src/widgets/buttons/menu/track-queue-options-button.vala:71
-#: src/widgets/buttons/menu/track-queue-options-button.vala:101
-msgid "Remove from queue"
-msgstr "Выдаліць з чаргі"
+#~ msgid "Unofficial Yandex Music client for GNOME (Devel build)"
+#~ msgstr "Неафіцыйны кліент сэрвісу Яндэкс Музыка для GNOME (Тэставая зборка)"
 
-#: src/widgets/buttons/menu/volume-button.vala:121
-msgid "Volume control"
-msgstr "Кіраванне гучнасцю"
+#~ msgid "Unofficial Yandex Music client"
+#~ msgstr "Неафіцыйны кліент сэрвісу Яндэкс Музыка"
 
-#: src/widgets/buttons/menu/volume-button.vala:261
-msgid "Unmute"
-msgstr "Уключыць гук"
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "Праграма GTK/Adwaita, якая дазваляе карыстацца сэрвісам Яндэкс Музыка ў "
+#~ "аперацыйных сістэмах Linux."
 
-#: src/widgets/buttons/menu/volume-button.vala:261
-msgid "Mute"
-msgstr "Адключыць гук"
+#~ msgid "Features:"
+#~ msgstr "Магчымасці:"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:44
-#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:172
-msgid "Album"
-msgstr "Альбом"
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr ""
+#~ "Дазваляе захоўваць плэйлісты і альбомы для праслухоўвання ў аўтаномным "
+#~ "рэжыме"
 
-#. Translators: n track from n tracks saved
-#: src/widgets/cache-indicator/job-info-badge.vala:77
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr "Мае дынамічны «рэжым караоке» прама на панэлі звестак пра трэк"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "Дазваляе дакладна наладзіць паказ і прайграванне спецыяльнага кантэнту, "
+#~ "напрыклад, для дарослых або прыдатны для дзяцей."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "Паказвае трэкі, якія зараз недаступны ў сэрвісе"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "Паказвае, якія трэкі былі заменены і чым"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr ""
+#~ "Cassette — неафіцыйны кліент, які не звязаны з кампаніяй Яндэкс і не "
+#~ "падтрымліваецца ёй."
+
+#~ msgid "Liked view"
+#~ msgstr "Мне падабаецца"
+
+#~ msgid "Playlists view"
+#~ msgstr "Плэйлісты"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "Тэкст песні"
+
+#~ msgid "Playback queue"
+#~ msgstr "Чарга прайгравання"
+
+#~ msgid "Waves view"
+#~ msgstr "Хвалі"
+
+#~ msgid "Main preferences"
+#~ msgstr "Галоўныя параметры"
+
+#~ msgid "Plus"
+#~ msgstr "Я.Плюс"
+
+#~ msgid "Usage mode"
+#~ msgstr "Рэжым выкарыстання"
+
+#~ msgctxt "auth window"
+#~ msgid "Choose usage mode"
+#~ msgstr "Выберыце рэжым выкарыстання"
+
+#~ msgctxt "auth window"
+#~ msgid ""
+#~ "If you select the \"Online mode\", you can access local music by enabling "
+#~ "the display of the corresponding pages in the pages preferences, as well "
+#~ "as log in later when selecting \"Local mode\""
+#~ msgstr ""
+#~ "Калі вы выберыце «Анлайн-рэжым», доступ да лакальнай музыкі можна "
+#~ "атрымаць, калі ўключыць паказ адпаведных старонак у наладах, таксама "
+#~ "падчас уваходу ў іншы раз, можна будзе выбраць «Лакальны рэжым»"
+
+#~ msgctxt "auth window"
+#~ msgid "Online mode"
+#~ msgstr "Анлайн-рэжым"
+
+#~ msgctxt "auth window"
+#~ msgid "Local mode"
+#~ msgstr "Лакальны рэжым"
+
+#~ msgctxt "auth window"
+#~ msgid "Close"
+#~ msgstr "Закрыць"
+
+#~ msgid "Authorization"
+#~ msgstr "Аўтарызацыя"
+
+#~ msgid "Dirs size:"
+#~ msgstr "Памер каталогаў:"
+
+#~ msgid "Cache"
+#~ msgstr "Кэш"
+
+#~ msgid "Clear"
+#~ msgstr "Ачысціць"
+
+#~ msgid "Data"
+#~ msgstr "Даныя"
+
+#~ msgid "Move to cache"
+#~ msgstr "Перамясціць у кэш"
+
+#~ msgid "Move"
+#~ msgstr "Перамясціць"
+
+#~ msgid "Show all cache jobs"
+#~ msgstr "Паказаць усе захаванні"
+
+#~ msgid "Title: "
+#~ msgstr "Назва: "
+
+#~ msgid "Icon: "
+#~ msgstr "Значок: "
+
+#~ msgid "Save page"
+#~ msgstr "Захаваць старонку"
+
+#~ msgid "Remove page"
+#~ msgstr "Выдаліць старонку"
+
+#~ msgctxt "preference window"
+#~ msgid "Custom pages"
+#~ msgstr "Карыстальніцкія старонкі"
+
+#~ msgctxt "preference window"
+#~ msgid "Here you can control custom pages."
+#~ msgstr "Тут вы можаце кіраваць карыстальніцкімі старонкамі."
+
+#~ msgid "Disliked tracks"
+#~ msgstr "Трэкі, якія не спадабаліся"
+
+#~ msgid "Go back"
+#~ msgstr "Назад"
+
+#~ msgid "Main Actions"
+#~ msgstr "Агульныя дзеянні"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "Паказаць спалучэнні клавіш"
+
+#~ msgid "Quit"
+#~ msgstr "Выйсці"
+
+#~ msgid "Playback Control"
+#~ msgstr "Кіраванне прайграваннем"
+
+#~ msgid "Play/Pause playback"
+#~ msgstr "Прайграванне/Паўза"
+
+#~ msgid "Play previous track"
+#~ msgstr "Прайграць папярэдні трэк"
+
+#~ msgid "Play next track"
+#~ msgstr "Прайграць наступны трэк"
+
+#~ msgid "Mute app"
+#~ msgstr "Адключыць гук у праграме"
+
+#~ msgid "Queue control"
+#~ msgstr "Кіраванне чаргой"
+
+#~ msgid "Change shuffle mode"
+#~ msgstr "Змяніць рэжым перамешвання чаргі"
+
+#~ msgid "Change repeat mode"
+#~ msgstr "Змяніць рэжым паўтору"
+
+#~ msgid "Other"
+#~ msgstr "Іншае"
+
+#~ msgid "Parse url from clipboard"
+#~ msgstr "Узяць URL з буфера абмену"
+
+#~ msgid "Explicit content"
+#~ msgstr "Кантэнт для дарослых"
+
+#~ msgid "Child content"
+#~ msgstr "Дзіцячы кантэнт"
+
+#~ msgid "Page under construction"
+#~ msgstr "Старонка ў распрацоўцы"
+
+#~ msgid "All stations"
+#~ msgstr "Усе станцыі"
+
+#~ msgid ""
+#~ "To avoid problems with Yandex, the online functions of the application "
+#~ "are not available without a Yandex.Plus subscription. Thanks for "
+#~ "understanding."
+#~ msgstr ""
+#~ "Каб пазбегнуць праблем з Яндэкс, анлайн-функцыі праграмы недаступны без "
+#~ "падпіскі Яндэкс Плюс. Дзякуй за разуменне."
+
+#~ msgid "Get Plus"
+#~ msgstr "Атрымаць Яндэкс Плюс"
+
+#~ msgid "Show track info"
+#~ msgstr "Паказаць звесткі пра трэк"
+
+#~ msgid "Show wave settings"
+#~ msgstr "Паказаць налады хвалі"
+
+#~ msgid "Show playback queue"
+#~ msgstr "Паказаць Чаргу прайгравання"
+
+#~ msgid "Change volume"
+#~ msgstr "Змяніць гучнасць"
+
+#~ msgid "Playing now"
+#~ msgstr "Зараз грае"
+
+#~ msgid "Choose playlist to add"
+#~ msgstr "Выберыце плэйліст для дадавання"
+
+#~ msgid "Create playlist"
+#~ msgstr "Стварыць плэйліст"
+
+#~ msgid "Playlist"
+#~ msgstr "Плэйліст"
+
+#~ msgid "Empty"
+#~ msgstr "Пусты"
+
+#~ msgid "Your playlists"
+#~ msgstr "Вашы плэйлісты"
+
+#~ msgid "Also you liked these playlists"
+#~ msgstr "Вам таксама спадабаліся гэтыя плэйлісты"
+
+#~ msgid "Change playlist visibility"
+#~ msgstr "Змяніць бачнасць плэйліста"
+
+#~ msgid "Add page to header"
+#~ msgstr "Дадаць старонку ў загаловак"
+
+#~ msgid "Save"
+#~ msgstr "Захаваць"
+
+#~ msgid "Delete"
+#~ msgstr "Выдаліць"
+
+#~ msgid "Abort"
+#~ msgstr "Скасаваць"
+
+#~ msgid "Stop"
+#~ msgstr "Спыніць"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Main"
+#~ msgstr "Галоўная"
+
+#~ msgctxt "preference dialog"
+#~ msgid "General"
+#~ msgstr "Агульныя"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Enable high quality audio"
+#~ msgstr "Уключыць высокую якасць музыкі"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Attention! If the track was downloaded in low quality, and after the "
+#~ "download is enabled in high quality, the audio will not be reloaded"
+#~ msgstr ""
+#~ "Увага! Калі трэк быў спампаваны ў нізкай якасці, а пасля таго ўключана "
+#~ "загрузка ў высокай якасці, музыка не перазагружаецца"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Add track on top of playlist"
+#~ msgstr "Дадаваць трэкі ў пачатак плэйліста"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Will the track be added to the playlist as the first or as the last"
+#~ msgstr "Трэк будзе дадавацца ў плэйліст як першы ці як апошні"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Playing now' notification"
+#~ msgstr "Паказваць апавяшчэнне «Зараз грае»"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a notification when switching a track"
+#~ msgstr "Паказваць апавяшчэнне, калі пераключаецца трэк"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show additional marks"
+#~ msgstr "Паказваць дадатковыя адзнакі"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Additional marks display additional information about the track"
+#~ msgstr "Дадатковыя адзнакі паказваюць дадатковыя звесткі пра трэк"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show save mark"
+#~ msgstr "Пазначаць захаванне трэка"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a label with information about the caching status of the track"
+#~ msgstr "Паказваць надпіс са звесткамі пра стан кэшавання трэка"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show cache mark"
+#~ msgstr "Пазначаць кэшаванне трэка"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a mark about saving a track to the cache"
+#~ msgstr "Паказваць значок, калі трэк захоўваецца ў кэш"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show replaced mark"
+#~ msgstr "Пазначаць замененыя трэкі"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show a mark that shows that the track has been replaced"
+#~ msgstr "Паказваць значок, калі трэк быў заменены"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Tracks visibility"
+#~ msgstr "Бачнасць трэкаў"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Show special tracks in track lists. Filter doesn't work when searching in "
+#~ "track list"
+#~ msgstr ""
+#~ "Паказваць спецыяльна пазначаныя трэкі ў спісах. Фільтр не працуе падчас "
+#~ "пошуку ў спісе трэкаў"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show unavailable content"
+#~ msgstr "Паказваць недаступны кантэнт"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Show tracks that are not available in the service. You can't listen to "
+#~ "them"
+#~ msgstr ""
+#~ "Паказваць трэкі, якія недаступны ў сэрвісе. Вы не можаце іх праслухаць"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show content suitable for children"
+#~ msgstr "Паказваць дзіцячы кантэнт"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show content that is specific to children"
+#~ msgstr "Паказваць кантэнт, які прызначаны для дзяцей"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show explicit content"
+#~ msgstr "Паказваць кантэнт для дарослых"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show content that has age restrictions"
+#~ msgstr "Паказваць кантэнт з узроставым абмежаваннем"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Other"
+#~ msgstr "Іншае"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Enable Debug-Mode"
+#~ msgstr "Уключыць рэжым адладкі"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Enable logging of additional information useful for error detection"
+#~ msgstr "Уключыць запіс дадатковых звестак, карысных для пошуку памылак"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Experimental"
+#~ msgstr "Эксперыментальныя функцыі"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Parameters that test anything and may be removed in future releases"
+#~ msgstr ""
+#~ "Параметры для выпрабавання нейкіх магчымасцей, могуць быць выдалены у "
+#~ "наступных выпусках"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Use only bottom sheet menus"
+#~ msgstr "Выкарыстоўваць толькі ніжняе меню ўкладак"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Test preference for bottom sheet menu"
+#~ msgstr "Эксперыментальны парамер для ніжняга меню ўкладак"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Pages"
+#~ msgstr "Старонкі"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Static pages"
+#~ msgstr "Статычныя старонкі"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Here you can show or hide static pages. They will always be displayed on "
+#~ "the left side of the header."
+#~ msgstr ""
+#~ "Тут вы можаце паказаць або схаваць статычныя старонкі. Яны заўсёды будуць "
+#~ "паказвацца ў левай частцы загалоўка."
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Main' page"
+#~ msgstr "Паказваць старонку «Галоўная»"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Liked' page"
+#~ msgstr "Паказваць старонку «Мне падабаецца»"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Show 'Playlists' page"
+#~ msgstr "Паказваць старонку «Плэйлісты»"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Cache"
+#~ msgstr "Кэш"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Cache managing"
+#~ msgstr "Кіраванне кэшам"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "Here you can see application memory usage, delete all cache from cache "
+#~ "folder and control downloading cache to disk"
+#~ msgstr ""
+#~ "Тут вы можаце паглядзець выкарыстанне памяці праграмай, ачысціць папку з "
+#~ "кэшам і кіраваць спампоўваннем у кэш на дыску"
+
+#~ msgctxt "preference dialog"
+#~ msgid "Cache content"
+#~ msgstr "Змесціва кэша"
+
+#~ msgctxt "preference dialog"
+#~ msgid ""
+#~ "For better performance. Over time, it starts to take up a lot of space. "
+#~ "So far, manual cleaning is required. If enabled, the application will "
+#~ "cache all content to cache dir for better performance, otherwise, the "
+#~ "application will load content only when caching objects (such as "
+#~ "playlists or albums). Disabling the parameter does not delete already "
+#~ "downloaded content"
+#~ msgstr ""
+#~ "Калі ўключана, праграма будзе кэшаваць увесь кантэнт у /var/tmp/cassette "
+#~ "для лепшай прадукцыйнасці, інакш праграма будзе загружаць кантэнт толькі "
+#~ "пры кэшаванні аб'ектаў (напрыклад, плэйлістоў або альбомаў). Адключэнне "
+#~ "параметра не выдаляе ўжо спампаваны кантэнт"
+
+#~ msgid "Content saving…"
+#~ msgstr "Захаванне кантэнту…"
+
+#~ msgid "Content cached"
+#~ msgstr "Кантэнт у кэшы"
+
+#~ msgid "Content saved"
+#~ msgstr "Кантэнт захаваны"
+
+#~ msgid "Stations dashboard"
+#~ msgstr "Станцыі"
+
+#~ msgid "Searching for station…"
+#~ msgstr "Пошук станцыі…"
+
+#~ msgid "By genre…"
+#~ msgstr "Жанр…"
+
+#~ msgid "By mood…"
+#~ msgstr "Настрой…"
+
+#~ msgid "By activity…"
+#~ msgstr "Занятак…"
+
+#~ msgid "By epoch…"
+#~ msgstr "Эпоха…"
+
+#~ msgid "Other…"
+#~ msgstr "Іншае…"
+
+#~ msgid "No stations with that name were found"
+#~ msgstr "Станцый з такой назвай не знойдзена"
+
+#~ msgid "Track lyrics"
+#~ msgstr "Тэкст песні"
+
+#~ msgid "Authors"
+#~ msgstr "Аўтары"
+
+#~ msgid "Source"
+#~ msgstr "Крыніца"
+
+#~ msgid "Similar tracks"
+#~ msgstr "Падобныя трэкі"
+
+#~ msgid "Search track"
+#~ msgstr "Шукаць трэк"
+
+#~ msgid "Sort by"
+#~ msgstr "Сартаваць па"
+
+#~ msgid "No tracks to display"
+#~ msgstr "Няма трэкаў для паказу"
+
+#~ msgid "name"
+#~ msgstr "назве"
+
+#~ msgid "artist"
+#~ msgstr "выканаўцы"
+
+#~ msgid "album"
+#~ msgstr "альбому"
+
+#~ msgid "duration"
+#~ msgstr "працягласці"
+
+#~ msgid "Loading…"
+#~ msgstr "Загрузка…"
+
+#~ msgid "By diversity…"
+#~ msgstr "Разнастайнасць…"
+
+#~ msgid "By language…"
+#~ msgstr "Мова…"
+
+#~ msgid "Can't get wave settings"
+#~ msgstr "Немагчыма атрымаць налады хвалі"
+
+#~ msgid "Reconnect"
+#~ msgstr "Перазлучыцца"
+
+#~ msgid "Connection restored"
+#~ msgstr "Злучэнне адноўлена"
+
+#~ msgid "Previous"
+#~ msgstr "Папярэдні"
+
+#~ msgid "Next"
+#~ msgstr "Наступны"
+
+#~ msgid "Current track can not be copied to the clipboard"
+#~ msgstr "Бягучы трэк нельга скапіяваць у буфер абмену"
+
+#~ msgid "Can't parse clipboard content"
+#~ msgstr "Немагчыма разабраць змесціва буфера абмену"
+
+#~ msgid "Users view not implemented yet"
+#~ msgstr "Прагляд карыстальнікаў яшчэ не рэалізаваны"
+
+#~ msgid "Albums view not implemented yet"
+#~ msgstr "Прагляд альбомаў яшчэ не рэалізаваны"
+
+#~ msgid "You will need to log in again to use the app"
+#~ msgstr "Вам трэба будзе ўвайсці зноў, каб выкарыстоўваць праграму"
+
+#~ msgid "Cancel"
+#~ msgstr "Скасаваць"
+
+#~ msgid "Moving…"
+#~ msgstr "Перамяшчэнне…"
+
+#~ msgid "Liked"
+#~ msgstr "Мне падабаецца"
+
+#~ msgid "Daily"
+#~ msgstr "Плэйліст дня"
+
+#~ msgid "Unknown"
+#~ msgstr "Невядомы"
+
 #, c-format
-msgid "%d / %d saved%s"
-msgid_plural "%d / %d saved%s"
-msgstr[0] "%d / %d захавана%s"
-msgstr[1] "%d / %d захавана%s"
-msgstr[2] "%d / %d захавана%s"
+#~ msgid "Database was initialized, loc - %s"
+#~ msgstr "База даных ініцыялізавана, размяшчэнне - %s"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:84
 #, c-format
-msgid "%d track saving now"
-msgid_plural "%d tracks saving now"
-msgstr[0] "зараз захоўваецца %d трэк"
-msgstr[1] "зараз захоўваецца %d трэкі"
-msgstr[2] "зараз захоўваецца %d трэкаў"
+#~ msgid "Can't save object %s"
+#~ msgstr "Немагчыма захаваць аб'ект %s"
 
-#: src/widgets/info-marks.vala:41
+#~ msgid "Byte"
+#~ msgid_plural "Bytes"
+#~ msgstr[0] "Байт"
+#~ msgstr[1] "Байты"
+#~ msgstr[2] "Байтаў"
+
+#~ msgid "Kilobyte"
+#~ msgid_plural "Kilobytes"
+#~ msgstr[0] "Кілабайт"
+#~ msgstr[1] "Кілабайты"
+#~ msgstr[2] "Кілабайтаў"
+
+#~ msgid "Megabyte"
+#~ msgid_plural "Megabytes"
+#~ msgstr[0] "Мегабайт"
+#~ msgstr[1] "Мегабайты"
+#~ msgstr[2] "Мегабайтаў"
+
+#~ msgid "Gigabyte"
+#~ msgid_plural "Gigabytes"
+#~ msgstr[0] "Гігабайт"
+#~ msgstr[1] "Гігабайты"
+#~ msgstr[2] "Гігабайтаў"
+
+#~ msgid "Terabyte"
+#~ msgid_plural "Terabytes"
+#~ msgstr[0] "Терабайт"
+#~ msgstr[1] "Терабайты"
+#~ msgstr[2] "Терабайтаў"
+
 #, c-format
-msgid "Track was replaced. Original version: %s, %s"
-msgstr "Трэк быў заменены. Зыходная версія: %s, %s"
+#~ msgid "Error while getting cache directory size. Message %s"
+#~ msgstr "Памылка пры атрыманні памеру каталога кэша. Паведамленне %s"
 
-#: src/widgets/playlist-micro.vala:157 src/widgets/views/playlist.vala:241
 #, c-format
-msgid "Owner: %s"
-msgstr "Уладальнік: %s"
+#~ msgid "Error while getting permanent directory size. Message %s"
+#~ msgstr "Памылка пры атрыманні пастаяннага памеру каталога. Паведамленне %s"
 
-#: src/widgets/playlist-row.vala:85
 #, c-format
-msgid "Track count: %s"
-msgstr "Колькасць трэкаў: %s"
+#~ msgid "Wrong type: expected %s, got %s"
+#~ msgstr "Няправільны тып: чакаўся %s, атрыманы %s"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:88
-#: src/widgets/preferences/preferences-dialog.vala:134
-msgid "Delete cache files?"
-msgstr "Выдаліць кэш?"
+#~ msgid "Problems with queue"
+#~ msgstr "Праблемы з чаргой"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:89
-msgid "Move saved files?"
-msgstr "Перамясціць захаваныя файлы?"
+#~ msgid "New Playlist"
+#~ msgstr "Новы плэйліст"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:90
-#: src/widgets/preferences/preferences-dialog.vala:135
-msgid ""
-"All cache will be deleted. This doesn't affect on saved playlists or albums"
-msgstr ""
-"Увесь кэш будзе выдалены. Гэта не ўплывае на захаваныя плэйлісты і альбомы"
-
-#: src/widgets/preferences/cache-deletion-preferences.vala:91
-msgid ""
-"All saved playlists and albums will be moved to cache files. This could take "
-"a while."
-msgstr ""
-"Усе захаваныя плэйлісты і альбомы будуць перамешчаны ў файлы кэша. Гэта можа "
-"заняць некаторы час."
-
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
-msgid "Deleting…"
-msgstr "Выдаляецца…"
-
-#: src/widgets/save-stack.vala:54
-msgid "Image"
-msgstr "Відарыс"
-
-#: src/widgets/save-stack.vala:58
-msgid "Track"
-msgstr "Трэк"
-
-#: src/widgets/save-stack.vala:75
 #, c-format
-msgid "%s saving…"
-msgstr "%s захоўваецца…"
+#~ msgid "Can't set title \"%s\" to page"
+#~ msgstr "Немагчыма задаць для старонкі назву «%s»"
 
-#: src/widgets/save-stack.vala:76
 #, c-format
-msgid "%s cached"
-msgstr "%s у кэшы"
+#~ msgid "Can't set icon with name \"%s\" to page"
+#~ msgstr "Немагчыма задаць на старонку значок з назвай «%s»"
 
-#: src/widgets/save-stack.vala:77
+#~ msgid "Reached max page count"
+#~ msgstr "Дасягнута максімальная колькасць старонак"
+
 #, c-format
-msgid "%s saved"
-msgstr "%s захаваны"
+#~ msgid "Page '%s' already added"
+#~ msgstr "Старонка '%s' ужо дададзена"
 
-#: src/widgets/sidebar/childs/player-queue.vala:66
+#~ msgid "Main"
+#~ msgstr "Галоўная"
+
+#~ msgid "Playlists"
+#~ msgstr "Плэйлісты"
+
 #, c-format
-msgid "Playlist \"%s\""
-msgstr "Плэйліст «%s»"
+#~ msgid "Can't read pages file. Message: %s"
+#~ msgstr "Немагчыма прачытаць файл старонак. Паведамленне: %s"
 
-#: src/widgets/sidebar/childs/player-queue.vala:70
 #, c-format
-msgid "Album \"%s\""
-msgstr "Альбом «%s»"
+#~ msgid "Can't create pages file. Message: %s"
+#~ msgstr "Немагчыма стварыць файл старонак. Паведамленне: %s"
 
-#: src/widgets/sidebar/childs/player-queue.vala:74
+#~ msgid "Not implemented yet"
+#~ msgstr "Яшчэ не рэалізавана"
+
+#~ msgid "Need authorization"
+#~ msgstr "Патрэбна аўтарызацыя"
+
+#~ msgid "Need Bookmate subscription"
+#~ msgstr "Патрэбна падпіска Букмейт"
+
+#~ msgid "Link copied to clipboard"
+#~ msgstr "Спасылка скапіявана ў буфер абмену"
+
 #, c-format
-msgid "By search results \"%s\""
-msgstr "З вынікаў пошуку «%s»"
+#~ msgid "Duration: %s h. %s min."
+#~ msgstr "Працягласць: %s гадз. %s хв."
 
-#: src/widgets/sidebar/childs/player-queue.vala:78
-msgid "Track list"
-msgstr "Спіс трэкаў"
-
-#: src/widgets/sidebar/childs/track-info.vala:68
-msgid "Your music track"
-msgstr "Ваш трэк"
-
-#: src/widgets/sidebar/childs/track-info.vala:84
-msgid "Music track"
-msgstr "Трэк"
-
-#: src/widgets/sidebar/childs/wave-settings.vala:39
-msgid "Wave settings"
-msgstr "Налады хвалі"
-
-#: src/widgets/track-rows/base.vala:79 src/widgets/track-rows/default.vala:100
-msgid "Track is not available"
-msgstr "Трэк недаступны"
-
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:78
 #, c-format
-msgid "%s '%s' saved successfully"
-msgstr "%s '%s' паспяхова захаваны"
+#~ msgid "Duration: %s min."
+#~ msgstr "Працягласць: %s хв."
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:89
+#~ msgid "today"
+#~ msgstr "сёння"
+
+#~ msgid "yesterday"
+#~ msgstr "учора"
+
+#~ msgid "Remove dislike"
+#~ msgstr "Выдаліць дызлайк"
+
+#~ msgid "Set dislike"
+#~ msgstr "Паставіць дызлайк"
+
+#~ msgid "Remove like"
+#~ msgstr "Выдаліць лайк"
+
+#~ msgid "Set like"
+#~ msgstr "Паставіць лайк"
+
+#~ msgid "Pause"
+#~ msgstr "Паўза"
+
+#~ msgid "Play"
+#~ msgstr "Прайграць"
+
 #, c-format
-msgid "%s '%s' saving was stopped, due to network error"
-msgstr "Захаванне %s '%s' было спынена з-за сеткавай памылкі"
+#~ msgid "Playlist '%s'"
+#~ msgstr "Плэйліст «%s»"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:99
+#~ msgid "My Vibe by playlist"
+#~ msgstr "Мая хваля з плэйліста"
+
+#~ msgid "Add to queue"
+#~ msgstr "Дадаць у чаргу"
+
+#~ msgid "Share"
+#~ msgstr "Абагуліць"
+
+#~ msgid "Primary menu"
+#~ msgstr "Асноўнае меню"
+
+#~ msgid "Parse URL from clipboard"
+#~ msgstr "Узяць URL з буфера абмену"
+
+#~ msgid "Preferences"
+#~ msgstr "Параметры"
+
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "Спалучэнні клавіш"
+
+#~ msgid "My Vibe by track"
+#~ msgstr "Мая хваля з трэка"
+
+#~ msgid "Play next"
+#~ msgstr "Прайграць наступным"
+
+#~ msgid "Add to playlist"
+#~ msgstr "Дадаць у плэйліст"
+
+#~ msgid "Remove from playlist"
+#~ msgstr "Выдаліць з плэйліста"
+
+#~ msgid "Remove from queue"
+#~ msgstr "Выдаліць з чаргі"
+
+#~ msgid "Volume control"
+#~ msgstr "Кіраванне гучнасцю"
+
+#~ msgid "Unmute"
+#~ msgstr "Уключыць гук"
+
+#~ msgid "Mute"
+#~ msgstr "Адключыць гук"
+
+#~ msgid "Album"
+#~ msgstr "Альбом"
+
 #, c-format
-msgid "%s '%s' saving was aborted"
-msgstr "Захаванне %s '%s' было перарвана"
+#~ msgid "%d / %d saved%s"
+#~ msgid_plural "%d / %d saved%s"
+#~ msgstr[0] "%d / %d захавана%s"
+#~ msgstr[1] "%d / %d захавана%s"
+#~ msgstr[2] "%d / %d захавана%s"
 
-#. Translators: %s - content type (e.g. "Playlist")
-#: src/widgets/views/abstract-cachiable.vala:191
 #, c-format
-msgid "%s saving has started"
-msgstr "Захаванне %s пачалося"
+#~ msgid "%d track saving now"
+#~ msgid_plural "%d tracks saving now"
+#~ msgstr[0] "зараз захоўваецца %d трэк"
+#~ msgstr[1] "зараз захоўваецца %d трэкі"
+#~ msgstr[2] "зараз захоўваецца %d трэкаў"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:229
 #, c-format
-msgid "%s '%s' was moved from data to cache"
-msgstr "%s '%s' быў перамешчаны з даных у кэш"
+#~ msgid "Track was replaced. Original version: %s, %s"
+#~ msgstr "Трэк быў заменены. Зыходная версія: %s, %s"
 
-#. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:239
 #, c-format
-msgid "%s removing has started. Please do not close the app"
-msgstr "Пачалося выдаленне %s, не закрывайце праграму"
+#~ msgid "Owner: %s"
+#~ msgstr "Уладальнік: %s"
 
-#: src/widgets/views/cant-show.vala:37
 #, c-format
-msgid "Error %d"
-msgstr "Памылка %d"
+#~ msgid "Track count: %s"
+#~ msgstr "Колькасць трэкаў: %s"
 
-#: src/widgets/views/cant-show.vala:41
-msgid "Can't load page"
-msgstr "Немагчыма загрузіць старонку"
+#~ msgid "Delete cache files?"
+#~ msgstr "Выдаліць кэш?"
 
-#: src/widgets/views/cant-show.vala:44
-msgid "Can't find desired content"
-msgstr "Немагчыма знайсці пажаданы кантэнт"
+#~ msgid "Move saved files?"
+#~ msgstr "Перамясціць захаваныя файлы?"
 
-#: src/widgets/views/playlist.vala:84
-msgid "Delete playlist?"
-msgstr "Выдаліць плэйліст?"
+#~ msgid ""
+#~ "All cache will be deleted. This doesn't affect on saved playlists or "
+#~ "albums"
+#~ msgstr ""
+#~ "Увесь кэш будзе выдалены. Гэта не ўплывае на захаваныя плэйлісты і альбомы"
 
-#: src/widgets/views/playlist.vala:85
+#~ msgid ""
+#~ "All saved playlists and albums will be moved to cache files. This could "
+#~ "take a while."
+#~ msgstr ""
+#~ "Усе захаваныя плэйлісты і альбомы будуць перамешчаны ў файлы кэша. Гэта "
+#~ "можа заняць некаторы час."
+
+#~ msgid "Deleting…"
+#~ msgstr "Выдаляецца…"
+
+#~ msgid "Image"
+#~ msgstr "Відарыс"
+
+#~ msgid "Track"
+#~ msgstr "Трэк"
+
 #, c-format
-msgid "Playlist '%s' will be permanently deleted."
-msgstr "Плэйліст «%s» будзе выдалены назаўсёды."
+#~ msgid "%s saving…"
+#~ msgstr "%s захоўваецца…"
 
-#: src/widgets/views/playlist.vala:104
 #, c-format
-msgid "Playlist '%s' was deleted"
-msgstr "Плэйліст «%s» выдалены"
+#~ msgid "%s cached"
+#~ msgstr "%s у кэшы"
 
-#. Translators: %s is female person
-#: src/widgets/views/playlist.vala:247
 #, c-format
-msgctxt "female person"
-msgid "%s updated playlist %s"
-msgstr "%s абнавіла плэйліст %s"
+#~ msgid "%s saved"
+#~ msgstr "%s захаваны"
 
-#. Translators: %s is male person
-#: src/widgets/views/playlist.vala:251
 #, c-format
-msgctxt "male person"
-msgid "%s updated playlist %s"
-msgstr "%s абнавіў плэйліст %s"
+#~ msgid "Playlist \"%s\""
+#~ msgstr "Плэйліст «%s»"
 
-#: src/widgets/views/playlist.vala:281
 #, c-format
-msgid "Can't change visibility of '%s'"
-msgstr "Немагчыма змяніць бачнасць плэйліста «%s»"
+#~ msgid "Album \"%s\""
+#~ msgstr "Альбом «%s»"
 
-#: src/widgets/views/playlist.vala:287
 #, c-format
-msgid "Playlist '%s' is public now"
-msgstr "Плэйліст «%s» цяпер агульнадаступны"
+#~ msgid "By search results \"%s\""
+#~ msgstr "З вынікаў пошуку «%s»"
 
-#: src/widgets/views/playlist.vala:290
-#, c-format
-msgid "Playlist '%s' is private now"
-msgstr "Плэйліст «%s» цяпер прыватны"
+#~ msgid "Track list"
+#~ msgstr "Спіс трэкаў"
 
-#: src/window.vala:235
+#~ msgid "Your music track"
+#~ msgstr "Ваш трэк"
+
+#~ msgid "Music track"
+#~ msgstr "Трэк"
+
+#~ msgid "Wave settings"
+#~ msgstr "Налады хвалі"
+
+#~ msgid "Track is not available"
+#~ msgstr "Трэк недаступны"
+
 #, c-format
-msgid "Window info message: %s"
-msgstr "Інфармацыйнае паведамленне аб акне: %s"
+#~ msgid "%s '%s' saved successfully"
+#~ msgstr "%s '%s' паспяхова захаваны"
+
+#, c-format
+#~ msgid "%s '%s' saving was stopped, due to network error"
+#~ msgstr "Захаванне %s '%s' было спынена з-за сеткавай памылкі"
+
+#, c-format
+#~ msgid "%s '%s' saving was aborted"
+#~ msgstr "Захаванне %s '%s' было перарвана"
+
+#, c-format
+#~ msgid "%s saving has started"
+#~ msgstr "Захаванне %s пачалося"
+
+#, c-format
+#~ msgid "%s '%s' was moved from data to cache"
+#~ msgstr "%s '%s' быў перамешчаны з даных у кэш"
+
+#, c-format
+#~ msgid "%s removing has started. Please do not close the app"
+#~ msgstr "Пачалося выдаленне %s, не закрывайце праграму"
+
+#, c-format
+#~ msgid "Error %d"
+#~ msgstr "Памылка %d"
+
+#~ msgid "Can't load page"
+#~ msgstr "Немагчыма загрузіць старонку"
+
+#~ msgid "Can't find desired content"
+#~ msgstr "Немагчыма знайсці пажаданы кантэнт"
+
+#~ msgid "Delete playlist?"
+#~ msgstr "Выдаліць плэйліст?"
+
+#, c-format
+#~ msgid "Playlist '%s' will be permanently deleted."
+#~ msgstr "Плэйліст «%s» будзе выдалены назаўсёды."
+
+#, c-format
+#~ msgid "Playlist '%s' was deleted"
+#~ msgstr "Плэйліст «%s» выдалены"
+
+#, c-format
+#~ msgctxt "female person"
+#~ msgid "%s updated playlist %s"
+#~ msgstr "%s абнавіла плэйліст %s"
+
+#, c-format
+#~ msgctxt "male person"
+#~ msgid "%s updated playlist %s"
+#~ msgstr "%s абнавіў плэйліст %s"
+
+#, c-format
+#~ msgid "Can't change visibility of '%s'"
+#~ msgstr "Немагчыма змяніць бачнасць плэйліста «%s»"
+
+#, c-format
+#~ msgid "Playlist '%s' is public now"
+#~ msgstr "Плэйліст «%s» цяпер агульнадаступны"
+
+#, c-format
+#~ msgid "Playlist '%s' is private now"
+#~ msgstr "Плэйліст «%s» цяпер прыватны"
 
 #~ msgid "Unofficial Yandex.Music client"
 #~ msgstr "Неафіцыйны кліент сэрвісу Яндэкс.Музыка"

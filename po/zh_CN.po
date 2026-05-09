@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2026-03-23 15:13+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:32+0000\n"
 "PO-Revision-Date: 2026-04-03 09:55+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
@@ -35,63 +35,63 @@ msgstr "在浏览器中打开订阅页面"
 msgid "Log out"
 msgstr "登出"
 
-#: data/ui/auth.blp:37 data/ui/main-content.blp:67
+#: data/ui/auth.blp:17 data/ui/main-content.blp:47
 msgid "About"
 msgstr "关于"
 
-#: data/ui/auth.blp:44
+#: data/ui/auth.blp:24
 msgid "Welcome to Cassette!"
 msgstr "欢迎使用 Cassette！"
 
-#: data/ui/auth.blp:61
+#: data/ui/auth.blp:41
 msgid "Login with Yandex account"
 msgstr "使用 Yandex 账号登录"
 
-#: data/ui/auth.blp:67
+#: data/ui/auth.blp:47
 msgid "Yandex Music token"
 msgstr "Yandex 音乐令牌"
 
-#: data/ui/auth.blp:80
+#: data/ui/auth.blp:60
 msgid "How to obtain token"
 msgstr "如何获取令牌"
 
-#: data/ui/auth.blp:101
+#: data/ui/auth.blp:81
 msgid "No Plus subscription"
 msgstr "无会员订阅"
 
-#: data/ui/auth.blp:102
+#: data/ui/auth.blp:82
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr "您无法在没有 Yandex 会员订阅的情况下使用该应用。"
 
-#: data/ui/auth.blp:113
+#: data/ui/auth.blp:93
 msgid "Back"
 msgstr "返回"
 
-#: data/ui/main-content.blp:55
+#: data/ui/main-content.blp:35
 msgid "Refresh current page"
 msgstr "刷新当前页面"
 
-#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
+#: data/ui/main-content.blp:60 data/ui/main-content.blp:65
 msgid "Stay tuned"
 msgstr "敬请期待"
 
-#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
+#: data/ui/main-content.blp:66 data/ui/main-content.blp:78
 msgid "Work in progress."
 msgstr "正在实现。"
 
-#: data/ui/main-content.blp:92
+#: data/ui/main-content.blp:72
 msgid "Keep it up"
 msgstr "继续努力"
 
-#: data/ui/main-content.blp:97
+#: data/ui/main-content.blp:77
 msgid "Keep it up!"
 msgstr "继续努力！"
 
-#: data/ui/warning-dialog.blp:24
+#: data/ui/warning-dialog.blp:5
 msgid "Warning message"
 msgstr "警告消息"
 
-#: data/ui/warning-dialog.blp:44
+#: data/ui/warning-dialog.blp:25
 msgid "Ask the community"
 msgstr "询问社区"
 
@@ -103,7 +103,7 @@ msgstr "刷新"
 msgid "Print version information and exit"
 msgstr "显示版本信息并退出"
 
-#: src/application.vala:130 src/main.vala:26
+#: src/application.vala:134 src/main.vala:26
 msgid "Cassette"
 msgstr "Cassette"
 

@@ -4,9 +4,10 @@
 # Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2025, 2026.
 #
 msgid ""
-msgstr "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2026-01-12 17:26+0000\n"
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:32+0000\n"
 "PO-Revision-Date: 2026-03-05 10 :23+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -16,107 +17,242 @@ msgstr "Project-Id-Version: cassette main\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.desktop.in.in:3
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/application.vala:125
-#: src/main.vala:26
-msgid "Cassette"
-msgstr "Cassette"
+#: data/ui/account/account-button.blp:14
+#: data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr ""
 
-#: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:7
-msgid "Unofficial Yandex Music client"
+#: data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr ""
+
+#: data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr ""
+
+#: data/ui/account/account-info-dialog.blp:118
+msgid "Log out"
+msgstr "Amaitu saioa"
+
+#: data/ui/auth.blp:17 data/ui/main-content.blp:47
+msgid "About"
+msgstr ""
+
+#: data/ui/auth.blp:24
+msgid "Welcome to Cassette!"
+msgstr ""
+
+#: data/ui/auth.blp:41
+msgid "Login with Yandex account"
+msgstr ""
+
+#: data/ui/auth.blp:47
+#, fuzzy
+msgid "Yandex Music token"
 msgstr "Yandex Music zerbitzuaren bezero ez ofiziala"
 
-#. Translators: keep number of ';'
-#: data/space.rirusha.Cassette.desktop.in.in:6
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:6
-msgid "yandex;yandex music;yam;music;"
-msgstr "yandex;yandex musika;yam;musika;"
+#: data/ui/auth.blp:60
+msgid "How to obtain token"
+msgstr ""
 
-#. Translators: app name should be translated
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:3
-msgid "Cassette (Devel)"
-msgstr "Cassette (garapena)"
+#: data/ui/auth.blp:81
+msgid "No Plus subscription"
+msgstr ""
 
-#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
-msgid "Unofficial Yandex Music client (Devel build)"
-msgstr "Yandex Music zerbitzuaren bezero ez ofiziala (garapen-eraikuntza)"
+#: data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:9
-msgid ""
-"GTK/Adwaita application that allows to use Yandex Music service on Linux "
-"operating systems."
-msgstr "Yandex musika-zerbitzua Linux sistema eragileetan erabiltzea ahalbidetzen duen GTK/Adwaita aplikazioa."
+#: data/ui/auth.blp:93
+msgid "Back"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:13
-msgid "Features:"
-msgstr "Eginbideak:"
+#: data/ui/main-content.blp:35
+msgid "Refresh current page"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:17
-msgid "Allows you to save playlists and albums for offline listening"
-msgstr "Erreprodukzio-zerrendak eta albumak gordetzea ahalbidetzen du, geroago lineaz kanpo entzun ahal izateko."
+#: data/ui/main-content.blp:60 data/ui/main-content.blp:65
+msgid "Stay tuned"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:20
-msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
-msgstr "\"Karaoke modu\" dinamikoa du pisten informazio-panelean bertan"
+#: data/ui/main-content.blp:66 data/ui/main-content.blp:78
+msgid "Work in progress."
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:23
-msgid ""
-"Allows you to more precisely customize the display and playback of special "
-"content, such as explicit or suitable for children."
-msgstr "Esplizituak edo haurrentzat egokiak diren eduki berezien bistaratzea eta erreproduzitzea zehatz pertsonalizatzea ahalbidetzen du."
+#: data/ui/main-content.blp:72
+msgid "Keep it up"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:27
-msgid "Displays tracks that are currently unavailable in the service"
-msgstr "Zerbitzua momentuan eskuragarri ez dauden pistak bistaratzen ditu"
+#: data/ui/main-content.blp:77
+msgid "Keep it up!"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:30
-msgid "Shows which tracks have been replaced and by what"
-msgstr "Ordeztuak izan diren pistak eta zerk ordeztu dituen erakusten ditu"
+#: data/ui/warning-dialog.blp:5
+msgid "Warning message"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:34
-msgid ""
-"Cassette is an unofficial client and is not associated with or endorsed by "
-"Yandex."
-msgstr "Cassette ez da bezero ofiziala eta ez dago Yandex zerbitzuari lotuta."
+#: data/ui/warning-dialog.blp:25
+msgid "Ask the community"
+msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
-msgid "Liked view"
-msgstr "Gustukoen ikuspegia"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
-msgid "Playlists view"
-msgstr "Erreprodukzio-zerrenden ikuspegia"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
-msgid "Sync lyrics"
-msgstr "Sinkronizatu hitzak"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
-msgid "Playback queue"
-msgstr "Erreprodukzio-ilara"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:86
-msgid "Waves view"
-msgstr "Uhinen ikuspegia"
-
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:90
-msgid "Main preferences"
-msgstr "Hobespen nagusiak"
+#: data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "Freskatu"
 
 #: src/application.vala:45
 msgid "Print version information and exit"
 msgstr "Erakutsi bertsioaren informazioa eta irten"
+
+#: src/application.vala:134 src/main.vala:26
+msgid "Cassette"
+msgstr "Cassette"
+
+#. Translators: NAME <EMAIL.COM>
+#: src/ui/about.vala:112
+msgid "translator-credits"
+msgstr "Asier Saratsua Garmendia <asiersarasua@ni.eus>"
+
+#: src/ui/about.vala:113
+msgid "Vladimir Romanov"
+msgstr ""
+
+#: src/ui/about.vala:116
+msgid "Telegram channel"
+msgstr ""
+
+#: src/ui/about.vala:117
+msgid "Telegram group"
+msgstr ""
+
+#. TRANSLATORS: MAX is Russian messenger
+#: src/ui/about.vala:119
+msgid "MAX group"
+msgstr ""
+
+#: src/ui/about.vala:120
+msgid "Financial support (Tinkoff)"
+msgstr ""
+
+#: src/ui/about.vala:121
+msgid "Financial support (Boosty)"
+msgstr ""
+
+#: src/ui/about.vala:123
+msgid "Sponsors"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr ""
+
+#: src/ui/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr ""
+
+#: src/ui/auth.vala:39
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+
+#: src/ui/auth.vala:49
+msgid "You need your Yandex music token to login."
+msgstr ""
+
+#: src/ui/auth.vala:125
+msgid "Failed to login. Probably wrong token"
+msgstr ""
+
+#: src/ui/auth.vala:133
+#, c-format
+msgid "Bad status code: %i"
+msgstr ""
+
+#: src/ui/auth.vala:142
+msgid "Connection problems"
+msgstr ""
+
+#: src/ui/window.vala:61
+msgid "More info"
+msgstr ""
+
+#~ msgid "yandex;yandex music;yam;music;"
+#~ msgstr "yandex;yandex musika;yam;musika;"
+
+#~ msgid "Cassette (Devel)"
+#~ msgstr "Cassette (garapena)"
+
+#~ msgid "Unofficial Yandex Music client (Devel build)"
+#~ msgstr "Yandex Music zerbitzuaren bezero ez ofiziala (garapen-eraikuntza)"
+
+#~ msgid ""
+#~ "GTK/Adwaita application that allows to use Yandex Music service on Linux "
+#~ "operating systems."
+#~ msgstr ""
+#~ "Yandex musika-zerbitzua Linux sistema eragileetan erabiltzea ahalbidetzen "
+#~ "duen GTK/Adwaita aplikazioa."
+
+#~ msgid "Features:"
+#~ msgstr "Eginbideak:"
+
+#~ msgid "Allows you to save playlists and albums for offline listening"
+#~ msgstr ""
+#~ "Erreprodukzio-zerrendak eta albumak gordetzea ahalbidetzen du, geroago "
+#~ "lineaz kanpo entzun ahal izateko."
+
+#~ msgid "Has a dynamic \"karaoke mode\" right in the track information panel"
+#~ msgstr "\"Karaoke modu\" dinamikoa du pisten informazio-panelean bertan"
+
+#~ msgid ""
+#~ "Allows you to more precisely customize the display and playback of "
+#~ "special content, such as explicit or suitable for children."
+#~ msgstr ""
+#~ "Esplizituak edo haurrentzat egokiak diren eduki berezien bistaratzea eta "
+#~ "erreproduzitzea zehatz pertsonalizatzea ahalbidetzen du."
+
+#~ msgid "Displays tracks that are currently unavailable in the service"
+#~ msgstr "Zerbitzua momentuan eskuragarri ez dauden pistak bistaratzen ditu"
+
+#~ msgid "Shows which tracks have been replaced and by what"
+#~ msgstr "Ordeztuak izan diren pistak eta zerk ordeztu dituen erakusten ditu"
+
+#~ msgid ""
+#~ "Cassette is an unofficial client and is not associated with or endorsed "
+#~ "by Yandex."
+#~ msgstr ""
+#~ "Cassette ez da bezero ofiziala eta ez dago Yandex zerbitzuari lotuta."
+
+#~ msgid "Liked view"
+#~ msgstr "Gustukoen ikuspegia"
+
+#~ msgid "Playlists view"
+#~ msgstr "Erreprodukzio-zerrenden ikuspegia"
+
+#~ msgid "Sync lyrics"
+#~ msgstr "Sinkronizatu hitzak"
+
+#~ msgid "Playback queue"
+#~ msgstr "Erreprodukzio-ilara"
+
+#~ msgid "Waves view"
+#~ msgstr "Uhinen ikuspegia"
+
+#~ msgid "Main preferences"
+#~ msgstr "Hobespen nagusiak"
 
 #~ msgid "Unofficial Yandex Music client for GNOME"
 #~ msgstr "Yandex Music zerbitzuaren bezero ez ofiziala GNOMErako"
 
 #~ msgid "Plus"
 #~ msgstr "Plus"
-
-#~ msgid "Log out"
-#~ msgstr "Amaitu saioa"
 
 #~ msgctxt "auth window"
 #~ msgid "Close"
@@ -142,9 +278,6 @@ msgstr "Erakutsi bertsioaren informazioa eta irten"
 
 #~ msgid "Go back"
 #~ msgstr "Joan atzera"
-
-#~ msgid "Refresh"
-#~ msgstr "Freskatu"
 
 #~ msgid "Show Shortcuts"
 #~ msgstr "Erakutsi lasterbideak"
@@ -210,9 +343,6 @@ msgstr "Erakutsi bertsioaren informazioa eta irten"
 
 #~ msgid "Reconnect"
 #~ msgstr "Konektatu berriro"
-
-#~ msgid "translator-credits"
-#~ msgstr "Asier Saratsua Garmendia <asiersarasua@ni.eus>"
 
 #~ msgid "Previous"
 #~ msgstr "Aurrekoa"

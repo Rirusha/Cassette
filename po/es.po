@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2026-03-23 15:13+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:32+0000\n"
 "PO-Revision-Date: 2026-04-01 12:19-0300\n"
 "Last-Translator: Nahue Mantuani <nahue.mantuani.foss@proton.me>\n"
 "Language-Team: Spanish <international-spanish@discourse.gnome.org>\n"
@@ -43,63 +43,63 @@ msgstr "Abrir página de suscripción en el navegador"
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: data/ui/auth.blp:37 data/ui/main-content.blp:67
+#: data/ui/auth.blp:17 data/ui/main-content.blp:47
 msgid "About"
 msgstr "Acerca de"
 
-#: data/ui/auth.blp:44
+#: data/ui/auth.blp:24
 msgid "Welcome to Cassette!"
 msgstr "¡Bienvenido a Cassette!"
 
-#: data/ui/auth.blp:61
+#: data/ui/auth.blp:41
 msgid "Login with Yandex account"
 msgstr "Iniciar sesión con una cuenta Yandex"
 
-#: data/ui/auth.blp:67
+#: data/ui/auth.blp:47
 msgid "Yandex Music token"
 msgstr "Token de Yandex Music"
 
-#: data/ui/auth.blp:80
+#: data/ui/auth.blp:60
 msgid "How to obtain token"
 msgstr "Cómo obtener un token."
 
-#: data/ui/auth.blp:101
+#: data/ui/auth.blp:81
 msgid "No Plus subscription"
 msgstr "No tiene suscripción Plus"
 
-#: data/ui/auth.blp:102
+#: data/ui/auth.blp:82
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr "No podrá utilizar la aplicación sin una suscripción a Yandex Plus."
 
-#: data/ui/auth.blp:113
+#: data/ui/auth.blp:93
 msgid "Back"
 msgstr "Atrás"
 
-#: data/ui/main-content.blp:55
+#: data/ui/main-content.blp:35
 msgid "Refresh current page"
 msgstr "Recargar la página actual"
 
-#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
+#: data/ui/main-content.blp:60 data/ui/main-content.blp:65
 msgid "Stay tuned"
 msgstr "Manténgase atento."
 
-#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
+#: data/ui/main-content.blp:66 data/ui/main-content.blp:78
 msgid "Work in progress."
 msgstr "Trabajo en progreso."
 
-#: data/ui/main-content.blp:92
+#: data/ui/main-content.blp:72
 msgid "Keep it up"
 msgstr "Sigue así"
 
-#: data/ui/main-content.blp:97
+#: data/ui/main-content.blp:77
 msgid "Keep it up!"
 msgstr "¡Siga así!"
 
-#: data/ui/warning-dialog.blp:24
+#: data/ui/warning-dialog.blp:5
 msgid "Warning message"
 msgstr "Mensaje de alerta"
 
-#: data/ui/warning-dialog.blp:44
+#: data/ui/warning-dialog.blp:25
 msgid "Ask the community"
 msgstr "Preguntar a la comunidad"
 
@@ -111,7 +111,7 @@ msgstr "Refrescar"
 msgid "Print version information and exit"
 msgstr "Mostrar información de la versión y salir"
 
-#: src/application.vala:130 src/main.vala:26
+#: src/application.vala:134 src/main.vala:26
 msgid "Cassette"
 msgstr "Cassette"
 

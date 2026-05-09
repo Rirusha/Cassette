@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2026-04-05 21:32+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:32+0000\n"
 "PO-Revision-Date: 2026-04-16 23:04+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -38,64 +38,63 @@ msgstr "Abonelik sayfasını tarayıcıda aç"
 msgid "Log out"
 msgstr "Oturumu kapat"
 
-#: data/ui/auth.blp:37 data/ui/main-content.blp:67
+#: data/ui/auth.blp:17 data/ui/main-content.blp:47
 msgid "About"
 msgstr "Hakkında"
 
-#: data/ui/auth.blp:44
+#: data/ui/auth.blp:24
 msgid "Welcome to Cassette!"
 msgstr "Kasetʼe Hoş Geldiniz"
 
-#: data/ui/auth.blp:61
+#: data/ui/auth.blp:41
 msgid "Login with Yandex account"
 msgstr "Yandex hesabıyla oturum aç"
 
-#: data/ui/auth.blp:67
-#| msgid "Yandex.Music search"
+#: data/ui/auth.blp:47
 msgid "Yandex Music token"
 msgstr "Yandex Music jetonu"
 
-#: data/ui/auth.blp:80
+#: data/ui/auth.blp:60
 msgid "How to obtain token"
 msgstr "Jeton nasıl alınır"
 
-#: data/ui/auth.blp:101
+#: data/ui/auth.blp:81
 msgid "No Plus subscription"
 msgstr "Plus Aboneliği Yok"
 
-#: data/ui/auth.blp:102
+#: data/ui/auth.blp:82
 msgid "You won’t be able to use the app without a Yandex Plus subscription."
 msgstr "Yandex Plus aboneliğiniz olmadan uygulamayı kullanamazsınız."
 
-#: data/ui/auth.blp:113
+#: data/ui/auth.blp:93
 msgid "Back"
 msgstr "Geri"
 
-#: data/ui/main-content.blp:55
+#: data/ui/main-content.blp:35
 msgid "Refresh current page"
 msgstr "Geçerli sayfayı yenile"
 
-#: data/ui/main-content.blp:80 data/ui/main-content.blp:85
+#: data/ui/main-content.blp:60 data/ui/main-content.blp:65
 msgid "Stay tuned"
 msgstr "Gelişmeleri takip edin"
 
-#: data/ui/main-content.blp:86 data/ui/main-content.blp:98
+#: data/ui/main-content.blp:66 data/ui/main-content.blp:78
 msgid "Work in progress."
 msgstr "Sürüyor."
 
-#: data/ui/main-content.blp:92
+#: data/ui/main-content.blp:72
 msgid "Keep it up"
 msgstr "Böyle devam et"
 
-#: data/ui/main-content.blp:97
+#: data/ui/main-content.blp:77
 msgid "Keep it up!"
 msgstr "Böyle devam et!"
 
-#: data/ui/warning-dialog.blp:24
+#: data/ui/warning-dialog.blp:5
 msgid "Warning message"
 msgstr "Uyarı iletileri"
 
-#: data/ui/warning-dialog.blp:44
+#: data/ui/warning-dialog.blp:25
 msgid "Ask the community"
 msgstr "Topluluğa sor"
 
@@ -107,7 +106,7 @@ msgstr "Yenile"
 msgid "Print version information and exit"
 msgstr "Sürüm bilgisini yazdır ve çık"
 
-#: src/application.vala:136 src/main.vala:26
+#: src/application.vala:134 src/main.vala:26
 msgid "Cassette"
 msgstr "Kaset"
 

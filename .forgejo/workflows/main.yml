@@ -183,7 +183,7 @@ jobs:
           echo "passphrase-file ${{ secrets.GPG_PASSPHRASE }}" >> ${GNUPGHOME}/gpg.conf
 
           gpg-connect-agent reloadagent /bye
-          cat ${{ secrets.GPG_PASSPHRASE }} | /usr/libexec/gpg-preset-passphrase --preset ${{ secrets.GPG_KEY_GREP }}
+          cat ${{ secrets.GPG_PASSPHRASE }} | /usr/lib/gnupg/gpg-preset-passphrase --preset ${{ secrets.GPG_KEY_GREP }}
           base64 -d ${{ secrets.GPG_PRIVATE_KEY }} | gpg --import
 
       - name: Build Cassette

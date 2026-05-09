@@ -111,7 +111,6 @@ Requires: %libname%api_version-gir = %EVR
 
 %files -n %libname-demo
 %_bindir/%libname-demo
-%_datadir/glib-2.0/schemas/%app_id_demo.gschema.xml
 %_datadir/metainfo/%app_id_demo.metainfo.xml
 %_desktopdir/%app_id_demo.desktop
 %_iconsdir/hicolor/*/apps/%app_id_demo.svg

@@ -169,8 +169,9 @@ jobs:
           token: ${{ secrets.SPACE }}
 
       - name: Setup GPG
-        run: |
+        run: | 
           mkdir -p ${GNUPGHOME}
+          chmod 700 ${GNUPGHOME}
 
           gpg2 --list-keys --with-keygrip
           touch ${GNUPGHOME}/gpg.conf
@@ -178,13 +179,11 @@ jobs:
 
           echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf
           echo "pinentry-mode loopback" >> ${GNUPGHOME}/gpg.conf
-          echo "batch" >> ${GNUPGHOME}/gpg.conf
-          echo "yes" >> ${GNUPGHOME}/gpg.conf
-          echo "passphrase-file ${{ secrets.GPG_PASSPHRASE }}" >> ${GNUPGHOME}/gpg.conf
 
           gpg-connect-agent reloadagent /bye
-          cat ${{ secrets.GPG_PASSPHRASE }} | /usr/lib/gnupg/gpg-preset-passphrase --preset ${{ secrets.GPG_KEY_GREP }}
-          base64 -d ${{ secrets.GPG_PRIVATE_KEY }} | gpg --import
+
+          /usr/lib/gnupg/gpg-preset-passphrase --preset "${{ secrets.GPG_KEY_GRIP }}" <<< "${{ secrets.GPG_PASSPHRASE }}"
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 -d | gpg2 --batch --import
 
       - name: Build Cassette
         run: |

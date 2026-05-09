@@ -168,34 +168,36 @@ jobs:
           path: .space
           token: ${{ secrets.SPACE }}
 
-      - name: Setup GPG
-        run: | 
-          mkdir -p ${GNUPGHOME}
-          chmod 700 ${GNUPGHOME}
+      # - name: Setup GPG
+      #   run: | 
+      #     mkdir -p ${GNUPGHOME}
+      #     chmod 700 ${GNUPGHOME}
 
-          gpg2 --list-keys --with-keygrip
-          touch ${GNUPGHOME}/gpg.conf
-          touch ${GNUPGHOME}/gpg-agent.conf
+      #     gpg2 --list-keys --with-keygrip
+      #     touch ${GNUPGHOME}/gpg.conf
+      #     touch ${GNUPGHOME}/gpg-agent.conf
 
-          echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf
-          echo "pinentry-mode loopback" >> ${GNUPGHOME}/gpg.conf
+      #     echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf
+      #     echo "pinentry-mode loopback" >> ${GNUPGHOME}/gpg.conf
 
-          gpg-connect-agent reloadagent /bye
+      #     gpg-connect-agent reloadagent /bye
 
-          /usr/lib/gnupg/gpg-preset-passphrase --preset "${{ secrets.GPG_KEY_GRIP }}" <<< "${{ secrets.GPG_PASSPHRASE }}"
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 -d | gpg2 --batch --import
+      #     /usr/lib/gnupg/gpg-preset-passphrase --preset "${{ secrets.GPG_KEY_GRIP }}" <<< "${{ secrets.GPG_PASSPHRASE }}"
+      #     echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 -d | gpg2 --batch --import
+
+      # --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME}
 
       - name: Build Cassette
         run: |
-          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
+          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
 
       - name: Build Cassette Demo
         run: |
-          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_demo_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
+          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_demo_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
 
       - name: Ipdate repo
         run: |
-          flatpak build-update-repo --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --generate-static-deltas --prune .space/site/repo
+          flatpak build-update-repo --generate-static-deltas --prune .space/site/repo
 
       - name: Upload
         run: |

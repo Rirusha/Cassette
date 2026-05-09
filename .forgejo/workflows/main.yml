@@ -128,16 +128,9 @@ jobs:
 
   rpm-build:
     if: github.event_name != 'pull_request' && github.ref_name == 'main'
-    name: RPM build for ${{ matrix.branch }}.amd64 and uploading
+    name: RPM build and uploading
     runs-on: als-huge
-    container:
-      image: altlinux.space/alt-gnome/hasherc:latest
-
-    strategy:
-      matrix:
-        branch:
-          - sisyphus
-          - p11
+    container: altlinux.space/alt-gnome/hasherc:latest
     needs:
       - lint-vala
       - lint-blueprint
@@ -164,12 +157,12 @@ jobs:
           git config --global user.name "Builder"
           echo "%packager Builder <hasherc-ci@altlinux.org>" > ~/.rpmmacros
 
-          gear-hshc --commit --no-sisyphus-check=gpg,packager --branch=${{ matrix.branch }} --add-source '${{ env.TAPE_REPO }}'
+          gear-hshc --commit --no-sisyphus-check=gpg,packager --add-source '${{ env.TAPE_REPO }}'
 
       - uses: actions/upload-rpm-action@main
         name: Upload RPMs
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref_name == 'main'
         with:
           directory: ~/.cache/hasherc/cassette/out/RPMS
           token: ${{ secrets.TOKEN }}
-          group: cassette-nightly/${{ github.ref_name }}/${{ matrix.branch }}
+          group: cassette-nightly

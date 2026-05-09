@@ -126,8 +126,89 @@ jobs:
         run: |
           echo "release=$(date +%s)" >> $FORGEJO_OUTPUT
 
-  rpm-build:
+  flatpak-build:
+    name: Flatpak build and uploading
+    runs-on: als-huge
+    container: altlinux.space/actions/runner/containers:sisyphus
     if: github.event_name != 'pull_request' && github.ref_name == 'main'
+    env:
+      GNUPGHOME: /build/.gnupg
+    needs:
+      - lint-vala
+      - lint-blueprint
+      - get-release
+      - build-doc-translation
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install builder
+        run: |
+          apt-get update
+          apt-get install -y flatpak-builder
+
+      - name: Add flatpak repos
+        run: |
+          flatpak remote-add --if-not-exists \
+            flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak remote-add --if-not-exists \
+            gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+
+      - name: Install flatpak deps
+        run: |
+          flatpak install -y \
+            org.gnome.Platform//master \
+            org.gnome.Sdk//master
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          repository: https://altlinux.space/rirusha/space.git
+          path: .space
+          token: ${{ secrets.SPACE }}
+
+      - name: Setup GPG
+        run: |
+          mkdir -p ${GNUPGHOME}
+
+          gpg2 --list-keys --with-keygrip
+          touch ${GNUPGHOME}/gpg.conf
+          touch ${GNUPGHOME}/gpg-agent.conf
+
+          echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf
+          echo "pinentry-mode loopback" >> ${GNUPGHOME}/gpg.conf
+          echo "batch" >> ${GNUPGHOME}/gpg.conf
+          echo "yes" >> ${GNUPGHOME}/gpg.conf
+          echo "passphrase-file ${{ secrets.GPG_PASSPHRASE }}" >> ${GNUPGHOME}/gpg.conf
+
+          gpg-connect-agent reloadagent /bye
+          cat ${{ secrets.GPG_PASSPHRASE }} | /usr/libexec/gpg-preset-passphrase --preset ${{ secrets.GPG_KEY_GREP }}
+          base64 -d ${{ secrets.GPG_PRIVATE_KEY }} | gpg --import
+
+      - name: Build Cassette
+        run: |
+          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
+
+      - name: Build Cassette Demo
+        run: |
+          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_demo_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
+
+      - name: Ipdate repo
+        run: |
+          flatpak build-update-repo --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --generate-static-deltas --prune .space/site/repo
+
+      - name: Upload
+        run: |
+          cd .space
+          git add .
+          git config user.name "CI Bot"
+          git config user.email "ci@altlinux.space"
+          git commit -m "Update flatpak repo"
+          git push
+
+  rpm-build:
+    if: github.event_name != 'pull_request'
     name: RPM build and uploading
     runs-on: als-huge
     container: altlinux.space/alt-gnome/hasherc:latest

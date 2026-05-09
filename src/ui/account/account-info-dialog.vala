@@ -45,7 +45,7 @@ public sealed class Cassette.AccountInfoDialog : Adw.Dialog {
     construct {
         set_info.begin ();
 
-        if (Config.IS_DEVEL) {
+        if (Config.NIGHTLY) {
             add_css_class ("devel");
         }
     }

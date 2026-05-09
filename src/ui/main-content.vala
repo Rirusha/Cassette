@@ -32,7 +32,7 @@ public sealed class Cassette.MainContent : Adw.BreakpointBin {
     }
 
     construct {
-        if (Config.IS_DEVEL) {
+        if (Config.NIGHTLY) {
             add_devel_button ();
         }
     }

@@ -106,11 +106,11 @@ nix-shell -p cassette
 meson setup _build
 ```
 
-### `is_devel` flag
+### `nightly` flag
 
 > In this version, all devel functions will be available.
 ```shell
-meson setup _build -Dis_devel=true
+meson setup _build -Dnightly=true
 ```
 
 #### Install

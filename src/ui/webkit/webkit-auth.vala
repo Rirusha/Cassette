@@ -78,7 +78,7 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
             "https://oauth.yandex.ru/authorize?response_type=token&client_id=23cabbbdc6cd418abb4b39c32c41195d" // vala-lint=line-length
         );
 
-        if (Config.IS_DEVEL) {
+        if (Config.NIGHTLY) {
             add_css_class ("devel");
         }
     }

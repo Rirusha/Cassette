@@ -58,7 +58,7 @@ public sealed class Cassette.Auth : Loadable {
 
         try_auth.begin (null);
 
-        if (Config.IS_DEVEL) {
+        if (Config.NIGHTLY) {
             add_css_class ("devel");
         }
     }

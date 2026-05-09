@@ -41,3 +41,8 @@ option(
   type: 'boolean',
   value: false
 )
+option(
+  'nightly',
+  type: 'boolean',
+  value: false
+)

@@ -19,7 +19,7 @@ pascal_name = 'Cassette'
 demo_app_id = 'space.rirusha.CassetteDemo'
 app_id = 'space.rirusha.Cassette'
 
-is_devel = false
+nightly = false
 
 libadwaita_dep = dependency('libadwaita-1', version: '>= 1.6')
 
@@ -39,8 +39,8 @@ else
   n_commits = '0'
 endif
 
-if n_commits != '0' or n_commits == ''
-  is_devel = true
+if get_option('nightly')
+  nightly = true
   version_suffix = '.nightly'
   if n_commits != ''
     version_suffix += '.' + n_commits

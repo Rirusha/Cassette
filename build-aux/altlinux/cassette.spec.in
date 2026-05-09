@@ -89,7 +89,7 @@ Requires: %libname%api_version-gir = %EVR
 %setup
 
 %build
-%meson -Dinstall_demo=true -Dinstall_lib_s=true -Dis_devel=true -De2k=%for_e2k
+%meson -Dinstall_demo=true -Dinstall_lib_s=true -Dnightly=true -De2k=%for_e2k
 %meson_build
 
 %install

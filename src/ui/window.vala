@@ -49,7 +49,7 @@ public sealed class Cassette.Window : Adw.ApplicationWindow {
 
         title = Config.APP_NAME;
 
-        if (Config.IS_DEVEL) {
+        if (Config.NIGHTLY) {
             add_css_class ("devel");
         }
     }

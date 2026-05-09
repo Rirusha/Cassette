@@ -37,7 +37,7 @@ public sealed class CassetteDemo.Window : Adw.ApplicationWindow {
     construct {
         on_visible_child_chandes ();
 
-        if (Config.IS_DEVEL) {
+        if (Config.NIGHTLY) {
             add_css_class ("devel");
         }
 

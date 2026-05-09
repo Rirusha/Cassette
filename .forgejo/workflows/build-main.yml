@@ -65,7 +65,7 @@ jobs:
           xargs apt-get install -y < ./build-aux/altlinux/build-deps
 
       - name: Setup
-        run: meson setup _build -Dinstall_demo=true -Dinstall_lib_s=true -Dwith_lib_documentation=true -Dis_devel=true
+        run: meson setup _build -Dinstall_demo=true -Dinstall_lib_s=true -Dwith_lib_documentation=true -Dnightly=true
 
       - name: Build
         run: meson compile -C _build

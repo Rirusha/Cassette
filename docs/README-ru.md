@@ -106,11 +106,11 @@ nix-shell -p cassette
 meson setup _build
 ```
 
-### Флаг `is_devel`
+### Флаг `nightly`
 
 > В данной версии будут доступны все функции, находящиеся в разработке.
 ```shell
-meson setup _build -Dis_devel=true
+meson setup _build -Dnightly=true
 ```
 
 #### Установка

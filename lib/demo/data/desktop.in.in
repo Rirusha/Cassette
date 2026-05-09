@@ -4,7 +4,7 @@ Name=Cassette Demo
 Comment=libcassette demo
 # Translators: keep number of ';'
 Keywords=demo;libcassette;
-Exec=cassette-demo %U
+Exec=libcassette-demo %U
 Icon=@APP_ID_RELEVANT@
 Terminal=false
 Type=Application

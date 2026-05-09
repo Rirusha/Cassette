@@ -76,7 +76,7 @@ public sealed class Cassette.SheetMenu : Adw.Dialog {
     void on_items_changed () {
         reset_content ();
         submenus.remove_all ();
- 
+
         if (menu?.get_n_items () > 0) {
             var page = new SheetPage (action_parent, this) {
                 menu = menu

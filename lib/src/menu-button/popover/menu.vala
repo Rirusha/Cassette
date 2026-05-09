@@ -59,7 +59,7 @@ public sealed class Cassette.PopoverMenu : Gtk.Popover {
 
     void on_items_changed () {
         reset_content ();
- 
+
         if (menu?.get_n_items () > 0) {
             var page = new PopoverPage (this) {
                 menu = menu

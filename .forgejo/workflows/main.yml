@@ -170,12 +170,12 @@ jobs:
           touch ${GNUPGHOME}/gpg.conf
           touch ${GNUPGHOME}/gpg-agent.conf
 
-          echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf
-          echo "pinentry-mode loopback" >> ${GNUPGHOME}/gpg.conf
+          echo "allow-preset-passphrase" > ${GNUPGHOME}/gpg-agent.conf
+          echo "pinentry-mode loopback" > ${GNUPGHOME}/gpg.conf
 
-          gpg-connect-agent reloadagent /bye
+          gpgconf --kill gpg-agent
 
-          /usr/lib/gnupg/gpg-preset-passphrase --preset "${{ secrets.GPG_KEY_GRIP }}" <<< "${{ secrets.GPG_PASSPHRASE }}"
+          $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase --preset "${{ secrets.GPG_KEY_GRIP }}" <<< "${{ secrets.GPG_PASSPHRASE }}"
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 -d | gpg2 --batch --import
 
           # Build Cassette

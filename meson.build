@@ -74,7 +74,7 @@ if not get_option('with_webkit') and host_machine.system() != 'darwin'
   error('with_webkit=false is only supported on macOS (native WKWebView is darwin-only)')
 endif
 
-if host_machine.system() == 'darwin' and not webkit.found()
+if host_machine.system() == 'darwin'
   add_languages('objc', native: false)
 endif
 

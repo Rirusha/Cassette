@@ -139,14 +139,23 @@ cassette_c_args += [
 cassette_link_args = ['-lm']
 
 macos_inc = []
-if host_machine.system() == 'darwin' and not get_option('with_webkit')
+if host_machine.system() == 'darwin'
+  cassette_vala_args += ['--define=MACOS']
   cassette_sources += files(
-    'macos/macos-webkit-auth.m',
-    'macos/macos-webkit-auth.vapi',
+    'macos/macos-now-playing.m',
+    'macos/macos-now-playing.vapi',
+    'macos/now-playing.vala',
   )
-  cassette_link_args += ['-framework', 'WebKit', '-framework', 'AppKit', '-framework', 'Foundation']
+  cassette_link_args += ['-framework', 'MediaPlayer', '-framework', 'AppKit', '-framework', 'Foundation']
   cassette_c_args += ['-fobjc-arc']
   macos_inc = include_directories('macos')
+  if not get_option('with_webkit')
+    cassette_sources += files(
+      'macos/macos-webkit-auth.m',
+      'macos/macos-webkit-auth.vapi',
+    )
+    cassette_link_args += ['-framework', 'WebKit']
+  endif
 endif
 
 executable(

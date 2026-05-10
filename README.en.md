@@ -1,11 +1,8 @@
 <div align="center">
-  <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
-    <img src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg" height="128" alt="Cassette">
-    <div>
-      <h1 style="margin: 0;">Cassette</h1>
-      <p style="margin: -10px 0 0; color: #555;">Unofficial Yandex Music client</p>
-    </div>
-  </div>
+  <img src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg" width="128">
+
+  <h1>Cassette</h1>
+  <p>Unofficial Yandex Music client</p>
 
   <a href="https://stopthemingmy.app">
     <img src="https://stopthemingmy.app/badge.svg"/>
@@ -31,7 +28,7 @@
 **Flathub:**
 
 <a href="https://flathub.org/apps/details/space.rirusha.Cassette">
-  <img style="margin-bottom: 12px;" width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
+  <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
 </a>
 
 **Distribution repositories:**

@@ -110,7 +110,7 @@ namespace Cassette {
             // Type register
             typeof (PlaylistView).ensure ();
             typeof (PlaylistsView).ensure ();
-            typeof (MainView).ensure ();
+            typeof (StationsView).ensure ();
             typeof (DevelView).ensure ();
 
             Cassette.settings.changed.connect ((key) => {
@@ -267,7 +267,7 @@ namespace Cassette {
                     "main",
                     _("Main"),
                     "user-home-symbolic",
-                    typeof (MainView).name ()
+                    typeof (StationsView).name ()
                 });
             }
 

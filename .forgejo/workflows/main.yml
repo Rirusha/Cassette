@@ -161,7 +161,8 @@ jobs:
 
       - name: Build
         run: |
-          GNUPGHOME=$(mktemp -d)
+          GNUPGHOME="$HOME"/.gnupg
+          mkdir -p "$GNUPGHOME"
           chmod 700 "$GNUPGHOME"
 
           GPG_PASSPHRASE_FILE="$GNUPGHOME"/passphrase
@@ -181,8 +182,7 @@ jobs:
           echo "yes" >> ${GNUPGHOME}/gpg.conf
           echo "passphrase-file $GPG_PASSPHRASE_FILE" >> ${GNUPGHOME}/gpg.conf
 
-          gpg-connect-agent killagent /bye 2>/dev/null || true
-          gpg-connect-agent /bye
+          gpg-connect-agent reloadagent /bye
 
           /usr/lib/gnupg/gpg-preset-passphrase --preset ${{ secrets.GPG_KEY_GREP }} <<< "${{ secrets.GPG_PASSPHRASE }}"
           base64 -d ${GPG_PRIVATE_KEY_FILE} | gpg2 --import

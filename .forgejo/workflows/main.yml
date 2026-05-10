@@ -197,9 +197,9 @@ jobs:
         uses: actions/deploy-pages@v1
         with:
           directory: ./.flatpak-repo
-          branch: branch
-          repository: rirusha/space
-          repository-token: ${{ secrets.SPACE }}
+          branch: repo
+          pages-repository: rirusha/space
+          pages-repository-token: ${{ secrets.SPACE }}
 
   rpm-build:
     if: github.event_name != 'pull_request'

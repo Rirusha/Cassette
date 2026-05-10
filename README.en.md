@@ -1,22 +1,22 @@
 <div align="center">
-  <h1>
-    <img
-      src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg"
-      height="64"
-    />
-    Cassette
-  </h1>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+    <img src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg" height="128" alt="Cassette">
+    <div>
+      <h1 style="margin: 0;">Cassette</h1>
+      <p style="margin: -10px 0 0; color: #555;">Unofficial Yandex Music client</p>
+    </div>
+  </div>
 
   <a href="https://stopthemingmy.app">
     <img src="https://stopthemingmy.app/badge.svg"/>
   </a>
 
   <a href="https://t.me/CassetteGNOME_Devlog">
-    <img alt="Static Badge" src="https://img.shields.io/badge/Channel-blue?style=flat&logo=telegram">
+    <img alt="Link to devlog channel" src="https://img.shields.io/badge/Channel-blue?style=flat&logo=telegram">
   </a>
 
-  <a href="https://t.me/CassetteGNOME_Devlog">
-    <img alt="Static Badge" src="https://img.shields.io/badge/Chat-blue?style=flat&logo=telegram">
+  <a href="https://t.me/CassetteGNOME_Discussion">
+    <img alt="Link to chat" src="https://img.shields.io/badge/Chat-blue?style=flat&logo=telegram">
   </a>
 </div>
 
@@ -31,98 +31,22 @@
 **Flathub:**
 
 <a href="https://flathub.org/apps/details/space.rirusha.Cassette">
-  <img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
+  <img style="margin-bottom: 12px;" width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.svg'/>
 </a>
-
-```shell
-flatpak install space.rirusha.Cassette
-```
 
 **Distribution repositories:**
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/cassette.svg)](https://repology.org/project/cassette/versions)
 
-### ALT Linux
-```shell
-su -
-apt-get install cassette
-```
-
-### Arch Linux
-
-> Most AUR Helpers support Pacman-style flags, for example, yay.
-
-#### yay
-```shell
-yay -S cassette
-```
-
-#### pamac
-```shell
-pamac install cassette
-```
-
-### NixOS Unstable	
-```shell
-nix-shell -p cassette
-```
-
 ## Building
 
-#### Dependencies:
+You can use [GNOME Builder](https://flathub.org/en/apps/org.gnome.Builder), [VSC/odium with `flatpak` plugin](https://marketplace.visualstudio.com/items?itemName=bilelmoussaoui.flatpak-vscode) or just via [flatpak-builder](https://docs.flatpak.org/en/latest/first-build.html#build-and-install)
 
-* `gtk4`, version: `>= 4.14`
-* `libadwaita-1`, version: `>= 1.5`
-* `libsoup-3.0`
-* `gdk-pixbuf-2.0`
-* `json-glib-1.0`
-* `sqlite3`
-* `gee-0.8`
-* `libxml-2.0`
-* `gstreamer-1.0`
-* `webkitgtk-6.0`
-* `gio-2.0`, version: `>= 2.72`
-* `git`, only for `devel`
+Also you can build via meson with manual dependency resolving. You can read about build options [here](meson.options)
 
-#### Building utilities:
+### Platforms
 
-* `meson`
-* `ninja`
-* `cmake`
-* `blueprint-compiler`
-* `gcc`
-* `valac`
-* `pkg`
-* `appstream-utils`
-
-### PreRelease
-
-> Unstable features under development will not be available in this version.
-```shell
-meson setup _build
-```
-
-### `nightly` flag
-
-> In this version, all devel functions will be available.
-```shell
-meson setup _build -Dnightly=true
-```
-
-#### Install
-```shell
-sudo ninja install -C _build
-```
-
-#### Testing
-```shell
-ninja -C _build test
-```
-
-#### Uninstal
-```shell
-sudo ninja uninstall -C _build
-```
+Cassette available on many platforms besides Linux. They are located in the corresponding directories in the root of the repository. `windows` and `macos` presented for now.
 
 ## Devel version
 
@@ -132,37 +56,13 @@ You need to add `cassette-nightly` and `gnome-nightly` repositories:
 
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-flatpak remote-add --if-not-exists cassette-nightly https://rirusha.space/repos/cassette-nightly.flatpakrepo
+flatpak remote-add --if-not-exists cassette-nightly https://rirusha.space/nightly-repo.flatpakrepo
 ```
 
 Install application:
 
 ```shell
 flatpak install cassette-nightly space.rirusha.Cassette.Devel
-```
-
-## For developers
-
-> The repository has recommended extensions for developing with Visual Studio Code.
-
-### Dependencies
-
-#### repository [gnome-nightly](https://wiki.gnome.org/Apps/Nightly):
-```shell
-flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-```
-
-#### To run
-`org.gnome.Platform//master`
-```shell
-flatpak install org.gnome.Platform//master
-```
-
-#### To build
-`org.gnome.Sdk//master` \
-`org.freedesktop.Sdk.Extension.vala//23.08beta`
-```shell
-flatpak install org.gnome.Sdk//master org.freedesktop.Sdk.Extension.vala//23.08beta
 ```
 
 ## Support
@@ -172,19 +72,22 @@ You can support in several ways:
 - Submit a merge request with a fix or new functionality
 - Support financially (Please include your nickname in the "Message to the recipient" when sending via T-Bank)
 
-<br>
-
-<div align="center">
-  <a href="https://www.tbank.ru/cf/21GCxLuFuE9" style="margin-right: 100px;">
-    <img height="200" src="assets/tbank.png" alt="Tinkoff">
+Donate links (QR-codes also clickable!):
+<details>
+  <summary>T-Bank</summary>
+  <a href="https://www.tbank.ru/cf/21GCxLuFuE9">
+    <img alt="Link to T-Bank support" height="200" src="assets/tbank.png">
   </a>
+</details>
+
+<details>
+  <summary>Boosty</summary>
   <a href="https://boosty.to/rirusha/donate">
-    <img height="200" src="assets/boosty.png" alt="boosty.to">
+    <img alt="Link to boosty support" height="200" src="assets/boosty.png">
   </a>
-</div>
+</details>
 
-## Gratitude
-Thank you [MarshalX](https://github.com/MarshalX ). The [yandex-music-api](https://github.com/MarshalX/yandex-music-api) library was used as api documentation.
+<br>
 
 > Attention!
 > Cassette is an unofficial client, not affiliated with Yandex and not approved by it.

@@ -159,22 +159,44 @@ jobs:
             org.gnome.Platform//master \
             org.gnome.Sdk//master
 
-      - name: Import GPG keys
-        uses: https://github.com/crazy-max/ghaction-import-gpg@v7
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-
       - name: Build
-        run: | 
+        run: |
+          GNUPGHOME=$(mktemp -d)
+          chmod 700 "$GNUPGHOME"
+
+          GPG_PASSPHRASE_FILE="$GNUPGHOME"/passphrase
+          GPG_PRIVATE_KEY_FILE="$GNUPGHOME"/private-key
+          
+          gpg2 --list-keys --with-keygrip
+          touch ${GNUPGHOME}/gpg.conf
+          touch ${GNUPGHOME}/gpg-agent.conf
+
+          printf '%s' ${{ secrets.GPG_PASSPHRASE }} > "$GPG_PASSPHRASE_FILE"
+          printf '%s' ${{ secrets.GPG_PRIVATE_KEY }} > "$GPG_PRIVATE_KEY_FILE"
+
+          echo "default-cache-ttl 46000" >> ${GNUPGHOME}/gpg-agent.conf
+          echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf
+          echo "pinentry-mode loopback" >> ${GNUPGHOME}/gpg.conf
+          echo "batch" >> ${GNUPGHOME}/gpg.conf
+          echo "yes" >> ${GNUPGHOME}/gpg.conf
+          echo "passphrase-file $GPG_PASSPHRASE_FILE" >> ${GNUPGHOME}/gpg.conf
+
+          gpg-connect-agent killagent /bye 2>/dev/null || true
+          gpg-connect-agent /bye
+
+          /usr/lib/gnupg/gpg-preset-passphrase --preset ${{ secrets.GPG_KEY_GREP }} <<< "${{ secrets.GPG_PASSPHRASE }}"
+          base64 -d ${GPG_PRIVATE_KEY_FILE} | gpg2 --import
+
           # Build Cassette
-          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --disable-rofiles-fuse cassette_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
+          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="$GNUPGHOME" --disable-rofiles-fuse cassette_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
 
           # Build Cassette Demo
-          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --disable-rofiles-fuse cassette_demo_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
+          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="$GNUPGHOME" --disable-rofiles-fuse cassette_demo_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
 
           # Update repo
-          flatpak build-update-repo --generate-static-deltas --gpg-sign=${{ secrets.GPG_KEY_ID }} --prune .flatpak-repo || true
+          flatpak build-update-repo --generate-static-deltas --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="$GNUPGHOME" --prune .flatpak-repo || true
+
+          rm -rf "$GNUPGHOME"
 
       - name: Deploy repo
         if: github.event_name != 'pull_request' && github.ref_name == 'main'

@@ -182,21 +182,21 @@ jobs:
 
       - name: Build Cassette
         run: |
-          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_app --repo=.space/repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
+          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
 
       - name: Build Cassette Demo
         run: |
-          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_demo_app --repo=.space/repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
+          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_demo_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
 
       - name: Update repo
         run: |
-          flatpak build-update-repo --generate-static-deltas --prune .space/repo || true
+          flatpak build-update-repo --generate-static-deltas --prune .flatpak-repo || true
 
       - name: Deploy repo
         if: github.event_name != 'pull_request' && github.ref_name == 'main'
         uses: actions/deploy-pages@v1
         with:
-          directory: ./.space/repo
+          directory: ./.flatpak-repo
           branch: branch
           repository: rirusha/space
           repository-token: ${{ secrets.SPACE }}

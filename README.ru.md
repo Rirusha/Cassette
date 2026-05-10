@@ -63,7 +63,7 @@
 
 ```shell
 flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-flatpak remote-add --if-not-exists cassette-nightly https://rirusha.space/repos/cassette-nightly.flatpakrepo
+flatpak remote-add --if-not-exists cassette-nightly https://rirusha.space/nightly-repo.flatpakrepo
 ```
 
 Установка приложения:

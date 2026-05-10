@@ -8,13 +8,23 @@
     <img src="https://stopthemingmy.app/badge.svg"/>
   </a>
 
+  <div>
+  <a href="https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org">
+    <img alt="Ссылка на matrix чат" src="https://img.shields.io/badge/Чат-black?style=flat&logo=matrix">
+  </a>
+
+  <a href="https://translate.alt-gnome.ru/engage/cassette/">
+    <img src="https://translate.alt-gnome.ru/widget/cassette/cassette/ru/svg-badge.svg" alt="Состояние перевода">
+  </a>
+
   <a href="https://t.me/CassetteGNOME_Devlog">
-    <img alt="Ссылка на канал с девлогами" src="https://img.shields.io/badge/Канал-blue?style=flat&logo=telegram">
+    <img alt="Ссылка на telegram канал с девлогами" src="https://img.shields.io/badge/Канал-blue?style=flat&logo=telegram">
   </a>
 
   <a href="https://t.me/CassetteGNOME_Discussion">
-    <img alt="Ссылка на чат" src="https://img.shields.io/badge/Чат-blue?style=flat&logo=telegram">
+    <img alt="Ссылка на telegram чат" src="https://img.shields.io/badge/Чат-blue?style=flat&logo=telegram">
   </a>
+  </div>
 </div>
 
 <div align="center"><h4>GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux.</h4></div>

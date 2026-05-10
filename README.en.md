@@ -8,13 +8,23 @@
     <img src="https://stopthemingmy.app/badge.svg"/>
   </a>
 
+  <div>
+  <a href="https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org">
+    <img alt="Link to matrix chat" src="https://img.shields.io/badge/Чат-black?style=flat&logo=matrix">
+  </a>
+
+  <a href="https://translate.alt-gnome.ru/engage/cassette/">
+    <img src="https://translate.alt-gnome.ru/widget/cassette/cassette/svg-badge.svg" alt="Translation state">
+  </a>
+
   <a href="https://t.me/CassetteGNOME_Devlog">
-    <img alt="Link to devlog channel" src="https://img.shields.io/badge/Channel-blue?style=flat&logo=telegram">
+    <img alt="Link to devlog telegram channel" src="https://img.shields.io/badge/Канал-blue?style=flat&logo=telegram">
   </a>
 
   <a href="https://t.me/CassetteGNOME_Discussion">
-    <img alt="Link to chat" src="https://img.shields.io/badge/Chat-blue?style=flat&logo=telegram">
+    <img alt="Link to telegram chat" src="https://img.shields.io/badge/Чат-blue?style=flat&logo=telegram">
   </a>
+  </div>
 </div>
 
 <div align="center"><h4>GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems.</h4></div>

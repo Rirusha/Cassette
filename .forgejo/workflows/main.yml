@@ -172,8 +172,12 @@ jobs:
           touch ${GNUPGHOME}/gpg.conf
           touch ${GNUPGHOME}/gpg-agent.conf
 
-          printf '%s' ${{ secrets.GPG_PASSPHRASE }} > "$GPG_PASSPHRASE_FILE"
-          printf '%s' ${{ secrets.GPG_PRIVATE_KEY }} > "$GPG_PRIVATE_KEY_FILE"
+          cat > "$GPG_PASSPHRASE_FILE" << 'EOF'
+          ${{ secrets.GPG_PASSPHRASE }}
+          EOF
+          cat > "$GPG_PRIVATE_KEY_FILE" << 'EOF'
+          ${{ secrets.GPG_PRIVATE_KEY }}
+          EOF
 
           echo "default-cache-ttl 46000" >> ${GNUPGHOME}/gpg-agent.conf
           echo "allow-preset-passphrase" >> ${GNUPGHOME}/gpg-agent.conf

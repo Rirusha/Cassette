@@ -77,52 +77,11 @@ glib-compile-schemas build/schemas
 
 ## Run
 
-Use the provided script:
+Use the provided scripts:
 
 ```sh
-./run.sh
-```
-
-Or set the environment manually:
-
-```sh
-XDG_DATA_DIRS=/opt/homebrew/share \
-GSETTINGS_SCHEMA_DIR=build/schemas \
-GST_PLUGIN_PATH=/opt/homebrew/lib/gstreamer-1.0-gtk4 \
-GST_REGISTRY_FORK=no \
-./build/src/cassette
-```
-
-## Known issues and patches
-
-### libtape API renames
-
-The `libtape` subproject (pulled from `main`) renamed properties in `Tape.Client`:
-
-| Old name | New name |
-|---|---|
-| `.cachier` | `.cm` |
-| `.yam_helper` | `.ym` |
-
-If you see build errors like `The name 'cachier' does not exist in the context of 'Tape.Client'`,
-apply this patch:
-
-```sh
-sed -i '' 's/\.cachier\./.cm./g; s/\.yam_helper\./.ym./g' \
-  src/ui/auth.vala \
-  src/ui/account/account-button.vala \
-  src/ui/account/account-info-dialog.vala
-```
-
-### Vala 0.56: `token` property not writable
-
-Vala 0.56 generates `G_PARAM_READABLE`-only for `private set construct` properties,
-breaking `g_object_new()` calls. In
-`subprojects/libtape/lib/yandex-music/yandex-music.vala`, change:
-
-```diff
--    public string token { internal get; private set construct; default = ""; }
-+    public string token { internal get; set construct; default = ""; }
+./macos/build-macos.sh
+./macos/run.sh
 ```
 
 ### Expected harmless warnings

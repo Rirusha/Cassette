@@ -131,8 +131,6 @@ jobs:
     runs-on: als-huge
     container: altlinux.space/actions/runner/containers:sisyphus
     if: github.event_name != 'pull_request' && github.ref_name == 'main'
-    env:
-      GNUPGHOME: ${{ env.HOME }}/.gnupg
     needs:
       - lint-vala
       - lint-blueprint
@@ -163,6 +161,8 @@ jobs:
 
       - name: Setup GPG
         run: | 
+          GNUPGHOME=$HOME/.gnupg
+
           mkdir -p ${GNUPGHOME}
           chmod 700 ${GNUPGHOME}
 
@@ -178,16 +178,13 @@ jobs:
           /usr/lib/gnupg/gpg-preset-passphrase --preset "${{ secrets.GPG_KEY_GRIP }}" <<< "${{ secrets.GPG_PASSPHRASE }}"
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 -d | gpg2 --batch --import
 
-      - name: Build Cassette
-        run: |
+          # Build Cassette
           flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
 
-      - name: Build Cassette Demo
-        run: |
+          # Build Cassette Demo
           flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --disable-rofiles-fuse cassette_demo_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
 
-      - name: Update repo
-        run: |
+          # Update repo
           flatpak build-update-repo --generate-static-deltas --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir=${GNUPGHOME} --prune .flatpak-repo || true
 
       - name: Deploy repo

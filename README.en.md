@@ -1,7 +1,3 @@
-README language: \
-[![En](https://img.shields.io/badge/en-green)](README.md)
-[![Ru](https://img.shields.io/badge/ru-gray)](docs/README-ru.md)
-
 <div align="center">
   <h1>
     <img

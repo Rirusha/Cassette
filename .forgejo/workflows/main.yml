@@ -173,7 +173,8 @@ jobs:
           echo "allow-preset-passphrase" > ${GNUPGHOME}/gpg-agent.conf
           echo "pinentry-mode loopback" > ${GNUPGHOME}/gpg.conf
 
-          gpgconf --kill gpg-agent
+          gpgconf --kill gpg-agent 2>/dev/null || true
+          gpgconf --launch gpg-agent
 
           $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase --preset "${{ secrets.GPG_KEY_GRIP }}" <<< "${{ secrets.GPG_PASSPHRASE }}"
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 -d | gpg2 --batch --import

@@ -96,5 +96,5 @@ Donate links (QR-codes also clickable!):
 
 <br>
 
-> Attention!
+> [!IMPORTANT] 
 > Cassette is an unofficial client, not affiliated with Yandex and not approved by it.

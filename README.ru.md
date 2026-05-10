@@ -96,5 +96,5 @@ flatpak install cassette-nightly space.rirusha.Cassette.Devel
 
 <br>
 
-> Внимание!
+> [!IMPORTANT] 
 > Кассета - неофициальный клиент, не связан с компанией Яндекс и не одобрен ей.

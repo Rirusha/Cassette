@@ -165,7 +165,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: rirusha/space
-          path: .space
+          ref: repo
+          path: .space-repo
           token: ${{ secrets.SPACE }}
 
       # - name: Setup GPG
@@ -189,24 +190,24 @@ jobs:
 
       - name: Build Cassette
         run: |
-          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
+          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_app --repo=.space-repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
 
       - name: Build Cassette Demo
         run: |
-          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_demo_app --repo=.space/site/repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
+          flatpak-builder --keep-build-dirs --disable-rofiles-fuse cassette_demo_app --repo=.space-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
 
       - name: Update repo
         run: |
-          flatpak build-update-repo --generate-static-deltas --prune .space/site/repo || true
+          flatpak build-update-repo --generate-static-deltas --prune .space-repo || true
 
       - name: Upload
         run: |
-          cd .space
+          cd .space-repo
           git add .
           git config user.name "CI Bot"
           git config user.email "ci@altlinux.space"
           git commit -m "Update flatpak repo" || true
-          git push || true
+          git push --force origin repo || true
 
   rpm-build:
     if: github.event_name != 'pull_request'

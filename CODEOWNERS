@@ -1,0 +1,9 @@
+# This file describes the expected reviewers for a PR based on the changed
+# files. Unlike what the name of the file suggests they don't own the code, but
+# merely have a good understanding of that area of the codebase and therefore
+# are usually suited as a reviewer.
+
+.* @rirusha
+
+# Mac OS build
+macos/.* @toxblh

@@ -1,7 +1,9 @@
 <div align="center">
+  <h1>
   <img src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg" width="128">
-
-  <h1>Кассета</h1>
+  </br>
+  Кассета
+  </h1>
   <p>Неофициальный клиент Яндекс Музыки</p>
 
   <a href="https://stopthemingmy.app">

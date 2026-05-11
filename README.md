@@ -1,7 +1,9 @@
 <div align="center">
+  <h1>
   <img src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg" width="128">
-
-  <h1>Cassette</h1>
+  </br>
+  Cassette
+  </h1>
   <p>Unofficial Yandex Music client</p>
 
   <a href="https://stopthemingmy.app">

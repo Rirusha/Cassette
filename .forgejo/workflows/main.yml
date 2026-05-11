@@ -129,7 +129,7 @@ jobs:
   flatpak-build:
     name: Flatpak build and uploading
     runs-on: als-huge
-    container: altlinux.space/actions/runner/containers:sisyphus
+    container: altlinux.space/rirusha/flatpak-builder:latest
     if: github.event_name != 'pull_request' && github.ref_name == 'main'
     needs:
       - lint-vala
@@ -140,24 +140,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install builder
-        run: |
-          apt-get update
-          apt-get install -y flatpak-builder
-
-      - name: Add flatpak repos
-        run: |
-          flatpak remote-add --if-not-exists \
-            flathub https://flathub.org/repo/flathub.flatpakrepo
-          flatpak remote-add --if-not-exists \
-            gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-
-      - name: Install flatpak deps
-        run: |
-          flatpak install -y \
-            org.gnome.Platform//master \
-            org.gnome.Sdk//master
 
       - name: Build
         run: |

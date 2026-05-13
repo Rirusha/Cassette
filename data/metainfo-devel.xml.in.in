@@ -92,7 +92,7 @@
   </screenshots>
   <releases>
     <!-- Need for about in devel version -->
-    <release version="@VERSION@" date="@DATE@">
+    <release version="@VERSION@" date="@DATE@" type="development">
       <description>
         <p>Sorry @USER@! But my release note is in another metainfo</p>
       </description>

@@ -1,9 +1,0 @@
-name: Attach sources
-
-on:
-  release:
-    types: [published]
-
-jobs:
-  attach-sources:
-    uses: rirusha/actions/.forgejo/workflows/attach-sources.yml@main

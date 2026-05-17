@@ -120,7 +120,7 @@ msgstr "Кассета"
 #. Translators: NAME <EMAIL.COM>
 #: src/ui/about.vala:112
 msgid "translator-credits"
-msgstr "Vladimir Vaskov <rirusha@altlinux.org>"
+msgstr "Vladimir Romanov <rirusha@altlinux.org>"
 
 #: src/ui/about.vala:113
 #, fuzzy

@@ -121,7 +121,7 @@ msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 #: src/ui/about.vala:113
 #, fuzzy
 msgid "Vladimir Romanov"
-msgstr "Vladimir Vaskov"
+msgstr "Vladimir Romanov"
 
 #: src/ui/about.vala:116
 msgid "Telegram channel"

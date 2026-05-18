@@ -55,7 +55,7 @@ namespace Cassette.Client {
 
                 _me = client.me;
                 if (_me == null) {
-                    string my_uid = storager.db.get_additional_data ("me");
+                    string? my_uid = storager.db.get_additional_data ("me");
                     if (my_uid != null) {
                         _me = (Account.About) storager.load_object (typeof (Account.About), my_uid);
                     }
@@ -79,8 +79,8 @@ namespace Cassette.Client {
             }
 
             if (is_need_init) {
-                string saved_token = storager.db.get_additional_data ("oauth_token");
-                if (saved_token != "") {
+                string? saved_token = storager.db.get_additional_data ("oauth_token");
+                if (saved_token != null && saved_token != "") {
                     try {
                         init_with_token (saved_token);
                     } catch (BadStatusCodeError e) {

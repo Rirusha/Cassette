@@ -94,7 +94,7 @@ namespace Cassette.Client.Cachier {
             }
         }
 
-        public string get_additional_data (string name) {
+        public string? get_additional_data (string name) {
             /**
                 Получает из базы данны кастомную запись по имени.
                 Получемые данные должны быть в базе данных
@@ -119,7 +119,7 @@ namespace Cassette.Client.Cachier {
                 );
             }
 
-            string result = statement.column_text (1);
+            string? result = statement.column_text (1);
             statement.reset ();
 
             return result;

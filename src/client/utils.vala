@@ -177,7 +177,11 @@ namespace Cassette.Client {
         yam_talker = new YaMTalker ();
         player = new Player.Player ();
 
+#if MACOS
+        MacOsNowPlaying.init ();
+#else
         Mpris.init ();
+#endif
     }
 
     /**

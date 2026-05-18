@@ -111,12 +111,14 @@ namespace Cassette {
 
             Cassette.Client.init (is_devel);
 
+#if !MACOS
             Cassette.Client.Mpris.mpris.quit_triggered.connect (() => {
                 quit ();
             });
             Cassette.Client.Mpris.mpris.raise_triggered.connect (() => {
                 main_window.present ();
             });
+#endif
 
             // Shortcuts
             cachier = Cassette.Client.cachier;

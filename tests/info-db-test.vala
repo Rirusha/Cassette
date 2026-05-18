@@ -35,6 +35,16 @@ public int main (string[] args) {
         }
     });
 
+    Test.add_func ("/db-info/additional/get-null", () => {
+        var db = new InfoDB ("test.db");
+
+        string? data = db.get_additional_data ("unknown_name");
+
+        if (data != null) {
+            Test.fail_printf (@"$data != null");
+        }
+    });
+
     Test.add_func ("/db-info/track-ref/set", () => {
         var db = new InfoDB ("test.db");
 

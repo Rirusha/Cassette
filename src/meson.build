@@ -76,7 +76,6 @@ cassette_gui_sources = files(
   'widgets/views/cant-show.vala',
   'widgets/views/devel.vala',
   'widgets/views/disliked.vala',
-  'widgets/views/main.vala',
   'widgets/views/playlist.vala',
   'widgets/views/playlists.vala',
   'widgets/views/stations.vala',
@@ -124,7 +123,7 @@ cassette_sources = [
 cassette_vala_args = [
   '--target-glib', '2.76',
   '--vapidir', meson.current_source_dir()
-]
+] + webkit_vala_args
 
 cassette_c_args = [
   '-include', 'config.h',
@@ -136,13 +135,35 @@ cassette_c_args += [
 ]
 # END GCC14
 
+cassette_link_args = ['-lm']
+
+macos_inc = []
+if host_machine.system() == 'darwin'
+  cassette_vala_args += ['--define=MACOS']
+  cassette_sources += files(
+    'macos/macos-now-playing.m',
+    'macos/macos-now-playing.vapi',
+    'macos/now-playing.vala',
+  )
+  cassette_link_args += ['-framework', 'MediaPlayer', '-framework', 'AppKit', '-framework', 'Foundation']
+  cassette_c_args += ['-fobjc-arc']
+  macos_inc = include_directories('macos')
+  if not get_option('with_webkit')
+    cassette_sources += files(
+      'macos/macos-webkit-auth.m',
+      'macos/macos-webkit-auth.vapi',
+    )
+    cassette_link_args += ['-framework', 'WebKit']
+  endif
+endif
+
 executable(
   meson.project_name(),
   cassette_sources,
-  include_directories: config_h_dir,
+  include_directories: [config_h_dir, macos_inc],
   vala_args: cassette_vala_args,
   c_args: cassette_c_args,
-  link_args: ['-lm'],
+  link_args: cassette_link_args,
   dependencies: cassette_dependencies,
   install: true,
 )

@@ -42,7 +42,7 @@ namespace Cassette {
         [GtkChild]
         unowned Adw.SwitchRow show_playing_track_notif_switch;
         [GtkChild]
-        unowned Adw.SwitchRow show_main_switch;
+        unowned Adw.SwitchRow show_stations_switch;
         [GtkChild]
         unowned Adw.SwitchRow show_liked_switch;
         [GtkChild]
@@ -108,7 +108,7 @@ namespace Cassette {
             );
 
             Cassette.settings.bind (
-                "show-main", show_main_switch, "active", GLib.SettingsBindFlags.DEFAULT
+                "show-stations", show_stations_switch, "active", GLib.SettingsBindFlags.DEFAULT
             );
             Cassette.settings.bind (
                 "show-liked", show_liked_switch, "active", GLib.SettingsBindFlags.DEFAULT

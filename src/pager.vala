@@ -115,7 +115,7 @@ namespace Cassette {
 
             Cassette.settings.changed.connect ((key) => {
                 if (
-                    (key == "show-main" ||
+                    (key == "show-stations" ||
                     key == "show-liked" ||
                     key == "show-playlists") &&
                     Cassette.settings.get_boolean ("default-pages-set")
@@ -243,7 +243,7 @@ namespace Cassette {
         }
 
         void set_online_default_pages () {
-            Cassette.settings.set_boolean ("show-main", true);
+            Cassette.settings.set_boolean ("show-stations", true);
             Cassette.settings.set_boolean ("show-liked", true);
             Cassette.settings.set_boolean ("show-playlists", true);
         }
@@ -262,11 +262,11 @@ namespace Cassette {
                 });
             }
 
-            if (Cassette.settings.get_boolean ("show-main")) {
+            if (Cassette.settings.get_boolean ("show-stations")) {
                 add_page ({
-                    "main",
-                    _("Main"),
-                    "user-home-symbolic",
+                    "stations",
+                    _("Stations"),
+                    "wave-my-wave-symbolic",
                     typeof (StationsView).name ()
                 });
             }

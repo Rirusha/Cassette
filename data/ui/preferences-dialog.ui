@@ -112,8 +112,8 @@
             <property name="title" translatable="true" context="preference dialog">Static pages</property>
             <property name="description" translatable="true" context="preference dialog">Here you can show or hide static pages. They will always be displayed on the left side of the header.</property>
             <child>
-              <object class="AdwSwitchRow" id="show_main_switch">
-                <property name="title" translatable="true" context="preference dialog">Show 'Main' page</property>
+              <object class="AdwSwitchRow" id="show_stations_switch">
+                <property name="title" translatable="true" context="preference dialog">Show 'Stations' page</property>
               </object>
             </child>
             <child>

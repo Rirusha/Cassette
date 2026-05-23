@@ -54,7 +54,7 @@
 		<key name="default-pages-set" type="b">
 			<default>false</default>
 		</key>
-		<key name="show-main" type="b">
+		<key name="show-stations" type="b">
 			<default>true</default>
 		</key>
 		<key name="show-liked" type="b">

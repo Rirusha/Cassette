@@ -83,6 +83,12 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.3" date="2026-05-23">
+      <description>
+        <p>Replaced Main page with Stations page</p>
+        <p>Added Mac OS support</p>
+      </description>
+    </release>
     <release version="0.2.2" date="2026-05-06">
       <description>
         <p>Actualized some data</p>

@@ -19,6 +19,6 @@ def extract_project_version(filename):
         return version_match.group(1)
     return None
 
-version = extract_project_version('meson.build')
+version = extract_project_version('meson.build').replace('.rc', '')
 if version:
     print(version)

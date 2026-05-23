@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2024-10-02 01:04+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-23 14:48+0300\n"
 "PO-Revision-Date: 2024-10-23 13:47+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #. Translators: app name should be translated
 #: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:24
 msgid "Cassette"
 msgstr "Cassette"
 
@@ -30,16 +30,16 @@ msgstr "Cliente não oficial do Yandex Music para GNOME"
 
 #. Translators: keep number of ';'
 #: data/space.rirusha.Cassette.desktop.in.in:7
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:7
 msgid "yandex;yandex music;yam;music;"
 msgstr "yandex;yandex music;yam;música;"
 
 #. Translators: app name should be translated
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
 msgid "Cassette (Devel)"
 msgstr "Cassette (Devel)"
 
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:5
 msgid "Unofficial Yandex Music client for GNOME (Devel build)"
 msgstr ""
 "Cliente não oficial do Yandex Music para GNOME (compilação de "
@@ -92,29 +92,185 @@ msgid ""
 msgstr ""
 "Cassette é um cliente não oficial e não é associado ou endossado pelo Yandex."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:40
+#, fuzzy
+msgid "Vladimir Romanov"
+msgstr "Vladimir Vaskov"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:62
 msgid "Liked view"
 msgstr "Visualização de gostos"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:66
 msgid "Playlists view"
 msgstr "Visualização de listas de reprodução"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
 msgid "Sync lyrics"
 msgstr "Sincronização de letras"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
 msgid "Playback queue"
 msgstr "Fila de reprodução"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
 msgid "Waves view"
 msgstr "Visualização de ondas"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
 msgid "Main preferences"
 msgstr "Preferências principais"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:88
+msgid "Replaced Main page with Stations page"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:89
+msgid "Added Mac OS support"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:94
+msgid "Actualized some data"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:99
+msgid "Fixed a bug on the stations page and the playlist page in GNOME 48"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:104
+msgid "A release dedicated to My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:106
+msgid "Added My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:107
+msgid "Improved appearance"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:108
+msgid "MANY bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:114
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:122
+msgid "Hotfix"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:116
+msgid "Bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:124
+msgid ""
+"Crashes that I couldn't reproduce for a long time have been fixed. The "
+"reason was an attempt to save a custom track with an empty cover"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:125
+msgid ""
+"The button for creating a playlist has changed, as well as some other shadows"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:126
+msgid ""
+"The translation has been corrected. The text on the widgets written using "
+"blueprints has not been translated. Now fixed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:132
+msgid "Cosmetic and code changes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:134
+msgid ""
+"The transition to the blueprints interface language is slowly but surely "
+"underway"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:135
+msgid ""
+"The playback panel has been completely redesigned. Now there are fewer "
+"buttons (if someone has lost the track information button, you need to poke "
+"to the right of the playback slider)"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:136
+msgid "The appearance of the playlist has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:137
+msgid "The sidebar widget has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:138
+msgid ""
+"Added the feature with parallel loading of tracks while saving playlists. "
+"And not only that, now when the application starts, all saved playlists will "
+"be checked and updated. You can also view the progress of saving on the top "
+"left"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:139
+msgid "Added the removal of a track from the queue when it is disliked"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:140
+msgid ""
+"The Belarusian language has been added. Thanks to Yahor Haurylenka for the "
+"translation"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:141
+msgid "Added a debug mod"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:142
+msgid "Increased the maximum volume level from 60 to 100"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:143
+msgid ""
+"Added the ability to move all saved objects to the cache folder, that is, "
+"move them to temporary storage"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:144
+msgid "Other bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:150
+#, fuzzy
+msgid "Added new authorization via WebView"
+msgstr "Requer autorização"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:155
+msgid "First release of Cassette"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:157
+msgid "Allows you to listen to music"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:158
+#, fuzzy
+msgid "View your playlists"
+msgstr "Suas listas de reprodução"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:159
+msgid "Manage the playback queue, for example shuffle or puts on repeat"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:160
+msgid ""
+"Sends whether the track has been listened to and the playback queue, if it "
+"has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:161
+msgid "Implemented mpris2"
+msgstr ""
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"
@@ -129,7 +285,7 @@ msgid "Plus"
 msgstr "Mais"
 
 #: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
-#: src/authenticator.vala:51
+#: src/authenticator.vala:52
 msgid "Log out"
 msgstr "Sair"
 
@@ -161,19 +317,23 @@ msgctxt "auth window"
 msgid "Online mode"
 msgstr "Modo online"
 
+#: data/ui/begin-view.ui:81
+msgid "Sign in with token"
+msgstr ""
+
 #. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:85
+#: data/ui/begin-view.ui:100
 msgctxt "auth window"
 msgid "Local mode"
 msgstr "Modo local"
 
 #. Translators: "Close" window button label
-#: data/ui/begin-view.ui:97
+#: data/ui/begin-view.ui:112
 msgctxt "auth window"
 msgid "Close"
 msgstr "Fechar"
 
-#: data/ui/begin-view.ui:112
+#: data/ui/begin-view.ui:127
 msgid "Authorization"
 msgstr "Autorização"
 
@@ -237,7 +397,7 @@ msgid "Here you can control custom pages."
 msgstr "Aqui pode controlar páginas personalizadas."
 
 #: data/ui/disliked-tracks-view.ui:23
-#: src/widgets/buttons/menu/primary-menu-button.vala:31
+#: src/widgets/buttons/menu/primary-menu-button.vala:32
 msgid "Disliked tracks"
 msgstr "Faixas não gosto"
 
@@ -317,14 +477,6 @@ msgstr "Conteúdo explícito"
 msgid "Child content"
 msgstr "Conteúdo infantil"
 
-#: data/ui/main-view.blp:6
-msgid "Page under construction"
-msgstr "Página sob construção"
-
-#: data/ui/main-view.blp:20
-msgid "All stations"
-msgstr "Todas as estações"
-
 #: data/ui/no-plus-dialog.blp:20
 msgid "No Plus Subscription"
 msgstr "Sem assinatura Plus"
@@ -357,7 +509,7 @@ msgstr "Mostra fila de reprodução"
 msgid "Change volume"
 msgstr "Altera o volume"
 
-#: data/ui/player-queue.blp:5 src/application.vala:271
+#: data/ui/player-queue.blp:5 src/application.vala:274
 msgid "Playing now"
 msgstr "Reproduzindo agora"
 
@@ -370,8 +522,8 @@ msgid "Create playlist"
 msgstr "Criar lista de reprodução"
 
 #: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
-#: src/widgets/cache-indicator/job-info-badge.vala:42
-#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:167
+#: src/widgets/cache-indicator/job-info-badge.vala:43
+#: src/widgets/save-stack.vala:57 src/widgets/views/abstract-cachiable.vala:168
 msgid "Playlist"
 msgstr "Lista de reprodução"
 
@@ -397,20 +549,20 @@ msgstr "Adiciona página ao cabeçalho"
 
 #. Translators: tooltip of "save" button
 #: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
-#: src/widgets/buttons/menu/track-options-button.vala:82
-#: src/widgets/buttons/menu/track-options-button.vala:107
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
-#: src/widgets/buttons/menu/track-queue-options-button.vala:72
-#: src/widgets/buttons/menu/track-queue-options-button.vala:102
+#: src/widgets/buttons/menu/track-options-button.vala:83
+#: src/widgets/buttons/menu/track-options-button.vala:108
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
+#: src/widgets/buttons/menu/track-queue-options-button.vala:73
+#: src/widgets/buttons/menu/track-queue-options-button.vala:103
 msgid "Save"
 msgstr "Guardar"
 
 #. Translators: tooltip of "delete" button
 #: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
-#: src/widgets/preferences/cache-deletion-preferences.vala:96
-#: src/widgets/preferences/preferences-dialog.vala:140
-#: src/widgets/views/playlist.vala:90
+#: src/widgets/preferences/cache-deletion-preferences.vala:97
+#: src/widgets/preferences/preferences-dialog.vala:141
+#: src/widgets/views/playlist.vala:91
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -610,8 +762,9 @@ msgstr ""
 "no lado esquerdo do cabeçalho."
 
 #: data/ui/preferences-dialog.ui:116
+#, fuzzy
 msgctxt "preference dialog"
-msgid "Show 'Main' page"
+msgid "Show 'Stations' page"
 msgstr "Mostrar página “Principal”"
 
 #: data/ui/preferences-dialog.ui:121
@@ -754,7 +907,7 @@ msgstr "álbum"
 msgid "duration"
 msgstr "duração"
 
-#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:37
+#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:38
 msgid "Loading…"
 msgstr "A carregar…"
 
@@ -770,151 +923,151 @@ msgstr "Por idioma…"
 msgid "Can't get wave settings"
 msgstr "Não é possível obter as definições da onda"
 
-#: data/ui/window.blp:57 src/window.vala:252
+#: data/ui/window.blp:57 src/window.vala:253
 msgid "Reconnect"
 msgstr "Voltar a ligar"
 
-#: data/ui/window.blp:58 src/application.vala:151
+#: data/ui/window.blp:58 src/application.vala:154
 msgid "Connection problems"
 msgstr "Problemas de ligação"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:59
+#: src/about.vala:60
 msgid "translator-credits"
 msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
-#: src/about.vala:67
+#: src/about.vala:68
 msgid "Telegram channel"
 msgstr "Canal de Telegram"
 
-#: src/about.vala:68
+#: src/about.vala:69
 msgid "Financial support (Tinkoff)"
 msgstr "Apoio financeiro (Tinkoff)"
 
-#: src/about.vala:69
+#: src/about.vala:70
 msgid "Financial support (Boosty)"
 msgstr "Apoio financeiro (Boosty)"
 
 #. Please keep alphabetical
-#: src/about.vala:72
+#: src/about.vala:73
 msgid "Sponsors"
 msgstr "Patrocinadores"
 
-#: src/application.vala:62
+#: src/application.vala:63
 msgid "Print version information and exit"
 msgstr "Imprime informações da versão e sai"
 
-#: src/application.vala:145
+#: src/application.vala:148
 msgid "Connection restored"
 msgstr "Ligação restaurada"
 
-#: src/application.vala:273
+#: src/application.vala:276
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/application.vala:274
+#: src/application.vala:277
 msgid "Next"
 msgstr "Seguinte"
 
-#: src/application.vala:357
+#: src/application.vala:360
 msgid "Current track can not be copied to the clipboard"
 msgstr "A faixa atual não pode ser copiada para a área de transferência"
 
-#: src/application.vala:371 src/application.vala:378 src/application.vala:435
+#: src/application.vala:374 src/application.vala:381 src/application.vala:438
 msgid "Can't parse clipboard content"
 msgstr "Não é possível analisar o conteúdo da área de transferência"
 
-#: src/application.vala:389
+#: src/application.vala:392
 msgid "Users view not implemented yet"
 msgstr "A visualização de utilizadores ainda não foi implementada"
 
-#: src/application.vala:405 src/application.vala:419
+#: src/application.vala:408 src/application.vala:422
 msgid "Albums view not implemented yet"
 msgstr "A visualização de álbuns ainda não foi implementada"
 
-#: src/authenticator.vala:46
+#: src/authenticator.vala:47
 msgid "Log out?"
 msgstr "Sair?"
 
-#: src/authenticator.vala:47
+#: src/authenticator.vala:48
 msgid "You will need to log in again to use the app"
 msgstr "Precisará iniciar sessão novamente para usar a aplicação"
 
 #. Translators: cancel of deleting playlist
-#: src/authenticator.vala:50
-#: src/widgets/preferences/cache-deletion-preferences.vala:95
-#: src/widgets/preferences/preferences-dialog.vala:139
-#: src/widgets/views/playlist.vala:89
+#: src/authenticator.vala:51
+#: src/widgets/preferences/cache-deletion-preferences.vala:96
+#: src/widgets/preferences/preferences-dialog.vala:140
+#: src/widgets/views/playlist.vala:90
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/authenticator.vala:97
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
+#: src/authenticator.vala:98
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Moving…"
 msgstr "A mover…"
 
 #. Translators: Playlist with liked tracks
-#: src/client/api/objects/playlist/playlist.vala:49
-#: src/client/api/objects/playlist/playlist.vala:99 src/pager.vala:276
+#: src/client/api/objects/playlist/playlist.vala:50
+#: src/client/api/objects/playlist/playlist.vala:100 src/pager.vala:277
 msgid "Liked"
 msgstr "Gosto"
 
 #. Translators: Playlist that updates every day
-#: src/client/api/objects/playlist/playlist.vala:53
+#: src/client/api/objects/playlist/playlist.vala:54
 msgid "Daily"
 msgstr "Diária"
 
 #. Translators: Unknown playlist
-#: src/client/api/objects/playlist/playlist.vala:57
+#: src/client/api/objects/playlist/playlist.vala:58
 msgid "Unknown"
 msgstr "Desconhecida"
 
-#: src/client/cachier/storager.vala:124
+#: src/client/cachier/storager.vala:125
 #, c-format
 msgid "Database was initialized, loc - %s"
 msgstr "A base de dados foi inicializado, loc - %s"
 
-#: src/client/cachier/storager.vala:801
+#: src/client/cachier/storager.vala:802
 #, c-format
 msgid "Can't save object %s"
 msgstr "Não foi possível guardar o objeto %s"
 
-#: src/client/cachier/storager.vala:818
+#: src/client/cachier/storager.vala:819
 msgid "Byte"
 msgid_plural "Bytes"
 msgstr[0] "Byte"
 msgstr[1] "Bytes"
 
-#: src/client/cachier/storager.vala:821
+#: src/client/cachier/storager.vala:822
 msgid "Kilobyte"
 msgid_plural "Kilobytes"
 msgstr[0] "Kilobyte"
 msgstr[1] "Kilobytes"
 
-#: src/client/cachier/storager.vala:824
+#: src/client/cachier/storager.vala:825
 msgid "Megabyte"
 msgid_plural "Megabytes"
 msgstr[0] "Megabyte"
 msgstr[1] "Megabytes"
 
-#: src/client/cachier/storager.vala:827
+#: src/client/cachier/storager.vala:828
 msgid "Gigabyte"
 msgid_plural "Gigabytes"
 msgstr[0] "Gigabyte"
 msgstr[1] "Gigabytes"
 
-#: src/client/cachier/storager.vala:830
+#: src/client/cachier/storager.vala:831
 msgid "Terabyte"
 msgid_plural "Terabytes"
 msgstr[0] "Terabyte"
 msgstr[1] "Terabytes"
 
-#: src/client/cachier/storager.vala:859
+#: src/client/cachier/storager.vala:860
 #, c-format
 msgid "Error while getting cache directory size. Message %s"
 msgstr "Erro ao obter o tamanho do diretório de cache. Mensagem %s"
 
-#: src/client/cachier/storager.vala:894
+#: src/client/cachier/storager.vala:895
 #, c-format
 msgid "Error while getting permanent directory size. Message %s"
 msgstr "Erro ao obter o tamanho do diretório permanente. Mensagem %s"
@@ -925,271 +1078,276 @@ msgstr "Erro ao obter o tamanho do diretório permanente. Mensagem %s"
 msgid "Wrong type: expected %s, got %s"
 msgstr "Tipo errado: esperado %s, obtido %s"
 
-#: src/client/player/mods/abstract-mode.vala:91
+#: src/client/player/mods/abstract-mode.vala:92
 msgid "Problems with queue"
 msgstr "Problemas com a fila"
 
 #. Translators: name of new created playlist
-#: src/client/talkers/yam-talker.vala:627
+#: src/client/talkers/yam-talker.vala:645
 msgid "New Playlist"
 msgstr "Não é possível definir o título \\\"%s\\\" para a página"
 
-#: src/pager.vala:162
+#: src/pager.vala:163
 #, c-format
 msgid "Can't set title \"%s\" to page"
 msgstr "Não é possível definir o título “%s” para a página"
 
-#: src/pager.vala:173
+#: src/pager.vala:174
 #, c-format
 msgid "Can't set icon with name \"%s\" to page"
 msgstr "Não é possível definir o ícone com o nome “%s” para a página"
 
-#: src/pager.vala:199
+#: src/pager.vala:200
 msgid "Reached max page count"
 msgstr "Quantidade máxima de páginas alcançada"
 
-#: src/pager.vala:205
+#: src/pager.vala:206
 #, c-format
 msgid "Page '%s' already added"
 msgstr "Página “%s” já adicionada"
 
-#: src/pager.vala:267
-msgid "Main"
-msgstr "Principal"
+#: src/pager.vala:268
+#, fuzzy
+msgid "Stations"
+msgstr "Todas as estações"
 
-#: src/pager.vala:286
+#: src/pager.vala:287
 msgid "Playlists"
 msgstr "Listas de reprodução"
 
-#: src/pager.vala:311
+#: src/pager.vala:312
 #, c-format
 msgid "Can't read pages file. Message: %s"
 msgstr "Não foi possível ler o arquivo de páginas. Mensagem: %s"
 
-#: src/pager.vala:331
+#: src/pager.vala:332
 #, c-format
 msgid "Can't create pages file. Message: %s"
 msgstr "Não foi possível criar o ficheiro de páginas. Mensagem: %s"
 
-#: src/utils.vala:69
+#: src/utils.vala:70
 msgid "Not implemented yet"
 msgstr "Não implementado ainda"
 
-#: src/utils.vala:76
+#: src/utils.vala:77
 msgid "Need authorization"
 msgstr "Requer autorização"
 
-#: src/utils.vala:80
+#: src/utils.vala:81
 msgid "Need Bookmate subscription"
 msgstr "Requer assinatura Bookmate"
 
-#: src/utils.vala:176 src/utils.vala:192
+#: src/utils.vala:177 src/utils.vala:193
 msgid "Link copied to clipboard"
 msgstr "Link copiado para a área de transferência"
 
-#: src/utils.vala:241
+#: src/utils.vala:242
 #, c-format
 msgid "Duration: %s h. %s min."
 msgstr "Duração: %s h. %s min."
 
-#: src/utils.vala:243
+#: src/utils.vala:244
 #, c-format
 msgid "Duration: %s min."
 msgstr "Duração: %s min."
 
-#: src/utils.vala:357
+#: src/utils.vala:358
 msgid "today"
 msgstr "hoje"
 
-#: src/utils.vala:359
+#: src/utils.vala:360
 msgid "yesterday"
 msgstr "ontem"
 
-#: src/widgets/buttons/just/dislike-button.vala:37
+#: src/widgets/begin/begin-view.vala:179
+msgid "Apply token"
+msgstr ""
+
+#: src/widgets/buttons/just/dislike-button.vala:38
 msgid "Remove dislike"
 msgstr "Remove o não gosto"
 
-#: src/widgets/buttons/just/dislike-button.vala:40
+#: src/widgets/buttons/just/dislike-button.vala:41
 msgid "Set dislike"
 msgstr "Define como não gosto"
 
-#: src/widgets/buttons/just/like-button.vala:41
+#: src/widgets/buttons/just/like-button.vala:42
 msgid "Remove like"
 msgstr "Remove o gosto"
 
-#: src/widgets/buttons/just/like-button.vala:48
+#: src/widgets/buttons/just/like-button.vala:49
 msgid "Set like"
 msgstr "Define como gosto"
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:37
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:40
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:38
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:41
 msgid "Pause"
 msgstr "Pausa"
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:44
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:47
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:45
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:48
 msgid "Play"
 msgstr "Reproduzir"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:48
+#: src/widgets/buttons/menu/playlist-options-button.vala:49
 #, c-format
 msgid "Playlist '%s'"
 msgstr "Lista de reprodução “%s”"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:53
-#: src/widgets/buttons/menu/playlist-options-button.vala:66
+#: src/widgets/buttons/menu/playlist-options-button.vala:54
+#: src/widgets/buttons/menu/playlist-options-button.vala:67
 msgid "My Vibe by playlist"
 msgstr "My Vibe por lista de reprodução"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:54
-#: src/widgets/buttons/menu/playlist-options-button.vala:76
-#: src/widgets/buttons/menu/track-options-button.vala:80
-#: src/widgets/buttons/menu/track-options-button.vala:105
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
-#: src/widgets/buttons/menu/track-queue-options-button.vala:69
-#: src/widgets/buttons/menu/track-queue-options-button.vala:99
-msgid "Add to queue"
-msgstr "Adicionar à fila"
-
 #: src/widgets/buttons/menu/playlist-options-button.vala:55
 #: src/widgets/buttons/menu/playlist-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:83
-#: src/widgets/buttons/menu/track-options-button.vala:108
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
-#: src/widgets/buttons/menu/track-queue-options-button.vala:73
-#: src/widgets/buttons/menu/track-queue-options-button.vala:103
-msgid "Share"
-msgstr "Partilhar"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:26
-msgid "Primary menu"
-msgstr "Menu principal"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:32
-msgid "Parse URL from clipboard"
-msgstr "Analisar URL da área de transferência"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:33
-msgid "Preferences"
-msgstr "Preferências"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:34
-msgid "Keyboard Shortcuts"
-msgstr "Teclas de atalho"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:35
-msgid "About Cassette"
-msgstr "Sobre o Cassette"
-
-#: src/widgets/buttons/menu/track-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:94
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:32
-#: src/widgets/buttons/menu/track-queue-options-button.vala:66
-#: src/widgets/buttons/menu/track-queue-options-button.vala:87
-msgid "My Vibe by track"
-msgstr "My Vibe por faixa"
-
-#: src/widgets/buttons/menu/track-options-button.vala:78
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
-#: src/widgets/buttons/menu/track-queue-options-button.vala:67
-msgid "Show info"
-msgstr "Mostrar informações"
-
-#: src/widgets/buttons/menu/track-options-button.vala:79
-#: src/widgets/buttons/menu/track-options-button.vala:104
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:45
-#: src/widgets/buttons/menu/track-queue-options-button.vala:68
-#: src/widgets/buttons/menu/track-queue-options-button.vala:98
-msgid "Play next"
-msgstr "Reproduzir próxima"
-
 #: src/widgets/buttons/menu/track-options-button.vala:81
 #: src/widgets/buttons/menu/track-options-button.vala:106
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:36
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:47
 #: src/widgets/buttons/menu/track-queue-options-button.vala:70
 #: src/widgets/buttons/menu/track-queue-options-button.vala:100
+msgid "Add to queue"
+msgstr "Adicionar à fila"
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:56
+#: src/widgets/buttons/menu/playlist-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:84
+#: src/widgets/buttons/menu/track-options-button.vala:109
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:40
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:51
+#: src/widgets/buttons/menu/track-queue-options-button.vala:74
+#: src/widgets/buttons/menu/track-queue-options-button.vala:104
+msgid "Share"
+msgstr "Partilhar"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:27
+msgid "Primary menu"
+msgstr "Menu principal"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:33
+msgid "Parse URL from clipboard"
+msgstr "Analisar URL da área de transferência"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:34
+msgid "Preferences"
+msgstr "Preferências"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:35
+msgid "Keyboard Shortcuts"
+msgstr "Teclas de atalho"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:36
+msgid "About Cassette"
+msgstr "Sobre o Cassette"
+
+#: src/widgets/buttons/menu/track-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:95
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
+#: src/widgets/buttons/menu/track-queue-options-button.vala:67
+#: src/widgets/buttons/menu/track-queue-options-button.vala:88
+msgid "My Vibe by track"
+msgstr "My Vibe por faixa"
+
+#: src/widgets/buttons/menu/track-options-button.vala:79
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
+#: src/widgets/buttons/menu/track-queue-options-button.vala:68
+msgid "Show info"
+msgstr "Mostrar informações"
+
+#: src/widgets/buttons/menu/track-options-button.vala:80
+#: src/widgets/buttons/menu/track-options-button.vala:105
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
+#: src/widgets/buttons/menu/track-queue-options-button.vala:69
+#: src/widgets/buttons/menu/track-queue-options-button.vala:99
+msgid "Play next"
+msgstr "Reproduzir próxima"
+
+#: src/widgets/buttons/menu/track-options-button.vala:82
+#: src/widgets/buttons/menu/track-options-button.vala:107
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
+#: src/widgets/buttons/menu/track-queue-options-button.vala:71
+#: src/widgets/buttons/menu/track-queue-options-button.vala:101
 msgid "Add to playlist"
 msgstr "Adicionar à lista de reprodução"
 
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
 msgid "Remove from playlist"
 msgstr "Remover da lista de reprodução"
 
-#: src/widgets/buttons/menu/track-queue-options-button.vala:71
-#: src/widgets/buttons/menu/track-queue-options-button.vala:101
+#: src/widgets/buttons/menu/track-queue-options-button.vala:72
+#: src/widgets/buttons/menu/track-queue-options-button.vala:102
 msgid "Remove from queue"
 msgstr "Remover da fila"
 
-#: src/widgets/buttons/menu/volume-button.vala:121
+#: src/widgets/buttons/menu/volume-button.vala:122
 msgid "Volume control"
 msgstr "Controlar volume"
 
-#: src/widgets/buttons/menu/volume-button.vala:261
+#: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Unmute"
 msgstr "Ativar o som"
 
-#: src/widgets/buttons/menu/volume-button.vala:261
+#: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Mute"
 msgstr "Desativar o som"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:44
-#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:172
+#: src/widgets/cache-indicator/job-info-badge.vala:45
+#: src/widgets/save-stack.vala:53 src/widgets/views/abstract-cachiable.vala:173
 msgid "Album"
 msgstr "Álbum"
 
 #. Translators: n track from n tracks saved
-#: src/widgets/cache-indicator/job-info-badge.vala:77
+#: src/widgets/cache-indicator/job-info-badge.vala:78
 #, c-format
 msgid "%d / %d saved%s"
 msgid_plural "%d / %d saved%s"
 msgstr[0] "%d / %d guardada%s"
 msgstr[1] "%d / %d guardadas%s"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:84
+#: src/widgets/cache-indicator/job-info-badge.vala:85
 #, c-format
 msgid "%d track saving now"
 msgid_plural "%d tracks saving now"
 msgstr[0] ". %d faixa a ser guardada agora"
 msgstr[1] "%d faixas a serem guardadas agora"
 
-#: src/widgets/info-marks.vala:41
+#: src/widgets/info-marks.vala:42
 #, c-format
 msgid "Track was replaced. Original version: %s, %s"
 msgstr "A faixa foi substituída. Versão original: %s, %s"
 
-#: src/widgets/playlist-micro.vala:157 src/widgets/views/playlist.vala:241
+#: src/widgets/playlist-micro.vala:158 src/widgets/views/playlist.vala:242
 #, c-format
 msgid "Owner: %s"
 msgstr "Dono: %s"
 
-#: src/widgets/playlist-row.vala:85
+#: src/widgets/playlist-row.vala:86
 #, c-format
 msgid "Track count: %s"
 msgstr "Contagem de faixas: %s"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:88
-#: src/widgets/preferences/preferences-dialog.vala:134
+#: src/widgets/preferences/cache-deletion-preferences.vala:89
+#: src/widgets/preferences/preferences-dialog.vala:135
 msgid "Delete cache files?"
 msgstr "Eliminar ficheiros de cache?"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:89
+#: src/widgets/preferences/cache-deletion-preferences.vala:90
 msgid "Move saved files?"
 msgstr "Mover ficheiros guardados?"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:90
-#: src/widgets/preferences/preferences-dialog.vala:135
+#: src/widgets/preferences/cache-deletion-preferences.vala:91
+#: src/widgets/preferences/preferences-dialog.vala:136
 msgid ""
 "All cache will be deleted. This doesn't affect on saved playlists or albums"
 msgstr ""
 "Todo o cache será eliminado. Isto não afeta as listas de reprodução ou "
 "álbuns guardados"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:91
+#: src/widgets/preferences/cache-deletion-preferences.vala:92
 msgid ""
 "All saved playlists and albums will be moved to cache files. This could take "
 "a while."
@@ -1197,167 +1355,170 @@ msgstr ""
 "Todas as listas de reprodução e álbuns guardados serão movidos para "
 "ficheiros de cache. Isto pode demorar um pouco."
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Deleting…"
 msgstr "A eliminar…"
 
-#: src/widgets/save-stack.vala:54
+#: src/widgets/save-stack.vala:55
 msgid "Image"
 msgstr "Imagem"
 
-#: src/widgets/save-stack.vala:58
+#: src/widgets/save-stack.vala:59
 msgid "Track"
 msgstr "Faixa"
 
-#: src/widgets/save-stack.vala:75
+#: src/widgets/save-stack.vala:76
 #, c-format
 msgid "%s saving…"
 msgstr "%s a guardar…"
 
-#: src/widgets/save-stack.vala:76
+#: src/widgets/save-stack.vala:77
 #, c-format
 msgid "%s cached"
 msgstr "%s em cache"
 
-#: src/widgets/save-stack.vala:77
+#: src/widgets/save-stack.vala:78
 #, c-format
 msgid "%s saved"
 msgstr "%s guardada"
 
-#: src/widgets/sidebar/childs/player-queue.vala:66
+#: src/widgets/sidebar/childs/player-queue.vala:67
 #, c-format
 msgid "Playlist \"%s\""
 msgstr "Lista de reprodução “%s”"
 
-#: src/widgets/sidebar/childs/player-queue.vala:70
+#: src/widgets/sidebar/childs/player-queue.vala:71
 #, c-format
 msgid "Album \"%s\""
 msgstr "Álbum “%s”"
 
-#: src/widgets/sidebar/childs/player-queue.vala:74
+#: src/widgets/sidebar/childs/player-queue.vala:75
 #, c-format
 msgid "By search results \"%s\""
 msgstr "Por resultados da pesquisa “%s”"
 
-#: src/widgets/sidebar/childs/player-queue.vala:78
+#: src/widgets/sidebar/childs/player-queue.vala:79
 msgid "Track list"
 msgstr "Lista de faixas"
 
-#: src/widgets/sidebar/childs/track-info.vala:68
+#: src/widgets/sidebar/childs/track-info.vala:69
 msgid "Your music track"
 msgstr "A sua faixa musical"
 
-#: src/widgets/sidebar/childs/track-info.vala:84
+#: src/widgets/sidebar/childs/track-info.vala:85
 msgid "Music track"
 msgstr "Faixa musical"
 
-#: src/widgets/sidebar/childs/wave-settings.vala:39
+#: src/widgets/sidebar/childs/wave-settings.vala:40
 msgid "Wave settings"
 msgstr "Definições de onda"
 
-#: src/widgets/track-rows/base.vala:79 src/widgets/track-rows/default.vala:100
+#: src/widgets/track-rows/base.vala:80 src/widgets/track-rows/default.vala:101
 msgid "Track is not available"
 msgstr "Faixa não disponível"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:78
+#: src/widgets/views/abstract-cachiable.vala:79
 #, c-format
 msgid "%s '%s' saved successfully"
 msgstr "%s “%s” guardada com sucesso"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:89
+#: src/widgets/views/abstract-cachiable.vala:90
 #, c-format
 msgid "%s '%s' saving was stopped, due to network error"
 msgstr "A gravação de %s “%s” foi parada devido a um erro de rede"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:99
+#: src/widgets/views/abstract-cachiable.vala:100
 #, c-format
 msgid "%s '%s' saving was aborted"
 msgstr "A gravação de %s “%s” foi abortada"
 
 #. Translators: %s - content type (e.g. "Playlist")
-#: src/widgets/views/abstract-cachiable.vala:191
+#: src/widgets/views/abstract-cachiable.vala:192
 #, c-format
 msgid "%s saving has started"
 msgstr "A gravação de %s foi iniciada"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:229
+#: src/widgets/views/abstract-cachiable.vala:230
 #, c-format
 msgid "%s '%s' was moved from data to cache"
 msgstr "%s “%s” foi removida da pasta de cache"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:239
+#: src/widgets/views/abstract-cachiable.vala:240
 #, c-format
 msgid "%s removing has started. Please do not close the app"
 msgstr "A remoção de %s foi iniciada. Não feche a aplicação"
 
-#: src/widgets/views/cant-show.vala:37
+#: src/widgets/views/cant-show.vala:38
 #, c-format
 msgid "Error %d"
 msgstr "Erro %d"
 
-#: src/widgets/views/cant-show.vala:41
+#: src/widgets/views/cant-show.vala:42
 msgid "Can't load page"
 msgstr "Não foi possível carregar a página"
 
-#: src/widgets/views/cant-show.vala:44
+#: src/widgets/views/cant-show.vala:45
 msgid "Can't find desired content"
 msgstr "Não foi possível encontrar o conteúdo desejado"
 
-#: src/widgets/views/playlist.vala:84
+#: src/widgets/views/playlist.vala:85
 msgid "Delete playlist?"
 msgstr "Eliminar lista de reprodução?"
 
-#: src/widgets/views/playlist.vala:85
+#: src/widgets/views/playlist.vala:86
 #, c-format
 msgid "Playlist '%s' will be permanently deleted."
 msgstr "A lista de reprodução “%s” será eliminada permanentemente."
 
-#: src/widgets/views/playlist.vala:104
+#: src/widgets/views/playlist.vala:105
 #, c-format
 msgid "Playlist '%s' was deleted"
 msgstr "A lista de reprodução “%s” foi eliminada"
 
 #. Translators: %s is female person
-#: src/widgets/views/playlist.vala:247
+#: src/widgets/views/playlist.vala:248
 #, c-format
 msgctxt "female person"
 msgid "%s updated playlist %s"
 msgstr "%s atualizou a lista de reprodução %s"
 
 #. Translators: %s is male person
-#: src/widgets/views/playlist.vala:251
+#: src/widgets/views/playlist.vala:252
 #, c-format
 msgctxt "male person"
 msgid "%s updated playlist %s"
 msgstr "%s atualizou a lista de reprodução %s"
 
-#: src/widgets/views/playlist.vala:281
+#: src/widgets/views/playlist.vala:282
 #, c-format
 msgid "Can't change visibility of '%s'"
 msgstr "Não foi possível alterar a visibilidade de “%s”"
 
-#: src/widgets/views/playlist.vala:287
+#: src/widgets/views/playlist.vala:288
 #, c-format
 msgid "Playlist '%s' is public now"
 msgstr "A lista de reprodução “%s” agora está pública"
 
-#: src/widgets/views/playlist.vala:290
+#: src/widgets/views/playlist.vala:291
 #, c-format
 msgid "Playlist '%s' is private now"
 msgstr "A lista de reprodução “%s” agora está privada"
 
-#: src/window.vala:235
+#: src/window.vala:236
 #, c-format
 msgid "Window info message: %s"
 msgstr "Mensagem de informações da janela: %s"
 
-#~ msgid "Vladimir Vaskov"
-#~ msgstr "Vladimir Vaskov"
+#~ msgid "Page under construction"
+#~ msgstr "Página sob construção"
+
+#~ msgid "Main"
+#~ msgstr "Principal"
 
 #~ msgid "Rirusha"
 #~ msgstr "Rirusha"

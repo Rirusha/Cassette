@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2025-03-10 11:23+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-23 14:48+0300\n"
 "PO-Revision-Date: 2025-03-20 04:05+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
@@ -85,29 +85,183 @@ msgid ""
 "Yandex."
 msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:40
+msgid "Vladimir Romanov"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:62
 msgid "Liked view"
 msgstr "მოწონებულების ხედი"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:66
 msgid "Playlists view"
 msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
 msgid "Sync lyrics"
 msgstr "ლირიკის სინქრონიზაცია"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
 msgid "Playback queue"
 msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
 msgid "Waves view"
 msgstr ""
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
 msgid "Main preferences"
 msgstr "მთავარი პარამეტრები"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:88
+msgid "Replaced Main page with Stations page"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:89
+msgid "Added Mac OS support"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:94
+msgid "Actualized some data"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:99
+msgid "Fixed a bug on the stations page and the playlist page in GNOME 48"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:104
+msgid "A release dedicated to My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:106
+msgid "Added My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:107
+msgid "Improved appearance"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:108
+msgid "MANY bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:114
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:122
+msgid "Hotfix"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:116
+msgid "Bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:124
+msgid ""
+"Crashes that I couldn't reproduce for a long time have been fixed. The "
+"reason was an attempt to save a custom track with an empty cover"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:125
+msgid ""
+"The button for creating a playlist has changed, as well as some other shadows"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:126
+msgid ""
+"The translation has been corrected. The text on the widgets written using "
+"blueprints has not been translated. Now fixed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:132
+msgid "Cosmetic and code changes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:134
+msgid ""
+"The transition to the blueprints interface language is slowly but surely "
+"underway"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:135
+msgid ""
+"The playback panel has been completely redesigned. Now there are fewer "
+"buttons (if someone has lost the track information button, you need to poke "
+"to the right of the playback slider)"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:136
+msgid "The appearance of the playlist has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:137
+msgid "The sidebar widget has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:138
+msgid ""
+"Added the feature with parallel loading of tracks while saving playlists. "
+"And not only that, now when the application starts, all saved playlists will "
+"be checked and updated. You can also view the progress of saving on the top "
+"left"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:139
+msgid "Added the removal of a track from the queue when it is disliked"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:140
+msgid ""
+"The Belarusian language has been added. Thanks to Yahor Haurylenka for the "
+"translation"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:141
+msgid "Added a debug mod"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:142
+msgid "Increased the maximum volume level from 60 to 100"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:143
+msgid ""
+"Added the ability to move all saved objects to the cache folder, that is, "
+"move them to temporary storage"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:144
+msgid "Other bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:150
+msgid "Added new authorization via WebView"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:155
+msgid "First release of Cassette"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:157
+msgid "Allows you to listen to music"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:158
+#, fuzzy
+msgid "View your playlists"
+msgstr "დასაკრავი სიაში დამატება"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:159
+msgid "Manage the playback queue, for example shuffle or puts on repeat"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:160
+msgid ""
+"Sends whether the track has been listened to and the playback queue, if it "
+"has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:161
+msgid "Implemented mpris2"
+msgstr ""
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"
@@ -151,19 +305,23 @@ msgctxt "auth window"
 msgid "Online mode"
 msgstr ""
 
+#: data/ui/begin-view.ui:81
+msgid "Sign in with token"
+msgstr ""
+
 #. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:85
+#: data/ui/begin-view.ui:100
 msgctxt "auth window"
 msgid "Local mode"
 msgstr ""
 
 #. Translators: "Close" window button label
-#: data/ui/begin-view.ui:97
+#: data/ui/begin-view.ui:112
 msgctxt "auth window"
 msgid "Close"
 msgstr "დახურვა"
 
-#: data/ui/begin-view.ui:112
+#: data/ui/begin-view.ui:127
 msgid "Authorization"
 msgstr "ავტორიზაცია"
 
@@ -307,14 +465,6 @@ msgstr ""
 msgid "Child content"
 msgstr ""
 
-#: data/ui/main-view.blp:6
-msgid "Page under construction"
-msgstr ""
-
-#: data/ui/main-view.blp:20
-msgid "All stations"
-msgstr ""
-
 #: data/ui/no-plus-dialog.blp:20
 msgid "No Plus Subscription"
 msgstr ""
@@ -345,7 +495,7 @@ msgstr ""
 msgid "Change volume"
 msgstr ""
 
-#: data/ui/player-queue.blp:5 src/application.vala:272
+#: data/ui/player-queue.blp:5 src/application.vala:274
 msgid "Playing now"
 msgstr "თამაშობთ"
 
@@ -590,7 +740,7 @@ msgstr ""
 
 #: data/ui/preferences-dialog.ui:116
 msgctxt "preference dialog"
-msgid "Show 'Main' page"
+msgid "Show 'Stations' page"
 msgstr ""
 
 #: data/ui/preferences-dialog.ui:121
@@ -745,7 +895,7 @@ msgstr ""
 msgid "Reconnect"
 msgstr "თავიდან დაკავშირება"
 
-#: data/ui/window.blp:58 src/application.vala:152
+#: data/ui/window.blp:58 src/application.vala:154
 msgid "Connection problems"
 msgstr ""
 
@@ -775,31 +925,31 @@ msgstr "სპონსორები"
 msgid "Print version information and exit"
 msgstr "ვერსიის ჩვენება და გასვლა"
 
-#: src/application.vala:146
+#: src/application.vala:148
 msgid "Connection restored"
 msgstr ""
 
-#: src/application.vala:274
+#: src/application.vala:276
 msgid "Previous"
 msgstr "წინა"
 
-#: src/application.vala:275
+#: src/application.vala:277
 msgid "Next"
 msgstr "შემდეგი"
 
-#: src/application.vala:358
+#: src/application.vala:360
 msgid "Current track can not be copied to the clipboard"
 msgstr ""
 
-#: src/application.vala:372 src/application.vala:379 src/application.vala:436
+#: src/application.vala:374 src/application.vala:381 src/application.vala:438
 msgid "Can't parse clipboard content"
 msgstr ""
 
-#: src/application.vala:390
+#: src/application.vala:392
 msgid "Users view not implemented yet"
 msgstr ""
 
-#: src/application.vala:406 src/application.vala:420
+#: src/application.vala:408 src/application.vala:422
 msgid "Albums view not implemented yet"
 msgstr ""
 
@@ -896,7 +1046,7 @@ msgid "Problems with queue"
 msgstr ""
 
 #. Translators: name of new created playlist
-#: src/client/talkers/yam-talker.vala:628
+#: src/client/talkers/yam-talker.vala:645
 msgid "New Playlist"
 msgstr "ახალი დასაკრავი სია"
 
@@ -920,8 +1070,9 @@ msgid "Page '%s' already added"
 msgstr ""
 
 #: src/pager.vala:268
-msgid "Main"
-msgstr "მთავარი"
+#, fuzzy
+msgid "Stations"
+msgstr "ხანგრძლივობა"
 
 #: src/pager.vala:287
 msgid "Playlists"
@@ -970,6 +1121,10 @@ msgstr "დღეს"
 #: src/utils.vala:360
 msgid "yesterday"
 msgstr "გუშინ"
+
+#: src/widgets/begin/begin-view.vala:179
+msgid "Apply token"
+msgstr ""
 
 #: src/widgets/buttons/just/dislike-button.vala:38
 msgid "Remove dislike"
@@ -1315,3 +1470,6 @@ msgstr ""
 #, c-format
 msgid "Window info message: %s"
 msgstr ""
+
+#~ msgid "Main"
+#~ msgstr "მთავარი"

@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Rirusha/Cassette/-/issues\n"
-"POT-Creation-Date: 2024-09-30 18:34+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-23 14:48+0300\n"
 "PO-Revision-Date: 2024-09-30 22:20+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #. Translators: app name should be translated
 #: data/space.rirusha.Cassette.desktop.in.in:4
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:23
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:24
 msgid "Cassette"
 msgstr "Kaseta"
 
@@ -33,16 +33,16 @@ msgstr "Neuradni odjemalec Yandex Music za GNOME"
 
 #. Translators: keep number of ';'
 #: data/space.rirusha.Cassette.desktop.in.in:7
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:7
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:7
 msgid "yandex;yandex music;yam;music;"
 msgstr "yandex;glasba yandex;yandex music;yam;glasba;music;"
 
 #. Translators: app name should be translated
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:4
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:4
 msgid "Cassette (Devel)"
 msgstr "Kaseta (razvojna različica)"
 
-#: data/space.rirusha.Cassette-Devel.desktop.in.in:5
+#: data/space.rirusha.Cassette.Devel.desktop.in.in:5
 msgid "Unofficial Yandex Music client for GNOME (Devel build)"
 msgstr "Neuradni odjemalec Yandex Music za GNOME (razvojna gradnja)"
 
@@ -95,29 +95,184 @@ msgid ""
 "Yandex."
 msgstr "Kaseta je neuradni odjemalec in ni povezana z Yandexom ali ga podpira."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:40
+msgid "Vladimir Romanov"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:62
 msgid "Liked view"
 msgstr "Pogled všečnih"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:66
 msgid "Playlists view"
 msgstr "Pogled seznamov predvajanja"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
 msgid "Sync lyrics"
 msgstr "Sinhroniziraj besedilo"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
 msgid "Playback queue"
 msgstr "Čakalna vrsta za predvajanje"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
 msgid "Waves view"
 msgstr "Pogled valovanja"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
 msgid "Main preferences"
 msgstr "Glavne nastavitve"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:88
+msgid "Replaced Main page with Stations page"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:89
+msgid "Added Mac OS support"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:94
+msgid "Actualized some data"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:99
+msgid "Fixed a bug on the stations page and the playlist page in GNOME 48"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:104
+msgid "A release dedicated to My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:106
+msgid "Added My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:107
+msgid "Improved appearance"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:108
+msgid "MANY bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:114
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:122
+msgid "Hotfix"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:116
+msgid "Bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:124
+msgid ""
+"Crashes that I couldn't reproduce for a long time have been fixed. The "
+"reason was an attempt to save a custom track with an empty cover"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:125
+msgid ""
+"The button for creating a playlist has changed, as well as some other shadows"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:126
+msgid ""
+"The translation has been corrected. The text on the widgets written using "
+"blueprints has not been translated. Now fixed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:132
+msgid "Cosmetic and code changes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:134
+msgid ""
+"The transition to the blueprints interface language is slowly but surely "
+"underway"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:135
+msgid ""
+"The playback panel has been completely redesigned. Now there are fewer "
+"buttons (if someone has lost the track information button, you need to poke "
+"to the right of the playback slider)"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:136
+msgid "The appearance of the playlist has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:137
+msgid "The sidebar widget has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:138
+msgid ""
+"Added the feature with parallel loading of tracks while saving playlists. "
+"And not only that, now when the application starts, all saved playlists will "
+"be checked and updated. You can also view the progress of saving on the top "
+"left"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:139
+msgid "Added the removal of a track from the queue when it is disliked"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:140
+msgid ""
+"The Belarusian language has been added. Thanks to Yahor Haurylenka for the "
+"translation"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:141
+msgid "Added a debug mod"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:142
+msgid "Increased the maximum volume level from 60 to 100"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:143
+msgid ""
+"Added the ability to move all saved objects to the cache folder, that is, "
+"move them to temporary storage"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:144
+msgid "Other bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:150
+#, fuzzy
+msgid "Added new authorization via WebView"
+msgstr "Potrebna je overitev"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:155
+msgid "First release of Cassette"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:157
+msgid "Allows you to listen to music"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:158
+#, fuzzy
+msgid "View your playlists"
+msgstr "Vaši seznami predvajanja"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:159
+msgid "Manage the playback queue, for example shuffle or puts on repeat"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:160
+msgid ""
+"Sends whether the track has been listened to and the playback queue, if it "
+"has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:161
+msgid "Implemented mpris2"
+msgstr ""
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"
@@ -132,7 +287,7 @@ msgid "Plus"
 msgstr "Plus"
 
 #: data/ui/account-info-dialog.blp:70 data/ui/no-plus-dialog.blp:51
-#: src/authenticator.vala:51
+#: src/authenticator.vala:52
 msgid "Log out"
 msgstr "Odjavi"
 
@@ -164,19 +319,23 @@ msgctxt "auth window"
 msgid "Online mode"
 msgstr "Spletni način"
 
+#: data/ui/begin-view.ui:81
+msgid "Sign in with token"
+msgstr ""
+
 #. Translators: usage mode of application. Online mode or Local mode available
-#: data/ui/begin-view.ui:85
+#: data/ui/begin-view.ui:100
 msgctxt "auth window"
 msgid "Local mode"
 msgstr "Krajevni način"
 
 #. Translators: "Close" window button label
-#: data/ui/begin-view.ui:97
+#: data/ui/begin-view.ui:112
 msgctxt "auth window"
 msgid "Close"
 msgstr "Zapri"
 
-#: data/ui/begin-view.ui:112
+#: data/ui/begin-view.ui:127
 msgid "Authorization"
 msgstr "Overitev"
 
@@ -240,7 +399,7 @@ msgid "Here you can control custom pages."
 msgstr "Tukaj lahko nadzirate strani po meri."
 
 #: data/ui/disliked-tracks-view.ui:23
-#: src/widgets/buttons/menu/primary-menu-button.vala:31
+#: src/widgets/buttons/menu/primary-menu-button.vala:32
 msgid "Disliked tracks"
 msgstr "Posnetki, ki ne ugajajo"
 
@@ -320,14 +479,6 @@ msgstr "Eksplicitna vsebina"
 msgid "Child content"
 msgstr "Vsebina za otroke"
 
-#: data/ui/main-view.blp:6
-msgid "Page under construction"
-msgstr "Stran v gradnji"
-
-#: data/ui/main-view.blp:20
-msgid "All stations"
-msgstr "Vse postaje"
-
 #: data/ui/no-plus-dialog.blp:20
 msgid "No Plus Subscription"
 msgstr "Brez naročnine Plus"
@@ -360,7 +511,7 @@ msgstr "Pokaži čakalno vrsto za predvajanje"
 msgid "Change volume"
 msgstr "Spremeni glasnost"
 
-#: data/ui/player-queue.blp:5 src/application.vala:271
+#: data/ui/player-queue.blp:5 src/application.vala:274
 msgid "Playing now"
 msgstr "Zdaj se predvaja"
 
@@ -373,8 +524,8 @@ msgid "Create playlist"
 msgstr "Ustvari seznam predvajanja"
 
 #: data/ui/playlist-micro.ui:39 data/ui/playlist-view.ui:56
-#: src/widgets/cache-indicator/job-info-badge.vala:42
-#: src/widgets/save-stack.vala:56 src/widgets/views/abstract-cachiable.vala:167
+#: src/widgets/cache-indicator/job-info-badge.vala:43
+#: src/widgets/save-stack.vala:57 src/widgets/views/abstract-cachiable.vala:168
 msgid "Playlist"
 msgstr "Seznam predvajanja"
 
@@ -400,20 +551,20 @@ msgstr "Dodaj stran v glavo"
 
 #. Translators: tooltip of "save" button
 #: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
-#: src/widgets/buttons/menu/track-options-button.vala:82
-#: src/widgets/buttons/menu/track-options-button.vala:107
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
-#: src/widgets/buttons/menu/track-queue-options-button.vala:72
-#: src/widgets/buttons/menu/track-queue-options-button.vala:102
+#: src/widgets/buttons/menu/track-options-button.vala:83
+#: src/widgets/buttons/menu/track-options-button.vala:108
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
+#: src/widgets/buttons/menu/track-queue-options-button.vala:73
+#: src/widgets/buttons/menu/track-queue-options-button.vala:103
 msgid "Save"
 msgstr "Shrani"
 
 #. Translators: tooltip of "delete" button
 #: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
-#: src/widgets/preferences/cache-deletion-preferences.vala:96
-#: src/widgets/preferences/preferences-dialog.vala:140
-#: src/widgets/views/playlist.vala:90
+#: src/widgets/preferences/cache-deletion-preferences.vala:97
+#: src/widgets/preferences/preferences-dialog.vala:141
+#: src/widgets/views/playlist.vala:91
 msgid "Delete"
 msgstr "Izbriši"
 
@@ -613,8 +764,9 @@ msgstr ""
 "levi strani glave."
 
 #: data/ui/preferences-dialog.ui:116
+#, fuzzy
 msgctxt "preference dialog"
-msgid "Show 'Main' page"
+msgid "Show 'Stations' page"
 msgstr "Pokaži »Glavno« stran"
 
 #: data/ui/preferences-dialog.ui:121
@@ -757,7 +909,7 @@ msgstr "album"
 msgid "duration"
 msgstr "trajanje"
 
-#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:37
+#: data/ui/track-placeholder.ui:9 src/widgets/pages/loading-page.vala:38
 msgid "Loading…"
 msgstr "Poteka nalaganje …"
 
@@ -773,116 +925,116 @@ msgstr "Po jeziku ..."
 msgid "Can't get wave settings"
 msgstr "Nastavitev signalne oblike ni mogoče pridobiti"
 
-#: data/ui/window.blp:57 src/window.vala:252
+#: data/ui/window.blp:57 src/window.vala:253
 msgid "Reconnect"
 msgstr "Ponovno se poveži"
 
-#: data/ui/window.blp:58 src/application.vala:151
+#: data/ui/window.blp:58 src/application.vala:154
 msgid "Connection problems"
 msgstr "Težave s povezavo"
 
 #. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
-#: src/about.vala:59
+#: src/about.vala:60
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: src/about.vala:67
+#: src/about.vala:68
 msgid "Telegram channel"
 msgstr "Kanal Telegram"
 
-#: src/about.vala:68
+#: src/about.vala:69
 msgid "Financial support (Tinkoff)"
 msgstr "Finančna podpora (Tinkoff)"
 
-#: src/about.vala:69
+#: src/about.vala:70
 msgid "Financial support (Boosty)"
 msgstr "Finančna podpora (Boosty)"
 
 #. Please keep alphabetical
-#: src/about.vala:72
+#: src/about.vala:73
 msgid "Sponsors"
 msgstr "Sponzorji"
 
-#: src/application.vala:62
+#: src/application.vala:63
 msgid "Print version information and exit"
 msgstr "Izpiši podatke o različici in končaj"
 
-#: src/application.vala:145
+#: src/application.vala:148
 msgid "Connection restored"
 msgstr "Povezava je bila obnovljena"
 
-#: src/application.vala:273
+#: src/application.vala:276
 msgid "Previous"
 msgstr "Prejšnje"
 
-#: src/application.vala:274
+#: src/application.vala:277
 msgid "Next"
 msgstr "Naslednje"
 
-#: src/application.vala:357
+#: src/application.vala:360
 msgid "Current track can not be copied to the clipboard"
 msgstr "Trenutnega posnetka ni mogoče kopirati v odložišče"
 
-#: src/application.vala:371 src/application.vala:378 src/application.vala:435
+#: src/application.vala:374 src/application.vala:381 src/application.vala:438
 msgid "Can't parse clipboard content"
 msgstr "Vsebine odložišča ni mogoče razčleniti"
 
-#: src/application.vala:389
+#: src/application.vala:392
 msgid "Users view not implemented yet"
 msgstr "Pogled uporabnikov še ni implementiran"
 
-#: src/application.vala:405 src/application.vala:419
+#: src/application.vala:408 src/application.vala:422
 msgid "Albums view not implemented yet"
 msgstr "Pogled albumov še ni implementiran"
 
-#: src/authenticator.vala:46
+#: src/authenticator.vala:47
 msgid "Log out?"
 msgstr "Se želite odjaviti?"
 
-#: src/authenticator.vala:47
+#: src/authenticator.vala:48
 msgid "You will need to log in again to use the app"
 msgstr "Če želite uporabljati program, se boste morali znova prijaviti"
 
 #. Translators: cancel of deleting playlist
-#: src/authenticator.vala:50
-#: src/widgets/preferences/cache-deletion-preferences.vala:95
-#: src/widgets/preferences/preferences-dialog.vala:139
-#: src/widgets/views/playlist.vala:89
+#: src/authenticator.vala:51
+#: src/widgets/preferences/cache-deletion-preferences.vala:96
+#: src/widgets/preferences/preferences-dialog.vala:140
+#: src/widgets/views/playlist.vala:90
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/authenticator.vala:97
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
+#: src/authenticator.vala:98
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Moving…"
 msgstr "Premikanje …"
 
 #. Translators: Playlist with liked tracks
-#: src/client/api/objects/playlist/playlist.vala:49
-#: src/client/api/objects/playlist/playlist.vala:99 src/pager.vala:276
+#: src/client/api/objects/playlist/playlist.vala:50
+#: src/client/api/objects/playlist/playlist.vala:100 src/pager.vala:277
 msgid "Liked"
 msgstr "Všeč"
 
 #. Translators: Playlist that updates every day
-#: src/client/api/objects/playlist/playlist.vala:53
+#: src/client/api/objects/playlist/playlist.vala:54
 msgid "Daily"
 msgstr "Dnevno"
 
 #. Translators: Unknown playlist
-#: src/client/api/objects/playlist/playlist.vala:57
+#: src/client/api/objects/playlist/playlist.vala:58
 msgid "Unknown"
 msgstr "Neznano"
 
-#: src/client/cachier/storager.vala:124
+#: src/client/cachier/storager.vala:125
 #, c-format
 msgid "Database was initialized, loc - %s"
 msgstr "Zbirka podatkov je bila inicializirana, loc - %s"
 
-#: src/client/cachier/storager.vala:801
+#: src/client/cachier/storager.vala:802
 #, c-format
 msgid "Can't save object %s"
 msgstr "Predmeta %s ni mogoče shraniti"
 
-#: src/client/cachier/storager.vala:818
+#: src/client/cachier/storager.vala:819
 msgid "Byte"
 msgid_plural "Bytes"
 msgstr[0] "bajtov"
@@ -890,7 +1042,7 @@ msgstr[1] "bajt"
 msgstr[2] "bajta"
 msgstr[3] "bajte"
 
-#: src/client/cachier/storager.vala:821
+#: src/client/cachier/storager.vala:822
 msgid "Kilobyte"
 msgid_plural "Kilobytes"
 msgstr[0] "kilobajte"
@@ -898,7 +1050,7 @@ msgstr[1] "kilobajt"
 msgstr[2] "kilobajta"
 msgstr[3] "kilobajte"
 
-#: src/client/cachier/storager.vala:824
+#: src/client/cachier/storager.vala:825
 msgid "Megabyte"
 msgid_plural "Megabytes"
 msgstr[0] "megabajtov"
@@ -906,7 +1058,7 @@ msgstr[1] "megabajt"
 msgstr[2] "megabajta"
 msgstr[3] "megabajte"
 
-#: src/client/cachier/storager.vala:827
+#: src/client/cachier/storager.vala:828
 msgid "Gigabyte"
 msgid_plural "Gigabytes"
 msgstr[0] "gigabajtov"
@@ -914,7 +1066,7 @@ msgstr[1] "gigabajt"
 msgstr[2] "gigabajta"
 msgstr[3] "gigabajte"
 
-#: src/client/cachier/storager.vala:830
+#: src/client/cachier/storager.vala:831
 msgid "Terabyte"
 msgid_plural "Terabytes"
 msgstr[0] "terabajtov"
@@ -922,12 +1074,12 @@ msgstr[1] "terabajt"
 msgstr[2] "terabajta"
 msgstr[3] "terabajte"
 
-#: src/client/cachier/storager.vala:859
+#: src/client/cachier/storager.vala:860
 #, c-format
 msgid "Error while getting cache directory size. Message %s"
 msgstr "Napaka pri pridobivanju velikosti mape predpomnilnika. Sporočilo %s"
 
-#: src/client/cachier/storager.vala:894
+#: src/client/cachier/storager.vala:895
 #, c-format
 msgid "Error while getting permanent directory size. Message %s"
 msgstr "Napaka pri pridobivanju velikosti trajne mape. Sporočilo %s"
@@ -938,225 +1090,230 @@ msgstr "Napaka pri pridobivanju velikosti trajne mape. Sporočilo %s"
 msgid "Wrong type: expected %s, got %s"
 msgstr "Napačna vrsta: pričakovano %s, prejeto %s"
 
-#: src/client/player/mods/abstract-mode.vala:91
+#: src/client/player/mods/abstract-mode.vala:92
 msgid "Problems with queue"
 msgstr "Težave s čakalno vrsto"
 
 #. Translators: name of new created playlist
-#: src/client/talkers/yam-talker.vala:627
+#: src/client/talkers/yam-talker.vala:645
 msgid "New Playlist"
 msgstr "Nov seznam predvajanja"
 
-#: src/pager.vala:162
+#: src/pager.vala:163
 #, c-format
 msgid "Can't set title \"%s\" to page"
 msgstr "Strani ni mogoče nastaviti naslova »%s«"
 
-#: src/pager.vala:173
+#: src/pager.vala:174
 #, c-format
 msgid "Can't set icon with name \"%s\" to page"
 msgstr "Strani ni mogoče nastaviti ikone z imenom »%s«"
 
-#: src/pager.vala:199
+#: src/pager.vala:200
 msgid "Reached max page count"
 msgstr "Doseženo največje število strani"
 
-#: src/pager.vala:205
+#: src/pager.vala:206
 #, c-format
 msgid "Page '%s' already added"
 msgstr "Stran »%s« je že dodana"
 
-#: src/pager.vala:267
-msgid "Main"
-msgstr "Glavno"
+#: src/pager.vala:268
+#, fuzzy
+msgid "Stations"
+msgstr "Vse postaje"
 
-#: src/pager.vala:286
+#: src/pager.vala:287
 msgid "Playlists"
 msgstr "Seznami predvajanja"
 
-#: src/pager.vala:311
+#: src/pager.vala:312
 #, c-format
 msgid "Can't read pages file. Message: %s"
 msgstr "Datoteke strani ni mogoče prebrati. Sporočilo: %s"
 
-#: src/pager.vala:331
+#: src/pager.vala:332
 #, c-format
 msgid "Can't create pages file. Message: %s"
 msgstr "Ni mogoče ustvariti datoteke strani. Sporočilo: %s"
 
-#: src/utils.vala:69
+#: src/utils.vala:70
 msgid "Not implemented yet"
 msgstr "Še ni izvedeno"
 
-#: src/utils.vala:76
+#: src/utils.vala:77
 msgid "Need authorization"
 msgstr "Potrebna je overitev"
 
-#: src/utils.vala:80
+#: src/utils.vala:81
 msgid "Need Bookmate subscription"
 msgstr "Potrebujete naročnino na Bookmate"
 
-#: src/utils.vala:176 src/utils.vala:192
+#: src/utils.vala:177 src/utils.vala:193
 msgid "Link copied to clipboard"
 msgstr "Povezava je kopirana v odložišče"
 
-#: src/utils.vala:241
+#: src/utils.vala:242
 #, c-format
 msgid "Duration: %s h. %s min."
 msgstr "Trajanje: %s u. %s min."
 
-#: src/utils.vala:243
+#: src/utils.vala:244
 #, c-format
 msgid "Duration: %s min."
 msgstr "Trajanje: %s min."
 
-#: src/utils.vala:357
+#: src/utils.vala:358
 msgid "today"
 msgstr "danes"
 
-#: src/utils.vala:359
+#: src/utils.vala:360
 msgid "yesterday"
 msgstr "včeraj"
 
-#: src/widgets/buttons/just/dislike-button.vala:37
+#: src/widgets/begin/begin-view.vala:179
+msgid "Apply token"
+msgstr ""
+
+#: src/widgets/buttons/just/dislike-button.vala:38
 msgid "Remove dislike"
 msgstr "Odstrani neugajanje"
 
-#: src/widgets/buttons/just/dislike-button.vala:40
+#: src/widgets/buttons/just/dislike-button.vala:41
 msgid "Set dislike"
 msgstr "Nastavi neugajanje"
 
-#: src/widgets/buttons/just/like-button.vala:41
+#: src/widgets/buttons/just/like-button.vala:42
 msgid "Remove like"
 msgstr "Odstrani všeček"
 
-#: src/widgets/buttons/just/like-button.vala:48
+#: src/widgets/buttons/just/like-button.vala:49
 msgid "Set like"
 msgstr "Nastavi všeček"
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:37
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:40
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:38
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:41
 msgid "Pause"
 msgstr "Premor"
 
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:44
-#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:47
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:45
+#: src/widgets/buttons/just/play-buttons/abstract-play-button.vala:48
 msgid "Play"
 msgstr "Predvajaj"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:48
+#: src/widgets/buttons/menu/playlist-options-button.vala:49
 #, c-format
 msgid "Playlist '%s'"
 msgstr "Seznam predvajanja »%s«"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:53
-#: src/widgets/buttons/menu/playlist-options-button.vala:66
+#: src/widgets/buttons/menu/playlist-options-button.vala:54
+#: src/widgets/buttons/menu/playlist-options-button.vala:67
 msgid "My Vibe by playlist"
 msgstr "My Vibe po seznamu predvajanja"
 
-#: src/widgets/buttons/menu/playlist-options-button.vala:54
-#: src/widgets/buttons/menu/playlist-options-button.vala:76
-#: src/widgets/buttons/menu/track-options-button.vala:80
-#: src/widgets/buttons/menu/track-options-button.vala:105
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
-#: src/widgets/buttons/menu/track-queue-options-button.vala:69
-#: src/widgets/buttons/menu/track-queue-options-button.vala:99
-msgid "Add to queue"
-msgstr "Dodaj v vrsto predvajanja"
-
 #: src/widgets/buttons/menu/playlist-options-button.vala:55
 #: src/widgets/buttons/menu/playlist-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:83
-#: src/widgets/buttons/menu/track-options-button.vala:108
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:39
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:50
-#: src/widgets/buttons/menu/track-queue-options-button.vala:73
-#: src/widgets/buttons/menu/track-queue-options-button.vala:103
-msgid "Share"
-msgstr "Deli"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:26
-msgid "Primary menu"
-msgstr "Osnovni meni"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:32
-msgid "Parse URL from clipboard"
-msgstr "Razčleni URL iz odložišča"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:33
-msgid "Preferences"
-msgstr "Nastavitve"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:34
-msgid "Keyboard Shortcuts"
-msgstr "Tipkovne bližnjice‫"
-
-#: src/widgets/buttons/menu/primary-menu-button.vala:35
-msgid "About Cassette"
-msgstr "O programu Kaseta"
-
-#: src/widgets/buttons/menu/track-options-button.vala:77
-#: src/widgets/buttons/menu/track-options-button.vala:94
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:32
-#: src/widgets/buttons/menu/track-queue-options-button.vala:66
-#: src/widgets/buttons/menu/track-queue-options-button.vala:87
-msgid "My Vibe by track"
-msgstr "My Vibe po posnetku"
-
-#: src/widgets/buttons/menu/track-options-button.vala:78
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
-#: src/widgets/buttons/menu/track-queue-options-button.vala:67
-msgid "Show info"
-msgstr "Pokaži podatke"
-
-#: src/widgets/buttons/menu/track-options-button.vala:79
-#: src/widgets/buttons/menu/track-options-button.vala:104
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:45
-#: src/widgets/buttons/menu/track-queue-options-button.vala:68
-#: src/widgets/buttons/menu/track-queue-options-button.vala:98
-msgid "Play next"
-msgstr "Predvajaj naslednje"
-
 #: src/widgets/buttons/menu/track-options-button.vala:81
 #: src/widgets/buttons/menu/track-options-button.vala:106
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:36
 #: src/widgets/buttons/menu/track-playlist-options-button.vala:47
 #: src/widgets/buttons/menu/track-queue-options-button.vala:70
 #: src/widgets/buttons/menu/track-queue-options-button.vala:100
+msgid "Add to queue"
+msgstr "Dodaj v vrsto predvajanja"
+
+#: src/widgets/buttons/menu/playlist-options-button.vala:56
+#: src/widgets/buttons/menu/playlist-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:84
+#: src/widgets/buttons/menu/track-options-button.vala:109
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:40
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:51
+#: src/widgets/buttons/menu/track-queue-options-button.vala:74
+#: src/widgets/buttons/menu/track-queue-options-button.vala:104
+msgid "Share"
+msgstr "Deli"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:27
+msgid "Primary menu"
+msgstr "Osnovni meni"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:33
+msgid "Parse URL from clipboard"
+msgstr "Razčleni URL iz odložišča"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:34
+msgid "Preferences"
+msgstr "Nastavitve"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:35
+msgid "Keyboard Shortcuts"
+msgstr "Tipkovne bližnjice‫"
+
+#: src/widgets/buttons/menu/primary-menu-button.vala:36
+msgid "About Cassette"
+msgstr "O programu Kaseta"
+
+#: src/widgets/buttons/menu/track-options-button.vala:78
+#: src/widgets/buttons/menu/track-options-button.vala:95
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:33
+#: src/widgets/buttons/menu/track-queue-options-button.vala:67
+#: src/widgets/buttons/menu/track-queue-options-button.vala:88
+msgid "My Vibe by track"
+msgstr "My Vibe po posnetku"
+
+#: src/widgets/buttons/menu/track-options-button.vala:79
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:34
+#: src/widgets/buttons/menu/track-queue-options-button.vala:68
+msgid "Show info"
+msgstr "Pokaži podatke"
+
+#: src/widgets/buttons/menu/track-options-button.vala:80
+#: src/widgets/buttons/menu/track-options-button.vala:105
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:35
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:46
+#: src/widgets/buttons/menu/track-queue-options-button.vala:69
+#: src/widgets/buttons/menu/track-queue-options-button.vala:99
+msgid "Play next"
+msgstr "Predvajaj naslednje"
+
+#: src/widgets/buttons/menu/track-options-button.vala:82
+#: src/widgets/buttons/menu/track-options-button.vala:107
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
+#: src/widgets/buttons/menu/track-queue-options-button.vala:71
+#: src/widgets/buttons/menu/track-queue-options-button.vala:101
 msgid "Add to playlist"
 msgstr "Dodaj na seznam predvajanja"
 
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:37
-#: src/widgets/buttons/menu/track-playlist-options-button.vala:48
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:38
+#: src/widgets/buttons/menu/track-playlist-options-button.vala:49
 msgid "Remove from playlist"
 msgstr "Odstrani s seznama predvajanja"
 
-#: src/widgets/buttons/menu/track-queue-options-button.vala:71
-#: src/widgets/buttons/menu/track-queue-options-button.vala:101
+#: src/widgets/buttons/menu/track-queue-options-button.vala:72
+#: src/widgets/buttons/menu/track-queue-options-button.vala:102
 msgid "Remove from queue"
 msgstr "Odstrani iz čakalne vrste"
 
-#: src/widgets/buttons/menu/volume-button.vala:121
+#: src/widgets/buttons/menu/volume-button.vala:122
 msgid "Volume control"
 msgstr "Nadzor glasnosti"
 
-#: src/widgets/buttons/menu/volume-button.vala:261
+#: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Unmute"
 msgstr "Vklopi zvok"
 
-#: src/widgets/buttons/menu/volume-button.vala:261
+#: src/widgets/buttons/menu/volume-button.vala:262
 msgid "Mute"
 msgstr "Nemo"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:44
-#: src/widgets/save-stack.vala:52 src/widgets/views/abstract-cachiable.vala:172
+#: src/widgets/cache-indicator/job-info-badge.vala:45
+#: src/widgets/save-stack.vala:53 src/widgets/views/abstract-cachiable.vala:173
 msgid "Album"
 msgstr "Album"
 
 #. Translators: n track from n tracks saved
-#: src/widgets/cache-indicator/job-info-badge.vala:77
+#: src/widgets/cache-indicator/job-info-badge.vala:78
 #, c-format
 msgid "%d / %d saved%s"
 msgid_plural "%d / %d saved%s"
@@ -1165,7 +1322,7 @@ msgstr[1] "%d / %d shranjen%s"
 msgstr[2] "%d / %d shranjena%s"
 msgstr[3] "%d / %d shranjeni%s"
 
-#: src/widgets/cache-indicator/job-info-badge.vala:84
+#: src/widgets/cache-indicator/job-info-badge.vala:85
 #, c-format
 msgid "%d track saving now"
 msgid_plural "%d tracks saving now"
@@ -1174,39 +1331,39 @@ msgstr[1] "Shranjevanje %d posnetka je v teku"
 msgstr[2] "Shranjevanje %d posnetkov je v teku"
 msgstr[3] "Shranjevanje %d posnetkov je v teku"
 
-#: src/widgets/info-marks.vala:41
+#: src/widgets/info-marks.vala:42
 #, c-format
 msgid "Track was replaced. Original version: %s, %s"
 msgstr "Posnetek je bil zamenjan. Izvirna različica: %s, %s"
 
-#: src/widgets/playlist-micro.vala:157 src/widgets/views/playlist.vala:241
+#: src/widgets/playlist-micro.vala:158 src/widgets/views/playlist.vala:242
 #, c-format
 msgid "Owner: %s"
 msgstr "Lastnik: %s"
 
-#: src/widgets/playlist-row.vala:85
+#: src/widgets/playlist-row.vala:86
 #, c-format
 msgid "Track count: %s"
 msgstr "Število posnetkov: %s"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:88
-#: src/widgets/preferences/preferences-dialog.vala:134
+#: src/widgets/preferences/cache-deletion-preferences.vala:89
+#: src/widgets/preferences/preferences-dialog.vala:135
 msgid "Delete cache files?"
 msgstr "Želite izbrisati predpomnilniške datoteke?"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:89
+#: src/widgets/preferences/cache-deletion-preferences.vala:90
 msgid "Move saved files?"
 msgstr "Ali želite premakniti shranjene datoteke?"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:90
-#: src/widgets/preferences/preferences-dialog.vala:135
+#: src/widgets/preferences/cache-deletion-preferences.vala:91
+#: src/widgets/preferences/preferences-dialog.vala:136
 msgid ""
 "All cache will be deleted. This doesn't affect on saved playlists or albums"
 msgstr ""
 "Ves predpomnilnik bo izbrisan. To ne vpliva na shranjene sezname predvajanja "
 "ali albume"
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:91
+#: src/widgets/preferences/cache-deletion-preferences.vala:92
 msgid ""
 "All saved playlists and albums will be moved to cache files. This could take "
 "a while."
@@ -1214,161 +1371,167 @@ msgstr ""
 "Vsi shranjeni seznami predvajanja in albumi bodo premaknjeni v "
 "predpomnilniške datoteke. To lahko traja nekaj časa."
 
-#: src/widgets/preferences/cache-deletion-preferences.vala:129
+#: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Deleting…"
 msgstr "Poteka brisanje …"
 
-#: src/widgets/save-stack.vala:54
+#: src/widgets/save-stack.vala:55
 msgid "Image"
 msgstr "Slika"
 
-#: src/widgets/save-stack.vala:58
+#: src/widgets/save-stack.vala:59
 msgid "Track"
 msgstr "Steza"
 
-#: src/widgets/save-stack.vala:75
+#: src/widgets/save-stack.vala:76
 #, c-format
 msgid "%s saving…"
 msgstr "Shranjevanje %s ..."
 
-#: src/widgets/save-stack.vala:76
+#: src/widgets/save-stack.vala:77
 #, c-format
 msgid "%s cached"
 msgstr "%s predpomnjeno"
 
-#: src/widgets/save-stack.vala:77
+#: src/widgets/save-stack.vala:78
 #, c-format
 msgid "%s saved"
 msgstr "%s shranjeno"
 
-#: src/widgets/sidebar/childs/player-queue.vala:66
+#: src/widgets/sidebar/childs/player-queue.vala:67
 #, c-format
 msgid "Playlist \"%s\""
 msgstr "Seznam predvajanja »%s«"
 
-#: src/widgets/sidebar/childs/player-queue.vala:70
+#: src/widgets/sidebar/childs/player-queue.vala:71
 #, c-format
 msgid "Album \"%s\""
 msgstr "Album »%s«"
 
-#: src/widgets/sidebar/childs/player-queue.vala:74
+#: src/widgets/sidebar/childs/player-queue.vala:75
 #, c-format
 msgid "By search results \"%s\""
 msgstr "Po rezultatih iskanja »%s«"
 
-#: src/widgets/sidebar/childs/player-queue.vala:78
+#: src/widgets/sidebar/childs/player-queue.vala:79
 msgid "Track list"
 msgstr "Seznam posnetkov"
 
-#: src/widgets/sidebar/childs/track-info.vala:68
+#: src/widgets/sidebar/childs/track-info.vala:69
 msgid "Your music track"
 msgstr "Vaš glasbeni posnetek"
 
-#: src/widgets/sidebar/childs/track-info.vala:84
+#: src/widgets/sidebar/childs/track-info.vala:85
 msgid "Music track"
 msgstr "Glasbeni posnetek"
 
-#: src/widgets/sidebar/childs/wave-settings.vala:39
+#: src/widgets/sidebar/childs/wave-settings.vala:40
 msgid "Wave settings"
 msgstr "Nastavitve signalne oblike"
 
-#: src/widgets/track-rows/base.vala:79 src/widgets/track-rows/default.vala:100
+#: src/widgets/track-rows/base.vala:80 src/widgets/track-rows/default.vala:101
 msgid "Track is not available"
 msgstr "Posnetek ni na voljo"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:78
+#: src/widgets/views/abstract-cachiable.vala:79
 #, c-format
 msgid "%s '%s' saved successfully"
 msgstr "%s »%s« uspešno shranjen(a)"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:89
+#: src/widgets/views/abstract-cachiable.vala:90
 #, c-format
 msgid "%s '%s' saving was stopped, due to network error"
 msgstr "Shranjevanje (%s) »%s« je bilo preklicano zaradi napake v omrežju"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:99
+#: src/widgets/views/abstract-cachiable.vala:100
 #, c-format
 msgid "%s '%s' saving was aborted"
 msgstr "Shranjevanje (%s) »%s« je bilo prekinjeno"
 
 #. Translators: %s - content type (e.g. "Playlist")
-#: src/widgets/views/abstract-cachiable.vala:191
+#: src/widgets/views/abstract-cachiable.vala:192
 #, c-format
 msgid "%s saving has started"
 msgstr "Začelo se je shranjevanje %s"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:229
+#: src/widgets/views/abstract-cachiable.vala:230
 #, c-format
 msgid "%s '%s' was moved from data to cache"
 msgstr "%s »%s« je bil(a) premaknjen(a) iz podatkov v predpomnilnik"
 
 #. Translators: first %s - content type (Playlist), second - name
-#: src/widgets/views/abstract-cachiable.vala:239
+#: src/widgets/views/abstract-cachiable.vala:240
 #, c-format
 msgid "%s removing has started. Please do not close the app"
 msgstr "%s se odstranjuje. Ne zaprite programa"
 
-#: src/widgets/views/cant-show.vala:37
+#: src/widgets/views/cant-show.vala:38
 #, c-format
 msgid "Error %d"
 msgstr "Napaka %d"
 
-#: src/widgets/views/cant-show.vala:41
+#: src/widgets/views/cant-show.vala:42
 msgid "Can't load page"
 msgstr "Strani ni mogoče naložiti"
 
-#: src/widgets/views/cant-show.vala:44
+#: src/widgets/views/cant-show.vala:45
 msgid "Can't find desired content"
 msgstr "Želene vsebine ni mogoče najti"
 
-#: src/widgets/views/playlist.vala:84
+#: src/widgets/views/playlist.vala:85
 msgid "Delete playlist?"
 msgstr "Želite izbrisati seznam predvajanja?"
 
-#: src/widgets/views/playlist.vala:85
+#: src/widgets/views/playlist.vala:86
 #, c-format
 msgid "Playlist '%s' will be permanently deleted."
 msgstr "Seznam predvajanja »%s« bo trajno izbrisan."
 
-#: src/widgets/views/playlist.vala:104
+#: src/widgets/views/playlist.vala:105
 #, c-format
 msgid "Playlist '%s' was deleted"
 msgstr "Seznam predvajanja »%s« je bil izbrisan"
 
 #. Translators: %s is female person
-#: src/widgets/views/playlist.vala:247
+#: src/widgets/views/playlist.vala:248
 #, c-format
 msgctxt "female person"
 msgid "%s updated playlist %s"
 msgstr "%s je posodobila seznam predvajanja %s"
 
 #. Translators: %s is male person
-#: src/widgets/views/playlist.vala:251
+#: src/widgets/views/playlist.vala:252
 #, c-format
 msgctxt "male person"
 msgid "%s updated playlist %s"
 msgstr "%s je posodobil seznam predvajanja %s"
 
-#: src/widgets/views/playlist.vala:281
+#: src/widgets/views/playlist.vala:282
 #, c-format
 msgid "Can't change visibility of '%s'"
 msgstr "Vidnosti »%s« ni mogoče spremeniti"
 
-#: src/widgets/views/playlist.vala:287
+#: src/widgets/views/playlist.vala:288
 #, c-format
 msgid "Playlist '%s' is public now"
 msgstr "Seznam predvajanja »%s« je zdaj javen"
 
-#: src/widgets/views/playlist.vala:290
+#: src/widgets/views/playlist.vala:291
 #, c-format
 msgid "Playlist '%s' is private now"
 msgstr "Seznam predvajanja »%s« je zdaj zaseben"
 
-#: src/window.vala:235
+#: src/window.vala:236
 #, c-format
 msgid "Window info message: %s"
 msgstr "Sporočilo informacijskega okna: %s"
+
+#~ msgid "Page under construction"
+#~ msgstr "Stran v gradnji"
+
+#~ msgid "Main"
+#~ msgstr "Glavno"

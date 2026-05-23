@@ -38,7 +38,6 @@
   <launchable type="desktop-id">@APP_ID_DYN@.desktop</launchable>
   <developer id="space.rirusha">
     <name>Vladimir Romanov</name>
-    <name xml:lang="ru">Владимир Романов</name>
   </developer>
   <recommends>
     <control>keyboard</control>

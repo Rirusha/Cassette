@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cassette main\n"
-"Report-Msgid-Bugs-To: https://altlinux.space/rirusha/Cassette/issues\n"
-"POT-Creation-Date: 2025-05-10 11:20+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-23 14:48+0300\n"
 "PO-Revision-Date: 2025-06-07 18:20+0400\n"
 "Last-Translator: Ramal Rəhimov <jhoaluman@gmail.com>\n"
 "Language-Team: Azerbaijani <contact@azlinux.org>\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 46.0\n"
 
+#. Translators: app name should be translated
 #: data/space.rirusha.Cassette.desktop.in.in:4
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:3 src/main.vala:24
 msgid "Cassette"
@@ -27,11 +28,13 @@ msgstr "Cassette"
 msgid "Unofficial Yandex Music client for GNOME"
 msgstr "GNOME üçün qeyri-rəsmi Yandex Music müştərisi"
 
+#. Translators: keep number of ';'
 #: data/space.rirusha.Cassette.desktop.in.in:7
 #: data/space.rirusha.Cassette.Devel.desktop.in.in:7
 msgid "yandex;yandex music;yam;music;"
 msgstr "yandex;yandex musiqi;yam;musiqi;"
 
+#. Translators: app name should be translated
 #: data/space.rirusha.Cassette.Devel.desktop.in.in:4
 msgid "Cassette (Devel)"
 msgstr "Cassette (Tərtibat)"
@@ -49,8 +52,8 @@ msgid ""
 "GTK/Adwaita application that allows to use Yandex Music service on Linux "
 "operating systems."
 msgstr ""
-"Linux əməliyyat sistemlərində Yandex Music xidmətindən istifadə etməyə imkan verən "
-"GTK/Adwaita tətbiqi."
+"Linux əməliyyat sistemlərində Yandex Music xidmətindən istifadə etməyə imkan "
+"verən GTK/Adwaita tətbiqi."
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:13
 msgid "Features:"
@@ -69,8 +72,8 @@ msgid ""
 "Allows you to more precisely customize the display and playback of special "
 "content, such as explicit or suitable for children."
 msgstr ""
-"Xüsusi məzmunun (məsələn, açıq-saçıq və ya uşaqlar üçün uyğun) göstərilməsini və "
-"oxunmasını daha dəqiq şəkildə fərdiləşdirməyə imkan verir."
+"Xüsusi məzmunun (məsələn, açıq-saçıq və ya uşaqlar üçün uyğun) "
+"göstərilməsini və oxunmasını daha dəqiq şəkildə fərdiləşdirməyə imkan verir."
 
 #: data/space.rirusha.Cassette.metainfo.xml.in.in:27
 msgid "Displays tracks that are currently unavailable in the service"
@@ -85,32 +88,187 @@ msgid ""
 "Cassette is an unofficial client and is not associated with or endorsed by "
 "Yandex."
 msgstr ""
-"Cassette qeyri-rəsmi müştəridir və Yandex ilə əlaqəli deyil və ya onun tərəfindən "
-"təsdiqlənməyib."
+"Cassette qeyri-rəsmi müştəridir və Yandex ilə əlaqəli deyil və ya onun "
+"tərəfindən təsdiqlənməyib."
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:63
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:40
+msgid "Vladimir Romanov"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:62
 msgid "Liked view"
 msgstr "Bəyənilənlər görünüşü"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:67
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:66
 msgid "Playlists view"
 msgstr "Pleylistlər görünüşü"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:71
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:70
 msgid "Sync lyrics"
 msgstr "Sözləri sinxronlaşdır"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:75
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:74
 msgid "Playback queue"
 msgstr "Oxutma sırası"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:79
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:78
 msgid "Waves view"
 msgstr "Dalğalar görünüşü"
 
-#: data/space.rirusha.Cassette.metainfo.xml.in.in:83
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:82
 msgid "Main preferences"
 msgstr "Əsas tənzimləmələr"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:88
+msgid "Replaced Main page with Stations page"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:89
+msgid "Added Mac OS support"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:94
+msgid "Actualized some data"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:99
+msgid "Fixed a bug on the stations page and the playlist page in GNOME 48"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:104
+msgid "A release dedicated to My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:106
+msgid "Added My Vibe"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:107
+msgid "Improved appearance"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:108
+msgid "MANY bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:114
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:122
+msgid "Hotfix"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:116
+msgid "Bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:124
+msgid ""
+"Crashes that I couldn't reproduce for a long time have been fixed. The "
+"reason was an attempt to save a custom track with an empty cover"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:125
+msgid ""
+"The button for creating a playlist has changed, as well as some other shadows"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:126
+msgid ""
+"The translation has been corrected. The text on the widgets written using "
+"blueprints has not been translated. Now fixed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:132
+msgid "Cosmetic and code changes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:134
+msgid ""
+"The transition to the blueprints interface language is slowly but surely "
+"underway"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:135
+msgid ""
+"The playback panel has been completely redesigned. Now there are fewer "
+"buttons (if someone has lost the track information button, you need to poke "
+"to the right of the playback slider)"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:136
+msgid "The appearance of the playlist has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:137
+msgid "The sidebar widget has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:138
+msgid ""
+"Added the feature with parallel loading of tracks while saving playlists. "
+"And not only that, now when the application starts, all saved playlists will "
+"be checked and updated. You can also view the progress of saving on the top "
+"left"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:139
+msgid "Added the removal of a track from the queue when it is disliked"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:140
+msgid ""
+"The Belarusian language has been added. Thanks to Yahor Haurylenka for the "
+"translation"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:141
+msgid "Added a debug mod"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:142
+msgid "Increased the maximum volume level from 60 to 100"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:143
+msgid ""
+"Added the ability to move all saved objects to the cache folder, that is, "
+"move them to temporary storage"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:144
+msgid "Other bug fixes"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:150
+#, fuzzy
+msgid "Added new authorization via WebView"
+msgstr "Avtorizasiya tələb olunur"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:155
+msgid "First release of Cassette"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:157
+msgid "Allows you to listen to music"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:158
+#, fuzzy
+msgid "View your playlists"
+msgstr "Sizin pleylistləriniz"
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:159
+msgid "Manage the playback queue, for example shuffle or puts on repeat"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:160
+msgid ""
+"Sends whether the track has been listened to and the playback queue, if it "
+"has been changed"
+msgstr ""
+
+#: data/space.rirusha.Cassette.metainfo.xml.in.in:161
+msgid "Implemented mpris2"
+msgstr ""
 
 #: data/ui/account-info-dialog.blp:5
 msgid "Account information"
@@ -129,10 +287,12 @@ msgstr "Plus"
 msgid "Log out"
 msgstr "Çıxış et"
 
+#. Translators: usage mode of application. Online mode or Local mode available
 #: data/ui/begin-view.ui:11
 msgid "Usage mode"
 msgstr "İstifadə rejimi"
 
+#. Translators: usage mode of application. Online mode or Local mode available
 #: data/ui/begin-view.ui:40
 msgctxt "auth window"
 msgid "Choose usage mode"
@@ -149,29 +309,38 @@ msgstr ""
 "göstərilməsini aktivləşdirərək yerli musiqiyə daxil ola bilərsiniz, həmçinin "
 "\"Yerli rejim\"i seçərkən sonradan daxil ola bilərsiniz."
 
+#. Translators: usage mode of application. Online mode or Local mode available
 #: data/ui/begin-view.ui:75
 msgctxt "auth window"
 msgid "Online mode"
 msgstr "Onlayn rejim"
 
-#: data/ui/begin-view.ui:85
+#: data/ui/begin-view.ui:81
+msgid "Sign in with token"
+msgstr ""
+
+#. Translators: usage mode of application. Online mode or Local mode available
+#: data/ui/begin-view.ui:100
 msgctxt "auth window"
 msgid "Local mode"
 msgstr "Yerli rejim"
 
-#: data/ui/begin-view.ui:97
+#. Translators: "Close" window button label
+#: data/ui/begin-view.ui:112
 msgctxt "auth window"
 msgid "Close"
 msgstr "Bağla"
 
-#: data/ui/begin-view.ui:112
+#: data/ui/begin-view.ui:127
 msgid "Authorization"
 msgstr "Avtorizasiya"
 
+#. Translators: size of cache dirs
 #: data/ui/cache-deletion-preferences.ui:21
 msgid "Dirs size:"
 msgstr "Qovluq ölçüləri:"
 
+#. Translators: tempprary cache folder
 #: data/ui/cache-deletion-preferences.ui:35
 msgid "Cache"
 msgstr "Keş"
@@ -180,6 +349,7 @@ msgstr "Keş"
 msgid "Clear"
 msgstr "Təmizlə"
 
+#. Translators: temparence cache folder
 #: data/ui/cache-deletion-preferences.ui:109
 msgid "Data"
 msgstr "Məlumat"
@@ -212,11 +382,13 @@ msgstr "Səhifəni saxla"
 msgid "Remove page"
 msgstr "Səhifəni sil"
 
+#. Translators: title of preference group
 #: data/ui/custom-pages-preferences.ui:7
 msgctxt "preference window"
 msgid "Custom pages"
 msgstr "Fərdi səhifələr"
 
+#. Translators: description of preference group
 #: data/ui/custom-pages-preferences.ui:9
 msgctxt "preference window"
 msgid "Here you can control custom pages."
@@ -303,14 +475,6 @@ msgstr "Açıq-saçıq məzmun"
 msgid "Child content"
 msgstr "Uşaq məzmunu"
 
-#: data/ui/main-view.blp:6
-msgid "Page under construction"
-msgstr "Səhifə hazırlanır"
-
-#: data/ui/main-view.blp:20
-msgid "All stations"
-msgstr "Bütün stansiyalar"
-
 #: data/ui/no-plus-dialog.blp:20
 msgid "No Plus Subscription"
 msgstr "Plus abunəliyi yoxdur"
@@ -343,7 +507,7 @@ msgstr "Oxutma sırasını göstər"
 msgid "Change volume"
 msgstr "Səs səviyyəsini dəyiş"
 
-#: data/ui/player-queue.blp:5 src/application.vala:272
+#: data/ui/player-queue.blp:5 src/application.vala:274
 msgid "Playing now"
 msgstr "İndi oynayır"
 
@@ -381,6 +545,7 @@ msgstr "Pleylistin görünürlüyünü dəyiş"
 msgid "Add page to header"
 msgstr "Səhifəni başlığa əlavə et"
 
+#. Translators: tooltip of "save" button
 #: data/ui/playlist-view.ui:233 data/ui/playlist-view.ui:237
 #: src/widgets/buttons/menu/track-options-button.vala:83
 #: src/widgets/buttons/menu/track-options-button.vala:108
@@ -391,6 +556,7 @@ msgstr "Səhifəni başlığa əlavə et"
 msgid "Save"
 msgstr "Saxla"
 
+#. Translators: tooltip of "delete" button
 #: data/ui/playlist-view.ui:256 data/ui/playlist-view.ui:260
 #: src/widgets/preferences/cache-deletion-preferences.vala:97
 #: src/widgets/preferences/preferences-dialog.vala:141
@@ -398,6 +564,7 @@ msgstr "Saxla"
 msgid "Delete"
 msgstr "Sil"
 
+#. Translators: tooltip of "abort" button
 #: data/ui/playlist-view.ui:276
 msgid "Abort"
 msgstr "Ləğv et"
@@ -501,8 +668,8 @@ msgid ""
 "Show special tracks in track lists. Filter doesn't work when searching in "
 "track list"
 msgstr ""
-"Mahnı siyahılarında xüsusi mahnıları göstər. Mahnı siyahısında axtarış zamanı "
-"filtr işləmir."
+"Mahnı siyahılarında xüsusi mahnıları göstər. Mahnı siyahısında axtarış "
+"zamanı filtr işləmir."
 
 #: data/ui/preferences-dialog.ui:63
 msgctxt "preference dialog"
@@ -513,8 +680,7 @@ msgstr "Əlçatan olmayan məzmunu göstər"
 msgctxt "preference dialog"
 msgid ""
 "Show tracks that are not available in the service. You can't listen to them"
-msgstr ""
-"Xidmətdə əlçatan olmayan mahnıları göstər. Onları dinləyə bilməzsiniz."
+msgstr "Xidmətdə əlçatan olmayan mahnıları göstər. Onları dinləyə bilməzsiniz."
 
 #: data/ui/preferences-dialog.ui:69
 msgctxt "preference dialog"
@@ -549,7 +715,8 @@ msgstr "Xəta Axtarma Rejimini Aktivləşdir"
 #: data/ui/preferences-dialog.ui:87
 msgctxt "preference dialog"
 msgid "Enable logging of additional information useful for error detection"
-msgstr "Xəta aşkarlanması üçün faydalı əlavə məlumatların qeydiyyatını aktivləşdir"
+msgstr ""
+"Xəta aşkarlanması üçün faydalı əlavə məlumatların qeydiyyatını aktivləşdir"
 
 #: data/ui/preferences-dialog.ui:94
 msgctxt "preference dialog"
@@ -559,7 +726,9 @@ msgstr "Eksperimental"
 #: data/ui/preferences-dialog.ui:95
 msgctxt "preference dialog"
 msgid "Parameters that test anything and may be removed in future releases"
-msgstr "Hər hansı bir şeyi sınaqdan keçirən və gələcək buraxılışlarda silinə bilən parametrlər"
+msgstr ""
+"Hər hansı bir şeyi sınaqdan keçirən və gələcək buraxılışlarda silinə bilən "
+"parametrlər"
 
 #: data/ui/preferences-dialog.ui:98
 msgctxt "preference dialog"
@@ -587,12 +756,13 @@ msgid ""
 "Here you can show or hide static pages. They will always be displayed on the "
 "left side of the header."
 msgstr ""
-"Burada statik səhifələri göstərə və ya gizlədə bilərsiniz. Onlar həmişə başlığın "
-"sol tərəfində göstəriləcək."
+"Burada statik səhifələri göstərə və ya gizlədə bilərsiniz. Onlar həmişə "
+"başlığın sol tərəfində göstəriləcək."
 
 #: data/ui/preferences-dialog.ui:116
+#, fuzzy
 msgctxt "preference dialog"
-msgid "Show 'Main' page"
+msgid "Show 'Stations' page"
 msgstr "'Əsas' səhifəni göstər"
 
 #: data/ui/preferences-dialog.ui:121
@@ -639,10 +809,10 @@ msgid ""
 "Disabling the parameter does not delete already downloaded content"
 msgstr ""
 "Daha yaxşı performans üçün. Vaxt keçdikcə çox yer tutmağa başlayır. Hələlik "
-"əl ilə təmizləmə tələb olunur. Aktivləşdirilərsə, tətbiq daha yaxşı performans üçün "
-"bütün məzmunu keş qovluğuna saxlayacaq, əks halda tətbiq yalnız obyektləri "
-"(məsələn, pleylistlər və ya albomlar) keşləyərkən məzmunu yükləyəcək. Parametrin "
-"deaktiv edilməsi artıq yüklənmiş məzmunu silmir."
+"əl ilə təmizləmə tələb olunur. Aktivləşdirilərsə, tətbiq daha yaxşı "
+"performans üçün bütün məzmunu keş qovluğuna saxlayacaq, əks halda tətbiq "
+"yalnız obyektləri (məsələn, pleylistlər və ya albomlar) keşləyərkən məzmunu "
+"yükləyəcək. Parametrin deaktiv edilməsi artıq yüklənmiş məzmunu silmir."
 
 #: data/ui/save-stack.ui:25
 msgid "Content saving…"
@@ -704,10 +874,12 @@ msgstr "Mənbə"
 msgid "Similar tracks"
 msgstr "Oxşar mahnılar"
 
+#. Translators: placeholder of "search" entry. Local track search (inside of track list)
 #: data/ui/track-list.ui:21
 msgid "Search track"
 msgstr "Mahnı axtar"
 
+#. Translators: part of sort by <name, duration etc>
 #: data/ui/track-list.ui:30
 msgid "Sort by"
 msgstr "Sırala"
@@ -752,10 +924,11 @@ msgstr "Dalğa tənzimləmələri əldə edilə bilmədi"
 msgid "Reconnect"
 msgstr "Yenidən qoşul"
 
-#: data/ui/window.blp:58 src/application.vala:152
+#: data/ui/window.blp:58 src/application.vala:154
 msgid "Connection problems"
 msgstr "Qoşulma problemləri"
 
+#. Translators: NAME <EMAIL.COM> /n NAME <EMAIL.COM>
 #: src/about.vala:60
 msgid "translator-credits"
 msgstr "Ramal Rəhimov <jhoaluman@gmail.com>"
@@ -772,6 +945,7 @@ msgstr "Maliyyə dəstəyi (Tinkoff)"
 msgid "Financial support (Boosty)"
 msgstr "Maliyyə dəstəyi (Boosty)"
 
+#. Please keep alphabetical
 #: src/about.vala:73
 msgid "Sponsors"
 msgstr "Sponsorlar"
@@ -780,31 +954,31 @@ msgstr "Sponsorlar"
 msgid "Print version information and exit"
 msgstr "Versiya məlumatını çap et və çıx"
 
-#: src/application.vala:146
+#: src/application.vala:148
 msgid "Connection restored"
 msgstr "Qoşulma bərpa edildi"
 
-#: src/application.vala:274
+#: src/application.vala:276
 msgid "Previous"
 msgstr "Əvvəlki"
 
-#: src/application.vala:275
+#: src/application.vala:277
 msgid "Next"
 msgstr "Növbəti"
 
-#: src/application.vala:358
+#: src/application.vala:360
 msgid "Current track can not be copied to the clipboard"
 msgstr "Cari mahnı buferə kopyalana bilməz"
 
-#: src/application.vala:372 src/application.vala:379 src/application.vala:436
+#: src/application.vala:374 src/application.vala:381 src/application.vala:438
 msgid "Can't parse clipboard content"
 msgstr "Bufer məzmunu təhlil edilə bilməz"
 
-#: src/application.vala:390
+#: src/application.vala:392
 msgid "Users view not implemented yet"
 msgstr "İstifadəçilər görünüşü hələ tətbiq edilməyib"
 
-#: src/application.vala:406 src/application.vala:420
+#: src/application.vala:408 src/application.vala:422
 msgid "Albums view not implemented yet"
 msgstr "Albomlar görünüşü hələ tətbiq edilməyib"
 
@@ -816,6 +990,7 @@ msgstr "Çıxış etmək?"
 msgid "You will need to log in again to use the app"
 msgstr "Tətbiqdən istifadə etmək üçün yenidən daxil olmalısınız"
 
+#. Translators: cancel of deleting playlist
 #: src/authenticator.vala:51
 #: src/widgets/preferences/cache-deletion-preferences.vala:96
 #: src/widgets/preferences/preferences-dialog.vala:140
@@ -828,15 +1003,18 @@ msgstr "İmtina et"
 msgid "Moving…"
 msgstr "Köçürülür…"
 
+#. Translators: Playlist with liked tracks
 #: src/client/api/objects/playlist/playlist.vala:50
 #: src/client/api/objects/playlist/playlist.vala:100 src/pager.vala:277
 msgid "Liked"
 msgstr "Bəyənilənlər"
 
+#. Translators: Playlist that updates every day
 #: src/client/api/objects/playlist/playlist.vala:54
 msgid "Daily"
 msgstr "Gündəlik"
 
+#. Translators: Unknown playlist
 #: src/client/api/objects/playlist/playlist.vala:58
 msgid "Unknown"
 msgstr "Naməlum"
@@ -901,7 +1079,8 @@ msgstr "Yanlış növ: gözlənilən %s, alınan %s"
 msgid "Problems with queue"
 msgstr "Sıra ilə bağlı problemlər"
 
-#: src/client/talkers/yam-talker.vala:628
+#. Translators: name of new created playlist
+#: src/client/talkers/yam-talker.vala:645
 msgid "New Playlist"
 msgstr "Yeni Pleylist"
 
@@ -925,8 +1104,9 @@ msgid "Page '%s' already added"
 msgstr "'%s' səhifəsi artıq əlavə edilib"
 
 #: src/pager.vala:268
-msgid "Main"
-msgstr "Əsas"
+#, fuzzy
+msgid "Stations"
+msgstr "Bütün stansiyalar"
 
 #: src/pager.vala:287
 msgid "Playlists"
@@ -975,6 +1155,10 @@ msgstr "bugün"
 #: src/utils.vala:360
 msgid "yesterday"
 msgstr "dünən"
+
+#: src/widgets/begin/begin-view.vala:179
+msgid "Apply token"
+msgstr ""
 
 #: src/widgets/buttons/just/dislike-button.vala:38
 msgid "Remove dislike"
@@ -1113,6 +1297,7 @@ msgstr "Səsi bağla"
 msgid "Album"
 msgstr "Albom"
 
+#. Translators: n track from n tracks saved
 #: src/widgets/cache-indicator/job-info-badge.vala:78
 #, c-format
 msgid "%d / %d saved%s"
@@ -1156,14 +1341,16 @@ msgstr "Saxlanılmış faylları köçürmək?"
 msgid ""
 "All cache will be deleted. This doesn't affect on saved playlists or albums"
 msgstr ""
-"Bütün keş silinəcək. Bu, saxlanılmış pleylistlərə və ya albomlara təsir etməyəcək."
+"Bütün keş silinəcək. Bu, saxlanılmış pleylistlərə və ya albomlara təsir "
+"etməyəcək."
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:92
 msgid ""
 "All saved playlists and albums will be moved to cache files. This could take "
 "a while."
 msgstr ""
-"Bütün saxlanılmış pleylistlər və albomlar keş fayllarına köçürüləcək. Bu, bir qədər vaxt ala bilər."
+"Bütün saxlanılmış pleylistlər və albomlar keş fayllarına köçürüləcək. Bu, "
+"bir qədər vaxt ala bilər."
 
 #: src/widgets/preferences/cache-deletion-preferences.vala:130
 msgid "Deleting…"
@@ -1227,31 +1414,37 @@ msgstr "Dalğa tənzimləmələri"
 msgid "Track is not available"
 msgstr "Mahnı əlçatan deyil"
 
+#. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:79
 #, c-format
 msgid "%s '%s' saved successfully"
 msgstr "%s '%s' uğurla saxlanıldı"
 
+#. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:90
 #, c-format
 msgid "%s '%s' saving was stopped, due to network error"
 msgstr "%s '%s' saxlanması şəbəkə xətası səbəbindən dayandırıldı"
 
+#. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:100
 #, c-format
 msgid "%s '%s' saving was aborted"
 msgstr "%s '%s' saxlanması ləğv edildi"
 
+#. Translators: %s - content type (e.g. "Playlist")
 #: src/widgets/views/abstract-cachiable.vala:192
 #, c-format
 msgid "%s saving has started"
 msgstr "%s saxlanması başlandı"
 
+#. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:230
 #, c-format
 msgid "%s '%s' was moved from data to cache"
 msgstr "%s '%s' məlumatdan keşkə köçürüldü"
 
+#. Translators: first %s - content type (Playlist), second - name
 #: src/widgets/views/abstract-cachiable.vala:240
 #, c-format
 msgid "%s removing has started. Please do not close the app"
@@ -1284,12 +1477,14 @@ msgstr "Pleylist '%s' həmişəlik silinəcək."
 msgid "Playlist '%s' was deleted"
 msgstr "Pleylist '%s' silindi"
 
+#. Translators: %s is female person
 #: src/widgets/views/playlist.vala:248
 #, c-format
 msgctxt "female person"
 msgid "%s updated playlist %s"
 msgstr "%s pleylisti %s yenilədi"
 
+#. Translators: %s is male person
 #: src/widgets/views/playlist.vala:252
 #, c-format
 msgctxt "male person"
@@ -1315,3 +1510,9 @@ msgstr "Pleylist '%s' indi şəxsidir"
 #, c-format
 msgid "Window info message: %s"
 msgstr "Pəncərə məlumat mesajı: %s"
+
+#~ msgid "Page under construction"
+#~ msgstr "Səhifə hazırlanır"
+
+#~ msgid "Main"
+#~ msgstr "Əsas"

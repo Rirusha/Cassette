@@ -11,7 +11,6 @@ data/ui/disliked-tracks-view.ui
 data/ui/header-bar.blp
 data/ui/help-overlay.blp
 data/ui/info-marks.ui
-data/ui/main-view.blp
 data/ui/no-plus-dialog.blp
 data/ui/player-bar.blp
 data/ui/player-queue.blp
@@ -41,6 +40,7 @@ src/client/talkers/yam-talker.vala
 src/main.vala
 src/pager.vala
 src/utils.vala
+src/widgets/begin/begin-view.vala
 src/widgets/buttons/just/dislike-button.vala
 src/widgets/buttons/just/like-button.vala
 src/widgets/buttons/just/play-buttons/abstract-play-button.vala
@@ -51,6 +51,7 @@ src/widgets/buttons/menu/track-playlist-options-button.vala
 src/widgets/buttons/menu/track-queue-options-button.vala
 src/widgets/buttons/menu/volume-button.vala
 src/widgets/cache-indicator/job-info-badge.vala
+src/widgets/cover-image.vala
 src/widgets/headered-scrolled-window.vala
 src/widgets/info-marks.vala
 src/widgets/pages/loading-page.vala

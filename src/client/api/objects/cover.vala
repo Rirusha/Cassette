@@ -41,10 +41,6 @@ namespace Cassette.Client.YaMAPI {
             Object ();
         }
 
-        public Cover.liked () {
-            Object (uri: "music.yandex.ru/blocks/playlist-cover/playlist-cover_like.png");
-        }
-
         public Cover.empty () {
             Object (uri: "music.yandex.ru/blocks/playlist-cover/playlist-cover_no_cover0.png");
         }

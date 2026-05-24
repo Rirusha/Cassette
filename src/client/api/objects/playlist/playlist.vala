@@ -96,7 +96,6 @@ namespace Cassette.Client.YaMAPI {
 
         public Playlist.liked () {
             Object (
-                cover: new Cover.liked (),
                 title: _("Liked"),
                 kind: "3"
             );
@@ -153,9 +152,6 @@ namespace Cassette.Client.YaMAPI {
         }
 
         public ArrayList<string> get_cover_items_by_size (int size) {
-            if (kind == "3") {
-                cover = new Cover.liked ();
-            }
             if (cover.uris.size == 0) {
                 cover = new Cover.empty ();
             }

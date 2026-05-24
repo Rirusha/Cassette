@@ -83,6 +83,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.4" date="2026-05-24">
+      <description>
+        <p>Hotfix</p>
+        <ul>
+          <li>Fixed liked playlist cover</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.3" date="2026-05-23">
       <description>
         <p>Replaced Main page with Stations page</p>

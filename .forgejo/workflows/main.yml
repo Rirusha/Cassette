@@ -159,7 +159,7 @@ jobs:
         run: |
           flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="${{ steps.import-gpg.outputs.gpg-homedir }}" --disable-rofiles-fuse cassette_demo_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
 
-          flatpak build-bundle .flatpak-repo --oci cassette_demo_app-image space.rirusha.CassetteDemo.yml
+          flatpak build-bundle .flatpak-repo --oci cassette_demo_app-image space.rirusha.CassetteDemo
 
       - name: Upload images
         env:

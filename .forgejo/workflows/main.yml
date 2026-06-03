@@ -141,16 +141,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Checkout repo repository
-        uses: actions/checkout@v4
-        with:
-          repository: rirusha/space
-          ref: repo
-          path: .flatpak-repo
-
-      - name: Clear repo .git
-        run: rm -rf .flatpak-repo/.git
-
       - name: Import gpg
         id: import-gpg
         uses: alt-hub/actions/import-gpg@main
@@ -163,22 +153,26 @@ jobs:
         run: |
           flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="${{ steps.import-gpg.outputs.gpg-homedir }}" --disable-rofiles-fuse cassette_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
 
+          flatpak build-bundle .flatpak-repo --oci cassette_app-image space.rirusha.Cassette.Devel
+
+          skopeo login --username=$REGISTRY_USERNAME --password=$REGISTRY_PASSWORD $REGISTRY
+
       - name: Build Cassette Demo
         run: |
           flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="${{ steps.import-gpg.outputs.gpg-homedir }}" --disable-rofiles-fuse cassette_demo_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
 
-      - name: Update repo
-        run: |
-          flatpak build-update-repo --generate-static-deltas --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="${{ steps.import-gpg.outputs.gpg-homedir }}" --prune .flatpak-repo || true
+          flatpak build-bundle .flatpak-repo --oci cassette_demo_app-image space.rirusha.CassetteDemo.yml
 
-      - name: Deploy repo
-        if: github.event_name != 'pull_request' && github.ref_name == 'main'
-        uses: actions/deploy-pages@v1
-        with:
-          directory: ./.flatpak-repo
-          branch: repo
-          pages-repository: rirusha/space
-          pages-repository-token: ${{ secrets.SPACE }}
+      - name: Upload images
+        env:
+          REGISTRY_USERNAME: '<token>'
+          REGISTRY_PASSWORD: ${{ secrets.TOKEN }}
+          REGISTRY: altlinux.space/rirusha
+        run: |
+          skopeo login --username=$REGISTRY_USERNAME --password=$REGISTRY_PASSWORD $REGISTRY
+
+          skopeo copy oci:cassette_app-image docker://$REGISTRY/cassette_app
+          skopeo copy oci:cassette_demo_app-image docker://$REGISTRY/cassette_demo_app
 
   rpm-build:
     if: github.event_name != 'pull_request'

@@ -164,15 +164,11 @@ jobs:
           flatpak build-bundle .flatpak-repo --oci cassette_demo_app-image space.rirusha.CassetteDemo.yml
 
       - name: Upload images
-        env:
-          REGISTRY_USERNAME: '<token>'
-          REGISTRY_PASSWORD: ${{ secrets.TOKEN }}
-          REGISTRY: altlinux.space/rirusha
         run: |
-          skopeo login --username=$REGISTRY_USERNAME --password=$REGISTRY_PASSWORD $REGISTRY
+          skopeo login --username='<token>' --password=${{ secrets.TOKEN }} altlinux.space/rirusha
 
-          skopeo copy oci:cassette_app-image docker://$REGISTRY/cassette_app
-          skopeo copy oci:cassette_demo_app-image docker://$REGISTRY/cassette_demo_app
+          skopeo copy oci:cassette_app-image docker://altlinux.space/rirusha/cassette_app
+          skopeo copy oci:cassette_demo_app-image docker://altlinux.space/rirusha/cassette_demo_app
 
   rpm-build:
     if: github.event_name != 'pull_request'

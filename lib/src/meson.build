@@ -9,9 +9,9 @@ configure_file(output: 'config.h', configuration: conf)
 lib_name = 'lib' + meson.project_name()
 lib_gir_name = pascal_name
 
-lib_versioned_name = lib_name + '-' + api_version
-lib_versioned_lib_name = lib_name + '-' + api_version
-lib_versioned_gir_name = lib_gir_name + '-' + api_version
+lib_versioned_name = lib_name + '-' + soversion
+lib_versioned_lib_name = lib_name + '-' + soversion
+lib_versioned_gir_name = lib_gir_name + '-' + soversion
 
 lib_deps_name = lib_versioned_lib_name + '.deps'
 lib_header_name = lib_versioned_lib_name + '.h'
@@ -104,7 +104,7 @@ lib_dep_static = declare_dependency(
 )
 
 libcassette = library(
-  meson.project_name() + '-' + api_version,
+  meson.project_name() + '-' + soversion,
   lib_sources_with_resources,
   c_args: c_args,
   dependencies: lib_dependencies,
@@ -113,7 +113,7 @@ libcassette = library(
   vala_gir: lib_gir_name,
   include_directories: include_directories('.'),
   version: lib_version,
-  soversion: lib_version,
+  soversion: soversion,
   install: get_option('install_lib_s'),
   install_dir: [ true, true, true, true ],
 )

@@ -6,8 +6,8 @@ project(
   license: 'GPL-3.0-or-later',
 )
 
-api_version = '0'
-lib_version = api_version + '.' + meson.project_version().replace('.rc', '')
+soversion = '0'
+lib_version = soversion + '.' + meson.project_version().replace('.rc', '')
 
 i18n = import('i18n')
 gnome = import('gnome')

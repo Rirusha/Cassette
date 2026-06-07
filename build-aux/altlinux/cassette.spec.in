@@ -39,6 +39,8 @@ BuildRequires: gir(Adw) = 1
 BuildRequires: pkgconfig(gee-0.8)
 BuildRequires: pkgconfig(libadwaita-1)
 BuildRequires: pkgconfig(libtape-0)
+BuildRequires: pkgconfig(libcase-0)
+BuildRequires: typelib(Case) = 0
 BuildRequires: pkgconfig(webkitgtk-6.0)
 BuildRequires: gettext-devel
 

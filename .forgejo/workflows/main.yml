@@ -73,7 +73,7 @@ jobs:
           xargs apt-get install -y < ./build-aux/altlinux/build-deps
 
       - name: Setup
-        run: meson setup _build -Dinstall_demo=true -Dinstall_lib_s=true -Dwith_lib_documentation=true -Dnightly=true
+        run: meson setup _build -Dnightly=true
 
       - name: Build
         run: meson compile -C _build
@@ -115,12 +115,6 @@ jobs:
           fi
 
           git push
-
-      - name: Deploy pages
-        if: github.event_name != 'pull_request' && github.ref_name == 'main'
-        uses: actions/deploy-pages@v1
-        with:
-          directory: ./_build/lib/doc/cassette-vala
 
   get-release:
     name: Get release for RPM package

@@ -1,5 +1,6 @@
 'gir(Adw)=1'
 'pkgconfig(libtape-0)'
+'pkgconfig(libcase-0)'
 'pkgconfig(libadwaita-1)'
 'pkgconfig(gee-0.8)'
 'pkgconfig(webkitgtk-6.0)'

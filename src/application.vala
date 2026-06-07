@@ -83,7 +83,7 @@ public sealed class Cassette.Application : Adw.Application {
     protected override void startup () {
         base.startup ();
 
-        Cassette.init ();
+        Case.init ();
 
         app_settings = new GLib.Settings (@"$(Config.APP_ID).application");
         client_settings = new GLib.Settings (@"$(Config.APP_ID).client");

@@ -24,11 +24,10 @@ public sealed class Cassette.MainContent : Adw.BreakpointBin {
     [GtkChild]
     unowned Gtk.Overlay overlay;
     [GtkChild]
-    unowned MenuButton devel_button;
+    unowned Case.MenuButton devel_button;
 
     static construct {
         typeof (AccountButton).ensure ();
-        typeof (MenuButton).ensure ();
     }
 
     construct {

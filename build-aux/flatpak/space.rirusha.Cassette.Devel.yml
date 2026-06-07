@@ -16,7 +16,7 @@ finish-args:
   - --env=SERIALIZE_UNKNOWN_PROPS=1
   - --env=SERIALIZE_UNKNOWN_FIELDS=1
 modules:
-  - name: api-base
+  - name: libapi-base
     buildsystem: meson
     builddir: true
     sources:
@@ -29,6 +29,13 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/rirusha/libtape.git
+        branch: main
+  - name: libcase
+    buildsystem: meson
+    builddir: true
+    sources:
+      - type: git
+        url: https://altlinux.space/rirusha/libcase.git
         branch: main
   - name: cassette
     buildsystem: meson

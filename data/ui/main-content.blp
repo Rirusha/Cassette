@@ -1,6 +1,6 @@
 using Gtk 4.0;
 using Adw 1;
-using Cassette 0;
+using Case 0;
 
 template $CassetteMainContent: Adw.BreakpointBin {
   height-request: 294;
@@ -90,7 +90,7 @@ template $CassetteMainContent: Adw.BreakpointBin {
   }
 }
 
-Cassette.MenuButton devel_button {
+Case.MenuButton devel_button {
   icon-name: 'applications-development-symbolic';
   halign: end;
   valign: start;
@@ -100,12 +100,12 @@ Cassette.MenuButton devel_button {
   sheet-title: "DEVEL OPTIONS";
 }
 
-Cassette.Menu devel_menu {
-  Cassette.MenuSubmenu {
+Case.Menu devel_menu {
+  Case.MenuSubmenu {
     label: "Player";
     icon-name: "media-playback-start-symbolic";
 
-    Cassette.MenuItem {
+    Case.MenuItem {
       label: "Play test track";
       action-name: "devel.play-test-track";
     }

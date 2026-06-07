@@ -27,8 +27,6 @@ def compile_blueprint() -> None:
     subprocess.run([
         'blueprint-compiler',
         'batch-compile',
-        '--gir-path', os.path.join(BUILD_ROOT, 'lib', 'src'),
-        '--typelib-path', os.path.join(BUILD_ROOT, 'lib', 'src'),
         OUTPUT, CURRENT_SOURCE_DIR,
         *get_blp_files(False)
     ], check=True)

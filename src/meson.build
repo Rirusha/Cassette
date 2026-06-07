@@ -57,7 +57,7 @@ sources = [
 
 app_dependencies = [
   libadwaita_dep,
-  lib_dep_static,
+  dependency('libcase-0', fallback : ['libcase', 'lib_dep']),
   dependency('gee-0.8'),
   dependency('libtape-0', fallback : ['libtape', 'lib_dep']),
 ]

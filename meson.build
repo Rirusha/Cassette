@@ -16,7 +16,6 @@ pkgconfig = import('pkgconfig')
 cc = meson.get_compiler('c')
 
 pascal_name = 'Cassette'
-demo_app_id = 'space.rirusha.CassetteDemo'
 app_id = 'space.rirusha.Cassette'
 
 nightly = false
@@ -53,9 +52,6 @@ endif
 
 version = meson.project_version() + version_suffix
 
-demo_app_id_relevant = demo_app_id
-demo_app_name = 'Cassette Demo'
-
 app_id_relevant = app_id + app_id_suffix
 app_name = 'Cassette' + name_suffix
 
@@ -64,16 +60,12 @@ bugtracker = 'https://altlinux.space/rirusha/Cassette/issues'
 # matrix.to banned in Russia so we use our matrix-to
 help = 'https://alt-gnome.altlinux.team/matrix-to/#/#cassette-discussion:altlinux.org'
 
-subdir('lib')
-
-if not get_option('lib_only')
-  subdir('data')
-  subdir('po')
-  subdir('src')
-endif
+subdir('data')
+subdir('po')
+subdir('src')
 
 gnome.post_install(
-  glib_compile_schemas: not get_option('lib_only'),
-  gtk_update_icon_cache: (not get_option('lib_only')) or get_option('install_demo'),
-  update_desktop_database: (not get_option('lib_only')) or get_option('install_demo'),
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+  update_desktop_database: true,
 )

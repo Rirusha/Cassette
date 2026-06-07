@@ -71,7 +71,6 @@ auto = custom_target('auto',
     meson.current_build_dir(),
     app_id_relevant,
   ],
-  depends: lib_gir,
   build_always_stale: true,
   output: '.',
 )

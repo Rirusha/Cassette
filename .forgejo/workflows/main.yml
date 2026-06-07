@@ -11,6 +11,7 @@ on:
 
 env:
   TAPE_REPO: rpm https://altlinux.space/api/packages/rirusha/alt/group/libtape-nightly.repo x86_64 classic
+  CASE_REPO: rpm https://altlinux.space/api/packages/rirusha/alt/group/libcase-nightly.repo x86_64 classic
 
 jobs:
   lint-vala:
@@ -53,11 +54,18 @@ jobs:
         with:
           token: ${{ github.event_name == 'pull_request' && github.token || secrets.REPO_TOKEN }}
 
-      - name: Add tape repo
+      - name: Install apt-repo
         run: |
           apt-get update
           apt-get install -y apt-repo
+
+      - name: Add tape repo
+        run: |
           apt-repo add ${{ env.TAPE_REPO }}
+
+      - name: Add case repo
+        run: |
+          apt-repo add ${{ env.CASE_REPO }}
 
       - name: Install deps
         run: |
@@ -155,12 +163,6 @@ jobs:
 
           flatpak build-bundle .flatpak-repo --oci cassette_app-image space.rirusha.Cassette.Devel
 
-      - name: Build Cassette Demo
-        run: |
-          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="${{ steps.import-gpg.outputs.gpg-homedir }}" --disable-rofiles-fuse cassette_demo_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.CassetteDemo.yml
-
-          flatpak build-bundle .flatpak-repo --oci cassette_demo_app-image space.rirusha.CassetteDemo
-
       - name: Upload images
         env:
           REGISTRY_USERNAME: '<token>'
@@ -170,7 +172,6 @@ jobs:
           skopeo login --username=$REGISTRY_USERNAME --password=$REGISTRY_PASSWORD $REGISTRY
 
           skopeo copy oci:cassette_app-image docker://$REGISTRY/cassette_app
-          skopeo copy oci:cassette_demo_app-image docker://$REGISTRY/cassette_demo_app
 
   rpm-build:
     if: github.event_name != 'pull_request'
@@ -203,7 +204,7 @@ jobs:
           git config --global user.name "Builder"
           echo "%packager Builder <hasherc-ci@altlinux.org>" > ~/.rpmmacros
 
-          gear-hshc --commit --no-sisyphus-check=gpg,packager --add-source '${{ env.TAPE_REPO }}'
+          gear-hshc --commit --no-sisyphus-check=gpg,packager --add-source '${{ env.TAPE_REPO }}' --add-source '${{ env.CASE_REPO }}'
 
       - uses: actions/upload-rpm-action@main
         name: Upload RPMs

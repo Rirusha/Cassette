@@ -6,36 +6,6 @@ option(
 )
 
 option(
-  'lib_only',
-  type: 'boolean',
-  value: false
-)
-option(
-  'install_demo',
-  type: 'boolean',
-  value: false
-)
-option(
-  'install_lib_s',
-  description: 'Install libs shared objects (.vapi, .so, .gir, .typelib)',
-  type: 'boolean',
-  value: false
-)
-
-option(
-  'with_lib_introspection',
-  description: 'Compile GIR instrospection or not',
-  type: 'boolean',
-  value: true
-)
-option(
-  'with_lib_documentation',
-  description: 'Compile valadoc/gtkdoc documentation or not',
-  type: 'boolean',
-  value: false
-)
-
-option(
   'e2k',
   description: 'Optimize build for e2k',
   type: 'boolean',

@@ -40,7 +40,7 @@ BuildRequires: typelib(Case) = 0
 BuildRequires: pkgconfig(webkitgtk-6.0)
 BuildRequires: gettext-devel
 %ifdef with_check
-BuildRequires: /usr/bin/appstream
+BuildRequires: /usr/bin/appstreamcli
 BuildRequires: /usr/bin/glib-compile-schemas
 %endif
 

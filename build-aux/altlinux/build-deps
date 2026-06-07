@@ -14,5 +14,5 @@
 /usr/bin/valadoc
 /usr/bin/vapigen
 gettext-devel
-/usr/bin/appstream
+/usr/bin/appstreamcli
 /usr/bin/glib-compile-schemas

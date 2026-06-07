@@ -78,6 +78,9 @@ jobs:
       - name: Build
         run: meson compile -C _build
 
+      - name: Build
+        run: meson test -C _build
+
       - name: Setup git
         if: github.event_name != 'pull_request' && github.ref_name == 'main'
         run: |

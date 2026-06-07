@@ -1,4 +1,3 @@
-'gir(Adw)=1'
 'pkgconfig(libtape-0)'
 'pkgconfig(libcase-0)'
 'typelib(Case)=0'

@@ -74,6 +74,11 @@ Install application:
 flatpak install cassette-nightly space.rirusha.Cassette.Devel
 ```
 
+## Libraries created during development
+
+- [`libtape`](https://altlinux.space/rirusha/libtape) - Tape library for your Cassette application (Unofficial Yandex Music SDK)
+- [`libcase`](https://altlinux.space/rirusha/libcase) - Library with various useful widgets
+
 ## Support
 
 You can support in several ways:

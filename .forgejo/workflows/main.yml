@@ -146,29 +146,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Import gpg
-        id: import-gpg
-        uses: alt-hub/actions/import-gpg@main
+      - name: Build and push flatpak app
+        uses: alt-hub/actions/build-application@main
         with:
+          key-id: ${{ secrets.GPG_KEY_ID }}
           private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
           key-grip: ${{ secrets.GPG_KEY_GREP }}
-
-      - name: Build Cassette
-        run: |
-          flatpak-builder --keep-build-dirs --gpg-sign=${{ secrets.GPG_KEY_ID }} --gpg-homedir="${{ steps.import-gpg.outputs.gpg-homedir }}" --disable-rofiles-fuse cassette_app --repo=.flatpak-repo build-aux/flatpak/space.rirusha.Cassette.Devel.yml
-
-          flatpak build-bundle .flatpak-repo --oci cassette_app-image space.rirusha.Cassette.Devel
-
-      - name: Upload images
-        env:
-          REGISTRY_USERNAME: '<token>'
-          REGISTRY_PASSWORD: ${{ secrets.TOKEN }}
-          REGISTRY: altlinux.space/rirusha
-        run: |
-          skopeo login --username=$REGISTRY_USERNAME --password=$REGISTRY_PASSWORD $REGISTRY
-
-          skopeo copy oci:cassette_app-image docker://$REGISTRY/cassette_app
+          app-id: space.rirusha.Cassette.Devel
+          manifest-path: build-aux/flatpak/space.rirusha.Cassette.Devel.yml
+          registry-password: ${{ secrets.TOKEN }}
 
   rpm-build:
     if: github.event_name != 'pull_request'

@@ -9,10 +9,6 @@ on:
     tags-ignore:
       - '*'
 
-env:
-  API_BASE_REPO: rpm https://altlinux.space/api/packages/rirusha/alt/group/libapi-base-nightly.repo x86_64 classic
-  CASE_REPO: rpm https://altlinux.space/api/packages/rirusha/alt/group/libcase-nightly.repo x86_64 classic
-
 jobs:
   lint:
     name: Lint
@@ -48,11 +44,13 @@ jobs:
 
       - name: Add liapi-base repo
         run: |
-          apt-repo add ${{ env.API_BASE_REPO }}
+          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libapi-base-nightly.repo x86_64 classic
+          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libapi-base-nightly.repo noarch classic
 
       - name: Add case repo
         run: |
-          apt-repo add ${{ env.CASE_REPO }}
+          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libcase-nightly.repo x86_64 classic
+          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libcase-nightly.repo noarch classic
 
       - name: Install deps
         run: |
@@ -61,6 +59,9 @@ jobs:
             valadoc \
             gcc \
             vala \
+            'gir(Adw)=1' \
+            'gir(Case)=0' \
+            'gir(ApiBase)=7' \
             'pkgconfig(libadwaita-1)' \
             'pkgconfig(gee-0.8)' \
             'pkgconfig(gstreamer-app-1.0)' \

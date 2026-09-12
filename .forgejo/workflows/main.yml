@@ -56,7 +56,7 @@ jobs:
 
       - name: Install deps
         run: |
-          apt-get install meson valadoc gcc vala 'pkgconfig(libadwaita-1)'
+          apt-get install -y meson valadoc gcc vala 'pkgconfig(libadwaita-1)'
 
       - name: Setup
         run: make setup-ci

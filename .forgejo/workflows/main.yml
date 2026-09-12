@@ -68,6 +68,7 @@ jobs:
             'pkgconfig(libapi-base-7)' \
             'pkgconfig(libxml-2.0)' \
             'pkgconfig(sqlite3)' \
+            'pkgconfig(webkitgtk-6.0)' \
             /usr/bin/g-ir-compiler \
             gettext-devel \
             blueprint-compiler

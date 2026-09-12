@@ -67,7 +67,7 @@
   <maintainer>
     <foaf:Person>
       <foaf:name>Vladimir Romanov</foaf:name>
-      <foaf:mbox rdf:resource="mailto:rirusha@altlinux.org" />
+      <foaf:mbox rdf:resource="mailto:rirusha@non-suspicious.ru" />
        <foaf:account>
         <foaf:OnlineAccount>
           <foaf:accountServiceHomepage rdf:resource="https://altlinux.space"/>

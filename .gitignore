@@ -19,7 +19,3 @@ repo
 .flatpak
 
 *~
-
-# meson wrap trash
-subprojects/.wraplock
-subprojects/libapi-base.wrap

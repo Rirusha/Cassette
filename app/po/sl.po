@@ -1,0 +1,190 @@
+# Slovenian translation for cassette.
+# Copyright (C) 2024 cassette's COPYRIGHT HOLDER
+# This file is distributed under the same license as the cassette package.
+#
+# Martin Srebotnjak <miles@filmsi.net>,  2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cassette main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-12 23:09+0300\n"
+"PO-Revision-Date: 2026-03-26 18:16+0100\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: app/data/ui/account/account-button.blp:14
+#: app/data/ui/account/account-info-dialog.blp:5
+msgid "Account information"
+msgstr "Podrobnosti računa"
+
+#: app/data/ui/account/account-info-dialog.blp:21
+msgid "Open in browser"
+msgstr "Odpri v brskalniku"
+
+#: app/data/ui/account/account-info-dialog.blp:28
+msgid "Open subscription page in browser"
+msgstr "Odpri stran naročnine v brskalniku"
+
+#: app/data/ui/account/account-info-dialog.blp:118
+msgid "Log out"
+msgstr "Odjava"
+
+#: app/data/ui/auth.blp:17 app/data/ui/main-content.blp:47
+msgid "About"
+msgstr "O programu"
+
+#: app/data/ui/auth.blp:24
+msgid "Welcome to Cassette!"
+msgstr "Dobrodošli v Kaseti"
+
+#: app/data/ui/auth.blp:41
+msgid "Login with Yandex account"
+msgstr "Prijavi z računom Yandex"
+
+#: app/data/ui/auth.blp:47
+msgid "Yandex Music token"
+msgstr "Žeton Yandex Music"
+
+#: app/data/ui/auth.blp:60
+msgid "How to obtain token"
+msgstr "Kako pridobiti žeton"
+
+#: app/data/ui/auth.blp:81
+msgid "No Plus subscription"
+msgstr "Brez naročnine Plus"
+
+#: app/data/ui/auth.blp:82
+msgid "You won’t be able to use the app without a Yandex Plus subscription."
+msgstr "Programa ne boste mogli uporabljati brez naročnine Yandex Plus."
+
+#: app/data/ui/auth.blp:93
+msgid "Back"
+msgstr "Nazaj"
+
+#: app/data/ui/main-content.blp:35
+msgid "Refresh current page"
+msgstr "Osveži trenutno stran"
+
+#: app/data/ui/main-content.blp:60 app/data/ui/main-content.blp:65
+msgid "Stay tuned"
+msgstr "Spremljajte novosti"
+
+#: app/data/ui/main-content.blp:66 app/data/ui/main-content.blp:78
+msgid "Work in progress."
+msgstr "Delo v teku."
+
+#: app/data/ui/main-content.blp:72
+msgid "Keep it up"
+msgstr "Tako naprej"
+
+#: app/data/ui/main-content.blp:77
+msgid "Keep it up!"
+msgstr "Tako naprej!"
+
+#: app/data/ui/warning-dialog.blp:5
+msgid "Warning message"
+msgstr "Opozorilo"
+
+#: app/data/ui/warning-dialog.blp:25
+msgid "Ask the community"
+msgstr "Vprašajte skupnost"
+
+#: app/data/ui/webkit/webkit-auth.blp:21
+msgid "Refresh"
+msgstr "Osveži"
+
+#: app/src/application.vala:45
+msgid "Print version information and exit"
+msgstr "Izpiši podatke o različici in končaj"
+
+#: app/src/application.vala:134 app/src/main.vala:26
+msgid "Cassette"
+msgstr "Kaseta"
+
+#. Translators: NAME <EMAIL.COM>
+#: app/src/ui/about.vala:112
+msgid "translator-credits"
+msgstr "Martin Srebotnjak <miles@filmsi.net>"
+
+#: app/src/ui/about.vala:113
+msgid "Vladimir Romanov"
+msgstr "Vladimir Romanov"
+
+#: app/src/ui/about.vala:116
+msgid "Telegram channel"
+msgstr "Kanal Telegram"
+
+#: app/src/ui/about.vala:117
+msgid "Telegram group"
+msgstr "skupina na Telegramu"
+
+#. TRANSLATORS: MAX is Russian messenger
+#: app/src/ui/about.vala:119
+msgid "MAX group"
+msgstr "Skupina MAX"
+
+#: app/src/ui/about.vala:120
+msgid "Financial support (Tinkoff)"
+msgstr "Finančna podpora (Tinkoff)"
+
+#: app/src/ui/about.vala:121
+msgid "Financial support (Boosty)"
+msgstr "Finančna podpora (Boosty)"
+
+#: app/src/ui/about.vala:123
+msgid "Sponsors"
+msgstr "Sponzorji"
+
+#: app/src/ui/account/account-info-dialog.vala:81
+msgid "Logout?"
+msgstr "Ali se želite odjaviti?"
+
+#: app/src/ui/account/account-info-dialog.vala:81
+msgid "It will erase all application data"
+msgstr "S tem boste izbrisali vse podatke programa"
+
+#: app/src/ui/account/account-info-dialog.vala:82
+msgid "_No"
+msgstr "_Ne"
+
+#: app/src/ui/account/account-info-dialog.vala:83
+msgid "_Yes"
+msgstr "_Da"
+
+#: app/src/ui/auth.vala:39
+msgid ""
+"Choose a way to log in to the app. You can log in via your Yandex account or "
+"with your token."
+msgstr ""
+"Izberite način prijave v program. Prijavite se lahko prek svojega računa "
+"Yandex ali s svojim žetonom."
+
+#: app/src/ui/auth.vala:49
+msgid "You need your Yandex music token to login."
+msgstr "Potrebujete svoj žeton Yandex za prijavo."
+
+#: app/src/ui/auth.vala:125
+msgid "Failed to login. Probably wrong token"
+msgstr "Prijava ni uspela. Najbrž napačen žeton"
+
+#: app/src/ui/auth.vala:133
+#, c-format
+msgid "Bad status code: %i"
+msgstr "Koda slabega stanja: %i"
+
+#: app/src/ui/auth.vala:142
+msgid "Connection problems"
+msgstr "Težave s povezavo"
+
+#: app/src/ui/window.vala:61
+msgid "More info"
+msgstr "Več informacij"

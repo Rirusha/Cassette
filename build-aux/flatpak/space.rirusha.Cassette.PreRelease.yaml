@@ -19,15 +19,15 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/rirusha/libapi-base.git
-        tag: v7.4
+        tag: v7.10
         commit:
-  - name: libtape
+  - name: libcase
     buildsystem: meson
     builddir: true
     sources:
       - type: git
-        url: https://altlinux.space/rirusha/libtape.git
-        tag: v0.3.0
+        url: https://altlinux.space/rirusha/libcase.git
+        tag: v0.2
         commit:
   - name: cassette
     buildsystem: meson
@@ -35,7 +35,7 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/rirusha/Cassette.git
-        tag: v0.3.0
+        tag: v0.5.0
         commit:
         x-checker-data:
           tag-pattern: ^v([\d.]+)$

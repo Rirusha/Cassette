@@ -1,4 +1,3 @@
 [wrap-git]
-directory=libcase
 url=https://altlinux.space/rirusha/libcase.git
-revision=main
+revision=v0.2

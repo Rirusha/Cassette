@@ -12,7 +12,35 @@ option(
   value: false
 )
 option(
-  'nightly',
+  'force-release',
   type: 'boolean',
   value: false
+)
+
+
+option(
+  'sdk_only',
+  type: 'boolean',
+  value: false,
+  description: 'build libtape only'
+)
+option(
+  'documentation',
+  type: 'boolean',
+  value: false,
+  description: 'generate documentation with gtk-doc and valadoc'
+)
+option(
+  'introspection',
+  type: 'boolean',
+  value: true,
+  description: 'Whether to build introspection files'
+)
+
+# tests
+option(
+  'token',
+  type: 'string',
+  value: '',
+  description: 'Token for API tests. If empty tests will skipped'
 )

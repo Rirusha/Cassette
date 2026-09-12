@@ -6,4 +6,4 @@
 .* @rirusha
 
 # Mac OS build
-macos/.* @toxblh
+build-aux/windows/.* @toxblh

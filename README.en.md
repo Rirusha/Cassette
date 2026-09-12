@@ -55,7 +55,7 @@ Also you can build via meson with manual dependency resolving. You can read abou
 
 ### Platforms
 
-Cassette available on many platforms besides Linux. They are located in the corresponding directories in the root of the repository. `windows` and `macos` presented for now.
+Cassette available on many platforms besides Linux. They are located in the corresponding directories in the [build-aux](build-aux).
 
 ## Devel version
 
@@ -102,6 +102,13 @@ Donate links (QR-codes also clickable!):
 </details>
 
 <br>
+
+## Documentation
+
+[Documentation here](https://rirusha.altlinux.team/Cassette/)
+
+## Thanks
+to [MarshalX](https://github.com/MarshalX). Library [yandex-music-api](https://github.com/MarshalX/yandex-music-api) was used as documentation.
 
 > [!IMPORTANT] 
 > Cassette is an unofficial client, not affiliated with Yandex and not approved by it.

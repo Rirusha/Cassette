@@ -1,0 +1,52 @@
+name: Update .pot and .po files for Weblate
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update-translation:
+    name: Update
+    runs-on: als-tiny
+    container: registry.altlinux.org/sisyphus/node:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+
+      - name: Setup
+        run: make setup-ci
+
+      - name: Setup git
+        run: |
+          git config --global user.name "Cassette Helper"
+          git config --global user.email "cassette-helper@noreply.altlinux.space"
+          git config --global --add safe.directory '*'
+
+      - name: Update translation files
+        run: |
+          has_real_changes() {
+            git diff --cached -U0 | grep -E '^[+-]' \
+              | grep -Ev '^[+-]{3}' \
+              | grep -Ev '^[+-]["#]' \
+              | grep -q '.'
+          }
+
+          make update-pot
+          git add .
+
+          if has_real_changes; then
+            git commit -m "i18n: Update .pot file" || true
+
+            make update-po
+
+            git add *.po
+            git commit -m "i18n: Update .po files" || true
+          else
+            git reset --hard
+          fi
+
+          git push

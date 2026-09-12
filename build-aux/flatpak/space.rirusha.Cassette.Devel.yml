@@ -22,21 +22,14 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/rirusha/libapi-base.git
-        branch: main
-  - name: libtape
-    buildsystem: meson
-    builddir: true
-    sources:
-      - type: git
-        url: https://altlinux.space/rirusha/libtape.git
-        branch: main
+        tag: v7.10
   - name: libcase
     buildsystem: meson
     builddir: true
     sources:
       - type: git
         url: https://altlinux.space/rirusha/libcase.git
-        branch: main
+        tag: v0.2
   - name: cassette
     buildsystem: meson
     builddir: true

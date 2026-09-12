@@ -33,8 +33,6 @@ modules:
   - name: cassette
     buildsystem: meson
     builddir: true
-    config-opts:
-      - -Dnightly=true
     sources:
       - type: dir
         path: ../../

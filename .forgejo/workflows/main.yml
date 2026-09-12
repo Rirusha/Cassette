@@ -88,7 +88,7 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: actions/deploy-pages@v1
         with:
-          directory: ./_build/lib/doc/libtape-vala
+          directory: ./_build/libtape/doc/libtape-vala
 
   flatpak-build:
     name: Flatpak build and uploading

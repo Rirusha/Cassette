@@ -67,7 +67,10 @@ jobs:
             'pkgconfig(gstreamer-1.0)' \
             'pkgconfig(libapi-base-7)' \
             'pkgconfig(libxml-2.0)' \
-            'pkgconfig(sqlite3)'
+            'pkgconfig(sqlite3)' \
+            /usr/bin/g-ir-compiler \
+            gettext-devel \
+            blueprint-compiler
 
       - name: Setup
         run: make setup-ci

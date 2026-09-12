@@ -13,7 +13,7 @@ setup:
 	meson setup _build --prefix=/usr --auto-features=enabled
 
 setup-ci:
-	meson setup --wipe _build --prefix=/usr --auto-features=enabled -Dwith_lib_documentation=true
+	meson setup --wipe _build --prefix=/usr --auto-features=enabled -Ddocumentation=true
 
 compile:
 	meson compile -C _build

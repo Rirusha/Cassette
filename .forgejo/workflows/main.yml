@@ -66,6 +66,7 @@ jobs:
             'pkgconfig(gstreamer-app-1.0)' \
             'pkgconfig(gstreamer-1.0)' \
             'pkgconfig(libapi-base-7)' \
+            'pkgconfig(libcase-0)' \
             'pkgconfig(libxml-2.0)' \
             'pkgconfig(sqlite3)' \
             'pkgconfig(webkitgtk-6.0)' \

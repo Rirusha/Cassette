@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Tape.YandexMusic &ndash; libtape-0.5 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Tape.YandexMusic &ndash; libtape-0.5 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">libtape-0.5</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Tape.html">Tape</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">YandexMusic</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Tape.YandexMusic.client.html">client</a></li>
+          <li class="property"><a href="Tape.YandexMusic.inited.html">inited</a></li>
+          <li class="property"><a href="Tape.YandexMusic.me.html">me</a></li>
+          <li class="method"><a href="Tape.YandexMusic.can_be_offline.html">can_be_offline</a></li>
+          <li class="method"><a href="Tape.YandexMusic.init.html">init</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.playlist_changed.html">playlist_changed</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.playlist_start_delete.html">playlist_start_delete</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.playlist_stop_delete.html">playlist_stop_delete</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.playlists_updated.html">playlists_updated</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.track_dislikes_end_change.html">track_dislikes_end_change</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.track_dislikes_start_change.html">track_dislikes_start_change</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.track_likes_end_change.html">track_likes_end_change</a></li>
+          <li class="signal"><a href="Tape.YandexMusic.track_likes_start_change.html">track_likes_start_change</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">YandexMusic</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Tape.YandexMusic" alt="Object hierarchy for YandexMusic" src="img/Tape.YandexMusic.png"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">sealed</span> <span class="main_keyword">class</span> <b><span class="class">YandexMusic</span></b> : <span class="main_type"><span class="class">Object</span></span>
+        </div>
+        <div class="description">
+          <p>Class with helper methods. It may include auto saving some of the objects.</p>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Tape.html">Tape</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">libtape-0.5</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Tape.YaMAPI.Client.html" class="class">Client</a></span> <b><a href="Tape.YandexMusic.client.html" class="property">client</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">construct</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YandexMusic.inited.html" class="property">inited</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Tape.YaMAPI.Account.About.html" class="class">About</a></span> <b><a href="Tape.YandexMusic.me.html" class="property">me</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YandexMusic.can_be_offline.html" class="method">can_be_offline</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">async</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.init.html" class="method">init</a></b> () <span class="main_keyword">throws</span> <span class="main_type"><a href="Tape.TapeError.html" class="errordomain">TapeError</a></span>, <span class="main_type"><a href="Tape.CantUseError.html" class="errordomain">CantUseError</a></span>, <span class="main_type"><span class="errordomain">BadStatusCodeError</span></span>
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Signals:</h3>
+        <ul class="navi_inline">
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.playlist_changed.html" class="signal">playlist_changed</a></b> (<span class="main_type"><a href="Tape.YaMAPI.Playlist.html" class="class">Playlist</a></span> new_playlist)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.playlist_start_delete.html" class="signal">playlist_start_delete</a></b> (<span class="main_basic_type"><span class="class">string</span></span> oid)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.playlist_stop_delete.html" class="signal">playlist_stop_delete</a></b> (<span class="main_basic_type"><span class="class">string</span></span> oid)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.playlists_updated.html" class="signal">playlists_updated</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.track_dislikes_end_change.html" class="signal">track_dislikes_end_change</a></b> (<span class="main_basic_type"><span class="class">string</span></span> track_id, <span class="main_basic_type"><span class="struct">bool</span></span> is_disliked)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.track_dislikes_start_change.html" class="signal">track_dislikes_start_change</a></b> (<span class="main_basic_type"><span class="class">string</span></span> track_id)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.track_likes_end_change.html" class="signal">track_likes_end_change</a></b> (<span class="main_basic_type"><span class="class">string</span></span> track_id, <span class="main_basic_type"><span class="struct">bool</span></span> is_liked)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="signal"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">signal</span> <span class="main_keyword">void</span> <b><a href="Tape.YandexMusic.track_likes_start_change.html" class="signal">track_likes_start_change</a></b> (<span class="main_basic_type"><span class="class">string</span></span> track_id)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-3')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-3">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">@get</li>
+                <li class="static_method">@new</li>
+                <li class="method">@ref</li>
+                <li class="method">@set</li>
+                <li class="method">add_toggle_ref</li>
+                <li class="method">add_weak_pointer</li>
+                <li class="method">bind_property</li>
+                <li class="method">connect</li>
+                <li class="virtual_method">constructed</li>
+                <li class="method">disconnect</li>
+                <li class="virtual_method">dispose</li>
+                <li class="method">dup_data</li>
+                <li class="method">dup_qdata</li>
+                <li class="method">force_floating</li>
+                <li class="method">freeze_notify</li>
+                <li class="method">get_class</li>
+                <li class="method">get_data</li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">get_property</li>
+                <li class="method">get_qdata</li>
+                <li class="method">get_type</li>
+                <li class="method">getv</li>
+                <li class="static_method">interface_find_property</li>
+                <li class="static_method">interface_install_property</li>
+                <li class="static_method">interface_list_properties</li>
+                <li class="method">is_floating</li>
+                <li class="static_method">new_valist</li>
+                <li class="static_method">new_with_properties</li>
+                <li class="static_method">newv</li>
+                <li class="signal">notify</li>
+                <li class="method">notify_property</li>
+                <li class="field">ref_count</li>
+                <li class="method">ref_sink</li>
+                <li class="method">remove_toggle_ref</li>
+                <li class="method">remove_weak_pointer</li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">replace_data</li>
+                <li class="method">replace_qdata</li>
+                <li class="method">set_data</li>
+                <li class="method">set_data_full</li>
+                <li class="method">set_property</li>
+                <li class="method">set_qdata</li>
+                <li class="method">set_qdata_full</li>
+                <li class="method">set_valist</li>
+                <li class="method">setv</li>
+                <li class="method">steal_data</li>
+                <li class="method">steal_qdata</li>
+                <li class="method">thaw_notify</li>
+                <li class="method">unref</li>
+                <li class="method">watch_closure</li>
+                <li class="method">weak_ref</li>
+                <li class="method">weak_unref</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Tape.YaMAPI.Track &ndash; libtape-0.5 &ndash; Vala Binding Reference</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/><script src="../scripts.js" type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="site_header">Tape.YaMAPI.Track &ndash; libtape-0.5 Reference Manual</div>
+    <div class="site_body">
+      <div class="site_navigation">
+        <ul class="navi_main">
+          <li class="package_index"><a href="../index.html">Packages</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="package"><a href="index.htm">libtape-0.5</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Tape.html">Tape</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="namespace"><a href="Tape.YaMAPI.html">YaMAPI</a></li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="class">Track</li>
+        </ul>
+        <hr class="navi_hr"/>
+        <ul class="navi_main">
+          <li class="property"><a href="Tape.YaMAPI.Track.albums.html">albums</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.artists.html">artists</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.available.html">available</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.available_for_options.html">available_for_options</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.available_for_premium_users.html">available_for_premium_users</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.content_warning.html">content_warning</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.cover_uri.html">cover_uri</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.duration_ms.html">duration_ms</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.id.html">id</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.is_explicit.html">is_explicit</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.is_suitable_for_children.html">is_suitable_for_children</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.is_ugc.html">is_ugc</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.lyrics_available.html">lyrics_available</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.lyrics_info.html">lyrics_info</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.major.html">major</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.meta_data.html">meta_data</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.need_bookmate.html">need_bookmate</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.short_description.html">short_description</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.substituted.html">substituted</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.title.html">title</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.title_with_version.html">title_with_version</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.track_id.html">track_id</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.track_source.html">track_source</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.track_type.html">track_type</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.type_.html">type_</a></li>
+          <li class="property"><a href="Tape.YaMAPI.Track.version.html">version</a></li>
+          <li class="creation_method"><a href="Tape.YaMAPI.Track.Track.html">Track</a></li>
+          <li class="method"><a href="Tape.YaMAPI.Track.get_album_title.html">get_album_title</a></li>
+          <li class="method"><a href="Tape.YaMAPI.Track.get_artists_names.html">get_artists_names</a></li>
+          <li class="virtual_method"><a href="Tape.YaMAPI.Track.get_cover_items_by_size.html">get_cover_items_by_size</a></li>
+        </ul>
+      </div>
+      <div class="site_content">
+        <h1 class="main_title">Track</h1>
+        <hr class="main_hr"/>
+        <h2 class="main_title">Object Hierarchy:</h2>
+        <img class="main_diagram" usemap="#Tape.YaMAPI.Track" alt="Object hierarchy for Track" src="img/Tape.YaMAPI.Track.png"/>
+        <h2 class="main_title">Description:</h2>
+        <div class="main_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">class</span> <b><span class="class">Track</span></b> : <span class="main_type"><span class="abstract_class">DataObject</span></span>, <span class="main_type"><a href="Tape.YaMAPI.HasCover.html" class="interface">HasCover</a></span>
+        </div><br/>
+        <div class="namespace_note"><b>Namespace:</b> <a href="Tape.YaMAPI.html">Tape.YaMAPI</a>
+        </div>
+        <div class="package_note"><b>Package:</b> <a href="index.htm">libtape-0.5</a>
+        </div>
+        <h2 class="main_title">Content:</h2>
+        <h3 class="main_title">Properties:</h3>
+        <ul class="navi_inline">
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Array</span></span>&lt;<span class="main_type"><a href="Tape.YaMAPI.Album.html" class="class">Album</a></span>&gt; <b><a href="Tape.YaMAPI.Track.albums.html" class="property">albums</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Array</span></span>&lt;<span class="main_type"><a href="Tape.YaMAPI.Artist.html" class="class">Artist</a></span>&gt; <b><a href="Tape.YaMAPI.Track.artists.html" class="property">artists</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YaMAPI.Track.available.html" class="property">available</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Array</span></span>&lt;<span class="main_basic_type"><span class="class">string</span></span>&gt; <b><a href="Tape.YaMAPI.Track.available_for_options.html" class="property">available_for_options</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YaMAPI.Track.available_for_premium_users.html" class="property">available_for_premium_users</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span>? <b><a href="Tape.YaMAPI.Track.content_warning.html" class="property">content_warning</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span>? <b><a href="Tape.YaMAPI.Track.cover_uri.html" class="property">cover_uri</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">int64</span></span> <b><a href="Tape.YaMAPI.Track.duration_ms.html" class="property">duration_ms</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span> <b><a href="Tape.YaMAPI.Track.id.html" class="property">id</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YaMAPI.Track.is_explicit.html" class="property">is_explicit</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YaMAPI.Track.is_suitable_for_children.html" class="property">is_suitable_for_children</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YaMAPI.Track.is_ugc.html" class="property">is_ugc</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YaMAPI.Track.lyrics_available.html" class="property">lyrics_available</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Tape.YaMAPI.LyricsInfo.html" class="class">LyricsInfo</a></span> <b><a href="Tape.YaMAPI.Track.lyrics_info.html" class="property">lyrics_info</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Tape.YaMAPI.Label.html" class="class">Label</a></span> <b><a href="Tape.YaMAPI.Track.major.html" class="property">major</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Tape.YaMAPI.MetaData.html" class="class">MetaData</a></span>? <b><a href="Tape.YaMAPI.Track.meta_data.html" class="property">meta_data</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="struct">bool</span></span> <b><a href="Tape.YaMAPI.Track.need_bookmate.html" class="property">need_bookmate</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span>? <b><a href="Tape.YaMAPI.Track.short_description.html" class="property">short_description</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><span class="class">Track</span></span>? <b><a href="Tape.YaMAPI.Track.substituted.html" class="property">substituted</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span>? <b><a href="Tape.YaMAPI.Track.title.html" class="property">title</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span> <b><a href="Tape.YaMAPI.Track.title_with_version.html" class="property">title_with_version</a></b> { <span class="main_keyword">owned</span> <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span> <b><a href="Tape.YaMAPI.Track.track_id.html" class="property">track_id</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span> <b><a href="Tape.YaMAPI.Track.track_source.html" class="property">track_source</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_type"><a href="Tape.YaMAPI.TrackType.html" class="enum">TrackType</a></span> <b><a href="Tape.YaMAPI.Track.track_type.html" class="property">track_type</a></b> { <span class="main_keyword">get</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span>? <b><a href="Tape.YaMAPI.Track.type_.html" class="property">type_</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="property"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span>? <b><a href="Tape.YaMAPI.Track.version.html" class="property">version</a></b> { <span class="main_keyword">get</span>; <span class="main_keyword">set</span>; }
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Creation methods:</h3>
+        <ul class="navi_inline">
+          <li class="creation_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <b><a href="Tape.YaMAPI.Track.Track.html" class="creation_method">Track</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Methods:</h3>
+        <ul class="navi_inline">
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span> <b><a href="Tape.YaMAPI.Track.get_album_title.html" class="method">get_album_title</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_basic_type"><span class="class">string</span></span> <b><a href="Tape.YaMAPI.Track.get_artists_names.html" class="method">get_artists_names</a></b> ()
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+          <li class="virtual_method"><span class="leaf_code_definition"><span class="main_keyword">public</span> <span class="main_keyword">virtual</span> <span class="main_type"><span class="class">Array</span></span>&lt;<span class="main_basic_type"><span class="class">string</span></span>&gt; <b><a href="Tape.YaMAPI.Track.get_cover_items_by_size.html" class="virtual_method">get_cover_items_by_size</a></b> (<span class="main_basic_type"><span class="struct">int</span></span> size)
+            </span>
+            <div class="leaf_brief_description">
+            </div></li>
+        </ul>
+        <h3 class="main_title">Inherited Members:</h3>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-85')">All known members inherited from class Serialize.DataObject</div>
+          <div class="content" id="box-content-85">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">fill_from_dict</li>
+                <li class="method">fill_from_json</li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">to_dict</li>
+                <li class="method">to_json</li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">to_yaml</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-86')">All known members inherited from class GLib.Object</div>
+          <div class="content" id="box-content-86">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">@get</li>
+                <li class="static_method">@new</li>
+                <li class="method">@ref</li>
+                <li class="method">@set</li>
+                <li class="method">add_toggle_ref</li>
+                <li class="method">add_weak_pointer</li>
+                <li class="method">bind_property</li>
+                <li class="method">connect</li>
+                <li class="virtual_method">constructed</li>
+                <li class="method">disconnect</li>
+                <li class="virtual_method">dispose</li>
+                <li class="method">dup_data</li>
+                <li class="method">dup_qdata</li>
+                <li class="method">force_floating</li>
+                <li class="method">freeze_notify</li>
+                <li class="method">get_class</li>
+                <li class="method">get_data</li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">get_property</li>
+                <li class="method">get_qdata</li>
+                <li class="method">get_type</li>
+                <li class="method">getv</li>
+                <li class="static_method">interface_find_property</li>
+                <li class="static_method">interface_install_property</li>
+                <li class="static_method">interface_list_properties</li>
+                <li class="method">is_floating</li>
+                <li class="static_method">new_valist</li>
+                <li class="static_method">new_with_properties</li>
+                <li class="static_method">newv</li>
+                <li class="signal">notify</li>
+                <li class="method">notify_property</li>
+                <li class="field">ref_count</li>
+                <li class="method">ref_sink</li>
+                <li class="method">remove_toggle_ref</li>
+                <li class="method">remove_weak_pointer</li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="method">replace_data</li>
+                <li class="method">replace_qdata</li>
+                <li class="method">set_data</li>
+                <li class="method">set_data_full</li>
+                <li class="method">set_property</li>
+                <li class="method">set_qdata</li>
+                <li class="method">set_qdata_full</li>
+                <li class="method">set_valist</li>
+                <li class="method">setv</li>
+                <li class="method">steal_data</li>
+                <li class="method">steal_qdata</li>
+                <li class="method">thaw_notify</li>
+                <li class="method">unref</li>
+                <li class="method">watch_closure</li>
+                <li class="method">weak_ref</li>
+                <li class="method">weak_unref</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="headline" onclick="toggle_box (this, 'box-content-87')">All known members inherited from interface Tape.YaMAPI.HasCover</div>
+          <div class="content" id="box-content-87">
+            <div class="column">
+              <ul class="navi_inline">
+                <li class="abstract_method"><a href="Tape.YaMAPI.HasCover.get_cover_items_by_size.html">get_cover_items_by_size</a></li>
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+            <div class="column">
+              <ul class="navi_inline">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="site_footer">Generated by <a href="https://docs.vala.dev"><kbd>valadoc</kbd></a>
+    </div>
+  </body>
+</html>

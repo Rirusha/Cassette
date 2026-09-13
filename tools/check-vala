@@ -1,3 +1,0 @@
-#!/usr/bin/bash -e
-
-io.elementary.vala-lint -d .

@@ -4,6 +4,6 @@ libtape/src/player/mods/abstract-mode.vala
 libtape/src/player/mpris.vala
 libtape/src/player/player.vala
 libtape/src/utils.vala
+libtape/src/yandex-music.vala
 libtape/src/yandex-music/client.vala
 libtape/src/yandex-music/objects/playlist/playlist.vala
-libtape/src/yandex-music.vala

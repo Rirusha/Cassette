@@ -16,7 +16,7 @@
 	</enum>
 
 	<schema id="space.rirusha.Cassette.application" path="/space/rirusha/Cassette/application/">
-		
+
 		<key name="application-state" enum="space.rirusha.Cassette.application.application-state">
 			<default>"begin"</default>
 		</key>
@@ -55,7 +55,7 @@
 			<default>false</default>
 		</key>
 		<key name="show-stations" type="b">
-			<default>true</default>
+			<default>false</default>
 		</key>
 		<key name="show-liked" type="b">
 			<default>true</default>

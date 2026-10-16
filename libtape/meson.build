@@ -43,7 +43,6 @@ conf.set_quoted('GNOMELOCALEDIR', get_option('prefix') / get_option('localedir')
 
 subdir('po')
 subdir('src')
-subdir('tests')
 
 if get_option('documentation')
   subdir('doc')

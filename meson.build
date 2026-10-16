@@ -41,3 +41,4 @@ subdir('libtape')
 if not get_option('sdk_only')
   subdir('app')
 endif
+subdir('tests')

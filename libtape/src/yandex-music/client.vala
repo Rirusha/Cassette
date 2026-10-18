@@ -132,7 +132,7 @@ public sealed class Tape.YaMAPI.Client : Object {
             datalist.set_data ("client_secret", "53bc75238f0c4d08a118e51fe9203300");
             datalist.set_data ("host", "oauth.yandex.ru");
 
-            Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
+            ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
             post_content.set_datalist (datalist);
 
             var request = new Request.POST ("https://oauth.yandex.ru/token");
@@ -546,7 +546,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         datalist.set_data ("revision", revision.to_string ());
         datalist.set_data ("diff", diff);
 
-        Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
+        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
         post_content.set_datalist (datalist);
 
         var request = new Request.POST (@"/users/$real_uid/playlists/$kind/change");
@@ -581,7 +581,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         datalist.set_data ("title", title);
         datalist.set_data ("visibility", visibility.to_string ());
 
-        Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
+        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
         post_content.set_datalist (datalist);
 
         var request = new Request.POST (@"/users/$real_uid/playlists/create");
@@ -615,7 +615,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         var datalist = Datalist<string> ();
         datalist.set_data ("value", new_name);
 
-        Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
+        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
         post_content.set_datalist (datalist);
 
         var request = new Request.POST (@"/users/$real_uid/playlists/$kind/name");
@@ -1733,7 +1733,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         datalist.set_data ("track-ids", string.joinv (",", id_list));
         datalist.set_data ("with-positions", with_positions.to_string ());
 
-        Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
+        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
         post_content.set_datalist (datalist);
 
         var request = new Request.POST ("/tracks");

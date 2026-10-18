@@ -7,13 +7,14 @@ vala_sources = files(
   'enums.vala',
   'errors.vala',
   'hash-store.vala',
+  'likes-model.vala',
   'settings.vala',
   'utils.vala',
   'yandex-music.vala',
 )
 
 subdir('cache-manager')
-subdir('model-manager')
+subdir('heap')
 subdir('player')
 subdir('yandex-music')
 

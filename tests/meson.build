@@ -12,6 +12,16 @@ test('storager',
   )
 )
 
+test('content-heap',
+  executable('test-content-heap',
+    sources: [
+      files('test-content-heap.vala'),
+      files(meson.project_source_root() / 'libtape' / 'src' / 'heap' / 'content-heap.vala'),
+    ],
+    dependencies: gio_dep,
+  )
+)
+
 if get_option('token') != ''
   test_api_conf = configuration_data()
   test_api_conf.set_quoted('TOKEN', get_option('token'))

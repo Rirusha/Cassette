@@ -757,14 +757,14 @@ public class Tape.Storager : Object {
 
                 simple_dencode (ref object_data);
 
-                var jsoner = new Serialize.Jsoner.from_data (object_data);
+                var jsoner = new Serialize.JsonWorker.from_data (object_data);
 
                 YaMAPI.HasID? des_obj = null;
 
                 try {
                     des_obj = (YaMAPI.HasID) yield jsoner.deserialize_object_by_type_async (obj_type);
 
-                } catch (Serialize.JsonError e) {
+                } catch (Serialize.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
                 }
 
@@ -804,14 +804,14 @@ public class Tape.Storager : Object {
 
                 simple_dencode (ref object_data);
 
-                var jsoner = new Serialize.Jsoner.from_data (object_data);
+                var jsoner = new Serialize.JsonWorker.from_data (object_data);
 
                 YaMAPI.HasID? des_obj = null;
 
                 try {
                     des_obj = (YaMAPI.HasID) jsoner.deserialize_object_by_type (obj_type);
 
-                } catch (Serialize.JsonError e) {
+                } catch (Serialize.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
                 }
 

@@ -7,7 +7,7 @@
   <summary>Unofficial Yandex Music client (Devel build)</summary>
   <description>
     <p>
-      GTK/Adwaita application that allows to use Yandex Music 
+      GTK/Adwaita application that allows to use Yandex Music
       service on Linux operating systems.
     </p>
     <p>
@@ -21,7 +21,7 @@
         Has a dynamic "karaoke mode" right in the track information panel
       </li>
       <li>
-        Allows you to more precisely customize the display and playback of special 
+        Allows you to more precisely customize the display and playback of special
         content, such as explicit or suitable for children.
       </li>
       <li>

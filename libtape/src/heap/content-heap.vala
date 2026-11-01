@@ -29,9 +29,23 @@ public abstract class Tape.Content : Deser.DataObject {
         this.heap = heap;
     }
 
+    internal void update_by (Content another_content) {
+        assert (get_type () == another_content.get_type ());
+
+        freeze_notify ();
+        foreach (var prop in another_content.get_class ().list_properties ()) {
+            var val = Value (prop.value_type);
+            another_content.get_property (prop.name, ref val);
+            set_property (prop.name, val);
+        }
+        thaw_notify ();
+    }
+
     public override void dispose () {
         base.dispose ();
-        heap.unref_return (content_id);
+        if (heap != null) {
+            heap.unref_return (content_id);
+        }
     }
 }
 

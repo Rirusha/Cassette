@@ -93,15 +93,9 @@ public class Tape.Client : Object {
             if (e.code == 401) {
                 return false;
             } else {
-                if (ym.can_be_offline ()) {
-                    return true;
-                }
                 throw e;
             }
         } catch (TapeError e) {
-            if (ym.can_be_offline ()) {
-                return true;
-            }
             throw e;
         }
 

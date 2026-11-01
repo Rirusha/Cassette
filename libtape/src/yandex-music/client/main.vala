@@ -26,7 +26,7 @@ public partial sealed class Tape.YandexMusic : Object {
 
     public AuthType auth_type { get; construct; }
 
-    public string token { internal get; private set construct; default = ""; }
+    public string token { internal get; internal set; default = ""; }
 
     Tape.AccountAbout? _me = null;
     public Tape.AccountAbout me {
@@ -57,7 +57,7 @@ public partial sealed class Tape.YandexMusic : Object {
 
     public bool inited {
         get {
-            return me != null;
+            return _me != null;
         }
     }
 
@@ -124,10 +124,6 @@ public partial sealed class Tape.YandexMusic : Object {
 
     internal void abort () {
         session.abort ();
-    }
-
-    public bool can_be_offline () {
-        return me.uid != "";
     }
 
     void reload_cookies () {

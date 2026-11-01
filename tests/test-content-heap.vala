@@ -89,9 +89,18 @@ async void test_release_after_last_reference () {
     }
 }
 
+void test_release_without_heap () {
+    TestContent? content = new TestContent ("content-id");
+    var weak_content = WeakRef (content);
+
+    content = null;
+    assert (weak_content.get () == null);
+}
+
 public static int main (string[] args) {
     Test.init (ref args);
 
+    Test.add_func ("/content-heap/references/release-without-heap", test_release_without_heap);
     Test.add_func ("/content-heap/references/release-after-last-reference", () => {
         var loop = new MainLoop ();
         test_release_after_last_reference.begin (() => {

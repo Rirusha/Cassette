@@ -142,4 +142,11 @@ public class Tape.AccountAbout : Content {
 
         return yield root.cm.load_image_by_uri (avatar_uri, Priority.LOW);
     }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "uid") {
+            return new Deser.CodecAuto (property.value_type);
+        }
+        return base.get_property_codec (property);
+    }
 }

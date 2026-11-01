@@ -22,7 +22,7 @@ using Gee;
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Block : Deser.DataObject {
+public class Tape.YaMAPIRotorBlock : Deser.DataObject {
 
     /**
      *
@@ -33,10 +33,13 @@ public class Tape.YaMAPI.Rotor.Block : Deser.DataObject {
     /**
      *
      */
-    public GLib.GenericArray<StationInfo> items { get; set; default = new GLib.GenericArray<StationInfo> (); }
+    public GLib.GenericArray<YaMAPIRotorStationInfo> items {
+        get; set;
+        default = new GLib.GenericArray<YaMAPIRotorStationInfo> ();
+    }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "items") return Deser.create_codec_for_array<StationInfo> ();
+        if (property.name == "items") return Deser.create_codec_for_array<YaMAPIRotorStationInfo> ();
         return base.get_property_codec (property);
     }
 }

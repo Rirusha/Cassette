@@ -18,32 +18,32 @@
  */
 
 /**
- * Wave parameters
+ * YaMAPIRotorWave parameters
  */
-public class Tape.YaMAPI.Rotor.Restrictions : Deser.DataObject {
+public class Tape.YaMAPIRotorRestrictions : Deser.DataObject {
 
     /**
-     * Wave language
+     * YaMAPIRotorWave language
      */
-    public ValueHeap language { get; set; }
+    public YaMAPIRotorValueHeap language { get; set; }
 
     /**
-     * Wave diversity
+     * YaMAPIRotorWave diversity
      */
-    public ValueHeap diversity { get; set; }
+    public YaMAPIRotorValueHeap diversity { get; set; }
 
     /**
-     * Wave mood
+     * YaMAPIRotorWave mood
      */
-    public ValueHeap mood { get; set; }
+    public YaMAPIRotorValueHeap mood { get; set; }
 
     /**
-     * Wave energy
+     * YaMAPIRotorWave energy
      */
-    public ValueHeap energy { get; set; }
+    public YaMAPIRotorValueHeap energy { get; set; }
 
     /**
-     * Wave mood and energy
+     * YaMAPIRotorWave mood and energy
      */
-    public ValueHeap mood_energy { get; set; }
+    public YaMAPIRotorValueHeap mood_energy { get; set; }
 }

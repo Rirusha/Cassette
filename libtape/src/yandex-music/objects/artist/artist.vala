@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Artist : Deser.DataObject, HasID {
+public class Tape.YaMAPIArtist : Deser.DataObject, YaMAPIHasID {
 
     public string oid {
         owned get {
@@ -33,7 +33,7 @@ public class Tape.YaMAPI.Artist : Deser.DataObject, HasID {
 
     public string? name { get; set; }
 
-    public Cover? cover { get; set; }
+    public YaMAPICover? cover { get; set; }
 
     public bool various { get; set; }
 
@@ -41,17 +41,17 @@ public class Tape.YaMAPI.Artist : Deser.DataObject, HasID {
 
     public GLib.GenericArray<string> genres { get; set; default = new GLib.GenericArray<string> (); }
 
-    public Counts? counts { get; set; }
+    public YaMAPICounts? counts { get; set; }
 
     public bool is_available { get; set; }
 
-    public Ratings? ratings { get; set; }
+    public YaMAPIRatings? ratings { get; set; }
 
-    public GLib.GenericArray<Link> links { get; set; default = new GLib.GenericArray<Link> (); }
+    public GLib.GenericArray<YaMAPILink> links { get; set; default = new GLib.GenericArray<YaMAPILink> (); }
 
     public int likes_count { get; set; }
 
-    public GLib.GenericArray<Track> popular_tracks { get; set; default = new GLib.GenericArray<Track> (); }
+    public GLib.GenericArray<YaMAPITrack> popular_tracks { get; set; default = new GLib.GenericArray<YaMAPITrack> (); }
 
     public string? hand_made_description { get; set; }
 
@@ -77,8 +77,8 @@ public class Tape.YaMAPI.Artist : Deser.DataObject, HasID {
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
         if (property.name == "genres") return Deser.create_codec_for_array<string> ();
-        if (property.name == "links") return Deser.create_codec_for_array<Link> ();
-        if (property.name == "popular-tracks") return Deser.create_codec_for_array<Track> ();
+        if (property.name == "links") return Deser.create_codec_for_array<YaMAPILink> ();
+        if (property.name == "popular-tracks") return Deser.create_codec_for_array<YaMAPITrack> ();
         if (property.name == "countries") return Deser.create_codec_for_array<string> ();
         return base.get_property_codec (property);
     }

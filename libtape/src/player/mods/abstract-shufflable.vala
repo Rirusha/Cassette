@@ -24,12 +24,15 @@ using Gee;
  */
 public abstract class Tape.PlayerShufflable : PlayerMode {
 
-    static int index_of_track (GLib.GenericArray<YaMAPI.Track> tracks, YaMAPI.Track track) {
+    static int index_of_track (GLib.GenericArray<Tape.YaMAPITrack> tracks, Tape.YaMAPITrack track) {
         uint index;
         return tracks.find (track, out index) ? (int) index : -1;
     }
 
-    GLib.GenericArray<YaMAPI.Track> original_queue { get; set; default = new GLib.GenericArray<YaMAPI.Track> (); }
+    GLib.GenericArray<Tape.YaMAPITrack> original_queue {
+        get; set;
+        default = new GLib.GenericArray<Tape.YaMAPITrack> ();
+    }
 
     public signal void sh_queue_changed ();
 
@@ -42,11 +45,11 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
     }
 
     public void shuffle () {
-        var type_utils = new TypeUtils<YaMAPI.Track> ();
+        var type_utils = new TypeUtils<Tape.YaMAPITrack> ();
 
         var current_track = get_current_track_info ();
 
-        GLib.GenericArray<YaMAPI.Track> shuffled_queue = new GLib.GenericArray<YaMAPI.Track> ();
+        GLib.GenericArray<Tape.YaMAPITrack> shuffled_queue = new GLib.GenericArray<Tape.YaMAPITrack> ();
 
         foreach (var track in queue) shuffled_queue.add (track);
         queue.remove_range (0, queue.length);
@@ -73,7 +76,7 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
         sh_queue_changed ();
     }
 
-    public void add_track_next (YaMAPI.Track track_info) {
+    public void add_track_next (Tape.YaMAPITrack track_info) {
         if (queue.length == 0) {
             add_track_end (track_info);
             return;
@@ -92,7 +95,7 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
         sh_queue_changed ();
     }
 
-    public void remove_track (YaMAPI.Track track_info) {
+    public void remove_track (Tape.YaMAPITrack track_info) {
         int track_pos = index_of_track (queue, track_info);
 
         if (track_pos == -1) {
@@ -115,14 +118,14 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
         sh_queue_changed ();
     }
 
-    public void add_track_end (YaMAPI.Track track_info) {
+    public void add_track_end (Tape.YaMAPITrack track_info) {
         queue.add (track_info);
         original_queue.add (track_info);
 
         sh_queue_changed ();
     }
 
-    public void add_many_end (GLib.GenericArray<YaMAPI.Track> track_list) {
+    public void add_many_end (GLib.GenericArray<Tape.YaMAPITrack> track_list) {
         foreach (var track in track_list) {
             queue.add (track);
             original_queue.add (track);

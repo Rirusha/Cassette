@@ -22,7 +22,7 @@ using Gee;
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Wave : Deser.DataObject {
+public class Tape.YaMAPIRotorWave : Deser.DataObject {
 
     /**
      *

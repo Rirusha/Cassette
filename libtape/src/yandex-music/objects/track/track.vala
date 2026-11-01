@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Track : Deser.DataObject, HasCover {
+public class Tape.YaMAPITrack : Deser.DataObject, YaMAPIHasCover {
 
     public bool is_explicit {
         get {
@@ -51,20 +51,20 @@ public class Tape.YaMAPI.Track : Deser.DataObject, HasCover {
         }
     }
 
-    public TrackType track_type {
+    public YaMAPITrackType track_type {
         get {
             switch (type_) {
                 case "audiobook":
-                    return TrackType.AUDIOBOOK;
+                    return YaMAPITrackType.AUDIOBOOK;
 
                 case "podcast-episode":
-                    return TrackType.PODCAST;
+                    return YaMAPITrackType.PODCAST;
 
                 case "local":
-                    return TrackType.LOCAL;
+                    return YaMAPITrackType.LOCAL;
 
                 default:
-                    return TrackType.MUSIC;
+                    return YaMAPITrackType.MUSIC;
             }
         }
     }
@@ -84,9 +84,9 @@ public class Tape.YaMAPI.Track : Deser.DataObject, HasCover {
 
     public bool available { get; set; }
 
-    public GLib.GenericArray<Artist> artists { get; set; default = new GLib.GenericArray<Artist> (); }
+    public GLib.GenericArray<YaMAPIArtist> artists { get; set; default = new GLib.GenericArray<YaMAPIArtist> (); }
 
-    public GLib.GenericArray<Album> albums { get; set; default = new GLib.GenericArray<Album> (); }
+    public GLib.GenericArray<YaMAPIAlbum> albums { get; set; default = new GLib.GenericArray<YaMAPIAlbum> (); }
 
     public bool available_for_premium_users { get; set; }
 
@@ -94,13 +94,13 @@ public class Tape.YaMAPI.Track : Deser.DataObject, HasCover {
 
     public string? cover_uri { get; set; }
 
-    public Label major { get; set; }
+    public YaMAPILabel major { get; set; }
 
     public int64 duration_ms { get; set; }
 
-    public Track? substituted { get; set; }
+    public YaMAPITrack? substituted { get; set; }
 
-    public MetaData? meta_data { get; set; }
+    public YaMAPIMetaData? meta_data { get; set; }
 
     [Description (nick = "type")]
     public string? type_ { get; set; }
@@ -117,7 +117,7 @@ public class Tape.YaMAPI.Track : Deser.DataObject, HasCover {
 
     public GLib.GenericArray<string> available_for_options { get; set; default = new GLib.GenericArray<string> (); }
 
-    public LyricsInfo lyrics_info { get; set; }
+    public YaMAPILyricsInfo lyrics_info { get; set; }
 
     public virtual GLib.GenericArray<string> get_cover_items_by_size (int size) {
         var array = new GLib.GenericArray<string> ();
@@ -148,8 +148,8 @@ public class Tape.YaMAPI.Track : Deser.DataObject, HasCover {
     }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "artists") return Deser.create_codec_for_array<Artist> ();
-        if (property.name == "albums") return Deser.create_codec_for_array<Album> ();
+        if (property.name == "artists") return Deser.create_codec_for_array<YaMAPIArtist> ();
+        if (property.name == "albums") return Deser.create_codec_for_array<YaMAPIAlbum> ();
         if (property.name == "available-for-options") return Deser.create_codec_for_array<string> ();
         return base.get_property_codec (property);
     }

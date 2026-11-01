@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Tape.YaMAPI.Ratings : Deser.DataObject {
+public class Tape.YaMAPIRatings : Deser.DataObject {
 
     public int month { get; set; }
 

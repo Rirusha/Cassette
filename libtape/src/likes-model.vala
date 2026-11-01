@@ -59,7 +59,7 @@ internal sealed class Tape.LikesModels : Object {
         }
     }
 
-    public void full_update (YaMAPI.Library.AllIds ids) {
+    public void full_update (Tape.YaMAPILibraryAllIds ids) {
         _liked_tracks.set_iterator (filter_and_map (ids.default_library, 1));
         _liked_playlists.set_iterator (filter_and_map (ids.playlists, 1));
         _liked_albums.set_iterator (filter_and_map (ids.albums, 1));

@@ -63,51 +63,6 @@ namespace Tape.YaMAPI.Rotor {
 
 namespace Tape.YaMAPI {
 
-    public enum PlaylistVisible {
-
-        PUBLIC,
-        PRIVATE;
-
-        public static PlaylistVisible parse (string str) {
-            switch (str) {
-                case "public":
-                    return PlaylistVisible.PUBLIC;
-
-                case "private":
-                    return PlaylistVisible.PRIVATE;
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-
-        public string to_string () {
-            switch (this) {
-                case PUBLIC:
-                    return "public";
-
-                case PRIVATE:
-                    return "private";
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
-    public enum TrackType {
-        MUSIC,
-        AUDIOBOOK,
-        PODCAST,
-        LOCAL,
-    }
-
-    public enum AuthType {
-        TOKEN,
-        COOKIES_DB,
-        COOKIES_TEXT,
-    }
-
     public const string API_FROM = "unofficial-client-own";
 
     /**
@@ -115,12 +70,12 @@ namespace Tape.YaMAPI {
      *
      * @param yam_obj   object with id
      */
-    public static string get_context_type (HasID yam_obj) {
-        if (yam_obj is Playlist) {
+    public static string get_context_type (YaMAPIHasID yam_obj) {
+        if (yam_obj is YaMAPIPlaylist) {
             return "playlist";
-        } else if (yam_obj is Album) {
+        } else if (yam_obj is YaMAPIAlbum) {
             return "album";
-        } else if (yam_obj is Artist) {
+        } else if (yam_obj is YaMAPIArtist) {
             return "artist";
         } else if (yam_obj is int) {
             return "search";
@@ -134,13 +89,13 @@ namespace Tape.YaMAPI {
      *
      * @param yam_obj   object with id
      */
-    public static string? get_context_description (HasID yam_obj) {
-        if (yam_obj is Playlist) {
-            return ((Playlist) yam_obj).title;
-        } else if (yam_obj is Album) {
-            return ((Album) yam_obj).title;
-        } else if (yam_obj is Artist) {
-            return ((Artist) yam_obj).name;
+    public static string? get_context_description (YaMAPIHasID yam_obj) {
+        if (yam_obj is YaMAPIPlaylist) {
+            return ((YaMAPIPlaylist) yam_obj).title;
+        } else if (yam_obj is YaMAPIAlbum) {
+            return ((YaMAPIAlbum) yam_obj).title;
+        } else if (yam_obj is YaMAPIArtist) {
+            return ((YaMAPIArtist) yam_obj).name;
         } else {
             return null;
         }
@@ -185,4 +140,49 @@ namespace Tape.YaMAPI {
 
         return locale;
     }
+}
+
+public enum Tape.YaMAPIPlaylistVisible {
+
+    PUBLIC,
+    PRIVATE;
+
+    public static YaMAPIPlaylistVisible parse (string str) {
+        switch (str) {
+            case "public":
+                return YaMAPIPlaylistVisible.PUBLIC;
+
+            case "private":
+                return YaMAPIPlaylistVisible.PRIVATE;
+
+            default:
+                assert_not_reached ();
+        }
+    }
+
+    public string to_string () {
+        switch (this) {
+            case PUBLIC:
+                return "public";
+
+            case PRIVATE:
+                return "private";
+
+            default:
+                assert_not_reached ();
+        }
+    }
+}
+
+public enum Tape.YaMAPITrackType {
+    MUSIC,
+    AUDIOBOOK,
+    PODCAST,
+    LOCAL,
+}
+
+public enum Tape.YaMAPIAuthType {
+    TOKEN,
+    COOKIES_DB,
+    COOKIES_TEXT,
 }

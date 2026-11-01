@@ -21,18 +21,18 @@ using Tape.YaMAPI.Rotor;
 using Session;
 using Deser;
 
-public sealed class Tape.YaMAPI.Client : Object {
+public sealed class Tape.YaMAPIClient : Object {
 
     const string USER_AGENT = "libtape";
     const string YAM_BASE_URL = "https://api.music.yandex.net";
 
     public Session.Session session { private get; construct; }
 
-    public AuthType auth_type { get; construct; }
+    public YaMAPIAuthType auth_type { get; construct; }
 
     public string token { internal get; private set construct; default = ""; }
 
-    public Account.About? me { get; private set; default = null; }
+    public Tape.YaMAPIAccountAbout? me { get; private set; default = null; }
 
     public string? cookies_path { get; construct; default = null; }
 
@@ -44,7 +44,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         }
     }
 
-    Client () {}
+    YaMAPIClient () {}
 
     [NoReturn]
     void handle_error (GLib.Error e) throws TapeError, BadStatusCodeError {
@@ -57,18 +57,18 @@ public sealed class Tape.YaMAPI.Client : Object {
         throw new TapeError.INTERNAL (e.message);
     }
 
-    public Client.with_token (string token) {
+    public YaMAPIClient.with_token (string token) {
         Object (
             session: new Session.Session () {
                 user_agent = USER_AGENT
             },
             token: token,
-            auth_type: AuthType.TOKEN
+            auth_type: YaMAPIAuthType.TOKEN
         );
     }
 
-    public Client.with_cookie (string cookie_path, CookieJarType cookie_jar_type) {
-        AuthType auth_type;
+    public YaMAPIClient.with_cookie (string cookie_path, CookieJarType cookie_jar_type) {
+        YaMAPIAuthType auth_type;
         switch (cookie_jar_type) {
             case DB:
                 auth_type = COOKIES_DB;
@@ -238,7 +238,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     /**
      * Получение информации о текущем пользователе
      */
-    public async Account.About account_about (
+    public async Tape.YaMAPIAccountAbout account_about (
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
@@ -256,9 +256,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<Account.About> (
+                new Tape.ResultCodec<Tape.YaMAPIAccountAbout> (
 
-                    new Deser.ObjectCodec<Account.About> ()
+                    new Deser.ObjectCodec<Tape.YaMAPIAccountAbout> ()
 
                 )
 
@@ -283,7 +283,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     /**
      *
      */
-    public async Playlist playlist (
+    public async YaMAPIPlaylist playlist (
         string playlist_uuid,
         bool resume_stream,
         bool rich_tracks,
@@ -305,9 +305,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<Playlist> (
+                new Tape.ResultCodec<YaMAPIPlaylist> (
 
-                    new Deser.ObjectCodec<Playlist> ()
+                    new Deser.ObjectCodec<YaMAPIPlaylist> ()
 
                 )
 
@@ -434,7 +434,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
-        var real_uid = fix_uid (uid);
+        fix_uid (uid);
     }
 
     /**
@@ -445,13 +445,13 @@ public sealed class Tape.YaMAPI.Client : Object {
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
-        var real_uid = fix_uid (uid);
+        fix_uid (uid);
     }
 
     /**
      *
      */
-    public async GLib.GenericArray<Playlist> users_playlists_list (
+    public async GLib.GenericArray<YaMAPIPlaylist> users_playlists_list (
         string? uid = null,
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
@@ -472,9 +472,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<GLib.GenericArray<Playlist>> (
+                new Tape.ResultCodec<GLib.GenericArray<YaMAPIPlaylist>> (
 
-                    Deser.create_codec_for_array<Playlist> ()
+                    Deser.create_codec_for_array<YaMAPIPlaylist> ()
 
                 )
 
@@ -487,7 +487,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     /**
      *
      */
-    public async Playlist users_playlists_playlist (
+    public async YaMAPIPlaylist users_playlists_playlist (
         string playlist_kind,
         bool rich_tracks,
         string? uid = null,
@@ -510,9 +510,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<Playlist> (
+                new Tape.ResultCodec<YaMAPIPlaylist> (
 
-                    new Deser.ObjectCodec<Playlist> ()
+                    new Deser.ObjectCodec<YaMAPIPlaylist> ()
 
                 )
 
@@ -531,7 +531,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
-        var real_uid = fix_uid (uid);
+        fix_uid (uid);
     }
 
     public async bool users_playlists_delete (
@@ -546,7 +546,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         request.presets = { "default" };
 
         try {
-            Bytes bytes = yield session.send_and_read_async (
+            yield session.send_and_read_async (
                 request,
                 priority,
                 cancellable
@@ -562,7 +562,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         }
     }
 
-    public async Playlist users_playlists_change (
+    public async YaMAPIPlaylist users_playlists_change (
         string? uid,
         string kind,
         string diff,
@@ -599,9 +599,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<Playlist> (
+                new Tape.ResultCodec<YaMAPIPlaylist> (
 
-                    new Deser.ObjectCodec<Playlist> ()
+                    new Deser.ObjectCodec<YaMAPIPlaylist> ()
 
                 )
 
@@ -611,10 +611,10 @@ public sealed class Tape.YaMAPI.Client : Object {
         }
     }
 
-    public async Playlist users_playlists_create (
+    public async YaMAPIPlaylist users_playlists_create (
         string? uid,
         string title,
-        PlaylistVisible visibility = PlaylistVisible.PRIVATE,
+        YaMAPIPlaylistVisible visibility = YaMAPIPlaylistVisible.PRIVATE,
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
@@ -646,9 +646,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<Playlist> (
+                new Tape.ResultCodec<YaMAPIPlaylist> (
 
-                    new Deser.ObjectCodec<Playlist> ()
+                    new Deser.ObjectCodec<YaMAPIPlaylist> ()
 
                 )
 
@@ -658,7 +658,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         }
     }
 
-    public async Playlist users_playlists_name (
+    public async YaMAPIPlaylist users_playlists_name (
         string? uid,
         string kind,
         string new_name,
@@ -692,9 +692,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<Playlist> (
+                new Tape.ResultCodec<YaMAPIPlaylist> (
 
-                    new Deser.ObjectCodec<Playlist> ()
+                    new Deser.ObjectCodec<YaMAPIPlaylist> ()
 
                 )
 
@@ -704,7 +704,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         }
     }
 
-    public async PlaylistRecommendations users_playlists_recommendations (
+    public async YaMAPIPlaylistRecommendations users_playlists_recommendations (
         string? uid,
         string kind,
         int priority = Priority.DEFAULT,
@@ -726,9 +726,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<PlaylistRecommendations> (
+                new Tape.ResultCodec<YaMAPIPlaylistRecommendations> (
 
-                    new Deser.ObjectCodec<PlaylistRecommendations> ()
+                    new Deser.ObjectCodec<YaMAPIPlaylistRecommendations> ()
 
                 )
 
@@ -738,7 +738,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         }
     }
 
-    //  public async Playlist users_playlists_visibility (
+    //  public async YaMAPIPlaylist users_playlists_visibility (
     //      string? uid,
     //      string kind,
     //      string visibility,
@@ -765,10 +765,10 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (Playlist) yield jsoner.deserialize_object_async (typeof (Playlist));
+    //      return (YaMAPIPlaylist) yield jsoner.deserialize_object_async (typeof (YaMAPIPlaylist));
     //  }
 
-    //  public async Playlist users_palylists_cover_upload (
+    //  public async YaMAPIPlaylist users_palylists_cover_upload (
     //      string? uid,
     //      string kind,
     //      uint8[] new_cover,
@@ -802,10 +802,10 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (Playlist) yield jsoner.deserialize_object_async (typeof (Playlist));
+    //      return (YaMAPIPlaylist) yield jsoner.deserialize_object_async (typeof (YaMAPIPlaylist));
     //  }
 
-    //  public async Playlist users_palylists_cover_clear (
+    //  public async YaMAPIPlaylist users_palylists_cover_clear (
     //      string? uid,
     //      string kind,
     //      uint8[] new_cover,
@@ -826,7 +826,7 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (Playlist) yield jsoner.deserialize_object_async (typeof (Playlist));
+    //      return (YaMAPIPlaylist) yield jsoner.deserialize_object_async (typeof (YaMAPIPlaylist));
     //  }
 
     //  /**
@@ -854,7 +854,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //  /**
     //   *
     //   */
-    //  public async GLib.GenericArray<LikedPlaylist> users_likes_playlists (
+    //  public async GLib.GenericArray<YaMAPILikedPlaylist> users_likes_playlists (
     //      string? uid = null,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
@@ -871,7 +871,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      var playlist_array = new GLib.GenericArray<LikedPlaylist> ();
+    //      var playlist_array = new GLib.GenericArray<YaMAPILikedPlaylist> ();
     //      yield jsoner.deserialize_array_into_async (playlist_array);
     //      return playlist_array;
     //  }
@@ -936,7 +936,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      return 0;
     //  }
 
-    //  public async GLib.GenericArray<TrackShort> users_dislikes_tracks (
+    //  public async GLib.GenericArray<YaMAPITrackShort> users_dislikes_tracks (
     //      string? uid,
     //      int if_modified_since_revision = 0,
     //      int priority = Priority.DEFAULT,
@@ -957,7 +957,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result", "library", "tracks" });
 
-    //      var our_array = new GLib.GenericArray<TrackShort> ();
+    //      var our_array = new GLib.GenericArray<YaMAPITrackShort> ();
     //      yield jsoner.deserialize_array_into_async (our_array);
 
     //      return our_array;
@@ -1324,7 +1324,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     /**
      * Получение данных о библиотеке пользователя
      */
-    public async Library.AllIds library_all_ids (
+    public async Tape.YaMAPILibraryAllIds library_all_ids (
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
@@ -1342,9 +1342,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<Library.AllIds> (
+                new Tape.ResultCodec<Tape.YaMAPILibraryAllIds> (
 
-                    new Deser.ObjectCodec<Library.AllIds> ()
+                    new Deser.ObjectCodec<Tape.YaMAPILibraryAllIds> ()
 
                 )
 
@@ -1443,8 +1443,8 @@ public sealed class Tape.YaMAPI.Client : Object {
     //  /**
     //   *
     //   */
-    //  public async StationTracks rotor_session_new (
-    //      SessionNew session_new,
+    //  public async YaMAPIRotorStationTracks rotor_session_new (
+    //      YaMAPIRotorSessionNew session_new,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1465,15 +1465,15 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (StationTracks) yield jsoner.deserialize_object_async (typeof (StationTracks));
+    //      return (YaMAPIRotorStationTracks) yield jsoner.deserialize_object_async (typeof (YaMAPIRotorStationTracks));
     //  }
 
     //  /**
     //   *
     //   */
-    //  public async StationTracks rotor_session_tracks (
+    //  public async YaMAPIRotorStationTracks rotor_session_tracks (
     //      string radio_session_id,
-    //      Rotor.Queue queue,
+    //      Tape.YaMAPIRotorQueue queue,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1494,7 +1494,7 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (StationTracks) yield jsoner.deserialize_object_async (typeof (StationTracks));
+    //      return (YaMAPIRotorStationTracks) yield jsoner.deserialize_object_async (typeof (YaMAPIRotorStationTracks));
     //  }
 
     //  /**
@@ -1502,7 +1502,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //   */
     //  public async void rotor_session_feedback (
     //      string radio_session_id,
-    //      Rotor.Feedback feedback,
+    //      Tape.YaMAPIRotorFeedback feedback,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1525,9 +1525,9 @@ public sealed class Tape.YaMAPI.Client : Object {
     //  /**
     //   * Метод для получения всех возможных настроек волны
     //   *
-    //   * @return  объект `YaMAPI.Rotor.Settings`, содержащий все настройки
+    //   * @return  объект `Tape.YaMAPIRotorSettings`, содержащий все настройки
     //   */
-    //  public async Rotor.Settings rotor_wave_settings (
+    //  public async Tape.YaMAPIRotorSettings rotor_wave_settings (
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1544,13 +1544,13 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (Rotor.Settings) yield jsoner.deserialize_object_async (typeof (Rotor.Settings));
+    //      return (Tape.YaMAPIRotorSettings) yield jsoner.deserialize_object_async (typeof (Tape.YaMAPIRotorSettings));
     //  }
 
     //  /**
     //   * Получение последней прослушиваемой волны текущим пользователем
     //   */
-    //  public async Rotor.Wave rotor_wave_last (
+    //  public async Tape.YaMAPIRotorWave rotor_wave_last (
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1567,7 +1567,7 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (Wave) yield jsoner.deserialize_object_async (typeof (Wave));
+    //      return (YaMAPIRotorWave) yield jsoner.deserialize_object_async (typeof (YaMAPIRotorWave));
     //  }
 
     //  /**
@@ -1598,7 +1598,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      return jsoner.deserialize_value ().get_string () == "ok";
     //  }
 
-    //  public async Dashboard rotor_stations_dashboard (
+    //  public async YaMAPIRotorDashboard rotor_stations_dashboard (
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1614,10 +1614,10 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (Dashboard) yield jsoner.deserialize_object_async (typeof (Dashboard));
+    //      return (YaMAPIRotorDashboard) yield jsoner.deserialize_object_async (typeof (YaMAPIRotorDashboard));
     //  }
 
-    //  public async GLib.GenericArray<Station> rotor_stations_list (
+    //  public async GLib.GenericArray<YaMAPIRotorStation> rotor_stations_list (
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1633,7 +1633,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      var sl_array = new GLib.GenericArray<Station> ();
+    //      var sl_array = new GLib.GenericArray<YaMAPIRotorStation> ();
     //      yield jsoner.deserialize_array_into_async (sl_array);
 
     //      return sl_array;
@@ -1669,18 +1669,18 @@ public sealed class Tape.YaMAPI.Client : Object {
     //   * @param track_id              id трека
     //   * @param album_id              id вльбома, может быть `null`
     //   * @param from
-    //   * @param context               контекст воспроизведения (То же что и `Queue.context.type`)
-    //   * @param context_item          id контекста, (Тоже же, что и `Queue.context.id`)
+    //   * @param context               контекст воспроизведения (То же что и `YaMAPIRotorQueue.context.type`)
+    //   * @param context_item          id контекста, (Тоже же, что и `YaMAPIRotorQueue.context.id`)
     //   * @param radio_session_id      id сессии волны
     //   *
     //   * @return                      успех выполнения
     //   */
     //  public async bool plays (
-    //      Play[] play_objs,
+    //      YaMAPIPlay[] play_objs,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
-    //      var plays_obj = new Plays ();
+    //      var plays_obj = new YaMAPIPlays ();
     //      plays_obj.plays.add_all_array (play_objs);
 
     //      PostContent post_content = {
@@ -1806,7 +1806,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      assert_not_reached ();
     //  }
 
-    public async GLib.GenericArray<Track> tracks (
+    public async GLib.GenericArray<YaMAPITrack> tracks (
         string[] id_list,
         bool with_positions = false,
         int priority = Priority.DEFAULT,
@@ -1837,9 +1837,9 @@ public sealed class Tape.YaMAPI.Client : Object {
 
             return yield jsoner.deserialize_async (
 
-                new Tape.ResultCodec<GLib.GenericArray<Track>> (
+                new Tape.ResultCodec<GLib.GenericArray<YaMAPITrack>> (
 
-                    Deser.create_codec_for_array<Track> ()
+                    Deser.create_codec_for_array<YaMAPITrack> ()
 
                 )
 
@@ -1863,7 +1863,7 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      int bitrate = hq ? 0 : 500;
     //      string dl_info_uri = "";
-    //      foreach (DownloadInfo download_info in di_array) {
+    //      foreach (YaMAPIDownloadInfo download_info in di_array) {
     //          if (hq == (bitrate < download_info.bitrate_in_kbps)) {
     //              bitrate = download_info.bitrate_in_kbps;
     //              dl_info_uri = download_info.download_info_url;
@@ -1877,7 +1877,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //  }
 
-    //  public async GLib.GenericArray<DownloadInfo> tracks_download_info (
+    //  public async GLib.GenericArray<YaMAPIDownloadInfo> tracks_download_info (
     //      string track_id,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
@@ -1892,7 +1892,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      var di_array = new GLib.GenericArray<DownloadInfo> ();
+    //      var di_array = new GLib.GenericArray<YaMAPIDownloadInfo> ();
     //      yield jsoner.deserialize_array_into_async (di_array);
 
     //      return di_array;
@@ -1934,7 +1934,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      return @"https://$host/get-mp3/$sign/$ts/$path";
     //  }
 
-    //  public async Lyrics track_lyrics (
+    //  public async YaMAPILyrics track_lyrics (
     //      string track_id,
     //      bool is_sync,
     //      int priority = Priority.DEFAULT,
@@ -1965,13 +1965,13 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      var lyrics = (Lyrics) yield jsoner.deserialize_object_async (typeof (Lyrics));
+    //      var lyrics = (YaMAPILyrics) yield jsoner.deserialize_object_async (typeof (YaMAPILyrics));
     //      lyrics.is_sync = is_sync;
 
     //      return lyrics;
     //  }
 
-    //  public async SimilarTracks tracks_similar (
+    //  public async YaMAPISimilarTracks tracks_similar (
     //      string track_id,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
@@ -1986,6 +1986,6 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      return (SimilarTracks) yield jsoner.deserialize_object_async (typeof (SimilarTracks));
+    //      return (YaMAPISimilarTracks) yield jsoner.deserialize_object_async (typeof (YaMAPISimilarTracks));
     //  }
 }

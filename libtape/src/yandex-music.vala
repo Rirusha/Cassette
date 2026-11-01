@@ -26,7 +26,7 @@ using Tape.YaMAPI;
  */
 public sealed class Tape.YandexMusic : Object {
 
-    public YaMAPI.Client client { get; construct; }
+    public Tape.YaMAPIClient client { get; construct; }
     internal LikesModels likes_handler { get; default = new LikesModels (); }
 
     public signal void track_likes_start_change (string track_id);
@@ -35,7 +35,7 @@ public sealed class Tape.YandexMusic : Object {
     public signal void track_dislikes_start_change (string track_id);
     public signal void track_dislikes_end_change (string track_id, bool is_disliked);
 
-    public signal void playlist_changed (YaMAPI.Playlist new_playlist);
+    public signal void playlist_changed (Tape.YaMAPIPlaylist new_playlist);
     public signal void playlists_updated ();
     public signal void playlist_start_delete (string oid);
     public signal void playlist_stop_delete (string oid);
@@ -46,8 +46,8 @@ public sealed class Tape.YandexMusic : Object {
         }
     }
 
-    Account.About? _me = null;
-    public Account.About me {
+    Tape.YaMAPIAccountAbout? _me = null;
+    public Tape.YaMAPIAccountAbout me {
         owned get {
             if (_me != null) {
                 return _me;
@@ -57,11 +57,14 @@ public sealed class Tape.YandexMusic : Object {
             if (_me == null) {
                 string my_uid = root.cm.storager.db.get_additional_data ("me");
                 if (my_uid != null) {
-                    _me = (Account.About) root.cm.storager.load_object_sync (typeof (Account.About), my_uid);
+                    _me = (Tape.YaMAPIAccountAbout) root.cm.storager.load_object_sync (
+                        typeof (Tape.YaMAPIAccountAbout),
+                        my_uid
+                    );
                 }
 
                 if (_me == null) {
-                    return new Account.About ();
+                    return new Tape.YaMAPIAccountAbout ();
                 }
             }
 
@@ -75,12 +78,12 @@ public sealed class Tape.YandexMusic : Object {
     ) {
         assert ((cookies_path != null || token != null) && (cookies_path == null || token == null));
 
-        YaMAPI.Client c;
+        Tape.YaMAPIClient c;
 
         if (cookies_path != null) {
-            c = new YaMAPI.Client.with_cookie (cookies_path, Session.CookieJarType.DB);
+            c = new Tape.YaMAPIClient.with_cookie (cookies_path, Session.CookieJarType.DB);
         } else if (token != null) {
-            c = new YaMAPI.Client.with_token (token);
+            c = new Tape.YaMAPIClient.with_token (token);
         } else {
             assert_not_reached ();
         }
@@ -116,11 +119,11 @@ public sealed class Tape.YandexMusic : Object {
     }
 
     // TODO: remove this
-    //  public async Playlist? get_playlist_info_old (
+    //  public async YaMAPIPlaylist? get_playlist_info_old (
     //      string? uid = null,
     //      string kind = "3"
     //  ) throws BadStatusCodeError, CantUseError {
-    //      Playlist? playlist_info = null;
+    //      YaMAPIPlaylist? playlist_info = null;
 
     //      try {
     //          playlist_info = yield client.users_playlists_playlist (kind, true, uid);
@@ -159,8 +162,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return playlist_info;
     //  }
 
-    //  public async Playlist? get_playlist_info (string playlist_uuid) throws BadStatusCodeError, CantUseError {
-    //      Playlist? playlist_info = null;
+    //  public async YaMAPIPlaylist? get_playlist_info (string playlist_uuid) throws BadStatusCodeError, CantUseError {
+    //      YaMAPIPlaylist? playlist_info = null;
 
     //      try {
     //          playlist_info = yield client.playlist (playlist_uuid, false, true);
@@ -199,7 +202,7 @@ public sealed class Tape.YandexMusic : Object {
     //      return playlist_info;
     //  }
 
-    //  public async void send_play (YaMAPI.Play[] play_objs) throws CantUseError {
+    //  public async void send_play (Tape.YaMAPIPlay[] play_objs) throws CantUseError {
 
     //      try {
     //          yield client.plays (play_objs);
@@ -376,8 +379,8 @@ public sealed class Tape.YandexMusic : Object {
     //      }
     //  }
 
-    //  public async GLib.GenericArray<Playlist>? get_playlist_list (string? uid = null) throws CantUseError {
-    //      GLib.GenericArray<Playlist>? playlist_list = null;
+    //  public async GLib.GenericArray<YaMAPIPlaylist>? get_playlist_list (string? uid = null) throws CantUseError {
+    //      GLib.GenericArray<YaMAPIPlaylist>? playlist_list = null;
 
     //      try {
     //          playlist_list = yield client.users_playlists_list (uid);
@@ -397,8 +400,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return playlist_list;
     //  }
 
-    //  public async GLib.GenericArray<LikedPlaylist>? get_likes_playlist_list (string? uid = null) throws CantUseError {
-    //      GLib.GenericArray<LikedPlaylist>? playlist_list = null;
+    //  public async GLib.GenericArray<YaMAPILikedPlaylist>? get_likes_playlist_list (string? uid = null) throws CantUseError {
+    //      GLib.GenericArray<YaMAPILikedPlaylist>? playlist_list = null;
 
     //      try {
     //          playlist_list = yield client.users_likes_playlists (uid);
@@ -411,8 +414,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return playlist_list;
     //  }
 
-    //  public async YaMAPI.SimilarTracks? get_track_similar (string track_id) throws CantUseError {
-    //      YaMAPI.SimilarTracks? similar_tracks = null;
+    //  public async Tape.YaMAPISimilarTracks? get_track_similar (string track_id) throws CantUseError {
+    //      Tape.YaMAPISimilarTracks? similar_tracks = null;
 
     //      try {
     //          similar_tracks = yield client.tracks_similar (track_id);
@@ -423,8 +426,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return similar_tracks;
     //  }
 
-    //  public async YaMAPI.Lyrics? get_lyrics (string track_id, bool is_sync) throws CantUseError {
-    //      YaMAPI.Lyrics? lyrics = null;
+    //  public async Tape.YaMAPILyrics? get_lyrics (string track_id, bool is_sync) throws CantUseError {
+    //      Tape.YaMAPILyrics? lyrics = null;
 
     //      try {
     //          lyrics = yield client.track_lyrics (track_id, is_sync);
@@ -475,7 +478,7 @@ public sealed class Tape.YandexMusic : Object {
     //      return content;
     //  }
 
-    //  public async Playlist? add_track_to_playlist (Track track_info, Playlist playlist_info) throws CantUseError {
+    //  public async YaMAPIPlaylist? add_track_to_playlist (YaMAPITrack track_info, YaMAPIPlaylist playlist_info) throws CantUseError {
     //      return yield add_tracks_to_playlist ({ track_info }, playlist_info);
     //  }
 
@@ -484,13 +487,13 @@ public sealed class Tape.YandexMusic : Object {
     //  // storager.settings.get_boolean ("add-tracks-to-start") ? 0 : playlist_info.track_count,
     //  // playlist_info.revision
 
-    //  public async Playlist? add_tracks_to_playlist (
-    //      Track[] tracks,
-    //      Playlist playlist_info
+    //  public async YaMAPIPlaylist? add_tracks_to_playlist (
+    //      YaMAPITrack[] tracks,
+    //      YaMAPIPlaylist playlist_info
     //  ) throws CantUseError {
-    //      Playlist? new_playlist = null;
+    //      YaMAPIPlaylist? new_playlist = null;
 
-    //      var diff = new DifferenceBuilder ();
+    //      var diff = new YaMAPIDifferenceBuilder ();
 
     //      diff.add_insert (
     //          root.settings.add_tracks_to_start ? 0 : playlist_info.track_count,
@@ -512,14 +515,14 @@ public sealed class Tape.YandexMusic : Object {
     //      return new_playlist;
     //  }
 
-    //  public async Playlist? remove_tracks_from_playlist (
+    //  public async YaMAPIPlaylist? remove_tracks_from_playlist (
     //      string kind,
     //      int position,
     //      int revision
     //  ) throws CantUseError {
-    //      Playlist? new_playlist = null;
+    //      YaMAPIPlaylist? new_playlist = null;
 
-    //      var diff = new DifferenceBuilder ();
+    //      var diff = new YaMAPIDifferenceBuilder ();
 
     //      diff.add_delete (position, position + 1);
 
@@ -534,11 +537,11 @@ public sealed class Tape.YandexMusic : Object {
     //      return new_playlist;
     //  }
 
-    //  public async Playlist? change_playlist_visibility (
+    //  public async YaMAPIPlaylist? change_playlist_visibility (
     //      string kind,
     //      bool is_public
     //  ) throws CantUseError {
-    //      Playlist? new_playlist = null;
+    //      YaMAPIPlaylist? new_playlist = null;
 
     //      try {
     //          new_playlist = yield client.users_playlists_visibility (null, kind, is_public ? "public" : "private");
@@ -550,8 +553,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return new_playlist;
     //  }
 
-    //  public async Playlist? create_playlist () throws CantUseError {
-    //      Playlist? new_playlist = null;
+    //  public async YaMAPIPlaylist? create_playlist () throws CantUseError {
+    //      YaMAPIPlaylist? new_playlist = null;
 
     //      try {
     //          // Translators: name of new created playlist
@@ -582,11 +585,11 @@ public sealed class Tape.YandexMusic : Object {
     //      return is_success;
     //  }
 
-    //  public async Playlist? change_playlist_name (
+    //  public async YaMAPIPlaylist? change_playlist_name (
     //      string kind,
     //      string new_name
     //  ) throws CantUseError {
-    //      Playlist? new_playlist = null;
+    //      YaMAPIPlaylist? new_playlist = null;
 
     //      try {
     //          new_playlist = yield client.users_playlists_name (null, kind, new_name);
@@ -598,8 +601,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return new_playlist;
     //  }
 
-    //  async GLib.GenericArray<YaMAPI.TrackShort>? get_disliked_tracks_short () throws CantUseError {
-    //      GLib.GenericArray<YaMAPI.TrackShort>? trackshort_list = null;
+    //  async GLib.GenericArray<Tape.YaMAPITrackShort>? get_disliked_tracks_short () throws CantUseError {
+    //      GLib.GenericArray<Tape.YaMAPITrackShort>? trackshort_list = null;
 
     //      try {
     //          trackshort_list = yield client.users_dislikes_tracks (null);
@@ -612,8 +615,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return trackshort_list;
     //  }
 
-    //  public async YaMAPI.TrackHeap? get_disliked_tracks () throws CantUseError {
-    //      YaMAPI.TrackHeap? track_list = null;
+    //  public async Tape.YaMAPITrackHeap? get_disliked_tracks () throws CantUseError {
+    //      Tape.YaMAPITrackHeap? track_list = null;
 
     //      try {
     //          var trackshort_list = yield get_disliked_tracks_short ();
@@ -623,7 +626,7 @@ public sealed class Tape.YandexMusic : Object {
     //              track_ids[i] = trackshort_list[i].id;
     //          }
     //          var tracks = yield client.tracks (track_ids);
-    //          track_list = new YaMAPI.TrackHeap ();
+    //          track_list = new Tape.YaMAPITrackHeap ();
     //          track_list.tracks = tracks;
     //      } catch (Error e) {
     //          postrun_error_ignore_bad_code (e);
@@ -632,11 +635,11 @@ public sealed class Tape.YandexMusic : Object {
     //      return track_list;
     //  }
 
-    //  public async Rotor.StationTracks? start_new_session (string station_id) throws CantUseError {
-    //      Rotor.StationTracks? station_tracks = null;
+    //  public async Tape.YaMAPIRotorStationTracks? start_new_session (string station_id) throws CantUseError {
+    //      Tape.YaMAPIRotorStationTracks? station_tracks = null;
 
     //      try {
-    //          var ses_new = new Rotor.SessionNew ();
+    //          var ses_new = new Tape.YaMAPIRotorSessionNew ();
     //          ses_new.seeds.add (station_id);
 
     //          station_tracks = yield client.rotor_session_new (ses_new);
@@ -656,8 +659,8 @@ public sealed class Tape.YandexMusic : Object {
     //  ) throws CantUseError {
 
     //      try {
-    //          var feedback_obj = new Rotor.Feedback () {
-    //              event = new Rotor.Event () {
+    //          var feedback_obj = new Tape.YaMAPIRotorFeedback () {
+    //              event = new Tape.YaMAPIRotorEvent () {
     //                  type_ = feedback_type,
     //                  track_id = track_id,
     //                  total_played_seconds = total_played_seconds
@@ -674,14 +677,14 @@ public sealed class Tape.YandexMusic : Object {
     //      }
     //  }
 
-    //  public async Rotor.StationTracks? get_session_tracks (
+    //  public async Tape.YaMAPIRotorStationTracks? get_session_tracks (
     //      string radio_session_id,
     //      GLib.GenericArray<string> queue
     //  ) throws CantUseError {
-    //      Rotor.StationTracks? station_tracks = null;
+    //      Tape.YaMAPIRotorStationTracks? station_tracks = null;
 
     //      try {
-    //          var ses_queue = new Rotor.Queue () {
+    //          var ses_queue = new Tape.YaMAPIRotorQueue () {
     //              queue = queue
     //          };
 
@@ -693,8 +696,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return station_tracks;
     //  }
 
-    //  public async YaMAPI.Rotor.Dashboard? get_stations_dashboard () throws CantUseError {
-    //      YaMAPI.Rotor.Dashboard? dashboard = null;
+    //  public async Tape.YaMAPIRotorDashboard? get_stations_dashboard () throws CantUseError {
+    //      Tape.YaMAPIRotorDashboard? dashboard = null;
 
     //      try {
     //          dashboard = yield client.rotor_stations_dashboard ();
@@ -705,8 +708,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return dashboard;
     //  }
 
-    //  public async GLib.GenericArray<YaMAPI.Rotor.Station>? get_all_stations () throws CantUseError {
-    //      GLib.GenericArray<YaMAPI.Rotor.Station>? stations_list = null;
+    //  public async GLib.GenericArray<Tape.YaMAPIRotorStation>? get_all_stations () throws CantUseError {
+    //      GLib.GenericArray<Tape.YaMAPIRotorStation>? stations_list = null;
 
     //      try {
     //          stations_list = yield client.rotor_stations_list ();
@@ -717,8 +720,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return stations_list;
     //  }
 
-    //  public async Rotor.Settings? get_wave_settings () throws CantUseError {
-    //      Rotor.Settings? wave_settings = null;
+    //  public async Tape.YaMAPIRotorSettings? get_wave_settings () throws CantUseError {
+    //      Tape.YaMAPIRotorSettings? wave_settings = null;
 
     //      try {
     //          wave_settings = yield client.rotor_wave_settings ();
@@ -729,8 +732,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return wave_settings;
     //  }
 
-    //  public async Rotor.Wave? get_last_wave () throws CantUseError {
-    //      Rotor.Wave? last_wave = null;
+    //  public async Tape.YaMAPIRotorWave? get_last_wave () throws CantUseError {
+    //      Tape.YaMAPIRotorWave? last_wave = null;
 
     //      try {
     //          last_wave = yield client.rotor_wave_last ();

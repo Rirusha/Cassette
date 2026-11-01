@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Tape.YaMAPI.MetaData : Deser.DataObject {
+public class Tape.YaMAPIMetaData : Deser.DataObject {
 
     public string? album { get; set; }
 

@@ -18,11 +18,11 @@
  */
 
 /**
- * Класс Id станции
+ * Класс YaMAPIRotorId станции
  */
-public class Tape.YaMAPI.Rotor.Feedback : Deser.DataObject {
+public class Tape.YaMAPIRotorFeedback : Deser.DataObject {
 
-    public Event event { get; set; }
+    public YaMAPIRotorEvent event { get; set; }
 
     public string batch_id { get; set; }
 }

@@ -19,14 +19,14 @@
 
 using Gee;
 
-public class Tape.YaMAPI.PlaylistRecommendations : Deser.DataObject {
+public class Tape.YaMAPIPlaylistRecommendations : Deser.DataObject {
 
-    public GLib.GenericArray<Track> tracks { get; set; default = new GLib.GenericArray<Track> (); }
+    public GLib.GenericArray<YaMAPITrack> tracks { get; set; default = new GLib.GenericArray<YaMAPITrack> (); }
 
     public string? batch_id { get; set; }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "tracks") return Deser.create_codec_for_array<Track> ();
+        if (property.name == "tracks") return Deser.create_codec_for_array<YaMAPITrack> ();
         return base.get_property_codec (property);
     }
 }

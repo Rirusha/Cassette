@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
+public class Tape.YaMAPIPlaylist : Deser.DataObject, YaMAPIHasCover, YaMAPIHasID {
 
     public bool is_public {
         get {
@@ -53,17 +53,20 @@ public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
 
     public string? visibility { get; set; }
 
-    public User owner { get; set; }
+    public YaMAPIUser owner { get; set; }
 
-    public Cover cover { get; set; default = new Cover.empty (); }
+    public YaMAPICover cover { get; set; default = new YaMAPICover.empty (); }
 
-    public GLib.GenericArray<TrackShort> tracks { get; set; default = new GLib.GenericArray<TrackShort> (); }
+    public GLib.GenericArray<YaMAPITrackShort> tracks {
+        get; set;
+        default = new GLib.GenericArray<YaMAPITrackShort> ();
+    }
 
-    public MadeFor? made_for { get; set; }
+    public YaMAPIMadeFor? made_for { get; set; }
 
-    public PlayCounter? play_counter { get; set; }
+    public YaMAPIPlayCounter? play_counter { get; set; }
 
-    public PlaylistAbsence? playlist_absence { get; set; }
+    public YaMAPIPlaylistAbsence? playlist_absence { get; set; }
 
     public string? url_part { get; set; }
 
@@ -79,9 +82,15 @@ public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
 
     public int likes_count { get; set; }
 
-    public GLib.GenericArray<Playlist> similar_playlists { get; set; default = new GLib.GenericArray<Playlist> (); }
+    public GLib.GenericArray<YaMAPIPlaylist> similar_playlists {
+        get; set;
+        default = new GLib.GenericArray<YaMAPIPlaylist> ();
+    }
 
-    public GLib.GenericArray<Playlist> last_owner_playlists { get; set; default = new GLib.GenericArray<Playlist> (); }
+    public GLib.GenericArray<YaMAPIPlaylist> last_owner_playlists {
+        get; set;
+        default = new GLib.GenericArray<YaMAPIPlaylist> ();
+    }
 
     public string? generated_playlist_type { get; set; }
 
@@ -90,18 +99,18 @@ public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
     [Description (nick = "type")]
     public string? type_ { get; set; }
 
-    public Playlist.liked () {
+    public YaMAPIPlaylist.liked () {
         Object (
-            cover : new Cover.liked (),
+            cover : new YaMAPICover.liked (),
             title : _("Liked"),
             kind : "3"
         );
     }
 
-    public void filter_by_track_type (TrackType track_type) {
-        var new_track_list = new GLib.GenericArray<TrackShort> ();
+    public void filter_by_track_type (YaMAPITrackType track_type) {
+        var new_track_list = new GLib.GenericArray<YaMAPITrackShort> ();
 
-        foreach (TrackShort track_short in tracks) {
+        foreach (YaMAPITrackShort track_short in tracks) {
             if (track_short.track.track_type == track_type) {
                 new_track_list.add (track_short);
             }
@@ -110,14 +119,14 @@ public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
         tracks = new_track_list;
     }
 
-    public GLib.GenericArray<YaMAPI.Track> get_filtered_track_list (
+    public GLib.GenericArray<Tape.YaMAPITrack> get_filtered_track_list (
         bool with_explicit,
         bool with_child,
         string[] exception_tracks_ids = new string[0]
     ) {
-        var out_track_list = new GLib.GenericArray<Track> ();
+        var out_track_list = new GLib.GenericArray<YaMAPITrack> ();
 
-        foreach (TrackShort track_short in tracks) {
+        foreach (YaMAPITrackShort track_short in tracks) {
             if ((track_short.track.available &&
                 ((!track_short.track.is_explicit || with_explicit) &&
                  (!track_short.track.is_suitable_for_children || with_child))
@@ -130,15 +139,15 @@ public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
         return out_track_list;
     }
 
-    public void set_track_list (GLib.GenericArray<Track> track_list) {
+    public void set_track_list (GLib.GenericArray<YaMAPITrack> track_list) {
         for (int i = 0; i < track_list.length; i++) {
             tracks[i].track = track_list[i];
         }
     }
 
-    public GLib.GenericArray<Track> get_track_list () {
-        var track_list = new GLib.GenericArray<Track> ();
-        foreach (TrackShort track_short in tracks) {
+    public GLib.GenericArray<YaMAPITrack> get_track_list () {
+        var track_list = new GLib.GenericArray<YaMAPITrack> ();
+        foreach (YaMAPITrackShort track_short in tracks) {
             track_list.add (track_short.track);
         }
 
@@ -147,11 +156,11 @@ public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
 
     public GLib.GenericArray<string> get_cover_items_by_size (int size) {
         if (kind == "3") {
-            cover = new Cover.liked ();
+            cover = new YaMAPICover.liked ();
         }
 
         if (cover.uris.length == 0) {
-            cover = new Cover.empty ();
+            cover = new YaMAPICover.empty ();
         }
 
         GLib.GenericArray<string> cover_array = new GLib.GenericArray<string> ();
@@ -164,9 +173,9 @@ public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
     }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "tracks") return Deser.create_codec_for_array<TrackShort> ();
-        if (property.name == "similar-playlists") return Deser.create_codec_for_array<Playlist> ();
-        if (property.name == "last-owner-playlists") return Deser.create_codec_for_array<Playlist> ();
+        if (property.name == "tracks") return Deser.create_codec_for_array<YaMAPITrackShort> ();
+        if (property.name == "similar-playlists") return Deser.create_codec_for_array<YaMAPIPlaylist> ();
+        if (property.name == "last-owner-playlists") return Deser.create_codec_for_array<YaMAPIPlaylist> ();
         return base.get_property_codec (property);
     }
 }

@@ -22,15 +22,15 @@ using Gee;
 /**
  *
  */
-public class Tape.YaMAPI.Plays : Deser.DataObject {
+public class Tape.YaMAPIPlays : Deser.DataObject {
 
     /**
      *
      */
-    public GLib.GenericArray<Play> plays { get; set; default = new GLib.GenericArray<Play> (); }
+    public GLib.GenericArray<YaMAPIPlay> plays { get; set; default = new GLib.GenericArray<YaMAPIPlay> (); }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "plays") return Deser.create_codec_for_array<Play> ();
+        if (property.name == "plays") return Deser.create_codec_for_array<YaMAPIPlay> ();
         return base.get_property_codec (property);
     }
 }

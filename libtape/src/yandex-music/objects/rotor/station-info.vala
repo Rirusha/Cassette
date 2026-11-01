@@ -21,12 +21,12 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.StationInfo : Deser.DataObject {
+public class Tape.YaMAPIRotorStationInfo : Deser.DataObject {
 
     /**
      *
      */
-    public Id id { get; set; }
+    public YaMAPIRotorId id { get; set; }
 
     /**
      *
@@ -36,7 +36,7 @@ public class Tape.YaMAPI.Rotor.StationInfo : Deser.DataObject {
     /**
      *
      */
-    public Icon icon { get; set; }
+    public YaMAPIIcon icon { get; set; }
 
     /**
      *
@@ -46,12 +46,12 @@ public class Tape.YaMAPI.Rotor.StationInfo : Deser.DataObject {
     /**
      *
      */
-    public Restrictions restrictions { get; set; }
+    public YaMAPIRotorRestrictions restrictions { get; set; }
 
     /**
      *
      */
-    public Restrictions restrictions2 { get; set; }
+    public YaMAPIRotorRestrictions restrictions2 { get; set; }
 
     /**
      *

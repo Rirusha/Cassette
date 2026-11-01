@@ -20,18 +20,18 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Sequence : Deser.DataObject {
+public class Tape.YaMAPIRotorSequence : Deser.DataObject {
 
     /**
-     * Track type.
+     * YaMAPITrack type.
      */
     [Description (nick = "type")]
     public string type_ { get; set; }
 
     /**
-     * Track.
+     * YaMAPITrack.
      */
-    public Track track { get; set; }
+    public YaMAPITrack track { get; set; }
 
     /**
      *
@@ -39,7 +39,7 @@ public class Tape.YaMAPI.Rotor.Sequence : Deser.DataObject {
     public bool liked { get; set; }
 
     /**
-     * Track parameters
+     * YaMAPITrack parameters
      */
-    public TrackParameters track_parameters { get; set; }
+    public YaMAPIRotorTrackParameters track_parameters { get; set; }
 }

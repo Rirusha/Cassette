@@ -22,17 +22,17 @@ using Gee;
 /**
  * Short representation of track.
  */
-public class Tape.YaMAPI.TrackShort : Deser.DataObject {
+public class Tape.YaMAPITrackShort : Deser.DataObject {
 
     /**
-     * Track id
+     * YaMAPITrack id
      */
     public string id { get; set; }
 
     /**
      * Объект трека.
      */
-    public Track? track { get; set; }
+    public YaMAPITrack? track { get; set; }
 
     /**
      *

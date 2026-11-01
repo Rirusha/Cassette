@@ -18,17 +18,17 @@
  */
 
 /**
- * Value object in api.
+ * YaMAPIRotorValue object in api.
  */
-public class Tape.YaMAPI.Rotor.Value : Deser.DataObject {
+public class Tape.YaMAPIRotorValue : Deser.DataObject {
 
     /**
-     * Value in string format
+     * YaMAPIRotorValue in string format
      */
     public string value { get; set; }
 
     /**
-     * Value name
+     * YaMAPIRotorValue name
      */
     public string name { get; set; }
 }

@@ -20,19 +20,22 @@
 using Gee;
 
 /**
- * Dashboard with user stations
+ * YaMAPIRotorDashboard with user stations
  */
-public class Tape.YaMAPI.Rotor.Dashboard : Deser.DataObject {
+public class Tape.YaMAPIRotorDashboard : Deser.DataObject {
 
     /**
-     * Dashboard id
+     * YaMAPIRotorDashboard id
      */
     public string dashboard_id { get; set; }
 
     /**
-     * Station list
+     * YaMAPIRotorStation list
      */
-    public GLib.GenericArray<Station> stations { get; set; default = new GLib.GenericArray<Station> (); }
+    public GLib.GenericArray<YaMAPIRotorStation> stations {
+        get; set;
+        default = new GLib.GenericArray<YaMAPIRotorStation> ();
+    }
 
     /**
      * You can only think of Halloween until
@@ -42,7 +45,7 @@ public class Tape.YaMAPI.Rotor.Dashboard : Deser.DataObject {
     public bool pumpkin { get; set; }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "stations") return Deser.create_codec_for_array<Station> ();
+        if (property.name == "stations") return Deser.create_codec_for_array<YaMAPIRotorStation> ();
         return base.get_property_codec (property);
     }
 }

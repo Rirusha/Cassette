@@ -20,7 +20,7 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Queue : Deser.DataObject {
+public class Tape.YaMAPIRotorQueue : Deser.DataObject {
 
     public GLib.GenericArray<string> queue { get; set; default = new GLib.GenericArray<string> (); }
 

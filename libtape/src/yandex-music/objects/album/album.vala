@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Album : Deser.DataObject, HasCover, HasID {
+public class Tape.YaMAPIAlbum : Deser.DataObject, YaMAPIHasCover, YaMAPIHasID {
 
     public string oid {
         owned get {
@@ -39,9 +39,9 @@ public class Tape.YaMAPI.Album : Deser.DataObject, HasCover, HasID {
 
     public int track_count { get; set; }
 
-    public GLib.GenericArray<Artist> artists { get; set; default = new GLib.GenericArray<Artist> (); }
+    public GLib.GenericArray<YaMAPIArtist> artists { get; set; default = new GLib.GenericArray<YaMAPIArtist> (); }
 
-    public GLib.GenericArray<Label> labels { get; set; default = new GLib.GenericArray<Label> (); }
+    public GLib.GenericArray<YaMAPILabel> labels { get; set; default = new GLib.GenericArray<YaMAPILabel> (); }
 
     public bool available { get; set; }
 
@@ -67,25 +67,25 @@ public class Tape.YaMAPI.Album : Deser.DataObject, HasCover, HasID {
 
     public GLib.GenericArray<int> bests { get; set; default = new GLib.GenericArray<int> (); }
 
-    public GLib.GenericArray<Album> duplicates { get; set; default = new GLib.GenericArray<Album> (); }
+    public GLib.GenericArray<YaMAPIAlbum> duplicates { get; set; default = new GLib.GenericArray<YaMAPIAlbum> (); }
 
-    public GLib.GenericArray<GLib.GenericArray<Track> > volumes {
+    public GLib.GenericArray<GLib.GenericArray<YaMAPITrack> > volumes {
         get; set;
-        default = new GLib.GenericArray<GLib.GenericArray<Track> > ();
+        default = new GLib.GenericArray<GLib.GenericArray<YaMAPITrack> > ();
     }
 
     public int year { get; set; }
 
     public string? release_date { get; set; }
 
-    public GLib.GenericArray<Album> albums { get; set; default = new GLib.GenericArray<Album> (); }
+    public GLib.GenericArray<YaMAPIAlbum> albums { get; set; default = new GLib.GenericArray<YaMAPIAlbum> (); }
 
     public int duration_ms { get; set; }
 
     public int likes_count { get; set; }
 
     construct {
-        volumes.add (new GLib.GenericArray<Track> ());
+        volumes.add (new GLib.GenericArray<YaMAPITrack> ());
     }
 
     public GLib.GenericArray<string> get_cover_items_by_size (int size) {
@@ -101,16 +101,16 @@ public class Tape.YaMAPI.Album : Deser.DataObject, HasCover, HasID {
     }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "artists") return Deser.create_codec_for_array<Artist> ();
-        if (property.name == "labels") return Deser.create_codec_for_array<Label> ();
+        if (property.name == "artists") return Deser.create_codec_for_array<YaMAPIArtist> ();
+        if (property.name == "labels") return Deser.create_codec_for_array<YaMAPILabel> ();
         if (property.name == "bests") return Deser.create_codec_for_array<int> ();
-        if (property.name == "duplicates") return Deser.create_codec_for_array<Album> ();
+        if (property.name == "duplicates") return Deser.create_codec_for_array<YaMAPIAlbum> ();
         if (property.name == "volumes") {
-            return new Deser.GenericArrayCodec<GLib.GenericArray<Track>> (
-                Deser.create_codec_for_array<Track> ()
+            return new Deser.GenericArrayCodec<GLib.GenericArray<YaMAPITrack>> (
+                Deser.create_codec_for_array<YaMAPITrack> ()
             );
         }
-        if (property.name == "albums") return Deser.create_codec_for_array<Album> ();
+        if (property.name == "albums") return Deser.create_codec_for_array<YaMAPIAlbum> ();
         return base.get_property_codec (property);
     }
 }

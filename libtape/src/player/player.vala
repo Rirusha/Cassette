@@ -124,7 +124,7 @@ public sealed class Tape.Player : Object {
     }
 
     public signal void queue_changed (
-        GLib.GenericArray<YaMAPI.Track> queue,
+        GLib.GenericArray<Tape.YaMAPITrack> queue,
         string context_type,
         string? context_id,
         int current_index,
@@ -162,7 +162,7 @@ public sealed class Tape.Player : Object {
      *
      * @param track_info    track that been paused
      */
-    public signal void paused (YaMAPI.Track track_info);
+    public signal void paused (Tape.YaMAPITrack track_info);
 
     /**
      * Feedback.
@@ -170,7 +170,7 @@ public sealed class Tape.Player : Object {
      *
      * @param track_info    track that start playing
      */
-    public signal void played (YaMAPI.Track track_info);
+    public signal void played (Tape.YaMAPITrack track_info);
 
     /**
      * Feedback.
@@ -202,7 +202,7 @@ public sealed class Tape.Player : Object {
      * Triggers when previous track in queue finish loading.
      * For next track show posibility.
      */
-    public signal void next_track_loaded (YaMAPI.Track? next_track);
+    public signal void next_track_loaded (Tape.YaMAPITrack? next_track);
 
     /**
      * Current track started loaded.
@@ -214,7 +214,7 @@ public sealed class Tape.Player : Object {
      * Current track started loaded.
      * Inteface can be released from block.
      */
-    public signal void current_track_finish_loading (YaMAPI.Track track_info);
+    public signal void current_track_finish_loading (Tape.YaMAPITrack track_info);
 
     public signal void playback_callback (double position_sec);
 
@@ -332,7 +332,7 @@ public sealed class Tape.Player : Object {
 
     public async void start_flow (
         string station_id,
-        GLib.GenericArray<YaMAPI.Track> queue = new GLib.GenericArray<YaMAPI.Track> ()
+        GLib.GenericArray<Tape.YaMAPITrack> queue = new GLib.GenericArray<Tape.YaMAPITrack> ()
     ) throws CantUseError {
         stop ();
 
@@ -340,7 +340,7 @@ public sealed class Tape.Player : Object {
             repeat_mode = RepeatMode.OFF;
         }
 
-        var flow_queue = new GLib.GenericArray<YaMAPI.Track> ();
+        var flow_queue = new GLib.GenericArray<Tape.YaMAPITrack> ();
 
         foreach (var track_info in queue) {
             if (!track_info.is_ugc) {
@@ -367,7 +367,7 @@ public sealed class Tape.Player : Object {
         }
     }
 
-    public void start_track_list (GLib.GenericArray<YaMAPI.Track> queue,
+    public void start_track_list (GLib.GenericArray<Tape.YaMAPITrack> queue,
                                   string context_type,
                                   string? context_id,
                                   int current_index,
@@ -508,7 +508,7 @@ public sealed class Tape.Player : Object {
         });
     }
 
-    public void change_track (YaMAPI.Track track_info) {
+    public void change_track (Tape.YaMAPITrack track_info) {
         /**
             Находит трек в очереди и воспроизводит его
          */
@@ -565,17 +565,17 @@ public sealed class Tape.Player : Object {
     }
 
     void cache_next_track () {
-        var next_track = mode.get_next_track_info (false);
+        //  var next_track = mode.get_next_track_info (false);
 
         //  if (next_track != mode.get_current_track_info () && next_track != null) {
         //      Cachier.save_track.begin (next_track);
         //  }
     }
 
-    public void add_track (YaMAPI.Track track_info,
+    public void add_track (Tape.YaMAPITrack track_info,
                            bool is_next) {
         if (mode is PlayerEmpty) {
-            var track_list = new GLib.GenericArray<YaMAPI.Track> ();
+            var track_list = new GLib.GenericArray<Tape.YaMAPITrack> ();
             track_list.add (track_info);
 
             add_many (track_list);
@@ -599,7 +599,7 @@ public sealed class Tape.Player : Object {
         }
     }
 
-    public void add_many (GLib.GenericArray<YaMAPI.Track> track_list) {
+    public void add_many (GLib.GenericArray<Tape.YaMAPITrack> track_list) {
         if (mode is PlayerEmpty) {
             start_track_list (
                 track_list,
@@ -638,7 +638,7 @@ public sealed class Tape.Player : Object {
         }
     }
 
-    public void remove_track (YaMAPI.Track track_info) {
+    public void remove_track (Tape.YaMAPITrack track_info) {
         var sh_mode = mode as PlayerShufflable;
 
         if (sh_mode == null) {

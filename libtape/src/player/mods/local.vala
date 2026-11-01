@@ -30,7 +30,7 @@ public sealed class Tape.PlayerLocal : PlayerMode {
         return -1;
     }
 
-    protected override YaMAPI.Play form_play_obj () {
+    protected override Tape.YaMAPIPlay form_play_obj () {
         assert_not_reached ();
     }
 

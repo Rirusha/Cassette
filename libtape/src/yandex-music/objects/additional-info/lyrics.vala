@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Lyrics : Deser.DataObject {
+public class Tape.YaMAPILyrics : Deser.DataObject {
 
     public string download_url { get; set; }
 
@@ -29,7 +29,7 @@ public class Tape.YaMAPI.Lyrics : Deser.DataObject {
 
     public GLib.GenericArray<string> writers { get; set; default = new GLib.GenericArray<string> (); }
 
-    public LyricsMajor? major { get; set; }
+    public YaMAPILyricsMajor? major { get; set; }
 
     public GLib.GenericArray<string> text { get; set; default = new GLib.GenericArray<string> (); }
 

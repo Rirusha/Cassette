@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Cover : Deser.DataObject {
+public class Tape.YaMAPICover : Deser.DataObject {
 
     public GLib.GenericArray<string> uris {
         owned get {
@@ -44,15 +44,15 @@ public class Tape.YaMAPI.Cover : Deser.DataObject {
 
     public bool custom { get; set; }
 
-    public Cover () {
+    public YaMAPICover () {
         Object ();
     }
 
-    public Cover.liked () {
+    public YaMAPICover.liked () {
         Object (uri: "music.yandex.ru/blocks/playlist-cover/playlist-cover_like.png");
     }
 
-    public Cover.empty () {
+    public YaMAPICover.empty () {
         Object (uri: "music.yandex.ru/blocks/playlist-cover/playlist-cover_no_cover0.png");
     }
 

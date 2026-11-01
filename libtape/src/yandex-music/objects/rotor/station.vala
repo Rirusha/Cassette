@@ -20,20 +20,20 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Station : Deser.DataObject {
+public class Tape.YaMAPIRotorStation : Deser.DataObject {
 
     /**
-     * Station id. Doesn't work with `_dashboard` and `_list` rotor methods
+     * YaMAPIRotorStation id. Doesn't work with `_dashboard` and `_list` rotor methods
      */
     public string station_id { get; set; }
 
     /**
-     * Station object. Using with `_dashboard` and `_list` rotor methods
+     * YaMAPIRotorStation object. Using with `_dashboard` and `_list` rotor methods
      */
-    public StationInfo station { get; set; }
+    public YaMAPIRotorStationInfo station { get; set; }
 
     /**
-     * Station title
+     * YaMAPIRotorStation title
      */
     public string title { get; set; }
 

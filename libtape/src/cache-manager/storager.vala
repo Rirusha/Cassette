@@ -397,7 +397,7 @@ public class Tape.Storager : Object {
      * Remove user data and move content to cache
      *
      * @param keep_content  remove content or keep
-     * @param keep_settings remove cookies and other or
+     * @param keep_datadir keep the data directory after clearing the database
      */
     public async void clear_user_data (bool keep_content, bool keep_datadir) {
         if (keep_content) {
@@ -462,7 +462,7 @@ public class Tape.Storager : Object {
     /**
      * Get image location by it uri.
      *
-     * @param   image uri
+     * @param image_uri image URI
      *
      * @return  `Location` struct
      */
@@ -611,7 +611,7 @@ public class Tape.Storager : Object {
     /**
      * Save audio data.
      *
-     * @param audio_data    audio data
+     * @param audio         audio data
      * @param track_id      track's id
      * @param is_tmp        is track should be save in cache or data
      */
@@ -738,7 +738,7 @@ public class Tape.Storager : Object {
         return Location.none ();
     }
 
-    public async YaMAPI.HasID? load_object (Type obj_type, string oid) {
+    public async Tape.YaMAPIHasID? load_object (Type obj_type, string oid) {
         Location object_location = object_cache_location (obj_type, oid);
 
         if (object_location.file == null) {
@@ -759,10 +759,10 @@ public class Tape.Storager : Object {
 
                 var jsoner = new Deser.JsonWorker.from_bytes (new Bytes (object_data));
 
-                YaMAPI.HasID? des_obj = null;
+                Tape.YaMAPIHasID? des_obj = null;
 
                 try {
-                    des_obj = (YaMAPI.HasID) yield jsoner.deserialize_object_by_type_async (obj_type);
+                    des_obj = (Tape.YaMAPIHasID) yield jsoner.deserialize_object_by_type_async (obj_type);
 
                 } catch (Deser.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
@@ -785,7 +785,7 @@ public class Tape.Storager : Object {
         return null;
     }
 
-    public YaMAPI.HasID? load_object_sync (Type obj_type, string oid) {
+    public Tape.YaMAPIHasID? load_object_sync (Type obj_type, string oid) {
         Location object_location = object_cache_location (obj_type, oid);
 
         if (object_location.file == null) {
@@ -806,10 +806,10 @@ public class Tape.Storager : Object {
 
                 var jsoner = new Deser.JsonWorker.from_bytes (new Bytes (object_data));
 
-                YaMAPI.HasID? des_obj = null;
+                Tape.YaMAPIHasID? des_obj = null;
 
                 try {
-                    des_obj = (YaMAPI.HasID) jsoner.deserialize_object_by_type (obj_type);
+                    des_obj = (Tape.YaMAPIHasID) jsoner.deserialize_object_by_type (obj_type);
 
                 } catch (Deser.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
@@ -824,7 +824,7 @@ public class Tape.Storager : Object {
         return null;
     }
 
-    public async void save_object (YaMAPI.HasID yam_object, bool is_tmp) {
+    public async void save_object (Tape.YaMAPIHasID yam_object, bool is_tmp) {
         File object_file = get_object_cache_file (yam_object.get_type (), yam_object.oid, is_tmp);
 
         try {

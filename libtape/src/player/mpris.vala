@@ -17,6 +17,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+using Tape.Mpris;
+
 namespace Tape.Mpris {
 
 static Tape.Client client;
@@ -45,8 +47,8 @@ public void init (Tape.Client client) {
 
 void on_bus_aquired (DBusConnection con, string name) {
     try {
-        con.register_object ("/org/mpris/MediaPlayer2", new MprisRoot (con));
-        con.register_object ("/org/mpris/MediaPlayer2", new Player (con));
+        con.register_object ("/org/mpris/MediaPlayer2", new MprisMprisRoot (con));
+        con.register_object ("/org/mpris/MediaPlayer2", new MprisPlayer (con));
 
     } catch (IOError e) {
         warning ("Error message: %s".printf (e.message));
@@ -82,8 +84,10 @@ void send_property_change (
     }
 }
 
+}
+
 [DBus (name = "org.mpris.MediaPlayer2")]
-public class MprisRoot : Object {
+public class Tape.MprisMprisRoot : Object {
 
     DBusConnection con;
 
@@ -121,7 +125,7 @@ public class MprisRoot : Object {
         owned get { return { "x-scheme-handler/yandexmusic" }; }
     }
 
-    public MprisRoot (DBusConnection con) {
+    public MprisMprisRoot (DBusConnection con) {
         this.con = con;
 
         notify["fullscreen"].connect (() => {
@@ -143,7 +147,7 @@ public class MprisRoot : Object {
 }
 
 [DBus (name = "org.mpris.MediaPlayer2.Player")]
-public class Player : Object {
+public class Tape.MprisPlayer : Object {
 
     DBusConnection con;
 
@@ -249,7 +253,7 @@ public class Player : Object {
         owned get { return _get_metadata (player.mode.get_current_track_info ()); }
     }
 
-    public Player (DBusConnection con) {
+    public MprisPlayer (DBusConnection con) {
         this.con = con;
 
         player.played.connect ((track_info) => {
@@ -310,7 +314,7 @@ public class Player : Object {
         Mpris.send_property_change (property, variant, con, "org.mpris.MediaPlayer2.Player");
     }
 
-    HashTable<string, Variant> _get_metadata (YaMAPI.Track? track_info) {
+    HashTable<string, Variant> _get_metadata (Tape.YaMAPITrack? track_info) {
         HashTable<string, Variant> metadata = new HashTable<string, Variant> (null, null);
 
         if (track_info == null) {
@@ -400,5 +404,4 @@ public class Player : Object {
     public void open_uri (string uri, BusName sender) throws Error {
         client.mpris_uri_open (uri);
     }
-}
 }

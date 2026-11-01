@@ -22,7 +22,7 @@ using Gee;
 public sealed class Tape.PlayerTrackList : PlayerShufflable {
 
     public PlayerTrackList (Player player,
-                            GLib.GenericArray<YaMAPI.Track> queue,
+                            GLib.GenericArray<Tape.YaMAPITrack> queue,
                             string context_type,
                             string? context_id,
                             int current_index,
@@ -128,10 +128,10 @@ public sealed class Tape.PlayerTrackList : PlayerShufflable {
         return index;
     }
 
-    public override YaMAPI.Play form_play_obj () {
+    public override Tape.YaMAPIPlay form_play_obj () {
         var current_track = get_current_track_info ();
 
-        return new YaMAPI.Play () {
+        return new Tape.YaMAPIPlay () {
                    track_length_seconds = ((double) current_track.duration_ms) / 1000.0,
                    track_id = current_track.id,
                    album_id = current_track.albums.length > 0 ? current_track.albums[0].id : null,

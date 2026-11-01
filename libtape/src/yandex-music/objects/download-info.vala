@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.DownloadInfo : Deser.DataObject {
+public class Tape.YaMAPIDownloadInfo : Deser.DataObject {
 
     public string codec { get; set; }
 

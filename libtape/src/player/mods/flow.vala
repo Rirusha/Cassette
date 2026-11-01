@@ -23,15 +23,15 @@ public sealed class Tape.PlayerFlow : PlayerMode {
 
     public string station_id { get; construct; }
 
-    public YaMAPI.Rotor.StationTracks last_station_tracks {
-        get; private set; default = new YaMAPI.Rotor.StationTracks ();
+    public Tape.YaMAPIRotorStationTracks last_station_tracks {
+        get; private set; default = new Tape.YaMAPIRotorStationTracks ();
     }
 
     string radio_session_id;
 
     public PlayerFlow (Player player,
                        string station_id,
-                       GLib.GenericArray<YaMAPI.Track> queue) {
+                       GLib.GenericArray<Tape.YaMAPITrack> queue) {
         Object (
             player: player,
             station_id: station_id,
@@ -42,7 +42,7 @@ public sealed class Tape.PlayerFlow : PlayerMode {
     }
 
     public async bool init_async () throws CantUseError {
-        YaMAPI.Rotor.StationTracks? station_tracks = null;
+        Tape.YaMAPIRotorStationTracks? station_tracks = null;
 
         //  station_tracks = yield root.yam_talker.start_new_session (station_id);
 
@@ -80,8 +80,8 @@ public sealed class Tape.PlayerFlow : PlayerMode {
     /**
      * @return  next track object
      */
-    async YaMAPI.Track? get_next_track_async () throws CantUseError {
-        YaMAPI.Track? next_track = null;
+    async Tape.YaMAPITrack? get_next_track_async () throws CantUseError {
+        Tape.YaMAPITrack? next_track = null;
 
         GLib.GenericArray<string> track_ids = new GLib.GenericArray<string> ();
 
@@ -136,14 +136,13 @@ public sealed class Tape.PlayerFlow : PlayerMode {
 
             default:
                 error ("Flow with `RepeatMode.QUEUE unsupported");
-                break;
         }
 
         return index;
     }
 
     public async void prepare_next_track () throws CantUseError {
-        YaMAPI.Track? next_track = yield get_next_track_async ();
+        Tape.YaMAPITrack? next_track = yield get_next_track_async ();
 
         if (next_track != null) {
             queue.add (next_track);
@@ -151,10 +150,10 @@ public sealed class Tape.PlayerFlow : PlayerMode {
         }
     }
 
-    public override YaMAPI.Play form_play_obj () {
+    public override Tape.YaMAPIPlay form_play_obj () {
         var current_track = get_current_track_info ();
 
-        return new YaMAPI.Play () {
+        return new Tape.YaMAPIPlay () {
             track_length_seconds = ((double) current_track.duration_ms) / 1000.0,
             track_id = current_track.id,
             album_id = current_track.albums.length > 0 ? current_track.albums[0].id : null,

@@ -18,7 +18,7 @@
 /**
  * `Object` that has cover.
  */
-public interface Tape.YaMAPI.HasCover : Deser.DataObject {
+public interface Tape.YaMAPIHasCover : Deser.DataObject {
 
     /**
      * Get all `Object` covers.

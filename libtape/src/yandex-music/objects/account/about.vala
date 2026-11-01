@@ -20,7 +20,7 @@
 /**
  * Account information.
  */
-public class Tape.YaMAPI.Account.About : Deser.DataObject, HasID {
+public class Tape.YaMAPIAccountAbout : Deser.DataObject, YaMAPIHasID {
 
     public string oid {
         owned get {
@@ -29,7 +29,7 @@ public class Tape.YaMAPI.Account.About : Deser.DataObject, HasID {
     }
 
     /**
-     * User id.
+     * YaMAPIUser id.
      */
     public string uid { get; set; }
 
@@ -45,17 +45,17 @@ public class Tape.YaMAPI.Account.About : Deser.DataObject, HasID {
     public string[] options { get; set; }
 
     /**
-     * User login.
+     * YaMAPIUser login.
      */
     public string login { get; set; default = ""; }
 
     /**
-     * User avatar id.
+     * YaMAPIUser avatar id.
      */
     public string? avatar_id { get; set; }
 
     /**
-     * User login.
+     * YaMAPIUser login.
      */
     public string public_id { get; set; }
 

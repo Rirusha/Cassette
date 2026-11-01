@@ -27,7 +27,7 @@ public sealed class Tape.PlayerEmpty : PlayerMode {
 
     construct {
         player.queue_changed (
-            new GLib.GenericArray<YaMAPI.Track> (),
+            new GLib.GenericArray<Tape.YaMAPITrack> (),
             "various",
             null,
             -1,
@@ -43,7 +43,7 @@ public sealed class Tape.PlayerEmpty : PlayerMode {
         return -1;
     }
 
-    protected override YaMAPI.Play form_play_obj () {
+    protected override Tape.YaMAPIPlay form_play_obj () {
         assert_not_reached ();
     }
 

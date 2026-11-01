@@ -20,10 +20,10 @@
 using Gee;
 
 /**
- * Value heap in api.
+ * YaMAPIRotorValue heap in api.
  * Discrete scale or enum
  */
-public class Tape.YaMAPI.Rotor.ValueHeap : Deser.DataObject {
+public class Tape.YaMAPIRotorValueHeap : Deser.DataObject {
 
     /**
      * Data type.
@@ -40,20 +40,23 @@ public class Tape.YaMAPI.Rotor.ValueHeap : Deser.DataObject {
     /**
      * Possible values (for 'enum').
      */
-    public GLib.GenericArray<Rotor.Value> possible_values { get; set; default = new GLib.GenericArray<Rotor.Value> (); }
+    public GLib.GenericArray<Tape.YaMAPIRotorValue> possible_values {
+        get; set;
+        default = new GLib.GenericArray<Tape.YaMAPIRotorValue> ();
+    }
 
     /**
      * Minimum value. (for 'discrete-scale')
      */
-    public Rotor.Value min { get; set; }
+    public Tape.YaMAPIRotorValue min { get; set; }
 
     /**
      * Maximum value. (for 'discrete-scale')
      */
-    public Rotor.Value max { get; set; }
+    public Tape.YaMAPIRotorValue max { get; set; }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "possible-values") return Deser.create_codec_for_array<Rotor.Value> ();
+        if (property.name == "possible-values") return Deser.create_codec_for_array<Tape.YaMAPIRotorValue> ();
         return base.get_property_codec (property);
     }
 }

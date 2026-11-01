@@ -18,9 +18,9 @@
  */
 
 /**
- * Track parameters object
+ * YaMAPITrack parameters object
  */
-public class Tape.YaMAPI.Rotor.TrackParameters : Deser.DataObject {
+public class Tape.YaMAPIRotorTrackParameters : Deser.DataObject {
 
     /**
      * Bits per minutes.
@@ -28,7 +28,7 @@ public class Tape.YaMAPI.Rotor.TrackParameters : Deser.DataObject {
     public int bpm { get; set; }
 
     /**
-     * Track color in hue.
+     * YaMAPITrack color in hue.
      */
     public int hue { get; set; }
 

@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Tape.YaMAPI.LikedPlaylist : Deser.DataObject {
+public class Tape.YaMAPILikedPlaylist : Deser.DataObject {
 
-    public Playlist playlist { get; set; }
+    public YaMAPIPlaylist playlist { get; set; }
 }

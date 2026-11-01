@@ -32,7 +32,10 @@ public abstract class Tape.PlayerMode : Object {
      */
     public Player player { get; construct; }
 
-    public GLib.GenericArray<YaMAPI.Track> queue { get; construct; default = new GLib.GenericArray<YaMAPI.Track> (); }
+    public GLib.GenericArray<Tape.YaMAPITrack> queue {
+        get; construct;
+        default = new GLib.GenericArray<Tape.YaMAPITrack> ();
+    }
 
     public string context_type { get; construct set; }
 
@@ -74,7 +77,7 @@ public abstract class Tape.PlayerMode : Object {
      *
      * @return  track information object
      */
-    public virtual YaMAPI.Track? get_prev_track_info () {
+    public virtual Tape.YaMAPITrack? get_prev_track_info () {
         var index = get_prev_index ();
 
         return index != -1 ? queue[index] : null;
@@ -85,7 +88,7 @@ public abstract class Tape.PlayerMode : Object {
      *
      * @return  track information object
      */
-    public virtual YaMAPI.Track? get_current_track_info () {
+    public virtual Tape.YaMAPITrack? get_current_track_info () {
         if (current_index != -1) {
             if (current_index >= queue.length) {
                 current_index = 0;
@@ -127,7 +130,7 @@ public abstract class Tape.PlayerMode : Object {
      *
      * @return  track information object
      */
-    public virtual YaMAPI.Track? get_next_track_info (bool consider_repeat_mode) {
+    public virtual Tape.YaMAPITrack? get_next_track_info (bool consider_repeat_mode) {
         var index = get_next_index (consider_repeat_mode);
 
         return index != -1 ? queue[index] : null;
@@ -136,9 +139,9 @@ public abstract class Tape.PlayerMode : Object {
     /**
      * Form Play object foe play feedback.
      *
-     * @return  `Tape.YaMAPI.Play` object
+     * @return  `Tape.YaMAPIPlay` object
      */
-    protected abstract YaMAPI.Play form_play_obj ();
+    protected abstract Tape.YaMAPIPlay form_play_obj ();
 
     public virtual async void send_play_async (string play_id,
                                                double end_position_seconds = 0.0,
@@ -170,7 +173,7 @@ public abstract class Tape.PlayerMode : Object {
      *
      * @return              `true` if track found and `false` otherwise
      */
-    public bool change_track (YaMAPI.Track track_info) {
+    public bool change_track (Tape.YaMAPITrack track_info) {
         for (int i = 0; i < queue.length; i++) {
             if (queue[i].id == track_info.id) {
                 current_index = i;

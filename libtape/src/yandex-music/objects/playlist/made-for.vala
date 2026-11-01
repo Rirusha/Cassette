@@ -17,9 +17,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Tape.YaMAPI.MadeFor : Deser.DataObject {
+public class Tape.YaMAPIMadeFor : Deser.DataObject {
 
-    public User user_info { get; set; }
+    public YaMAPIUser user_info { get; set; }
 
-    public CaseForms case_forms { get; set; }
+    public YaMAPICaseForms case_forms { get; set; }
 }

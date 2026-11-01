@@ -19,7 +19,7 @@ namespace Tape {
 
     public struct ParseUriResult {
         public Deser.DataObject root_object;
-        public YaMAPI.Track? track;
+        public Tape.YaMAPITrack? track;
     }
 
     namespace Filenames {
@@ -152,12 +152,11 @@ namespace Tape {
                 switch (uri_parts[2]) {
                     case "playlists":
                         return_val_if_fail (uri_parts.length > 3, null);
-                        var playlist_dummy = new YaMAPI.Playlist () {
+                        var playlist_dummy = new Tape.YaMAPIPlaylist () {
                             uid = user_id,
                             kind = uri_parts[3]
                         };
 
-                        string kind = uri_parts[3];
                         return {playlist_dummy, null};
 
                     default:
@@ -166,7 +165,7 @@ namespace Tape {
 
             case "album":
                 return_val_if_fail (uri_parts.length > 1, null);
-                var album_dummy = new YaMAPI.Album () {
+                var album_dummy = new Tape.YaMAPIAlbum () {
                     id = uri_parts[1]
                 };
 
@@ -178,7 +177,7 @@ namespace Tape {
                 switch (uri_parts[2]) {
                     case "track":
                         return_val_if_fail (uri_parts.length > 3, null);
-                        var track_dummy = new YaMAPI.Track () {
+                        var track_dummy = new Tape.YaMAPITrack () {
                             id = uri_parts[3]
                         };
 
@@ -193,8 +192,8 @@ namespace Tape {
     }
 
     public string get_share_link (Deser.DataObject yam_obj) {
-        if (yam_obj is YaMAPI.Track) {
-            var track_info = (YaMAPI.Track) yam_obj;
+        if (yam_obj is Tape.YaMAPITrack) {
+            var track_info = (Tape.YaMAPITrack) yam_obj;
 
             if (track_info.albums.length == 0) {
                 warning (_("User owned tracks can't be shared"));
@@ -205,22 +204,22 @@ namespace Tape {
                 );
             }
 
-        } else if (yam_obj is YaMAPI.Playlist) {
-            var playlist_info = (YaMAPI.Playlist) yam_obj;
+        } else if (yam_obj is Tape.YaMAPIPlaylist) {
+            var playlist_info = (Tape.YaMAPIPlaylist) yam_obj;
 
             return "https://music.yandex.ru/users/%s/playlists/%s?utm_medium=copy_link".printf (
                 playlist_info.owner.login, playlist_info.kind
             );
 
-        } else if (yam_obj is YaMAPI.Album) {
-            var album_info = (YaMAPI.Album) yam_obj;
+        } else if (yam_obj is Tape.YaMAPIAlbum) {
+            var album_info = (Tape.YaMAPIAlbum) yam_obj;
 
             return "https://music.yandex.ru/albums/%s?utm_medium=copy_link".printf (
                 album_info.oid
             );
 
-        } else if (yam_obj is YaMAPI.Artist) {
-            var artist_info = (YaMAPI.Artist) yam_obj;
+        } else if (yam_obj is Tape.YaMAPIArtist) {
+            var artist_info = (Tape.YaMAPIArtist) yam_obj;
 
             return "https://music.yandex.ru/artist/%s?utm_medium=copy_link".printf (
                 artist_info.oid

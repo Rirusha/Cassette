@@ -19,48 +19,48 @@
 
 using Gee;
 
-public class Tape.YaMAPI.InsertOperation : Object {
+public class Tape.YaMAPIInsertOperation : Object {
 
     public int at { get; construct; }
 
-    public GLib.GenericArray<Track> tracks { get; set; }
+    public GLib.GenericArray<YaMAPITrack> tracks { get; set; }
 
-    public InsertOperation (int at, Track[] tracks) {
+    public YaMAPIInsertOperation (int at, YaMAPITrack[] tracks) {
         Object (
             at: at,
             tracks: array_from_tracks (tracks)
         );
     }
 
-    static GLib.GenericArray<Track> array_from_tracks (Track[] tracks) {
-        var result = new GLib.GenericArray<Track> ();
+    static GLib.GenericArray<YaMAPITrack> array_from_tracks (YaMAPITrack[] tracks) {
+        var result = new GLib.GenericArray<YaMAPITrack> ();
         foreach (var track in tracks) result.add (track);
         return result;
     }
 }
 
-public class Tape.YaMAPI.DeleteOperation : Object {
+public class Tape.YaMAPIDeleteOperation : Object {
 
     public int from { get; construct; }
 
     public int to { get; construct; }
 
-    public DeleteOperation (int from, int to) {
+    public YaMAPIDeleteOperation (int from, int to) {
         Object (from: from, to: to);
     }
 }
 
-public class Tape.YaMAPI.DifferenceBuilder : Object {
+public class Tape.YaMAPIDifferenceBuilder : Object {
 
-    GLib.GenericArray<DeleteOperation> delete_operations = new GLib.GenericArray<DeleteOperation> ();
-    GLib.GenericArray<InsertOperation> insert_operations = new GLib.GenericArray<InsertOperation> ();
+    GLib.GenericArray<YaMAPIDeleteOperation> delete_operations = new GLib.GenericArray<YaMAPIDeleteOperation> ();
+    GLib.GenericArray<YaMAPIInsertOperation> insert_operations = new GLib.GenericArray<YaMAPIInsertOperation> ();
 
-    public void add_insert (int at, Track[] tracks) {
-        insert_operations.add (new InsertOperation (at, tracks));
+    public void add_insert (int at, YaMAPITrack[] tracks) {
+        insert_operations.add (new YaMAPIInsertOperation (at, tracks));
     }
 
     public void add_delete (int from, int to) {
-        delete_operations.add (new DeleteOperation (from, to));
+        delete_operations.add (new YaMAPIDeleteOperation (from, to));
     }
 
     public string to_json () {

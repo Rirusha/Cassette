@@ -36,7 +36,6 @@ vala_sources += files(
   'objects/rotor/settings.vala',
   'objects/rotor/station-info.vala',
   'objects/rotor/station-tracks.vala',
-  'objects/rotor/station-tracks.vala',
   'objects/rotor/station.vala',
   'objects/rotor/track-parameters.vala',
   'objects/rotor/value-heap.vala',

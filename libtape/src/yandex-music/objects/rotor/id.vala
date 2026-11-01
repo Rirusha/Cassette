@@ -18,9 +18,9 @@
  */
 
 /**
- * Класс Id станции
+ * Класс YaMAPIRotorId станции
  */
-public class Tape.YaMAPI.Rotor.Id : Deser.DataObject {
+public class Tape.YaMAPIRotorId : Deser.DataObject {
 
     /**
      * Normalozation of station id.

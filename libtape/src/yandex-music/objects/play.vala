@@ -20,7 +20,7 @@ using Gee;
 /**
  * Датакласс с фидбеком о прослушивании
  */
-public class Tape.YaMAPI.Play : Deser.DataObject {
+public class Tape.YaMAPIPlay : Deser.DataObject {
 
     /**
      * Id сессии прослушивания
@@ -30,7 +30,7 @@ public class Tape.YaMAPI.Play : Deser.DataObject {
     /**
      * Временная метка запроса
      */
-    public string timestamp { get; set; default = get_timestamp (); }
+    public string timestamp { get; set; default = YaMAPI.get_timestamp (); }
 
     /**
      * Общее количество прослушанного времени в секундах
@@ -60,7 +60,7 @@ public class Tape.YaMAPI.Play : Deser.DataObject {
     /**
      *
      */
-    public string from { get; set; default = API_FROM; }
+    public string from { get; set; default = YaMAPI.API_FROM; }
 
     /**
      * Контекст воспроизведения (То же что и `Queue.context.type`)

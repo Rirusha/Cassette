@@ -20,17 +20,17 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Event : Deser.DataObject {
+public class Tape.YaMAPIRotorEvent : Deser.DataObject {
 
-    public string timestamp { get; set; default = get_timestamp (); }
+    public string timestamp { get; set; default = YaMAPI.get_timestamp (); }
 
     /**
-     * Feedback type.
+     * YaMAPIRotorFeedback type.
      */
     [Description (nick = "type")]
     public string type_ { get; set; }
 
-    public string from { get; set; default = API_FROM; }
+    public string from { get; set; default = YaMAPI.API_FROM; }
 
     public string? track_id { get; set; }
 

@@ -20,9 +20,9 @@
 using Gee;
 
 /**
- * Track list returns by `rotor` methods
+ * YaMAPITrack list returns by `rotor` methods
  */
-public class Tape.YaMAPI.Rotor.StationTracks : Deser.DataObject {
+public class Tape.YaMAPIRotorStationTracks : Deser.DataObject {
 
     /**
      *
@@ -32,7 +32,10 @@ public class Tape.YaMAPI.Rotor.StationTracks : Deser.DataObject {
     /**
      *
      */
-    public GLib.GenericArray<Sequence> sequence { get; set; default = new GLib.GenericArray<Sequence> (); }
+    public GLib.GenericArray<YaMAPIRotorSequence> sequence {
+        get; set;
+        default = new GLib.GenericArray<YaMAPIRotorSequence> ();
+    }
 
     /**
      *
@@ -49,17 +52,20 @@ public class Tape.YaMAPI.Rotor.StationTracks : Deser.DataObject {
     /**
      *
      */
-    public Seed description_seed { get; set; }
+    public YaMAPIRotorSeed description_seed { get; set; }
 
     /**
      *
      */
-    public GLib.GenericArray<Seed> accepted_seed { get; set; default = new GLib.GenericArray<Seed> (); }
+    public GLib.GenericArray<YaMAPIRotorSeed> accepted_seed {
+        get; set;
+        default = new GLib.GenericArray<YaMAPIRotorSeed> ();
+    }
 
     /**
      *
      */
-    public Wave wave { get; set; }
+    public YaMAPIRotorWave wave { get; set; }
 
     /**
      *
@@ -67,8 +73,8 @@ public class Tape.YaMAPI.Rotor.StationTracks : Deser.DataObject {
     public bool unknown_session { get; set; }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "sequence") return Deser.create_codec_for_array<Sequence> ();
-        if (property.name == "accepted-seed") return Deser.create_codec_for_array<Seed> ();
+        if (property.name == "sequence") return Deser.create_codec_for_array<YaMAPIRotorSequence> ();
+        if (property.name == "accepted-seed") return Deser.create_codec_for_array<YaMAPIRotorSeed> ();
         return base.get_property_codec (property);
     }
 }

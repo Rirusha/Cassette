@@ -20,27 +20,30 @@
 using Gee;
 
 /**
- * Wave settings.
+ * YaMAPIRotorWave settings.
  */
-public class Tape.YaMAPI.Rotor.Settings : Deser.DataObject {
+public class Tape.YaMAPIRotorSettings : Deser.DataObject {
 
     /**
      *
      */
-    public Station default_station { get; set; }
+    public YaMAPIRotorStation default_station { get; set; }
 
     /**
      *
      */
-    public GLib.GenericArray<Block> blocks { get; set; default = new GLib.GenericArray<Block> (); }
+    public GLib.GenericArray<YaMAPIRotorBlock> blocks {
+        get; set;
+        default = new GLib.GenericArray<YaMAPIRotorBlock> ();
+    }
 
     /**
      *
      */
-    public Restrictions setting_restrictions { get; set; }
+    public YaMAPIRotorRestrictions setting_restrictions { get; set; }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "blocks") return Deser.create_codec_for_array<Block> ();
+        if (property.name == "blocks") return Deser.create_codec_for_array<YaMAPIRotorBlock> ();
         return base.get_property_codec (property);
     }
 }

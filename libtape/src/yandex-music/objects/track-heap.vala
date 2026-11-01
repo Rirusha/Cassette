@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.TrackHeap : Deser.DataObject, HasID {
+public class Tape.YaMAPITrackHeap : Deser.DataObject, YaMAPIHasID {
 
     public string oid {
         owned get {
@@ -27,16 +27,16 @@ public class Tape.YaMAPI.TrackHeap : Deser.DataObject, HasID {
         }
     }
 
-    public GLib.GenericArray<Track> tracks { get; set; default = new GLib.GenericArray<Track> (); }
+    public GLib.GenericArray<YaMAPITrack> tracks { get; set; default = new GLib.GenericArray<YaMAPITrack> (); }
 
-    public GLib.GenericArray<YaMAPI.Track> get_filtered_track_list (
+    public GLib.GenericArray<Tape.YaMAPITrack> get_filtered_track_list (
         bool with_explicit,
         bool with_child,
         string[] exception_tracks_ids = new string[0]
     ) {
-        var out_track_list = new GLib.GenericArray<Track> ();
+        var out_track_list = new GLib.GenericArray<YaMAPITrack> ();
 
-        foreach (Track track in tracks) {
+        foreach (YaMAPITrack track in tracks) {
             if (
                 (track.available && (
                     (!track.is_explicit || with_explicit) &&
@@ -51,7 +51,7 @@ public class Tape.YaMAPI.TrackHeap : Deser.DataObject, HasID {
     }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "tracks") return Deser.create_codec_for_array<Track> ();
+        if (property.name == "tracks") return Deser.create_codec_for_array<YaMAPITrack> ();
         return base.get_property_codec (property);
     }
 }

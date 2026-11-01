@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.SimilarTracks : Deser.DataObject, HasID {
+public class Tape.YaMAPISimilarTracks : Deser.DataObject, YaMAPIHasID {
 
     public string oid {
         owned get {
@@ -27,16 +27,16 @@ public class Tape.YaMAPI.SimilarTracks : Deser.DataObject, HasID {
         }
     }
 
-    public Track track { get; set; }
+    public YaMAPITrack track { get; set; }
 
-    public GLib.GenericArray<Track> similar_tracks { get; set; default = new GLib.GenericArray<Track> (); }
+    public GLib.GenericArray<YaMAPITrack> similar_tracks { get; set; default = new GLib.GenericArray<YaMAPITrack> (); }
 
-    public GLib.GenericArray<YaMAPI.Track> get_filtered_track_list (
+    public GLib.GenericArray<Tape.YaMAPITrack> get_filtered_track_list (
         bool with_explicit,
         bool with_child,
         string[] exception_tracks_ids = new string[0]
     ) {
-        var out_track_list = new GLib.GenericArray<Track> ();
+        var out_track_list = new GLib.GenericArray<YaMAPITrack> ();
 
         foreach (var similar_track in similar_tracks) {
             if ((similar_track.available &&
@@ -52,7 +52,7 @@ public class Tape.YaMAPI.SimilarTracks : Deser.DataObject, HasID {
     }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "similar-tracks") return Deser.create_codec_for_array<Track> ();
+        if (property.name == "similar-tracks") return Deser.create_codec_for_array<YaMAPITrack> ();
         return base.get_property_codec (property);
     }
 }

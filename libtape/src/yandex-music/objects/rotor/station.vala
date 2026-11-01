@@ -20,7 +20,7 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Station : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Station : Deser.DataObject {
 
     /**
      * Station id. Doesn't work with `_dashboard` and `_list` rotor methods

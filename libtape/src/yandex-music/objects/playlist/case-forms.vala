@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Tape.YaMAPI.CaseForms : Serialize.DataObject {
+public class Tape.YaMAPI.CaseForms : Deser.DataObject {
 
     public string? nominative { get; set; }
 

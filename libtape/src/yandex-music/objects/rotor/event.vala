@@ -20,7 +20,7 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Event : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Event : Deser.DataObject {
 
     public string timestamp { get; set; default = get_timestamp (); }
 

@@ -20,7 +20,12 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Queue : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Queue : Deser.DataObject {
 
-    public Serialize.Array<string> queue { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> queue { get; set; default = new GLib.GenericArray<string> (); }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "queue") return Deser.create_codec_for_array<string> ();
+        return base.get_property_codec (property);
+    }
 }

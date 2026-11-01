@@ -124,7 +124,7 @@ public sealed class Tape.Player : Object {
     }
 
     public signal void queue_changed (
-        Serialize.Array<YaMAPI.Track> queue,
+        GLib.GenericArray<YaMAPI.Track> queue,
         string context_type,
         string? context_id,
         int current_index,
@@ -332,7 +332,7 @@ public sealed class Tape.Player : Object {
 
     public async void start_flow (
         string station_id,
-        Serialize.Array<YaMAPI.Track> queue = new Serialize.Array<YaMAPI.Track> ()
+        GLib.GenericArray<YaMAPI.Track> queue = new GLib.GenericArray<YaMAPI.Track> ()
     ) throws CantUseError {
         stop ();
 
@@ -340,7 +340,7 @@ public sealed class Tape.Player : Object {
             repeat_mode = RepeatMode.OFF;
         }
 
-        var flow_queue = new Serialize.Array<YaMAPI.Track> ();
+        var flow_queue = new GLib.GenericArray<YaMAPI.Track> ();
 
         foreach (var track_info in queue) {
             if (!track_info.is_ugc) {
@@ -367,7 +367,7 @@ public sealed class Tape.Player : Object {
         }
     }
 
-    public void start_track_list (Serialize.Array<YaMAPI.Track> queue,
+    public void start_track_list (GLib.GenericArray<YaMAPI.Track> queue,
                                   string context_type,
                                   string? context_id,
                                   int current_index,
@@ -575,7 +575,7 @@ public sealed class Tape.Player : Object {
     public void add_track (YaMAPI.Track track_info,
                            bool is_next) {
         if (mode is PlayerEmpty) {
-            var track_list = new Serialize.Array<YaMAPI.Track> ();
+            var track_list = new GLib.GenericArray<YaMAPI.Track> ();
             track_list.add (track_info);
 
             add_many (track_list);
@@ -599,7 +599,7 @@ public sealed class Tape.Player : Object {
         }
     }
 
-    public void add_many (Serialize.Array<YaMAPI.Track> track_list) {
+    public void add_many (GLib.GenericArray<YaMAPI.Track> track_list) {
         if (mode is PlayerEmpty) {
             start_track_list (
                 track_list,
@@ -633,7 +633,7 @@ public sealed class Tape.Player : Object {
 
         sh_mode.remove_track_by_pos (position);
 
-        if (sh_mode.queue.size != 0 && root.settings.can_cache) {
+        if (sh_mode.queue.length != 0 && root.settings.can_cache) {
             cache_next_track ();
         }
     }
@@ -647,7 +647,7 @@ public sealed class Tape.Player : Object {
 
         sh_mode.remove_track (track_info);
 
-        if (sh_mode.queue.size != 0 && root.settings.can_cache) {
+        if (sh_mode.queue.length != 0 && root.settings.can_cache) {
             cache_next_track ();
         }
     }

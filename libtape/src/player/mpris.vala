@@ -325,7 +325,7 @@ public class Player : Object {
                 obj_path = new ObjectPath (@"/io/github/Rirusha/Cassette/Track/$(track_info.id)");
             }
 
-            string[] artists = new string[track_info.artists.size];
+            string[] artists = new string[track_info.artists.length];
             for (int i = 0; i < artists.length; i++) {
                 artists[i] = track_info.artists[i].name;
             }
@@ -333,7 +333,7 @@ public class Player : Object {
             var cover_items = track_info.get_cover_items_by_size ((int) CoverSize.BIG);
 
             string cover_uri = "";
-            if (cover_items.size != 0) {
+            if (cover_items.length != 0) {
                 cover_uri = cover_items[0];
             }
 

@@ -69,11 +69,13 @@ internal sealed class Tape.LikesModels : Object {
         _disliked_artists.set_iterator (filter_and_map (ids.artists, -1));
     }
 
-    Iterator<string> filter_and_map (Serialize.Dict<int> map, int filter_value) {
-        return map.filter ((pred) => {
-            return pred.value == filter_value;
-        }).map<string> ((pred) => {
-            return pred.key;
-        });
+    Iterator<string> filter_and_map (GLib.HashTable<string, int> map, int filter_value) {
+        var ids = new Gee.ArrayList<string> ();
+        foreach (var key in map.get_keys ()) {
+            if (map.lookup (key) == filter_value) {
+                ids.add (key);
+            }
+        }
+        return ids.iterator ();
     }
 }

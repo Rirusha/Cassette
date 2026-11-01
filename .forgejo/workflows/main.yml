@@ -42,10 +42,10 @@ jobs:
           apt-get update
           apt-get install -y apt-repo
 
-      - name: Add liapi-base repo
+      - name: Add libdeser repo
         run: |
-          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libapi-base-nightly.repo x86_64 classic
-          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libapi-base-nightly.repo noarch classic
+          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libdeser-nightly.repo x86_64 classic
+          apt-repo add rpm https://altlinux.space/api/packages/rirusha/alt/group/libdeser-nightly.repo noarch classic
 
       - name: Add case repo
         run: |
@@ -61,12 +61,13 @@ jobs:
             vala \
             'gir(Adw)=1' \
             'gir(Case)=0' \
-            'gir(ApiBase)=7' \
             'pkgconfig(libadwaita-1)' \
             'pkgconfig(gee-0.8)' \
             'pkgconfig(gstreamer-app-1.0)' \
             'pkgconfig(gstreamer-1.0)' \
-            'pkgconfig(libapi-base-7)' \
+            'pkgconfig(json-glib-1.0)' \
+            'pkgconfig(libdeser-0.1)' \
+            'pkgconfig(libsession-0.1)' \
             'pkgconfig(libcase-0)' \
             'pkgconfig(libxml-2.0)' \
             'pkgconfig(sqlite3)' \

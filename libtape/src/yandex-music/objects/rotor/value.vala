@@ -20,7 +20,7 @@
 /**
  * Value object in api.
  */
-public class Tape.YaMAPI.Rotor.Value : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Value : Deser.DataObject {
 
     /**
      * Value in string format

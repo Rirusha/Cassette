@@ -20,7 +20,7 @@
 /**
  * Account information.
  */
-public class Tape.YaMAPI.Account.About : Serialize.DataObject, HasID {
+public class Tape.YaMAPI.Account.About : Deser.DataObject, HasID {
 
     public string oid {
         owned get {

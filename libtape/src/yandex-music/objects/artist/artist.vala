@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Artist : Serialize.DataObject, HasID {
+public class Tape.YaMAPI.Artist : Deser.DataObject, HasID {
 
     public string oid {
         owned get {
@@ -39,7 +39,7 @@ public class Tape.YaMAPI.Artist : Serialize.DataObject, HasID {
 
     public bool composer { get; set; }
 
-    public Serialize.Array<string> genres { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> genres { get; set; default = new GLib.GenericArray<string> (); }
 
     public Counts? counts { get; set; }
 
@@ -47,24 +47,24 @@ public class Tape.YaMAPI.Artist : Serialize.DataObject, HasID {
 
     public Ratings? ratings { get; set; }
 
-    public Serialize.Array<Link> links { get; set; default = new Serialize.Array<Link> (); }
+    public GLib.GenericArray<Link> links { get; set; default = new GLib.GenericArray<Link> (); }
 
     public int likes_count { get; set; }
 
-    public Serialize.Array<Track> popular_tracks { get; set; default = new Serialize.Array<Track> (); }
+    public GLib.GenericArray<Track> popular_tracks { get; set; default = new GLib.GenericArray<Track> (); }
 
     public string? hand_made_description { get; set; }
 
     public string? description { get; set; }
 
-    public Serialize.Array<string> countries { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> countries { get; set; default = new GLib.GenericArray<string> (); }
 
     public string? en_wikipedia_link { get; set; }
 
     public string? ya_money_id { get; set; }
 
-    public Serialize.Array<string> get_cover_items_by_size (int size) {
-        Serialize.Array<string> cover_array = new Serialize.Array<string> ();
+    public GLib.GenericArray<string> get_cover_items_by_size (int size) {
+        GLib.GenericArray<string> cover_array = new GLib.GenericArray<string> ();
 
         if (cover == null) {
             return cover_array;
@@ -73,5 +73,13 @@ public class Tape.YaMAPI.Artist : Serialize.DataObject, HasID {
         cover_array.add ("https://" + cover.items_uri[0].replace ("%%", @"$(size)x$(size)"));
 
         return cover_array;
+    }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "genres") return Deser.create_codec_for_array<string> ();
+        if (property.name == "links") return Deser.create_codec_for_array<Link> ();
+        if (property.name == "popular-tracks") return Deser.create_codec_for_array<Track> ();
+        if (property.name == "countries") return Deser.create_codec_for_array<string> ();
+        return base.get_property_codec (property);
     }
 }

@@ -15,18 +15,22 @@ typelib_name = versioned_gir_name + '.typelib'
 deps_pkgs = [
   'gee-0.8',
   'gio-2.0',
+  'json-glib-1.0',
   'gstreamer-app-1.0',
   'gstreamer-1.0',
-  'libapi-base-7',
+  'libdeser-0.1',
+  'libsession-0.1',
   'libxml-2.0',
   'sqlite3',
 ]
 
 gee_dep = dependency('gee-0.8')
 gio_dep = dependency('gio-2.0')
+json_glib_dep = dependency('json-glib-1.0')
 gstreamer_app_dep = dependency('gstreamer-app-1.0')
 gstreamer_dep = dependency('gstreamer-1.0')
-libapi_base_dep = dependency('libapi-base-7', version: '>= 7.10', fallback : ['libapi-base', 'api_base_lib_dep'])
+libdeser_dep = dependency('libdeser-0.1', fallback : ['libdeser', 'deser_lib_dep'])
+libsession_dep = dependency('libsession-0.1', fallback : ['libdeser', 'session_lib_dep'])
 libxml_dep = dependency('libxml-2.0')
 sqlite3_dep = dependency('sqlite3')
 

@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Lyrics : Serialize.DataObject {
+public class Tape.YaMAPI.Lyrics : Deser.DataObject {
 
     public string download_url { get; set; }
 
@@ -27,15 +27,23 @@ public class Tape.YaMAPI.Lyrics : Serialize.DataObject {
 
     public string? external_lyric_id { get; set; }
 
-    public Serialize.Array<string> writers { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> writers { get; set; default = new GLib.GenericArray<string> (); }
 
     public LyricsMajor? major { get; set; }
 
-    public Serialize.Array<string> text { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> text { get; set; default = new GLib.GenericArray<string> (); }
 
     public bool is_sync { get; set; }
 
     public string get_writers_names () {
-        return string.joinv (", ", writers.to_array ());
+        string[] names = new string[writers.length];
+        for (uint i = 0; i < writers.length; i++) names[i] = writers[i];
+        return string.joinv (", ", names);
+    }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "writers") return Deser.create_codec_for_array<string> ();
+        if (property.name == "text") return Deser.create_codec_for_array<string> ();
+        return base.get_property_codec (property);
     }
 }

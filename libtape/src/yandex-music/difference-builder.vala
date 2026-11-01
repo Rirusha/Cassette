@@ -23,13 +23,19 @@ public class Tape.YaMAPI.InsertOperation : Object {
 
     public int at { get; construct; }
 
-    public Serialize.Array<Track> tracks { get; set; }
+    public GLib.GenericArray<Track> tracks { get; set; }
 
     public InsertOperation (int at, Track[] tracks) {
         Object (
             at: at,
-            tracks: new Serialize.Array<Track>.wrap (tracks)
+            tracks: array_from_tracks (tracks)
         );
+    }
+
+    static GLib.GenericArray<Track> array_from_tracks (Track[] tracks) {
+        var result = new GLib.GenericArray<Track> ();
+        foreach (var track in tracks) result.add (track);
+        return result;
     }
 }
 
@@ -46,8 +52,8 @@ public class Tape.YaMAPI.DeleteOperation : Object {
 
 public class Tape.YaMAPI.DifferenceBuilder : Object {
 
-    Serialize.Array<DeleteOperation> delete_operations = new Serialize.Array<DeleteOperation> ();
-    Serialize.Array<InsertOperation> insert_operations = new Serialize.Array<InsertOperation> ();
+    GLib.GenericArray<DeleteOperation> delete_operations = new GLib.GenericArray<DeleteOperation> ();
+    GLib.GenericArray<InsertOperation> insert_operations = new GLib.GenericArray<InsertOperation> ();
 
     public void add_insert (int at, Track[] tracks) {
         insert_operations.add (new InsertOperation (at, tracks));
@@ -76,7 +82,7 @@ public class Tape.YaMAPI.DifferenceBuilder : Object {
                 builder.set_member_name ("id");
                 builder.add_string_value (track_info.id);
 
-                if (track_info.albums.size != 0) {
+                if (track_info.albums.length != 0) {
                     builder.set_member_name ("albumId");
                     builder.add_string_value (track_info.albums[0].id);
                 }

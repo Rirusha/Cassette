@@ -32,7 +32,7 @@ public abstract class Tape.PlayerMode : Object {
      */
     public Player player { get; construct; }
 
-    public Serialize.Array<YaMAPI.Track> queue { get; construct; default = new Serialize.Array<YaMAPI.Track> (); }
+    public GLib.GenericArray<YaMAPI.Track> queue { get; construct; default = new GLib.GenericArray<YaMAPI.Track> (); }
 
     public string context_type { get; construct set; }
 
@@ -87,7 +87,7 @@ public abstract class Tape.PlayerMode : Object {
      */
     public virtual YaMAPI.Track? get_current_track_info () {
         if (current_index != -1) {
-            if (current_index >= queue.size) {
+            if (current_index >= queue.length) {
                 current_index = 0;
                 warning (_("Problems with queue"));
             }
@@ -171,7 +171,7 @@ public abstract class Tape.PlayerMode : Object {
      * @return              `true` if track found and `false` otherwise
      */
     public bool change_track (YaMAPI.Track track_info) {
-        for (int i = 0; i < queue.size; i++) {
+        for (int i = 0; i < queue.length; i++) {
             if (queue[i].id == track_info.id) {
                 current_index = i;
 

@@ -24,12 +24,17 @@ using Gee;
  */
 public abstract class Tape.PlayerShufflable : PlayerMode {
 
-    Serialize.Array<YaMAPI.Track> original_queue { get; set; default = new Serialize.Array<YaMAPI.Track> (); }
+    static int index_of_track (GLib.GenericArray<YaMAPI.Track> tracks, YaMAPI.Track track) {
+        uint index;
+        return tracks.find (track, out index) ? (int) index : -1;
+    }
+
+    GLib.GenericArray<YaMAPI.Track> original_queue { get; set; default = new GLib.GenericArray<YaMAPI.Track> (); }
 
     public signal void sh_queue_changed ();
 
     construct {
-        original_queue.add_all (queue);
+        foreach (var track in queue) original_queue.add (track);
 
         if (player.shuffle_mode == ShuffleMode.ON) {
             shuffle ();
@@ -41,17 +46,17 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
 
         var current_track = get_current_track_info ();
 
-        Serialize.Array<YaMAPI.Track> shuffled_queue = new Serialize.Array<YaMAPI.Track> ();
+        GLib.GenericArray<YaMAPI.Track> shuffled_queue = new GLib.GenericArray<YaMAPI.Track> ();
 
-        shuffled_queue.add_all (queue);
-        queue.clear ();
+        foreach (var track in queue) shuffled_queue.add (track);
+        queue.remove_range (0, queue.length);
 
         type_utils.shuffle (ref shuffled_queue);
 
-        var new_index = shuffled_queue.index_of (current_track);
+        var new_index = index_of_track (shuffled_queue, current_track);
 
-        queue.add_all (shuffled_queue[new_index: shuffled_queue.size]);
-        queue.add_all (shuffled_queue[0 : new_index]);
+        for (int i = new_index; i < shuffled_queue.length; i++) queue.add (shuffled_queue[i]);
+        for (int i = 0; i < new_index; i++) queue.add (shuffled_queue[i]);
 
         current_index = 0;
 
@@ -61,21 +66,21 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
     public void unshuffle () {
         var current_track = get_current_track_info ();
 
-        queue.clear ();
-        queue.add_all (original_queue);
-        current_index = queue.index_of (current_track);
+        queue.remove_range (0, queue.length);
+        foreach (var track in original_queue) queue.add (track);
+        current_index = index_of_track (queue, current_track);
 
         sh_queue_changed ();
     }
 
     public void add_track_next (YaMAPI.Track track_info) {
-        if (queue.is_empty) {
+        if (queue.length == 0) {
             add_track_end (track_info);
             return;
         }
 
         queue.insert (current_index + 1, track_info);
-        original_queue.insert (original_queue.index_of (get_current_track_info ()) + 1, track_info);
+        original_queue.insert (index_of_track (original_queue, get_current_track_info ()) + 1, track_info);
 
         sh_queue_changed ();
     }
@@ -88,16 +93,16 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
     }
 
     public void remove_track (YaMAPI.Track track_info) {
-        int track_pos = queue.index_of (track_info);
+        int track_pos = index_of_track (queue, track_info);
 
         if (track_pos == -1) {
             return;
         }
 
-        queue.remove_at (track_pos);
+        queue.remove_index (track_pos);
         original_queue.remove (track_info);
 
-        if (!queue.is_empty) {
+        if (queue.length != 0) {
             if (track_pos == current_index) {
                 player.change_track (get_current_track_info ());
             } else if (track_pos < current_index) {
@@ -117,9 +122,11 @@ public abstract class Tape.PlayerShufflable : PlayerMode {
         sh_queue_changed ();
     }
 
-    public void add_many_end (Serialize.Array<YaMAPI.Track> track_list) {
-        queue.add_all (track_list);
-        original_queue.add_all (track_list);
+    public void add_many_end (GLib.GenericArray<YaMAPI.Track> track_list) {
+        foreach (var track in track_list) {
+            queue.add (track);
+            original_queue.add (track);
+        }
 
         sh_queue_changed ();
     }

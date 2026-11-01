@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Track : Serialize.DataObject, HasCover {
+public class Tape.YaMAPI.Track : Deser.DataObject, HasCover {
 
     public bool is_explicit {
         get {
@@ -71,7 +71,10 @@ public class Tape.YaMAPI.Track : Serialize.DataObject, HasCover {
 
     public bool need_bookmate {
         get {
-            return "bookmate" in available_for_options;
+            foreach (var option in available_for_options) {
+                if (option == "bookmate") return true;
+            }
+            return false;
         }
     }
 
@@ -81,9 +84,9 @@ public class Tape.YaMAPI.Track : Serialize.DataObject, HasCover {
 
     public bool available { get; set; }
 
-    public Serialize.Array<Artist> artists { get; set; default = new Serialize.Array<Artist> (); }
+    public GLib.GenericArray<Artist> artists { get; set; default = new GLib.GenericArray<Artist> (); }
 
-    public Serialize.Array<Album> albums { get; set; default = new Serialize.Array<Album> (); }
+    public GLib.GenericArray<Album> albums { get; set; default = new GLib.GenericArray<Album> (); }
 
     public bool available_for_premium_users { get; set; }
 
@@ -112,12 +115,12 @@ public class Tape.YaMAPI.Track : Serialize.DataObject, HasCover {
 
     public string track_source { get; set; }
 
-    public Serialize.Array<string> available_for_options { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> available_for_options { get; set; default = new GLib.GenericArray<string> (); }
 
     public LyricsInfo lyrics_info { get; set; }
 
-    public virtual Serialize.Array<string> get_cover_items_by_size (int size) {
-        var array = new Serialize.Array<string> ();
+    public virtual GLib.GenericArray<string> get_cover_items_by_size (int size) {
+        var array = new GLib.GenericArray<string> ();
         if (cover_uri != null) {
             array.add ("https://" + cover_uri.replace ("%%", @"$(size)x$(size)"));
         }
@@ -125,8 +128,8 @@ public class Tape.YaMAPI.Track : Serialize.DataObject, HasCover {
     }
 
     public string get_artists_names () {
-        var artists_names = new string[artists.size];
-        for (int i = 0; i < artists.size; i++) {
+        var artists_names = new string[artists.length];
+        for (int i = 0; i < artists.length; i++) {
             artists_names[i] = artists[i].name;
         }
         return string.joinv (", ", artists_names);
@@ -135,12 +138,19 @@ public class Tape.YaMAPI.Track : Serialize.DataObject, HasCover {
     public string get_album_title () {
         string album_title;
 
-        if (!albums.is_empty) {
+        if (albums.length != 0) {
             album_title = albums[0].title;
         } else {
             album_title = meta_data ? .album;
         }
 
         return album_title != null ? album_title : "Unknown Album";
+    }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "artists") return Deser.create_codec_for_array<Artist> ();
+        if (property.name == "albums") return Deser.create_codec_for_array<Album> ();
+        if (property.name == "available-for-options") return Deser.create_codec_for_array<string> ();
+        return base.get_property_codec (property);
     }
 }

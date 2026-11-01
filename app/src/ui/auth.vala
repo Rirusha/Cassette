@@ -127,7 +127,7 @@ public sealed class Cassette.Auth : Loadable {
                 }
                 to_auth ();
             }
-        } catch (ApiBase.BadStatusCodeError e) {
+        } catch (Session.BadStatusCodeError e) {
             activate_action_variant (
                 "app.show-message",
                 Message.build_variant (_("Bad status code: %i").printf (e.code), e.message)

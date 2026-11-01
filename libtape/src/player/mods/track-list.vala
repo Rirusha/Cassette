@@ -22,7 +22,7 @@ using Gee;
 public sealed class Tape.PlayerTrackList : PlayerShufflable {
 
     public PlayerTrackList (Player player,
-                            Serialize.Array<YaMAPI.Track> queue,
+                            GLib.GenericArray<YaMAPI.Track> queue,
                             string context_type,
                             string? context_id,
                             int current_index,
@@ -75,7 +75,7 @@ public sealed class Tape.PlayerTrackList : PlayerShufflable {
 
         switch (player.repeat_mode) {
             case RepeatMode.OFF:
-                if (index + 1 == queue.size) {
+                if (index + 1 == queue.length) {
                     index = -1;
                 } else {
                     index++;
@@ -84,7 +84,7 @@ public sealed class Tape.PlayerTrackList : PlayerShufflable {
 
             case RepeatMode.ONE:
                 if (!consider_repeat_one) {
-                    if (index + 1 == queue.size) {
+                    if (index + 1 == queue.length) {
                         index = -1;
                     } else {
                         index++;
@@ -93,7 +93,7 @@ public sealed class Tape.PlayerTrackList : PlayerShufflable {
                 break;
 
             case RepeatMode.QUEUE:
-                if (index + 1 == queue.size) {
+                if (index + 1 == queue.length) {
                     index = 0;
                 } else {
                     index++;
@@ -114,7 +114,7 @@ public sealed class Tape.PlayerTrackList : PlayerShufflable {
 
             case 0:
                 if (player.repeat_mode == RepeatMode.QUEUE) {
-                    index = queue.size - 1;
+                    index = queue.length - 1;
                 } else {
                     index = -1;
                 }
@@ -134,7 +134,7 @@ public sealed class Tape.PlayerTrackList : PlayerShufflable {
         return new YaMAPI.Play () {
                    track_length_seconds = ((double) current_track.duration_ms) / 1000.0,
                    track_id = current_track.id,
-                   album_id = current_track.albums.size > 0 ? current_track.albums[0].id : null,
+                   album_id = current_track.albums.length > 0 ? current_track.albums[0].id : null,
                    context = context_type,
                    context_item = context_id
         };

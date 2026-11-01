@@ -21,7 +21,7 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.StationInfo : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.StationInfo : Deser.DataObject {
 
     /**
      *

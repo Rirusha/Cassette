@@ -31,7 +31,7 @@ public sealed class Tape.PlayerFlow : PlayerMode {
 
     public PlayerFlow (Player player,
                        string station_id,
-                       Serialize.Array<YaMAPI.Track> queue) {
+                       GLib.GenericArray<YaMAPI.Track> queue) {
         Object (
             player: player,
             station_id: station_id,
@@ -53,7 +53,7 @@ public sealed class Tape.PlayerFlow : PlayerMode {
             queue.add (station_tracks.sequence[0].track);
             queue.add (station_tracks.sequence[1].track);
 
-            current_index = queue.size - 2;
+            current_index = queue.length - 2;
 
             send_feedback.begin (YaMAPI.Rotor.FeedbackType.RADIO_STARTED);
 
@@ -83,7 +83,7 @@ public sealed class Tape.PlayerFlow : PlayerMode {
     async YaMAPI.Track? get_next_track_async () throws CantUseError {
         YaMAPI.Track? next_track = null;
 
-        Serialize.Array<string> track_ids = new Serialize.Array<string> ();
+        GLib.GenericArray<string> track_ids = new GLib.GenericArray<string> ();
 
         foreach (var track_info in queue) {
             track_ids.add (track_info.id);
@@ -117,7 +117,7 @@ public sealed class Tape.PlayerFlow : PlayerMode {
 
         switch (player.repeat_mode) {
             case RepeatMode.OFF:
-                if (index + 1 == queue.size) {
+                if (index + 1 == queue.length) {
                     index = -1;
                 } else {
                     index++;
@@ -126,7 +126,7 @@ public sealed class Tape.PlayerFlow : PlayerMode {
 
             case RepeatMode.ONE:
                 if (!consider_repeat_mode) {
-                    if (index + 1 == queue.size) {
+                    if (index + 1 == queue.length) {
                         index = -1;
                     } else {
                         index++;
@@ -157,7 +157,7 @@ public sealed class Tape.PlayerFlow : PlayerMode {
         return new YaMAPI.Play () {
             track_length_seconds = ((double) current_track.duration_ms) / 1000.0,
             track_id = current_track.id,
-            album_id = current_track.albums.size > 0 ? current_track.albums[0].id : null,
+            album_id = current_track.albums.length > 0 ? current_track.albums[0].id : null,
             context = context_type,
             context_item = context_id,
             radio_session_id = radio_session_id

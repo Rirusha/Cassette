@@ -17,8 +17,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-using ApiBase;
-using Serialize;
+using Session;
+using Deser;
 using Tape.YaMAPI;
 
 /**
@@ -78,7 +78,7 @@ public sealed class Tape.YandexMusic : Object {
         YaMAPI.Client c;
 
         if (cookies_path != null) {
-            c = new YaMAPI.Client.with_cookie (cookies_path, ApiBase.CookieJarType.DB);
+            c = new YaMAPI.Client.with_cookie (cookies_path, Session.CookieJarType.DB);
         } else if (token != null) {
             c = new YaMAPI.Client.with_token (token);
         } else {
@@ -129,9 +129,9 @@ public sealed class Tape.YandexMusic : Object {
     //              likes_controller.update_liked_tracks (playlist_info.tracks);
     //          }
 
-    //          if (playlist_info.tracks.size != 0) {
+    //          if (playlist_info.tracks.length != 0) {
     //              if (playlist_info.tracks[0].track == null) {
-    //                  string[] tracks_ids = new string[playlist_info.tracks.size];
+    //                  string[] tracks_ids = new string[playlist_info.tracks.length];
     //                  for (int i = 0; i < tracks_ids.length; i++) {
     //                      tracks_ids[i] = playlist_info.tracks[i].id;
     //                  }
@@ -169,9 +169,9 @@ public sealed class Tape.YandexMusic : Object {
     //              likes_controller.update_liked_tracks (playlist_info.tracks);
     //          }
 
-    //          if (playlist_info.tracks.size != 0) {
+    //          if (playlist_info.tracks.length != 0) {
     //              if (playlist_info.tracks[0].track == null) {
-    //                  string[] tracks_ids = new string[playlist_info.tracks.size];
+    //                  string[] tracks_ids = new string[playlist_info.tracks.length];
     //                  for (int i = 0; i < tracks_ids.length; i++) {
     //                      tracks_ids[i] = playlist_info.tracks[i].id;
     //                  }
@@ -376,15 +376,15 @@ public sealed class Tape.YandexMusic : Object {
     //      }
     //  }
 
-    //  public async Serialize.Array<Playlist>? get_playlist_list (string? uid = null) throws CantUseError {
-    //      Serialize.Array<Playlist>? playlist_list = null;
+    //  public async GLib.GenericArray<Playlist>? get_playlist_list (string? uid = null) throws CantUseError {
+    //      GLib.GenericArray<Playlist>? playlist_list = null;
 
     //      try {
     //          playlist_list = yield client.users_playlists_list (uid);
 
     //          if (uid == null) {
-    //              string[] playlists_kinds = new string[playlist_list.size];
-    //              for (int i = 0; i < playlist_list.size; i++) {
+    //              string[] playlists_kinds = new string[playlist_list.length];
+    //              for (int i = 0; i < playlist_list.length; i++) {
     //                  playlists_kinds[i] = playlist_list[i].kind.to_string ();
     //              }
 
@@ -397,8 +397,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return playlist_list;
     //  }
 
-    //  public async Serialize.Array<LikedPlaylist>? get_likes_playlist_list (string? uid = null) throws CantUseError {
-    //      Serialize.Array<LikedPlaylist>? playlist_list = null;
+    //  public async GLib.GenericArray<LikedPlaylist>? get_likes_playlist_list (string? uid = null) throws CantUseError {
+    //      GLib.GenericArray<LikedPlaylist>? playlist_list = null;
 
     //      try {
     //          playlist_list = yield client.users_likes_playlists (uid);
@@ -429,7 +429,7 @@ public sealed class Tape.YandexMusic : Object {
     //      try {
     //          lyrics = yield client.track_lyrics (track_id, is_sync);
     //          var txt = yield load_text (lyrics.download_url);
-    //          lyrics.text = new Serialize.Array<string>.wrap (txt.split ("\n"));
+    //          lyrics.text = new GLib.GenericArray<string>.wrap (txt.split ("\n"));
     //      } catch (Error e) {
     //          postrun_error_ignore_bad_code (e);
     //      }
@@ -598,8 +598,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return new_playlist;
     //  }
 
-    //  async Serialize.Array<YaMAPI.TrackShort>? get_disliked_tracks_short () throws CantUseError {
-    //      Serialize.Array<YaMAPI.TrackShort>? trackshort_list = null;
+    //  async GLib.GenericArray<YaMAPI.TrackShort>? get_disliked_tracks_short () throws CantUseError {
+    //      GLib.GenericArray<YaMAPI.TrackShort>? trackshort_list = null;
 
     //      try {
     //          trackshort_list = yield client.users_dislikes_tracks (null);
@@ -618,7 +618,7 @@ public sealed class Tape.YandexMusic : Object {
     //      try {
     //          var trackshort_list = yield get_disliked_tracks_short ();
 
-    //          string[] track_ids = new string[trackshort_list.size];
+    //          string[] track_ids = new string[trackshort_list.length];
     //          for (int i = 0; i < track_ids.length; i++) {
     //              track_ids[i] = trackshort_list[i].id;
     //          }
@@ -676,7 +676,7 @@ public sealed class Tape.YandexMusic : Object {
 
     //  public async Rotor.StationTracks? get_session_tracks (
     //      string radio_session_id,
-    //      Serialize.Array<string> queue
+    //      GLib.GenericArray<string> queue
     //  ) throws CantUseError {
     //      Rotor.StationTracks? station_tracks = null;
 
@@ -705,8 +705,8 @@ public sealed class Tape.YandexMusic : Object {
     //      return dashboard;
     //  }
 
-    //  public async Serialize.Array<YaMAPI.Rotor.Station>? get_all_stations () throws CantUseError {
-    //      Serialize.Array<YaMAPI.Rotor.Station>? stations_list = null;
+    //  public async GLib.GenericArray<YaMAPI.Rotor.Station>? get_all_stations () throws CantUseError {
+    //      GLib.GenericArray<YaMAPI.Rotor.Station>? stations_list = null;
 
     //      try {
     //          stations_list = yield client.rotor_stations_list ();

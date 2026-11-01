@@ -22,7 +22,7 @@ using Gee;
 /**
  * Track list returns by `rotor` methods
  */
-public class Tape.YaMAPI.Rotor.StationTracks : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.StationTracks : Deser.DataObject {
 
     /**
      *
@@ -32,7 +32,7 @@ public class Tape.YaMAPI.Rotor.StationTracks : Serialize.DataObject {
     /**
      *
      */
-    public Serialize.Array<Sequence> sequence { get; set; default = new Serialize.Array<Sequence> (); }
+    public GLib.GenericArray<Sequence> sequence { get; set; default = new GLib.GenericArray<Sequence> (); }
 
     /**
      *
@@ -54,7 +54,7 @@ public class Tape.YaMAPI.Rotor.StationTracks : Serialize.DataObject {
     /**
      *
      */
-    public Serialize.Array<Seed> accepted_seed { get; set; default = new Serialize.Array<Seed> (); }
+    public GLib.GenericArray<Seed> accepted_seed { get; set; default = new GLib.GenericArray<Seed> (); }
 
     /**
      *
@@ -65,4 +65,10 @@ public class Tape.YaMAPI.Rotor.StationTracks : Serialize.DataObject {
      *
      */
     public bool unknown_session { get; set; }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "sequence") return Deser.create_codec_for_array<Sequence> ();
+        if (property.name == "accepted-seed") return Deser.create_codec_for_array<Seed> ();
+        return base.get_property_codec (property);
+    }
 }

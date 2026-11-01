@@ -22,7 +22,7 @@ using Gee;
 /**
  * Dashboard with user stations
  */
-public class Tape.YaMAPI.Rotor.Dashboard : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Dashboard : Deser.DataObject {
 
     /**
      * Dashboard id
@@ -32,7 +32,7 @@ public class Tape.YaMAPI.Rotor.Dashboard : Serialize.DataObject {
     /**
      * Station list
      */
-    public Serialize.Array<Station> stations { get; set; default = new Serialize.Array<Station> (); }
+    public GLib.GenericArray<Station> stations { get; set; default = new GLib.GenericArray<Station> (); }
 
     /**
      * You can only think of Halloween until
@@ -40,4 +40,9 @@ public class Tape.YaMAPI.Rotor.Dashboard : Serialize.DataObject {
      * (by Cosmo)
      */
     public bool pumpkin { get; set; }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "stations") return Deser.create_codec_for_array<Station> ();
+        return base.get_property_codec (property);
+    }
 }

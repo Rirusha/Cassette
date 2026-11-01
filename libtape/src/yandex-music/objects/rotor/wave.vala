@@ -22,7 +22,7 @@ using Gee;
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Wave : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Wave : Deser.DataObject {
 
     /**
      *
@@ -37,10 +37,15 @@ public class Tape.YaMAPI.Rotor.Wave : Serialize.DataObject {
     /**
      *
      */
-    public Serialize.Array<string> seeds { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> seeds { get; set; default = new GLib.GenericArray<string> (); }
 
     /**
      *
      */
     public string if_for_from { get; set; }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "seeds") return Deser.create_codec_for_array<string> ();
+        return base.get_property_codec (property);
+    }
 }

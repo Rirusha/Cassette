@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Playlist : Serialize.DataObject, HasCover, HasID {
+public class Tape.YaMAPI.Playlist : Deser.DataObject, HasCover, HasID {
 
     public bool is_public {
         get {
@@ -57,7 +57,7 @@ public class Tape.YaMAPI.Playlist : Serialize.DataObject, HasCover, HasID {
 
     public Cover cover { get; set; default = new Cover.empty (); }
 
-    public Serialize.Array<TrackShort> tracks { get; set; default = new Serialize.Array<TrackShort> (); }
+    public GLib.GenericArray<TrackShort> tracks { get; set; default = new GLib.GenericArray<TrackShort> (); }
 
     public MadeFor? made_for { get; set; }
 
@@ -79,9 +79,9 @@ public class Tape.YaMAPI.Playlist : Serialize.DataObject, HasCover, HasID {
 
     public int likes_count { get; set; }
 
-    public Serialize.Array<Playlist> similar_playlists { get; set; default = new Serialize.Array<Playlist> (); }
+    public GLib.GenericArray<Playlist> similar_playlists { get; set; default = new GLib.GenericArray<Playlist> (); }
 
-    public Serialize.Array<Playlist> last_owner_playlists { get; set; default = new Serialize.Array<Playlist> (); }
+    public GLib.GenericArray<Playlist> last_owner_playlists { get; set; default = new GLib.GenericArray<Playlist> (); }
 
     public string? generated_playlist_type { get; set; }
 
@@ -99,7 +99,7 @@ public class Tape.YaMAPI.Playlist : Serialize.DataObject, HasCover, HasID {
     }
 
     public void filter_by_track_type (TrackType track_type) {
-        var new_track_list = new Serialize.Array<TrackShort> ();
+        var new_track_list = new GLib.GenericArray<TrackShort> ();
 
         foreach (TrackShort track_short in tracks) {
             if (track_short.track.track_type == track_type) {
@@ -110,12 +110,12 @@ public class Tape.YaMAPI.Playlist : Serialize.DataObject, HasCover, HasID {
         tracks = new_track_list;
     }
 
-    public Serialize.Array<YaMAPI.Track> get_filtered_track_list (
+    public GLib.GenericArray<YaMAPI.Track> get_filtered_track_list (
         bool with_explicit,
         bool with_child,
         string[] exception_tracks_ids = new string[0]
     ) {
-        var out_track_list = new Serialize.Array<Track> ();
+        var out_track_list = new GLib.GenericArray<Track> ();
 
         foreach (TrackShort track_short in tracks) {
             if ((track_short.track.available &&
@@ -130,14 +130,14 @@ public class Tape.YaMAPI.Playlist : Serialize.DataObject, HasCover, HasID {
         return out_track_list;
     }
 
-    public void set_track_list (Serialize.Array<Track> track_list) {
-        for (int i = 0; i < track_list.size; i++) {
+    public void set_track_list (GLib.GenericArray<Track> track_list) {
+        for (int i = 0; i < track_list.length; i++) {
             tracks[i].track = track_list[i];
         }
     }
 
-    public Serialize.Array<Track> get_track_list () {
-        var track_list = new Serialize.Array<Track> ();
+    public GLib.GenericArray<Track> get_track_list () {
+        var track_list = new GLib.GenericArray<Track> ();
         foreach (TrackShort track_short in tracks) {
             track_list.add (track_short.track);
         }
@@ -145,21 +145,28 @@ public class Tape.YaMAPI.Playlist : Serialize.DataObject, HasCover, HasID {
         return track_list;
     }
 
-    public Serialize.Array<string> get_cover_items_by_size (int size) {
+    public GLib.GenericArray<string> get_cover_items_by_size (int size) {
         if (kind == "3") {
             cover = new Cover.liked ();
         }
 
-        if (cover.uris.size == 0) {
+        if (cover.uris.length == 0) {
             cover = new Cover.empty ();
         }
 
-        Serialize.Array<string> cover_array = new Serialize.Array<string> ();
+        GLib.GenericArray<string> cover_array = new GLib.GenericArray<string> ();
 
         foreach (string uri in cover.uris) {
             cover_array.add ("https://" + uri.replace ("%%", @"$(size)x$(size)"));
         }
 
         return cover_array;
+    }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "tracks") return Deser.create_codec_for_array<TrackShort> ();
+        if (property.name == "similar-playlists") return Deser.create_codec_for_array<Playlist> ();
+        if (property.name == "last-owner-playlists") return Deser.create_codec_for_array<Playlist> ();
+        return base.get_property_codec (property);
     }
 }

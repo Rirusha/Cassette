@@ -19,7 +19,7 @@
 
 using Gee;
 
-public class Tape.YaMAPI.SimilarTracks : Serialize.DataObject, HasID {
+public class Tape.YaMAPI.SimilarTracks : Deser.DataObject, HasID {
 
     public string oid {
         owned get {
@@ -29,14 +29,14 @@ public class Tape.YaMAPI.SimilarTracks : Serialize.DataObject, HasID {
 
     public Track track { get; set; }
 
-    public Serialize.Array<Track> similar_tracks { get; set; default = new Serialize.Array<Track> (); }
+    public GLib.GenericArray<Track> similar_tracks { get; set; default = new GLib.GenericArray<Track> (); }
 
-    public Serialize.Array<YaMAPI.Track> get_filtered_track_list (
+    public GLib.GenericArray<YaMAPI.Track> get_filtered_track_list (
         bool with_explicit,
         bool with_child,
         string[] exception_tracks_ids = new string[0]
     ) {
-        var out_track_list = new Serialize.Array<Track> ();
+        var out_track_list = new GLib.GenericArray<Track> ();
 
         foreach (var similar_track in similar_tracks) {
             if ((similar_track.available &&
@@ -49,5 +49,10 @@ public class Tape.YaMAPI.SimilarTracks : Serialize.DataObject, HasID {
         }
 
         return out_track_list;
+    }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "similar-tracks") return Deser.create_codec_for_array<Track> ();
+        return base.get_property_codec (property);
     }
 }

@@ -13,14 +13,13 @@ finish-args:
   - --filesystem=xdg-music:ro
   - --filesystem=xdg-download:ro
 modules:
-  - name: api-base
+  - name: libdeser
     buildsystem: meson
     builddir: true
     sources:
       - type: git
-        url: https://altlinux.space/rirusha/libapi-base.git
-        tag: v7.10
-        commit:
+        url: https://altlinux.space/rirusha/libdeser.git
+        branch: main
   - name: libcase
     buildsystem: meson
     builddir: true

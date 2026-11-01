@@ -18,7 +18,7 @@
 namespace Tape {
 
     public struct ParseUriResult {
-        public Serialize.DataObject root_object;
+        public Deser.DataObject root_object;
         public YaMAPI.Track? track;
     }
 
@@ -112,7 +112,7 @@ namespace Tape {
      *          object from the api. And a similar track, if the
      *          uri contained one.
      */
-    public ParseUriResult? parse_uri (string uri) throws Serialize.JsonError {
+    public ParseUriResult? parse_uri (string uri) throws Deser.Error {
         string[] uri_parts = {};
         string[] args = {};
 
@@ -192,11 +192,11 @@ namespace Tape {
         return null;
     }
 
-    public string get_share_link (Serialize.DataObject yam_obj) {
+    public string get_share_link (Deser.DataObject yam_obj) {
         if (yam_obj is YaMAPI.Track) {
             var track_info = (YaMAPI.Track) yam_obj;
 
-            if (track_info.albums.size == 0) {
+            if (track_info.albums.length == 0) {
                 warning (_("User owned tracks can't be shared"));
                 return "";
             } else {
@@ -287,11 +287,11 @@ namespace Tape {
         /**
          * Shuffle list.
          *
-         * @param list   `Serialize.Array' need to shuffle
+         * @param list   `GLib.GenericArray' need to shuffle
          */
-        public void shuffle (ref Serialize.Array<T> list) {
-            for (int i = 0; i < list.size; i++) {
-                int random_index = Random.int_range (0, list.size);
+        public void shuffle (ref GLib.GenericArray<T> list) {
+            for (int i = 0; i < list.length; i++) {
+                int random_index = Random.int_range (0, list.length);
                 T a = list[i];
                 list[i] = list[random_index];
                 list[random_index] = a;

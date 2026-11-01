@@ -22,7 +22,7 @@ using Gee;
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Seed : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Seed : Deser.DataObject {
 
     /**
      *

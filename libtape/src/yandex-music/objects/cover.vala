@@ -19,12 +19,14 @@
 
 using Gee;
 
-public class Tape.YaMAPI.Cover : Serialize.DataObject {
+public class Tape.YaMAPI.Cover : Deser.DataObject {
 
-    public Serialize.Array<string> uris {
+    public GLib.GenericArray<string> uris {
         owned get {
             if (uri != null) {
-                return new Serialize.Array<string>.wrap ({ uri });
+                var result = new GLib.GenericArray<string> ();
+                result.add (uri);
+                return result;
             } else {
                 return items_uri;
             }
@@ -34,7 +36,7 @@ public class Tape.YaMAPI.Cover : Serialize.DataObject {
     [Description (nick = "type")]
     public string? type_ { get; set; }
 
-    public Serialize.Array<string> items_uri { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> items_uri { get; set; default = new GLib.GenericArray<string> (); }
 
     public string? uri { get; set; default = null; }
 
@@ -52,5 +54,10 @@ public class Tape.YaMAPI.Cover : Serialize.DataObject {
 
     public Cover.empty () {
         Object (uri: "music.yandex.ru/blocks/playlist-cover/playlist-cover_no_cover0.png");
+    }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "items-uri") return Deser.create_codec_for_array<string> ();
+        return base.get_property_codec (property);
     }
 }

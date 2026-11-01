@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Tape.YaMAPI.Icon : Serialize.DataObject {
+public class Tape.YaMAPI.Icon : Deser.DataObject {
 
     public string background_color { get; set; }
 

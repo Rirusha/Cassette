@@ -22,12 +22,12 @@ using Gee;
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.SessionNew : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.SessionNew : Deser.DataObject {
 
     /**
      *
      */
-    public Serialize.Array<string> seeds { get; set; default = new Serialize.Array<string> (); }
+    public GLib.GenericArray<string> seeds { get; set; default = new GLib.GenericArray<string> (); }
 
     /**
      *
@@ -38,4 +38,9 @@ public class Tape.YaMAPI.Rotor.SessionNew : Serialize.DataObject {
      *
      */
     public bool include_wave_model { get; set; default = true; }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "seeds") return Deser.create_codec_for_array<string> ();
+        return base.get_property_codec (property);
+    }
 }

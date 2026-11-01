@@ -8,6 +8,7 @@ vala_sources = files(
   'errors.vala',
   'hash-store.vala',
   'likes-model.vala',
+  'result-codec.vala',
   'settings.vala',
   'utils.vala',
   'yandex-music.vala',
@@ -26,17 +27,23 @@ sources = [
 pgconfig_dependencies = [
   gee_dep,
   gio_dep,
+  json_glib_dep,
   gstreamer_app_dep,
   gstreamer_dep,
   libxml_dep,
   sqlite3_dep,
 ]
 dependencies = pgconfig_dependencies + [
-  libapi_base_dep
+  libdeser_dep,
+  libsession_dep
 ]
 
-if libapi_base_dep.type_name() == 'pkgconfig'
-  pgconfig_dependencies += libapi_base_dep
+if libdeser_dep.type_name() == 'pkgconfig'
+  pgconfig_dependencies += libdeser_dep
+endif
+
+if libsession_dep.type_name() == 'pkgconfig'
+  pgconfig_dependencies += libsession_dep
 endif
 
 configure_file(output: 'config.h', configuration: conf)

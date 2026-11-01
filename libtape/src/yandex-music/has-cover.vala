@@ -18,7 +18,7 @@
 /**
  * `Object` that has cover.
  */
-public interface Tape.YaMAPI.HasCover : Serialize.DataObject {
+public interface Tape.YaMAPI.HasCover : Deser.DataObject {
 
     /**
      * Get all `Object` covers.
@@ -27,5 +27,5 @@ public interface Tape.YaMAPI.HasCover : Serialize.DataObject {
      *
      * @return      covers array
      */
-    public abstract Serialize.Array<string> get_cover_items_by_size (int size);
+    public abstract GLib.GenericArray<string> get_cover_items_by_size (int size);
 }

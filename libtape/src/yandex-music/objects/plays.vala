@@ -22,10 +22,15 @@ using Gee;
 /**
  *
  */
-public class Tape.YaMAPI.Plays : Serialize.DataObject {
+public class Tape.YaMAPI.Plays : Deser.DataObject {
 
     /**
      *
      */
-    public Serialize.Array<Play> plays { get; set; default = new Serialize.Array<Play> (); }
+    public GLib.GenericArray<Play> plays { get; set; default = new GLib.GenericArray<Play> (); }
+
+    public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
+        if (property.name == "plays") return Deser.create_codec_for_array<Play> ();
+        return base.get_property_codec (property);
+    }
 }

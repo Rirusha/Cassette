@@ -20,7 +20,7 @@
 /**
  *
  */
-public class Tape.YaMAPI.Rotor.Sequence : Serialize.DataObject {
+public class Tape.YaMAPI.Rotor.Sequence : Deser.DataObject {
 
     /**
      * Track type.

@@ -694,7 +694,7 @@ public class Tape.Storager : Object {
     //                  try {
     //                      obj_arr.append_val (yield jsoner.deserialize_object_async<YaMAPI.HasTracks> ());
 
-    //                  } catch (Serialize.JsonError e) {
+    //                  } catch (Deser.Error e) {
     //                      warning ("Can't parse object. Error message: %s", e.message);
     //                  }
     //              }
@@ -757,14 +757,14 @@ public class Tape.Storager : Object {
 
                 simple_dencode (ref object_data);
 
-                var jsoner = new Serialize.JsonWorker.from_data (object_data);
+                var jsoner = new Deser.JsonWorker.from_bytes (new Bytes (object_data));
 
                 YaMAPI.HasID? des_obj = null;
 
                 try {
                     des_obj = (YaMAPI.HasID) yield jsoner.deserialize_object_by_type_async (obj_type);
 
-                } catch (Serialize.Error e) {
+                } catch (Deser.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
                 }
 
@@ -804,14 +804,14 @@ public class Tape.Storager : Object {
 
                 simple_dencode (ref object_data);
 
-                var jsoner = new Serialize.JsonWorker.from_data (object_data);
+                var jsoner = new Deser.JsonWorker.from_bytes (new Bytes (object_data));
 
                 YaMAPI.HasID? des_obj = null;
 
                 try {
                     des_obj = (YaMAPI.HasID) jsoner.deserialize_object_by_type (obj_type);
 
-                } catch (Serialize.Error e) {
+                } catch (Deser.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
                 }
 
@@ -828,7 +828,11 @@ public class Tape.Storager : Object {
         File object_file = get_object_cache_file (yam_object.get_type (), yam_object.oid, is_tmp);
 
         try {
-            var object_data = yam_object.to_json ().data;
+            var object_json = Deser.JsonWorker.serialize (
+                (GLib.Object) yam_object,
+                new Deser.ObjectCodec<GLib.Object>.from_gtype (yam_object.get_type ())
+            );
+            var object_data = object_json.data;
             simple_dencode (ref object_data);
 
             yield object_file.replace_contents_async (

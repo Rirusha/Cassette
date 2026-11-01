@@ -22,6 +22,23 @@ test('content-heap',
   )
 )
 
+test('deser-models',
+  executable('test-deser-models',
+    sources: files('test-deser-models.vala'),
+    dependencies: lib_dep,
+  )
+)
+
+test('result-codec',
+  executable('test-result-codec',
+    sources: [
+      files('test-result-codec.vala'),
+      files(meson.project_source_root() / 'libtape' / 'src' / 'result-codec.vala'),
+    ],
+    dependencies: libdeser_dep,
+  )
+)
+
 if get_option('token') != ''
   test_api_conf = configuration_data()
   test_api_conf.set_quoted('TOKEN', get_option('token'))

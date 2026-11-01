@@ -18,15 +18,15 @@
  */
 
 using Tape.YaMAPI.Rotor;
-using ApiBase;
-using Serialize;
+using Session;
+using Deser;
 
 public sealed class Tape.YaMAPI.Client : Object {
 
     const string USER_AGENT = "libtape";
     const string YAM_BASE_URL = "https://api.music.yandex.net";
 
-    public Session session { private get; construct; }
+    public Session.Session session { private get; construct; }
 
     public AuthType auth_type { get; construct; }
 
@@ -59,7 +59,7 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     public Client.with_token (string token) {
         Object (
-            session: new Session () {
+            session: new Session.Session () {
                 user_agent = USER_AGENT
             },
             token: token,
@@ -83,7 +83,7 @@ public sealed class Tape.YaMAPI.Client : Object {
         }
 
         Object (
-            session: new Session () {
+            session: new Session.Session () {
                 user_agent = USER_AGENT
             },
             cookie_jar_type: cookie_jar_type,
@@ -132,8 +132,12 @@ public sealed class Tape.YaMAPI.Client : Object {
             datalist.set_data ("client_secret", "53bc75238f0c4d08a118e51fe9203300");
             datalist.set_data ("host", "oauth.yandex.ru");
 
-            ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
-            post_content.set_datalist (datalist);
+            Session.Content post_content = { Session.ContentType.X_WWW_FORM_URLENCODED };
+            try {
+                post_content.set_datalist (datalist);
+            } catch (Deser.Error e) {
+                handle_error (e);
+            }
 
             var request = new Request.POST ("https://oauth.yandex.ru/token");
             request.add_content (post_content);
@@ -141,16 +145,12 @@ public sealed class Tape.YaMAPI.Client : Object {
             try {
                 var bytes = yield session.send_and_read_async (request, priority, cancellable);
 
-                var jsoner = new JsonWorker.from_bytes (
-                    bytes,
-                    { "access_token" },
-                    new Serialize.Settings () { names_case = Serialize.Case.SNAKE }
-                );
-
-                var val = jsoner.deserialize_value ();
-
-                if (val.type () == Type.STRING) {
-                    token = val.get_string ();
+                var parser = new Json.Parser ();
+                parser.load_from_data ((string) bytes.get_data (), (ssize_t) bytes.get_size ());
+                var root = parser.get_root ();
+                if (root != null && root.get_node_type () == Json.NodeType.OBJECT &&
+                    root.get_object ().has_member ("access_token")) {
+                    token = root.get_object ().get_string_member ("access_token");
                 }
             } catch (GLib.Error e) {
                 handle_error (e);
@@ -252,9 +252,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 cancellable
             );
 
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<Account.About> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<Account.About> (
+
+                    new Deser.ObjectCodec<Account.About> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -293,9 +301,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 priority,
                 cancellable
             );
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<Playlist> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<Playlist> (
+
+                    new Deser.ObjectCodec<Playlist> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -435,11 +451,11 @@ public sealed class Tape.YaMAPI.Client : Object {
     /**
      *
      */
-    public async Serialize.Array<Playlist> users_playlists_list (
+    public async GLib.GenericArray<Playlist> users_playlists_list (
         string? uid = null,
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
-    ) throws TapeError, JsonError,
+    ) throws TapeError, Deser.Error,
     BadStatusCodeError {
         var real_uid = fix_uid (uid);
 
@@ -452,9 +468,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 priority,
                 cancellable
             );
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_array_async<Playlist> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<GLib.GenericArray<Playlist>> (
+
+                    Deser.create_codec_for_array<Playlist> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -482,9 +506,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 priority,
                 cancellable
             );
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<Playlist> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<Playlist> (
+
+                    new Deser.ObjectCodec<Playlist> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -520,7 +552,6 @@ public sealed class Tape.YaMAPI.Client : Object {
                 cancellable
             );
 
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
             //  FIXME: Fix it
             //  if (jsoner.root != null) {
             //      return true;
@@ -546,8 +577,12 @@ public sealed class Tape.YaMAPI.Client : Object {
         datalist.set_data ("revision", revision.to_string ());
         datalist.set_data ("diff", diff);
 
-        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
-        post_content.set_datalist (datalist);
+        Session.Content post_content = { Session.ContentType.X_WWW_FORM_URLENCODED };
+        try {
+            post_content.set_datalist (datalist);
+        } catch (Deser.Error e) {
+            handle_error (e);
+        }
 
         var request = new Request.POST (@"/users/$real_uid/playlists/$kind/change");
         request.presets = { "default" };
@@ -560,9 +595,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 cancellable
             );
 
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<Playlist> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<Playlist> (
+
+                    new Deser.ObjectCodec<Playlist> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -581,8 +624,12 @@ public sealed class Tape.YaMAPI.Client : Object {
         datalist.set_data ("title", title);
         datalist.set_data ("visibility", visibility.to_string ());
 
-        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
-        post_content.set_datalist (datalist);
+        Session.Content post_content = { Session.ContentType.X_WWW_FORM_URLENCODED };
+        try {
+            post_content.set_datalist (datalist);
+        } catch (Deser.Error e) {
+            handle_error (e);
+        }
 
         var request = new Request.POST (@"/users/$real_uid/playlists/create");
         request.presets = { "default" };
@@ -595,9 +642,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 cancellable
             );
 
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<Playlist> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<Playlist> (
+
+                    new Deser.ObjectCodec<Playlist> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -615,8 +670,12 @@ public sealed class Tape.YaMAPI.Client : Object {
         var datalist = Datalist<string> ();
         datalist.set_data ("value", new_name);
 
-        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
-        post_content.set_datalist (datalist);
+        Session.Content post_content = { Session.ContentType.X_WWW_FORM_URLENCODED };
+        try {
+            post_content.set_datalist (datalist);
+        } catch (Deser.Error e) {
+            handle_error (e);
+        }
 
         var request = new Request.POST (@"/users/$real_uid/playlists/$kind/name");
         request.presets = { "default" };
@@ -629,9 +688,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 cancellable
             );
 
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<Playlist> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<Playlist> (
+
+                    new Deser.ObjectCodec<Playlist> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -655,9 +722,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 cancellable
             );
 
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<PlaylistRecommendations> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<PlaylistRecommendations> (
+
+                    new Deser.ObjectCodec<PlaylistRecommendations> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -779,7 +854,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //  /**
     //   *
     //   */
-    //  public async Serialize.Array<LikedPlaylist> users_likes_playlists (
+    //  public async GLib.GenericArray<LikedPlaylist> users_likes_playlists (
     //      string? uid = null,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
@@ -796,7 +871,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      var playlist_array = new Serialize.Array<LikedPlaylist> ();
+    //      var playlist_array = new GLib.GenericArray<LikedPlaylist> ();
     //      yield jsoner.deserialize_array_into_async (playlist_array);
     //      return playlist_array;
     //  }
@@ -861,12 +936,12 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      return 0;
     //  }
 
-    //  public async Serialize.Array<TrackShort> users_dislikes_tracks (
+    //  public async GLib.GenericArray<TrackShort> users_dislikes_tracks (
     //      string? uid,
     //      int if_modified_since_revision = 0,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
-    //  ) throws SoupError, JsonError,
+    //  ) throws SoupError, Deser.Error,
     //  BadStatusCodeError {
     //      var real_uid = fix_uid (uid);
 
@@ -882,7 +957,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result", "library", "tracks" });
 
-    //      var our_array = new Serialize.Array<TrackShort> ();
+    //      var our_array = new GLib.GenericArray<TrackShort> ();
     //      yield jsoner.deserialize_array_into_async (our_array);
 
     //      return our_array;
@@ -1263,9 +1338,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 cancellable
             );
 
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_object_async<Library.AllIds> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<Library.AllIds> (
+
+                    new Deser.ObjectCodec<Library.AllIds> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -1367,7 +1450,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //  ) throws TapeError, BadStatusCodeError {
     //      PostContent post_content = {
     //          PostContentType.JSON,
-    //          yield ApiBase.Jsoner.serialize_async (session_new)
+    //          yield Session.Jsoner.serialize_async (session_new)
     //      };
 
     //      Bytes bytes = yield session.post_async (
@@ -1396,7 +1479,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //  ) throws TapeError, BadStatusCodeError {
     //      PostContent post_content = {
     //          PostContentType.JSON,
-    //          yield ApiBase.Jsoner.serialize_async (queue)
+    //          yield Session.Jsoner.serialize_async (queue)
     //      };
 
     //      Bytes bytes = yield session.post_async (
@@ -1425,7 +1508,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //  ) throws TapeError, BadStatusCodeError {
     //      PostContent post_content = {
     //          PostContentType.JSON,
-    //          yield ApiBase.Jsoner.serialize_async (feedback)
+    //          yield Session.Jsoner.serialize_async (feedback)
     //      };
 
     //      yield session.post_async (
@@ -1534,7 +1617,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      return (Dashboard) yield jsoner.deserialize_object_async (typeof (Dashboard));
     //  }
 
-    //  public async Serialize.Array<Station> rotor_stations_list (
+    //  public async GLib.GenericArray<Station> rotor_stations_list (
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
     //  ) throws TapeError, BadStatusCodeError {
@@ -1550,7 +1633,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      var sl_array = new Serialize.Array<Station> ();
+    //      var sl_array = new GLib.GenericArray<Station> ();
     //      yield jsoner.deserialize_array_into_async (sl_array);
 
     //      return sl_array;
@@ -1602,7 +1685,7 @@ public sealed class Tape.YaMAPI.Client : Object {
 
     //      PostContent post_content = {
     //          PostContentType.JSON,
-    //          yield ApiBase.Jsoner.serialize_async (plays_obj)
+    //          yield Session.Jsoner.serialize_async (plays_obj)
     //      };
 
     //      Bytes bytes = yield session.post_async (
@@ -1723,7 +1806,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      assert_not_reached ();
     //  }
 
-    public async Serialize.Array<Track> tracks (
+    public async GLib.GenericArray<Track> tracks (
         string[] id_list,
         bool with_positions = false,
         int priority = Priority.DEFAULT,
@@ -1733,8 +1816,12 @@ public sealed class Tape.YaMAPI.Client : Object {
         datalist.set_data ("track-ids", string.joinv (",", id_list));
         datalist.set_data ("with-positions", with_positions.to_string ());
 
-        ApiBase.Content post_content = { ApiBase.ContentType.X_WWW_FORM_URLENCODED };
-        post_content.set_datalist (datalist);
+        Session.Content post_content = { Session.ContentType.X_WWW_FORM_URLENCODED };
+        try {
+            post_content.set_datalist (datalist);
+        } catch (Deser.Error e) {
+            handle_error (e);
+        }
 
         var request = new Request.POST ("/tracks");
         request.presets = { "default" };
@@ -1746,9 +1833,17 @@ public sealed class Tape.YaMAPI.Client : Object {
                 priority,
                 cancellable
             );
-            var jsoner = new JsonWorker.from_bytes (bytes, { "result" });
+            var jsoner = new JsonWorker.from_bytes (bytes);
 
-            return yield jsoner.deserialize_array_async<Track> ();
+            return yield jsoner.deserialize_async (
+
+                new Tape.ResultCodec<GLib.GenericArray<Track>> (
+
+                    Deser.create_codec_for_array<Track> ()
+
+                )
+
+            );
         } catch (GLib.Error e) {
             handle_error (e);
         }
@@ -1782,7 +1877,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //  }
 
-    //  public async Serialize.Array<DownloadInfo> tracks_download_info (
+    //  public async GLib.GenericArray<DownloadInfo> tracks_download_info (
     //      string track_id,
     //      int priority = Priority.DEFAULT,
     //      Cancellable? cancellable = null
@@ -1797,7 +1892,7 @@ public sealed class Tape.YaMAPI.Client : Object {
     //      );
     //      var jsoner = new Jsoner.from_bytes (bytes, { "result" });
 
-    //      var di_array = new Serialize.Array<DownloadInfo> ();
+    //      var di_array = new GLib.GenericArray<DownloadInfo> ();
     //      yield jsoner.deserialize_array_into_async (di_array);
 
     //      return di_array;

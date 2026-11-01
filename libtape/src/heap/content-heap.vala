@@ -45,13 +45,13 @@ internal abstract class Tape.ContentHeap : Object {
         }
 
         content = yield get_local_content (id);
-        if (check_fresh_content_id (id, content)) {
+        if (check_content_id (id, content)) {
             bind_content (content);
             return content;
         }
 
         content = yield get_remote_content (id);
-        if (check_fresh_content_id (id, content)) {
+        if (check_content_id (id, content)) {
             bind_content (content);
             return content;
         }
@@ -68,7 +68,7 @@ internal abstract class Tape.ContentHeap : Object {
         content.heap = this;
     }
 
-    bool check_fresh_content_id (string id, Content? content) {
+    bool check_content_id (string id, Content? content) {
         if (content != null) {
             if (content.id != id) {
                 warning ("Content id mismatch. Type: %s", content.get_type ().name ());

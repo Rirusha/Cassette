@@ -6,7 +6,7 @@ app_id_suffix = ''
 
 nightly = false
 
-if meson.project_version().endswith('.rc') and not get_option('force-release')
+if meson.project_version().endswith('.rc') and not get_option('force_release')
   git = find_program('git', required: false)
   hash = ''
 

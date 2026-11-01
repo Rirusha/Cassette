@@ -12,7 +12,7 @@ option(
   value: false
 )
 option(
-  'force-release',
+  'force_release',
   type: 'boolean',
   value: false
 )

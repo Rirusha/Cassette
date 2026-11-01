@@ -17,15 +17,13 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-public class Tape.Content : Object {
+public abstract class Tape.Content : Deser.DataObject {
 
-    public string content_id { get; set; }
+    public abstract string content_id {
+        owned get;
+    }
 
     ContentHeap heap;
-
-    internal Content (string id) {
-        Object (id: id);
-    }
 
     internal void bind_heap (ContentHeap heap) {
         this.heap = heap;

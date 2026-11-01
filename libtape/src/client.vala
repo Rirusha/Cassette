@@ -105,10 +105,10 @@ public class Tape.Client : Object {
             throw e;
         }
 
-        Mpris.init (this);
+        // Mpris.init (this);
 
-        if (ym.client.auth_type == TOKEN) {
-            cm.storager.save_token (ym.client.token);
+        if (ym.auth_type == TOKEN) {
+            cm.storager.save_token (ym.token);
         }
 
         return true;

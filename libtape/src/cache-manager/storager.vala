@@ -738,7 +738,7 @@ public class Tape.Storager : Object {
         return Location.none ();
     }
 
-    public async Tape.YaMAPIHasID? load_object (Type obj_type, string oid) {
+    public async Content? load_object (Type obj_type, string oid) {
         Location object_location = object_cache_location (obj_type, oid);
 
         if (object_location.file == null) {
@@ -759,10 +759,10 @@ public class Tape.Storager : Object {
 
                 var jsoner = new Deser.JsonWorker.from_bytes (new Bytes (object_data));
 
-                Tape.YaMAPIHasID? des_obj = null;
+                Content? des_obj = null;
 
                 try {
-                    des_obj = (Tape.YaMAPIHasID) yield jsoner.deserialize_object_by_type_async (obj_type);
+                    des_obj = (Content) yield jsoner.deserialize_object_by_type_async (obj_type);
 
                 } catch (Deser.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
@@ -785,7 +785,7 @@ public class Tape.Storager : Object {
         return null;
     }
 
-    public Tape.YaMAPIHasID? load_object_sync (Type obj_type, string oid) {
+    public Content? load_object_sync (Type obj_type, string oid) {
         Location object_location = object_cache_location (obj_type, oid);
 
         if (object_location.file == null) {
@@ -806,10 +806,10 @@ public class Tape.Storager : Object {
 
                 var jsoner = new Deser.JsonWorker.from_bytes (new Bytes (object_data));
 
-                Tape.YaMAPIHasID? des_obj = null;
+                Content? des_obj = null;
 
                 try {
-                    des_obj = (Tape.YaMAPIHasID) jsoner.deserialize_object_by_type (obj_type);
+                    des_obj = (Content) jsoner.deserialize_object_by_type (obj_type);
 
                 } catch (Deser.Error e) {
                     warning ("Can't parse object. Error message: %s", e.message);
@@ -824,13 +824,13 @@ public class Tape.Storager : Object {
         return null;
     }
 
-    public async void save_object (Tape.YaMAPIHasID yam_object, bool is_tmp) {
-        File object_file = get_object_cache_file (yam_object.get_type (), yam_object.oid, is_tmp);
+    public async void save_object (Content content, bool is_tmp) {
+        File object_file = get_object_cache_file (content.get_type (), content.content_id, is_tmp);
 
         try {
             var object_json = Deser.JsonWorker.serialize (
-                (GLib.Object) yam_object,
-                new Deser.ObjectCodec<GLib.Object>.from_gtype (yam_object.get_type ())
+                (GLib.Object) content,
+                new Deser.ObjectCodec<GLib.Object>.from_gtype (content.get_type ())
             );
             var object_data = object_json.data;
             simple_dencode (ref object_data);
@@ -845,7 +845,7 @@ public class Tape.Storager : Object {
             );
 
         } catch (Error e) {
-            warning ("Can't save object %s", yam_object.get_type ().name ());
+            warning ("Can't save object %s", content.get_type ().name ());
         }
     }
 

@@ -34,7 +34,7 @@ public sealed class Tape.CacheManager : Object {
         if (image == null) {
             try {
                 if (root.network_available) {
-                    image = yield root.ym.client.get_content_of (uri, priority, cancellable);
+                    image = yield root.ym.get_content_of (uri, priority, cancellable);
                 } else {
                     return image;
                 }

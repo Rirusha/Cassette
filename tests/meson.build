@@ -18,7 +18,7 @@ test('content-heap',
       files('test-content-heap.vala'),
       files(meson.project_source_root() / 'libtape' / 'src' / 'heap' / 'content-heap.vala'),
     ],
-    dependencies: gio_dep,
+    dependencies: [gio_dep, libdeser_dep],
   )
 )
 

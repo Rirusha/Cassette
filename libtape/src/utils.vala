@@ -17,11 +17,6 @@
 
 namespace Tape {
 
-    public struct ParseUriResult {
-        public Deser.DataObject root_object;
-        public Tape.YaMAPITrack? track;
-    }
-
     namespace Filenames {
         internal string data_root () { return root.settings.app_name_lower; }
         internal const string COOKIES = "session.cookies";
@@ -50,187 +45,173 @@ namespace Tape {
         yield;
     }
 
-    internal static void check_client_initted () {
-        if (root.player == null ||
-            root.cm == null ||
-            root.ym == null
-        ) {
-            error (_("Client not initted"));
-        }
-    }
+    // /**
+    //  * Переключить режим перемешивания на следующий.
+    //  * ON -> OFF
+    //  * OFF -> ON
+    //  */
+    // public static void roll_shuffle_mode () {
+    //     check_client_initted ();
 
-    /**
-     * Переключить режим перемешивания на следующий.
-     * ON -> OFF
-     * OFF -> ON
-     */
-    public static void roll_shuffle_mode () {
-        check_client_initted ();
+    //     switch (root.player.shuffle_mode) {
+    //     case ShuffleMode.OFF:
+    //         root.player.shuffle_mode = ShuffleMode.ON;
+    //         break;
 
-        switch (root.player.shuffle_mode) {
-        case ShuffleMode.OFF:
-            root.player.shuffle_mode = ShuffleMode.ON;
-            break;
+    //     case ShuffleMode.ON:
+    //         root.player.shuffle_mode = ShuffleMode.OFF;
+    //      
+    //    break;
+    //     }
+    // }
 
-        case ShuffleMode.ON:
-            root.player.shuffle_mode = ShuffleMode.OFF;
-            break;
-        }
-    }
+    // /**
+    //  * Переключить режим повтора на следующий.
+    //  * OFF -> REPEAT_ALL
+    //  * REPEAT_ALL -> REPEAT_ONE
+    //  * REPEAT_ONE -> OFF
+    //  */
+    // public static void roll_repeat_mode () {
+    //     check_client_initted ();
 
-    /**
-     * Переключить режим повтора на следующий.
-     * OFF -> REPEAT_ALL
-     * REPEAT_ALL -> REPEAT_ONE
-     * REPEAT_ONE -> OFF
-     */
-    public static void roll_repeat_mode () {
-        check_client_initted ();
+    //     switch (root.player.repeat_mode) {
+    //     case RepeatMode.OFF:
+    //         if (root.player.mode is PlayerFlow) {
+    //             root.player.repeat_mode = RepeatMode.ONE;
+    //         } else {
+    //             root.player.repeat_mode = RepeatMode.QUEUE;
+    //         }
+    //         break;
 
-        switch (root.player.repeat_mode) {
-        case RepeatMode.OFF:
-            if (root.player.mode is PlayerFlow) {
-                root.player.repeat_mode = RepeatMode.ONE;
-            } else {
-                root.player.repeat_mode = RepeatMode.QUEUE;
-            }
-            break;
+    //     case RepeatMode.QUEUE:
+    //         root.player.repeat_mode = RepeatMode.ONE;
+    //         break;
 
-        case RepeatMode.QUEUE:
-            root.player.repeat_mode = RepeatMode.ONE;
-            break;
+    //     case RepeatMode.ONE:
+    //         root.player.repeat_mode = RepeatMode.OFF;
+    //         break;
+    //     }
+    // }
 
-        case RepeatMode.ONE:
-            root.player.repeat_mode = RepeatMode.OFF;
-            break;
-        }
-    }
+    // public ParseUriResult? parse_uri (string uri) throws Deser.Error {
+    //     string[] uri_parts = {};
+    //     string[] args = {};
 
-    /**
-     * @return  Returns the result with the root dummy object
-     *          (playlist, album) for which you want to get the
-     *          object from the api. And a similar track, if the
-     *          uri contained one.
-     */
-    public ParseUriResult? parse_uri (string uri) throws Deser.Error {
-        string[] uri_parts = {};
-        string[] args = {};
+    //     try {
+    //         var regex = new Regex (
+    //             "(yandexmusic://|https://music.yandex..+/)(.+)",
+    //             RegexCompileFlags.OPTIMIZE, RegexMatchFlags.NOTEMPTY
+    //         );
+    //         MatchInfo match_info;
 
-        try {
-            var regex = new Regex (
-                "(yandexmusic://|https://music.yandex..+/)(.+)",
-                RegexCompileFlags.OPTIMIZE, RegexMatchFlags.NOTEMPTY
-            );
-            MatchInfo match_info;
+    //         string? match = null;
+    //         if (regex.match (uri, 0, out match_info)) {
+    //             match = match_info.fetch (2);
+    //         }
 
-            string? match = null;
-            if (regex.match (uri, 0, out match_info)) {
-                match = match_info.fetch (2);
-            }
+    //         if (match == "" || match == null) {
+    //             return null;
+    //         }
 
-            if (match == "" || match == null) {
-                return null;
-            }
+    //         var splitted = match.split ("?");
+    //         uri_parts = splitted[0].split ("/");
 
-            var splitted = match.split ("?");
-            uri_parts = splitted[0].split ("/");
+    //         // Cut off arguments
+    //         if (splitted.length == 2) {
+    //             args = splitted[1].split ("&");
+    //         }
 
-            // Cut off arguments
-            if (splitted.length == 2) {
-                args = splitted[1].split ("&");
-            }
+    //     } catch (Error e) {
+    //         warning (e.message);
+    //     }
 
-        } catch (Error e) {
-            warning (e.message);
-        }
+    //     switch (uri_parts[0]) {
+    //         case "users":
+    //             return_val_if_fail (uri_parts.length > 1, null);
+    //             string user_id = uri_parts[1];
 
-        switch (uri_parts[0]) {
-            case "users":
-                return_val_if_fail (uri_parts.length > 1, null);
-                string user_id = uri_parts[1];
+    //             switch (uri_parts[2]) {
+    //                 case "playlists":
+    //                     return_val_if_fail (uri_parts.length > 3, null);
+    //                     var playlist_dummy = new Tape.YaMAPIPlaylist () {
+    //                         uid = user_id,
+    //                         kind = uri_parts[3]
+    //                     };
 
-                switch (uri_parts[2]) {
-                    case "playlists":
-                        return_val_if_fail (uri_parts.length > 3, null);
-                        var playlist_dummy = new Tape.YaMAPIPlaylist () {
-                            uid = user_id,
-                            kind = uri_parts[3]
-                        };
+    //                     return {playlist_dummy, null};
 
-                        return {playlist_dummy, null};
+    //                 default:
+    //                     return null;
+    //             }
 
-                    default:
-                        return null;
-                }
+    //         case "album":
+    //             return_val_if_fail (uri_parts.length > 1, null);
+    //             var album_dummy = new Tape.YaMAPIAlbum () {
+    //                 id = uri_parts[1]
+    //             };
 
-            case "album":
-                return_val_if_fail (uri_parts.length > 1, null);
-                var album_dummy = new Tape.YaMAPIAlbum () {
-                    id = uri_parts[1]
-                };
+    //             if (uri_parts.length == 2) {
+    //                 warning (_("Albums view not implemented yet"));
+    //                 return null;
+    //             }
 
-                if (uri_parts.length == 2) {
-                    warning (_("Albums view not implemented yet"));
-                    return null;
-                }
+    //             switch (uri_parts[2]) {
+    //                 case "track":
+    //                     return_val_if_fail (uri_parts.length > 3, null);
+    //                     var track_dummy = new Tape.YaMAPITrack () {
+    //                         id = uri_parts[3]
+    //                     };
 
-                switch (uri_parts[2]) {
-                    case "track":
-                        return_val_if_fail (uri_parts.length > 3, null);
-                        var track_dummy = new Tape.YaMAPITrack () {
-                            id = uri_parts[3]
-                        };
+    //                     return {album_dummy, track_dummy};
 
-                        return {album_dummy, track_dummy};
+    //                 default:
+    //                     return null;
+    //             }
+    //     }
 
-                    default:
-                        return null;
-                }
-        }
+    //     return null;
+    // }
 
-        return null;
-    }
+    // public string get_share_link (Deser.DataObject yam_obj) {
+    //     if (yam_obj is Tape.YaMAPITrack) {
+    //         var track_info = (Tape.YaMAPITrack) yam_obj;
 
-    public string get_share_link (Deser.DataObject yam_obj) {
-        if (yam_obj is Tape.YaMAPITrack) {
-            var track_info = (Tape.YaMAPITrack) yam_obj;
+    //         if (track_info.albums.length == 0) {
+    //             warning (_("User owned tracks can't be shared"));
+    //             return "";
+    //         } else {
+    //             return "https://music.yandex.ru/album/%s/track/%s?utm_medium=copy_link".printf (
+    //                 track_info.albums[0].id, track_info.id
+    //             );
+    //         }
 
-            if (track_info.albums.length == 0) {
-                warning (_("User owned tracks can't be shared"));
-                return "";
-            } else {
-                return "https://music.yandex.ru/album/%s/track/%s?utm_medium=copy_link".printf (
-                    track_info.albums[0].id, track_info.id
-                );
-            }
+    //     } else if (yam_obj is Tape.YaMAPIPlaylist) {
+    //         var playlist_info = (Tape.YaMAPIPlaylist) yam_obj;
 
-        } else if (yam_obj is Tape.YaMAPIPlaylist) {
-            var playlist_info = (Tape.YaMAPIPlaylist) yam_obj;
+    //         return "https://music.yandex.ru/users/%s/playlists/%s?utm_medium=copy_link".printf (
+    //             playlist_info.owner.login, playlist_info.kind
+    //         );
 
-            return "https://music.yandex.ru/users/%s/playlists/%s?utm_medium=copy_link".printf (
-                playlist_info.owner.login, playlist_info.kind
-            );
+    //     } else if (yam_obj is Tape.YaMAPIAlbum) {
+    //         var album_info = (Tape.YaMAPIAlbum) yam_obj;
 
-        } else if (yam_obj is Tape.YaMAPIAlbum) {
-            var album_info = (Tape.YaMAPIAlbum) yam_obj;
+    //         return "https://music.yandex.ru/albums/%s?utm_medium=copy_link".printf (
+    //             album_info.oid
+    //         );
 
-            return "https://music.yandex.ru/albums/%s?utm_medium=copy_link".printf (
-                album_info.oid
-            );
+    //     } else if (yam_obj is Tape.YaMAPIArtist) {
+    //         var artist_info = (Tape.YaMAPIArtist) yam_obj;
 
-        } else if (yam_obj is Tape.YaMAPIArtist) {
-            var artist_info = (Tape.YaMAPIArtist) yam_obj;
+    //         return "https://music.yandex.ru/artist/%s?utm_medium=copy_link".printf (
+    //             artist_info.oid
+    //         );
 
-            return "https://music.yandex.ru/artist/%s?utm_medium=copy_link".printf (
-                artist_info.oid
-            );
-
-        } else {
-            error (_("Can't share '%s' object").printf (
-                yam_obj.get_type ().name ()
-            ));
-        }
-    }
+    //     } else {
+    //         error (_("Can't share '%s' object").printf (
+    //             yam_obj.get_type ().name ()
+    //         ));
+    //     }
+    // }
 
     // 253.3M -> 253.3 Megabytes
     HumanitySize to_human (string input) {

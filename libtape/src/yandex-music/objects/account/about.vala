@@ -20,9 +20,9 @@
 /**
  * Account information.
  */
-public class Tape.YaMAPIAccountAbout : Deser.DataObject, YaMAPIHasID {
+public class Tape.AccountAbout : Content {
 
-    public string oid {
+    public override string content_id {
         owned get {
             return uid;
         }

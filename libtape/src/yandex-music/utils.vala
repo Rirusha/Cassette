@@ -66,42 +66,6 @@ namespace Tape.YaMAPI {
     public const string API_FROM = "unofficial-client-own";
 
     /**
-     * Get api context type by object.
-     *
-     * @param yam_obj   object with id
-     */
-    public static string get_context_type (YaMAPIHasID yam_obj) {
-        if (yam_obj is YaMAPIPlaylist) {
-            return "playlist";
-        } else if (yam_obj is YaMAPIAlbum) {
-            return "album";
-        } else if (yam_obj is YaMAPIArtist) {
-            return "artist";
-        } else if (yam_obj is int) {
-            return "search";
-        } else {
-            return "various";
-        }
-    }
-
-    /**
-     * Get api context description by object.
-     *
-     * @param yam_obj   object with id
-     */
-    public static string? get_context_description (YaMAPIHasID yam_obj) {
-        if (yam_obj is YaMAPIPlaylist) {
-            return ((YaMAPIPlaylist) yam_obj).title;
-        } else if (yam_obj is YaMAPIAlbum) {
-            return ((YaMAPIAlbum) yam_obj).title;
-        } else if (yam_obj is YaMAPIArtist) {
-            return ((YaMAPIArtist) yam_obj).name;
-        } else {
-            return null;
-        }
-    }
-
-    /**
      * Get current timestamp.
      */
     public static string get_timestamp () {
@@ -174,14 +138,7 @@ public enum Tape.YaMAPIPlaylistVisible {
     }
 }
 
-public enum Tape.YaMAPITrackType {
-    MUSIC,
-    AUDIOBOOK,
-    PODCAST,
-    LOCAL,
-}
-
-public enum Tape.YaMAPIAuthType {
+public enum Tape.AuthType {
     TOKEN,
     COOKIES_DB,
     COOKIES_TEXT,

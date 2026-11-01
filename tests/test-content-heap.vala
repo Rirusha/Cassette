@@ -17,13 +17,28 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+class TestContent : Tape.Content {
+
+    string id;
+
+    public override string content_id {
+        owned get {
+            return id;
+        }
+    }
+
+    public TestContent (string id) {
+        this.id = id;
+    }
+}
+
 class TestContentHeap : Tape.ContentHeap {
 
     public int local_requests { get; private set; default = 0; }
 
     protected override async Tape.Content? get_local_content (string id) {
         local_requests++;
-        return new Tape.Content (id);
+        return new TestContent (id);
     }
 
     protected override async Tape.Content? get_remote_content (string id) {

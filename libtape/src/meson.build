@@ -11,7 +11,6 @@ vala_sources = files(
   'result-codec.vala',
   'settings.vala',
   'utils.vala',
-  'yandex-music.vala',
 )
 
 subdir('cache-manager')
@@ -63,7 +62,7 @@ lib = library(
   vala_vapi: vapi_name,
   vala_gir: gir_name,
   c_args: lib_c_args,
-  vala_args: ['--vapi-comments'],
+  vala_args: ['--vapi-comments', '--enable-experimental'],
   link_args: ['-lm'],
   version: libversion,
   soversion: soversion,

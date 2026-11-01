@@ -2,13 +2,12 @@
 // vala-lint=skip-file
 
 using Tape;
-using Tape.YaMAPI;
 
 public async void account_about_test () {
-    var client = new YaMAPIClient.with_token (TestConfig.TOKEN);
-    yield client.init ();
-    var about = yield client.account_about ();
-    message (about.login);
+    var client = new Client (new Settings ("CassetteApiTest", "space.rirusha.Cassette.ApiTest"));
+    bool inited = yield client.init (TestConfig.TOKEN);
+    assert (inited);
+    assert (client.ym.me.login != "");
 }
 
 public int main (string[] args) {

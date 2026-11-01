@@ -19,17 +19,21 @@
 
 public class Tape.Content : Object {
 
-    public string id { get; set; }
+    public string content_id { get; set; }
 
-    internal ContentHeap heap { get; set; }
+    ContentHeap heap;
 
-    public Content (string id) {
+    internal Content (string id) {
         Object (id: id);
+    }
+
+    internal void bind_heap (ContentHeap heap) {
+        this.heap = heap;
     }
 
     public override void dispose () {
         base.dispose ();
-        heap.unref_return (id);
+        heap.unref_return (content_id);
     }
 }
 
@@ -64,13 +68,13 @@ internal abstract class Tape.ContentHeap : Object {
     protected abstract async Content? get_local_content (string id);
 
     void bind_content (Content content) {
-        store[content.id] = content;
-        content.heap = this;
+        store[content.content_id] = content;
+        content.bind_heap (this);
     }
 
     bool check_content_id (string id, Content? content) {
         if (content != null) {
-            if (content.id != id) {
+            if (content.content_id != id) {
                 warning ("Content id mismatch. Type: %s", content.get_type ().name ());
                 return false;
             }

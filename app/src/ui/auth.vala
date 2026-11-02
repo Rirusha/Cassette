@@ -1,20 +1,20 @@
 /*
  * Copyright (C) 2025-2026 Vladimir Romanov <rirusha@altlinux.org>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see
  * <https://www.gnu.org/licenses/gpl-3.0-standalone.html>.
- * 
+ *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -116,32 +116,19 @@ public sealed class Cassette.Auth : Loadable {
 
     async void try_auth (string? token) {
         try {
-            if (yield Cassette.Application.tape_client.init (token)) {
-                to_main ();
-            } else {
-                if (token != null) {
-                    activate_action_variant (
-                        "app.show-message",
-                        Message.build_variant (_("Failed to login. Probably wrong token"))
-                    );
-                }
-                to_auth ();
-            }
-        } catch (Session.BadStatusCodeError e) {
-            activate_action_variant (
-                "app.show-message",
-                Message.build_variant (_("Bad status code: %i").printf (e.code), e.message)
-            );
-            to_auth ();
+            yield Cassette.Application.tape_client.init (token);
+            to_main ();
         } catch (CantUseError e) {
-            to_cant_use (e);
-        } catch (Tape.TapeError e) {
-            warning (e.message);
-            activate_action_variant (
-                "app.show-message",
-                Message.build_variant (_("Connection problems"), e.message)
-            );
-            to_auth ();
+            if (e is CantUseError.AUTH_REQUIRED) {
+                warning (e.message);
+                activate_action_variant (
+                    "app.show-message",
+                    Message.build_variant (e.message)
+                );
+                to_auth ();
+            } else if (e is CantUseError.NO_PLUS) {
+                to_cant_use (e);
+            }
         }
     }
 

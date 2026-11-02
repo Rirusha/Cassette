@@ -139,6 +139,7 @@ public enum Tape.YaMAPIPlaylistVisible {
 }
 
 public enum Tape.AuthType {
+    NONE,
     TOKEN,
     COOKIES_DB,
     COOKIES_TEXT,

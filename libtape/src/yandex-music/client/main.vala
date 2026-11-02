@@ -28,28 +28,11 @@ public partial sealed class Tape.YandexMusic : Object {
 
     public string token { internal get; internal set; default = ""; }
 
-    Tape.AccountAbout? _me = null;
-    public Tape.AccountAbout me {
-        owned get {
-            if (_me != null) {
-                return _me;
-            } else {
-                string my_uid = root.cm.storager.db.get_additional_data ("me");
-                if (my_uid != null) {
-                    _me = (Tape.AccountAbout) root.cm.storager.load_object_sync (
-                        typeof (Tape.AccountAbout),
-                        my_uid
-                    );
-                }
+    Deser.Settings deser_settings = new Deser.Settings () {
+        names_case = Deser.Case.CAMEL
+    };
 
-                if (_me == null) {
-                    return new Tape.AccountAbout ();
-                }
-            }
-
-            return _me;
-        }
-    }
+    public Tape.AccountAbout? me { get; private set; }
 
     public string? cookies_path { get; construct; default = null; }
 
@@ -57,18 +40,24 @@ public partial sealed class Tape.YandexMusic : Object {
 
     public bool inited {
         get {
-            return _me != null;
+            return me != null;
         }
     }
 
     internal YandexMusic (
-        string? cookies_path = null,
-        string? token = null
+        owned string? token = null
     ) {
-        assert ((cookies_path != null || token != null) && (cookies_path == null || token == null));
-
-        AuthType auth_type;
+        AuthType auth_type = NONE;
         CookieJarType cookie_jar_type = NONE;
+        string? cookies_path = null;
+
+        if (root.cm.storager.cookies_file.query_exists ()) {
+            cookies_path = root.cm.storager.cookies_file.peek_path ();
+        }
+
+        if (token == null) {
+            token = root.cm.storager.load_token ();
+        }
 
         if (cookies_path != null) {
             auth_type = COOKIES_DB;
@@ -76,9 +65,6 @@ public partial sealed class Tape.YandexMusic : Object {
 
         } else if (token != null) {
             auth_type = TOKEN;
-
-        } else {
-            assert_not_reached ();
         }
 
         Object (
@@ -112,6 +98,14 @@ public partial sealed class Tape.YandexMusic : Object {
     }
 
     [NoReturn]
+    void handle_error_with_usage (GLib.Error e) throws TapeError, BadStatusCodeError, CantUseError {
+        if (e is CantUseError) {
+            throw (CantUseError) e;
+        }
+        handle_error (e);
+    }
+
+    [NoReturn]
     void handle_error (GLib.Error e) throws TapeError, BadStatusCodeError {
         if (e is BadStatusCodeError) {
             throw (BadStatusCodeError) e;
@@ -132,73 +126,111 @@ public partial sealed class Tape.YandexMusic : Object {
         }
     }
 
+    async void ensure_init (
+        int priority = Priority.DEFAULT,
+        Cancellable? cancellable = null
+    ) throws TapeError, BadStatusCodeError, CantUseError {
+        if (!inited) {
+            yield init (priority, cancellable);
+        }
+    }
+
     internal async void init (
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError, CantUseError {
         assert (!inited);
 
-        if (auth_type != TOKEN) {
-            var datalist = Datalist<string> ();
-            datalist.set_data ("grant_type", "sessionid");
-            datalist.set_data ("client_id", "23cabbbdc6cd418abb4b39c32c41195d");
-            datalist.set_data ("client_secret", "53bc75238f0c4d08a118e51fe9203300");
-            datalist.set_data ("host", "oauth.yandex.ru");
+        if (auth_type == NONE) {
+            throw new CantUseError.AUTH_REQUIRED (_("Authentication required"));
+        }
 
-            Session.Content post_content = { Session.ContentType.X_WWW_FORM_URLENCODED };
-            try {
+        Error? thrown_e = null;
+        int64 expires_at = 0;
+        try {
+            if (auth_type != TOKEN) {
+                var datalist = Datalist<string> ();
+                datalist.set_data ("grant_type", "sessionid");
+                datalist.set_data ("client_id", "23cabbbdc6cd418abb4b39c32c41195d");
+                datalist.set_data ("client_secret", "53bc75238f0c4d08a118e51fe9203300");
+                datalist.set_data ("host", "oauth.yandex.ru");
+
+                Session.Content post_content = { Session.ContentType.X_WWW_FORM_URLENCODED };
                 post_content.set_datalist (datalist);
-            } catch (Deser.Error e) {
-                handle_error (e);
-            }
 
-            var request = new Request.POST ("https://oauth.yandex.ru/token");
-            request.add_content (post_content);
+                var request = new Request.POST ("https://oauth.yandex.ru/token");
+                request.add_content (post_content);
 
-            try {
                 var bytes = yield session.send_and_read_async (request, priority, cancellable);
 
-                var parser = new Json.Parser ();
-                parser.load_from_data ((string) bytes.get_data (), (ssize_t) bytes.get_size ());
-                var root = parser.get_root ();
-                if (root != null && root.get_node_type () == Json.NodeType.OBJECT &&
-                    root.get_object ().has_member ("access_token")) {
-                    token = root.get_object ().get_string_member ("access_token");
+                var init_settings = deser_settings.copy ();
+                init_settings.names_case = SNAKE;
+                var worker = new Deser.JsonWorker.from_bytes (
+                    bytes,
+                    init_settings
+                );
+                var init_data = yield worker.deserialize_async (
+                    new Deser.ObjectCodec<Tape.Init> ()
+                );
+
+                token = init_data.access_token;
+                expires_at = new DateTime.now_utc ().to_unix () + init_data.expires_in;
+            }
+
+            if (token != "") {
+                session.add_headers_preset (
+                    "default",
+                    {
+                        { "Authorization", @"OAuth $token" },
+                        { "X-Yandex-Music-Client", "YandexMusicAndroid/24023231" }
+                    }
+                );
+                session.add_headers_preset (
+                    "auth",
+                    {
+                        { "Authorization", @"OAuth $token" }
+                    }
+                );
+
+                me = yield get_account_about (priority, cancellable);
+                if (me != null) {
+                    if (!me.has_plus) {
+                        throw new CantUseError.NO_PLUS (_("No Plus Subscription"));
+                    }
                 }
-            } catch (GLib.Error e) {
-                handle_error (e);
+            }
+        } catch (Error e) {
+            thrown_e = e;
+        }
+
+        if (me == null) {
+            string my_uid = root.cm.storager.db.get_additional_data ("me");
+            if (my_uid != null) {
+                me = (Tape.AccountAbout) root.cm.storager.load_object_sync (
+                    typeof (Tape.AccountAbout),
+                    my_uid
+                );
+            }
+
+            if (me == null) {
+                throw new CantUseError.AUTH_REQUIRED (_("Authentication required"));
             }
         }
 
-        if (token != "") {
-            session.add_headers_preset (
-                "default",
-                {
-                    { "Authorization", @"OAuth $token" },
-                    { "X-Yandex-Music-Client", "YandexMusicAndroid/24023231" }
-                }
-            );
-            session.add_headers_preset (
-                "auth",
-                {
-                    { "Authorization", @"OAuth $token" }
-                }
-            );
-
-            _me = yield get_account_about (priority, cancellable);
-            if (me != null) {
-                if (!me.has_plus) {
-                    throw new CantUseError.NO_PLUS ("No Plus Subscription");
-                }
-            }
-        } else {
-            throw new TapeError.INTERNAL (_("No token provided"));
+        if (thrown_e != null) {
+            handle_error_with_usage (thrown_e);
         }
 
         root.cm.storager.db.set_additional_data ("me", me.uid);
         yield root.cm.storager.save_object (me, false);
 
+        if (auth_type == TOKEN) {
+            root.cm.storager.save_token (token);
+        }
+
         likes_handler.full_update (yield library_all_ids ());
+
+        notify_property ("inited");
     }
 
     async Tape.AccountAbout get_account_about (
@@ -215,7 +247,7 @@ public partial sealed class Tape.YandexMusic : Object {
                 cancellable
             );
 
-            var jsoner = new Deser.JsonWorker.from_bytes (bytes);
+            var jsoner = new Deser.JsonWorker.from_bytes (bytes, deser_settings);
 
             return yield jsoner.deserialize_async (
                 new Tape.ResultCodec<Tape.AccountAbout> (

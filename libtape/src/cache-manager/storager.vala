@@ -373,9 +373,15 @@ public class Tape.Storager : Object {
         );
     }
 
-    public async void save_token (string token) {
+    public void save_token (string token, int64 expires_at = 0) {
+        if (expires_at > 0) {
+            db.set_additional_data ("token-expires-at", expires_at.to_string ());
+        } else {
+            db.remove_additional_data ("token-expires-at");
+        }
+
         try {
-            yield Secret.password_store (
+            Secret.password_store_sync (
                 token_schema (), Secret.COLLECTION_DEFAULT,
                 "Cassette Yandex Music token", token, null,
                 "application", root.settings.app_id, null
@@ -397,10 +403,20 @@ public class Tape.Storager : Object {
         db.set_additional_data ("token", string.joinv ("/", ar));
     }
 
-    public async string? load_token () {
+    public string? load_token () {
+        if (db_file.query_exists ()) {
+            var expiry_data = db.get_additional_data ("token-expires-at");
+            int64 expires_at;
+            if (expiry_data != null &&
+                (!int64.try_parse (expiry_data, out expires_at) ||
+                 expires_at <= new DateTime.now_utc ().to_unix ())) {
+                return null;
+            }
+        }
+
         string? secret_token = null;
         try {
-            secret_token = yield Secret.password_lookup (
+            secret_token = Secret.password_lookup_sync (
                 token_schema (), null,
                 "application", root.settings.app_id, null
             );
@@ -428,9 +444,9 @@ public class Tape.Storager : Object {
         return (string) token_data;
     }
 
-    internal async void clear_token () {
+    internal void clear_token () {
         try {
-            yield Secret.password_clear (
+            Secret.password_clear_sync (
                 token_schema (), null,
                 "application", root.settings.app_id, null
             );

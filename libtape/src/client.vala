@@ -24,6 +24,8 @@ public class Tape.Client : Object {
 
     public Tape.Settings settings { get; construct; }
 
+    public bool local_only { get; construct; }
+
     /**
      * Cachier module.
      */
@@ -49,8 +51,8 @@ public class Tape.Client : Object {
 
     NetworkMonitor monitor = NetworkMonitor.get_default ();
 
-    public Client (Tape.Settings settings) {
-        Object (settings: settings);
+    public Client (Tape.Settings settings, bool local_only = false) {
+        Object (settings: settings, local_only: local_only);
     }
 
     construct {
@@ -60,7 +62,7 @@ public class Tape.Client : Object {
         monitor.bind_property ("network-available", this, "network-available", SYNC_CREATE);
     }
 
-    public async bool init (string? yam_token = null) throws CantUseError, Session.BadStatusCodeError, TapeError {
+    public async void init (string? yam_token = null) throws CantUseError {
         var ser_settings = Deser.get_settings ();
         ser_settings.names_case = Deser.Case.CAMEL;
         Deser.set_settings (ser_settings);
@@ -68,44 +70,19 @@ public class Tape.Client : Object {
         string? token = yam_token;
         string? cookies_path = null;
 
-        if (token == null) {
-            if (cm.storager.cookies_file.query_exists ()) {
-                cookies_path = cm.storager.cookies_file.peek_path ();
-            } else {
-                token = yield cm.storager.load_token ();
-            }
-        }
-
-        if (token == null && cookies_path == null) {
-            return false;
-        }
-
-        ym = new YandexMusic (
-            cookies_path,
-            token
-        );
-
         player = new Player ();
-
-        try {
-            yield ym.init ();
-        } catch (Session.BadStatusCodeError e) {
-            if (e.code == 401) {
-                return false;
-            } else {
-                throw e;
-            }
-        } catch (TapeError e) {
-            throw e;
-        }
-
         // Mpris.init (this);
 
-        if (ym.auth_type == TOKEN) {
-            yield cm.storager.save_token (ym.token);
+        if (!local_only) {
+            ym = new YandexMusic (token);
+            try {
+                yield ym.init ();
+            } catch (CantUseError e) {
+                throw e;
+            } catch (Error e) {
+                // Auth data is good, so we pass client
+            }
         }
-
-        return true;
     }
 
     public void abort () {

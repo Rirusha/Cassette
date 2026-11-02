@@ -47,7 +47,7 @@ public sealed class Tape.CacheManager : Object {
     }
 
     internal async void white_list () {
-        yield storager.clear_token ();
+        storager.clear_token ();
         yield storager.remove_dir_file (storager.datadir_file);
         yield storager.remove_dir_file (storager.cachedir_file);
     }

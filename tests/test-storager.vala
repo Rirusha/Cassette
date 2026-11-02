@@ -123,26 +123,76 @@ void test_storage_dirs () {
 
 void test_token_falls_back_to_info_db () {
     // A missing session bus makes Secret Service unavailable.
-    var loop = new MainLoop ();
-    storager.save_token.begin ("test-token", (obj, result) => {
-        storager.save_token.end (result);
-        loop.quit ();
-    });
-    loop.run ();
+    storager.db.get_additional_data ("token");
+    Test.expect_message (
+        "libtape", LogLevelFlags.LEVEL_WARNING,
+        "*Secret Service could not save token:*"
+    );
+    storager.save_token ("test-token");
+    Test.assert_expected_messages ();
 
     if (storager.db.get_additional_data ("token") == null) {
         Test.fail_printf ("Expected InfoDB fallback after Secret Service failure");
     }
 
-    string? loaded = null;
-    storager.load_token.begin ((obj, result) => {
-        loaded = storager.load_token.end (result);
-        loop.quit ();
-    });
-    loop.run ();
+    Test.expect_message (
+        "libtape", LogLevelFlags.LEVEL_WARNING,
+        "*Secret Service could not load token:*"
+    );
+    string? loaded = storager.load_token ();
+    Test.assert_expected_messages ();
 
     if (loaded != "test-token") {
         Test.fail_printf ("Expected token to load from InfoDB fallback");
+    }
+}
+
+void test_token_expiry () {
+    int64 now = new DateTime.now_utc ().to_unix ();
+
+    Test.expect_message (
+        "libtape", LogLevelFlags.LEVEL_WARNING,
+        "*Secret Service could not save token:*"
+    );
+    storager.save_token ("expired-token", now - 1);
+    Test.assert_expected_messages ();
+
+    if (storager.load_token () != null) {
+        Test.fail_printf ("Expired token must not be loaded");
+    }
+
+    Test.expect_message (
+        "libtape", LogLevelFlags.LEVEL_WARNING,
+        "*Secret Service could not save token:*"
+    );
+    storager.save_token ("fresh-token", now + 3600);
+    Test.assert_expected_messages ();
+
+    Test.expect_message (
+        "libtape", LogLevelFlags.LEVEL_WARNING,
+        "*Secret Service could not load token:*"
+    );
+    string? loaded = storager.load_token ();
+    Test.assert_expected_messages ();
+    if (loaded != "fresh-token") {
+        Test.fail_printf ("Unexpired token must be loaded");
+    }
+
+    Test.expect_message (
+        "libtape", LogLevelFlags.LEVEL_WARNING,
+        "*Secret Service could not save token:*"
+    );
+    storager.save_token ("manual-token");
+    Test.assert_expected_messages ();
+
+    Test.expect_message (
+        "libtape", LogLevelFlags.LEVEL_WARNING,
+        "*Secret Service could not load token:*"
+    );
+    loaded = storager.load_token ();
+    Test.assert_expected_messages ();
+    if (loaded != "manual-token") {
+        Test.fail_printf ("Manual token must not inherit previous expiry");
     }
 }
 
@@ -213,6 +263,7 @@ public static int main (string[] args) {
 
     Test.add_func ("/storager/directories/xdg-layout", test_storage_dirs);
     Test.add_func ("/storager/token/infodb-fallback", test_token_falls_back_to_info_db);
+    Test.add_func ("/storager/token/expiry", test_token_expiry);
     Test.add_func ("/storager/images/save-load", () => {
         var loop = new MainLoop ();
         test_save_load_image.begin (() => {

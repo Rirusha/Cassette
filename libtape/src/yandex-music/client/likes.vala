@@ -35,7 +35,7 @@ public partial sealed class Tape.YandexMusic {
                 cancellable
             );
 
-            var jsoner = new Deser.JsonWorker.from_bytes (bytes);
+            var jsoner = new Deser.JsonWorker.from_bytes (bytes, deser_settings);
 
             return yield jsoner.deserialize_async (
 

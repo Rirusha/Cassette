@@ -70,6 +70,7 @@ jobs:
             'pkgconfig(libsession-0.1)' \
             'pkgconfig(libcase-0)' \
             'pkgconfig(libxml-2.0)' \
+            'pkgconfig(libsecret-1)' \
             'pkgconfig(sqlite3)' \
             'pkgconfig(webkitgtk-6.0)' \
             /usr/bin/g-ir-compiler \

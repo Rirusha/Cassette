@@ -121,6 +121,31 @@ void test_storage_dirs () {
     }
 }
 
+void test_token_falls_back_to_info_db () {
+    // A missing session bus makes Secret Service unavailable.
+    var loop = new MainLoop ();
+    storager.save_token.begin ("test-token", (obj, result) => {
+        storager.save_token.end (result);
+        loop.quit ();
+    });
+    loop.run ();
+
+    if (storager.db.get_additional_data ("token") == null) {
+        Test.fail_printf ("Expected InfoDB fallback after Secret Service failure");
+    }
+
+    string? loaded = null;
+    storager.load_token.begin ((obj, result) => {
+        loaded = storager.load_token.end (result);
+        loop.quit ();
+    });
+    loop.run ();
+
+    if (loaded != "test-token") {
+        Test.fail_printf ("Expected token to load from InfoDB fallback");
+    }
+}
+
 async void test_save_load_image () {
     uint8[] expected = { 0, 1, 2, 127, 255 };
     var uri = "https://example.test/cover/image.jpg";
@@ -158,6 +183,7 @@ async void test_save_load_audio () {
 }
 
 public static int main (string[] args) {
+    Environment.set_variable ("DBUS_SESSION_BUS_ADDRESS", "unix:path=/nonexistent-cassette-test-bus", true);
     string path;
     try {
         path = DirUtils.make_tmp ("cassette-storager-XXXXXX");
@@ -186,6 +212,7 @@ public static int main (string[] args) {
     Test.init (ref args);
 
     Test.add_func ("/storager/directories/xdg-layout", test_storage_dirs);
+    Test.add_func ("/storager/token/infodb-fallback", test_token_falls_back_to_info_db);
     Test.add_func ("/storager/images/save-load", () => {
         var loop = new MainLoop ();
         test_save_load_image.begin (() => {

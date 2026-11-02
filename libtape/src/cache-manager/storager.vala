@@ -364,7 +364,28 @@ public class Tape.Storager : Object {
         }
     }
 
-    internal void save_token (string token) {
+    Secret.Schema token_schema () {
+        return new Secret.Schema (
+            "space.rirusha.Cassette.Token",
+            Secret.SchemaFlags.NONE,
+            "application", Secret.SchemaAttributeType.STRING,
+            null
+        );
+    }
+
+    public async void save_token (string token) {
+        try {
+            yield Secret.password_store (
+                token_schema (), Secret.COLLECTION_DEFAULT,
+                "Cassette Yandex Music token", token, null,
+                "application", root.settings.app_id, null
+            );
+            db.remove_additional_data ("token");
+            return;
+        } catch (Error e) {
+            warning ("Secret Service could not save token: %s", e.message);
+        }
+
         uint8[] token_data = token.data.copy ();
         simple_dencode (ref token_data);
 
@@ -376,11 +397,25 @@ public class Tape.Storager : Object {
         db.set_additional_data ("token", string.joinv ("/", ar));
     }
 
-    internal string? load_token () {
+    public async string? load_token () {
+        string? secret_token = null;
+        try {
+            secret_token = yield Secret.password_lookup (
+                token_schema (), null,
+                "application", root.settings.app_id, null
+            );
+        } catch (Error e) {
+            warning ("Secret Service could not load token: %s", e.message);
+        }
+
+        if (!db_file.query_exists ()) {
+            return secret_token;
+        }
+
         var token_datas = db.get_additional_data ("token");
 
         if (token_datas == null) {
-            return null;
+            return secret_token;
         }
 
         var token_datas_splitted = token_datas.split ("/");
@@ -391,6 +426,17 @@ public class Tape.Storager : Object {
 
         simple_dencode (ref token_data);
         return (string) token_data;
+    }
+
+    internal async void clear_token () {
+        try {
+            yield Secret.password_clear (
+                token_schema (), null,
+                "application", root.settings.app_id, null
+            );
+        } catch (Error e) {
+            warning ("Secret Service could not clear token: %s", e.message);
+        }
     }
 
     /**

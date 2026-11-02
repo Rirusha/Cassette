@@ -30,6 +30,7 @@ pgconfig_dependencies = [
   gstreamer_app_dep,
   gstreamer_dep,
   libxml_dep,
+  libsecret_dep,
   sqlite3_dep,
 ]
 dependencies = pgconfig_dependencies + [

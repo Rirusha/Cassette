@@ -72,7 +72,7 @@ public class Tape.Client : Object {
             if (cm.storager.cookies_file.query_exists ()) {
                 cookies_path = cm.storager.cookies_file.peek_path ();
             } else {
-                token = cm.storager.load_token ();
+                token = yield cm.storager.load_token ();
             }
         }
 
@@ -102,7 +102,7 @@ public class Tape.Client : Object {
         // Mpris.init (this);
 
         if (ym.auth_type == TOKEN) {
-            cm.storager.save_token (ym.token);
+            yield cm.storager.save_token (ym.token);
         }
 
         return true;

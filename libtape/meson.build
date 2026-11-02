@@ -21,6 +21,7 @@ deps_pkgs = [
   'libdeser-0.1',
   'libsession-0.1',
   'libxml-2.0',
+  'libsecret-1',
   'sqlite3',
 ]
 
@@ -32,6 +33,7 @@ gstreamer_dep = dependency('gstreamer-1.0')
 libdeser_dep = dependency('libdeser-0.1', fallback : ['libdeser', 'deser_lib_dep'])
 libsession_dep = dependency('libsession-0.1', fallback : ['libdeser', 'session_lib_dep'])
 libxml_dep = dependency('libxml-2.0')
+libsecret_dep = dependency('libsecret-1')
 sqlite3_dep = dependency('sqlite3')
 
 add_project_arguments(

@@ -11,7 +11,7 @@ brew install \
   meson ninja pkg-config \
   vala blueprint-compiler \
   gtk4 libadwaita \
-  libgee libsoup json-glib \
+  libgee libsoup json-glib libsecret \
   gstreamer \
   desktop-file-utils
 ```

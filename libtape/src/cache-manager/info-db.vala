@@ -128,6 +128,19 @@ public class Tape.InfoDB : Object {
         return result;
     }
 
+    public void remove_additional_data (string name) {
+        string query = "DELETE FROM additional WHERE name=$NAME;";
+        Sqlite.Statement statement;
+        db.prepare_v2 (query, query.length, out statement);
+        statement.bind_text (statement.bind_parameter_index ("$NAME"), name);
+
+        if (statement.step () != Sqlite.DONE) {
+            error ("Error while removing additional_data %s in %s: %s".printf (
+                name, db_path, db.errmsg ()
+            ));
+        }
+    }
+
     /**
      * Add or replace a content ref to db
      *

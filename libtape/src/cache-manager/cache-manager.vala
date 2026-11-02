@@ -33,11 +33,7 @@ public sealed class Tape.CacheManager : Object {
 
         if (image == null) {
             try {
-                if (root.network_available) {
-                    image = yield root.ym.get_content_of (uri, priority, cancellable);
-                } else {
-                    return image;
-                }
+                image = yield root.ym.get_content_of (uri, priority, cancellable);
             } catch (Error e) {
                 warning ("Can't load image by uri '%s': %s", uri, e.message);
             }

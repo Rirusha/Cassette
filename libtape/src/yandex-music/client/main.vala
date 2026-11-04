@@ -161,16 +161,15 @@ public partial sealed class Tape.YandexMusic : Object {
                 var request = new Request.POST ("https://oauth.yandex.ru/token");
                 request.add_content (post_content);
 
-                var bytes = yield session.send_and_read_async (request, priority, cancellable);
-
                 var init_settings = deser_settings.copy ();
                 init_settings.names_case = SNAKE;
-                var worker = new Deser.JsonWorker.from_bytes (
-                    bytes,
-                    init_settings
-                );
-                var init_data = yield worker.deserialize_async (
-                    new Deser.ObjectCodec<Tape.Init> ()
+
+                var init_data = yield session.send_and_read_typed_async (
+                    request,
+                    new Deser.ObjectCodec<Init> (),
+                    init_settings,
+                    priority,
+                    cancellable
                 );
 
                 token = init_data.access_token;
@@ -241,19 +240,16 @@ public partial sealed class Tape.YandexMusic : Object {
         request.presets = { "default" };
 
         try {
-            var bytes = yield session.send_and_read_async (
+            return yield session.send_and_read_typed_async (
                 request,
+                new Tape.ResultCodec<Tape.AccountAbout> (
+                    new Deser.ObjectCodec<Tape.AccountAbout> ()
+                ),
+                deser_settings,
                 priority,
                 cancellable
             );
 
-            var jsoner = new Deser.JsonWorker.from_bytes (bytes, deser_settings);
-
-            return yield jsoner.deserialize_async (
-                new Tape.ResultCodec<Tape.AccountAbout> (
-                    new Deser.ObjectCodec<Tape.AccountAbout> ()
-                )
-            );
         } catch (GLib.Error e) {
             handle_error (e);
         }

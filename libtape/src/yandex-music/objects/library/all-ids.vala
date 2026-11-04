@@ -20,7 +20,7 @@
 using Gee;
 using Deser;
 
-public class Tape.YaMAPILibraryAllIds : Deser.DataObject {
+internal class Tape.LibraryAllIds : Deser.DataObject {
 
     public GLib.HashTable<string, int> default_library {
         get; set;

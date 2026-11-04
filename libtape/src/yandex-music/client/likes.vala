@@ -21,7 +21,7 @@ public partial sealed class Tape.YandexMusic {
 
     internal LikesModels likes_handler { get; default = new LikesModels (); }
 
-    async Tape.YaMAPILibraryAllIds library_all_ids (
+    async Tape.LibraryAllIds library_all_ids (
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
@@ -29,23 +29,16 @@ public partial sealed class Tape.YandexMusic {
         request.presets = { "default" };
 
         try {
-            var bytes = yield session.send_and_read_async (
+            return yield session.send_and_read_typed_async (
                 request,
+                new Tape.ResultCodec<Tape.LibraryAllIds> (
+                    new Deser.ObjectCodec<Tape.LibraryAllIds> ()
+                ),
+                deser_settings,
                 priority,
                 cancellable
             );
 
-            var jsoner = new Deser.JsonWorker.from_bytes (bytes, deser_settings);
-
-            return yield jsoner.deserialize_async (
-
-                new Tape.ResultCodec<Tape.YaMAPILibraryAllIds> (
-
-                    new Deser.ObjectCodec<Tape.YaMAPILibraryAllIds> ()
-
-                )
-
-            );
         } catch (GLib.Error e) {
             handle_error (e);
         }

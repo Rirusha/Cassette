@@ -50,7 +50,7 @@ public partial sealed class Tape.YandexMusic {
         }
     }
 
-    string fix_uid (string? uid) throws TapeError {
+    string fix_uid (string? uid) throws CantUseError {
         if (uid != null) {
             return uid;
         }
@@ -59,6 +59,6 @@ public partial sealed class Tape.YandexMusic {
             return me.uid;
         }
 
-        throw new TapeError.INTERNAL (_("Authorization not completed"));
+        throw new CantUseError.AUTH_REQUIRED (_("Authorization not completed"));
     }
 }

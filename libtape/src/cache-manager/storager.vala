@@ -20,7 +20,7 @@
 /**
  * A class for working with client files
  */
-public class Tape.Storager : Object {
+internal class Tape.Storager : Object {
 
     InfoDB? _db = null;
     public InfoDB db {
@@ -177,7 +177,7 @@ public class Tape.Storager : Object {
     public async void move_loc_to_temp (Location loc, bool keep_on_disk = true) {
         if (loc.file != null && loc.is_tmp == false) {
             if (keep_on_disk) {
-                yield move_file_to (loc.file, true);
+                yield move (loc.file, destination_for (loc.file, true));
             } else {
                 yield remove_file (loc.file);
             }
@@ -190,7 +190,7 @@ public class Tape.Storager : Object {
      * @param loc           file location
      */
     public async void move_loc_to_perm (Location loc) {
-        yield move_file_to (loc.file, false);
+        yield move (loc.file, destination_for (loc.file, false));
     }
 
     static bool file_exists (File target_file) {
@@ -220,29 +220,33 @@ public class Tape.Storager : Object {
         }
     }
 
-    public async void move_to (string src_path, bool is_tmp) {
-        yield move_file_to (
-            File.new_for_path (src_path),
-            is_tmp
-        );
-    }
-
-    public async void move_file_to (File src_file, bool is_tmp) {
+    File destination_for (File src_file, bool is_tmp) {
         var b = src_file.peek_path ().split ("/tape/");
 
-        File dst_file = File.new_build_filename (
+        return File.new_build_filename (
             is_tmp ? cachedir_file.peek_path () : datadir_file.peek_path (),
             b[b.length - 1]
         );
-
-        yield move_file (src_file, dst_file);
     }
 
-    async void move_file (File src_file, File dst_file) {
-        /**
-            Перемещает файл
-         */
+    public async void move (File src_file, File dst_file) {
+        try {
+            FileInfo info = yield src_file.query_info_async (
+                FileAttribute.STANDARD_TYPE,
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                Priority.DEFAULT
+            );
+            if (info.get_file_type () == FileType.DIRECTORY) {
+                yield move_dir (src_file, dst_file);
+            } else {
+                yield move_file (src_file, dst_file);
+            }
+        } catch (Error e) {
+            warning ("Can't inspect '%s'. Error message: %s", src_file.peek_path (), e.message);
+        }
+    }
 
+    public async void move_file (File src_file, File dst_file) {
         try {
             yield src_file.move_async (
                 dst_file,
@@ -262,33 +266,35 @@ public class Tape.Storager : Object {
         }
     }
 
-    async void move_file_dir (File src_dir_file, File dst_dir_file) {
+    public async void move_dir (File src_dir_file, File dst_dir_file) {
         try {
-            FileEnumerator? enumerator = src_dir_file.enumerate_children (
+            try {
+                yield dst_dir_file.make_directory_async (Priority.DEFAULT);
+            } catch (IOError.EXISTS e) {
+                // Merge into an existing destination directory.
+            }
+
+            FileEnumerator? enumerator = yield src_dir_file.enumerate_children_async (
                     "standard::*",
-                    FileQueryInfoFlags.NONE,
+                    FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                    Priority.DEFAULT,
                     null
                 );
 
             if (enumerator != null) {
                 FileInfo? file_info = null;
 
-                while ((file_info = enumerator.next_file ()) != null) {
+                while ((file_info = (yield enumerator.next_files_async (1)).nth_data (0)) != null) {
                     string file_name = file_info.get_name ();
 
                     File src_file = File.new_build_filename (src_dir_file.peek_path (), file_name);
                     File dst_file = File.new_build_filename (dst_dir_file.peek_path (), file_name);
 
                     if (file_info.get_file_type () == FileType.DIRECTORY) {
-                        yield move_file_dir (src_file, dst_file);
-
-                    } else if (file_info.get_file_type () == FileType.REGULAR) {
-                        yield move_file (src_file, dst_file);
+                        yield move_dir (src_file, dst_file);
 
                     } else {
-                        yield src_file.trash_async ();
-
-                        warning ("In cache folder found suspicious file '%s'. It moved to trash.", file_name);
+                        yield move_file (src_file, dst_file);
                     }
                 }
             }
@@ -319,41 +325,51 @@ public class Tape.Storager : Object {
         }
     }
 
-    public async static void remove_async (string file_path) {
-        yield remove_file (File.new_for_path (file_path));
+    public async static void remove (string file_path) {
+        File target = File.new_for_path (file_path);
+        try {
+            FileInfo info = yield target.query_info_async (
+                FileAttribute.STANDARD_TYPE,
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                Priority.DEFAULT
+            );
+            if (info.get_file_type () == FileType.DIRECTORY) {
+                yield remove_dir (target);
+            } else {
+                yield remove_file (target);
+            }
+        } catch (Error e) {
+            warning ("Can't inspect '%s'. Error message: %s", file_path, e.message);
+        }
     }
 
-    internal async void remove_dir_file (File dir_file) {
+    public async static void remove_dir (File dir_file) {
 
         try {
-            FileEnumerator? enumerator = dir_file.enumerate_children (
+            FileEnumerator? enumerator = yield dir_file.enumerate_children_async (
                 "standard::*",
-                FileQueryInfoFlags.NONE,
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                Priority.DEFAULT,
                 null
             );
 
             if (enumerator != null) {
                 FileInfo? file_info = null;
 
-                while ((file_info = enumerator.next_file ()) != null) {
+                while ((file_info = (yield enumerator.next_files_async (1)).nth_data (0)) != null) {
                     string file_name = file_info.get_name ();
 
                     File file = File.new_build_filename (dir_file.peek_path (), file_name);
 
                     if (file_info.get_file_type () == FileType.DIRECTORY) {
-                        yield remove_dir_file (file);
-
-                    } else if (file_info.get_file_type () == FileType.REGULAR) {
-                        yield remove_file (file);
+                        yield remove_dir (file);
 
                     } else {
-                        yield file.trash_async ();
-
-                        warning ("In cache folder found suspicious file '%s'. It moved to trash.", file_name);
+                        yield remove_file (file);
                     }
                 }
             }
-            dir_file.delete ();
+            yield dir_file.delete_async ();
 
         } catch (Error e) {
             warning (
@@ -463,16 +479,16 @@ public class Tape.Storager : Object {
      */
     public async void clear_user_data (bool keep_content, bool keep_datadir) {
         if (keep_content) {
-            yield move_file_dir (images_datadir_file, images_cachedir_file);
-            yield move_file_dir (objects_datadir_file, objects_cachedir_file);
-            yield move_file_dir (audios_datadir_file, audios_cachedir_file);
+            yield move_dir (images_datadir_file, images_cachedir_file);
+            yield move_dir (objects_datadir_file, objects_cachedir_file);
+            yield move_dir (audios_datadir_file, audios_cachedir_file);
         }
 
         _db = null;
         yield remove_file (db_file);
 
         if (!keep_datadir) {
-            yield remove_dir_file (datadir_file);
+            yield remove_dir (datadir_file);
         }
     }
 

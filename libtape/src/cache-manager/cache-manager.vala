@@ -22,7 +22,13 @@ using Gee;
 [SingleInstance]
 public sealed class Tape.CacheManager : Object {
 
-    public Storager storager { get; default = new Storager (); }
+    internal Storager storager { get; default = new Storager (); }
+
+    public string cookies_path {
+        owned get {
+            return storager.cookies_file.get_path ().dup ();
+        }
+    }
 
     public async Bytes? load_image_by_uri (
         string uri,
@@ -48,7 +54,7 @@ public sealed class Tape.CacheManager : Object {
 
     internal async void white_list () {
         storager.clear_token ();
-        yield storager.remove_dir_file (storager.datadir_file);
-        yield storager.remove_dir_file (storager.cachedir_file);
+        yield Storager.remove_dir (storager.datadir_file);
+        yield Storager.remove_dir (storager.cachedir_file);
     }
 }

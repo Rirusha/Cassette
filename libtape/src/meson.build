@@ -22,6 +22,20 @@ sources = [
   vapi_sources,
   vala_sources,
 ]
+libtape_test_sources = []
+foreach group : sources
+  foreach source : group
+    if source.full_path().endswith('/yandex-music/utils.vala')
+      libtape_test_sources += configure_file(
+        input: source,
+        output: 'test-yandex-utils.vala',
+        copy: true,
+      )
+    else
+      libtape_test_sources += source
+    endif
+  endforeach
+endforeach
 
 pgconfig_dependencies = [
   gee_dep,
@@ -37,6 +51,7 @@ dependencies = pgconfig_dependencies + [
   libdeser_dep,
   libsession_dep
 ]
+libtape_test_dependencies = dependencies
 
 if libdeser_dep.type_name() == 'pkgconfig'
   pgconfig_dependencies += libdeser_dep
@@ -48,11 +63,13 @@ endif
 
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
+libtape_test_config_h_dir = config_h_dir
 
 lib_c_args = [
   '-DG_LOG_DOMAIN="@0@"'.format(libtape_name),
   '-DGETTEXT_PACKAGE="@0@"'.format(libtape_name)
 ]
+libtape_test_c_args = lib_c_args
 
 lib = library(
   versioned_lib_name,

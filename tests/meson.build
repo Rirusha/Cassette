@@ -7,8 +7,11 @@ test('info-db',
 
 test('storager',
   executable('test-storager',
-    sources: files('test-storager.vala'),
-    dependencies: lib_dep,
+    sources: [files('test-storager.vala'), libtape_test_sources],
+    dependencies: libtape_test_dependencies,
+    include_directories: libtape_test_config_h_dir,
+    c_args: libtape_test_c_args,
+    vala_args: ['--enable-experimental'],
   )
 )
 

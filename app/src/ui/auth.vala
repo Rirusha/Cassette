@@ -95,7 +95,7 @@ public sealed class Cassette.Auth : Loadable {
     [GtkCallback]
     void on_yandex_apply () {
 #if WITH_WEBKIT
-        var dialog = new WebkitAuthDialog (Cassette.Application.tape_client.cm.storager.cookies_file);
+        var dialog = new WebkitAuthDialog (Cassette.Application.tape_client.cm.cookies_path);
         dialog.present (this);
         dialog.closed.connect ((dialog) => {
             if (((WebkitAuthDialog) dialog).success) {
@@ -139,6 +139,7 @@ public sealed class Cassette.Auth : Loadable {
 
     [GtkCallback]
     void on_to_auth_clicked () {
-        Tape.Storager.remove_file.begin (Application.tape_client.cm.storager.cookies_file, to_auth);
+        FileUtils.remove (Application.tape_client.cm.cookies_path);
+        to_auth ();
     }
 }

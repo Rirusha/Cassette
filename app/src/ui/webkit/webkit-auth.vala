@@ -1,20 +1,20 @@
 /*
  * Copyright (C) 2025 Vladimir Romanov <rirusha@altlinux.org>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see
  * <https://www.gnu.org/licenses/gpl-3.0-standalone.html>.
- * 
+ *
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -30,14 +30,14 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
 
     WebView webview = new WebView ();
 
-    public File cookies_file { get; construct; }
+    public string cookies_path { get; construct; }
 
     File tmp_cookies_file;
 
     public bool success { get; private set; }
 
-    public WebkitAuthDialog (File cookies_file) {
-        Object (cookies_file: cookies_file);
+    public WebkitAuthDialog (string cookies_path) {
+        Object (cookies_path: cookies_path);
     }
 
     construct {
@@ -55,7 +55,7 @@ public sealed class Cassette.WebkitAuthDialog : Adw.Dialog {
             if (("https://music.yandex." in webview.uri) && event != LoadEvent.STARTED) {
                 try {
                     tmp_cookies_file.move (
-                        cookies_file,
+                        File.new_for_path (cookies_path),
                         FileCopyFlags.OVERWRITE | FileCopyFlags.ALL_METADATA
                     );
                 } catch (Error e) {

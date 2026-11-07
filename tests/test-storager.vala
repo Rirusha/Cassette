@@ -121,6 +121,55 @@ void test_storage_dirs () {
     }
 }
 
+async void test_remove_paths () {
+    var dir = test_root.get_child ("remove-test");
+    var nested = dir.get_child ("nested");
+    var file = nested.get_child ("item");
+    try {
+        nested.make_directory_with_parents ();
+        file.create (FileCreateFlags.NONE).close ();
+    } catch (Error e) {
+        Test.fail_printf ("Failed to prepare remove test: %s", e.message);
+        return;
+    }
+
+    yield Tape.Storager.remove (dir.get_path ());
+    if (dir.query_exists ()) {
+        Test.fail_printf ("Recursive remove left directory behind");
+    }
+}
+
+async void test_move_paths () {
+    var source = test_root.get_child ("move-source");
+    var nested = source.get_child ("nested");
+    var destination = test_root.get_child ("move-destination");
+    try {
+        nested.make_directory_with_parents ();
+        nested.get_child ("item").create (FileCreateFlags.NONE).close ();
+    } catch (Error e) {
+        Test.fail_printf ("Failed to prepare move test: %s", e.message);
+        return;
+    }
+
+    yield storager.move (source, destination);
+    if (source.query_exists () || !destination.get_child ("nested").get_child ("item").query_exists ()) {
+        Test.fail_printf ("Recursive move did not move nested file");
+    }
+
+    var source_file = test_root.get_child ("move-file-source");
+    var destination_file = test_root.get_child ("move-file-destination");
+    try {
+        source_file.create (FileCreateFlags.NONE).close ();
+    } catch (Error e) {
+        Test.fail_printf ("Failed to prepare file move test: %s", e.message);
+        return;
+    }
+    yield storager.move (source_file, destination_file);
+    if (source_file.query_exists () || !destination_file.query_exists ()) {
+        Test.fail_printf ("Move did not move file");
+    }
+}
+
 void test_token_falls_back_to_info_db () {
     // A missing session bus makes Secret Service unavailable.
     storager.db.get_additional_data ("token");
@@ -262,6 +311,16 @@ public static int main (string[] args) {
     Test.init (ref args);
 
     Test.add_func ("/storager/directories/xdg-layout", test_storage_dirs);
+    Test.add_func ("/storager/directories/remove-recursive", () => {
+        var loop = new MainLoop ();
+        test_remove_paths.begin (() => { loop.quit (); });
+        loop.run ();
+    });
+    Test.add_func ("/storager/directories/move-recursive", () => {
+        var loop = new MainLoop ();
+        test_move_paths.begin (() => { loop.quit (); });
+        loop.run ();
+    });
     Test.add_func ("/storager/token/infodb-fallback", test_token_falls_back_to_info_db);
     Test.add_func ("/storager/token/expiry", test_token_expiry);
     Test.add_func ("/storager/images/save-load", () => {

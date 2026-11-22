@@ -106,18 +106,39 @@ configure_file(
 
 if get_option('introspection')
   g_ir_compiler = find_program('g-ir-compiler')
+  fs = import('fs')
+
+  gir_includes = [
+    '--includedir', gee_dep.get_variable('datadir') / 'gir-1.0',
+  ]
+  gir_dependencies = [lib]
+
+  if libdeser_dep.type_name() == 'internal'
+    deser_project = subproject('libdeser')
+
+    deser_target = deser_project.get_variable('deser_lib')
+    session_target = deser_project.get_variable('session_lib')
+
+    gir_includes += [
+      '--includedir', fs.parent(deser_target.vala_gir().full_path()),
+      '--includedir', fs.parent(session_target.vala_gir().full_path()),
+    ]
+
+    gir_dependencies += [deser_target, session_target]
+  endif
+
   custom_target(
     'typelib',
     command: [
       g_ir_compiler,
       '--shared-library', '@PLAINNAME@',
       '--output', '@OUTPUT@',
-      '--includedir', gee_dep.get_variable('datadir') / 'gir-1.0',
+    ] + gir_includes + [
       meson.current_build_dir() / gir_name,
     ],
     input: lib,
     output: typelib_name,
-    depends: lib,
+    depends: gir_dependencies,
     install: true,
     install_dir: get_option('libdir') / 'girepository-1.0',
   )

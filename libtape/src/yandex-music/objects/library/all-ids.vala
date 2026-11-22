@@ -63,14 +63,14 @@ internal class Tape.LibraryAllIds : Deser.DataObject {
     }
 
     public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-        if (property.name == "default-library") return Deser.create_codec_for_map<int> ();
-        if (property.name == "artists") return Deser.create_codec_for_map<int> ();
-        if (property.name == "albums") return Deser.create_codec_for_map<int> ();
-        if (property.name == "playlists") return Deser.create_codec_for_map<int> ();
-        if (property.name == "users") return Deser.create_codec_for_map<int> ();
-        if (property.name == "genres") return Deser.create_codec_for_map<int> ();
-        if (property.name == "labels") return Deser.create_codec_for_map<int> ();
-        if (property.name == "library") return Deser.create_codec_for_map<int> ();
+        if (property.name == "default-library") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
+        if (property.name == "artists") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
+        if (property.name == "albums") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
+        if (property.name == "playlists") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
+        if (property.name == "users") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
+        if (property.name == "genres") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
+        if (property.name == "labels") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
+        if (property.name == "library") return new Deser.HashTableCodec<int> (Deser.create_codec_for_type ());
         return base.get_property_codec (property);
     }
 }

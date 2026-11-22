@@ -21,7 +21,7 @@ void test_result_array () {
             "{\"result\":[{\"id\":\"42\"}]}"
         ).deserialize_with_codec (
             new Tape.ResultCodec<GLib.GenericArray<ResultItem>> (
-                Deser.create_codec_for_array<ResultItem> ()
+                new Deser.GenericArrayCodec<ResultItem> (Deser.create_codec_for_type ())
             )
         );
         assert (items.length == 1 && items[0].id == "42");

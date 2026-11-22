@@ -61,4 +61,25 @@ public partial sealed class Tape.YandexMusic {
 
         throw new CantUseError.AUTH_REQUIRED (_("Authorization not completed"));
     }
+
+    public async GenericArray<Disclaimer> disclaimers (
+        int priority = Priority.DEFAULT,
+        Cancellable? cancellable = null
+    ) throws TapeError, BadStatusCodeError {
+        var request = new Request.GET ("/disclaimers");
+        request.presets = { "default" };
+
+        try {
+            return yield session.send_and_read_typed_async<GenericArray<Disclaimer>> (
+                request,
+                new Deser.GenericArrayCodec<Disclaimer> (Deser.create_codec_for_type ()),
+                deser_settings,
+                priority,
+                cancellable
+            );
+
+        } catch (GLib.Error e) {
+            handle_error (e);
+        }
+    }
 }

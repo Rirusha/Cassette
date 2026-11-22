@@ -15,7 +15,6 @@ typelib_name = versioned_gir_name + '.typelib'
 deps_pkgs = [
   'gee-0.8',
   'gio-2.0',
-  'json-glib-1.0',
   'gstreamer-app-1.0',
   'gstreamer-1.0',
   'libdeser-0.2',
@@ -29,7 +28,6 @@ libdeser_opts = {'session': 'enabled', 'json': 'enabled'}
 
 gee_dep = dependency('gee-0.8')
 gio_dep = dependency('gio-2.0')
-json_glib_dep = dependency('json-glib-1.0')
 gstreamer_app_dep = dependency('gstreamer-app-1.0')
 gstreamer_dep = dependency('gstreamer-1.0')
 libdeser_dep = dependency('libdeser-0.2', fallback : ['libdeser', 'deser_lib_dep'], default_options: libdeser_opts)

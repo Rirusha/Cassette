@@ -40,7 +40,6 @@ endforeach
 pgconfig_dependencies = [
   gee_dep,
   gio_dep,
-  json_glib_dep,
   gstreamer_app_dep,
   gstreamer_dep,
   libxml_dep,

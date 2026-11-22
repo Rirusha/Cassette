@@ -21,8 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check files
-        run: |
-          make lint
+        uses: alt-gnome/coding-style-actions/check@main
 
   build-doc-translation:
     name: Build, update translation and upload doc

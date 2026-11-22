@@ -4,7 +4,6 @@ runtime-version: 'master'
 sdk: org.gnome.Sdk
 command: cassette
 finish-args:
-  - --talk-name=org.freedesktop.secrets
   - --share=network
   - --share=ipc
   - --socket=fallback-x11
@@ -13,25 +12,44 @@ finish-args:
   - --socket=wayland
   - --filesystem=xdg-music:ro
   - --filesystem=xdg-download:ro
+  - --talk-name=org.freedesktop.secrets
   - --own-name=org.mpris.MediaPlayer2.space.rirusha.Cassette.Devel
+
 modules:
+  - name: yyjson
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_SHARED_LIBS=ON
+    sources:
+      - type: git
+        url: https://github.com/ibireme/yyjson.git
+        tag: 0.12.0
+
   - name: libdeser
     buildsystem: meson
     builddir: true
+    config-opts:
+      - -Dsession=enabled
+      - -Djson=enabled
     sources:
       - type: git
         url: https://altlinux.space/rirusha/libdeser.git
-        ref: main
+        tag: v0.2.0
+
   - name: libcase
     buildsystem: meson
     builddir: true
     sources:
       - type: git
         url: https://altlinux.space/rirusha/libcase.git
-        tag: v0.2
+        tag: v0.3
+
   - name: cassette
     buildsystem: meson
     builddir: true
+    config-opts:
+      # I dont know why libtape installed to lib64 without this
+      - --libdir=/app/lib
     sources:
       - type: dir
         path: ../../

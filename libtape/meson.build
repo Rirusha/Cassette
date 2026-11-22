@@ -25,13 +25,15 @@ deps_pkgs = [
   'sqlite3',
 ]
 
+libdeser_opts = {'session': 'enabled', 'json': 'enabled'}
+
 gee_dep = dependency('gee-0.8')
 gio_dep = dependency('gio-2.0')
 json_glib_dep = dependency('json-glib-1.0')
 gstreamer_app_dep = dependency('gstreamer-app-1.0')
 gstreamer_dep = dependency('gstreamer-1.0')
-libdeser_dep = dependency('libdeser-0.2', fallback : ['libdeser', 'deser_lib_dep'])
-libsession_dep = dependency('libsession-0.2', fallback : ['libdeser', 'session_lib_dep'])
+libdeser_dep = dependency('libdeser-0.2', fallback : ['libdeser', 'deser_lib_dep'], default_options: libdeser_opts)
+libsession_dep = dependency('libsession-0.2', fallback : ['libdeser', 'session_lib_dep'], default_options: libdeser_opts)
 libxml_dep = dependency('libxml-2.0')
 libsecret_dep = dependency('libsecret-1')
 sqlite3_dep = dependency('sqlite3')

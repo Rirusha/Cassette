@@ -48,6 +48,7 @@ jobs:
             valadoc \
             gcc \
             vala \
+            'gir(Soup)=3.0 \'
             'pkgconfig(gee-0.8)' \
             'pkgconfig(gstreamer-app-1.0)' \
             'pkgconfig(gstreamer-1.0)' \

@@ -231,27 +231,4 @@ public partial sealed class Tape.YandexMusic : Object {
 
         notify_property ("inited");
     }
-
-    async Tape.AccountAbout get_account_about (
-        int priority = Priority.DEFAULT,
-        Cancellable? cancellable = null
-    ) throws TapeError, BadStatusCodeError {
-        var request = new Request.GET ("/account/about");
-        request.presets = { "default" };
-
-        try {
-            return yield session.send_and_read_typed_async (
-                request,
-                new Tape.ResultCodec<Tape.AccountAbout> (
-                    new Deser.ObjectCodec<Tape.AccountAbout> ()
-                ),
-                deser_settings,
-                priority,
-                cancellable
-            );
-
-        } catch (GLib.Error e) {
-            handle_error (e);
-        }
-    }
 }

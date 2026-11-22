@@ -149,4 +149,16 @@ public class Tape.AccountAbout : Content {
         }
         return base.get_property_codec (property);
     }
+
+    public async AccountSettings get_settings () throws TapeError, Session.BadStatusCodeError {
+        return yield root.ym.get_settings ();
+    }
+
+    public async AccountSettings set_child_mode_enabled (bool value) throws TapeError, Session.BadStatusCodeError {
+        return yield root.ym.set_setting ("childModEnabled", value);
+    }
+
+    public async AccountSettings set_ai_content_reduction_enabled (bool value) throws TapeError, Session.BadStatusCodeError {
+        return yield root.ym.set_setting ("aiContentReductionEnabled", value);
+    }
 }

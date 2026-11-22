@@ -55,6 +55,7 @@ jobs:
             'pkgconfig(libxml-2.0)' \
             'pkgconfig(libsecret-1)' \
             'pkgconfig(sqlite3)' \
+            'pkgconfig(yyjson)' \
             /usr/bin/g-ir-compiler \
             gettext-devel
 

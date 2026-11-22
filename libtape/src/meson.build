@@ -6,8 +6,6 @@ vala_sources = files(
   'client.vala',
   'enums.vala',
   'errors.vala',
-  'hash-store.vala',
-  'likes-model.vala',
   'result-codec.vala',
   'settings.vala',
   'utils.vala',

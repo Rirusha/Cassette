@@ -1,8 +1,10 @@
 internal class Tape.ResultCodec<T> : Deser.Codec<T> {
     Deser.Codec<T> inner;
+    string key;
 
-    public ResultCodec (Deser.Codec<T> inner) {
+    public ResultCodec (Deser.Codec<T> inner, string key = "result") {
         this.inner = inner;
+        this.key = key;
     }
 
     public override GLib.Type value_type { get { return inner.value_type; } }
@@ -31,7 +33,7 @@ internal class Tape.ResultCodec<T> : Deser.Codec<T> {
             context.push_key (key);
             try {
                 context.visit_node ();
-                if (key == "result") {
+                if (key == this.key) {
                     if (result != null) {
                         throw new Deser.Error.DUPLICATE_FIELD ("%s: duplicate result", context.path ());
                     }
@@ -45,7 +47,7 @@ internal class Tape.ResultCodec<T> : Deser.Codec<T> {
             throw new Deser.Error.MISSING_REQUIRED ("%s: missing result", context.path ());
         }
 
-        context.push_key ("result");
+        context.push_key (this.key);
         try {
             return inner.decode (result, context);
         } finally {

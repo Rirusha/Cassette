@@ -19,20 +19,19 @@ using Session;
 
 public partial sealed class Tape.YandexMusic {
 
-    internal LikesModels likes_handler { get; default = new LikesModels (); }
-
-    async Tape.LibraryAllIds library_all_ids (
+    async Tape.SyncData sync (
         int priority = Priority.DEFAULT,
         Cancellable? cancellable = null
     ) throws TapeError, BadStatusCodeError {
-        var request = new Request.GET ("/library/all-ids");
+        var request = new Request.GET ("/sync");
         request.presets = { "default" };
 
         try {
             return yield session.send_and_read_typed_async (
                 request,
-                new Tape.ResultCodec<Tape.LibraryAllIds> (
-                    new Deser.ObjectCodec<Tape.LibraryAllIds> ()
+                new Tape.ResultCodec<Tape.SyncData> (
+                    new Deser.ObjectCodec<Tape.SyncData> (),
+                    "values"
                 ),
                 deser_settings,
                 priority,

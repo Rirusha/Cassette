@@ -3,7 +3,7 @@ vala_sources += files(
   'objects/account-settings.vala',
   'objects/disclaimers.vala',
   'objects/init.vala',
-  'objects/library-all-ids.vala',
+  'objects/sync-data.vala',
 
   'utils.vala',
 )

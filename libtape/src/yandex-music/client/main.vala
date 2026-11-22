@@ -227,8 +227,6 @@ public partial sealed class Tape.YandexMusic : Object {
             root.cm.storager.save_token (token);
         }
 
-        likes_handler.full_update (yield library_all_ids ());
-
         notify_property ("inited");
     }
 }

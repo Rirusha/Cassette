@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-  <img src="data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg" width="128">
+  <img src="app/data/icons/hicolor/scalable/apps/space.rirusha.Cassette.svg" width="128">
   </br>
   Кассета
   </h1>
@@ -32,7 +32,7 @@
 <div align="center"><h4>GTK4/Adwaita приложение, которое позволит вам использовать Я.Музыку на Linux.</h4></div>
 
 <div align="center">
-  <img src="data/images/1-liked-view.png" alt="Preview"/>
+  <img src="app/data/images/1-liked-view.png" alt="Preview"/>
 </div>
 
 ## Установка

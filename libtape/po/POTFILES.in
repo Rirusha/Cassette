@@ -1,6 +1,0 @@
-libtape/src/client.vala
-libtape/src/player/gst-player.vala
-libtape/src/player/mpris.vala
-libtape/src/utils.vala
-libtape/src/yandex-music/client/main.vala
-libtape/src/yandex-music/client/other.vala

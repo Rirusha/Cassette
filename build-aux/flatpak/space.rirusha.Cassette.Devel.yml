@@ -34,7 +34,7 @@ modules:
     sources:
       - type: git
         url: https://altlinux.space/rirusha/libdeser.git
-        tag: v0.3.0
+        commit: 85ac56583c23f644f80d96fd9a734353deda3eff
 
   - name: libcase
     buildsystem: meson

@@ -111,6 +111,9 @@ if get_option('introspection')
   gir_includes = [
     '--includedir', gee_dep.get_variable('datadir') / 'gir-1.0',
   ]
+  gir_includes_doc = [
+    '--vapidir', gee_dep.get_variable('datadir') / 'gir-1.0',
+  ]
   gir_dependencies = [lib]
 
   if libdeser_dep.type_name() == 'internal'
@@ -122,6 +125,10 @@ if get_option('introspection')
     gir_includes += [
       '--includedir', fs.parent(deser_target.vala_gir().full_path()),
       '--includedir', fs.parent(session_target.vala_gir().full_path()),
+    ]
+    gir_includes_doc += [
+      '--vapidir', fs.parent(deser_target.vala_gir().full_path()),
+      '--vapidir', fs.parent(session_target.vala_gir().full_path()),
     ]
 
     gir_dependencies += [deser_target, session_target]

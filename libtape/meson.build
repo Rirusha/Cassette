@@ -17,8 +17,8 @@ deps_pkgs = [
   'gio-2.0',
   'gstreamer-app-1.0',
   'gstreamer-1.0',
-  'libdeser-0.3',
-  'libsession-0.3',
+  'libdeser-0.4',
+  'libsession-0.4',
   'libxml-2.0',
   'libsecret-1',
   'sqlite3',
@@ -30,8 +30,8 @@ gee_dep = dependency('gee-0.8')
 gio_dep = dependency('gio-2.0')
 gstreamer_app_dep = dependency('gstreamer-app-1.0')
 gstreamer_dep = dependency('gstreamer-1.0')
-libdeser_dep = dependency('libdeser-0.3', fallback : ['libdeser', 'deser_lib_dep'], default_options: libdeser_opts)
-libsession_dep = dependency('libsession-0.3', fallback : ['libdeser', 'session_lib_dep'], default_options: libdeser_opts)
+libdeser_dep = dependency('libdeser-0.4', fallback : ['libdeser', 'deser_lib_dep'], default_options: libdeser_opts)
+libsession_dep = dependency('libsession-0.4', fallback : ['libdeser', 'session_lib_dep'], default_options: libdeser_opts)
 libxml_dep = dependency('libxml-2.0')
 libsecret_dep = dependency('libsecret-1')
 sqlite3_dep = dependency('sqlite3')

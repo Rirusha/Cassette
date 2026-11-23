@@ -16,7 +16,7 @@ custom_target(
     '--verbose',
     '--force',
     '-o', meson.current_build_dir() / valadoc_vala_dir,
-  ],
+  ] + gir_includes_doc,
 
   build_by_default: true,
   input : sources,

@@ -162,11 +162,13 @@ internal class Tape.SyncData : Deser.DataObject {
                 public string timestamp { get; set; }
 
                 public override Deser.ValueCodec get_property_codec (GLib.ParamSpec property) throws Deser.Error {
-                    if (property.name == "track-id" || property.name == "album-id") {
-                        return new Deser.CodecAuto (property.value_type);
+                    switch (property.name) {
+                        case "track-id":
+                        case "album-id":
+                            return new Deser.CodecAuto (property.value_type);
+                        default:
+                            return base.get_property_codec (property);
                     }
-
-                    return base.get_property_codec (property);
                 }
             }
 
